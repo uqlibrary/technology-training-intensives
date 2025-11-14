@@ -1,0 +1,54 @@
+project:
+  type: website
+  render: 
+    - setup.md
+    - "Workshops/*"
+    - "Projects/*"
+    - project_gallery.qmd
+    - "Past_projects/*"
+
+website:
+  title: "R Training Intensive"
+  navbar:
+    search: true
+    left:
+      - text: "Workshops"
+        href: Workshops/index.qmd
+      - text: "Project Gallery"
+        href: project_gallery.qmd
+      - text: "UQ Library Technology Training"
+        href: https://uqlibrary.github.io/technology-training
+      - text: "**Book for Jan 2026**"
+        href: https://studenthub.uq.edu.au/students/events/detail/5914050
+  sidebar: 
+    - title: "Workshops"
+      collapse-level: 2
+      contents:
+        - setup.md
+        - auto: "Workshops"
+        - section: The Project
+          contents:
+          - auto: "Projects/*"
+    - title: "Project Gallery"
+      contents:
+        - text: "Summer 2026"
+          href: project_gallery.qmd
+        - section: Past projects
+          contents:
+            - text: Winter 2025
+              href: Past_projects/25Winter/project_gallery.qmd
+            - text: Summer 2025
+              href: Past_projects/25Summer/project_gallery.qmd
+
+format:
+  html:
+    theme: 
+      - default
+      - custom.scss
+    toc: true
+    embed-resources: false
+
+# if the GitHub action does the rendering, no need to freeze
+# see https://quarto.org/docs/publishing/github-pages.html#executing-code
+execute:
+  freeze: false # ggplot images not showing with 'auto' - fix later?

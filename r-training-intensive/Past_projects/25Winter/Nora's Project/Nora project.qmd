@@ -1,0 +1,68 @@
+---
+title: "Nora project"
+author: "Nora"
+# format: pdf
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+melbh <- read.csv("../../data_sources/melb_data.csv")
+names(melbh)
+str(melbh)
+summary(melbh)
+```
+
+```{r}
+library(dplyr)
+```
+
+```{r}
+###Removing NA from the data  
+  
+melb2 <- melbh[complete.cases(melbh),]
+melbPRA <- select(melb2, Price,Rooms,age=YearBuilt)
+```
+
+```{r}
+library(ggplot2)
+
+```
+
+You can add options to executable code like this
+
+```{r}
+ggplot(melbPRA,
+       aes(y=Price,x=age, colour=age)) +
+  geom_point() +
+  scale_colour_viridis_c() +
+  geom_smooth()
+
+
+melbPRA <- melbPRA %>% 
+  filter(age>1800)
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
+
+```{r}
+cor(melbPRA$Price,melbPRA$age)
+
+melb_model <- lm("Price ~age", melbPRA)
+
+b0 <- melb_model$coefficients[1]#intercept
+b1 <- melb_model$coefficients[2]#slope
+ggplot(melbPRA,
+       aes(y=Price,x=age, colour=age)) +
+  geom_point() +
+  scale_colour_viridis_c() +
+  geom_abline(intercept=b0,slope=b1)
+
+
+```

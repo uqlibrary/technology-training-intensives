@@ -1,0 +1,58 @@
+---
+title: "Good Reads"
+author: "Aisha Aslam"
+format: html
+code-fold: true
+code-summary: "Show code"
+code-tools: true
+#editor: visual
+date: today
+warning: false
+---
+
+## Introduction
+
+If you love books, you are at just the right place :) Wouldn't it be interesting to find out:
+
+***Is there a correlation between higher book ratings and the number of book reviews some popular books receive?***
+
+Let us find out using the following dataset.
+
+## The Dataset
+
+We will be using the publicly accessible dataset 'Good reads books' . (<https://www.kaggle.com/datasets/jealousleopard/goodreadsbooks> ).
+
+```{r}
+#| eval: false
+#| include: false
+install.packages(c("dplyr", "ggplot2", "plotly"))
+install.packages("knitr")
+```
+
+```{r}
+library("dplyr")
+library("ggplot2")
+library("plotly")
+library("knitr")
+```
+
+**A Sneak-peak into the dataset**
+
+```{r}
+goodreadsdata <- read.csv("../../data_sources/books.csv")
+
+kable(head(goodreadsdata))
+```
+
+**Let's visualize the book reviews and book ratings**
+
+```{r}
+#View(goodreadsdata)
+
+ggplot(goodreadsdata, aes(x = average_rating, y = text_reviews_count)) +
+  geom_point( colour = "blue") 
+
+
+```
+
+More ratings = more reviews :)

@@ -1,0 +1,43 @@
+---
+title: "Project template"
+---
+
+The code below is a template for your project. Feel free to use it, start from scratch or begin from our [example project](example_project/example_project.qmd).
+
+````
+---
+title: Your project title
+author: Your team members' names
+date: The date
+# The following are optional but recommended
+warning: false
+image: tb.png 
+format:
+  html:
+    code-fold: true
+    code-summary: "Show code"
+    code-tools: true
+---
+
+## Introduction
+
+Replace this code as necessary!
+
+You can start with a brief introduction, and maybe some setup code.
+
+- What modules are you using?
+- What dataset are you using?
+- What will you investigate?
+
+```{{R}}
+# Set up code
+library(dplyr)
+
+# Load the data?
+```
+
+## Next section
+
+You might want to start with data cleaning or other options. Check out the example project for ideas. Good luck!
+
+````

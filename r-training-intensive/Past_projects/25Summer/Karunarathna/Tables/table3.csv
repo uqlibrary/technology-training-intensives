@@ -1,0 +1,16 @@
+Factors,P-value,Significance,Decision
+Intercept,4.86E-14,Significant,Affect
+Land size ,3.61E-05,Significant,Affect
+Distance from UBD,2.16E-05,Significant,Affect
+No of Bedrooms,< 2e-16,Significant,Affect
+No of Bathrooms,< 2e-16,Significant,Affect
+Type of house,< 2e-16,Significant,Affect
+Method of selling,8.43E-11,Significant,Affect
+No of carspots,< 2e-16,Significant,Affect
+Size of building area,< 2e-16,Significant,Affect
+Suburbs,multiple,Significant,Affect
+Seller,multiple,Significant,Affect
+Year of built,multiple,Significant,Affect
+Region Name,multiple,Significant,Affect
+Councile Area,...,NA,NA
+Property Counts,...,NA,NA

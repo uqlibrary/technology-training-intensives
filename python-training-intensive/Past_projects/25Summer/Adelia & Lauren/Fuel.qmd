@@ -1,0 +1,165 @@
+---
+ title: Queensland Fuel Price in 2023
+ author: Adelia & Lauren
+ date: 2025-01-16
+ warning: false
+ format:
+    dashboard:
+        theme: journal
+---
+
+
+
+# Qld fuel price 2023 at a glimpse
+
+```{python}
+#Import data and install packages
+import pandas as pd
+import matplotlib.pyplot as pld
+import seaborn as sns
+import plotly.express as px
+fuel = pd.read_csv("data/qld_fuel.csv")
+
+#Transform data and choose 4 fuel types of interest
+fuel['Date'] = pd.to_datetime(fuel["TransactionDateutc"]).dt.date
+kept_fuel_types = ["e10","Unleaded","PULP 98 RON","PULP 95/96 RON"]
+filtered_fuel = fuel[fuel["Fuel_Type"].isin(kept_fuel_types)] #Filter types
+
+```
+
+## Overview of fuel prices's change over time
+
+
+
+```{python}
+#| title: Overview of fuel price over 2023
+sns.relplot(data = filtered_fuel,
+           x = "Date",
+           y = "Price",
+           hue = "Fuel_Type")
+
+```
+
+```{python}
+#| title: Abnormal high prices (>4000)
+import itables
+over4 = filtered_fuel[filtered_fuel["Price"] > 4000]
+itables.show(over4[["Site_Brand","Site_Suburb","Site_Post_Code","Price"]])
+```
+
+```{python}
+#| title: Abnormal low prices (<1000)
+under1 = filtered_fuel[filtered_fuel["Price"] <1000]
+itables.show(under1[["Site_Brand","Site_Suburb","Site_Post_Code","Price"]])
+```
+
+```{python}
+fuel1 = filtered_fuel[(filtered_fuel["Price"] < 4000) & 
+         (filtered_fuel["Price"] >1000) & 
+         (filtered_fuel['Site_State']!= "NSW")]
+
+```
+
+## Interactive plots for each type of fuel
+
+```{python}
+#|echo: false
+#| eval: false
+#| fig-cap: "Fuel price fluctuates monthly"
+px.scatter(data_frame = fuel1,
+           x = "Date",
+           y = "Price",
+           color = "Fuel_Type",
+           color_discrete_sequence = ['red', 'green', 'yellow','purple'],
+           facet_col = "Fuel_Type",
+           facet_col_wrap = 2)
+
+```
+
+# where to find cheap fuels?
+
+```{python}
+#| title: "10 cheapest suburbs for e10 (average)"
+
+fueldf_E10 = fuel[fuel["Fuel_Type"] == "e10"]
+
+#fueldf_E10.head()
+
+fuel_mean = fueldf_E10.groupby("Site_Suburb").mean(numeric_only = True)
+
+fuel_mean["Price_AUD"] = fuel_mean["Price"] / 1000
+
+fuel_mean = round(fuel_mean["Price_AUD"], 2)
+
+fuel_mean.to_frame().sort_values(by="Price_AUD", ascending=True).head(10)
+
+```
+
+## Fuel prices by types and by sites
+
+```{python}
+#| title: Cheapest fuels by brands
+import itables
+
+avg_price = fuel1.groupby(["Site_Brand", "Fuel_Type"])["Price"].mean().reset_index()
+avg_price.columns = ["Site Brand", "Fuel Type", "Average Price"]
+avgprice = avg_price.pivot(index="Site Brand", columns="Fuel Type", values="Average Price")
+avgprice_sorted = avgprice.sort_values(by="e10",ascending = True)
+itables.show(avgprice_sorted)
+
+
+```
+
+# When to fuel?
+
+```{python}
+#| echo: false
+#| eval: false
+#| fig-cap: "Unleade 91 price across different postcodes in 2023"
+fuel1["date"] = pd.to_datetime(fuel1["Date"])
+unleaded = fuel1[fuel1['Fuel_Type']== "Unleaded"]
+unl_post = unleaded.groupby("Site_Post_Code")
+unleaded["date"] = unleaded["date"].dt.strftime("%Y-%m-%d")
+unleaded = unleaded.sort_values(by="date")
+unleaded_fig = px.scatter(
+    data_frame = unleaded,
+    x="Site_Post_Code",
+    y="Price",
+    animation_frame="date",  # Add slider for date
+    size="Price",  # Size of dots based on price
+    color="Price",
+    title="Price Change of Unleaded Fuel Across Postcodes",
+    labels={"Price": "Price (AUD)", "Site_Post_Code": "Postcode"})
+
+unleaded_fig.update_layout(
+    xaxis_title="Postcode",
+    yaxis_title="Price (AUD)",
+    xaxis_range=[4000, 4999]  )
+
+```
+
+```{python}
+#| eval: false
+#| echo: false
+#| fig-cap: "DO NOT FUEL ON THE 10TH"
+pricebydate = unleaded.groupby('Date')['Price'].mean()
+pricebydate_df = pricebydate.reset_index()
+pricebydate_df.columns = ["Date", "Price"]
+
+# Create the line plot for trend of unleaded fuel price over time
+px.line(
+    pricebydate_df,
+    x="Date",
+    y="Price",
+    title="Average Unleaded 91 across QLD Price over 2023",
+    labels={"Date": "Date", "Price": "Average Unleaded 91 Price"})
+
+# Show the plot
+#import plotly.io as pio
+#pio.renderers.default = "browser"
+#fig2.show()
+
+
+ 
+
+```

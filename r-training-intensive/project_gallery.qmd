@@ -1,0 +1,6 @@
+---
+title: Project Gallery
+listing:
+    contents: "Projects/*/*.{py,qmd,md,Rmd,R}"
+    type: grid
+---

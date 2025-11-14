@@ -1,0 +1,123 @@
+---
+title: GDP per Cap in different continents
+author: Prince
+date: 9-Jul-25
+warning: false
+#######image: tb.png 
+format:
+  html:
+    code-fold: true
+    code-summary: "Show code"
+    code-tools: true
+---
+
+## Loading the datasets and packages
+We will first load the essential **packages** and **dataset**
+
+```{python}
+#| code-summary: "Set up code"
+
+#Import data
+import pandas as pd 
+
+df = pd.read_csv("../../data_sources/gapminder.csv")
+```
+
+## Inspect data
+
+```{python}
+
+df.columns
+df.info()
+df.describe() 
+df.dtypes
+df["lifeExp"] 
+df["lifeExp"].unique()
+df["lifeExp"].describe()
+df["continent"].describe()
+df["continent"]
+
+```
+
+
+## Filter and subset the data and grouping
+
+```{python}
+
+subset_con=df[["continent", "gdpPercap", "year"]]
+summary_con= subset_con.groupby("continent")["gdpPercap"].mean()
+summary_con= summary_con.reset_index()
+
+```
+
+
+## Visualize the data 
+
+Summary of mean GDP per Cap in different continents
+
+
+```{python} 
+
+#| fig-cap: "GPD per Capital in different continents"
+
+import seaborn as sns
+sns.catplot(data=df,
+            x="continent",
+            y="gdpPercap",
+            kind="box",
+            estimator="std",
+            hue="continent"
+            ) 
+            
+```
+
+## Visualize the data
+
+Summary of GDP per Cap in different continents
+
+```{python}
+sns.catplot(data=summary_con,
+            x="continent",
+            y="gdpPercap",
+            kind="box",
+            estimator="std",
+            hue="continent"
+            ) 
+```
+
+## Interactive plot
+
+```{python}
+
+import plotly.express as px
+import matplotlib.pyplot as plt
+px.scatter(data_frame = df, x = "continent", y = "gdpPercap", color = "continent")
+
+```
+
+## Make a global chloropeth
+
+We will now visualize it on a world map
+
+``` {python} 
+
+#| fig-cap: "GPD per Capital in different continents"
+# Compute mean GDP per capita per continent
+continent_gdp = df.groupby("continent")["gdpPercap"].mean()
+
+# Map each country's continent GDP
+df["continent_gdp"] = df["continent"].map(continent_gdp)
+
+# Drop duplicates to keep only one row per country
+country_continent_gdp = df.drop_duplicates("country")[["country", "continent_gdp"]]
+
+#plot
+px.choropleth(country_continent_gdp,
+                    locations="country",
+                    locationmode="country names",
+                    color="continent_gdp",
+                    color_continuous_scale="Plasma",
+                    title="Continent-Level Avg GDP per Capita (Mapped by Country)",
+                    labels={"continent_gdp": "Continent Avg GDP"})
+
+```

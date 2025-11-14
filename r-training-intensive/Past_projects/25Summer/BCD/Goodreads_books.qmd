@@ -1,0 +1,113 @@
+---
+title: "Goodreads books published in 2006"
+author: "Brittnee, Cleo, & David"
+logo: goodreads.jpg
+format: dashboard
+date: today 
+warning: false
+theme: sketchy
+---
+# Word cloud
+
+## Row {height=50%}
+
+```{r}
+books <- read.csv("books.csv")
+
+custom_stop_words <- data.frame(
+  word = c("the", "a", "an", "el", "la", "los", "las", "un", "una", "unos", "unas", "le", "les", "une", "des", "der", "die", "das", "ein", "eine"),
+  stringsAsFactors = FALSE
+)
+library(dplyr)
+library(tidytext)
+all_stop_words <- bind_rows(stop_words, custom_stop_words)
+
+word_frequencies <- books %>% 
+  unnest_tokens(word, title) %>%      # Tokenize the titles into individual words
+  anti_join(all_stop_words, by = "word") %>%  #Remove common stop words
+  filter(!grepl("[0-9]", word)) %>%   # Remove words containing numbers
+  count(word, sort = TRUE)            # Count word frequencies  
+```
+
+```{r}
+rows_to_remove <- c(3, 7, 9, 14) # Row indices to remove
+word_frequencies <- word_frequencies [-rows_to_remove, ]
+```
+
+```{r}
+library(wordcloud2)
+wordcloud2(word_frequencies)
+```
+
+# Graphs
+
+## Row {height=50%}
+
+```{r}
+## create new variable for publication year from publication date 
+#| echo: false
+books$pub_year <- substring(books$publication_date,1,4)
+```
+
+```{r}
+## create new df without X and bookID variables 
+#| message: false
+#| #| echo: false
+books_new <- select(books, -X, -bookID)
+```
+
+```{r}
+## create new df for books published in 2006
+#| echo: false
+books_2006 <- filter(books_new, pub_year == "2006")
+```
+
+```{r}
+#| echo: false
+books_2006_2 <- filter(books_2006, average_rating >= 2, num_pages < 2000)
+```
+
+```{r}
+#| echo: false
+#| title: The average Goodreads ratings for books from 2006 is 3.9
+library(ggplot2)
+cleo <- ggplot(books_2006_2,
+               aes(x = average_rating)) +
+  geom_bar(fill="palegreen4") +
+  labs(x = "Average Goodreads Rating",
+       y = "Number of Books")
+
+#library(plotly)
+#ggplotly(cleo)
+cleo
+```
+
+```{r}
+#| echo: false
+lm_page_rate = lm(average_rating~num_pages, data = books_2006_2)
+```
+
+```{r}
+#| echo: false
+books_b0 = lm_page_rate$coefficients[1]
+books_b1 = lm_page_rate$coefficients[2]
+```
+
+```{r}
+#| title: Goodreads books with more pages have better review ratings (p<0.001)
+#| echo: false
+
+library(ggplot2)
+p <- ggplot(books_2006_2, 
+            aes(x = num_pages, 
+                y = average_rating)) +
+  geom_point() + 
+    geom_abline(intercept = books_b0, slope = books_b1, colour="palegreen4", size=2) +
+  labs(x = "Number of pages", y = "Average Goodreads rating")
+#library(plotly)
+#ggplotly(p)
+p
+```
+
+
+

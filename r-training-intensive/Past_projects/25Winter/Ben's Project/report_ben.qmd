@@ -1,0 +1,99 @@
+---
+title: "Report_ben"
+format: html
+editor: visual
+---
+
+## The goal: To find out the worst book(in English) published in the last 20 years based on Goodreads data set.
+
+
+# Loading Dataset and library
+
+
+```{r}
+books <- read.csv(file = "data/books.csv")
+#| message: false
+#| results: false
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(plotly)
+
+
+```
+
+# Looking at the dataset
+
+```{r}
+#| echo: true
+ggplot(books, aes(y = language_code)) + 
+  geom_bar(fill = "blue") +
+  theme_bw()+
+  labs(title = "Language of books in the dataset")
+```
+
+We have found that the datasets countain books from different languages.
+
+# Filter the books in English and combine them
+
+```{r}
+books_eng <- books %>% 
+  mutate(Eng = language_code == "eng" |
+           language_code == "en-US" |
+           language_code == "en-CA" |
+           language_code == "en-GB") %>% 
+  filter(Eng == 1)
+
+books_eng %>% 
+ggplot(aes(y = language_code)) + 
+  geom_bar(fill = "tomato") +
+  theme_bw()+
+  labs(title = "Plot checking filter worked")
+```
+Based on the website
+<https://www.goodreads.com/list/show/24328>. filter rating <3.6, at least >100 ratings count.
+```{r}
+books_eng_cleaned <- books_eng %>% 
+  filter(average_rating < 3.6 , publication_date > 2005, ratings_count >100) 
+```
+
+# And the Worst book in the past 20 year is...
+
+```{r}
+rating <- books_eng_cleaned %>% 
+  filter(average_rating == min(average_rating))
+
+print(paste("The lowest rating book is", rating$title, "by", 
+      rating$authors))
+
+people <- books_eng_cleaned %>% 
+  filter(ratings_count == max(ratings_count))
+
+print(paste("The book that most people hate is", people$title, "by", people$authors))
+```
+
+And to find out which publisher got the most amount of bad books...
+
+```{r}
+books_eng_cleaned %>% 
+ggplot(aes(x = publisher)) + 
+  geom_bar(fill = "cyan") + 
+  theme_linedraw()+ 
+  labs(title = "Worst publisher")
+```
+
+This graph shows that we need to filter the number of publishers
+
+```{r}
+publishers <- books_eng_cleaned %>%
+  group_by(books_eng_cleaned$publisher) %>% 
+  filter(n() > 5)
+  
+ publishers %>% 
+    ggplot(aes(y = publisher)) + 
+    geom_bar(fill = "purple") + 
+    theme_linedraw()+ 
+  labs(title = "Worst publisher filtered")
+
+```
+

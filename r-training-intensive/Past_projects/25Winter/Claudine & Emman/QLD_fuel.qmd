@@ -1,0 +1,40 @@
+---
+title: "QLD Fuel"
+format: html
+Authors: Emman & Claudine
+---
+
+## Import the dataset & load packages
+
+```{r}
+#| warning: false
+fuel <- read.csv("../../data_sources/qld_fuel.csv")
+library(ggplot2)
+library(dplyr)
+```
+
+## Distribution of Fuel Sites, grouped by Fuel type
+
+```{r}
+fuel |> 
+  ggplot(aes(x = Site_Latitude, y = Site_Longitude)) + 
+  geom_jitter(aes(colour = Fuel_Type, label = Site_Suburb))
+```
+
+## Most popular Fuel Type
+```{r}
+fuel |> 
+  ggplot(aes(x = Fuel_Type)) + 
+  geom_bar()
+```
+
+
+## Price by Fuel Type
+
+```{r}
+fuel |> 
+  group_by(Fuel_Type) |> 
+  summarise(mean_Price = mean(Price)) |> 
+  ggplot() + 
+  geom_col(aes(y = mean_Price, x = Fuel_Type))
+```

@@ -1,0 +1,122 @@
+---
+title: "Getting started"
+data: "../data_sources/*"
+---
+
+## Project scaffold
+
+You're welcome to dive in and work as you please, but if you're feeling at a loss where to begin, follow the scaffold below. Don't forget to start from our [template](template.qmd) and look at the [example report](example_project/example_project.qmd).
+
+
+### Step 0: Pick a dataset
+
+We have nine datasets for you to choose from. **We recommend saving your data inside your project**.
+
+| Dataset | Description | Source |
+| --- | --- | --- |
+| [World populations](../data_sources/population.csv) | A summary of world populations and corresponding statistics | Data from a [Tidy Tuesday post on 2014 CIA World Factbook data](https://github.com/rfordatascience/tidytuesday/blob/main/data/2024/2024-10-22/readme.md)
+| [Soccer players](../data_sources/Players2024.csv) | A summary of approx. 6000 soccer players from 2024 | Data from a [Kaggle submission](https://www.kaggle.com/datasets/asemmustafa/football-players-2024-dataset).
+| [Coffee survey](../data_sources/coffee_survey.csv) | A survey of blind coffee tasting results | Data from a [Kaggle submission](https://www.kaggle.com/datasets/sujaykapadnis/lets-do-some-coffee-tasting)
+| [Gapminder](../data_sources/gapminder.csv) | GDP and life expectancy data by country | Data from the [Research Bazaar's R novice tutorial](https://github.com/resbaz/r-novice-gapminder), sourced from [Gapminder](https://www.gapminder.org/).
+| [Melbourne housing data](../data_sources/melb_data.csv) | A collection of houses for sale in Melbourne. | Data from a [Kaggle submission](https://www.kaggle.com/datasets/dansbecker/melbourne-housing-snapshot) | 
+| [Goodreads books](../data_sources/books.csv) | A summary of books on Goodreads. | Data from a [Kaggle submission](https://www.kaggle.com/datasets/jealousleopard/goodreadsbooks)
+| [Queensland hospitals](../data_sources/hospital_data.csv) | Queensland emergency department statistics. | Data from the Queensland Government's [Open Data Portal](https://www.data.qld.gov.au/dataset/emergency-departments-quarterly-data). |
+| [Queensland fuel prices](../data_sources/qld_fuel.csv) | Fuel prices by the pump in Queensland | Data from the Queensland Government's [Open Data Portal](https://www.data.qld.gov.au/dataset/fuel-price-reporting-2024)
+| [Aeroplane bird strikes](../data_sources/birds_strikes.csv) | Aeroplane bird strike incidents fron the 90s| Data from a [Tidy Tuesday post](https://github.com/rfordatascience/tidytuesday/tree/2500765853ea5235409d936cf9bbbf7d5f8b6881/data/2019/2019-07-23) sourced from an [FAA database](https://wildlife.faa.gov/home)
+
+Remember, to load the data into R we need to use the `read.csv()` function.
+
+```r
+dataset <- read.csv("path_to_data")
+```
+
+### Step 1: Understand the data
+
+The datasets are varied with respect to variable types and content. The first exercise you should complete is a overview of the data. Use the following techniques to do so.
+
+**Your goal: identify which variables are discrete (categorical) and which are continuous.**
+
+#### Viewing the data structure
+
+Use the following functions to view your data and the underlying data types.
+
+```r
+names(dataset)
+str(dataset)
+summary(dataset)
+```
+
+#### Picking out individual columns
+
+To view the contents of particular columns, you can select them via indexing
+
+```r
+dataset$column_name"
+unique(dataset$column_name)
+summary(dataset$column_name)
+```
+
+You can also apply other statistics to the column, like `max()`.
+
+### Step 2: Taking a subset
+
+The datasets have lots of observations for lots of variables. To draw meaningful results, it's often useful to take a subset of those.
+
+**Your goal: filter by a condition or group by and aggregate over a particular variable**
+
+First, we want to load the `dplyr` library to perform data manipulation
+
+```r
+library(dplyr)
+```
+
+#### Filtering
+
+Recall that filtering looks like indexing. If you only want to examine a certain subset of a variable, the following code will isolate that subset
+
+```r
+subset = dataset %>% filter(condition)
+```
+
+where `condition` depends on the columns. For example, `country == "Australia"`.
+
+> Hint: we've used the pipe operator `%>%` here, which is equivalent to `filter(datatset, condition)`.
+
+#### Grouping
+
+If you want to aggregate over a particular variable you need to group by it. This answers questions like, what is the average $x$ for every $y$.
+
+```r
+aggregated = dataset %>%
+  group_by("variable_to_group_by") %>%
+  summarise(summary_1 = ..., summary_2 = ..., ...)
+```
+
+The `summarise` function aggregates by applying some statistic to a particular column for every unique value in the grouping variable. For example, `summarise(avg_pop = mean(population))` makes a column in the summary table for the average population for each value of the grouped variable.
+
+### Step 3: Visualise the relationship between variables
+
+With your summary dataset, you can now try to visualise your variables.
+
+**Your goal: create a visualisation of one to three variables in your summary data**.
+
+For visualisation, we use the `ggplot2` library.
+
+```r
+library(ggplot2)
+```
+
+Next, you'll need to identify the variables to visualise. Using `ggplot`, we then specify the data, the mappings and the graphical elements
+
+```r
+ggplot(data = aggregated,
+       mapping = aes(x = ..., y = ..., ...)) +
+  geom_...()
+```
+
+### Step 4: Looking ahead
+
+Now that you've performed your first analysis and visualisation of the dataset, use these results to inform your next analysis!
+
+Below you'll find some general tips which can help. They have dataset-specific tips too, so check them out. Otherwise, feel free to ask if you have any other questions.
+

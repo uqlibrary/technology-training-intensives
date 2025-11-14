@@ -1,0 +1,60 @@
+project:
+  type: website
+  render: 
+    - "setup.md"
+    - "Workshops/*"
+    - "Projects/*"
+    - "Past_projects/*"
+    - "project_gallery.qmd"
+    - "!Past_projects/converter.py"
+    - "!Projects/*.py"
+    - "!Past_projects/*.py"
+
+website:
+  title: "Python Training Intensive"
+  navbar:
+    search: true
+    left:
+      - text: "Workshops"
+        href: Workshops/index.qmd
+      - text: "Project Gallery"
+        href: project_gallery.qmd
+        # menu:
+        #   - href: "Past_projects/project_gallery.qmd"
+        #     text: "Past projects"
+      - text: "UQ Library Technology Training"
+        href: https://uqlibrary.github.io/technology-training
+      - text: "**Book for Feb 2026**"
+        href: https://studenthub.uq.edu.au/students/events/detail/5909456
+  sidebar: 
+    - title: "Workshops"
+      collapse-level: 2
+      contents:
+        - setup.md
+        - auto: "Workshops"
+        - section: The Project
+          contents:
+          - auto: "Projects/*"
+
+    - title: "Project Gallery"
+      contents:
+        - text: "Summer 2026"
+          href: project_gallery.qmd
+        - section: Past projects
+          contents:
+            - text: Winter 2025
+              href: Past_projects/25Winter/project_gallery.qmd
+            - text: Summer 2025
+              href: Past_projects/25Summer/project_gallery.qmd
+            
+    
+format:
+  html:
+    theme: 
+      - default
+      - custom.scss
+    toc: true
+    embed-resources: false
+
+execute:
+  freeze: auto

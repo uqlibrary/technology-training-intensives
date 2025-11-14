@@ -1,0 +1,106 @@
+---
+title: "BirdStrikes"
+format: dashboard
+date: today
+authors: "Nafisa, Alex, Adiana & Selina"
+warning: FALSE
+error: FALSE
+image: bs.png
+---
+
+```{r}
+library(ggplot2)
+library(dplyr)
+library(plotly)
+library(knitr)
+library(tidyr)
+birdstrikes <- read.csv("data/birds_strikes.csv")
+
+birdstrikes <- birdstrikes %>% select(atype, remarks, phase_of_flt, time_of_day, height, sky, species) %>% filter(remarks != "NA", remarks != "NO DAMAGE")
+
+```
+
+
+```{r, include=FALSE}
+bs_aircraft <- birdstrikes %>% 
+  drop_na() %>% 
+  group_by(atype) %>% 
+  summarise(count = n())
+```
+
+
+```{r}
+  
+  summary_data <- birdstrikes %>%
+  drop_na() %>% 
+  group_by(time_of_day, sky) %>%
+  summarise(count = n())
+```
+
+```{r, include=FALSE}
+#Print the summary data
+print(summary_data)
+##decide on the theme for the graph
+```
+
+## Figures {height=60%}
+
+```{r}
+## Create a heatmap to visualize the prevalence of birdstrikes by phase of flight, time_of_day and sky conditions
+  summary_data2 <- birdstrikes %>%
+  drop_na() %>% 
+  group_by(phase_of_flt,time_of_day, sky) %>%
+  summarise(count = n())
+
+plot1 <- ggplot(summary_data2, aes(x = time_of_day, y = phase_of_flt, fill = count)) +
+  geom_tile() +
+  facet_wrap(~ sky) +
+  scale_fill_gradient(low = "white", high = "red") +
+  theme_minimal() +
+  labs(title = "Clear Skies in the Day: Pilot's (and Bird's) Dismay",
+       x = "Time of Day", y = "Phase of Flight", fill = "Count of Bird Strikes")
+ggplotly(p = plot1, 
+         tooltip = c("number of strikes"))  
+ggsave("bs.png")
+```
+
+## Figures {height=40%}
+
+```{r}
+# Create a bar plot to visualize the prevalence of birdstrikes by time_of_day and sky conditions
+library(ggthemes)
+ggplot(summary_data, aes(x = time_of_day, y = count, fill = sky)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  scale_fill_brewer(palette = "Spectral") +
+  labs(title = "Dangerous Time and Sky Conditions",
+       x = "Time of Day",
+       y = "Number of Birdstrikes",
+       fill = "Sky Conditions") +
+  theme_stata()
+#theme_economist(): A theme inspired by The Economist magazine.
+#theme_fivethirtyeight(): A theme inspired by the FiveThirtyEight website.
+#theme_solarized(): A theme based on the Solarized color scheme.
+#theme_tufte(): A theme inspired by the work of Edward Tufte.
+#theme_stata(): A theme inspired by Stata software.
+#theme_excel(): A theme inspired by Microsoft Excel.```
+
+```
+
+
+```{r}
+## Create a scatter plot to visualize the prevalence of birdstrikes by time_of_day and sky conditions
+  summary_data2 <- birdstrikes %>%
+  drop_na() %>% 
+  group_by(phase_of_flt,time_of_day, sky) %>%
+  summarise(count = n())
+
+ggplot(summary_data2, aes(x = time_of_day, y = count, color = phase_of_flt)) +
+  geom_point(size = 3) +
+  scale_fill_brewer(palette = "Spectral") +
+  labs(title = "When on your flight you should be most scared",
+       x = "Time of Day",
+       y = "Number of Birdstrikes",
+       color = "Phase of flight") +
+  theme_minimal()
+```
+

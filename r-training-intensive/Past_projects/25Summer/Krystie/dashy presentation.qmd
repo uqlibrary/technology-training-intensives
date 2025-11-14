@@ -1,0 +1,77 @@
+---
+title: "Hospital Data"
+format: dashboard
+date: today
+warning: false
+## error: false
+---
+
+```{r output=FALSE}
+#| message: false
+library(dplyr)
+# library(quarto)
+library(ggplot2)
+
+hospital_data <- read.csv("hospital_data.csv")
+
+hospital_data <- hospital_data %>%   
+  group_by(Facility.HHS.Desc) %>% 
+  filter(sum(Number.of.Attendances) >15000) %>% 
+  ungroup()
+
+hospital_data <- filter(hospital_data,Last.Month.in.QTR > '2024-01-01')
+
+filter(hospital_data,Facility.HHS.Desc != '99999')
+hospital_data <- filter(hospital_data,Facility.HHS.Desc > '99999', 
+                        Facility.HHS.Desc != "Queensland", 
+                        Facility.HHS.Desc != "QUEENSLAND")
+
+         
+filter(hospital_data,Triage.Category != "All", Triage.Category != "ALL")
+hospital_data <- filter(hospital_data,Triage.Category != "All", Triage.Category != "ALL") 
+
+hospital_data <- hospital_data %>% 
+  group_by(Facility.HHS.Desc, Triage.Category) %>% 
+  summarise(Number.of.Attendances = sum(Number.of.Attendances)) %>% 
+ungroup()
+```
+
+## Triage Category Attendances {height=70%}
+
+```{r}
+#| title: Number of attendances by triage category
+#| echo: false
+p <- ggplot(hospital_data,
+       aes(x = Triage.Category,
+           y = Number.of.Attendances)) + 
+  geom_point(aes(colour = Triage.Category)) + 
+  geom_smooth() 
+library(plotly)
+ggplotly(p)
+
+```
+
+## Number of Attendances by Triage Category {height=70%}
+
+```{r}
+#| title: Hospital Number of attendances by Triage Category
+#| echo: false
+p <- ggplot(hospital_data, aes(y = Facility.HHS.Desc, x = Number.of.Attendances, fill = Triage.Category)) + 
+  geom_col() +   
+  labs(y = "Facility.HHS.Desc", colour = "Triage Category", x = "Number of Attendances") +
+   theme(text = element_text(angle = 90)+
+           scale_x_log10())
+library(plotly)
+ggplotly(p) 
+```
+
+
+```{r}
+#| title: Count of Admissions
+#| echo: false
+p <- ggplot(hospital_data, aes(x = Facility.HHS.Desc, y = Number.of.Attendances, colour = Triage.Category, label = Facility.HHS.Desc, label2 = Triage.Category)) + 
+  geom_point() 
+library(plotly)
+ggplotly(p)
+```
+

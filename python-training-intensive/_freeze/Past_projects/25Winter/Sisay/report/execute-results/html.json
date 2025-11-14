@@ -1,0 +1,12 @@
+{
+  "hash": "bfe3e89b71a1ec1b6ad4ab1864726b74",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: my python report\nauthor: Sisay\ndate: 9-Jul-25\nformat: html\n---\n\n## Introducing markdown\nMarkdown is a **markup language**\n* we can create test, heading, and graphs for relationship between variables\n\n```\n## gapminder data\nlet's visualise life expectancy by gdp per captial:\n\n::: {#12dedb6c .cell execution_count=1}\n\n::: {.cell-output .cell-output-display}\n![GDP per caspita would affect life expectancy](report_files/figure-html/cell-2-output-1.png){width=470 height=470 fig-alt='A scatterplot of the relationsship life expectancy and GDP per capital'}\n:::\n:::\n\n\n##Effect of population size on GDP\nlet's visualise effect of populationy on gdp per captial:\n\n::: {#8708f581 .cell execution_count=2}\n\n::: {.cell-output .cell-output-display}\n![population size could affect GDP per capital](report_files/figure-html/cell-3-output-1.png){width=470 height=470 fig-alt='A scatterplot of the relationsship between population and GDP per capital'}\n:::\n:::\n\n\n##Effect of population size on lie expectancy\nlet's visualise effect of populationy on life expectancy:\n\n::: {#f4f9e2ac .cell execution_count=3}\n\n::: {.cell-output .cell-output-display}\n![population size could affect life expectancy](report_files/figure-html/cell-4-output-1.png){width=470 height=470 fig-alt='A scatterplot of the relationsship between population and life expectancy'}\n:::\n:::\n\n\n::: {#a2bb10d9 .cell execution_count=4}\n\n::: {.cell-output .cell-output-display}\n![continent could affect life expectancy](report_files/figure-html/cell-5-output-1.png){width=471 height=470 fig-alt='A scatterplot of the relationsship between continent and life expectancy'}\n:::\n:::\n\n\n::: {#02c74749 .cell execution_count=5}\n\n::: {.cell-output .cell-output-display}\n![continent could affect life expectancy](report_files/figure-html/cell-6-output-1.png){width=471 height=470 fig-alt='A scatterplot of the relationsship between continent and life expectancy'}\n:::\n:::\n\n\n::: {#f42bcaef .cell execution_count=6}\n\n::: {.cell-output .cell-output-display}\n![population distribution by continent](report_files/figure-html/cell-7-output-1.png){width=471 height=470 fig-alt='A scatterplot of population dstribution bt continent'}\n:::\n:::\n\n\n",
+    "supporting": [
+      "report_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

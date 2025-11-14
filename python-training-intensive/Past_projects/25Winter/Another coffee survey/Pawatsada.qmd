@@ -1,0 +1,119 @@
+---
+title: Coffee Survey 
+author: Pawatsada Sanlom
+date: July 9, 2025
+# Objective: Considering age, where to drink, favourite, and style of drinking coffee to help starting new business
+warning: false
+#######image: tb.png 
+format: 
+  html:
+    code-fold: true
+    code-summary: "Show code"
+    code-tools: true
+---
+
+## 1.Introduction
+
+**1.1 Import modules and dataset**
+```{python}
+import matplotlib.pyplot as plt
+import pandas as pd
+import plotly.express as px
+import seaborn as sns
+
+df = pd.read_csv("../../data_sources/coffee_survey.csv")
+```
+**1.2 Data Exploration**
+```{python}
+df.head(10)
+```
+Age exploration
+```{python}
+sns.catplot(data = df, x = "age", kind="count", height=5, aspect=2)
+```
+* Age 25 to 34 range is the highest age range among coffee customers.
+
+**1.3 Data Filtering**
+
+```{python}
+df_focused = df[["age", "where_drink", "favourite", 'style']].copy()
+df_focused.head(10)
+```
+* Focusing on 4 attributes including age, where to drink, favourite, and style of drinking coffee.
+
+
+
+## 2. Data Analysis
+
+**2.1 Preferred Coffee Places by Age Group**
+
+#Manage "where_drink" : spliting words
+```{python}
+df_focused['where_drink'] = df_focused['where_drink'].fillna('')
+df_focused['where_list']=df_focused['where_drink'].str.split(pat=", ")
+df_focused.head()
+```
+#Manage "where_drink" : exploding and making them to list then one-hot for the list
+```{python}
+df_exploded = df_focused.explode('where_list')
+dummies = pd.crosstab(df_exploded.index, df_exploded['where_list'])
+df_final = df_focused.join(dummies.groupby(dummies.index).sum())
+df_final.head()
+```
+#Manage "where_drink" : exploring mean for each group of age
+```{python}
+groupby_age = df_final.groupby('age')[df_final.select_dtypes(include='number').columns].mean()
+groupby_age.head()
+```
+
+#Stacked bar plot 
+```{python}
+groupby_age.plot(kind='bar', stacked=True, figsize=(10,6), colormap='tab20')
+plt.title('Preferred Coffee Places by Age Group')
+plt.ylabel('Proportion of Respondents')
+plt.xlabel('Age Group')
+plt.legend(title='Where People Drink Coffee', bbox_to_anchor=(1.05, 1), loc='upper left')
+plt.tight_layout()
+plt.show()
+```
+
+
+**2.2 Preferred Type of Coffee by Age Group**
+
+#Group favourite by Age
+```{python}
+favourite_by_agegroup = df_focused.groupby('age')['favourite'].value_counts().unstack().fillna(0)
+```
+
+#Heatmap
+```{python}
+plt.figure(figsize=(12, 6))
+sns.heatmap(favourite_by_agegroup, annot=True, fmt='.0f', cmap='YlGnBu')
+plt.title('Favorite Type by Age Group')
+plt.ylabel('Age Group')
+plt.xlabel('Favorite')
+plt.tight_layout()
+plt.show()
+```
+
+
+**2.3 Preferred Style of Coffee by Age Group**
+
+#Group Style by Age
+```{python}
+style_by_agegroup = df_focused.groupby('age')['style'].value_counts().unstack().fillna(0)
+```
+
+Grouped bar plt
+```{python}
+style_by_agegroup.T.plot(kind='bar', figsize=(12, 6))
+plt.title('Style Preference by Age Group')
+plt.ylabel('Number of Respondents')
+plt.xlabel('Style')
+plt.legend(title='Age Group', bbox_to_anchor=(1.05, 1), loc='upper left')
+plt.tight_layout()
+plt.show()
+```
+
+
+

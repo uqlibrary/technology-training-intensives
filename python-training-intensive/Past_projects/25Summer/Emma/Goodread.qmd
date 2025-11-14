@@ -1,0 +1,75 @@
+---
+ title: Goodreads document
+ author: Emma
+ date: 2025-01-16
+ format: 
+   dashboard: 
+       theme: sketchy
+---
+
+```{python}
+
+import pandas as pd
+df = pd.read_csv("books.csv")
+
+df = df[df["num_pages"] > 100 ]
+df = df[df["ratings_count"] != 0 ]
+df = df[df["average_rating"] != 0 ]
+df["rate"] = pd.cut(df["average_rating"], [0, 1, 2, 3, 4, 5],
+                    labels = ["<1", "<2", "<3", "<4", "<5"])
+
+df_small_books = df[df["num_pages"] < 1000 ]
+df_subset2 = df_small_books[["num_pages", "average_rating", "rate"]]
+
+df_thick_books = df[df["num_pages"] > 1000 ]
+df_subset = df_thick_books[["num_pages", "average_rating", "rate"]]
+
+```
+
+## Visualisations {height=65%}
+
+
+```{python}
+#| title: "People tend to read light books"
+import seaborn as sns
+
+light_books = sns.relplot(data = df_small_books,
+                          x = "num_pages",
+                          y = "average_rating",
+                          hue = "rate")
+
+light_books.set(ylim=(0,5.1))
+
+```
+
+```{python}
+#| title: "Large books tend to have higher ratings"
+
+thick_books = sns.relplot(data = df_thick_books,
+                          x = "num_pages",
+                          y = "average_rating",
+                          hue = "rate")
+thick_books.set(ylim=(0,5.1))
+
+```
+
+## Table and value boxes
+
+
+```{python}
+#| title: "A glimpse at number of pages for top rating books"
+df_top_rating_books = df[df["average_rating"] > 4 ]
+df_top_rating_books_pages = df_top_rating_books.groupby("average_rating")["num_pages"].mean()
+df_top = df_top_rating_books_pages.sort_values(ascending = False)
+df_top.head()
+```
+
+```{python}
+#| content: valuebox
+#| title: "Maximum number of pages"
+#| icon: book-half
+#| color: primary
+df["num_pages"].max()
+
+
+```

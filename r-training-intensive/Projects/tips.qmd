@@ -1,0 +1,118 @@
+---
+title: Tips
+---
+
+Here's a few general tips. In addition, we strongly recommend using [popular cheatsheets](https://rstudio.github.io/cheatsheets/), which give a quick and easy reference for common packages and functions, and [from Data to Viz](https://www.data-to-viz.com/), which guides you through choosing a visualisation.
+
+## Hotkeys
+| Code | Hotkey | Description |
+| --- | --- | --- |
+|  | <kbd>Ctrl</kbd>+<kbd>Enter</kbd> | Run current line (when in Script) |
+| `<-` | <kbd>Alt</kbd>+<kbd>Enter</kbd> | Assignment |
+| `%>%` | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>M</kbd> | Pipe |
+|  | <kbd>Esc</kbd> | Cancel current operation (when in Console) |
+|  | <kbd>F1</kbd> | Help documentation for selected function |
+
+## Data manipulation
+
+### Importing and exporting data
+In case you've forgotten, use the `read.csv()` function to import data:
+
+```r
+dataset <- read.csv("data/dataset.csv")
+```
+
+If you'd like to export any files from R to ".csv", use `write.csv()`
+
+```r
+write.csv(dataset, "data/output_name.csv")
+```
+
+### Initial exploration
+You'll want to explore the data to start with - below are a few functions to get started.
+
+| Function | Example | Description |
+| --- | --- | --- |
+| `names()` | `names(dataset)` | Returns the variable names | 
+| `str()` | `str(dataset)` | Returns the structure of the dataset (variable names, types and first entries) | 
+| `$` | `dataset$variable` | Returns a specific variable |
+| `unique()` | `unique(dataset$variable)` | Returns the unique values of a variable |
+| `summary()` | `summary(dataset$variable)` | Returns a statistical summary of a variable |
+
+### Removing `NA`s
+
+We can use the `dplyr` package to remove rows which have NA:
+
+```r
+library(dplyr)
+
+dataset <- dataset %>%
+  filter(!is.na(variable_to_check_for_NAs))
+```
+
+> We use the exclamation mark `!` to negate the result, because `is.na` returns all the rows that *are* `NA`.
+
+### Time series data
+If you've picked a dataset with time-series data (e.g. a "date" variable), you should transform that variable so that it visualises better:
+
+```r
+dataset$variable <- as.Date(dataset$variable)
+```
+
+### Categorical and ordered data
+If you're dealing with categorical data, it can be helpful to tell R that it has levels:
+
+```r
+dataset$variable <- factor(dataset$variable)
+```
+
+To manually specify the order to R, send in an ordered list of the levels joined with `c()`:
+
+```r
+dataset$variable <- factor(dataset$variable, levels = c("first_val", "second_val", ... ))
+```
+
+> This is particularly useful for the **Coffee survey** dataset.
+
+Alternatively, if you only need to specify the first (reference) level, use
+
+```r
+dataset$variable <- factor(dataset$variable)
+dataset$variable <- relevel(dataset$variable, ref = "reference_level")
+```
+
+### Renaming variables
+Some datasets have cumbersome names for their variables. We can change variable names with
+
+```r
+df <- df %>% 
+  rename(new_name = old_name)
+```
+
+> This is particularly useful for the **World population** dataset.
+
+## Visualisation
+We use the `ggplot()` function with geometries to create visualisations
+
+```r
+library(ggplot2)
+
+ggplot(data = dataset,
+       mapping = aes(x = ..., y = ..., colour = ..., ...)) +
+  geom_first_layer() + 
+  geom_second_layer() + 
+  ...
+```
+
+Take a look at the [ggplot2 documentation](https://ggplot2.tidyverse.org/) for more information.
+
+### Plotly workaround
+
+If you're having issues using `ggplotly` (it's producing a blank plot), you can use this workaround to view it in your browser.
+
+```r
+plot <- ggplotly(saved_ggplot_image)
+htmlwidgets::saveWidget(as_widget(plot), "plots/name_of_plot.html")
+```
+
+Opening that file will show you the image.

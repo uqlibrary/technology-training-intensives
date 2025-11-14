@@ -1,0 +1,228 @@
+---
+title: "Queensland hospitals data analysis"
+author: "Swagata & Sandhya"
+format: html
+date: 17 July 2025
+# editor: visual
+---
+
+## Quarto uses Markdown
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+
+
+library("dplyr")
+library("ggplot2")
+library("plotly")
+library("tidyverse")
+
+hospital_data <- read.csv('../../data_sources/hospital_data.csv')
+
+
+# Aggregate data per hospital (mean if multiple entries per hospital)
+plot_data <- hospital_data %>%
+  group_by(Facility.HHS.Desc) %>%
+  summarise(avg_no_wait = mean(Patients.who.did.not.wait.for.treatment...., na.rm = TRUE)) %>%
+  arrange(desc(avg_no_wait)) %>%
+  slice_max(avg_no_wait, n = 20)  # Top 20
+
+# Create clearer horizontal barplot
+ggplot(plot_data, aes(x = reorder(Facility.HHS.Desc, 
+                                  avg_no_wait),
+                      y = avg_no_wait,
+                      fill = avg_no_wait)) +
+  geom_col(show.legend = FALSE) +
+  coord_flip() +
+  labs(
+    title = "Top 20 Hospitals by % of Patients Who Left Without Treatment",
+    x = "Hospital",
+    y = "% of Patients Who Did Not Wait"
+  ) +
+  scale_fill_gradient(low = "skyblue", high = "red") +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(face = "bold", hjust = 0.5),
+    axis.text.y = element_text(size = 11)
+  )
+
+# Calculate the average % of patients who did not wait per hospital
+
+bottom_20_plot_data <- hospital_data %>%
+  group_by(Facility.HHS.Desc) %>%
+  summarise(avg_no_wait = mean(Patients.who.did.not.wait.for.treatment...., 
+                               na.rm = TRUE)) %>%
+  arrange(avg_no_wait) %>%
+  slice_min(avg_no_wait, n = 20)  # Bottom 20 hospitals
+
+# Plot: bottom 20 hospitals with the lowest no-wait percentage
+ggplot(bottom_20_plot_data, aes(x = reorder(Facility.HHS.Desc, avg_no_wait), y = avg_no_wait, fill = avg_no_wait)) +
+  geom_col(show.legend = FALSE) +
+  coord_flip() +
+  labs(
+    title = "Bottom 20 Hospitals by % of Patients Who Left Without Treatment",
+    x = "Hospital",
+    y = "% of Patients Who Did Not Wait"
+  ) +
+  scale_fill_gradient(low = "forestgreen", high = "yellow") +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(face = "bold", hjust = 0.5),
+    axis.text.y = element_text(size = 11))
+
+# Summarize total attendances per hospital (in case of duplicates or multiple rows)
+top_20_attendance <- hospital_data %>%
+  group_by(Facility.HHS.Desc) %>%
+  summarise(total_attendances = sum(Number.of.Attendances, na.rm = TRUE)) %>%
+  arrange(desc(total_attendances)) %>%
+  slice_max(total_attendances, n = 20)
+
+# Plot the top 20 hospitals by attendance
+ggplot(top_20_attendance, aes(x = reorder(Facility.HHS.Desc, total_attendances),
+                              y = total_attendances,
+                              fill = total_attendances)) +
+  geom_col(show.legend = FALSE) +
+  coord_flip() +
+  labs(
+    title = "Top 20 Hospitals by Number of Attendances",
+    x = "Hospital",
+    y = "Number of Attendances"
+  ) +
+  scale_fill_gradient(low = "lightblue", high = "darkblue") +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(face = "bold", hjust = 0.5),
+    axis.text.y = element_text(size = 11)
+  )
+
+
+# Filter for Triage 1, calculate average wait time, select top 20
+hospital_data |>
+  filter(Triage.Category == "1") |>
+  group_by(Facility.HHS.Desc) |>
+  summarise(avg_wait = mean(Median.Waiting.time.to.treatment..minutes., na.rm = TRUE)) |>
+  arrange(desc(avg_wait)) |>
+  slice_max(avg_wait, n = 20) |>
+  ggplot(aes(x = reorder(Facility.HHS.Desc, avg_wait), y = avg_wait)) +
+  geom_col(fill = "darkred") +
+  geom_text(aes(label = round(avg_wait, 1)), hjust = -0.1, size = 3.5, color = "black") +
+  coord_flip() +
+  scale_y_continuous(limits = c(0, 120)) +
+  labs(
+    title = "Top 20 Hospitals by Average Wait Time (Triage 1)",
+    x = "Hospital",
+    y = "Average Waiting Time (Minutes)"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(plot.title = element_text(face = "bold", hjust = 0.5),
+        axis.text.y = element_text(size = 11))
+
+# Analyze data by center
+Top_20 <- hospital_data%>%
+  filter(Facility.HHS.Desc!="Queensland", Facility.HHS.Desc!="QUEENSLAND")%>%
+  group_by(Facility.HHS.Desc)%>% 
+  summarise(Number.of.Attendances = mean(Number.of.Attendances, na.rm=TRUE))%>%
+  arrange(desc(Number.of.Attendances))%>%
+  slice_max(Number.of.Attendances, n=20) 
+Top_20 <- arrange(Top_20, desc(Number.of.Attendances))
+
+library(forcats)
+#Visualize using ggplot
+ggplot(Top_20, aes(x = fct_inorder(Facility.HHS.Desc), y = Number.of.Attendances)) +
+  geom_col(fill = "steelblue") +
+  labs(title = "Hospital Attendances",
+       x = "Facility",
+       y = "Number of Attendances") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+# Step 1: Identify top 10 hospitals by total attendance
+top_10_hospitals <- hospital_data |>
+  group_by(Facility.HHS.Desc) |>
+  summarise(total_attendance = sum(Number.of.Attendances, na.rm = TRUE), .groups = "drop") |>
+  arrange(desc(total_attendance)) |>
+  slice_max(total_attendance, n = 10)
+
+# Step 2: Filter main dataset for only these top hospitals
+top_data <- hospital_data |>
+  filter(Facility.HHS.Desc %in% top_10_hospitals$Facility.HHS.Desc)
+
+# Step 3: Compute average waiting time for heatmap
+heatmap_data <- top_data |>
+  group_by(Facility.HHS.Desc, Triage.Category) |>
+  summarise(Avg_Wait = mean(Median.Waiting.time.to.treatment..minutes., na.rm = TRUE), .groups = "drop")
+
+# Step 4: Create heatmap
+ggplot(heatmap_data, aes(x = Triage.Category, y = Facility.HHS.Desc, fill = Avg_Wait)) +
+  geom_tile(color = "white") +
+  scale_fill_gradient(
+    name = "Avg Wait (min)",
+    low = "lightyellow",   # shortest waits
+    high = "darkred",      # longest waits
+    na.value = "grey90"
+  ) +
+  labs(
+    title = "Avg Waiting Time (Top 10 Hospitals by Attendance)",
+    x = "Triage Category",
+    y = "Hospital"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    axis.text.y = element_text(size = 9),
+    plot.title = element_text(hjust = 0.5, face = "bold")
+  )
+
+# Group and summarise
+cor_data <- hospital_data |>
+  group_by(Facility.HHS.Desc) |>
+  summarise(
+    avg_wait = mean(Median.Waiting.time.to.treatment..minutes., na.rm = TRUE),
+    total_attendance = sum(Number.of.Attendances, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+# Pearson correlation
+cor.test(cor_data$avg_wait, cor_data$total_attendance, method = "pearson")
+
+# Create contingency table
+wait_table <- table(hospital_data$Triage.Category, hospital_data$Patients.who.did.not.wait.for.treatment....)
+
+# Chi-square test
+chisq.test(wait_table)
+
+hospital_data |>
+  group_by(Facility.HHS.Desc) |>
+  summarise(
+    mean_wait = mean(Median.Waiting.time.to.treatment..minutes., na.rm = TRUE),
+    sd_wait = sd(Median.Waiting.time.to.treatment..minutes., na.rm = TRUE),
+    iqr_wait = IQR(Median.Waiting.time.to.treatment..minutes., na.rm = TRUE),
+    .groups = "drop"
+  ) |>
+  arrange(desc(mean_wait)) |> 
+  slice_head(n = 10)
+
+# Simple linear model
+lm_model <- lm(Median.Waiting.time.to.treatment..minutes. ~ Triage.Category + Number.of.Attendances, data = hospital_data)
+summary(lm_model)
+
+ggplot(hospital_data, aes(x = Number.of.Attendances, y = Median.Waiting.time.to.treatment..minutes.)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", se = TRUE, color = "blue") +
+  labs(title = "Effect of Attendance on Waiting Time", x = "Attendances", y = "Waiting Time (min)") +
+  theme_minimal()
+```
+
+You can add options to executable code like this
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).

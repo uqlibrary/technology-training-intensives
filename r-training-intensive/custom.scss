@@ -1,0 +1,48 @@
+/*-- scss:defaults --*/
+// quarto-scss-analysis-annotation { "origin": "cosmo (builtin theme)" }
+
+$theme: "cosmo" !default;
+
+//
+// Color system
+//
+
+$white:    #fff !default;
+$black:    #19151c !default;
+
+
+$primary:       #51247a !default;
+$secondary:     #19151c !default;
+$success:       #4aa74e !default;
+$info:          #0d6dcd !default;
+$warning:       #f7ba1e !default;
+$danger:        #d62929 !default;
+$light:         #f3f3f4 !default;
+$dark:          #3b383e !default;
+
+$min-contrast-ratio:   2.6 !default;
+
+// Options
+
+$enable-rounded: false !default;
+
+// Body
+
+$body-color:    #3b383e !default;
+
+// Fonts
+
+// stylelint-disable-next-line value-keyword-case
+$font-family-sans-serif:    "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+$headings-font-weight:      400 !default;
+
+// Navbar
+
+//$navbar-bg: $primary;
+//$navbar-fg: $light;
+$navbar-hl: $white;
+
+
+// Code
+$code-color: $dark;
+$code-bg: $light;

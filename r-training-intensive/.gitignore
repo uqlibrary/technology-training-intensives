@@ -1,0 +1,15 @@
+/.quarto/
+/_site/
+/.vscode/
+/renv/
+*.Rproj
+.Rhistory
+.Rprofile
+.Rproj.user
+*.html
+.RData
+Projects/**/*.css
+Projects/**/*.html
+Projects/**/*.js
+Projects/**/*.woff
+Projects/**/*.pdf
