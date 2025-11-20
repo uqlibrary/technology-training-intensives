@@ -1,0 +1,34 @@
+---
+title: "QLD fuel"
+format: html
+editor: visual
+Authors: Claudine and Emman
+#bibliography: UQ Vision.bib
+#csl: elsevier-vancouver.csl
+categories: [R, 2025 Winter]
+date: Jul-2025
+---
+
+## Import data
+
+```{r}
+fuel <- read.csv("data/qld_fuel.csv")
+```
+
+### Install packages
+
+```{r}
+library(dplyr)
+
+library(ggplot2)
+```
+
+## Fuel Sites
+
+See @weschke_nighttime_2024 for more details
+
+```{r}
+fuel %>%  ggplot(aes(x = Site_Latitude, y = Site_Longitude)) + geom_jitter(aes(colour = Fuel_Type))
+```
+
+@ferretti_ecological_2024

@@ -1,0 +1,120 @@
+---
+title: Goalkeepers and their heights
+author: Cameron West and Stéphane Guillou
+date: today
+warning: false
+image: tb.png
+format:
+  html:
+    code-fold: true
+    code-summary: "Show code"
+    code-tools: true
+categories: [R, 2026 Summer]
+---
+
+```{R}
+#| code-summary: "Set up code"
+library(ggplot2)
+library(dplyr)
+library(plotly)
+library(knitr)
+
+players_raw <- read.csv("../../data_sources/Players2024.csv")
+```
+
+## A glimpse at the dataset
+
+We'll begin just by taking a glimpse at the dataset:
+```{R}
+kable(head(players_raw))
+```
+
+## Cleaning the data
+The data has a few issues, as the following plot shows:
+
+```{R}
+ggplot(players_raw, aes(x = positions, y = height_cm)) +
+  geom_boxplot() 
+
+#sns.catplot(df_raw, x = "positions", y = "height_cm")
+```
+
+It looks like some of the players' positions and heights were recorded incorrectly. To clean, let's remove the "Missing" positions and ensure that heights are reasonable:
+
+```{R}
+#| code-fold: show
+# Remove missing position and ensure reasonable heights
+players <- players_raw %>% filter(positions != "Missing", height_cm > 100)
+```
+
+To confirm, let's plot the outliers in a different colour
+
+```{R}
+# Identify outliers
+outliers <- anti_join(players_raw, players)
+
+# Plot
+ggplot(players, aes(x = positions, y = height_cm)) +
+  geom_boxplot() + 
+  geom_point(data = outliers, colour = "red")
+```
+
+## Visualising the players' heights
+
+After cleaning the data we can now analyse the players' heights to see if there's differences between positions. Let's make the boxplot without the outliers
+
+```{R}
+ggplot(players, aes(x = positions, y = height_cm)) +
+  geom_boxplot() +
+  labs(x = "Position", y = "Height (cm)") 
+
+ggsave("tb.png")
+```
+
+It looks like goalkeepers are taller than the rest! 
+
+Let's through the age variable into the mix, to see if players' heights allow them to compete longer.
+
+```{R}
+#| title: Age vs Height
+
+p <- ggplot(players, aes(x = age, y = height_cm, colour = positions, label = name, label2 = nationality)) + 
+  geom_point() + 
+  facet_wrap(vars(positions)) + 
+  labs(x = "Age", colour = "Position", y = "Height (cm)")
+
+ggplotly(p)
+```
+
+It doesn't look like there's a relationship between heights and ages, but clearly it affects their position!
+
+## Global spread
+
+We haven't looked at the nationality column yet. Let's draw up a map using plotly to see where the players come from. 
+
+```{R}
+
+# Change country names to match plotly reference
+players <- players %>% 
+  mutate(nationality = case_match(nationality,
+                                  "England" ~ "United Kingdom",
+                                  "Türkiye" ~ "Turkey",
+                                  "Cote d'Ivoire" ~ "Ivory Coast",
+                                  "Northern Ireland" ~ "United Kingdom",
+                                  "Wales" ~ "United Kingdom",
+                                  .default = nationality))
+    
+# Make the country count
+countries <- players %>%
+  group_by(nationality) %>%
+  summarise(n = n())
+
+# Make the plot
+countries %>% 
+  plot_ly(type = "choropleth", 
+          locations = countries$nationality, 
+          locationmode = "country names", 
+          z = countries$n) %>%
+  colorbar(title = "# of Players")
+
+```

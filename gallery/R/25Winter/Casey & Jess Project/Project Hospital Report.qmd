@@ -1,0 +1,173 @@
+---
+title: "Project Hospital Report"
+format: html
+author: Casey Atkins & Jess
+Date: today
+categories: [R, 2025 Winter]
+date: Jul-2025
+---
+
+## Hospital Wait Time Report
+
+### Step 0
+
+Initially we selected our dataset to study. We selected the QLD Hospital data.
+
+### Step 1
+
+*Goal: identify which variables are discrete (categorical) and which are continuous.* 
+
+To do this we: 
+First: loaded our data 
+
+```{r}
+dataset <- read.csv("data/hospital_data.csv")
+```
+
+Second: viewed the column names of our data 
+
+```{r}
+names(dataset)
+```
+
+Third: looked at the structure to see type of data in each column 
+```{r}
+str(dataset)
+```
+
+Fourth: crated a summary of the dataset
+```{r}
+summary(dataset)
+```
+Fifth: Created a summary of a specific columnn, in this case the Median wait time to gain treatment (mins).
+```{r}
+summary(dataset$Median.Waiting.time.to.treatment..minutes.)
+```
+
+### Step 2
+*Goal: filter by a condition or group by and aggregate over a particular variable*
+The condition we chose to filter by was Hospital Facility Name - Mater Adult.
+We did this by loading dplyr, created another copy of the filtered data called "subset". It was filtered by Mater Adult to see only information from this facility. 
+```{r}
+library(dplyr)
+subset=dataset %>% filter(Facility.HHS.Desc=="Mater Adult")
+```
+To group we created a new dataset and then grouped by Facility code number
+```{r}
+aggregated=dataset
+aggregated %>% group_by(Facility.HHS.Code)
+```
+
+We then had to rename a column due to some errors (removed for reruns - 
+```{r}
+aggregated <- rename(aggregated, "Median_wait" = "Median.Waiting.time.to.treatment..minutes.")
+```
+
+
+Then Grouped by facility and summarised mean average attendance, median wait time and Patients that didn't wait for treatment for each facility. We also had to remove missing data from the ptients not waititng for treatment column.
+```{r}
+Hosp_wait_time <- aggregated %>%  
+  group_by(Facility.HHS.Code) %>%  
+  summarise(avg_attendance = mean(Number.of.Attendances),
+            median_wait_time = median(Median_wait),
+            No_non_wait = mean(Patients.who.did.not.wait.for.treatment....,na.rm=TRUE))
+```
+
+### Step 3
+*Goal: create a visualisation of one to three variables in your summary data.*
+To visualise this data we:
+load ggplot2
+```{r}
+library(ggplot2)
+```
+Create a scatter plot of avg attendance vs med wait time
+```{r}
+ggplot(data = Hosp_wait_time, 
+       mapping= aes(x = avg_attendance,
+       y = median_wait_time)) +
+  geom_point()
+```
+This showed us a large outlier so we removed this using the code below:
+```{r}
+filter(Hosp_wait_time, Facility.HHS.Code != "99999")
+subset <- Hosp_wait_time %>% filter(Facility.HHS.Code !="99999")
+```
+
+We Then reran the graph without the outlier and added lables and a trend line.
+```{r}
+ggplot(data = subset, 
+       mapping= aes(x = avg_attendance,
+                    y = median_wait_time)) +
+  geom_point()+
+  labs(title = "Does Average Attendance Number Effect Median Wait Time?",
+       x="Average Attendance",
+       y="Median Wait Time") +
+  geom_smooth()
+```
+With the adjusted data we then also ran 2 more scatters with trend lines looking at other factors contributing to wait time and patients leaving without treatment. 
+```{r}
+ggplot(data = subset, 
+       mapping= aes(x = median_wait_time,
+                    y = No_non_wait)) +
+  geom_point()+
+  labs(title = "Does wait time influence Number of People Leaving without Treatment?",
+       x="Median Wait Time",
+       y="Number leaving without Treatment") +
+  geom_smooth()
+```
+```{r}
+ggplot(data = subset, 
+       mapping= aes(x = No_non_wait,
+                    y = avg_attendance)) +
+  geom_point()+
+  labs(title = "Does Number Attending Hospital Influence Number of People Leaving without Treatment?",
+       x="Number leaving without Treatment",
+       y="Average Hospital Attendance Numbers") +
+  geom_smooth()
+```
+
+#### Linear Regression
+
+looking at number of people that leave based on attendance numbers
+
+first filter out missing median_wait_time data, then created a linear model
+```{r}
+subset <- subset %>%   
+  filter(median_wait_time !="Missing")
+main_model <- lm("No_non_wait~avg_attendance", subset)
+```
+Took the coefficients of the intercept and slope
+```{r}
+b0 <- main_model$coefficients[1] #intercept
+b1 <- main_model$coefficients[2] #slope
+```
+
+Then made linear regression line on scatter with labels.
+```{r}
+library(ggplot2)
+ggplot(subset,
+       aes(x=avg_attendance,
+           y=No_non_wait))+
+  geom_point()+
+  labs(title = "Does Number Attending Hospital Influence Number of People Leaving without Treatment?",
+       x="Average Hospital Attendance Numbers",
+       y="Number leaving without Treatment") +
+  geom_abline(intercept = b0, slope = b1)
+```
+
+Then compared to Wait time to number of people leaving. 
+```{r}
+model3 <- lm("median_wait_time ~No_non_wait", subset)
+b00 <- model3$coefficients[1] #intercept
+b11 <- model3$coefficients[2] #slope
+ggplot(subset,
+       aes(x=No_non_wait,
+           y=median_wait_time))+
+  geom_point()+
+  labs(title = "Does Number of People Leaving without Treatment Influence Median Wait Time?",
+       x="Number leaving without Treatment",
+       y="Median Wait Time") +
+  geom_abline(intercept = b00, slope = b11)
+```
+
+

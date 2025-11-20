@@ -1,0 +1,56 @@
+project:
+  type: website
+  render: 
+    - index.qmd
+    - project/*
+    - gallery/*
+    - python/*
+    - r/*
+  execute-dir: project
+
+website:
+  title: "UQ Library Training Intensives"
+  navbar:
+    search: true
+    left:
+      - text: "R with RStudio"
+        href: r/setup.md
+      - text: "Python for Data Analysis"
+        href: python/setup.md
+      - text: "The Project"
+        href: project/details.qmd
+      - text: "Project Gallery"
+        href: gallery/project_gallery.qmd
+      - text: "UQ Library Technology Training"
+        href: https://uqlibrary.github.io/technology-training
+      # - text: "**Book for Feb 2026**"
+      #   href: https://studenthub.uq.edu.au/students/events/detail/5909456
+  sidebar:   
+    - title: "R with RStudio"
+      collapse-level: 2
+      contents:
+        - r/setup.md
+        - auto: "r/Essentials"
+        - auto: "r/Advanced topics"
+
+    - title: "Python for Data Analysis"
+      collapse-level: 2
+      contents:
+        - python/setup.md
+        - auto: "python/Essentials"
+        - auto: "python/Advanced topics"
+
+    - title: "The Project"
+      contents:
+        - auto: "project/*"
+    
+format:
+  html:
+    theme: 
+      - default
+      - custom.scss
+    toc: true
+    embed-resources: false
+
+execute:
+  freeze: auto

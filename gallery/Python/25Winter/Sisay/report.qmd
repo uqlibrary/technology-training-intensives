@@ -1,0 +1,77 @@
+---
+title: my python report
+author: Sisay
+date: 9-Jul-25
+format: html
+categories: [Python, 2025 Winter]
+---
+
+## Introducing markdown
+Markdown is a **markup language**
+* we can create test, heading, and graphs for relationship between variables
+
+```
+## gapminder data
+let's visualise life expectancy by gdp per captial:
+``` {python}
+#| warning: false
+#| echo: false
+#| fig-cap: "GDP per caspita would affect life expectancy"
+#| fig-alt: "A scatterplot of the relationsship life expectancy and GDP per capital"
+import pandas as pd
+df = pd.read_csv("data/gapminder.csv")
+import seaborn as sns
+sns. relplot(data = df, x= "gdpPercap", y = "lifeExp")
+```
+##Effect of population size on GDP
+let's visualise effect of populationy on gdp per captial:
+``` {python}
+#| warning: false
+#| echo: false
+#| fig-cap: "population size could affect GDP per capital"
+#| fig-alt: "A scatterplot of the relationsship between population and GDP per capital"
+import pandas as pd
+df = pd.read_csv("data/gapminder.csv")
+import seaborn as sns
+sns. relplot(data = df, x= "pop", y = "gdpPercap")
+```
+
+##Effect of population size on lie expectancy
+let's visualise effect of populationy on life expectancy:
+``` {python}
+#| warning: false
+#| echo: false
+#| fig-cap: "population size could affect life expectancy"
+#| fig-alt: "A scatterplot of the relationsship between population and life expectancy"
+import pandas as pd
+df = pd.read_csv("data/gapminder.csv")
+import seaborn as sns
+sns. relplot(data = df, x= "pop", y = "lifeExp")
+```
+
+```{python}
+#| warning: false
+#| echo: false
+#| fig-cap: "continent could affect life expectancy"
+#| fig-alt: "A scatterplot of the relationsship between continent and life expectancy"
+import pandas as pd
+df = pd.read_csv("data/gapminder.csv")
+sns.relplot(data = df, x = "continent", y = "lifeExp")
+```
+```{python}
+#| warning: false
+#| echo: false
+#| fig-cap: "continent could affect life expectancy"
+#| fig-alt: "A scatterplot of the relationsship between continent and life expectancy"
+import pandas as pd
+df = pd.read_csv("data/gapminder.csv")
+sns.relplot(data = df, x = "continent", y = "lifeExp")
+```
+```{python}
+#| warning: false
+#| echo: false
+#| fig-cap: "population distribution by continent"
+#| fig-alt: "A scatterplot of population dstribution bt continent"
+df = pd.read_csv("data/gapminder.csv")
+sns.relplot(data = df, x = "continent", y = "pop")
+```

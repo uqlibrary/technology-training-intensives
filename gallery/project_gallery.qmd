@@ -1,0 +1,9 @@
+---
+title: Project gallery
+subtitle: View all projects from all intensives, or choose a particular subset on the right.
+listing:
+  categories: true
+  sort: "date desc"
+  contents: "*/*/*/*.qmd"
+  type: grid
+---

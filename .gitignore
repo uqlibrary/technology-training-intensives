@@ -1,0 +1,14 @@
+# Ignore all typically hidden folders...
+.*/
+_*/
+
+gallery/**/*.css
+gallery/**/*.html
+gallery/**/*.js
+gallery/**/*.woff
+gallery/**/*.pdf
+
+# ...except
+!.github/
+#!_freeze/ not yet...
+/.quarto/

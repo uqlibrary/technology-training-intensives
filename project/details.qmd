@@ -1,0 +1,108 @@
+---
+title: "Overview"
+order: 1
+listing:
+   - id: py-example-proj
+     contents: ../gallery/Python/26Summer/example_project/example_project.qmd
+   - id: r-example-proj
+     contents: ../gallery/r/26Summer/example_project/example_project.qmd
+---
+
+The best way to learn is by doing. That's why, over the these three days, **you are tasked with analysing, visualising and reporting on a set of data!**
+
+Roughly 50% of our intensive is dedicated to working on the project. Working in groups of 2-4, you'll need to use the techniques we learn to draw some observations about your chosen dataset. 
+
+The end goal will be a quick fire (low stakes) one-minute presentation with a dashboard to complement.
+
+See the [datasets](scaffold.qmd) page for the data and [below](#submission) for submission details.
+
+## Project outline
+
+There are a few key requirements for the project, but otherwise it's up to you!
+
+- Analyse a dataset and create some visualisations 
+- Put together a final quarto report. Anything from a single figure to an interactive website will do!
+- Deliver a quick fire one-minute presentation with your group
+
+We'll have 4 sessions during the intensive days to work on the project, totalling about five hours. The goal of these sessions is twofold
+
+1. To work on the project, analysing data and creating visualisations
+2. To dive deeper into the content, perfect for questions and conversations
+
+While you'll be working in groups, everyone should practise analysing and visualising the data. We recommend distributing roles amongst the group, maybe looking at different variables or different presentation formats.
+
+You're welcome to use the project time however you'd like. Below is a rough guide if you're unsure:
+
+| Session | Recommendation | 
+| --- | --- |
+| Tuesday afternoon | Pick a dataset and play with the data, consider dividing roles amongst group |
+| Wednesday morning | More exploratory analysis, start making visualisations |
+| Wednesday afternoon | Prepare format, continue analysing and creating visualisation. |
+| Thursday morning | Polish up results and finalise report, submit. |
+
+The presentations will be our last session for the program, Thursday 12:00pm.
+
+Good luck!
+
+## Design and submissions
+
+We recommend starting from our [template](template.qmd). 
+
+We've also put together an example reports which you're welcome to look at - you can download the code from there.
+
+::: {.panel-tabset}
+
+## R
+
+::: {#r-example-proj}
+:::
+
+## Python
+
+::: {#py-example-proj}
+:::
+
+:::
+
+Finally, you can also see a gallery of examples on [Quarto's website](https://quarto.org/docs/gallery/#dashboards).
+
+### Uploading the submission
+
+Below are two ways you can upload your visualisations.
+
+**You should consider where your dashboard gets its data from.** Our repo has all datasets in the `data_sources` folder, so you have two options:
+
+1. Include the data in your dashboard's folder that you upload.
+2. Use the relative reference `../../data_sources/data_set_of_your_choice.csv` to access the data on our repo
+
+We've used the second option in the example project.
+
+When you are ready to upload, you have two options:
+
+#### Upload dashboard to GitHub
+
+This is the advanced way of doing things - we recommend this way, because it'll show you a good insight into using GitHub.
+
+1. [Create a GitHub account and log in](https://github.com/)
+2. Create a fork of our [python-training-intensive](https://github.com/camwest5/python-training-intensive) repository. This is a copy of the repo in your account, changes *will not automatically affect the main repo*. **Leave all settings unchanged**.
+3. Create a folder for your dashboard **inside the `Projects` directory**
+   1. Go into the `Projects` folder, and click `Add file` $\rightarrow$ `Create new file`. This will be your folder. 
+   2. Give it a name but **no content**. 
+   3. Press `Commit changes...`.
+4. Upload your files
+   1. Go into your new folder and click `Add file` $\rightarrow$ `Upload files`.
+   2. Upload your dashboard and associated files. 
+   3. Press `Commit changes`.
+5. Merge your repo with ours
+   1. Press `<> Code` (top left) to go back to the top level of the repo
+   2. Press `Contribute` $\rightarrow$ `Open pull request` to request merging your files into the main repo
+   3. Press `Create pull request` when you're ready.
+   4. If you need to make further changes, no worries - the pull request will stay up to date with these **until approved or closed**.
+
+Give it a go if you can! 
+
+If there's any issues, we'll leave a comment for you to fix up the merge and we'll approve it when ready.
+
+#### Upload dashboard to Teams
+
+If you're having issues with the GitHub approach, we can upload it for you. Just put your folder with the dashboard into our [Teams folder](https://uq.sharepoint.com/:f:/r/teams/1qktlisq/Shared%20Documents/R%20User%20Group/R%20Training%20Intensive%20Projects?csf=1&web=1&e=wwVB7w).

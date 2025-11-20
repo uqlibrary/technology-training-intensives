@@ -1,6 +1,0 @@
----
-title: Projects from winter 2025
-listing:
-    contents: "*/*.{py,qmd,md,Rmd,R}"
-    type: grid
----

@@ -1,0 +1,331 @@
+---
+title: Tips
+---
+
+Here's a few general tips. In addition, we strongly recommend using [the pandas cheatsheets](https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf), which give a quick and easy reference for common packages and functions, and [from Data to Viz](https://www.data-to-viz.com/), which guides you through choosing a visualisation.
+
+## Hotkeys
+
+::: {.panel-tabset}
+
+## R
+
+| Code | Hotkey | Description |
+| --- | --- | --- |
+|  | <kbd>Ctrl</kbd>+<kbd>Enter</kbd> | Run current line (when in Script) |
+| `<-` | <kbd>Alt</kbd>+<kbd>Enter</kbd> | Assignment |
+| `%>%` | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>M</kbd> | Pipe |
+|  | <kbd>Esc</kbd> | Cancel current operation (when in Console) |
+|  | <kbd>F1</kbd> | Help documentation for selected function |
+
+## Python
+
+| Code | Hotkey | Description |
+| --- | --- | --- |
+|  | <kbd>F9</kbd> (or <kbd>Fn</kbd> + <kbd>F9</kbd>) | Run current line |
+| `# %%` | <kbd>Ctrl</kbd> + <kbd>2</kbd> | New cell (only in Spyder) |
+|  | <kbd>Ctrl</kbd>+<kbd>Enter</kbd> | Run current cell (when in Script) |
+|  | <kbd>Ctrl</kbd>+<kbd>C</kbd> | Cancel current operation (when in Console) |
+  
+:::
+
+## Data manipulation
+
+Import packages to make data manipulation easier
+
+::: {.panel-tabset}
+
+## R
+
+```r
+library(dplyr)
+```
+
+## Python
+
+```python
+import pandas as pd
+```
+:::
+
+### Importing and exporting data
+Read your data with an I/O (input/output) function.
+
+::: {.panel-tabset}
+
+## R
+```r
+dataset <- read.csv("data/dataset.csv")
+```
+
+## Python
+
+```python
+df = pd.read_csv("data/dataset.csv")
+```
+
+:::
+
+You can also export your data to a csv file.
+
+::: {.panel-tabset}
+
+## R
+
+```r
+write.csv(dataset, "data/output_name.csv")
+```
+
+## Python
+
+```python
+df.to_csv("data/output_name.csv")
+```
+
+:::
+
+### Initial exploration
+You'll want to explore the data to start with - below are a few functions to get started.
+
+::: {.panel-tabset}
+
+## R
+
+| Function | Example | Description |
+| --- | --- | --- |
+| `names()` | `names(dataset)` | Returns the variable names | 
+| `str()` | `str(dataset)` | Returns the structure of the dataset (variable names, types and first entries) | 
+| `$` | `dataset$variable` | Returns a specific variable |
+| `unique()` | `unique(dataset$variable)` | Returns the unique values of a variable |
+| `summary()` | `summary(dataset$variable)` | Returns a statistical summary of a variable |
+
+## Python
+
+| Function | Example | Description |
+| --- | --- | --- |
+| `df.columns` | | Returns the variable names | 
+| `df.info()` | | Returns the structure of the dataset (variable names, counts and types) | 
+| `df["variable"]` | | Returns a specific column |
+| `df["variable"].unique()` | | Returns the unique values of a variable |
+| `df.describe()` or `df["variable"].describe()` | Returns a statistical summary of the dataset or a variable |
+
+:::
+
+### Removing `nan`s
+
+We can remove `nan`s by filtering
+
+::: {.panel-tabset}
+
+## R
+
+```r
+dataset <- dataset %>%
+  filter(!is.na(variable_to_check_for_NAs))
+```
+
+:::{.callout-note}
+# Using `!` for negation
+
+We use the exclamation mark `!` to negate the result, because `is.na` returns all the rows that *are* `NA`.
+:::
+
+## Python
+
+```python
+df = df[df["variable"].notna()]
+```
+
+:::
+
+### Time series data
+If you've picked a dataset with time-series data (e.g. a "date" variable), you should transform that variable so that it visualises better:
+
+::: {.panel-tabset}
+
+## R
+
+```r
+dataset$variable <- as.Date(dataset$variable)
+```
+
+## Python
+
+```python
+df["variable"] = pd.to_datetime(df["variable"])
+```
+
+:::
+
+### Categorical and ordered data
+If you're dealing with categorical data, you can specify this explicitly to keep track of the levels.
+
+::: {.panel-tabset}
+
+## R
+```r
+dataset$variable <- factor(dataset$variable)
+```
+
+## Python
+
+```python
+df["variable"] = df["variable"].astype("category")
+```
+
+:::
+
+To manually specify the order of categories, 
+
+::: {.panel-tabset}
+
+## R
+Specify the order by sending in an ordered list of the levels joined with `c()`:
+
+```r
+dataset$variable <- factor(dataset$variable, levels = c("first_val", "second_val", ... ))
+```
+
+Alternatively, if you only need to specify the first (reference) level, use
+
+```r
+dataset$variable <- relevel(factor(dataset$variable), ref = "reference_level")
+```
+
+## Python
+
+Use the `df["variable"].cat.reorder_categories()` function and use the `ordered = True` parameter,
+
+```python
+df["variable"] = df["variable"].cat.reorder_categories(["cat1", "cat2", ...], ordered = True)
+```
+
+If you're dealing with categorical data, look at the [pandas guide](https://pandas.pydata.org/docs/user_guide/categorical.html) for inspiration and help.
+:::
+
+:::{.callout-tip}
+# Coffee survey
+
+This is particularly useful for the **Coffee survey** dataset.
+:::
+
+
+### Renaming variables
+Some datasets have cumbersome names for their variables which we can rename.
+
+::: {.panel-tabset}
+
+## R
+
+```r
+df <- df %>% 
+  rename(new_name = old_name)
+```
+
+## Python
+Use `df.rename()`, sending a *dictionary* to the `columns = ` parameter:
+
+```python
+df = df.rename(columns = {"old_name": "new_name"})
+```
+
+:::{.callout-note}
+# Dictionaries
+
+A *dictionary* is a Python variable with key-value pairs. The structure is `key: value`, so above we have a dictionary with one key, `"old_name"` and corresponding value `"new_name"`. They are created as follows:
+
+<i>
+```python
+example_dictionary = {"key1": "value1",
+                      "key2": "value2",
+                      "key3": "value3",
+                      ...}
+```
+</i>
+
+Note that multiple lines are used purely for readability, you could just as well do this on one line.
+:::
+
+:::
+
+:::{.callout-tip}
+# World population
+
+This is particularly useful for the **World population** dataset.
+:::
+
+
+## Visualisation
+We can make simple visualisations of our data.
+
+::: {.panel-tabset}
+
+## R
+Use `ggplot2`'s `ggplot()` function, with 
+
+* `data = ` the dataset
+* `mapping = ` the variables, provideed as an `aes(...)` object
+* `geom_...` the geometries, e.g. `geom_line()`, `geom_point()` etc.
+
+```r
+library(ggplot2)
+
+ggplot(data = dataset,
+       mapping = aes(x = ..., y = ..., colour = ..., ...)) +
+  geom_first_layer() + 
+  geom_second_layer() + 
+  ...
+```
+
+Take a look at the [ggplot2 documentation](https://ggplot2.tidyverse.org/) for more information.
+
+
+**Plotly workaround**
+
+If you're having issues using `ggplotly` (it's producing a blank plot), you can use this workaround to view it in your browser.
+
+```r
+plot <- ggplotly(saved_ggplot_image)
+htmlwidgets::saveWidget(as_widget(plot), "plots/name_of_plot.html")
+```
+
+Opening that file will show you the image.
+
+## Python
+Use `seaborn`'s `relplot()`, `catplot()` and `displot()` functions. For example,
+
+```python
+import seaborn as sns
+
+sns.relplot(data = df, x = "variable_x", y = "variable_y", hue = "variable_colour", ...)
+```
+:::
+
+We can add additional customisations to our plots, such as axis labels.
+
+::: {.panel-tabset}
+
+## R
+Generally, `ggplot2` lets you do this with additional elements added to the plot. For example, to add axis labels,
+
+```r
+ggplot(data = dataset,
+       mapping = aes(x = ..., y = ..., colour = ..., ...)) +
+  geom_first_layer() + 
+  geom_second_layer() + 
+  labs(title = ..., var1 = ...)
+```
+
+## Python
+
+The simplest way to do this in Python is to use the `matplotlib.pyplot` module's functions. Generally, this has the format `plt.<some_customisation>`. For example, to add axis labels,
+
+```python
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+sns.relplot(data = df, x = "variable_x", y = "variable_y", hue = "variable_colour", ...)
+plt.xlabel("x axis label")
+plt.ylabel("y axis label")
+```
+:::

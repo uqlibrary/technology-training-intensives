@@ -1,0 +1,44 @@
+---
+title: "Coffee"
+author: "Warren"
+format: dashboard
+date: Jan-2025
+message: false
+categories: [R, 2025 Summer]
+---
+
+## Import the data
+
+```{r}
+coffee <- read.csv("data/coffee_survey.csv")
+```
+
+## Prepare the data
+
+```{r}
+#| message: false
+library(dplyr)
+favourites <- coffee %>% 
+  select(age, favourite) %>% 
+  filter(!is.na(favourite))
+
+favourites$favourite[favourites$favourite == 'Blended drink (e.g. Frappuccino)'] <- 'Blended'
+
+favourites$favourite[favourites$favourite == 'Regular drip coffee'] <- 'Drip' 
+
+```
+
+<!-- ##Plot the data -->
+
+<!-- A Bar Chart of types of coffee consumed: -->
+
+```{r}
+#| title: A Bar Chart showing the types of coffee consumed
+library(ggplot2)
+ggplot(data = favourites,
+       mapping = aes(x = favourite, fill = favourite)) +
+  geom_bar() +
+  labs(x = "Favourite style", y = "Consumed")+
+  theme(legend.position = "none")
+
+```
