@@ -4,7 +4,7 @@ author: Kim, Janine, Sera & Akansha
 date: 9-Jul-25
 format: html
 warning: false
-categories: [Python, 2025 Winter]
+categories: [Python, 25Winter, "data: coffee_survey.csv"]
 ---
 
 ## Comparing personal preferences and bitterness for **CoffeeC**

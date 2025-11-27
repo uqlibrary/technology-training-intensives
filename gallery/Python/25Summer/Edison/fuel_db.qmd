@@ -5,7 +5,7 @@
  format: 
    dashboard:
        theme: journal
- categories: [Python, 2025 Summer]
+ categories: [Python, 25Summer]
 ---
 
 

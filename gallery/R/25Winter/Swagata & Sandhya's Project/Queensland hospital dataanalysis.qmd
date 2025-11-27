@@ -4,7 +4,7 @@ author: "Swagata & Sandhya"
 format: html
 date: 17 July 2025
 # editor: visual
-categories: [R, 2025 Winter]
+categories: [R, 25Winter, "data: hospital_data.csv"]
 ---
 
 ## Quarto uses Markdown
@@ -23,7 +23,7 @@ library("ggplot2")
 library("plotly")
 library("tidyverse")
 
-hospital_data <- read.csv('../../data_sources/hospital_data.csv')
+hospital_data <- read.csv('data/hospital_data.csv')
 
 
 # Aggregate data per hospital (mean if multiple entries per hospital)

@@ -2,7 +2,7 @@
 title: "QLD Fuel"
 format: html
 Authors: Emman & Claudine
-categories: [R, 2025 Winter]
+categories: [R, 25Winter, "data: qld_fuel.csv"]
 date: Jul-2025
 ---
 

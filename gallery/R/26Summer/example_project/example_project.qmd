@@ -1,15 +1,15 @@
 ---
 title: Goalkeepers and their heights
 author: Cameron West and Stéphane Guillou
-date: today
+date: Jan-26
 warning: false
-image: tb.png
+image: gallery/R/26Summer/example_project/tb.png
 format:
   html:
     code-fold: true
     code-summary: "Show code"
     code-tools: true
-categories: [R, 2026 Summer]
+categories: [R, 26Summer, "data: Players2024.csv"]
 ---
 
 ```{R}
@@ -19,7 +19,7 @@ library(dplyr)
 library(plotly)
 library(knitr)
 
-players_raw <- read.csv("../../data_sources/Players2024.csv")
+players_raw <- read.csv("data/Players2024.csv")
 ```
 
 ## A glimpse at the dataset

@@ -4,7 +4,7 @@ author: "Caira Loo"
 format: dashboard
 date: Jan-2025
 
-categories: [R, 2025 Summer]
+categories: [R, 25Summer, "data: coffee_survey.csv"]
 ---
 
 ```{r}

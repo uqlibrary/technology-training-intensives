@@ -4,7 +4,7 @@ author: Ediana
 date: Jan-2025
 format: dashboard
 # runtime: shiny # (turned of because no server context used in chunks)
-categories: [R, 2025 Summer]
+categories: [R, 25Summer, "data: birds_strikes.csv"]
 ---  
 
 ```{r setup, include=FALSE}

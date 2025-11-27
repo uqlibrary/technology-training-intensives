@@ -4,7 +4,7 @@ author: "Dawn"
 format: dashboard
 date: Jan-2025
 echo: false
-categories: [R, 2025 Summer]
+categories: [R, 25Summer, "data: coffee_survey.csv"]
 ---
 
 <!-- ## Import -->

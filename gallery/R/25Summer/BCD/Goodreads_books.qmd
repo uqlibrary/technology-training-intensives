@@ -6,7 +6,7 @@ format: dashboard
 date: Jan-2025 
 warning: false
 theme: sketchy
-categories: [R, 2025 Summer]
+categories: [R, 25Summer, "data: books.csv"]
 ---
 # Word cloud
 

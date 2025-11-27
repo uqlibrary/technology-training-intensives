@@ -8,7 +8,7 @@ code-tools: true
 #editor: visual
 date: Jul-2025
 warning: false
-categories: [R, 2025 Winter]
+categories: [R, 25Winter, "data: books.csv"]
 ---
 
 ## Introduction

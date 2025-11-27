@@ -5,7 +5,7 @@
  warning: false
  error: false
  format: dashboard
- categories: [Python, 2025 Summer]
+ categories: [Python, 25Summer, "data: birds_strikes.csv"]
 ---
 
 ```{python}

@@ -2,7 +2,7 @@
 title: "Report_ben"
 format: html
 editor: visual
-categories: [R, 2025 Winter]
+categories: [R, 25Winter, "data: books.csv"]
 date: Jul-2025
 ---
 

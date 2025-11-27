@@ -4,13 +4,13 @@ author: Nana, Jia Vei Yar, Yawen
 date: 9-Jul-25
 # The following are optional but recommended
 warning: false
-image: tb.png 
+image: gallery/Python/25Winter/Group2/tb.png 
 format:
   html:
     code-fold: true
     code-summary: "Show code"
     code-tools: true
-categories: [Python, 2025 Winter]
+categories: [Python, 25Winter, "data: qld_fuel.csv"]
 ---
 
 ## Introduction

@@ -5,7 +5,7 @@ format: html
 editor: visual
 date: Jul-2025
 #bibliography: references.bib
-categories: [R, 2025 Winter]
+categories: [R, 25Winter, "data: Players2024.csv"]
 ---
 
 ## Background

@@ -1,14 +1,14 @@
 ---
 title: Goalkeepers and their heights
 author: Cameron West and Stéphane Guillou
-date: today
+date: Feb-26
 warning: false
 format:
   html:
     code-fold: true
     code-summary: "Show code"
     code-tools: true
-categories: [Python, 2026 Summer]
+categories: [Python, 26Summer, "data: Players2024.csv"]
 ---
 
 ```{python}
@@ -19,7 +19,7 @@ import pandas as pd
 import plotly.express as px
 import seaborn as sns
 
-df_raw = pd.read_csv("../../data_sources/Players2024.csv")
+df_raw = pd.read_csv("data/Players2024.csv")
 ```
 
 ## A glimpse at the dataset

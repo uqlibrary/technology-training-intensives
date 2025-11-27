@@ -2,7 +2,7 @@
 title: "Nora project"
 author: "Nora"
 # format: pdf
-categories: [R, 2025 Winter]
+categories: [R, 25Winter, "data: melb_data.csv"]
 date: Jul-2025
 ---
 

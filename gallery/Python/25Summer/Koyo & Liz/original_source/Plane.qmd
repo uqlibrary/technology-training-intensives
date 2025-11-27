@@ -1,0 +1,98 @@
+---
+ title: Aeroplane Bird Strike Incidents
+ author: Koyo Yanagisawa
+ date: 2025-01-15
+ warning: false
+ error: false
+ format: dashboard
+ categories: [Python, 2025 Summer]
+---
+
+```{python}
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+import plotly.express as px
+
+df = pd.read_csv("data/birds_strikes.csv")
+
+# Make a copy of raw data
+df1 = df.copy()
+
+```
+
+```{python}
+df2 = df.copy()
+
+def damage_condition(remarks):
+    if isinstance(remarks, str):
+        if "NO DAMAGE" in remarks:
+            return 0  
+        elif "NA" in remarks:
+            return 1  
+        else:
+            return 2
+
+df2["damage"] = df["remarks"].apply(damage_condition)
+df2["damage"] = df2["damage"].fillna(1)
+
+```
+
+## Figures {height=70%}
+
+
+```{python}
+#| output: true
+#| title: Bird Strikes Occur More Frequently in Lower Altitudes
+#| fig-alt: "A bar plot of the frequency of bird strikes across different altitudes."
+sns.displot(data=df2, x="height", hue="ac_mass", kind="kde",palette="tab10")
+_ = plt.xlabel("Height (Feet Above Ground Level)")
+_ = plt.ylabel("Density")
+_ = plt.title("Distribution of Height by Aircraft Mass")
+
+plt.show()
+
+```
+
+```{python}
+#| output: true
+#| title: Speed Vs Damage
+sns.boxplot(x="damage", y="speed", hue="ac_mass",data=df2)
+_ = plt.xlabel("Damage")
+_ = plt.ylabel("Speed (Knots)")
+_ = plt.title("Speed Vs Damage")
+
+plt.show()
+
+```
+
+```{python}
+#| output: true
+#| title: Height Vs Damage
+
+import statsmodels.formula.api as smf
+
+mod = smf.ols("damage ~ height", df2)
+res = mod.fit()
+
+sns.relplot(data=df2, x = "height", y= "damage")
+
+sns.lineplot(x = df2["height"],
+             y = res.fittedvalues,
+             color = "green")
+_ = plt.xlabel("Height (Feet Above Ground Level")
+_ = plt.ylabel("Damage")
+_ = plt.title("Height Vs Damage")
+
+plt.show()
+
+```
+
+## Table
+
+
+```{python}
+#| title: Snippet of Dataset 
+
+df2.head(10)
+```

@@ -10,7 +10,7 @@ format:
     code-fold: true
     code-summary: "Show code"
     code-tools: true
-categories: [Python, 2025 Winter]
+categories: [Python, 25Winter, "data: coffee_survey.csv"]
 ---
 
 ## 1.Introduction

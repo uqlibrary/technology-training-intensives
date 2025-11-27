@@ -1,0 +1,102 @@
+---
+title: "Coffee"
+author: "Caira Loo"
+format: dashboard
+date: Jan-2025
+
+categories: [R, 2025 Summer]
+---
+
+```{r}
+coffee_survey <- read.csv("data/coffee_survey.csv")
+```
+
+```{r}
+library(dplyr) 
+ 
+coffee_prefer <-  coffee_survey %>% 
+   select(age, prefer_abc, prefer_ad, prefer_overall)
+ 
+coffee_NA <- coffee_prefer %>%
+   filter(!is.na(prefer_abc), 
+          !is.na(prefer_ad), 
+          !is.na(prefer_overall))
+ 
+coffee_matching <- coffee_NA %>% 
+  filter(prefer_abc == prefer_overall | prefer_ad == prefer_overall)
+
+
+```
+
+```{r}
+library(tidyverse)
+
+coffee_overall <- coffee_matching %>% 
+   group_by(age) %>% 
+   count(prefer_overall) %>% 
+   mutate(age = factor(age, levels = c("<18 years old", "18-24 years old", "25-34 years old", "35-44 years old", "45-54 years old", "55-64 years old", ">65 years old" )))
+```
+
+A Survey of the Popularity of the 4 types of Coffee Brands 
+
+## Figure = {height = 70%}
+
+```{r}
+#| title: The highest consumer of coffee belongs to the age range of 25-34 years old, followed by 35-44 years old. In both age groups, Coffee D was shown to be highly preferred among all brands, with Coffee A in the second lead.
+
+ggplot(data = coffee_overall, 
+        mapping = aes(x = age, y = n, fill = prefer_overall)) + 
+   geom_bar(stat = "identity", position = "dodge")
+
+```
+
+```{r}
+coffee_taste <-  coffee_survey %>% 
+   select(age, coffee_a_bitterness, coffee_a_acidity, coffee_d_bitterness, coffee_d_acidity, prefer_abc, prefer_ad, prefer_overall)
+ 
+ coffee_taste_NA <- coffee_taste %>%
+   filter(!is.na(prefer_abc), 
+          !is.na(prefer_ad), 
+          !is.na(prefer_overall))
+```
+
+```{r}
+coffee_taste_master <- coffee_taste_NA %>% 
+   filter(prefer_abc == prefer_overall | prefer_ad == prefer_overall) %>% 
+   filter(prefer_overall == "Coffee A" | prefer_overall == "Coffee D")
+```
+
+```{r}
+ 
+# trying to expand the table : pivot longer()
+
+coffee_ranking <- coffee_taste_master %>% 
+  select(coffee_a_bitterness, coffee_a_acidity, coffee_d_bitterness, coffee_d_acidity)
+
+coffee_pivot <- pivot_longer(coffee_ranking,cols = 1:4, names_to = "characteristic1", values_to = "ranking")  
+
+# trying to expand the table part 2 : separate_wider_delim(
+
+coffee_separate <- separate_wider_delim(coffee_pivot, characteristic1, delim = "_", 
+                                        names=c("remove","coffee", "characteristic"))
+```
+
+```{r}
+#remove the remove column
+
+coffee_bar <- coffee_separate %>% 
+  select(coffee, characteristic, ranking) %>% 
+  group_by(ranking, coffee, characteristic) %>% 
+  summarise(rank_count = n())
+```
+
+
+```{r}
+#| title: The participants ranked the characteristics of Coffee D and Coffee A from 1 to 5, with 1 being "less preferred" and 5 being "highly preferred". At a glance, the rankings for both coffees follow a similar trend to each other, with low preference for bitterness with slightly stronger acidity.  However, the bitterness in Coffee A was observed to be ranked higher compared to Coffee D, which can be hypothesized as the reason for Coffee D to be more favoured over Coffee A.  
+
+ggplot(data = coffee_bar, 
+       mapping = aes(x = ranking, y = rank_count, colour = coffee, linetype = characteristic)) + 
+  geom_point() +
+  geom_line(linewidth = 1) 
+```
+

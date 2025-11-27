@@ -3,7 +3,7 @@ title: "Population: Presentation for R training"
 format: html
 editor: visual
 date: 2025/7/16
-categories: [R, 2025 Winter]
+categories: [R, 25Winter, "data: population.csv"]
 ---
 
 ## Population: the data set

@@ -6,7 +6,7 @@
     dashboard: 
            theme: solar 
            scrolling: true
- categories: [Python, 2025 Summer]
+ categories: [Python, 25Summer, "data: books.csv"]
 ---
 
 ```{python}

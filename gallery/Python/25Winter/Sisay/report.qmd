@@ -3,7 +3,7 @@ title: my python report
 author: Sisay
 date: 9-Jul-25
 format: html
-categories: [Python, 2025 Winter]
+categories: [Python, 25Winter, "data: gapminder.csv"]
 ---
 
 ## Introducing markdown

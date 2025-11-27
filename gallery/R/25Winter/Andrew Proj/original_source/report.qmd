@@ -1,0 +1,112 @@
+---
+title: "Workshop Project Report"
+author: "Andrew"
+format: html
+date: Jul-2025
+categories: [R, 2025 Winter]
+---
+
+## Analysing a dataset in R
+
+We are using the **png**, **ggpubr**, **tidyverse** and **plotly** libraries to examine our data. We can install and enable these libraries as follows, using an if loop to prevent repeat installation. 
+
+```{r}
+#| message: false
+inst_list = c("tidyverse", "plotly", "png", "ggpubr")
+
+for(i in inst_list){
+  if(!inst_list[i] %in% installed.packages()){
+    print(inst_list[i])
+    install.packages(inst_list[i])
+  }
+}
+
+library(png)
+library(ggpubr)
+library(tidyverse)
+library(plotly)
+```
+
+
+## Melbourne Housing Data
+
+The dataset we have chosen is the Melbourne Housing Dataset. We can import the data and run a summary as follows: 
+
+```{r}
+melb_data_raw <- read.csv("data/melb_data.csv")
+summary(melb_data_raw)
+```
+
+Data has been imported to a 'raw' data object, to be drawn from to produce usable data. 
+
+## Data Cleaning
+
+This data includes some values we would like to change before we continue, so we can load the data into a new object for manipulation.
+From the summary, we can see that the oldest house was built in 1196. Since Melbourne was settled in 1835, this datapoint is a clear outlier and suggests it may be a typo. Therefore we can mutate this datapoint as we load the data into a new object:
+
+```{r}
+melb_data <- melb_data_raw %>% mutate(YearBuilt = 
+                                        ifelse(YearBuilt < 1800,NA,YearBuilt))
+```
+
+No other clear outliers/typos exist. Landsize of 0 appears to relate to apartments. Postcode, latitude, longitude, distance all within reasonable bounds. 
+
+## Exploring Data
+
+To explore the data, we can create an object called plot_map to store a ggplot of the data, using the latitude and longitude along the x and y axis. This can then be called with geom_point() to produce a plot. 
+
+```{r}
+plot_map <- ggplot(data = melb_data, mapping = aes(x = Longtitude, y = Lattitude))
+
+plot_map + geom_point(mapping = aes(colour = YearBuilt)) + 
+              theme_classic() + scale_color_viridis_c()
+```
+
+This graph uses the latitude and longitude attributes of the dataset to produce a scatterplot of all house sales in Melbourne, the sum of these data points approximates the geography of Melbourne. The colours can show some hotspots for builds during certain years. 
+
+We can overlay this graph on a map of melbourne to show how the areas relate to the real world by taking a map of Melbourne from google and using it as a background image for the graph. This is read in using the png library, and limits are set on the x,y coords of graph to fit image:
+
+```{r}
+map_img <- png::readPNG("gallery/R/25Winter/Andrew Proj/data/map_desaturated.png")
+
+plot_map + background_image(map_img) + geom_point((mapping = aes(colour = 
+              YearBuilt))) + theme_classic() + scale_color_viridis_c() + 
+              coord_cartesian(xlim = c(144.4,145.7), ylim = c(-38.2, -37.4))
+```
+
+This can alternatively be done using ggmap() rather than an image for the background, however this requires API access. 
+
+This data can be aggregated by region as follows:
+
+```{r}
+tooltip_data <- melb_data %>% 
+  group_by(Regionname) %>% 
+  summarise(Latitude = median(Lattitude), Longitude = median(Longtitude), Houses = 
+              sum(Type == "h"), Townhouses = sum(Type == "t"), Units = 
+              sum(Type == "u"), Properties = n(), Mean_Price = median(Price), PropertySize = median(Landsize))
+```
+
+```{r}
+#| echo: false
+tooltip_data
+```
+
+This table separates out the median price, latitude, longitude, number of houses/units/townhouses and land size of properties. 
+
+The goal was then to use these in plotly to have hoverable aggregated plot points, however I wasn't able to finish this.
+
+```{r}
+tooltip_map <- ggplot(data = tooltip_data, mapping = aes(x = Longitude, y = Latitude)) + background_image(map_img) + geom_point(data = tooltip_data, label = tooltip_data$Regionname, label2 = tooltip_data$Mean_Price, label3 = tooltip_data$Houses, label4 = tooltip_data$Units) + theme_classic() + scale_color_viridis_c() + 
+  coord_cartesian(xlim = c(144.4,145.7), ylim = c(-38.2, -37.4))
+
+tooltip_map
+ggplotly(tooltip_map)
+```
+
+```{r}
+melb <- read.csv("data/melb_data.csv")
+melb |>
+  summary() |>
+  knitr::kable()
+```
+

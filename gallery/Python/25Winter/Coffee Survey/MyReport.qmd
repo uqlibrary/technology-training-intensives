@@ -4,7 +4,7 @@ author: Yuli Astriani & Elisabeth Natalia Palan Bolen
 date: 9-Jul-25
 format: html
 warning: false
-categories: [Python, 2025 Winter]
+categories: [Python, 25Winter, "data: coffee_survey.csv"]
 ---
 
 ## **Presenting Coffee Survey Data Using Markdown**

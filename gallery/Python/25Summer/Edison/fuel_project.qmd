@@ -2,7 +2,7 @@
  title: Fuel Consumption
  author: Edison Vargas
  date: 2025-01-16
- categories: [Python, 2025 Summer]
+ categories: [Python, 25Summer, "data: qld_fuel.csv"]
 ---
 
 ```{python}
