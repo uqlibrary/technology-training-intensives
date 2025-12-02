@@ -1,12 +1,14 @@
 project:
   type: website
-  pre-render: _processing/project_processing.py
+  pre-render: _processing/pre_render.py
   render: 
     - index.qmd
+    - gallery/project_gallery.qmd
+    - /gallery/*/*/*/*.qmd
     - project/*
-    - gallery/*
     - python/*
     - r/*
+
   execute-dir: project
 
 website:
