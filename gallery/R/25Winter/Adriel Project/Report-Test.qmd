@@ -3,7 +3,7 @@ title: "FC Barcelona Team Analysis"
 author: "Adriel Wijaya"
 format: html
 editor: visual
-date: Jul-25
+date: Jul-2025
 #bibliography: references.bib
 categories: [R, 25Winter, "data: Players2024.csv"]
 ---

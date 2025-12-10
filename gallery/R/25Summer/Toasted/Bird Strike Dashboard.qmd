@@ -3,7 +3,7 @@ title: "Bird Strike Dashboard"
 author: Ediana
 format: dashboard
 # runtime: shiny # (turned of because no server context used in chunks)
-date: Jan-25
+date: Jan-2025
 categories: [R, 25Summer, "data: birds_strikes.csv"]
 ---  
 

@@ -4,7 +4,7 @@ format: dashboard
 author: Adelia
 warning: false
 error: false
-date: Jan-25
+date: Jan-2025
 categories: [R, 25Summer, "data: coffee_survey.csv"]
 ---
 

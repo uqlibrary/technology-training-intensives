@@ -67,10 +67,16 @@ def yaml_spaces(head: str) -> str:
     return spaces
 
 
-def fix_yaml_date(head: str, spaces: str, date: str) -> str:
+def fix_yaml_date(head: str, spaces: str, lang: str, iteration: str) -> str:
+    date = MONTHS[lang][iteration] + "-20" + iteration[:2]
     if "Date:" in head:
         head = head.replace("Date:", "date:")
         print(GRN, "\tFIXED:", O, "Date: -> date")
+
+    # # Fixes previous bad date fromat
+    # if (bad_old := MONTHS[lang][iteration] + "-" + iteration[:2]) in head:
+    #     head = head.replace(bad_old, date)
+    #     print(GRN, "\tFIXED:", O, bad_old, "->", date)
 
     if "date:" not in head:
         yaml_date = f"{spaces}date: {date}"
@@ -260,8 +266,7 @@ def run_checker(dev: bool = False, clear_log: bool = False) -> None:
         spaces = yaml_spaces(head)
 
         #### Process yaml/head ####
-        correct_date = MONTHS[lang][iteration] + "-" + iteration[:2]
-        head = fix_yaml_date(head, spaces, correct_date)
+        head = fix_yaml_date(head, spaces, lang, iteration)
 
         # Find all data paths
         data_paths = find_paths(body, ".csv")

@@ -2,7 +2,7 @@
 title: "📝 Coffee vs Employment status"
 author: "Dawn"
 format: dashboard
-date: Jan-25
+date: Jan-2025
 echo: false
 categories: [R, 25Summer, "data: coffee_survey.csv"]
 ---

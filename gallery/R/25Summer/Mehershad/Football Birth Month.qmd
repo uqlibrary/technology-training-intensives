@@ -2,7 +2,7 @@
 title: "Impact of Birth Month on Football careers"
 author: "Mehershad Wadia"
 format: dashboard
-date: Jan-25
+date: Jan-2025
 warning: false
 error: false
 #image: gallery/R/25Summer/Mehershad/tb.png

@@ -3,7 +3,7 @@ title: "Goodreads books published in 2006"
 author: "Brittnee, Cleo, & David"
 logo: goodreads.jpg
 format: dashboard
-date: Jan-25 
+date: Jan-2025 
 warning: false
 theme: sketchy
 categories: [R, 25Summer, "data: books.csv"]

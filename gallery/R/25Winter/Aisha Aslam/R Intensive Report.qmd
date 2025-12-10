@@ -6,7 +6,7 @@ code-fold: true
 code-summary: "Show code"
 code-tools: true
 #editor: visual
-date: Jul-25
+date: Jul-2025
 warning: false
 categories: [R, 25Winter, "data: books.csv"]
 ---

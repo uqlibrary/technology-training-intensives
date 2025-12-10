@@ -1,8 +1,8 @@
 {
-  "hash": "f17584f96f10dbe3f141f7e19e7839b9",
+  "hash": "f161aa85346eef43f0c34f3cba1df85a",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: \"📝 Coffee vs Employment status\"\nauthor: \"Dawn\"\nformat: dashboard\ndate: Jan-25\necho: false\ncategories: [R, 25Summer, \"data: coffee_survey.csv\"]\n---\n\n<!-- ## Import -->\n\n\n::: {.cell}\n\n:::\n\n\n\n<!-- ## Data -->\n\n\n::: {.cell}\n\n:::\n\n\n\n<!-- ## Visual -->\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](project_dashboard_files/figure-html/unnamed-chunk-3-1.png){width=768}\n:::\n:::\n\n\n\n\n\n\n",
+    "markdown": "---\ntitle: \"📝 Coffee vs Employment status\"\nauthor: \"Dawn\"\nformat: dashboard\ndate: Jan-2025\necho: false\ncategories: [R, 25Summer, \"data: coffee_survey.csv\"]\n---\n\n<!-- ## Import -->\n\n\n::: {.cell}\n\n:::\n\n\n\n<!-- ## Data -->\n\n\n::: {.cell}\n\n:::\n\n\n\n<!-- ## Visual -->\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](project_dashboard_files/figure-html/unnamed-chunk-3-1.png){width=768}\n:::\n:::\n\n\n\n\n\n\n",
     "supporting": [
       "project_dashboard_files"
     ],

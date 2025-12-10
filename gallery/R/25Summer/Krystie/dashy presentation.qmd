@@ -1,7 +1,7 @@
 ---
 title: "Hospital Data"
 format: dashboard
-date: Jan-25
+date: Jan-2025
 warning: false
 ## error: false
 categories: [R, 25Summer, "data: hospital_data.csv"]

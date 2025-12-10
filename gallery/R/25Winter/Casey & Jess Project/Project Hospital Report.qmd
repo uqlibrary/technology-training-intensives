@@ -2,7 +2,7 @@
 title: "Project Hospital Report"
 format: html
 author: Casey Atkins & Jess
-date: Jul-25
+date: Jul-2025
 categories: [R, 25Winter, "data: hospital_data.csv"]
 ---
 

@@ -2,9 +2,9 @@
 title: "Coffee"
 author: "Caira Loo"
 format: dashboard
-date-modified: Jan-25
+date-modified: Jan-2025
 
-date: Jan-25
+date: Jan-2025
 categories: [R, 25Summer, "data: coffee_survey.csv"]
 ---
 

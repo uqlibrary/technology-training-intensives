@@ -1,8 +1,8 @@
 {
-  "hash": "ebdfc398ef870ddabca0d62e304be2c3",
+  "hash": "2e1fb5a4afd5bfa23564a9838931125a",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: \"Coffee\"\nauthor: \"Warren\"\nformat: dashboard\ndate: Jan-25\nmessage: false\ncategories: [R, 25Summer, \"data: coffee_survey.csv\"]\n---\n\n## Import the data\n\n\n::: {.cell}\n\n:::\n\n\n## Prepare the data\n\n\n::: {.cell}\n\n:::\n\n\n<!-- ##Plot the data -->\n\n<!-- A Bar Chart of types of coffee consumed: -->\n\n\n::: {.cell title='A Bar Chart showing the types of coffee consumed'}\n::: {.cell-output-display}\n![](DashbdProjW_files/figure-html/unnamed-chunk-3-1.png){width=768}\n:::\n:::\n\n",
+    "markdown": "---\ntitle: \"Coffee\"\nauthor: \"Warren\"\nformat: dashboard\ndate: Jan-2025\nmessage: false\ncategories: [R, 25Summer, \"data: coffee_survey.csv\"]\n---\n\n## Import the data\n\n\n::: {.cell}\n\n:::\n\n\n## Prepare the data\n\n\n::: {.cell}\n\n:::\n\n\n<!-- ##Plot the data -->\n\n<!-- A Bar Chart of types of coffee consumed: -->\n\n\n::: {.cell title='A Bar Chart showing the types of coffee consumed'}\n::: {.cell-output-display}\n![](DashbdProjW_files/figure-html/unnamed-chunk-3-1.png){width=768}\n:::\n:::\n\n",
     "supporting": [
       "DashbdProjW_files"
     ],

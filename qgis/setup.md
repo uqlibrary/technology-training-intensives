@@ -2,6 +2,12 @@
 title: QGIS
 ---
 
+:::{.callout-warning}
+# 🚧 Under construction 🚧
+
+This content is still under construction and will be changing over the next few weeks.
+:::
+
 :::{.callout-tip}
 Registrations available for our next intensive!
 

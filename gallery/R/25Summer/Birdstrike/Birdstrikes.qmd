@@ -1,7 +1,7 @@
 ---
 title: "BirdStrikes"
 format: dashboard
-date: Jan-25
+date: Jan-2025
 authors: "Nafisa, Alex, Adiana & Selina"
 warning: FALSE
 error: FALSE
