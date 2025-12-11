@@ -190,13 +190,13 @@ def run_checker(dev: bool = False, clear_log: bool = False) -> None:
     if not os.path.exists("_quarto.yml"):
         raise EnvironmentError("Not in quarto project dir.")
 
-    if os.getenv("IGNORE_VENV_REQ") != "true" and sys.prefix == sys.base_prefix:
-        raise EnvironmentError(
-            "Not in a virtual environment, required for testing Python imports.\n\nHave you activated? Run source .venv/bin/activate"
-        )
-
-    if not os.path.exists(j(d(sys.prefix), "_quarto.yml")):
-        raise EnvironmentError("Not in the correct virtual environment.")
+    if os.getenv("IGNORE_VENV_REQ") != "true":
+        if sys.prefix == sys.base_prefix:
+            raise EnvironmentError(
+                "Not in a virtual environment, required for testing Python imports.\n\nHave you activated? Run source .venv/bin/activate"
+            )
+        elif not os.path.exists(j(d(sys.prefix), "_quarto.yml")):
+            raise EnvironmentError("Not in the correct virtual environment.")
 
     warnings.filterwarnings("ignore")
     mpl.use("Agg")
