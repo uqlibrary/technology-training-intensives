@@ -4,9 +4,9 @@ title: "Project template"
 
 The code below is a template for your project. Feel free to use it, start from scratch or begin from the example projects you can find on the [details page](details.qmd) (or in the [project gallery](../gallery/project_gallery.qmd)).
 
-::: {.panel-tabset}
+::: {.panel-tabset group="lang"}
 
-## R
+## R {.active}
 ````
 ---
 title: Your project title

@@ -3,7 +3,6 @@ title: Goalkeepers and their heights
 author: Cameron West and Stéphane Guillou
 date: Jan-2026
 warning: false
-#image: gallery/R/26Summer/example_project/tb.png
 format:
   html:
     code-fold: true
