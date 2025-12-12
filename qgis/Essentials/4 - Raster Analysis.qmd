@@ -1,292 +1,214 @@
 ---
-title: Sharing and Publishing
+title: Raster Analysis
 editor: source
 date: today
 --- 
 
-In this workshop we cover using GitHub for sharing your source code, Git for version control, and Quarto for publishing outputs. Specifically, we look at:
+## What are we going to learn?
 
-* How to create code-dependent documents, dashboards and presentation using Quarto
-* How to create a Git repository on GitHub and add files to it
-* How Git can help record a clean history of a project and collaborate with others
-* How Git and GitHub integrate with different tools
+In this workshop, we will learn about:
 
-## Quarto
+-   DEM
+-   Terrain Analysis
+-   Contours
+-   Georeferencing
 
-Quarto is a publishing system that allows creating documents, presentations, websites and dashboards that contain prose, code and code outputs. This means that such outputs can detail exactly what happened to the data, and outputs can be re-generated very quickly if, for example, the underlying dataset was updated, or if the analysis needs to change.
 
-Let's create a document using some of the syntax we learned in previous sessions.
+## What is Raster Data?
 
-Use "New File > Quarto Document..." to create a `.qmd` file. The dialog that open allows us to change a few settings. Let's give the title "Reproducible Output", and untick "Use visual markdown editor" so we can learn about the syntax. Save the new file in your project directory.
 
-This new `.rmd` script will be made of **markdown text** and **code chunks**. Code chunks can be inserted with the editor pane's toolbar or the keyboard shortcut <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>I</kbd>.
+## Install the SAGA Plugin
 
-At the top of our script, we need to include a header (also called "front matter") that contains the document's settings. We can start with:
+We need to install a plugin so we can access certain geoprocessing tools (the built-in SAGA provider has been [removed in version 3.30](https://changelog.qgis.org/en/qgis/version/3.30/#processing-drop-unmainted-saga-provider-from-qgis-)). Go to `Plugins > Manage and Install Plugins...` and `Search...` for "**SAGA**". From the list on options choose **Processing Saga NextGen Provider** then in the bottom right, click `Install Plugin`. You might also need to install SAGA (version 9 or above) on your computer, if not already available.
 
-```
----
-title: Reproducible Output
-author: Your Name
-date: 2025-01-01
----
-```
+## Get some elevation data
 
-The rest of the document will be a mix of markdown-formatted prose and executable code chunks. For example:
+A Digital Elevation Model (DEM) is a common example of **raster data**, i.e. grid data that contains a value in each cell (a bit like the pixels in a coloured picture).
 
-````{verbatim}
-## Import the data
+For this tutorial, we are using a DEM sourced from the USGS website.
 
-Let's **import** the data:
+-   Go to https://earthexplorer.usgs.gov/
+-   Click the World Features box, and then search for "Brisbane" in the "Feature Name" search box
+-   Click Show and select the first result
+-   Zoom onto an area of interest around Brisbane and click "Use Map"
+-   Click the "Data Sets" button and then `Digital Elevation > SRTM`, select "SRTM 1 Arc-Second Global" and click "Results"
 
-```{r}
-players <- read.csv("../../data/Players2024.csv")
-```
+"SRTM" stands for "[Shuttle Radar Topography Mission](https://www.usgs.gov/centers/eros/science/usgs-eros-archive-digital-elevation-shuttle-radar-topography-mission-srtm-1-arc?qt-science_center_objects=0#qt-science_center_objects)". It provides global elevation data collected in 2000 by the space shuttle Endeavour.
 
-## Prepare the data
+Our area covers two separate raster files. We can click on the foot icon to see the footprint of each file, and the picture icon to see what the DEM looks like.
 
-Remove missing position and ensure **reasonable heights**:
+Use the download button to download each file into your project directory. You will need a login for that, which is free but can take a bit of time. You can instead **download the two raster files** as an archive from our GitHub repository [here](https://github.com/uqlibrary/technology-training-assets/raw/master/QGIS/raster/QGIS_Raster_Data.zip).
 
-```{r}
-library(dplyr)
-players <- players %>% filter(positions != "Missing", height_cm > 100)
-```
+## Merge the two DEM layers
 
-## Plot the data
+If you downloaded the archive, make sure you place it into the project directory so you can find it in "Project Home" and easily **load the raster files**: from the Browser panel, we can go into the data archive and drag and drop each `.tif` file into the Layers panel.
 
-A boxplot of player **height by position**:
+See the visible line between the two raster tiles? That is because the two separate raster files have different maximum and minimum values, so use different shades for different elevations. We have to **merge** them to make sure they use the same colour scale.
 
-```{r}
-library(ggplot2)
-ggplot(players, aes(x = positions, y = height_cm)) + 
-  geom_boxplot() + 
-  labs(x = "Position", y = "Height (cm)")
-```
-````
+To do that, we use the `Raster > Miscellaneous > Merge...` tool to create one single layer from them.
 
-Outside the code chunks, we use the Markdown markup language to format the text. For example, using `##` before some text defines a heading of level 2 (level 1 being the document's title), and using `**` around some text makes it bold. See [more Markdown hints in the Quarto documentation](https://quarto.org/docs/authoring/markdown-basics.html).
+-   First, select both DEM layers for the "Input layers"
+-   Make sure the option "Place each input file into a separate band" is off, as we want to end up with one single-band layer
+-   We can save the output on disk instead of only creating a temporary file (for example, name it `SRTM_DEM_merged` and save it inside your project directory)
+-   Click "Run"
 
-### Rendering
+> You will need to have GDAL installed for this to work.
 
-To render the document and see the result, use the "Render" button in the source pane toolbar.
+We can now remove the two original raster files.
 
-This should create a HTML document in your project directory, which you can open in a web browser by clicking it and choosing "View in web browser" (if it is not opened automatically already). The file can be left open and will automatically update in your browser when the document is rendered again.
+## Reproject the DEM
 
-As the default Quarto output is a HTML file, we can include interactive visualisations too.
+In the merged layer's Properties (`Right click > Properties... > Source`), we can see that the Coordinate Reference System (CRS) in use is [EPSG:4326 - WGS 84](https://epsg.io/4326). It is the one that QGIS detected when opening the file. This Geographic Reference System is good for global data, but if we want to focus on a more precise area around Brisbane/Meanjin, and want our analyses to be accurate, we should reproject the data to a local Projected Reference System (PRS). We will also need a projection that uses Metres, rather than Degrees (as EPSG:4326 does). A good PRS for around Brisbane/Meanjin is "[EPSG:7856 - GDA2020 / MGA zone 56](https://epsg.io/7856)". We can't change that here, we instead will need to use the **Warp (Reproject)** tool.
 
-### Cell options
+-   Use the tool `Raster > Projections > Warp (Reproject)`
+-   use the merged layer as an input
+-   pick "EPSG:7856 - GDA2020 / MGA zone 56" as the Target CRS
+    -   you may need to click the Select CRS button ![image](https://user-images.githubusercontent.com/67612228/197653760-a9df4671-5852-499c-a085-3d995489599a.png)
+    -   untick No CRS
+    -   use the filter to search for "7856"
+    -   You should be able to find "EPSG:7856 - GDA2020 / MGA zone 56" under **Predefined Coordinate Reference Systems**
 
-If you want to show the code but don't want to run it, you can add the cell option `#| eval: false`. And if you want to show the output but not show the underlying code, use `#| echo: false`.
+> If you want to learn more about the static datum GDA2020 (for "Geocentric Datum of Australia 2020"), an upgrade from the previous, less precise GDA94, head to the [ICSM website](https://www.icsm.gov.au/gda2020).
 
-````{verbatim}
+## Clip the DEM
 
-## Interactive plots
+We now use `Raster > Extraction > Clip Raster by Extent` to **focus on a smaller area of interest**.
 
-We need plotly. If you need to install it:
+Make sure the DEM is selected in the Input layer, and set the clip extent with `... > Draw on Canvas`. We want to select an area that is inland, and contains both some of the D'Aguilar National Park, and a section of the Brisbane river (you can untick the DEM in the Layers panel to reveal the basemap).
 
-```{r}
-#| eval: false
-install.packages("plotly")
-```
+If you don't save to file directly, remember two things:
 
-An interactive scartterplot:
+-   **rename** your clipped layer so it is more descriptive than the generic "Clipped (extent)"
+-   you are currently using a temporary, **scratch layer**. It will be discarded if you exit QGIS. It is very useful for temporary intermediate files, but it can be safer to save copies of your intermediate data while you work, just in case! You can right-click on the layer and use `Export > Save As..`
 
-```{r}
-#| title: Age vs Height
-#| echo: false
+## Change the symbology
 
-p <- ggplot(players, aes(x = age, y = height_cm, colour = positions, label = name, label2 = nationality)) + 
-  geom_point() + 
-  facet_wrap(vars(positions)) + 
-  labs(x = "Age", colour = "Position", y = "Height (cm)")
-library(plotly)
-ggplotly(p)
-```
+We can style our DEM with a **terrain colour palette**:
 
-````
+-   double-click on the clipped DEM layer
+-   go to the "Symbology" tab
+-   change the Render type to "Singleband pseudocolor"
+-   by default, it uses the min/max values, which is what we want
+-   we can change the "Color ramp" to something more suitable with the drop-down menu and `Create new color ramp... > Catalog: cpt-city > Topography > Elevation`, for example.
 
-And for adding a caption and alternative text to a figure, we can modify our boxplot chunk as follows:
-
-````{verbatim}
-```{r}
-#| fig-cap: "Goalkeepers tend to be taller."
-#| fig-alt: "A boxplot of the relationship between height and position."
-library(ggplot2)
-ggplot(players, aes(x = positions, y = height_cm)) + 
-  geom_boxplot() + 
-  labs(x = "Position", y = "Height (cm)")
-```
-````
-
-[Many more cell options](https://quarto.org/docs/computations/execution-options.html) exist, including captioning and formatting visualisations. Note that these options can be used at the cell level as well as globally (by modifying the front matter at the top of the document).
-
-For example, to make sure error and warning messages are never shown:
-
-```
----
-title: Reproducible Output
-author: Your Name
-date: 2025-01-01
-warning: false
-error: false
----
-```
-
-### Output formats
-
-The default output format in Quarto is HTML, which is by far the most flexible. However, Quarto is a very versatile publishing system and can generate many different output formats, including PDF, DOCX and ODT, slide formats, Markdown suited for GitHub... and even whole blogs, books and dashboards.
-
-Let's try rendering a PDF:
-
-```
----
-title: Reproducible Output
-author: Your Name
-date: 2025-01-01
-format: pdf
----
-```
-
-When rendering PDFs, the first issue we might run into is the lack of a LaTeX distribution. If Quarto didn't detect one, it will suggest to install tinytex (a minimal LaTeX distribution) with this terminal command:
-
-```
-quarto install tinytex
-```
-
-Once that is installed, Quarto should render a PDF.
-
-Another issue with our example document is that an interactive HTML visualisation won't be rendered in the PDF. You can suppress it by using the `#| eval: false` option:
-
-````{verbatim}
-```{r}
-#| title: Age vs Height
-#| echo: false
-#| eval: false
-p <- ggplot(players, aes(x = age, y = height_cm, colour = positions, label = name, label2 = nationality)) + 
-  geom_point() + 
-  facet_wrap(vars(positions)) + 
-  labs(x = "Age", colour = "Position", y = "Height (cm)")
-library(plotly)
-ggplotly(p)
-```
-````
-<!-- 
-#### Dashboard
-
-A great way to present a variety of outputs in a grid is by creating a HTML dashboard.
-
-Let's modify our script to render a dashboard. First, change the output format:
-
-```
----
-title: Reproducible Output
-author: Your Name
-date: 2025-01-01
-format: dashboard
----
-```
+## Add a hillshade
 
-We can already render the dashboard and see the result. Each panel can be expanded with the bottom-right button. Note that by default:
+Adding a **hillshade** makes your visualisation of elevation more readable and visually pleasing by giving an artificial lighting look to your map.
 
-* each cell is rendered in a separate card
-* headings define the rows
-* the heading text is discarded
-* code is not shown (but can be by using `echo: true`)
-
-Given this default behaviour, you might have to rethink a good part of your script to make it suited for a striking dashboard. For example, removing most of the text, customising the layout (tabsets, rows, card heights...) and adding custom cards like "value boxes". Learn more about all these in the [Quarto Dashboards documentation](https://quarto.org/docs/dashboards/).
-
-As a starting point, copy the current script across to a new script called `dashboard.rmd` and modify it so it matches the following:
-
-````{verbatim}
----
-title: "My dashboard"
-author: Your Name
-date: 2025-01-01
-format: dashboard
-warning: false
----
-
-```{r}
-players <- read.csv("../../data/Players2024.csv")
-```
-
-```{r}
-library(dplyr)
-players <- players %>% filter(positions != "Missing", height_cm > 100)
-```
-
-## Figures {height=70%}
-
-```{r}
-#| title: Goalkeepers tend to be taller
-#| fig-alt: "A boxplot of the relationship between height and position."
-library(ggplot2)
-ggplot(players, aes(x = positions, y = height_cm)) + 
-  geom_boxplot() + 
-  labs(x = "Position", y = "Height (cm)")
-```
-
-```{r}
-#| title: Age vs Height by position
-p <- ggplot(players, aes(x = age, y = height_cm, colour = positions, label = name, label2 = nationality)) + 
-  geom_point() + 
-  facet_wrap(vars(positions)) + 
-  labs(x = "Age", colour = "Position", y = "Height (cm)")
-library(plotly)
-ggplotly(p)
-```
-
-## Table
-
-```{r}
-#| title: A glimpse at the dataset
-library(knitr)
-kable(players)
-```
-````
-
-This results in a dashboard containing three cards organised in two rows. The top row uses 70% of the available height, and the bottom row shows a table of the top 10 rows of the dataset. Each card has a title.
-
-![Quarto dashboard with three cards: static visualisation, interactive visualisation, and table.](img/dashboard.png) -->
-
-## Git and GitHub
-
-**Git** is a version control system that allows to record a clean history of your project, track precise authorship, and collaborate asynchronously with others. It can be used offline, from the command line or with integration into Integrated Desktop Environments
-
-
-**GitHub** is one of many websites that allow you to host projects that are tracked with Git. But even without using Git at all, it is possible to use GitHub to share and make your project public. Many researchers use it to make their code public alongside a published paper, to increase reproducibility and transparency. It can also be useful to build and share a portfolio of your work.
-
-Fortunately, RStudio does have Git integration! If you have Git installed on your computer, you can use the "Git" section to commit those changes to a repository. You can then push and pull GitHub to keep your local copy in sync.
-
-Learning about the ins and out of Git takes time, so in this section we will mainly use GitHub as a place to upload and share your code and outputs, and as a starting point for learning more about Git in the future.
-
-### GitHub
-
-[GitHub](https://github.com/) is currently the most popular place for hosting, sharing and collaborating on code. You can create an account for free, and then create a **repository** for your project.
-
-1. Create an account and log in
-1. Click on the "+" button (top right of the page)
-1. Select "New repository"
-1. Choose a name and description for your repository
-1. Tick "Add a README file" - this will be where you introduce your project
-1. Click "Create repository"
-
-From there, you can upload your files, and edit text-based files straight from your web browser if you need to.
-
-The README file is a markdown file that can contain the most important information about your project. It's important to populate it as it is the first document most people see. It could contain:
-
-* Name and description of the project
-* How to use it (installation process if any, examples...)
-* Who is the author, who maintains it
-* How to contribute
-
-For inspiration, see the [pandas README file](https://github.com/pandas-dev/pandas?tab=readme-ov-file#pandas-powerful-python-data-analysis-toolkit).
-
-To practice managing a git repository on GitHub, try creating a personal portfolio repository where you can showcase what you have worked on and the outputs your are most proud of.
-
-## Further resources
-
-* Some alternatives to GitHub: [Codeberg](https://codeberg.org/) and [Gitlab](https://gitlab.com)
-* [Quarto documentation](https://quarto.org/)
-* [Course on Git from the command line](https://github.com/uqlibrary/technology-training/blob/master/Git/git.md)
-* [Course on Git with GitHub](https://github.com/uqlibrary/technology-training/blob/master/Git/GitHub/GitHub_intro.md)
-* [Book on Git for R and RStudio users](https://happygitwithr.com/), by Jenny Bryan
+-   Right-click on the DEM layer and "Duplicate layer"
+-   Rename the duplicated layer "hillshade"
+-   Open the Symbology menu for the hillshade layer
+-   Change the "Render type" to "Hillshade"
+-   The defaults should work well, but you can play with the settings, like the Altitude and the Azimuth
+-   Make sure you apply some transparency to the pseudocolour DEM, and place the hillshade layer underneath (in `Properties > Symbology > Transparency`)
+-   Down the bottom of the window under **Resampling** change the `Zoomed: in` and `out` from "Nearest Neighbour" to "Cubic" (this will remove some of the grid-like patterns you might see in your Hillshade layer otherwise)
+
+> Another method is to use the hillshade tool instead of the symbology: `Raster > Analysis > Hillshade...`.
+
+## Create a watershed layer
+
+Using the Strahler tool, we can create a **watershed** raster that shows where water would flow according to the DEM.
+
+Open the Processing Toolbox (cog icon) and try using the SAGA Next Gen tool called "**Strahler order**" using the clipped DEM as an input (a temporary file is fine for now).
+
+Look at the result. It looks like there are few issues with our data. You may get a question mark symbol ![image](https://user-images.githubusercontent.com/67612228/197657028-314f7460-1c2c-4a5c-b447-25b82bea39ee.png) next to your data, when hovered over it will say "There is no coordinate reference system set!". To resolve this, issue, simply left-click on the question mark symbol and assign "EPSG:7856 - GDA2020 / MGA zone 56" as the CRS.
+
+However there is still another issue with our data. A common problem with DEMs is that they have sinks and spikes that will make further analyses more difficult. This will mean the analysis is unable to best find where the water would flow. To resolve this, we need to use another tool to smooth out our raster before using the Strahler order tool.
+
+We can use the "Fill sinks (Wang & Liu)" tool to **fill the sinks** in our clipped DEM.
+
+-   When we do that, we might have to play with the "Minimum slope" value. A value of 0.01 degrees should work well if the layer was reprojected to a suitable Projected Reference System.
+-   As an output, we only need to tick the "Filled DEM" (first one in the list), which we can also save to file. You can however keep the "Watershed Basins" output to check that your minimum slope is high enough.
+
+If we **re-run the Strahler order tool** on the filled DEM, we will be able to see more useful data.
+
+We can now colour the layer with "Singleband pseudocolor" to highlight the bigger streams. A palette that goes from white (for low values) to a dark colour (for high values) should work well. You can also set the smaller streams to be transparent to filter them out.
+
+> Another way to filter out the noise of the smaller streams and **highlight the major streams** in the network, we can use the `Raster > Raster Calculator` tool and use a formula like: `"name_of_layer@1" >= 6` (the value will depend on how many levels exist in the Strahler layer). We need to save to file to be able to do that (name it "strahler_filtered", for example). This will assign the value 1 to the cells matching the condition, and 0 to what is under the limit.
+
+## Channel network and drainage basin
+
+Another analysis we can do is use the "Channel network and drainage basins" tool to calculate the **flow direction, channels and drainage basins**.
+
+-   Make sure you run this tool on the filled DEM.
+-   We might have to change the threshold to a higher one if the output includes too many small basins and channels. As the threshold is related to the Strahler order number, the middle point of your previous Strahler order values is a usually a good default.
+
+You might want to play with different threshold values depending on what you're looking for. If you want to look at the main drainage basins of a region, you need to set the threshold higher. If you want to find all the small channels, you need to set the threshold lower. It's worth trying a few options to find what works best for your dataset and the story you're trying to tell.
+
+As an output, we only want to load (and save to file) the two non-optional outputs:
+
+-   Channels
+-   Drainage basins (shapefile) (to differentiate the two "Drainage basins" options, you can check what format it saves the file as)
+
+This is an example of **creating vector data from raster data**!
+
+We can now play with the **symbology** for those elements. For example:
+
+-   Try using different colours for each basin, by classifying by ID, or remove the fill (`Simple fill > Fill Style > No Brush`) so you can see the colours of the elevation colours underneath. You can also make the borders more obvious by changing the width of the stroke.
+-   Change the colour of the channels.
+    -   Change the symbol from "Single Symbol" to Graduated.
+    -   Set the `Value` to "Order"
+    -   Choose an appropriate colour ramp
+    -   Change the `Mode` down the bottom of the window to "Equal Interval"
+    -   Click Apply
+-   You can also further differentiate minor channels from major ones by using a "Data defined override" for the Width value:
+    -   Click on the bar next to `Symbol` ![image](https://user-images.githubusercontent.com/67612228/197659925-41753cd0-2fc7-4534-b6ec-7ddc4775d721.png)
+    -   Click on the "Data defined override" icon ![image](https://user-images.githubusercontent.com/67612228/197659891-5474b893-2de3-47a4-95f5-9991b394ecf3.png) next to the Width field
+    -   Use the "Assistant"
+    -   "Source" needs to be the column "ORDER" (which corresponds to the Strahler order)
+    -   Click the double-arrow icon to "Fetch value range from layer"
+    -   Change the "Size from" and "to" values to suitable values
+
+## Viewshed
+
+If you want to know what can be seen from a certain point in a landscape you can use a DEM to perform a Viewshed Analysis.
+
+Open the Processing Toolbox (cog icon) and search for the GDAL tool called "**Viewshed**".
+
+-   **Input Layer**: Choose your **Reprojected DEM** layer
+-   Click the three dots next to **Observer location** to select a point on the map
+-   **Observer height, DEM units**: 1.6 (the average human eye height is around 1.6m, choose a height you think might be appropriate)
+-   **Target height, DEM units**: 1 (this means that the points around the observer will be obscured by any surface that is higher than 1m. If you want to know what *ground* your observer will see, choose something closer to 0)
+-   **Maximum distance from observer to compute visibility**: 5000 (5km is the distance you can see on flat ground due to the curvature of the earth, this would change if you were higher up, for which you can find [calculators and a formula](https://www.omnicalculator.com/physics/distance-to-horizon))
+
+This will produce a black and white raster showing what can be seen, and what can't. Go to the Layer **Styling Menu**, and change it to **Singleband Pseudocolor**, change the **Mode** to **Equal Interval**, and set the **Classes** to **2**. Change one of the Colors to transparent to highlight either what can be see, or what cannot.
+
+As an extra feature. You can do the reverse analysis with a Viewshed. That is, you could use this to know what landmarks are visible in a landscape. Set the Observer Height to that of a building or tree in the landscape, and the Target Height to be that of people in the landscape, and you'll know where it can be seen from.
+
+If you want to get more sophisticated with your Viewshed analyses, there is, of course, a plugin called **Visibility Analysis** which will allow you to use one or multiple points as observers, take in account of the Earth's curvature, see what vector points can see other vector points, and more.
+
+## 3D maps
+
+A 3D viewer is integrated in QGIS: `View > 3D Map Views > New 3D Map View`
+
+In the 3D map window, make sure to first:
+
+-   Click the **Options** wrench icon, choose `Configure > Terrain`, set the "Type" to "DEM (Raster layer)", and set the "Elevation" to your clipped DEM.
+-   Exaggerate the relief with the "Vertical scale" setting (try 3).
+
+To see the 3D effect, you will have to use your <kbd>Ctrl</kbd> or <kbd>Shift</kbd> keys on your keyboard while panning with the mouse to change the angle of view.
+
+To avoid seeing gaps in the rendering, you can go back to your Terrain options and set the "Tile resolution" and "Skirt height" to higher values.
+
+> A useful plugin for 3D maps is qgis2threeJS, which might be handy to add a 3D map to a website.
+
+## Exporting
+
+Use the Layout Manager to create a new layout, and insert both a 2D map and a 3D map.
+
+When inserting the 3D map, it will tell you that the "scene is not set". You will have to import the 3D scene settings from your view: `Item Properties > Scene Settings > Copy Scene Settings from a 3D View...` and then select your 3D map from the drop-down.
+
+## Saving your project
+
+Notice the little icon next to some of your layers? We previously created "temporary scratch layers". This is useful if you keep processing data and creating new layers that you want to discard afterwards. In our case, we do want to keep the "cities" and "rivers" layers, so we need to save them to a file. If we try to close QGIS with scratch layers loaded, it will give you a warning that they will be lost in the process.
+
+You can click on the scratch layer icon to save the file. In the dialog, we can give the layers a `File name` (in our project's home directory) and click OK.
+
+You can save your project with the floppy disk icon, or using <kbd>Ctrl</kbd> + <kbd>S</kbd>, and the project should be visible in a list as soon as you open QGIS again.
+
+
+
+## Feedback
+
+Please visit our website to [provide feedback](https://web.library.uq.edu.au/study-and-learning-support/training-and-workshops/software-training-resources) and find upcoming training courses we have on offer.
+

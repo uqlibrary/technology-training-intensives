@@ -1,488 +1,183 @@
 ---
-title: Visualisation
+title: Data Sources and Projections
 editor: source
 date: today
 ---
 
-During this session, you will:
+## What are we going to learn?
 
-* Have a visualisation package installed (ggplot2)
-* Learn how to explore data visually
-* Learn about the 3 essential ggplot2 components
-* Use different kinds of visualisations
-* Layer several visualisations
-* Learn how to customise a plot with colours, labels and themes.
+In this workshop, we will learn about:
 
-## Installing ggplot2
 
-We first need to make sure we have the **ggplot2 package** available on our computer. We can use the "Install" button in the "Packages" pane, or we can execute this command in the console: `install.packages("ggplot2")`
+### Projections
 
-You only need to install a package once, but you need to load it every time you start a new R session.
+-   Why we have them and what goes wrong without them
+-   GCS vs PCS
+-   Local Projections
+-   Area Calculation differences
 
-We will write ggplot2 code more comfortably in a **script**. Feel free to continue using the script from previous sessions, or create a new one about visualisations.
+### Data Sources
 
-We can straight away **load the package into the library** by adding this command to our script and executing it:
+-   Local, State, Federal Gov Data
+-   International
+-   NGO
+-   Corporate (ESRI, etc)
+-   WMS etc
 
-```{r}
-library(ggplot2)
-```
 
-## Finding help
 
-We are going to work with different datasets that come with the ggplot2 package. For any dataset or function doubts that you might have, don't forget the three ways to bring up a help page:
+## What are Projections?
 
-1. the command: `?functionname`
-1. the keyboard shortcut: press <kbd>F1</kbd> after writing a function name
-1. the search box in the Help pane
+This content is currently in Vector and in Field Work.
 
-### Introducing ggplot2
 
-The R package ggplot2 was developed by Hadley Wickham with the objective of creating a grammar of graphics for categorical data (in 2007). It is based on the book _The Grammar of Graphics_ Developed by Leland Wilkinson (first edition published in 1999).
+# Data
 
-It is now part of the group of data science packages called Tidyverse.
+This is a list of Spatial data sources that you might find useful. Some are used in our workshops, others didn't fit, but are still very valuable.
+Some of the data sources will have instructions for extracting the data, some will not. This is primarily a repository to refer to and use to find data. 
 
-## The components of the Grammar of Graphics
 
-The Grammar of Graphics is based on the idea that you can build every graph from the same few components.
+## Council Data
 
-The components are:
+[Sunshine Coast MyMaps](https://scrc.maps.arcgis.com/apps/webappviewer/index.html?id=48501cb9e7294555be5b08e35e949616)
 
-* Data
-* Mapping
-* Statistics
-* Scales
-* Geometries
-* Facets
-* Coordinates
-* Theme
 
-In this introductory session, we will mainly focus on the **data**, the **mapping**, the **statistics**, the **geometries** and the **theme**.
+## Federal Data
 
-## ggplot2's three essential components
+CSIRO's [Norfolk Island Data Portal](https://data.csiro.au/collection/csiro:43016)
+[CSIRO spatial products](https://data.csiro.au/collections/search/SQDEM/STsearch-by-keyword/).
 
-In ggplot2, the 3 main components that we usually have to provide are:
+## Raster Data
 
-1. Where the **data** comes from,
-2. the **aesthetic mappings**, and
-3. a **geometry**.
+### DEM
 
-For our first example, let's use the `msleep` dataset (from the ggplot2 package), which contains data about mammals' sleeping patterns.
+A Digital Elevation Model (DEM) is a common example of **raster data**, i.e. grid data that contains a value in each cell (a bit like the pixels in a coloured picture).
 
-> You can find out about the dataset with `?msleep`.
+For this tutorial, we are using a DEM sourced from **ELVIS** - Geoscience Australia's ELeVation Information System.
 
-Let's start with specifying where the **data** comes from in the `ggplot()` function:
+-   Go to <http://www.ga.gov.au/elvis/>
+-   Search for "St Lucia" in the `Location Search` search box and select the first result
+-   Click `Order Data`
+-   Choose "Draw" and "Box" and then click the `Draw` button
+-   Click on the map to start drawing a rectangle around your desired area
+-   Then click `Search`
+-   The right panel will show you all the different datasets available in that area
+-   We want the QLD Government Digital Elevation Model 1 Metre, click the down arrow on the right
+-   As you hover over the different options, they will highlight a red box on the map, click the tick box and select all that overlap the area you're interested in (note that there may be data from different years here)
+-   When you have the data you want, scroll to the bottom of the Order Data window
+-   Select your industry, enter your email, tick the reCAPTCHA, and click the `Order Datasets` button
+-   You should receive an email within 5 minutes, download the files from the link in the email, extract the folder to your project folder, and add them to your map.
 
-```{r}
-ggplot(data = msleep)
-```
+### Aerial Imagery
 
-This is not very interesting. We need to tell ggplot2 *what* we want to visualise, by **mapping** *aesthetic elements* (like our axes) to *variables* from the data. We want to visualise how common different conservations statuses are, so let's associate the right variable to the x axis:
+There are a few places you can aquire aerial photography, today we will look at two sources, one is freely available Government Data, the other is accessible from using your UQ credentials.
 
-```{r}
-ggplot(data = msleep,
-       mapping = aes(x = conservation))
-```
+As a UQ student, you also have access to very high resoltuion imagery from **NearMap**. You can even access an array of imagery going back in time.
 
-ggplot2 has done what we asked it to do: the conservation variable is on the x axis. But nothing is shown on the plot area, because we haven't defined *how* to represent the data, with a `geometry_*` function:
+-   Go to the [UQ NearMap Portal](https://admin.nearmap.com/invitation/domain-signup?token=q9WIbXMtna1iskb2meNGhKpCaQp3WTRbMhXpQVGWkKouKUeqzkpjNznC_Ogz5iKYiw0Ev7vym2Ykaj_W_V4dBbTzR6qUX2eTDsNHpBuR4XbU9vDRxQN_Rg==)
+-   Enter your UQ Student (@student.uq.edu.au) or Staff (@uq.edu.au) email address, with the appropriate domain selected. Click "Invite me".
+-   You should receive an email soon after, click the "Accept Invitation" button, and go through the account setup process.
+-   Go to Login and enter your email address, click "Next" and enter your password.
+-   From the top right select `MapBrowser`.
+-   Type "St Lucia, QLD" in the search box, press enter
+-   You can click the date down the bottom to look at different snapshots in time, and even compare maps side-by-side.
+-   To save imagery from NearMap, simply click the "Exports" button on the left handside (it is an image icon)
+-   From the menu that appears change the "Export type" to "Georeferenced image"
+-   From "Projection" choose GDA2020 / MGA zone 56
+-   You can increase and decrease the size of the bounding box by adjusting its corners, a smaller box means you can have a finer resolution, down to 0.075m. If we select all of UQ St Lucia in one go, the highest resolution we can have is 0.299m.
+-   Once you're happy with your selection click `Download Files`
+-   Move the downloaded zip file to your project folder, and open them in QGIS
 
-```{r}
-ggplot(data = msleep,
-       mapping = aes(x = conservation)) +
-  geom_bar()
-```
 
-Now we have a useful plot: we can see that a lot of animals in this dataset don't have a conservation status, and that "least concern" is the next most common value.
+## More Data Sources
 
-We can see our three essential elements in the code:
+### Aerial Imagery
 
-1. the **data** comes from the `msleep` object;
-1. the variable `conservation` is **mapped to the aesthetic** `x` (i.e. the x axis);
-1. the **geometry** is `"bar"`, for "bar chart".
+There are a few places you can aquire aerial photography, today we will look at two sources, one is freely available Government Data from **QImagery**, the other is accessible from using your UQ credentials.
 
-Here, we don't need to specify what variable is associated to the y axis, as the "bar" geometry automatically does a count of the different values in the `conservation` variable. That is what **statistics** are applied automatically to the data.
+-   Go to [QImagery](https://qimagery.information.qld.gov.au/)
+-   Read and tick the "I acknowledge I have read and agree to the Terms & Conditions" box, and click `Get Started`
+-   Click the Search button, select 'locality, town or city' and search for "St Lucia" in the "Enter search term" search box and select the first result
+-   It will zoom to your selected location then click the newly appeared `Search` button
+-   From here you can select from a wide array of images of QLD over many years.
+-   Click one of the drop-downs and hover over the options to see where those images are located. Preview the image by clicking View.
+-   You can then download your desired images by clicking "Download" and selecting TIFF (georeferenced)
+-   Move the TIFF file(s) to your project folder, and open them in QGIS
 
-> In ggplot2, each geometry has default statistics, so we often don't need to specify which stats we want to use. We could use a `stat_*()` function instead of a `geom_*()` function, but most people start with the geometry (and let ggplot2 pick the default statistics that are applied).
+You can also get historical images from Geoscience Australia's [Historical Aerial Photo (HAP) Collection](https://experience.arcgis.com/experience/9a0ecbafe94f49829712b46fc69186ff)
 
-## Line plots
 
-Let's have a look at another dataset: the `economics` dataset from the US. Learn more about it with `?economics`, and have a peak at its structure with:
+### More Web Mapping Services
 
-```{r}
-str(economics)
-```
+Add any of these URLs via **ArcGIS REST Servers** in QGIS
 
-Do you think that unemployment is stable over the years? Let's have a look with a line plot, often used to visualise time series:
+[QLD Gov Aerial Basemap](https://www.data.qld.gov.au/dataset/queensland-imagery-latest-state-program-public-basemap-service)
 
-```{r}
-ggplot(data = economics,
-       mapping = aes(x = date,
-                     y = unemploy)) + 
-    geom_line()
-```
+[QLD Gov Roads](https://spatial-gis.information.qld.gov.au/arcgis/rest/services/Transportation/RoadsAndTracks/MapServer)
 
-Let's go through our essential elements once more:
+[QLD Heritage Areas](https://spatial-gis.information.qld.gov.au/arcgis/rest/services/Boundaries/AdminBoundariesFramework/MapServer)
 
-* The `ggplot()` function initialises a ggplot object. In it, we declare the **input data frame** and specify the set of plot aesthetics used throughout all layers of our plot;
-* The `aes()` function groups our **mappings of aesthetics to variables**;
-* The `geom_<...>()` function specifies what **geometric element** we want to use.
+[More QLD Gov Services](https://spatial-gis.information.qld.gov.au/arcgis/rest/services)
 
-## Scatterplots
+[Brisbane/SEQ Utilities](https://services3.arcgis.com/ocUCNI2h4moKOpKX/ArcGIS/rest/services)
 
-Scatterplots are often used to look at the relationship between two variables. Let's try it with a new dataset: `mpg` (which stands for "miles per gallon"), a dataset about fuel efficiency of different models of cars.
+[BCC Data](https://services2.arcgis.com/dEKgZETqwmDAh1rP/ArcGIS/rest/services)
 
-```{r eval=FALSE}
-?mpg
-str(mpg)
-```
+[Random User's Data](https://services9.arcgis.com/Ov1diE0uxjL6wSzH/ArcGIS/rest/services/)
 
-Do you think that big engines use fuel more efficiently than small engines?
+[10000+ Searchable Feature Layers from ArcGIS](https://www.arcgis.com/home/search.html?restrict=false&sortField=relevance&sortOrder=desc&focus=layers-weblayers-features#content)
 
-We can focus on two variables:
+[NearMap API](https://help.nearmap.com/kb/articles/752)
 
-* `displ`: a car’s engine size, in litres.
-* `hwy`: a car’s fuel efficiency on the highway, in miles per gallon.
 
-For the geometry, we now have use "points":
 
-```{r}
-ggplot(data = mpg,
-       mapping = aes(x = displ,
-                     y = hwy)) +
-    geom_point()
-```
+## Vector Data
 
-Notice how the points seem to be aligned on a grid? That's because the data was rounded. If we want to better visualise the density of points, we can use the "count" geometry, which makes the dots bigger when data points have the same `x` and `y` values:
+### Lot Plans
 
-```{r}
-ggplot(data = mpg,
-       mapping = aes(x = displ,
-                     y = hwy)) +
-    geom_count()
-```
+You can access a wide variety of QLD Government Data, including Spatial Data such as lot plans and vegetation maps, from QLD Spatial. There are three ways to access this data. You can download all of it, you can select a portion for download, or you can live load it into your project. Today we  download the files covering our project area.
 
-Alternatively, we can avoid overlapping of points by using the "jitter" geometry, which gives the points a little shake:
+-   To access data from QLD Spatial go to <https://qldspatial.information.qld.gov.au/>
 
-```{r}
-ggplot(data = mpg,
-       mapping = aes(x = displ,
-                     y = hwy)) +
-    geom_jitter()
-```
+-   Search for "property boundaries"
 
-Even though the position of the dots does not match exactly the original `x` and `y` values, it does help visualise densities better.
+-   Scroll down to "Property boundaries Queensland" and click **Add to my list**
 
-The plot shows a negative relationship between engine size (`displ`) and fuel efficiency (`hwy`). In other words, cars with big engines use more fuel. Does this confirm or refute your hypothesis about fuel efficiency and engine size?
+-   Click **My List** from the top menu
 
-However, we can see some outliers. We need to find out more about our data.
+-   Click **View/extract in map**
 
-## Adding aesthetics
+-   Under Extractable Data, click the box next to **Property boundaries Queensland**, it will become green
 
-We can highlight the "class" factor by adding a new aesthetic:
+-   Click **Extract/download**
 
-```{r}
-ggplot(data = mpg,
-       mapping = aes(x = displ,
-                     y = hwy,
-                     colour = class)) +
-    geom_jitter()
-```
+-   Click **Choose an area**
 
-It seems that two-seaters are more fuel efficient than other cars with a similar engine size, which can be explained by the lower weight of the car. The general trend starts to make more sense!
+-   Select **BRISBANE CITY** from the Select LGA option
 
-We now know how to create a simple scatterplot, and how to visualise extra variables. But how can we better represent a correlation?
+-   Choose GeoPackage 1.0 from Select output format
 
-## Trend lines
+-   Enter your Email Address
 
-A trend line can be created with the `geom_smooth()` function:
+-   Accept the Terms and Conditions
 
-```{r}
-ggplot(mpg,
-       aes(x = displ,
-           y = hwy)) +
-    geom_smooth()
-```
+-   Click **Extract/Download**
 
-> We stopped using the argument names because we know in which order they appear: first the data, then the mapping of aesthetics. Let's save ourselves some typing from now on!
+-   You can can also just download the preprepared data [here](https://github.com/uqlibrary/technology-training/blob/8e0aebe078198cd8bb65630c9ac4c4c8558a4392/QGIS/mobile/QGIS_Mobile_Data.zip), just press the three dots and download.
 
-The console shows you what function / formula was used to draw the trend line. This is important information, as there are countless ways to do that. To better understand what happens in the background, open the function's help page and notice that the default value for the `method` argument is "NULL". Read up on how it automatically picks a suitable method depending on the sample size, in the "Arguments" section.
+-   Move the downloaded zip file to your project raw data folder, and open the shapefile in QGIS
 
-Want a linear trend line instead? Add the argument `method = "lm"` to your function:
+### Queensland Globe
 
-```{r}
-#| message: false
-ggplot(mpg,
-       aes(x = displ,
-           y = hwy)) +
-    geom_smooth(method = "lm")
-```
+Another way to access QSpatial Data is using the Queensland Globe portal.
 
-## Layering
-
-A trend line is usually displayed on top of the scatterplot. How can we combine several layers? We can string them with the `+` operator:
-
-```{r}
-#| message: false
-ggplot(mpg,
-       aes(x = displ,
-           y = hwy)) + 
-    geom_point() +
-    geom_smooth()
-```
-
-> The order of the functions matters: the points will be drawn before the trend line, which is probably what you're after.
-
-## The `colour` aesthetic
-
-We can once again add some information to our visualisation by mapping the `class` variable to the `colour` aesthetic:
-
-```{r}
-#| message: false
-ggplot(mpg,
-       aes(x = displ,
-           y = hwy)) + 
-    geom_point(aes(colour = class)) + 
-    geom_smooth()
-```
-
-**Challenge 1 – where should aesthetics be defined?**
-
-Take the last plot we created:
-
-```{r eval=FALSE}
-ggplot(mpg,
-       aes(x = displ,
-           y = hwy)) + 
-    geom_point(aes(colour = class)) + 
-    geom_smooth()
-```
-
-What would happen if you moved the `colour = class` aesthetic from the geometry function to the `ggplot()` call?
-
-Different geometries can also have their own mappings that overwrite the defaults.
-If you place mappings in a `geom_*` function, ggplot2 will treat them as local mappings for the layer. It will use these mappings to extend or overwrite the global mappings for that layer only. This makes it possible to display different aesthetics in different layers.
-
-## Saving a plot
-
-Like your visualisation? You can export it with the "Export" menu in the "Plots" pane.
-
-* Building a document or a slideshow? You can copy it straight to your clipboard, and paste it into it.
-* A PDF is a good, quick option to export an easily shareable file with vector graphics. Try for example the "A5" size, the "Landscape" orientation, and save it into your "plots" directory.
-* More options are available in the "Save as image..." option. PNG is a good compressed format for graphics, but if you want to further customise your visualisation in a different program, use SVG or EPS, which are vector formats. (Try to open an SVG file in [Inkscape](https://inkscape.org/) for example.)
-
-To save the last plot with a command, you can use the `ggsave()` function:
-
-```{r eval=FALSE}
-ggsave(filename = "plots/fuel_efficiency.png")
-```
-
-This is great to automate the export process for each plot in your script, but `ggsave()` also has extra options, like setting the DPI, which is useful for getting the right resolution for a specific use. For example, to export a plot for your presentation:
-
-```{r eval=FALSE}
-ggsave(filename = "plots/fuel_efficiency.png", dpi = "screen")
-```
-
-> Saving a .svg file with requires installing the svglite package. This packages seems so work best installing in a fresh R session (Session > Restart R) from source `install.packages("svglite", type = "source")`. Then load the library `library(svglite)` rerun your code including loading previous libraries (`ggplot2` etc.) and now saving a plot with a .svg extension should work! 
-
-**Challenge 2 – add a variable and a smooth line**
-
-Let's use a similar approach to what we did with the `mpg` dataset.
-
-Take our previous unemployment visualisation, but represented with points this time:
-
-```{r eval=FALSE}
-ggplot(economics,
-       aes(x = date,
-           y = unemploy)) + 
-    geom_point()
-```
-
-How could we:
-
-1. Add a smooth line for the number of unemployed people. Are there any interesting arguments that could make the smoother more useful?
-2. Colour the points according to the median duration of unemployment (see `?economics`)
-
-```{r}
-#| message: false
-ggplot(economics,
-       aes(x = date,
-           y = unemploy)) + 
-    geom_point(aes(colour = uempmed)) +
-    geom_smooth()
-```
-
-> See how the legend changes depending on the type of data mapped to the `colour` aesthetic? (i.e. categorical vs continuous)
-
-This default "trend line" is not particularly useful. We could make it follow the data more closely by using the `span` argument. The closer to 0, the closer to the data the smoother will be:
-
-```{r}
-#| message: false
-ggplot(economics,
-       aes(x = date,
-           y = unemploy)) + 
-    geom_point(aes(colour = uempmed)) +
-    geom_smooth(span = 0.1)
-```
-
-You can now see why this is called a "smoother": we can fit a smooth curve to data that varies a lot.
-
-To further refine our visualisation, we could visualise the unemployment rate rather than the number of unemployed people, by calculating it straight into our code:
-
-```{r}
-#| message: false
-ggplot(economics,
-       aes(x = date,
-           y = unemploy / pop)) + 
-    geom_point(aes(colour = uempmed)) +
-    geom_smooth(span = 0.1)
-```
-
-The [early 1980s recession](https://en.wikipedia.org/wiki/Early_1980s_recession) now seems to have had a more significant impact on unemployment than the [Global Financial Crisis](https://en.wikipedia.org/wiki/Financial_crisis_of_2007%E2%80%9308) of 2007-2008.
-
-## Bar charts and ordered factors
-
-Let's use the `diamonds` dataset now.
-The `diamonds` dataset comes with ggplot2 and contains information about ~54,000 diamonds, including the price, carat, colour, clarity, and cut quality of each diamond.
-
-Let's have a look at the data:
-
-```{r eval=FALSE}
-diamonds
-summary(diamonds)
-?diamonds
-```
-
-Back to bar charts. Consider a basic bar chart, as drawn with `geom_bar()`. The following chart displays the total number of diamonds in the `diamonds` dataset, grouped by cut:
-
-```{r}
-ggplot(diamonds,
-       aes(x = cut)) + 
-    geom_bar()
-```
-
-The chart shows that more diamonds are available with high quality cuts than with low quality cuts.
-
-`cut` is an ordered factor, which you can confirm by printing it to the console:
-
-```{r}
-head(diamonds$cut)
-```
-
-See how ggplot2 respects that order in the bar chart?
-
-### Customising a plot
-
-Let's see how we can customise our bar chart's look.
-
-#### Change a geometry's default colour
-
-First, we can pick our favourite colour in `geom_bar()`:
-
-```{r}
-ggplot(diamonds,
-       aes(x = cut)) + 
-    geom_bar(fill = "tomato")
-```
-
-If you are curious about what colour names exist in R, you can use the `colours()` function. Alernatively, you can use any hex value like "#760daa".
-
-### Change labels
-
-We can also modify labels with the `labs()` function to make our plot more self-explanatory:
-
-```{r}
-ggplot(diamonds,
-       aes(x = cut)) + 
-    geom_bar(fill = "tomato") +
-    labs(title = "Where are the bad ones?",
-         x = "Quality of the cut",
-         y = "Number of diamonds")
-```
-
-Let's have a look at what `labs()` can do:
-
-```{r eval=FALSE}
-?labs
-```
-
-It can edit the title, the subtitle, the x and y axes labels, and the caption.
-
-> Remember that captions and titles are better sorted out in the publication itself, especially for accessibility reasons (e.g. to help with screen readers).
-
-### Horizontal bar charts
-
-For a horizontal bar chart, we can map the `cut` variable to the `y` aesthetic instead of `x`. But remember to also change your labels around!
-
-```{r}
-ggplot(diamonds,
-       aes(y = cut)) + # switch here...
-  geom_bar(fill = "tomato") +
-  labs(title = "Where are the bad ones?",
-       y = "Quality of the cut", # ...but also here!
-       x = "Number of diamonds") # ...and here!
-```
-
-This is particularly helpful when long category names overlap under the x axis.
-
-### Built-in themes
-
-The `theme()` function allows us to really get into the details of our plot's look, but some `theme_*()` functions make it easy to apply a built-in theme, like `theme_bw()`:
-
-```{r}
-ggplot(diamonds,
-       aes(y = cut)) + 
-  geom_bar(fill = "tomato") +
-  labs(title = "Where are the bad ones?",
-       y = "Quality of the cut",
-       x = "Number of diamonds") +
-  theme_bw()
-```
-
-Try `theme_minimal()` as well, and if you want more options, install the `ggthemes` package!
-
-## Interactive visualisations
-
-Plotly is a package that allows creating interactive visualisation. A nifty aspect of it is that it can directly convert most static ggplot2 visualisations to interactive HTML visualisations.
-
-After installing the package, you can convert our mpg visualisation by saving it as an object, and passing it to the `ggplotly()` function:
-
-```{r}
-#| message: false
-#| warning: false
-static_plot <- ggplot(mpg,
-                      aes(x = displ,
-                          y = hwy)) + 
-  geom_jitter(aes(colour = class)) + 
-  geom_smooth()
-library(plotly)
-ggplotly(static_plot)
-```
-
-We can now use our mouse to hover over points and see the associated data, turn series off and on, and draw rectangles to zoom in.
-
-This kind of visualisation is a good way to expose extra data through the tooltips. For example, associating the "manufacturer" and "model" variables to "label" aesthetics in the ggplot2 command won't show that information on the static visualisation (unless labelling geometry is used), but it will be included in the plotly tooltip:
-
-```{r}
-#| message: false
-#| warning: false
-static_plot <- ggplot(mpg,
-                      aes(x = displ,
-                          y = hwy)) + 
-  geom_jitter(aes(colour = class,
-                  label = manufacturer,
-                  label2 = model)) + 
-  geom_smooth()
-library(plotly)
-ggplotly(static_plot)
-```
-
-## Further resources
-
-+ [ggplot2 cheatsheet](https://www.rstudio.org/links/data_visualization_cheat_sheet)
-+ Official [ggplot2 documentation](https://ggplot2.tidyverse.org/reference/)
-+ Official [ggplot2 website](https://ggplot2.tidyverse.org/)
-+ [Chapter on data visualisation](https://r4ds.hadley.nz/data-visualize.html) in the book _R for Data Science_
-+ [From Data to Viz](https://www.data-to-viz.com/), a website to explore different visualisations and the code that generates them
-+ Selva Prabhakaran's [_r-statistics.co_ section on ggplot2](https://r-statistics.co/ggplot2-Tutorial-With-R.html)
-+ [Coding Club's data visualisation tutorial](https://ourcodingclub.github.io/tutorials/datavis/)
-+ [STHDA's ggplot2 essentials](https://www.sthda.com/english/wiki/ggplot2-essentials)
-+ Lear more about plotly and exploratory data analysis with the book _[Interactive web-based data visualization with R, plotly, and shiny](https://plotly-r.com/)_
+-   To access data from Queensland Globe go to [https://qldglobe.information.qld.gov.au](https://qldglobe.information.qld.gov.au)
+-   Accept the T&Cs.
+-   Click **Search**, Select **Locality (Suburb) within a Local Government Area**, and search for the location you want and select it from the list.
+-   Click **Layers**, click **Add Layers +** here you can scroll through and filter different layer types
+-   We want to tick the box next to `Planning Cadastre > Land Parcels > Land Parcel` (you may need to zoom in to see certain layers)
+-   To export data click the Wrench Icon in the top right, and then click the Identify icon (i)
+-   Use the triangular Identify Polygon tool to select and area of interest. Double click when you've finished selecting your area.
+-   The Layers menu will now show your selection. You can download all, or sections, of your selection.
+-   I will choose **Land Parcel** and then **Download** as a **shp** file.
+-   Note: You may need to disable other layers for this to work correctly. I needed to turn off the **Transportation** layer to prevent roads from being included in my selection.

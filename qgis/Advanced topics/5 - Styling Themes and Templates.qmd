@@ -1,380 +1,612 @@
 ---
-title: Statistics
+title: Styling Themes and Templates
 editor: source
 date: today
 ---
 
-This session is aimed as an overview of how to perform some statistical modelling with R. **It is an R workshop, not a statistics workshop** - if you'd like to better understand the statistical models, or need help deciding what's best for you, please consult a statistics resource or contact a statistician.
+## Today's Learning Goals
 
-In this session, we'll cover
+Main aims:
 
-- Descriptive statistics
-  - Measures of central tendancy
-  - Measures of variability
-  - Measures of correlation
-  
-- Inferential statistics
-  - Linear regressions
-  - Calculating confidence intervals
-  - T-tests
-  - $\chi^2$ test
-  - ANOVAs
+-   Create a pretty map for output
+-   Automate our map description
+-   Use templates
 
-We'll be working from our ["Players2024" dataset](../../data/Players2024.csv). After downloading it and putting it in your data folder, to bring it in and clean it up,
+If we have time:
 
-```{r eval=FALSE}
-library(dplyr)
-players <- read.csv("../../data/Players2024.csv")
-players <- players %>% filter(positions != "Missing", height_cm > 100)
-```
+-   Learn to use Web Mapping Services
+-   Georeference an Image
 
-```{r echo=FALSE}
-library(dplyr)
-players <- read.csv("../../data/Players2024.csv")
-players <- players %>% filter(positions != "Missing", height_cm > 100)
-```
+## The Brief
 
+We need to use our spatial files to make a map that:
 
-## Descriptive Statistics
+-   Shows the project outline
 
-We'll start with sample size. To calculate the number of non-empty observations in a column, say the numeric variable `players$height_cm`, we use the `length()` function
+-   Show the access paths
 
-```{r}
-length(players$height_cm)
-```
+-   Categorises the artefacts
 
-We can compute measures of central tendancy similarly. The average value is given by
+The current map in our project does accomplish these goals, but it's not inviting to look at.
 
-```{r}
-mean(players$height_cm)
-```
+To fix this, we need to ask some questions:
 
-and the median by
+**Who is the intended audience for our map**?
 
-```{r}
-median(players$height_cm)
-```
+-   A good looking map for a **Report** map may look different to an **Academic Paper** or a **Technical** map or to a map for the **Public**.
 
-### Measures of variance
+**What story am I trying to tell?**
 
-We can also compute measures of variance. The minimum and maximum are as expected
+-   Do you want to highlight a particular pattern in the data?
 
-```{r}
-min(players$height_cm)
-max(players$height_cm)
-```
+    -   You can use shapes and colour (esp. saturation) to bring your viewer to focus on certain elements of the map.
 
-The function `range()` yields both
+-   Does it need to look friendly or more professional?
 
-```{r}
-range(players$height_cm)
-```
+    -   Your choice of a colour palette can bring cohesion to your map.
 
-So the actual range, i.e. the difference, is
+-   Do you have a lot of dense information you need to convey?
 
-```{r}
-diff(range(players$height_cm))
-```
+    -   Perhaps you need to make more than one map.
 
-Quartiles are given by `quantile()` and the inter-quartile range (IQR)  by `IQR()`:
+-   Do you need to show what the land surface looks like, or not?
 
-```{r}
-quantile(players$height_cm)
-IQR(players$height_cm)
-```
+    -   That brings us to our next question:
 
-A column's standard deviation and variance are given by
+**What** **basemap does my map need**?
 
-```{r}
-sd(players$height_cm)
-var(players$height_cm)
-```
+The basemap sets the tone for the rest of the layers in the map, as they can greatly change the visual complexity of the map.
 
-All together, you can see a nice statistical summary with
+-   Satellite image - Geographically informative, but visually busy
 
-```{r}
-summary(players$height_cm)
-```
+-   Street map - Geographically informative, but visually busy
 
-### Measures of correlation
+-   Historical image - Informative and busy, but black and white imagery can be less visually busy
 
-If you've got two numeric variables, you might want to examine covariance and correlation. These indicate how strongly the variables are linearly related. We'll need to use the `players$age` variable as well.
+-   Simple topo map - Provides some information, but less visually busy
 
-The covariance between "height_cm" and "age" is
+-   No basemap - Centres focus on data, but provides no geographic context
 
-```{r}
-cov(players$height_cm, players$age)
-```
+## Basemaps
 
-Similarly, we can find the Pearson correlation coefficient between two columns. 
+Let's start by making a map we might use in an **Academic Paper** or in an **Article for the Public**, where we want to focus their attention on our data. Unless we really need **Satellite** imagery, or everything on the **OpenStreetMap**, it is too busy and distracting.\
+\
+Let's load in a new basemap.\
+\
+There are many ways of doing this, in the past we've used the **QuickMapServices** plugin to load in new basemaps, now we can go to the next step and source them externally. We can do this with WMTS (Web Map Tile Service), WCS (Web Coverage Service), ArcGIS REST Servers, and XYZ Tiles.
 
-```{r}
-cor(players$height_cm, players$age)
-```
+Today we're going to use an XYZ Tile from CARTODB.
 
-You can also specify "kendall" or "spearman" for their respective correlation coefficients
+-   Scroll down the `Browser` panel until your see **XYZ Tiles**
+-   Right click XYZ Tiles and select `New Connection...`
+    -   In `Name` type **Voyager (no labels)**
+    -   In `URL` paste:\
+        https://a.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}@2x.png
+    -   Increase the Max. Zoom Level to 20
+        -   This value depends on what is available from the given service in different parts of the world. Increasing that value beyond 20 for this map in Brisbane will show "Map data not yet available" when you zoom in very close.
+    -   Click `OK`
+-   In the `Browser` panel, expand `XYZ Tiles` and double click on `Voyager (no labels)`
+-   Now do the same for this **Light Gray Basemap** from ESRI, but set the Max. Zoom Level to 16:\
+    https://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}
 
-```{r}
-cor(players$height_cm, players$age, method = "kendall")
-cor(players$height_cm, players$age, method = "spearman")
-```
+Arrange the layers so that the **Voyager (no labels)** layer is under your other layers (you can hide the **Light Gray Basemap** and **OpenStreetMap** for now).
 
-### Reminder about groupbys
+Isn't that much less visually busy?!
 
-Before we move to inferential statistics, it's worth reiterating the power of groupbys discussed in the second workshop.
+## Colours
 
-To group by a specific variable, like "positions", we use 
+The random colours that QGIS gives you aren't always pretty, so let's change the colours.
 
-```{r}
-players %>% 
-    group_by(positions)
-```
+Choosing a colour palette can be difficult and overwhelming, but once you have one, you can keep using those colours to form a more harmonious looking map. What story are you telling? Do you want your map to be bright and saturated, or warm and earthy?
 
-By applying our statistics to the `group_by` object, we'll apply them to *every* variable for *each* position.
+The built in color ramps provide some good options I quite like **`rainfall`** (in Precipitation), **`Set1`** (in QGIS), and **`wiki-knutux`** (in Topography).
 
-```{r}
-players %>% 
-    group_by(positions) %>% 
-    summarise(mean_height = mean(height_cm))
-```
+Today we're being fancy, we're going to import and build our own Color Ramp and Color Palette.
 
-## Inferential Statistics
+-   In your internet browser, navigate to [colorbrewer2.org](https://colorbrewer2.org/#type=qualitative&scheme=Set2&n=7)
 
-While descriptive statistics describes the data definitively, inferential statistics aim to produce models for extrapolating conlusions.
+    -   Set "Number of data classes" to 7
 
-### Simple linear regressions
+    -   Set "Nature of data classes" to "qualitative"
 
-Least-squares regression for two sets of measurements can be performed with the function `lm`. Recall that linear regressions have the mathematical form
+    -   Choose Set2 (should be the second from the right)
 
-$$ Y = β_1 X + β_0 $$
+    -   Click and drag to highlight the 7 HEX codes listed (they should look like this #66c2a5)
 
-where $β_1$ is the **slope** (or gradient) of the line and $β_0$ the y-intercept. We use the regression tool to estimate the parameters $β_0\,,β_1$. 
+        -   Copy those with Ctrl + C (or Cmd + C)
 
-A linear model (like above) is one example of the more general relationship $Y\sim X$, where $Y$ *is distributed as* $X$ (or, $Y$ *depends on* $X$). For this reason, we can construct a linear model in R with three pieces of information
+-   Back in QGIS navigate to `Settings > Options...`
 
-* The type of model (e.g. linear) as a function (e.g. `lm(...)`)
-* The general relationship between variables as a string (e.g. `"height_cm ~ age"`)
-* The dataset we're using (e.g. `players`)
+    -   Click the `Colors` from the left menu
 
-```{r}
-lm(formula = "height_cm ~ age", data = players)
-```
+    -   From the top right of the window click the `...` button and select `New Palette...`, name it **Report Palette**
 
-:::{.callout-tip}
-# R formula syntax
+    -   Add your copied colours by clicking![](mActionEditPaste.png) `Paste colors` on the right
 
-Performing statistical modelling with R inevitably requires using R's powerful formula syntax, as we just did with `"height_cm ~ age". For anything beyond simple linear regressions, you'll need to include more terms and operators in these. Here's a quick summary of a few, but [you should check out this handy blog post](https://www.econometrics.blog/post/the-r-formula-cheatsheet/) for a better summary and the [official documentation](https://search.r-project.org/R/refmans/stats/html/formula.html) for comprehensive details.
+    -   Click the `...` button again and tick the `Show in Color Buttons` box
 
-```r
-~
-```
+    -   Click `OK`
 
-Use `~` to separate the $Y$ variable from the $X$ variable(s), e.g. `y ~ x`.
+We now have a custom palette we can use throughout our projects!
 
-```r
-+
-```
+Unfortunately we need to set up the Color Ramp separately.\
 
-Add multiple $X$ variables, e.g. `y ~ x + z` (for variable `z`)
+-   Navigate to `Settings > Style Manager...`
 
-```r
-:
-```
+    -   Click the ![](images/symbologyAdd.png) `Add item` button at the bottom and select `Color Presets...`
 
-Consider the *interaction* between two variables, e.g. `y ~ x:z`.
+        -   Select the colour that appeared there and remove it by pressing ![](symbologyRemove.png) `Remove color` at the bottom
 
-```r
--
-```
+        -   Add your copied colours by clicking![](mActionEditPaste.png) `Paste colors`
 
-Remove variables, e.g. `y ~ x - 1` (removes the intercept).
+        -   Click `OK`
 
-:::
+    -   Change the `Destination` to **Default**
 
-If we store this as a variable, we can then produce a summary of the results (note that we can remove the `formula = ` and `data = ` if the order is correct),
+    -   Give it a meaningful `Name` like **Report Colour Ramp**
 
-```{r}
-model <- lm("height_cm ~ age", players)
-summary(model)
-```
+    -   Add the `Tag` **Palettes**
 
-If you want to get specific parameters out, we can index with `$`:
+    -   Tick `Add to favourites` (this means it will appear in the color ramp dropdown, and not just in the All Color Ramps section)
 
-```{r}
-summary(model)$r.squared
-```
+    -   Click `Save`
 
-That's a pretty shocking fit.
+-   Click `Close`
 
-#### Plotting it
+You can also use the `Style Manager` to edit the default options and Favorites that appear in the Layer Styling window.
 
-Naturally, you'd want to plot this. We'll need to use techniques from the visualisation session. Let's import **ggplot2**
+Now we've set up our colours, we can start using them!
 
-```{r}
-library(ggplot2)
-```
+## Change the Symbology
 
-Start by making a scatterplot of the data,
+### Point Geometry
 
-```{r}
-ggplot(players, aes(x = height_cm, y = age)) +
-  geom_point()
-```
+#### Categories
 
-Then, you'll need to plot the regression as a line. For reference,
+-   Select the **Artefacts** layer from the `Layer Styling` panel
+-   In the `Layer Styling` panel, change **`Single Symbol`** to `Categorized`
+-   From `Value` select **Artefact Type**
+-   From `Color ramp` choose our **Report Colour Ramp**
+-   Click the **`Classify`** button
 
-$$ y = \text{slope}\times x + \text{intercept}$$
+#### Symbols
 
-So
-```{r}
-b0 <- model$coefficients[1]
-b1 <- model$coefficients[2]
+With the **Voyager (no labels)** basemap, we can reduce the complexity of our symbology to make a cleaner looking map.
 
-ggplot(players, aes(x = age, y = height_cm)) + 
-    geom_point() + 
-    geom_abline(intercept = b0, slope = b1)
-```
+If you want, you can change the properties of all symbols at once:
 
-### $t$-tests
+-   Simply click in the white space below your symbol classes so that none are selected.
 
-We can also perform $t$-tests. Typically, these are performed to examine the statistical signficance of a difference between two samples' means. Let's examine whether that earlier groupby result for is accurate for heights, specifically, **are goalkeepers taller than non-goalkeepers?**
+-   If you click on the button next to `Symbol`, it will take you to `Symbol Settings`**WARNING** if you edit any individual symbols before this step, it will reset any changes you made to those individual symbols.
 
-Let's start by creating a new column with the values
- 
-| | | 
-| --- | --- |
-| `FALSE` | Non-goalkeeper | 
-| `TRUE` | Goalkeeper | 
- 
+    -   Try increasing the size of the symbols to 3mm
 
-```{r}
-players <- players %>% 
-  mutate(gk = positions == "Goalkeeper")
-```
+    -   Click `Simple Marker` and change the `Symbol layer type` to **Filled Marker**
 
-The $t$-test's goal is to check whether $\text{height\_cm}$ depends on $\text{gk}$, so the formula is $\text{height\_cm}\sim\text{gk}$. This is given to the `t.test` function:
+        -   Now click `Simple Fill` and change its `Symbol layer type` to **Outline: Simple Line**
 
-```{r}
-t.test(height_cm ~ gk, data = players)
-```
+        -   Change the `Stroke width` to **0.4**
 
-Yielding a p-value of $p<2.2\times10^{-16}$, indicating that the null-hypothesis (*heights are the same*) is extremely unlikely.
+        -   This gives our points a very clean and simple appearance
 
-To visualise this result, it might be helpful to produce a histogram of the heights
+-   Click the `back arrow button` next to **Symbol Settings**
 
-```{r}
-ggplot(players, 
-       aes(x = height_cm, fill = gk)) + 
-  geom_histogram(bins = 24)
-```
+Now that we have a nice colour scheme, let's give it a new shape.
 
-### ANOVAs
+-   Double click on the symbol of the `Artefact Scatter`
+    -   Click **Filled Marker** - this will allow us to change many things including the shape of the marker
+        -   From the bottom of the window select a shape, let's go with the **Triangle**
+-   Click the `back arrow button` next to **Artefact Scatter**
 
-What about the means of the other three? We could use an ANOVA to examine them. We use the `aov()` function for this. 
+### Polygon Geometry
 
-Let's start by making a new dataset without goalkeepers
+Depending on your map, you may want your polygon to remain solid, to be transparent, have hatched lines, or simply be an outline. As our project area has items inside it, but an unimportant basemap, we can use an outline with a slightly transparent background to bring focus.
 
-```{r}
-no_gk <- players %>% filter(gk == FALSE)
-```
+-   Open the `Layer Styling` panel by pressing **F7** (or fn+F7)
+-   Select the **Project_area** layer from either the `Layer Styling` panel, or the `Layers` panel.
+-   Under `Fill`, click `Simple Fill`
+    -   Set the `Stroke width` to **0.8mm**
+    -   Click the dropdown next to `Fill color` and select **orange** from our **Report Palette**
+        -   Click the colour again and change the `Opacity` to 15%
 
-Next, we save the analysis of variance results
+That's nicer, but let's make it *fancy.* Let's add a dropshadow.
 
-```{r}
-res_aov <- aov(height_cm ~ positions, data = no_gk)
-```
+-   Click the ![](images/symbologyAdd-02.png) `Add symbology layer` next to `Fill` to add another fill symbol\
+    (You can add as many of these as you like, you can even change this with `Symbol layer type` to Arrows, Hashed lines, Filled lines, and more.)
+-   Click the new **Simple Fill**
+    -   Change `Symbol layer type` from **Simple Fill** to **Outline: Simple Line**
+    -   Set the `Stroke width` to 3
+    -   Scroll to the bottom, tick `Draw Effects`, then click the ![](images/mIconPaintEffects.png) `Customise effects` button (The one next to "Enable symbol layer", *not* the one in the "Layer Rendering" section!)
+        -   Untick `Source`
+        -   Tick and select `Drop Shadow`
+            -   Change the `Blur Radius` to **6mm**
+            -   Change the `Opacity` to **30%**
+    -   Click the `back arrow button` next to **Effects Properties**
 
-And examine them with `summary()`
+### Line Geometry
 
-```{r}
-summary(res_aov)
-```
+We *can* make our lines stand out. Sometimes it can be as simple as picking a contrasting colour, changing the width, or adding more symbol layers (with dashes, or arrows, or horizontal lines).
 
-Even without goalkeepers included, it looks like their positions are not all independent of height.
+In this case, we want to keep the attention on the point data, let's keep the paths, but reduce their contrast.
 
-### $\chi^2$ tests
+-   Select the **Paths** layer from the `Layer Styling` panel
+-   Under `Line`, click `Simple Line`
+    -   Change the `Color` to a colour in your **Report Palette** that is different to your points, I'm going to use **green**
+    -   Increase the `Stroke width` to **0.4mm**
+-   To reduce the focus on the paths, in the `Layers` panel, drag the **Paths** layer **below** the **Project_area** layer
 
-$χ^2$ tests are useful for examining the relationship of categorical variables by comparing the frequencies of each. Often, you'd use this if you can make a contingency table.
+## Themes
 
-We only have one useful categorical variable here, "positions" (the others have too many unique values), so we'll need to create another. Let's see if there's a relationship between players' positions and names with the letter "a".
+We can use themes to create multiple looks for our map that we can easily swap between. Let's create a theme for our **Data Map**
 
-Make a binary column for players with the letter "a" in their names. To do this, we need to apply a string method to *all* the columns in the dataframe as follows
+-   Click the **Eye** icon (Manage Map Themes) at the top of the `Layers` panel, and click `Add theme...`
+    -   Let's name our new theme **Data Main**, and click `OK`
 
-```{r}
-players <- players %>%
-  mutate(a_in_name = grepl("a", name))
-```
+Nothing exciting has happened *yet*, let's change the layers a little to see the power of Themes.
 
-> The `grepl` function perform pattern matching: it checks if the pattern `"a"` is inside the values in `name`.
+## Styles
 
-Let's cross tabulate positions with this new column
+**Styles** work similarly to **Themes**, but instead of changing which layers are present, it changes between different Layer Styling options.
 
-```{r}
-table(players$positions, players$a_in_name)
-```
+If you want to try different looks for a feature, but not have to undo everything, you can save them as **Styles**
 
-The $χ^2$ test's job is to examine whether players' positions depend on the presence of "a" in their name. To evaluate it we need to send the contingency table in:
+-   In the `Layers` panel, `Right click on Project_area > Styles > Rename Current...`
+    -   Let's start by changing the name of our current style from **default** to **Data Main**
+-   Let's create a new style, `Right click on Project_area > Styles > Add...`
+    -   Name the style **Data Inset**
+        -   Now any Layer Style edits we do will be attached to the **Data Inset** style
+-   Select the **Project_area** layer from the `Layer Styling` panel
+    -   Under `Fill`, click `Simple Fill`
+    -   Click the `Arrow Up` on the right to move it above `Simple Line`
+    -   Change the `Fill color` to an `Opacity` of **100%**
+    -   Change the `Stroke width` to **0.4mm**
 
-```{r}
-chisq.test(table(players$positions, players$a_in_name))
-```
+Now we have a slightly different style to our **Project_area** that will look better in an inset map. We can edit this style and revert back to the original **Data Main** style whenever we like, we will explore how to use that with Themes next.
 
-As expected, there is no signifcant relationship. A simple bar plot can help us here
+### Themes (again)
 
-```{r}
-ggplot(players,
-       aes(x = positions, fill = a_in_name)) + 
-  geom_bar()
-```
+Now that we’ve made some style changes, we can see what themes do.
 
-If we use the `position = "fill"` parameter to `geom_bar`, we'll see each as a proportion
+-   In the `Layers` panel, hide the **Voyager (no labels)**, **Paths** and **Artefacts** layers by unticking the boxes next to them.
 
-```{r}
-ggplot(players,
-       aes(x = positions, fill = a_in_name)) + 
-  geom_bar(position = "fill")
-```
+-   Unhide the **Light Gray Basemap**
 
-It looks as though the proportions are much the same.
+<!-- -->
 
-### Generalised linear models
+-   Click the **Eye** icon (Manage Map Themes) at the top of the `Layers` panel, and click `Add theme...`
+    -   Let's name our new theme **Data Inset**, and click `OK`
+-   Now, click the **Eye** icon again
+    -   You will see that there are two check box options at the bottom: **Data Inset** and **Data Main**
+    -   You can cycle between these two themes by choosing one or the other
+    -   If you want to update a theme, simply hide/unhide layers, change the layer Styles, go to `Eye icon > Replace theme...` and then select the theme you want to overwrite.
+-   Save your project
 
-We'll finish by looking at Generalised Linear Models. The distributions they include are
+## Layout Manager
 
-* Binomial
-* Poisson
-* Gaussian (Normal)
-* Gamma
-* Inverse Gaussian
-* A few *quasi* options
+Now we can prepare our map for export.
 
-We'll use the *binomial* option to create logistic regressions.
+-   Navigate to `Project > Layout Manager...`
+    -   Under **New from Template** click `Create`, name the map **Data Map**
+-   This will open the **Layout Manager**
 
-Logistic regressions examine the distribution of binary data. For us, we can compare the heights of **goalkeepers vs non-goalkeepers** again. 
+### Page Properties
 
-Now, we can model this column with height. We'll do the same as our $t$-test case, but this time we need to specify that `family = binomial` to ensure we'll get a logistic:
+Before we do anything, let's set up out environment.
 
+-   Navigate to `Layout > Page Properties..`
+    -   Here we can choose the size and orientation of our map.
+    -   **Size:** A4 is often sensible, as it means you know the map will fit neatly into a report.
+        -   However you may need to make the size suit the data, or the requirements of where you're submitting the map
+        -   We'll make ours **200x200**
+    -   **Orientation:** Portrait means you can have a full page map without rotating the page in your report. But some spatial layouts make more sense in Landscape. Use your judgement.
+        -   Today we have manually changed the size, so this isn't needed.
 
-```{r}
-res_logistic <- glm(gk ~ height_cm, family = binomial, data = players)
-```
+### Guides
 
-We can take a look at the results with
+Guides seem unnecessary, but they make lining things up much much easier.
 
-```{r}
-summary(res_logistic)
-```
+We will use a guide to place our map details.
 
-And we can then visualise it with `ggplot2`. We need to make *another* variable, because we need to replace `TRUE` $\rightarrow$ `1` and `FALSE` $\rightarrow$ `0` for the plot.
+-   In the right panel, click `Guides`
+-   Click ![](images/symbologyAdd-01.png) `Add new guide` under **Vertical Guides** (if your canvas is a Landscape, or you want your legend at the bottom, choose **Horizontal Guides** for this step)
+-   A new row should appear, click on the **0** and change it to **140**
 
-```{r}
-players <- players %>% mutate(gk_numeric = as.numeric(gk))
-```
+### Map
 
-Now we can plot the logistic regression. The fitted values (on the $y$-axis) are stored in `res_logistic$fitted.values`, but there are no provided $x$-values - these come from the `players` dataset. Use `geom_point()` for the data and `geom_line()` for the fit:
+-   Add your map by clicking the map icon in the left menu, or navigating `Add Item > Add Map`
+    -   Your mouse will now be a **+**
+    -   If you hover over the top corner of the canvas, the mouse should snap to the corner
+    -   Click and drag until your mouse snaps to the corner created by the bottom of the canvas, and the guide you added
+-   In the `Items` panel on the right, double click on **Map 1** and rename it **Main**
+    -   Giving Items clear names makes this process much more straightforward
 
-```{r}
-ggplot(players, aes(x = height_cm, y = gk_numeric)) + 
-  geom_point() + 
-  geom_line(aes(y = res_logistic$fitted.values))
-```
+### Scale
+
+Okay, we have our map, but it's not zoomed in right. This is always a little tricky.
+
+You *could* click the **Move item content** button on the left menu(or press `C` on your keyboard), as this would allow you to drag the map around internally, and zoom in with your scroll wheel. **But there is an easier way!**
+
+-   Navigate back to your **qgis_reports** window
+    -   Right click on your **Project_area** layer and select **Zoom to Layer(s)**
+-   Navigate back to your **Project Map** window
+    -   In the right menu, click `Item Properties`
+    -   You will see these options: ![](layoutmanager_scale.png)
+    -   Click the first orange arrow button to **Set Map Extent to Match Main Canvas Extent**
+    -   Click the third orange arrow button to **Set Map Scale to Match Main Canvas Scale**
+        -   The other buttons do the reverse
+    -   I like to then round the **Scale** up to a nice round number from something like 3814 to 4000
+-   While you're here, scroll to the bottom of the `Item Properties`, and tick the box for `Frame`, it adds a simple border to our map
+
+### Inset Map
+
+You can add your inset map to the blank space at the side of you map canvas, or you can put it on top of you main map in unused space. We don't have a lot of space around our map, so we'll put it to the right. Guides are useful here too.
+
+-   In the right menu, click `Guides`
+    -   Click ![](images/symbologyAdd-03.png) `Add new guide` under **Horizontal Guides** *twice*
+        -   In the new row changethe **0** to **155**
+        -   In the other new row change the **0** to **95**
+-   Add your map by clicking the map icon in the left menu, or navigating `Add Item > Add Map`
+    -   Hover over the corner created by the top horizontal guide and the vertical guide, the mouse should snap to the corner
+        -   Click and drag until your mouse snaps to the corner created by the side of the canvas, and the lower guide you added
+-   Zoom out on the inset map, by selecting it from the `Items` tab and following the same approach as the **Main map**
+    -   Or by using **Move item content** button on the left menu (or press `C` on your keyboard), clicking on the inset and using the scroll wheel
+-   In the `Items` panel on the right, double click on **Map 2** and rename it **Inset**
+
+Now we have our maps added, we can bring our themes into play again.
+
+### Themes (again!)
+
+-   Select **Main** from the `Items` panel
+    -   In `Item Properties`, you will see **Layers** section
+    -   Tick `Follow map theme` and from the dropdown change **none** to **Main**
+    -   Now this map is linked to the **Main** theme and will only update when we change that theme, or the layers attributed to the theme
+-   Repeat this step for **Inset**
+
+This is also a big advantage for using **Styles**, as the point is a better representation of our site on the inset map.
+
+### Text
+
+Before we add any text, it's worth thinking about what you want the font to be. You can manually set the font for each item in your Layout, or you can set the default font.
+
+-   Navigate to `Settings > Options`
+
+    -   From the left menu, select `Layouts`
+
+    -   Change the default font to your preferred font. I'm going to select **Sitka Text Semibold**
+
+### Title
+
+-   Add a text box to your map by clicking the `Add Label` icon in the left menu, or navigating `Add Item > Add Label`
+
+-   Click and drag in the empty canvas below the map where you want to put your title
+
+    -   In the `Item Properties` panel remove the **Lorem ipsum** text, and add **Brisbane Botanic Gardens**
+    -   Under **Appearance** click the `Font` box to open the `Label Font` window
+        -   Change the text size to **18**, you can make other font changes here too
+        -   Click the `back arrow button` next to `Label Font`
+
+-   In the `Items` panel on the right, double click on **Brisbane Botanic Gardens** and rename it **Title**
+
+Okay, that's a some fairly basic text, let's do something interesting with the descriptive text.
+
+### Dynamic Text
+
+-   Add another text box to your map by clicking the `Add Label` icon in the left menu, or navigating `Add Item > Add Label`
+    -   Click and drag in the empty canvas below the inset map
+    -   In the `Items` panel on the right, double click on "**Lorem ipsum**" and rename it **Description**
+        -   In the `Item Properties` panel remove the "**Lorem ipsum**" text and then enter:
+            -   **Created by:**
+            -   **Date:**
+            -   **Scale: 1:**
+            -   **Datum:**
+            -   Normally we'd have to enter the details for each of these manually, but we can use **Dynamic Text** to do it for us
+-   In the `Item Properties` panel, click next to **Date:**, so the cursor is sitting there
+    -   Under the **Main Properties** text box, click `Dynamic Text > Current Date > Day/Month/Year (26/09/2025)`
+    -   This will insert code that looks like this: `[%format_date(now(), 'dd/MM/yyyy')%]` which automatically adds today's date
+-   Now repeat those steps for the rest:
+    -   Click next to **Scale: 1:**
+        -   Click `Dynamic Text > Map Properties > Main > Scale (4000)`
+            -   The code will look like this: `[%format_number(item_variables('Main')['map_scale']` which automatically adds the main map's scale
+    -   Click next to **Datum:**
+        -   Click `Dynamic Text > Map Properties > Main > CRS Name (GDA2020 / MGA zone 56)`
+            -   The code will look like this: `[%item_variables('Main')['map_crs_description']%]` which automatically adds the main map's CRS
+-   Under **Appearance**:
+    -   Set the `Horizontal margin` and `Vertical margin` to **2mm**
+
+Let's add another text box for our sources, but we'll make the font smaller
+
+-   Add another text box to your map by clicking the `Add Label` icon in the left menu, or navigating `Add Item > Add Label`
+    -   Click and drag in the empty canvas below the inset map
+    -   In the `Items` panel on the right, double click on "**Lorem ipsum**" and rename it **Sources**
+    -   In the `Item Properties` panel remove the "**Lorem ipsum**" text and then enter:
+        -   **Sources:**
+-   Click next to **Sources:**
+    -   Click `Dynamic Text > Layer Credits`
+        -   The code will look like this: `[%array_to_string(map_credits())%]` which automatically adds the sources built in to some of the data used
+        -   Note that this information lives in the Metadata (layer `Properties > Metadata > Access` under **Rights**) of the baselayers, and the layers we downloaded. Not all layers will necessarily have this information, and sometimes it's very detailed and clunky. You can add this information in the layer's metadata if it is missing.
+        -   It may be simpler to manually enter this to your map.
+-   Under **Appearance**:
+    -   Set the `Horizontal margin` and `Vertical margin` to **2mm**
+    -   Click `Font`
+        -   Set the `Size` to **8mm**
+
+You could also add any extra text details such as the locality, disclaimers, or any other details needed.
+
+### Shapes
+
+We can add a border around our layout. This isn't necessary, but it looks nice! It also has greater customisability than the map frame options.
+
+-   Add a rectangle to your map by clicking the `Add Shape` icon in the left menu, or navigating `Add Item > Add Shape > Add Rectangle`
+    -   Hover over the top left corner of the canvas, the mouse should snap to the corner
+    -   Click and drag until your mouse snaps to the opposite corner of the canvas
+-   In the `Item Properties` panel, click the box next to `Style`, this will take you to the `Symbol Settings` window
+    -   Click **Simple Fill**
+        -   Change `Symbol layer type` from **Simple Fill** to **Outline: Simple Line**
+        -   Increase the `Stroke width` to 1mm
+        -   Scroll to the bottom, tick `Draw Effects`, then click the ![](images/mIconPaintEffects.png) `Customise effects` button
+            -   Untick `Source`
+            -   Tick and select `Outer Glow`
+                -   Change the `Spread` to **0.8mm**
+                -   Change the `Blur Radius` to **2.5mm**
+                -   Change the `Single color` to **Black**
+-   In the `Items` panel, change the name from \<Rectangle\> to **Outline**
+    -   Then tick the lock box next to the **Outline**
+    -   This means it stays on top of everything else, but you won't select it every time you click the map canvas
+
+### Legend
+
+-   Add a Legend your map by clicking the `Add Legend` icon in the left menu, or navigating `Add Item > Add Legend`
+
+The legend always has too much detail to start with. Let's clean it up.
+
+-   In the `Item Properties` panel, under **Legend Items** untick `Auto update`
+    -   Click the drop down next to **Artefacts**, select the empty item, and then click the **red –** to remove it
+    -   Remove the **Imagery** layers too
+    -   Right click on **Artefacts** and select **Hidden**, we don't need to see the group name
+    -   Double click on **Project_area** and rename it to **Project Area**
+    -   Double click on **Paths – paths** and rename it to **Footpaths**
+-   Scroll down to **Fonts and Text Formatting**, under **Item Labels** click the **Item font** button
+    -   Change the `Size` to **15**
+-   Scroll down to **Symbol**
+    -   Change`Symbol width` to 10
+    -   Change`Symbol height` to 12
+
+#### Custom Legend Symbols
+
+Okay, we have a legend, but let's get really fancy with a custom polygon legend.
+
+-   Save your Layout
+
+    -   `Layout > Save Project`
+
+-   Navigate back to QGIS (it's still open in another window)
+
+    -   Select the **Project_area** in the `Layers` Panel
+
+    -   From the top toolbars open the ![](images/mActionCalculateField.png) `Field Calculator`
+
+        -   In the `Expression` window paste **geom_to_wkt(\$geometry)**
+
+        -   Under the `Expression` window, **right click** on the text next to **Preview**: (it should start with "MultiSurface"
+
+            -   Select **Copy Expression Value**
+
+        -   Close the **Field Calculator**
+
+-   Back in the **Layout Manager**, in the `Item Properties` panel, double click on **Project Area**
+
+    -   Under **Patch**, click the `Shape` box
+        -   There should be a large `Shape` box with some "Polygon" details inside. Delete this.
+        -   Paste what you copied from the **Field Calulator** - it should be many lines
+        -   Be careful to delete the single quotes ' at the start and end of what you've just pasted in
+        -   Tick the `Preserve aspect ratio` box
+    -   Click the back arrow button
+
+-   Click the back arrow button again
+
+### North Arrow
+
+-   Add a North Arrow to your map by clicking the **Add North Arrow** icon in the left menu, or navigating `Add Item > Add North Arrow`
+    -   Click and drag in the blank space under the map until you're happy with the size of the arrow
+    -   In the `Item Properties` panel, under the `SVG Images` box, type **arrow** in the search bar
+        -   Choose a North arrow you like
+        -   Scroll down to **SVG Parameters**
+            -   Set the `Fill color` and `Stroke color` to **Black**
+
+### Scalebar
+
+-   Add a scale bar to your map by clicking the **Add Scale Bar** icon in the left menu, or navigating `Add Item > Add Scale Bar`
+    -   You can click and drag in the blank space under the map, although the scale bar size will be set in a moment
+-   In the `Item Properties` panel:
+    -   Change the `Style` from **Single Box** to **Line Ticks Up**
+    -   Scroll down to **Appearance:**
+        -   Change the `Label margin` to **0mm**
+        -   Change `Distance label placement` from **Above Segment Edges** to **Below Segment Edges**
+
+### Finessing
+
+-   Go to the `Layout` panel and scroll down to **Resize Layout to Content**
+
+    -   Set the `Top`, `Right`, `Left` and `Bottom Margin` to **2mm**
+    -   Click `Resize layout`
+    -   Now we can see the dark glow we added to the **Outline**, without interfering with our neat 200x200 layout
+
+Save your project.
+
+-   `Layout > Save Project`
+
+### Export options
+
+Now that we're done we can export. Generally to PDF or Image. Today we will use image.
+
+-   `Layout > Export as Image...`
+    -   You will see a popup warning about WMS servers. Some tile services have limits to the size of file you can export like this. If you exceed it, your basemap will be blank.
+    -   Click `OK`
+-   Navigate to your project's **output** folder, and give the file a meaningful name "**Brisbane Botanic Gardens Map**", click `Save`
+-   The `Export resolution` should automatically be a print quality **300dpi**, and the width and height should match the page size we set at the beginning.
+-   Click `Save`
+-   Navigate to and open your file to make sure it worked!
+
+## Save a Map Template
+
+This is crucial! Save your hard work for next time!
+
+-   `Layout > Save as Template...`
+-   Navigate to a folder you can easily find again, such as a broader QGIS folder.
+-   Give it a meaningful name "**Report_Map_Template**"
+-   Click `Save`
+
+## Load a Map Template
+
+Next time you need to make an export you can load your template in.
+
+Open an old QGIS Project.
+
+-   Navigate to `Project > Layout Manager...`
+    -   Under **New from Template** change `Empty Layout` to `Specific`, click the three dots and navigate to your **Report_Map_Template**, select it, and click `Open`
+    -   Click `Create`
+    -   Give the layout an appropriate name, and click `OK`
+-   This will open the **Layout Manager**
+
+You will see that the inset and main maps are in the wrong location, the title is wrong, the scale bar is off, and the Legend is empty. But you know how to fix these!
+
+### Map Scale
+
+-   Navigate back to your **QGIS** window
+    -   Right click on the most suitable layer and select **Zoom to Layer(s)**
+-   Navigate back to your **Layout Manager** window
+    -   Click the **Main** from the `Item` panel, and click the `Item Properties` panel
+    -   ![](layoutmanager_scale.png)
+    -   Click the first orange arrow button to **Set Map Extent to Match Main Canvas Extent**
+    -   Click the third orange arrow button to **Set Map Scale to Match Main Canvas Scale**
+        -   The other buttons do the reverse
+    -   Round the **Scale** up to a nice round number
+-   Fix the inset map too
+
+### Scalebar
+
+-   Click the **Scalebar** from the `Item` panel
+-   In the `Item Properties` panel, change `Scalebar units` to **Metres** or **Kilometres** - Change `Fixed width` to an appropriate unit
+
+### Legend
+
+-   Click the **Legend** from the `Item` panel
+-   In the `Item Properties` panel, under the **Legend Items** box and click the **green +** to add a layer
+    -   Double click on and rename the layer if needed
+    -   Repeat for all layers you need to list
+
+### Title
+
+-   Click the **Title** from the `Item` panel
+-   In the `Item Properties` panel, under the **Main Properties** rename the title
+
+And that's it, you now have another map looking the way you want it, without too much hassle.
+
+## Feedback
+
+Please visit our website to [provide feedback](https://web.library.uq.edu.au/study-and-learning-support/training-and-workshops/software-training-resources) and find upcoming training courses we have on offer.
+
+
+### Georeferencing
+
+I will be happy to go over this in person, but if you need a guide, here is the [QGIS how to](https://docs.qgis.org/3.40/en/docs/training_manual/forestry/map_georeferencing.html)
