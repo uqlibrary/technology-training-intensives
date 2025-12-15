@@ -69,29 +69,16 @@ The basemap sets the tone for the rest of the layers in the map, as they can gre
 
 ## Basemaps
 
-Let's start by making a map we might use in an **Academic Paper** or in an **Article for the Public**, where we want to focus their attention on our data. Unless we really need **Satellite** imagery, or everything on the **OpenStreetMap**, it is too busy and distracting.\
-\
-Let's load in a new basemap.\
-\
+Let's start by making a map we might use in an **Academic Paper** or in an **Article for the Public**, where we want to focus their attention on our data. Unless we really need **Satellite** imagery, or everything on the **OpenStreetMap**, it is too busy and distracting.
+
+Let's load in a new basemap.
+
 There are many ways of doing this, in the past we've used the **QuickMapServices** plugin to load in new basemaps, now we can go to the next step and source them externally. We can do this with WMTS (Web Map Tile Service), WCS (Web Coverage Service), ArcGIS REST Servers, and XYZ Tiles.
 
-Today we're going to use an XYZ Tile from CARTODB.
-
--   Scroll down the `Browser` panel until your see **XYZ Tiles**
--   Right click XYZ Tiles and select `New Connection...`
-    -   In `Name` type **Voyager (no labels)**
-    -   In `URL` paste:\
-        https://a.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}@2x.png
-    -   Increase the Max. Zoom Level to 20
-        -   This value depends on what is available from the given service in different parts of the world. Increasing that value beyond 20 for this map in Brisbane will show "Map data not yet available" when you zoom in very close.
-    -   Click `OK`
--   In the `Browser` panel, expand `XYZ Tiles` and double click on `Voyager (no labels)`
--   Now do the same for this **Light Gray Basemap** from ESRI, but set the Max. Zoom Level to 16:\
-    https://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}
-
-Arrange the layers so that the **Voyager (no labels)** layer is under your other layers (you can hide the **Light Gray Basemap** and **OpenStreetMap** for now).
+Today we're going to use the **Voyager (no labels)** XYZ Tile from CARTODB and  **Light Gray Basemap** from ESRI.
 
 Isn't that much less visually busy?!
+
 
 ## Colours
 

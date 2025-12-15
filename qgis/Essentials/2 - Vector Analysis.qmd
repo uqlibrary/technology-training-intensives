@@ -6,12 +6,11 @@ title: "Vector Analysis"
 
 In this workshop, we will learn about:
 
+-   Importing data from a CSV
+-   Joining Tabular data
 -   Overlaps/Intersections
 -   Digitisation
 -   Point counts within a polygon
--   Buffers
--   Tabular data
--   Joins
 
 
 ## What is Vector Data?
@@ -29,53 +28,6 @@ To look at vector data, we're going to use the example of koala populations and 
 
 We're going to explore a number of different online spatial data repositories. Please [download the full dataset here](https://github.com/uqlibrary/technology-training-assets/raw/refs/heads/master/QGIS/vector/vector_data.zip), and extract it into the qgis_vector folder you created earlier.
 
-I will quickly show you where all of this data came from.
-
-### Online Community Spatial Repositories
-
-#### Koala Sighting Data (encounters)
-
-If we're looking at Koalas, we should get some occurence/sighting data.
-
-We're getting our species observation data today from the [Atlas of Living Australia](https://www.ala.org.au/). This is an Australia Biodiversity occurrence database. It pulls data from a variety of different sources, including government data, individual collectors and community groups. This means that this data will contain sampling bias and will often simply represent encounters, rather than using robust sampling and collection methods. So, while we need to use this data with caution, it's still a useful dataset!
-
-You need to create an account and request the exact dataset you need, so to speed things up today, we've provided the data already cleaned and processed the data in the download link above.
-
-Some similar online repositories include the Global Biodiversity Information Facility (GBIF) and iNaturalist
-
-#### Cleaning and processing the ALA data
-
-What do we mean by processed? Well, the ALA dataset has 206 columns by default. This means that each occurrence has 206 associated cells, and when multiplied by \~200,000 sightings, our data gets huge (\>300mb!). To save time (and storage space!) today we have already deleted 200 of those columns (bringing the dataset down to 15mb).
-
-### QLD Government Spatial Data
-
-We've seen the [QSpatial data portal](https://qldspatial.information.qld.gov.au/catalogue/custom/index.page) in previous sessions, and today we will be getting two lots of data from here.
-
-#### Koala Priority Areas
-
-Koala Priority Areas are areas in SEQ which have been identified as key areas for conservation as part of the South East Queensland Koala Conservation Strategy 2019-2024. You can search for "Koala Priority Areas" in QSpatial, or by going [directly to the data](https://qldspatial.information.qld.gov.au/catalogue/custom/detail.page?fid=%7BE4CCDBA7-11AB-45DD-A064-BDBC02899204%7D).
-
-Let's get a resource to compare with these QLD government priority areas...
-
-### Federal Environment Data
-
-#### Protected Areas
-
-The Federal Environment Department has a variety of [different spatial datasets that you can browse through](http://www.environment.gov.au/fed/catalog/main/home.page). Today we are going to be using the Collaborative Australian Protected Areas Database (CAPAD) 2020, which is a compilation of government, Indigenous and privately protected areas for Australia. You can search for "CAPAD" in on the Environment Department website, or by going [directly to the data](http://www.environment.gov.au/fed/catalog/search/resource/details.page?uuid=%7B4448CACD-9DA8-43D1-A48F-48149FD5FCFD%7D).
-
-Finally let's get some data to put all of our protected areas and observations into context...
-
-### Australian Bureau of Statistics Data
-
-The ABS is a huge source of data, however, it can be a bit difficult to find that data, and use it in a spatial context.
-
-#### Digital Boundary Files - SA2 - Suburb data
-
-The ABS has a variety of ways that it splits its data up. These [Digital Boundary Files](https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files) are very useful for classifying data. They generally classify all of Australia into discrete Statistical Areas. Level 1 are the smallest, and Level 4 are the coarsest. (notably, the link above also has non-ABS Structures/boundary files such as Electoral areas and Postcodes). Today we are going to use the Statistical Area 2 data, which effectively represent suburbs, but we can take it a little further with more ABS data.
-
-##### Population Data
-
-The ABS have a lot of useful data, today we will be using their population data. They provide it in excel format, as GeoPackages (by SA2 and LGAs), and as population grid raster files. Today we will be using their SA2 [GeoPackages](https://www.abs.gov.au/statistics/people/population/regional-population/latest-release#data-download). This means we have our digital boundaries, and population in one!
 
 > In the zip file of today's data we have already trimmed it down to just QLD to save on file size
 
@@ -90,15 +42,7 @@ You should have:
     -   Protected Areas
     -   SA2 Areas (with human population)
 
-## Set the Project Projection
 
-We need to choose the projection for our current session of QGIS. Today we will be focusing on South East Queensland (SEQ), so we will choose GDA2020 / MGA zone 56. We will go into projections in more detail soon.
-
--   Go to `Project > Properties` select the **CRS** tab.
--   In the filter section, type "GDA2020 56"
--   From the **Coordinate Reference System** list, select `EPSG:7856 - GDA2020 / MGA zone 56`
-
-> You will notice that the OpenStreetMap basemap looks very warped, except for the East Coast of Australia. This is because the projection we have selected is very focused on reducing distortion within the bounds of the projection's area (Eastern Australia).
 
 ## Load in our data
 
@@ -125,46 +69,26 @@ But what about the Koala Encounters location data? We need to handle this differ
 
 > It's usually the case that data like this is in EPSG:4326 - WGS84, as that is the standard used by most GPS units and Google Maps. However, it's still worth checking those details on the website you've downloaded it from. If your data doesn't come with a predefined projection, and the spatial portal doesn't specify, but it uses a Google Maps style interface, it's probably using EPSG:4326 - WGS84
 
-## Projections
 
-### What are projections?
+## Tabular data
 
-To turn the geoid/spheroid shape of the Earth into a flat map, we need to squish, stretch, and distort the map to make it flat. The mathematical equations used to do this are what we're talking about when we say "**projections**". Imagine it like a soccer ball, if we have to squash it to make it flat, it's not going to look nice and square like our maps do. So we pull and stretch it to make it flat and rectangular. There will always be some kind of distortion when we stretch our map like this. This is why the Mercator Projection makes Greenland look large, and Africa look smaller than it really is.
+QGIS can deal with plain tabular data. For example, try importing the file HDI.ods: it doesn't contain any coordinates, but we can still store it as a layer and use it in our project. You can see the data it contains by opening its attribute table.
 
-### Why are projections important to us?
+How can we add the Human Development Index (HDI) data to our existing "admin" shapefile?
 
-Well, when we make these distortions, we have to compromise somewhere, and that means our lengths, or size or direction will be different to what it really is. To avoid this kind of distortion, often local projections are used. There are fewer compromises needed when focused on a small area. By using a local projection, we don't need to worry about keeping Greenland looking the right shape if we're focused on Brisbane. Going back to Soccer balls, if we cut out a single panel from the ball, it will be much easier to make that flat.
+### Joining tabular data
 
-The trouble with using data of different projections is that they might be slightly off around the edges, giving us different total areas in a polygon, or showing a point outside a boundary, when it's really inside. To avoid this, it's often best to convert all of your data to using the same projection.
+To add the HDI data to our region shapefile, we can go the the "admin" layer's properties, use the ![Join Button](https://docs.qgis.org/3.40/en/_images/join.png) `Joins` tab and click the `Add new join` button ![Add New Join Button](https://docs.qgis.org/3.40/en/_images/symbologyAdd.png) to create a new join. We can then choose the HDI data as the `Join layer`, and define what common field between the two tables we will merge on: the ISO_3166_2 code in our case.
 
-Today we're going to use a suitable local projection: EPSG:7856 - GDA2020 / MGA zone 56
+You can now see the joined data highlighted in green in the ![Fields Tab Button](https://docs.qgis.org/3.40/en/_images/mSourceFields.png)`Fields` tab, click "OK", and check the actual values in the "admin" layer's attribute table.
 
-### Reproject
-
-For each of our layers, do the following:
-
--   Go to `Vector > Data Management Tools > Reproject Layer...`
-
--   Choose the layer in `Input layer`
-
--   Set the Target CRS to `EPSG:7856 - GDA2020 / MGA zone 56`
-
-    -   If that option isn't available, click ![](projection.png) (Select CRS), and type "GDA2020 56" into the filter, the option should now appear under the **Predefined Coordinate Reference Systems** section.
-
--   Click the three dots `...` next to the `Reprojected` section, and click **Save to File...**
-
--   Navigate to your `data > processed` folder and save the file there. For example, save **SA2_ERP_2021** as **SA2_Reproj**, **CAPAD2020_terrestrial_QLD** as **CAPAD_Reproj**, **koala_reduced** as **Koalas_Reproj** and **koala_priority_area** as **KPA_Reproj**
-
--   Click `Run`
-
-You won't notice any difference, as QGIS is helpfully doing "on the fly projections" to make the layers sit nicely together. But now that you've reprojected your data, you can safely do your analyses.
 
 ## Subset our SA2 data down to SEQ - Select features using an expression
 
 The following code will allow you to select the SA2 features that are in SEQ.
 
 -   Right click on the reprojected SA2 layer, and select **Open Attribute Table**
--   From the Attribute Table that opens, click the Select features using an expression button: ![image](https://user-images.githubusercontent.com/67612228/195261159-b949e22b-7634-4326-ab50-089b94e76dc4.png)
+-   From the Attribute Table that opens, click the Select features using an expression button: ![image](https://docs.qgis.org/3.40/en/_images/mIconExpressionSelect.png)
 -   In the Select by Expression window that opens, paste the code from below into the Expression field, and then click `Select Features` in the bottom right of the window.
 
 ``` sql
@@ -202,7 +126,7 @@ We get an error `Feature (26) from “CAPAD_Reproj” has invalid geometry.` Thi
 
 ### Fix Geometries
 
--   Open the Processing Toolbox by clicking the cog icon from the top menu ![image](https://user-images.githubusercontent.com/67612228/195267106-f54d2655-2762-42ec-acd0-a2c744b059e9.png) (alternatively go to `View > Panels > Processing Toolbox`)
+-   Open the Processing Toolbox by clicking the cog icon from the top menu ![Processing Toolbox](https://docs.qgis.org/3.40/en/_images/processingAlgorithm.png) (alternatively go to `View > Panels > Processing Toolbox`)
 -   In the **Processing Toolbox** window `Search` for "Fix geometries"
 -   Double-click on the **Fix geometries** option
 -   In the **Fix Geometries** window, select `CAPAD_Reproj` from the **Input layer** options, then click `Run`
@@ -221,7 +145,7 @@ Magic. Our new layer with be the thin overlap between our two original layers, a
 
 We can use the **Field Calculator** to calculate the area of our polygon.
 
-Select **Intersection** from the **Layers** panel, and the click the **Open Field Calculator** button ![image](https://user-images.githubusercontent.com/67612228/195319687-1538f2a0-d8c8-4084-a632-0e3181fb11dd.png)
+Select **Intersection** from the **Layers** panel, and the click the **Open Field Calculator** button ![Field Calculator Button](https://docs.qgis.org/3.40/en/_images/mActionCalculateField.png)
 
 In the **Field calculator** window, type the following code into the **Expression** tab:
 
@@ -260,9 +184,9 @@ You may often need to create your own points, lines, and polygons when digitisin
 
 We now have a brand new layer that we can add polygons to.
 
--   Select the new **ESBR_polygon** layer and then click the **Toggle Editing** pencil ![image](https://user-images.githubusercontent.com/67612228/195329987-d435f41e-c111-40b0-8ee5-043cf135692c.png) from the top menu (or go to `Layer > Toggle Edititng`
+-   Select the new **ESBR_polygon** layer and then click the **Toggle Editing** pencil ![Toggle Editing Button](https://docs.qgis.org/3.40/en/_images/mActionToggleEditing.png) from the top menu (or go to `Layer > Toggle Edititng`
 
--   On your keyboard, press `Ctrl + .` (or click ![](polygon.png) Add Polygon Feature) to start adding a new polygon
+-   On your keyboard, press `Ctrl + .` (or click ![Add Polygon Button](https://docs.qgis.org/3.40/en/_images/mActionCapturePolygon.png) Add Polygon Feature) to start adding a new polygon
 
 -   Zoom in to a corner of the area you want to create the polygon, and then `Left click` to start drawing your polygon (You can use the mouse wheel to zoom in, and also press and drag on the mouse wheel to navigate)
 
@@ -278,7 +202,7 @@ We now have a brand new layer that we can add polygons to.
 
 You now know how to digitise a polygon, but the same steps apply for creating a point or a line layer. We created a new layer here, and you can also do the same steps to edit a pre-exisitng layer too.
 
-The **Vertex Tool** ![](vertex.png) will allow you to move the location of points (or corners of polygons) that you have already created (you also need to click the **Toggle Editing** button for this tool)
+The **Vertex Tool** ![Vertex Tool Button](https://docs.qgis.org/3.40/en/_images/mActionVertexToolActiveLayer.png) will allow you to move the location of points (or corners of polygons) that you have already created (you also need to click the **Toggle Editing** button for this tool)
 
 Despite these missing Refuge area polygons, you can still see that there are a lot of koalas which are found outside of protected areas. In fact, most sightings seem to occur outside of protected areas! Is this poor protected area management, or might our data be biased by when and where people are more likely to encounter koalas?
 
@@ -340,7 +264,7 @@ Now we can quickly see how many Koalas are in each suburb.
 
 We can go further and use the **Field Calculator** to compare koala numbers to the current human population in that area, and create a new field with that information.
 
--   Click on the **Field Calculator** button ![image](https://user-images.githubusercontent.com/67612228/195319687-1538f2a0-d8c8-4084-a632-0e3181fb11dd.png){alt="image"}
+-   Click on the **Field Calculator** button ![Field Calculator Button](https://docs.qgis.org/3.40/en/_images/mActionCalculateField.png){alt="image"}
 
     -   Under **Create a new field** set the **Output field name** to `KOALAS_PP`
 
@@ -372,22 +296,4 @@ How might you use these tools in your own analysis?
 Please visit our website to [provide feedback](https://web.library.uq.edu.au/study-and-learning-support/training-and-workshops/software-training-resources) and find upcoming training courses we have on offer.
 
 
-## Stretch goals
 
-### Export a Map
-
-Use the data and summary statistics to export a useful map from this data.
-
-### Heatmaps
-
-Try changing the **Symbology** of the `koala_reduced` point dataset to the **Heatmap** option or even the **Point Cluster** option.
-
-Compare the **Heatmap** from **Symbology** with one that you can create with the `Heatmap (Kernel Density Estimation)` tool from the **Processing Toolbox**
-
-### Use Zonal Statistics to calculate values from Rasters
-
-You can use the `Zonal statistics` tool from the **Processing Toolbox** to count the number of raster squares, sum together all of the values, and find the average value from a raster that overlaps with a chosen polygon.
-
-### Vector to Raster conversion
-
-Convert a species distribution point dataset to a raster image

@@ -31,6 +31,56 @@ In this workshop, we will learn about:
 This content is currently in Vector and in Field Work.
 
 
+## Projections
+
+### What are projections?
+
+To turn the geoid/spheroid shape of the Earth into a flat map, we need to squish, stretch, and distort the map to make it flat. The mathematical equations used to do this are what we're talking about when we say "**projections**". Imagine it like a soccer ball, if we have to squash it to make it flat, it's not going to look nice and square like our maps do. So we pull and stretch it to make it flat and rectangular. There will always be some kind of distortion when we stretch our map like this. This is why the Mercator Projection makes Greenland look large, and Africa look smaller than it really is.
+
+### Why are projections important to us?
+
+Well, when we make these distortions, we have to compromise somewhere, and that means our lengths, or size or direction will be different to what it really is. To avoid this kind of distortion, often local projections are used. There are fewer compromises needed when focused on a small area. By using a local projection, we don't need to worry about keeping Greenland looking the right shape if we're focused on Brisbane. Going back to Soccer balls, if we cut out a single panel from the ball, it will be much easier to make that flat.
+
+The trouble with using data of different projections is that they might be slightly off around the edges, giving us different total areas in a polygon, or showing a point outside a boundary, when it's really inside. To avoid this, it's often best to convert all of your data to using the same projection.
+
+Today we're going to use a suitable local projection: EPSG:7856 - GDA2020 / MGA zone 56
+
+## Set the Project Projection
+
+We need to choose the projection for our current session of QGIS. Today we will be focusing on South East Queensland (SEQ), so we will choose GDA2020 / MGA zone 56. We will go into projections in more detail soon.
+
+-   Go to `Project > Properties` select the **CRS** tab.
+-   In the filter section, type "GDA2020 56"
+-   From the **Coordinate Reference System** list, select `EPSG:7856 - GDA2020 / MGA zone 56`
+
+> You will notice that the OpenStreetMap basemap looks very warped, except for the East Coast of Australia. This is because the projection we have selected is very focused on reducing distortion within the bounds of the projection's area (Eastern Australia).
+
+### Reproject
+
+For each of our layers, do the following:
+
+-   Go to `Vector > Data Management Tools > Reproject Layer...`
+
+-   Choose the layer in `Input layer`
+
+-   Set the Target CRS to `EPSG:7856 - GDA2020 / MGA zone 56`
+
+    -   If that option isn't available, click ![](projection.png) (Select CRS), and type "GDA2020 56" into the filter, the option should now appear under the **Predefined Coordinate Reference Systems** section.
+
+-   Click the three dots `...` next to the `Reprojected` section, and click **Save to File...**
+
+-   Navigate to your `data > processed` folder and save the file there. For example, save **SA2_ERP_2021** as **SA2_Reproj**, **CAPAD2020_terrestrial_QLD** as **CAPAD_Reproj**, **koala_reduced** as **Koalas_Reproj** and **koala_priority_area** as **KPA_Reproj**
+
+-   Click `Run`
+
+You won't notice any difference, as QGIS is helpfully doing "on the fly projections" to make the layers sit nicely together. But now that you've reprojected your data, you can safely do your analyses.
+
+
+
+
+
+
+
 # Data
 
 This is a list of Spatial data sources that you might find useful. Some are used in our workshops, others didn't fit, but are still very valuable.
@@ -107,6 +157,35 @@ There are a few places you can aquire aerial photography, today we will look at 
 You can also get historical images from Geoscience Australia's [Historical Aerial Photo (HAP) Collection](https://experience.arcgis.com/experience/9a0ecbafe94f49829712b46fc69186ff)
 
 
+
+## Basemaps
+
+Let's start by making a map we might use in an **Academic Paper** or in an **Article for the Public**, where we want to focus their attention on our data. Unless we really need **Satellite** imagery, or everything on the **OpenStreetMap**, it is too busy and distracting.\
+\
+Let's load in a new basemap.\
+\
+There are many ways of doing this, in the past we've used the **QuickMapServices** plugin to load in new basemaps, now we can go to the next step and source them externally. We can do this with WMTS (Web Map Tile Service), WCS (Web Coverage Service), ArcGIS REST Servers, and XYZ Tiles.
+
+Today we're going to use an XYZ Tile from CARTODB.
+
+-   Scroll down the `Browser` panel until your see **XYZ Tiles**
+-   Right click XYZ Tiles and select `New Connection...`
+    -   In `Name` type **Voyager (no labels)**
+    -   In `URL` paste:\
+        https://a.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}@2x.png
+    -   Increase the Max. Zoom Level to 20
+        -   This value depends on what is available from the given service in different parts of the world. Increasing that value beyond 20 for this map in Brisbane will show "Map data not yet available" when you zoom in very close.
+    -   Click `OK`
+-   In the `Browser` panel, expand `XYZ Tiles` and double click on `Voyager (no labels)`
+-   Now do the same for this **Light Gray Basemap** from ESRI, but set the Max. Zoom Level to 16:\
+    https://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}
+
+Arrange the layers so that the **Voyager (no labels)** layer is under your other layers (you can hide the **Light Gray Basemap** and **OpenStreetMap** for now).
+
+Isn't that much less visually busy?!
+
+
+
 ### More Web Mapping Services
 
 Add any of these URLs via **ArcGIS REST Servers** in QGIS
@@ -181,3 +260,66 @@ Another way to access QSpatial Data is using the Queensland Globe portal.
 -   The Layers menu will now show your selection. You can download all, or sections, of your selection.
 -   I will choose **Land Parcel** and then **Download** as a **shp** file.
 -   Note: You may need to disable other layers for this to work correctly. I needed to turn off the **Transportation** layer to prevent roads from being included in my selection.
+
+
+
+### Online Community Spatial Repositories
+
+#### Koala Sighting Data (encounters)
+
+If we're looking at Koalas, we should get some occurence/sighting data.
+
+We're getting our species observation data today from the [Atlas of Living Australia](https://www.ala.org.au/). This is an Australia Biodiversity occurrence database. It pulls data from a variety of different sources, including government data, individual collectors and community groups. This means that this data will contain sampling bias and will often simply represent encounters, rather than using robust sampling and collection methods. So, while we need to use this data with caution, it's still a useful dataset!
+
+You need to create an account and request the exact dataset you need, so to speed things up today, we've provided the data already cleaned and processed the data in the download link above.
+
+Some similar online repositories include the Global Biodiversity Information Facility (GBIF) and iNaturalist
+
+#### Cleaning and processing the ALA data
+
+What do we mean by processed? Well, the ALA dataset has 206 columns by default. This means that each occurrence has 206 associated cells, and when multiplied by \~200,000 sightings, our data gets huge (\>300mb!). To save time (and storage space!) today we have already deleted 200 of those columns (bringing the dataset down to 15mb).
+
+### QLD Government Spatial Data
+
+We've seen the [QSpatial data portal](https://qldspatial.information.qld.gov.au/catalogue/custom/index.page) in previous sessions, and today we will be getting two lots of data from here.
+
+#### Koala Priority Areas
+
+Koala Priority Areas are areas in SEQ which have been identified as key areas for conservation as part of the South East Queensland Koala Conservation Strategy 2019-2024. You can search for "Koala Priority Areas" in QSpatial, or by going [directly to the data](https://qldspatial.information.qld.gov.au/catalogue/custom/detail.page?fid=%7BE4CCDBA7-11AB-45DD-A064-BDBC02899204%7D).
+
+Let's get a resource to compare with these QLD government priority areas...
+
+### Federal Environment Data
+
+#### Protected Areas
+
+The Federal Environment Department has a variety of [different spatial datasets that you can browse through](http://www.environment.gov.au/fed/catalog/main/home.page). Today we are going to be using the Collaborative Australian Protected Areas Database (CAPAD) 2020, which is a compilation of government, Indigenous and privately protected areas for Australia. You can search for "CAPAD" in on the Environment Department website, or by going [directly to the data](http://www.environment.gov.au/fed/catalog/search/resource/details.page?uuid=%7B4448CACD-9DA8-43D1-A48F-48149FD5FCFD%7D).
+
+Finally let's get some data to put all of our protected areas and observations into context...
+
+### Australian Bureau of Statistics Data
+
+The ABS is a huge source of data, however, it can be a bit difficult to find that data, and use it in a spatial context.
+
+#### Digital Boundary Files - SA2 - Suburb data
+
+The ABS has a variety of ways that it splits its data up. These [Digital Boundary Files](https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files) are very useful for classifying data. They generally classify all of Australia into discrete Statistical Areas. Level 1 are the smallest, and Level 4 are the coarsest. (notably, the link above also has non-ABS Structures/boundary files such as Electoral areas and Postcodes). Today we are going to use the Statistical Area 2 data, which effectively represent suburbs, but we can take it a little further with more ABS data.
+
+##### Population Data
+
+The ABS have a lot of useful data, today we will be using their population data. They provide it in excel format, as GeoPackages (by SA2 and LGAs), and as population grid raster files. Today we will be using their SA2 [GeoPackages](https://www.abs.gov.au/statistics/people/population/regional-population/latest-release#data-download). This means we have our digital boundaries, and population in one!
+
+
+## Get some elevation data
+
+For this tutorial, we are using a DEM sourced from the USGS website.
+
+-   Go to https://earthexplorer.usgs.gov/
+-   Click the World Features box, and then search for "Brisbane" in the "Feature Name" search box
+-   Click Show and select the first result
+-   Zoom onto an area of interest around Brisbane and click "Use Map"
+-   Click the "Data Sets" button and then `Digital Elevation > SRTM`, select "SRTM 1 Arc-Second Global" and click "Results"
+
+"SRTM" stands for "[Shuttle Radar Topography Mission](https://www.usgs.gov/centers/eros/science/usgs-eros-archive-digital-elevation-shuttle-radar-topography-mission-srtm-1-arc?qt-science_center_objects=0#qt-science_center_objects)". It provides global elevation data collected in 2000 by the space shuttle Endeavour.
+
+Our area covers two separate raster files. We can click on the foot icon to see the footprint of each file, and the picture icon to see what the DEM looks like.

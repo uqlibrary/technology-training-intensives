@@ -15,27 +15,13 @@ In this workshop, we will learn about:
 
 
 ## What is Raster Data?
-
+A Digital Elevation Model (DEM) is a common example of **raster data**, i.e. grid data that contains a value in each cell (a bit like the pixels in a coloured picture).
 
 ## Install the SAGA Plugin
 
 We need to install a plugin so we can access certain geoprocessing tools (the built-in SAGA provider has been [removed in version 3.30](https://changelog.qgis.org/en/qgis/version/3.30/#processing-drop-unmainted-saga-provider-from-qgis-)). Go to `Plugins > Manage and Install Plugins...` and `Search...` for "**SAGA**". From the list on options choose **Processing Saga NextGen Provider** then in the bottom right, click `Install Plugin`. You might also need to install SAGA (version 9 or above) on your computer, if not already available.
 
-## Get some elevation data
-
-A Digital Elevation Model (DEM) is a common example of **raster data**, i.e. grid data that contains a value in each cell (a bit like the pixels in a coloured picture).
-
-For this tutorial, we are using a DEM sourced from the USGS website.
-
--   Go to https://earthexplorer.usgs.gov/
--   Click the World Features box, and then search for "Brisbane" in the "Feature Name" search box
--   Click Show and select the first result
--   Zoom onto an area of interest around Brisbane and click "Use Map"
--   Click the "Data Sets" button and then `Digital Elevation > SRTM`, select "SRTM 1 Arc-Second Global" and click "Results"
-
-"SRTM" stands for "[Shuttle Radar Topography Mission](https://www.usgs.gov/centers/eros/science/usgs-eros-archive-digital-elevation-shuttle-radar-topography-mission-srtm-1-arc?qt-science_center_objects=0#qt-science_center_objects)". It provides global elevation data collected in 2000 by the space shuttle Endeavour.
-
-Our area covers two separate raster files. We can click on the foot icon to see the footprint of each file, and the picture icon to see what the DEM looks like.
+## Gather some data
 
 Use the download button to download each file into your project directory. You will need a login for that, which is free but can take a bit of time. You can instead **download the two raster files** as an archive from our GitHub repository [here](https://github.com/uqlibrary/technology-training-assets/raw/master/QGIS/raster/QGIS_Raster_Data.zip).
 
