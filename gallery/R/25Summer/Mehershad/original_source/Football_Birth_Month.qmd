@@ -1,0 +1,80 @@
+---
+title: "Impact of Birth Month on Football careers"
+author: "Mehershad Wadia"
+format: dashboard
+date: Jan-2025
+warning: false
+error: false
+#image: gallery/R/25Summer/Mehershad/tb.png
+categories: [R, 25Summer, "data: Players2024.csv"]
+---
+
+```{R}
+# library(tidyverse)
+# library(plotly)
+# library(knitr)
+# library(hrbrthemes)
+# library(viridis)
+
+players <- read.csv("data/Players2024.csv")
+library(dplyr)
+library(lubridate)
+players <- players %>%
+  mutate(birth_date = as.Date(birth_date))
+playersmonth <- players %>%
+  mutate(birth_month = month(players$birth_date))
+
+playersmonth <- playersmonth %>% 
+  filter(positions != "Missing",
+         age > 10,
+         age < 100,
+         height_cm > 100)
+```
+
+## Figures {height=75%}
+
+```{R}
+#| title: More Footballers are born in January than December
+#| fig-alt: "A density plot of the number professional players and the month they were born in"
+
+library(ggplot2)
+ggplot(data=playersmonth, aes(x=birth_month, group=positions, fill=positions)) +
+  geom_density(alpha=.4) +
+  scale_x_continuous(breaks = scales::pretty_breaks(n = 12)) +
+  labs(x= "Birth Month", y = "Density", fill = "Position")
+
+ggsave("tb.png")
+```
+```{R}
+#| title: Impact of birth month more prominent for Goalkeepers
+
+ggplot(data=playersmonth, aes(x=birth_month, group=positions, fill=positions)) +
+  geom_density() +
+  facet_wrap(~positions) +
+  labs(x= "Birth Month", y = "Density") +
+  scale_x_continuous(breaks = scales::pretty_breaks(n = 12)) +
+  theme(
+    legend.position="none",
+    panel.spacing = unit(0.1, "lines"),
+    axis.ticks.x=element_blank()  )
+```
+```{r}
+#| title: Month bias independent of adult height (Interactive)
+
+p <- ggplot(playersmonth, aes(x=birth_month, y=height_cm, color=positions, label = name, label2 = nationality)) +
+  scale_x_continuous(breaks = scales::pretty_breaks(n = 12)) +
+  geom_jitter(size = 0.8, alpha = 0.6) +
+  labs(x = "Birth Month", y = "Height (cm)", colour = "Position")
+library(plotly)
+ggplotly(p)
+```
+
+## Table {height=25%}
+
+```{R}
+#| title: A glimpse at the dataset (in alphabetical order)
+library(knitr)
+players %>% 
+  arrange(name) %>% 
+  kable()
+```

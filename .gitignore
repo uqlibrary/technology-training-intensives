@@ -13,3 +13,5 @@ gallery/**/*.pdf
 !_freeze/
 /.quarto/
 !_processing/
+
+**/*.quarto_ipynb

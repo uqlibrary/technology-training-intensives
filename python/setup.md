@@ -56,11 +56,11 @@ Over these three days we'll cover six sessions of content:
 
 | Session | Description |
 | --- | --- |
-| [The Fundamentals](./Essentials/1%20-%20Fundamentals.qmd) | The basics of Python. Variables, functions and modules.
-| [Data processing](./Essentials/2%20-%20Data%20processing.qmd) | Importing, manipulating and analysing data with `pandas` |
-| [Visualisation](./Essentials/3%20-%20Visualisation.qmd) | Creating visualisations of our data with `seaborn`, `matplotlib` and `plotly`
-| [Sharing and Publishing](./Essentials/4%20-%20Sharing%20and%20Publishing.qmd) | Using GitHub for sharing and version control, as well as quarto for publishing dashboards and websites. |
-| [Statistics](./Advanced%20topics/5%20-%20Statistics.qmd) | Descriptive and inferential statistics, with some regressions and hypothesis testing, using `scipy.stats` and `statsmodels` |
-| [Programming Essentials](./Advanced%20topics/6%20-%20Programming.qmd) | Python tools everyone should know. Conditionals, loops, functions and importing scripts. |
+| [The Fundamentals](./Essentials/1-Fundamentals.qmd) | The basics of Python. Variables, functions and modules.
+| [Data processing](./Essentials/2-Data_processing.qmd) | Importing, manipulating and analysing data with `pandas` |
+| [Visualisation](./Essentials/3-Visualisation.qmd) | Creating visualisations of our data with `seaborn`, `matplotlib` and `plotly`
+| [Sharing and Publishing](./Essentials/4-Sharing_and_Publishing.qmd) | Using GitHub for sharing and version control, as well as quarto for publishing dashboards and websites. |
+| [Statistics](./Advanced%20topics/5-Statistics.qmd) | Descriptive and inferential statistics, with some regressions and hypothesis testing, using `scipy.stats` and `statsmodels` |
+| [Programming Essentials](./Advanced%20topics/6-Programming.qmd) | Python tools everyone should know. Conditionals, loops, functions and importing scripts. |
 
 These content sessions are pretty packed, and we won't have too much time to deviate. That's why we'll also have five project sessions - see [The Project](../project/details.qmd) for details. You're welcome to ask lengthier questions and play around there!
