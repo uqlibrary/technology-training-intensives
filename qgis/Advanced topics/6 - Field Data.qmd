@@ -180,45 +180,6 @@ To buffer either side of the edges of our boundaries, we need to convert them fr
 -   Click `Run`
 
 
-## Explore Projections
-
-Hopefully it's clear why we needed to convert from a Geographic Coordinate System to a Projected Coordinate System, but why is it important that we chose the local projection **EPSG:23856 - GDA94 / MGA zone 56**?
-
-Let's see what would happen if we did our buffer on those lines in a different projection.
-
-
-### Reproject Data
-
--   Go to `Vector > Data Management Tools > Reproject Layer...`
-
--   Choose the **Lines** in `Input layer`
-
--   Set the Target CRS to `EPSG:3857 - WGS84 / Pseudo-Mercator`
-
-    -   This is a very common projection that Google and your phones use
-
--   Click `Run`
-
-    -   We don't need to permanently save this, so we can leave it as a temporary layer
-
-### Buffer Reprojected Lines
-
--   Go to `Vector > Geoprocessing Tools > Buffer`
-
--   Choose "**Reprojected**" as the `Input Layer`
-
--   Set the `Distance` to **10** metres
-
--   Click `Run`
-
-Move the new **Buffered** layer order so that it draws over the **UQ_Boundar_Buffer** layer. Notice anything interesting?
-
-The new **Buffered** layer is about 1m smaller! 
-
-This is because **EPSG:3857 - WGS84 / Pseudo-Mercator** is a global projection that tries to preserve shapes. Although the units are in metres, the scaling factor changes as you move away from the equator to account for the curvature of the Earth.
-
-It can still be useful to use this projection to take points. But you have to be careful when you're making measurements and calculations, for those, a local projection is usually better.
-
 ## Style the Boundary buffer polygon
 
 -   Open the `Layer Styling` panel by pressing **F7** (or fn+F7)
@@ -231,35 +192,6 @@ It can still be useful to use this projection to take points. But you have to be
 
 It's not essential at this stage, it's just a good reminder to save your work regularly so you don't lose things when things go wrong.
 
-
-# Hillshade
-
-Adding a **hillshade** makes your visualisation of elevation more readable and visually pleasing by giving an artificial lighting look to your map.
-
--   Go to `Raster > Analysis > Hillshade...`.
--   Ensure the Input Layer is your clipped DEM "St_Lucia_DEM"
--   Scroll down to "Hillshade" and click "..." next to `Create Temporary Layer`, then "Save to file", and save it as **UQ_Hillshade** to your project folder.
--   Click Run
-
-# DEM symbology
-
-We can style our DEM with a **terrain colour palette**:
-
--   double-click on the clipped DEM layer
--   go to the "`Symbology`" tab
--   change the Render type to "Singleband pseudocolor"
--   by default, it uses the min/max values, which is what we want
--   we can change the "Color ramp" to something more suitable with the drop-down menu and `Create new color ramp... > Catalog: cpt-city > Topography > Elevation`, for example.
--   go to the "`Transparency`" tab
--   Set the **Global Opacity** to 50%
--   Click `OK`
-
-Let's link these two together.
-
--   Hold `Ctrl` and select both the Hillshade and the DEM layers
--   Press the `Add Group` button from the top of the `Layers` panel
--   Call it DEM
--   Make sure the DEM is above the Hillshade within this group
 
 
 # Contours
@@ -537,6 +469,9 @@ To export your data back to QGIS, you can either copy the whole project folder i
 There's more to explore, such as the very very helpful [QFieldCloud](https://qfield.cloud/), and I encourage you to do so.
 
 If you have any questions, reach out to the UQ Library Training Team at training@library.uq.edu.au
+
+
+### Exporting from QField to QGIS
 
 
 

@@ -89,6 +89,13 @@ Adding a **hillshade** makes your visualisation of elevation more readable and v
 -   Make sure you apply some transparency to the pseudocolour DEM, and place the hillshade layer underneath (in `Properties > Symbology > Transparency`)
 -   Down the bottom of the window under **Resampling** change the `Zoomed: in` and `out` from "Nearest Neighbour" to "Cubic" (this will remove some of the grid-like patterns you might see in your Hillshade layer otherwise)
 
+Let's link these two together.
+
+-   Hold `Ctrl` and select both the Hillshade and the DEM layers
+-   Press the `Add Group` button from the top of the `Layers` panel
+-   Call it DEM
+-   Make sure the DEM is above the Hillshade within this group
+
 > Another method is to use the hillshade tool instead of the symbology: `Raster > Analysis > Hillshade...`.
 
 ## Create a watershed layer
@@ -163,26 +170,7 @@ As an extra feature. You can do the reverse analysis with a Viewshed. That is, y
 
 If you want to get more sophisticated with your Viewshed analyses, there is, of course, a plugin called **Visibility Analysis** which will allow you to use one or multiple points as observers, take in account of the Earth's curvature, see what vector points can see other vector points, and more.
 
-## 3D maps
 
-A 3D viewer is integrated in QGIS: `View > 3D Map Views > New 3D Map View`
-
-In the 3D map window, make sure to first:
-
--   Click the **Options** wrench icon, choose `Configure > Terrain`, set the "Type" to "DEM (Raster layer)", and set the "Elevation" to your clipped DEM.
--   Exaggerate the relief with the "Vertical scale" setting (try 3).
-
-To see the 3D effect, you will have to use your <kbd>Ctrl</kbd> or <kbd>Shift</kbd> keys on your keyboard while panning with the mouse to change the angle of view.
-
-To avoid seeing gaps in the rendering, you can go back to your Terrain options and set the "Tile resolution" and "Skirt height" to higher values.
-
-> A useful plugin for 3D maps is qgis2threeJS, which might be handy to add a 3D map to a website.
-
-## Exporting
-
-Use the Layout Manager to create a new layout, and insert both a 2D map and a 3D map.
-
-When inserting the 3D map, it will tell you that the "scene is not set". You will have to import the 3D scene settings from your view: `Item Properties > Scene Settings > Copy Scene Settings from a 3D View...` and then select your 3D map from the drop-down.
 
 ## Saving your project
 

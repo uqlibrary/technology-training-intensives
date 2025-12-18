@@ -78,6 +78,133 @@ You won't notice any difference, as QGIS is helpfully doing "on the fly projecti
 
 
 
+# Buffer Data
+
+Buffers are a simple, but powerful, tool that we can use to extend the borders of our vector data. 
+It's useful for polygons, lines, and points.
+
+Perhaps we need to keep 10m from the property boundaries when doing our fieldwork. A buffer can help us there.
+
+However, our **St_Lucia_Property_Boundaries** layer has some issues we need to resolve before we can buffer it.
+
+
+-   It has extra properties that we don't need
+
+-   A buffer on a polygon will grow out from the edges, not put a buffer either side of the edges
+
+-   It's in a Geographic Coordinate System
+
+Let's look at what happens if we create a buffer in a Geographic Coordinate System:
+
+-   Go to `Vector > Geoprocessing Tools > Buffer`
+
+-   Choose "**St_Lucia_Property_Boundaries**" as the Input Layer
+
+-   We next want to choose distance that we want to create a buffer away from our vector.
+
+    -   However, you'll note that because the layer projection is EPSG:4283 GDA94 (a geographic coordinate system), the distance is currently in **degrees**. 
+
+-   If you click Run with 10 Degrees, your buffer will be nearly the size of Queensland.
+
+    -   To change this to metres, we first need to convert our layer to a local projected coordinate system.
+    
+# Select and Reproject
+
+We can **Select** the data we want, and **reproject** at the same time!
+
+We first need to select the lots that are relevant to us: 
+
+-   Click the dropdown next to the **Select Feature(s)** icon in the toolbar, and choose the `Select Feature by polygon` option 
+
+    -   This allows us to click around our desired selection
+    
+-   Make sure **St_Lucia_Property_Boundaries** is the selected layer in the `Layers` panel
+    
+-   Click around the lots to draw a shape around the lots we want to keep
+
+-   Right-click to finish selecting
+
+    -   If you need to select any more features, press and hold **Shift** while drawing around your extra features, when you right-click they will be added to your selection
+    -   To remove any accidentally selected features from the selection, press and hold **Control** and draw around the unwanted features.
+    
+-   Right click on the **St_Lucia_Property_Boundaries** layer, and select `Export > Save Selected Features As...`
+-   Choose **Geopackage** as the `Format`
+-   Click the three dots on the right of `File name`, navigate to your **Processed** data folder and save it as "**UQ_Boundary**"
+-   See the `Layer name` to "**UQ Boundary**"
+    -   The Layer name can have spaces in it, but it's best to avoid spaces in a File name
+-   Make sure you change the CRS, effectively reprojecting the layer 
+    -   Choose `EPSG:23856 - GDA94 / MGA zone 56` 
+        -   This is the same projection as our DEM, and a good local projection
+-   Click `OK` 
+
+
+# Polygons to Lines    
+
+To buffer either side of the edges of our boundaries, we need to convert them from Polygons to Lines.
+
+-   Go to `Vector > Geometry Tools > Polygons to Lines`
+-   Set the `Input Layer` to **UQ Boundary**
+-   Click `OK`
+
+
+
+## Buffer the Lines
+
+-   Go to `Vector > Geoprocessing Tools > Buffer`
+
+-   Choose "**Lines**" as the `Input Layer`
+
+-   Set the `Distance` to **10** metres
+
+    -   We can also make the buffer squared if we want, but we will keep it with the rounded default
+    
+-   Tick the `Dissolve result` box
+
+    -   This will merge the polygons from our output, making for a cleaner look. The Dissolve tool also exists as a standalone tool.
+    
+-   Click the three dots `...` next to the **Buffered** field, navigate to the project's **processed** data folder, and type in **UQ_Boundary_Buffer** and click `Save`
+
+-   Click `Run`
+
+## Explore Projections
+
+Hopefully it's clear why we needed to convert from a Geographic Coordinate System to a Projected Coordinate System, but why is it important that we chose the local projection **EPSG:23856 - GDA94 / MGA zone 56**?
+
+Let's see what would happen if we did our buffer on those lines in a different projection.
+
+
+### Reproject Data
+
+-   Go to `Vector > Data Management Tools > Reproject Layer...`
+
+-   Choose the **Lines** in `Input layer`
+
+-   Set the Target CRS to `EPSG:3857 - WGS84 / Pseudo-Mercator`
+
+    -   This is a very common projection that Google and your phones use
+
+-   Click `Run`
+
+    -   We don't need to permanently save this, so we can leave it as a temporary layer
+
+### Buffer Reprojected Lines
+
+-   Go to `Vector > Geoprocessing Tools > Buffer`
+
+-   Choose "**Reprojected**" as the `Input Layer`
+
+-   Set the `Distance` to **10** metres
+
+-   Click `Run`
+
+Move the new **Buffered** layer order so that it draws over the **UQ_Boundar_Buffer** layer. Notice anything interesting?
+
+The new **Buffered** layer is about 1m smaller! 
+
+This is because **EPSG:3857 - WGS84 / Pseudo-Mercator** is a global projection that tries to preserve shapes. Although the units are in metres, the scaling factor changes as you move away from the equator to account for the curvature of the Earth.
+
+It can still be useful to use this projection to take points. But you have to be careful when you're making measurements and calculations, for those, a local projection is usually better.
+
 
 
 
@@ -184,7 +311,19 @@ Arrange the layers so that the **Voyager (no labels)** layer is under your other
 
 Isn't that much less visually busy?!
 
+### Mapserver Raster Files
 
+Today we're going to use a World Imagery XYZ Tile from ESRI.
+
+-   Scroll down the `Browser` panel until your see **XYZ Tiles**
+-   Right click XYZ Tiles and select `New Connection...`
+    -   In `Name` type **ESRI World Imagery**
+    -   In `URL` paste:\
+        https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}
+    -   Increase the Max. Zoom Level to 20
+        -   This value depends on what is available from the given service in different parts of the world. Increasing that value beyond 20 for this map in Brisbane will show "Map data not yet available" when you zoom in very close.
+    -   Click `OK`
+-   In the `Browser` panel, expand `XYZ Tiles` and double click on `ESRI World Imagery`
 
 ### More Web Mapping Services
 
@@ -211,6 +350,21 @@ Add any of these URLs via **ArcGIS REST Servers** in QGIS
 
 
 ## Vector Data
+
+## Lot Plans
+
+You can access a wide variety of QLD Government Data, including Spatial Data such as lot plans and vegetation maps, from [QLD Spatial](https://qldspatial.information.qld.gov.au/). 
+
+Today we have extracted a selection from [Property boundaries Queensland](https://qldspatial.information.qld.gov.au/catalogue/custom/detail.page?fid={3F217A59-1FDB-412A-813D-A1E7843FB618})
+
+There are three ways to access data from QSpatial. 
+
+-   Download all of the data from a layer
+
+-   Select a portion of a layer for download using the [My List](https://qldspatial.information.qld.gov.au/catalogue/custom/myList.page) function
+
+-   Live load it into your project using a [Mapserver](https://spatial-gis.information.qld.gov.au/arcgis/rest/services/PlanningCadastre/LandParcelPropertyFramework/MapServer). 
+
 
 ### Lot Plans
 
