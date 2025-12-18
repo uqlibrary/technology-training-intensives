@@ -38,6 +38,17 @@ class HiddenPrints:
         sys.stdout = self._original_stdout
 
 
+def fix_filepaths(qmds: list[str]) -> list[str]:
+    for qmd in qmds.copy():
+        # Replace spaces
+        if (new_qmd := j(d(qmd), b(qmd).replace(" ", "_"))) != qmd:
+            os.rename(qmd, new_qmd)
+            qmds.remove(qmd)
+            qmds.append(new_qmd)
+
+    return qmds
+
+
 def test_py(qmd: str, source: str, log: list) -> None:
     with HiddenPrints():
         try:
@@ -186,7 +197,7 @@ def restore_originals() -> None:
     raise NotImplementedError()
 
 
-def run_checker(dev: bool = False, clear_log: bool = False) -> None:
+def run_checker(dev: bool = False, clear_log: bool = False) -> str:
     try:
         if not os.path.exists("_quarto.yml"):
             raise EnvironmentError("Not in quarto project dir.")
@@ -194,25 +205,23 @@ def run_checker(dev: bool = False, clear_log: bool = False) -> None:
         if os.getenv("IGNORE_VENV_REQ") != "true":
             if sys.prefix == sys.base_prefix:
                 raise EnvironmentError(
-                    "Not in a virtual environment, required for testing Python imports.\n\nHave you activated? Run source .venv/bin/activate"
+                    f"Not in a virtual environment, required for testing Python imports.\n{BLU}Have you activated? Run source .venv/bin/activate"
                 )
             elif not os.path.exists(j(d(sys.prefix), "_quarto.yml")):
                 raise EnvironmentError("Not in the correct virtual environment.")
     except EnvironmentError as e:
-        print("Enountered environment error", e)
+        print("Enountered environment error\n", RED, e, O, sep="")
         print()
         print(
             RED,
             "CAUTION:",
             O,
-            "Project processing was not executed due to environment issues. Proceeding with render; broken project files may break render.",
+            "Project processing was not executed due to environment issues. Proceeding with remaining tasks; broken project files may break render.",
         )
-        return
+        return "PROCESSING FAILED"
 
     warnings.filterwarnings("ignore")
     mpl.use("Agg")
-
-    old_state_files = {j(path, f) for path, _, fs in os.walk("./") for f in fs}
 
     if clear_log:
         ok_projects = []
@@ -230,12 +239,13 @@ def run_checker(dev: bool = False, clear_log: bool = False) -> None:
             or (b(d(d(d(d(path))))) == "gallery" and ".exclude" in path)
         )
     ]
+    qmds = fix_filepaths(qmds)
 
     e_log = []
     left_unchecked = []
     to_exclude = set()
     to_include = set()
-
+    old_state_files = {j(path, f) for path, _, fs in os.walk("./") for f in fs}
     print("Checking all projects in gallery/ for errors.")
     for qmd in qmds:
         last_checks = [
@@ -342,7 +352,12 @@ def run_checker(dev: bool = False, clear_log: bool = False) -> None:
         py_code = "\n".join(py_chunks)
 
         if r_code:
-            r_code = f"setwd('{d(qmd)}')\n" + r_code
+
+            if '"' in d(qmd):
+                r_code = f"setwd('{d(qmd)}')\n" + r_code
+            else:
+                r_code = f'setwd("{d(qmd)}")\n' + r_code
+
             Rout = run("R -s -e".split() + [r_code], capture_output=True)
 
             if Rout.returncode:
@@ -381,7 +396,6 @@ def run_checker(dev: bool = False, clear_log: bool = False) -> None:
         # Overwrite with patches
         with open(qmd, "w") as f:
             f.write(head + body)
-
     if e_log:
         print(
             "The following files fail to render and now (or already) live in .exclude/:"
@@ -431,6 +445,7 @@ def run_checker(dev: bool = False, clear_log: bool = False) -> None:
 
     backups = {path for path in all_new_files if "original_source" in path}
     excludes = {file for file in all_new_files if ".exclude" in file}
+
     from_excludes = {
         file.replace("/.exclude", "")
         for file in old_state_files
@@ -480,6 +495,11 @@ def run_checker(dev: bool = False, clear_log: bool = False) -> None:
         if dev and input("\nWould you like to keep these? [y]/n: ").lower() == "n":
             for path in empty_dirs:
                 os.rmdir(path)
+
+    if e_log:
+        return "COMPLETED WITH SOME FAILS"
+    else:
+        return "COMPLETED WITH ALL PROJECTS PASSING"
 
 
 if __name__ == "__main__":

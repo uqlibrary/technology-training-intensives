@@ -100,7 +100,7 @@ def remove_banner(source: str) -> str:
     raise NotImplementedError()
 
 
-def process_content() -> None:
+def process_content() -> str:
     # Determine all rendered files, exclude those in gallery
     qmds = find_rendered_files()
 
@@ -109,6 +109,7 @@ def process_content() -> None:
         with open(qmd) as f:
             content = f.read()
 
+        # Fix paths in Python or R cells - note, this DOES NOT fix paths in markdown cells
         csv_paths = project_processing.find_paths(content, ".csv")
         png_paths = project_processing.find_paths(content, ".png")
         all_paths = csv_paths | png_paths
@@ -119,7 +120,8 @@ def process_content() -> None:
 
         with open(qmd, "w") as f:
             f.write(content)
-    return None
+
+    return "COMPLETED"
 
 
 if __name__ == "__main__":
