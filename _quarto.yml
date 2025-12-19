@@ -15,14 +15,12 @@ website:
   navbar:
     search: true
     left:
-      - text: "Content"
-        menu:
-        - text: "R with RStudio"
-          href: r/setup.md
-        - text: "QGIS"
-          href: qgis/setup.md
-        - text: "Python for Data Analysis"
-          href: python/setup.md
+      - text: "R"
+        href: r/setup.md
+      - text: "QGIS"
+        href: qgis/setup.md
+      - text: "Python"
+        href: python/setup.md
       - text: "The Project"
         href: project/details.qmd
       - text: "Project Gallery"
