@@ -48,6 +48,7 @@ website:
         - python/setup.md
         - auto: "python/Essentials"
         - auto: "python/Advanced topics"
+        - python/7-your_own_data.qmd
 
     - title: "The Project"
       contents:
