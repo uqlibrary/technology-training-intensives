@@ -4,6 +4,25 @@ title: Analysing your own data
 
 In this final session, we look at taking the skills we've developed during the intensive and applying it to your own data. We'll also discuss a few common pitfalls and where to get help in the wild.
 
+## Setting up
+
+Spend five minutes locating your data and preparing Spyder
+
+1. Locate and structure your own project folder
+    * You might like to use a *data/* folder for data
+2. (Optional) Turn it into a Spyder project
+    1. Click *Projects* $\rightarrow$ *New Project...*
+    2. Click 🔘 Existing directory 
+    3. Choose ***top-level folder*** of your project
+3. Create a new script for processing, called `processing.py` (or whatever you'd like to).
+    * You might like to put this into a *scripts/* folder
+
+We'll spend most of this session like project time, troubleshooting and setting up your own data for analysis. Before we do that, let's discuss a few common tips and pitfalls. Namely,
+
+* Managing paths and the working directory
+* Importing different data structures and files
+* Dealing with different types of data
+
 ## Environments and importing data
 
 Perhaps the most frustrating issues are those which prevent you from importing the data at all!
