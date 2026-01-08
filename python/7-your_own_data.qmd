@@ -10,7 +10,7 @@ Spend five minutes locating your data and preparing Spyder
 
 1. Locate and structure your own project folder
     * You might like to create a *data/* folder
-    * You might like to create a *data/* folder
+    * You might like to create a *scripts/* folder
 2. (Optional) Turn it into a Spyder project
     1. Click *Projects* $\rightarrow$ *New Project...*
     2. Click 🔘 Existing directory 
