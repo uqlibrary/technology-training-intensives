@@ -9,13 +9,13 @@ In this final session, we look at taking the skills we've developed during the i
 Spend five minutes locating your data and preparing Spyder
 
 1. Locate and structure your own project folder
-    * You might like to use a *data/* folder for data
+    * You might like to create a *data/* folder
+    * You might like to create a *data/* folder
 2. (Optional) Turn it into a Spyder project
     1. Click *Projects* $\rightarrow$ *New Project...*
     2. Click 🔘 Existing directory 
     3. Choose ***top-level folder*** of your project
 3. Create a new script for processing, called `processing.py` (or whatever you'd like to).
-    * You might like to put this into a *scripts/* folder
 
 We'll spend most of this session like project time, troubleshooting and setting up your own data for analysis. Before we do that, let's discuss a few common tips and pitfalls. Namely,
 
@@ -65,9 +65,9 @@ os.getcwd()
 * When you run Python in Spyder, it's the folder displayed in "Files" and given by the address in the **top right**.  
 :::
 
-This address is your working directory. All paths in your scripts are evaluated relative to this location. This includes your data.
+This address is your working directory. All paths in your scripts are evaluated relative to this location. 
 
-The data path can be absolute or relative, and it can be online.
+This includes data paths can be absolute or relative, and it can be online.
 
 Absolute paths begin with a root prefix and have folders separated with slashes. They contain **all** the folders from the root of the filesystem down to the object of interest.
 
@@ -75,7 +75,7 @@ Absolute paths begin with a root prefix and have folders separated with slashes.
 
 ## Windows
 
-On Windows, absolute paths are prefixed with the drive, e.g. `C:\`: and folders separated with backslashes `\`
+On Windows, absolute paths are prefixed with the drive, e.g. `C:\` and folders separated with backslashes `\`
 
 ```
 C:\Users\...\...\data\example.csv
@@ -153,7 +153,7 @@ data/example.csv
 +----------+---------------------------------------------------------+--------------------------------------------------------------------+
 :::
 
-Once you have your working directory and your filepath, you check the location has been specified correctly.
+Once you have your working directory and your filepath, you can now check that any data paths have been specified correctly.
 
 **If the path is absolute**
 
@@ -168,6 +168,7 @@ Go to the working directory and trace the path to ensure it's correct. The path 
 
 :::{.callout-note}
 # Changing the working directory
+If you're using a project, you shouldn't need to change working directories. Instead, try modifying the path first.
 
 If you need to change working directories, you can do this with Python code,
 
@@ -176,14 +177,9 @@ os.chdir("path/to/new/dir")
 ```
 
 Or in Spyder by changing the address in the top-right.
+
+You should check that it's worked by running `os.getcwd()`.
 :::
-
-You could also run into issues if there's something wrong with the filepath *syntax*. In Python, we use the `pd.read_csv` function:
-
-```python
-import pandas as pd
-pd.read_csv("path/to/data.csv")
-```
 
 :::{.callout-warning}
 # Watch out Windows users
@@ -197,7 +193,7 @@ The backslashes in Windows paths conflict with Python's escape character in stri
 For example, the following Windows path
 
 <i>
-```{bash filename="Windows path"}
+```bash
 C:\Users\me\data\secrets.csv
 ```
 </i>
@@ -240,7 +236,6 @@ Final thoughts
 * Avoid spaces
 * Use relative filepaths where possible
 * Get familiar with your working directory
-* Use forward slashes in filepaths in Python
 
 ### Importing your data correctly
 
@@ -323,7 +318,7 @@ Each series (column) in pandas is stored as a particular dtype (data type). Comm
 
 For applying methods specific to **textual**, **temporal** or **categorical** data, you must first ensure the columns match the dtype you expect. Common mishaps include
 
-* Timestamps or categorical stored as `object` dtypes
+* Timestamps or categorical data stored as `object` dtypes
 * Numeric categorical data stored as `int64` or `float64` dtypes
 
 By default all timestamps and categorical data are read in as `object`s. You can modify `pd.read_csv()` at the import stage, otherwise use `.astype()` to change a column's type (or `pd.to_datetime` in the case of timestamps):

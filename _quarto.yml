@@ -36,6 +36,7 @@ website:
         - r/setup.md
         - auto: "r/Essentials"
         - auto: "r/Advanced topics"
+        - r/7-your_own_data.qmd
 
     - title: "QGIS"
       collapse-level: 2
