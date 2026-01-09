@@ -263,11 +263,11 @@ The documentation for `read.csv` describes (as of v4.4.0) 25 different parameter
 
 There are plenty more! Run
 
-```{r}
+```r
 help(read.csv)
 ```
 
-to see the rest. For more advanced reading, you can also try the [`readr` package]](https://readr.tidyverse.org/).
+to see the rest. For more advanced reading, you can also try the [`readr` package](https://readr.tidyverse.org/).
 
 :::{.callout-tip}
 # MS Excel files (`.xlsx`)
