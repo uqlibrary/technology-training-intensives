@@ -48,3 +48,7 @@ You're welcome to [raise an issue](https://github.com/uqlibrary/technology-train
 This repository uses [renv](https://rstudio.github.io/renv/articles/renv.html) for R dependency management and `requirements.txt` (via [venv](https://docs.python.org/3/library/venv.html) or your preferred alternative) for Python dependencies. Please familiarise yourself with virtual environment management before submitting changes to dependencies.
 
 If you have previously submitted a project and would like it removed or anonymised, please let us know and we will update the website accordingly. 
+
+## Contact
+
+If you are part of the UQ community, you can contact the technology trainers for a 1-on-1 consultation, an enquiry about sessions, or any question about the software supported by the UQ Library: [training@library.uq.edu.au](mailto:training@library.uq.edu.au)
