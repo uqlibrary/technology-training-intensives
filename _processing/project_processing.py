@@ -202,7 +202,7 @@ def run_checker(dev: bool = False, clear_log: bool = False) -> str:
         if not os.path.exists("_quarto.yml"):
             raise EnvironmentError("Not in quarto project dir.")
 
-        if os.getenv("IGNORE_VENV_REQ") != "true":
+        if os.getenv("GITHUB_WORKFLOW") != "true":
             if sys.prefix == sys.base_prefix:
                 raise EnvironmentError(
                     f"Not in a virtual environment, required for testing Python imports.\n{BLU}Have you activated? Run source .venv/bin/activate"
@@ -248,11 +248,15 @@ def run_checker(dev: bool = False, clear_log: bool = False) -> str:
     old_state_files = {j(path, f) for path, _, fs in os.walk("./") for f in fs}
     print("Checking all projects in gallery/ for errors.")
     for qmd in qmds:
+
         last_checks = [
             dt.strptime(f[1], "%Y-%m-%d %H:%M:%S") for f in ok_projects if f[0] == qmd
         ]
 
-        if last_checks and dt.fromtimestamp(os.stat(qmd).st_mtime) < max(last_checks):
+        if last_checks and (
+            os.getenv("GITHUB_WORKFLOW") == "true"
+            or dt.fromtimestamp(os.stat(qmd).st_mtime) < max(last_checks)
+        ):
             left_unchecked.append(qmd)
             continue
 

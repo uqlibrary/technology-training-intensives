@@ -6,7 +6,7 @@ on:
 name: Quarto Publish
 
 env:
-  IGNORE_VENV_REQ: true
+  GITHUB_WORKFLOW: true
 
 jobs:
   build-deploy:
