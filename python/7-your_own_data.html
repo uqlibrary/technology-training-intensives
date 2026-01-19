@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.8.27">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -72,7 +72,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-d58b9a2750f78c4ba5585652ef45bd1c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -350,7 +350,7 @@ window.Quarto = {
 <section id="getting-your-setup-right" class="level3">
 <h3 class="anchored" data-anchor-id="getting-your-setup-right">Getting your setup right</h3>
 <p>Nobody likes to encounter this:</p>
-<div id="e69bd6a2" class="cell" data-execution_count="1">
+<div id="0a1e18b4" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-error">
 <div class="ansi-escaped-output">
 <pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
@@ -376,7 +376,7 @@ Cell <span class="ansi-green-fg">In[1], line 1</span>
 <li>Where is your data?</li>
 </ol>
 <p>Answering the first question is easy: simply run</p>
-<div id="8e0b68a4" class="cell" data-execution_count="2">
+<div id="90976105" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>os.getcwd()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
@@ -815,7 +815,7 @@ Cell <span class="ansi-green-fg">In[1], line 1</span>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"col_name"</span>] <span class="op">=</span> pd.to_datetime(df[<span class="st">"col_name"</span>])`</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Include <code>format="..."</code> to specify the format of your timestamps, according to the <a href="https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior">standard Python datetime syntax</a>. For example, <code>format="%d/%m/%y"</code> matches two-digit DD/MM/YY, e.g.&nbsp;03/02/26.</p>
 <p>If the timestamp is spread across multiple columns, you can use <code>pd.to_datetime</code> on those columns (or the whole dataframe if there’s nothing else) to convert them into a single time series. Take for example this dataframe, stored as a variable called <code>temporal</code>:</p>
-<div id="2aecc44a" class="cell" data-execution_count="3">
+<div id="8eb07634" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
 <pre><code>   day  month  year
 0   21      3  1987
@@ -824,7 +824,7 @@ Cell <span class="ansi-green-fg">In[1], line 1</span>
 </div>
 </div>
 <p>This command would convert the three series to a single datetime series:</p>
-<div id="6bd24c19" class="cell" data-execution_count="4">
+<div id="da868f3f" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>pd.to_datetime(temporal[[<span class="st">"day"</span>, <span class="st">"month"</span>, <span class="st">"year"</span>]])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>0   1987-03-21

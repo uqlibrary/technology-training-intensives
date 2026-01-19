@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.8.27">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-01-12">
+<meta name="dcterms.date" content="2026-01-19">
 
 <title>The Fundamentals – UQ Library Training Intensives</title>
 <style>
@@ -38,7 +38,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-d58b9a2750f78c4ba5585652ef45bd1c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -134,17 +134,22 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#interface" id="toc-interface" class="nav-link" data-scroll-target="#interface">Interface</a></li>
   <li><a href="#load-a-basemap" id="toc-load-a-basemap" class="nav-link" data-scroll-target="#load-a-basemap">Load a Basemap</a></li>
   <li><a href="#controls" id="toc-controls" class="nav-link" data-scroll-target="#controls">Controls</a></li>
-  <li><a href="#project-folder-structure" id="toc-project-folder-structure" class="nav-link" data-scroll-target="#project-folder-structure">Project Folder Structure</a></li>
   <li><a href="#what-is-spatial-data" id="toc-what-is-spatial-data" class="nav-link" data-scroll-target="#what-is-spatial-data">What is Spatial Data?</a>
   <ul class="collapse">
   <li><a href="#spatial-data-types" id="toc-spatial-data-types" class="nav-link" data-scroll-target="#spatial-data-types">Spatial data types</a></li>
   </ul></li>
+  <li><a href="#case-study---windfarm-proposal" id="toc-case-study---windfarm-proposal" class="nav-link" data-scroll-target="#case-study---windfarm-proposal">Case Study - Windfarm Proposal</a></li>
+  <li><a href="#project-folder-structure" id="toc-project-folder-structure" class="nav-link" data-scroll-target="#project-folder-structure">Project Folder Structure</a></li>
   <li><a href="#data-download" id="toc-data-download" class="nav-link" data-scroll-target="#data-download">Data Download</a></li>
   <li><a href="#importing-data" id="toc-importing-data" class="nav-link" data-scroll-target="#importing-data">Importing data</a>
   <ul class="collapse">
   <li><a href="#learn-about-the-data" id="toc-learn-about-the-data" class="nav-link" data-scroll-target="#learn-about-the-data">Learn about the data</a></li>
   </ul></li>
   <li><a href="#subset-the-data" id="toc-subset-the-data" class="nav-link" data-scroll-target="#subset-the-data">Subset the data</a></li>
+  <li><a href="#clip" id="toc-clip" class="nav-link" data-scroll-target="#clip">Clip</a>
+  <ul class="collapse">
+  <li><a href="#fix-geometries" id="toc-fix-geometries" class="nav-link" data-scroll-target="#fix-geometries">Fix Geometries</a></li>
+  </ul></li>
   <li><a href="#saving-your-project" id="toc-saving-your-project" class="nav-link" data-scroll-target="#saving-your-project">Saving your project</a></li>
   <li><a href="#temporary-scratch-layers" id="toc-temporary-scratch-layers" class="nav-link" data-scroll-target="#temporary-scratch-layers">Temporary Scratch Layers</a></li>
   <li><a href="#personalise-your-map" id="toc-personalise-your-map" class="nav-link" data-scroll-target="#personalise-your-map">Personalise your map</a>
@@ -173,7 +178,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 12, 2026</p>
+      <p class="date">January 19, 2026</p>
     </div>
   </div>
   
@@ -216,32 +221,6 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="controls">Controls</h2>
 <p>The default mouse mode is <code>Pan Map</code>, which allows to drag the map around. We can use the mouse wheel to zoom in and out, and press the <kbd>Ctrl</kbd> key to use more precision.</p>
 </section>
-<section id="project-folder-structure" class="level2">
-<h2 class="anchored" data-anchor-id="project-folder-structure">Project Folder Structure</h2>
-<p>We will start by creating a good folder structure to work within. This folder is where our project, our data, and creations will live. Folder structure is very important for keeping your data tidy, as well as for ease of sharing your project with others. You simply need to zip the project folder if you need to share the whole thing.</p>
-<ul>
-<li><p>Open QGIS and create a <strong>new project</strong> with <code>Project &gt; New</code>.</p></li>
-<li><p>Let’s now <strong>save</strong> our project: <code>Project &gt; Save</code>.</p></li>
-<li><p>Navigate to where you want to save your project, and create a new folder, let’s call it “<strong>qgis_intro</strong>”.</p></li>
-</ul>
-<div class="columns">
-<div class="column" style="width:60%;">
-<ul>
-<li><p>Inside that folder, create these folders:</p></li>
-<li><p>“<strong>data</strong>” - for all the data we will use to make our maps, split into:</p></li>
-<li><p>“<strong>raw</strong>” - raw data from your research or the internet</p></li>
-<li><p>“<strong>processed</strong>” - any data you’ve modified</p>
-<ul>
-<li><p>“<strong>output</strong>” - for any maps or images we export</p></li>
-<li><p>“<strong>temp</strong>” - this folder isn’t necessary, but when you’re playing around and testing, it stops things getting messy.</p></li>
-</ul></li>
-<li><p>Finally, let’s save our .qgz project file inside the “<strong>qgis_intro</strong>” folder, named “qgis_intro_map.qgz”</p></li>
-</ul>
-</div><p>::: {.column width=“5%”} <!-- empty column to create gap --> :::</p><p>::: {.column width=“30%”} <img src="folder.png" class="img-fluid"></p>
-</div>
-<p>::: {.column width=“5%”} <!-- empty column to create gap --> ::: ::::::</p>
-<p>Your .qgz file should always be in the highest level folder, so it’s only looking down into folders for data, not back out. This might feel unnecessary now, but things quickly get out of control and hard to find if you don’t have a good folder structure.</p>
-</section>
 <section id="what-is-spatial-data" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-spatial-data">What is Spatial Data?</h2>
 <p>What is spatial data? Most broadly-speaking, data is spatial when it has coordinates, and therefore a coordinate reference system (see more on this below). Coordinates define the longitude (x) and latitude (y) of where data is located across the globe.</p>
@@ -271,6 +250,40 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </section>
 </section>
+<section id="case-study---windfarm-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="case-study---windfarm-proposal">Case Study - Windfarm Proposal</h2>
+<p>We have been asked to explore the feasibility of constructing a Windfarm on Enoggera Hill, which is part of the Enoggera Army Base (Gallipoli Barracks).</p>
+<p>Throughout these workshops we are going to make maps and run spatial that are useful in a wide variety of disciplines and relate to this particular case study. This scenario of a Windfarm Proposal allows us to use spatial analyses to explore concepts connected to the environment, health, culture, and landscape.</p>
+<p>We will create a project folder, bring in different kinds of data, run a variety of spatial analyses, and export a few maps.</p>
+<p>While the location and data we will be using are all real, this scenario is entirely fictional.</p>
+</section>
+<section id="project-folder-structure" class="level2">
+<h2 class="anchored" data-anchor-id="project-folder-structure">Project Folder Structure</h2>
+<p>We will start by creating a good folder structure to work within. This folder is where our project, our data, and creations will live. Folder structure is very important for keeping your data tidy, as well as for ease of sharing your project with others. You simply need to zip the project folder if you need to share the whole thing.</p>
+<ul>
+<li><p>Open QGIS and create a <strong>new project</strong> with <code>Project &gt; New</code>.</p></li>
+<li><p>Let’s now <strong>save</strong> our project: <code>Project &gt; Save</code>.</p></li>
+<li><p>Navigate to where you want to save your project, and create a new folder, let’s call it “<strong>Enoggera_Windfarm_26</strong>”.</p></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li><p>Inside that folder, create these folders:</p></li>
+<li><p>“<strong>data</strong>” - for all the data we will use to make our maps, split into:</p></li>
+</ul>
+<pre><code>-   "**raw**" - raw data from your research or the internet
+
+-   "**processed**" - any data you've modified</code></pre>
+<ul>
+<li><p>“<strong>output</strong>” - for any maps or images we export</p></li>
+<li><p>“<strong>temp</strong>” - this folder isn’t necessary, but when you’re playing around and testing, it can be helpful to stop things getting messy.</p></li>
+<li><p>Finally, let’s save our .qgz project file inside the “<strong>Enoggera_Windfarm_26</strong>” folder, named “Enoggera_Windfarm_26.qgz”</p></li>
+</ul>
+</div><p>::: {.column width=“5%”} <!-- empty column to create gap --> :::</p><p>::: {.column width=“30%”} <img src="folder.png" class="img-fluid"></p>
+</div>
+<p>::: {.column width=“5%”} <!-- empty column to create gap --> ::: ::::::</p>
+<p>Your .qgz file should always be in the highest level folder, so it’s only looking down into folders for data, not back out. This might feel unnecessary now, but things quickly get out of control and hard to find if you don’t have a good folder structure.</p>
+</section>
 <section id="data-download" class="level2">
 <h2 class="anchored" data-anchor-id="data-download">Data Download</h2>
 <p>The <strong>data</strong> for this session can be directly downloaded from <a href="https://github.com/uqlibrary/technology-training-assets/raw/master/QGIS/intro/QGIS_Intro_Data.zip">this link</a>.</p>
@@ -278,10 +291,15 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="importing-data" class="level2">
 <h2 class="anchored" data-anchor-id="importing-data">Importing data</h2>
-<p>To add our own data: <code>Layer &gt; Add Layer &gt; Add Vector Layer...</code>, choose the “ne_50m_admin_1_states_provinces” file, and click “Add”. It is now in your <code>Layers</code> panel.</p>
-<p>You can also use the <code>Project Home</code> directory in the browser to add another layer: try loading the “populated places” and “rivers” shapefiles (format .shp), by drag-and-dropping or double-clicking.</p>
-<p>All layers are visible in the “Layers” panel, with the most recently loaded by default at the top. Layers are rendered as they are listed, which means the top ones will cover the bottom ones. Make sure you optimise the order for your map!</p>
+<p>To add our own data: <code>Layer &gt; Add Layer &gt; Add Vector Layer...</code>, choose the “Turbine_Locations_SEQ.gpkg” file, and click “Add”. It is now in your <code>Layers</code> panel.</p>
+<p>If you’ve already loaded in the OpenStreetMap Basemap, then you should get the popup <code>Select Transformation for Project Area</code>. This is asking you how you want to deal with the difference between the basemap’s <em>projection</em> and the <em>projection</em> of your data. Projections are how we stretch “spherical” data to fit on a flat rectangular map, which we will cover in detail later in this workshop. Fortunately, for now, QGIS will handle this on the fly for us so we can simply click <code>OK</code>.</p>
+<p>So where is the data? If you want to zoom in to your data, you don’t have to use your mouse, you can use the <code>Zoom Full</code> button, or right-click on your <strong>Project Area</strong> layer and select <code>Zoom to Layer(s)</code>.</p>
+<p>You can also use the <code>Project Home</code> directory in the browser to add another layer: try loading the “Project_Area.gpkg” and “Access_Track.gpkg” shapefiles (format .shp), by drag-and-dropping or double-clicking.</p>
+<p>All layers are visible in the <code>Layers</code> panel, with the most recently loaded by default at the top. Layers are rendered as they are listed, which means the top ones will cover the bottom ones. Make sure you optimise the order for your map!</p>
 <p>You can also turn the <strong>layer visibility</strong> on and off from this panel with the tick box.</p>
+<blockquote class="blockquote">
+<p>You might notice that QGIS randomly chooses a colour for your data when you import it. We can change these colours later.</p>
+</blockquote>
 <section id="learn-about-the-data" class="level3">
 <h3 class="anchored" data-anchor-id="learn-about-the-data">Learn about the data</h3>
 <p>You can open the <strong>attribute table</strong> to see tabular data contained in each layer. (Right-click on a layer and use “Open Attribute Table”. Alternatively, use the top toolbar button or use <kbd>F6</kbd>.)</p>
@@ -290,30 +308,60 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="subset-the-data" class="level2">
 <h2 class="anchored" data-anchor-id="subset-the-data">Subset the data</h2>
-<p>We currently have data from all around the World, which you can confirm by using the <code>Zoom Full</code> button. However, we want to focus on Australia exclusively.</p>
-<p>To remove the useless regions, we can do the following:</p>
+<p>We currently have data from two proposed Windfarm locations, which you can confirm by using the <code>Zoom Full</code> button. However, we no longer need the Mt Coot-Tha data.</p>
+<p>To remove the unneeded points, we can do the following:</p>
 <ol type="1">
-<li>Select the “admin” layer</li>
-<li>Use the <code>Select Features</code> button, and draw a rectangle around Australia, so all the region appear in yellow</li>
-<li>Right-click on the layer and use <code>Export &gt; Save Selected Features As...</code></li>
-<li>Name the new file “australia_admin” in your project directory, and click OK.</li>
+<li>Select the “Turbine Locations SEQ” layer</li>
+<li>Use the <code>Select Features</code> button, and draw a rectangle around Enoggera Hill, so all the points appear in yellow</li>
+<li>Right-click on the “Turbine Locations SEQ” layer and use <code>Export &gt; Save Selected Features As...</code></li>
+<li>Name the new layer as “EH Turbines” and name the file “EH_Turbines” in your project directory, and click OK.</li>
 </ol>
 <p>The new layer is loaded to the map by default.</p>
-<p>Now that we have we have a layer with only the administrative regions for Australia, we can use that as an overlay layer to clip the rivers. Follow these steps:</p>
+<blockquote class="blockquote">
+<p>Notice how we keep using “_” underscores in our file names instead of spaces? Spaces in file names can cause some functions to fail to run, so it’s worth practicing that. Spaces in layer names is fine - these are purely for display.</p>
+</blockquote>
+</section>
+<section id="clip" class="level2">
+<h2 class="anchored" data-anchor-id="clip">Clip</h2>
+<p>Instead of using selections, we can also use polygon layers as an overlay layer to clip.</p>
+<p>Use the <code>Project Home</code> directory in the browser to add the “BVG_SEQ.shp” file.</p>
+<blockquote class="blockquote">
+<p>So far we have only used <strong>.gpkg</strong> GeoPackage files, the <strong>VG_SEQ.shp</strong> is a Shapefile. Both of these are common vector data types. Shapefiles are more established and widely used, where GeoPackages are leaner and more customisable.</p>
+</blockquote>
+<p>This layer contains vegetation data for the local area. is not very pretty at the moment, but we can change the symbology after we subset the data.</p>
+<p>Follow these steps to <strong>Clip</strong>:</p>
 <ol type="1">
-<li>Select the layer you want to clip, in this case <strong>ne_10m_rivers_lake_centerlines</strong></li>
+<li>Select the layer you want to clip, in this case <strong>BVG_SEQ</strong></li>
 <li>Use the <code>Vector &gt; Geoprocessing Tools &gt; Clip...</code> tool</li>
-<li>Use the “australia_admin” layer as the overlay.</li>
-<li>Click “Run”</li>
+<li>Use the <strong>Project Area</strong> layer as the overlay.</li>
+<li>Click <code>Run</code></li>
 </ol>
+<p>We should get an error <code>Feature (243) from “BVG SEQ” has invalid geometry.</code> Never fear, we can fix this!</p>
+<p>This is caused by little issues in the polygon layer. Sometimes when polygons are drawn or exported from online sources, they will create errors, and sometimes little slither polygons on the edges. We can investigate the source of these errors using the <code>Check validity</code> tool, but for today, we’re simply going to fix them with the <code>Fix Geometries</code> tool from the Processing Toolbox.</p>
 <blockquote class="blockquote">
-<p>If you get an error about invalid geometries, you might have to use the <code>Fix geometries</code> tool on the Australian shapefile first (found in the Processing Toolbox).</p>
+<p>The <strong>Processing Toolbox</strong> is <em>full</em> of useful tools for data analysis and data management.</p>
 </blockquote>
-<p>Notice how the clipped layers don’t have a descriptive name? Make sure you rename them. Let’s changed <strong>Clipped</strong> to <strong>australia_rivers_10m</strong></p>
-<p>You can now hide the original layers and confirm that you have only Australian data visible in the canvas by using the <code>Zoom Full</code> button.</p>
-<blockquote class="blockquote">
-<p><strong>Challenge</strong>: can you do the same for the Cities? Do you notice anything strange? How can we fix that?</p>
-</blockquote>
+<p>Before we do this, let’s remove the failed <strong>Clipped</strong> layer. Right-click on the <strong>Clipped</strong> layer and select <code>Remove Layer...</code></p>
+<section id="fix-geometries" class="level3">
+<h3 class="anchored" data-anchor-id="fix-geometries">Fix Geometries</h3>
+<ul>
+<li>Open the Processing Toolbox by clicking the cog icon from the top menu <img src="https://docs.qgis.org/3.40/en/_images/processingAlgorithm.png" class="img-fluid" alt="Processing Toolbox"> (alternatively go to <code>View &gt; Panels &gt; Processing Toolbox</code>)</li>
+<li>In the <strong>Processing Toolbox</strong> window <code>Search</code> for “Fix geometries”</li>
+<li>Double-click on the <strong>Fix geometries</strong> option</li>
+<li>In the <strong>Fix Geometries</strong> window, select <code>BVG SEQ</code> from the <strong>Input layer</strong> options, then click <code>Run</code></li>
+<li>Right click <strong>Fixed Geometries</strong> in the Layer panel, click Rename Layer, and change it to <strong>BVG Fixed</strong></li>
+</ul>
+<p>You can now re-run the <strong>Clip</strong> tool with the resulting <strong>BVG Fixed</strong> layer (instead of the <strong>BVG SEQ</strong> layer)</p>
+<ul>
+<li>Go to <code>Vector &gt; Geoprocessing Tools &gt; Clip</code></li>
+<li>Under <strong>Input Layer</strong> select <strong>BVG Fixed</strong></li>
+<li>Under <strong>Overlay Layer</strong> select <strong>Project Area</strong></li>
+<li>Click <code>Run</code></li>
+</ul>
+<p>Magic. Our new layer has the BVG data cookie-cut to the Project Area shape.</p>
+<p>Notice how the clipped layers also doesn’t have a descriptive name? Make sure you rename them. Let’s changed <strong>Clipped</strong> to <strong>EH BVG</strong></p>
+<p>You can now hide the original “BVG SEQ” and “Turbine Locations SEQ” layers.</p>
+</section>
 </section>
 <section id="saving-your-project" class="level2">
 <h2 class="anchored" data-anchor-id="saving-your-project">Saving your project</h2>
@@ -330,18 +378,18 @@ ul.task-list li input[type="checkbox"] {
 <section id="change-the-symbology" class="level3">
 <h3 class="anchored" data-anchor-id="change-the-symbology">Change the symbology</h3>
 <p>Our vector layers are assigned a random colour when we load them. We now want to make them look better.</p>
-<p>Double-click on the “admin” layer to open the <code>Layer Properties</code> click the <img src="https://docs.qgis.org/3.40/en/_images/symbology.png" class="img-fluid"> <code>Symbology</code> tab, and use <code>Color</code> to change to a better colour. Click <code>Apply</code>. We can also go into more details about the border (colour, width, type of line…) by clicking on <code>Simple fill</code>.</p>
-<p>We can make more complex fills by adding an extra “symbol layer”, and layering different kinds of fill styles. Try this with both polygons and lines. For example, style the rivers so they look like water (the <code>topo hydrology</code> preset is a good start).</p>
-<p>Now try to change the point symbology of our “populated places” layer: we don’t have to stick to <code>Simple marker</code>. Try for example the different icons available with <code>Symbol layer type &gt; SVG marker</code> or <code>Font marker</code> selected.</p>
+<p>Double-click on the <strong>Project Area</strong> layer to open the <code>Layer Properties</code> click the <img src="https://docs.qgis.org/3.40/en/_images/symbology.png" class="img-fluid"> <code>Symbology</code> tab, and use <code>Color</code> to change to a better colour. Click <code>Apply</code>. We can also go into more details about the border (colour, width, type of line…) by clicking on <code>Simple fill</code>.</p>
+<p>We can make more complex fills by adding an extra “symbol layer”, and layering different kinds of fill styles. Try this with both polygons and lines. For example, style the Access Tracks so they look like roads (the <code>topo road</code> preset is a good start).</p>
+<p>Now try to change the point symbology of our <strong>EH Turbines</strong> layer: we don’t have to stick to <code>Simple marker</code>. Try for example the different icons available with <code>Symbol layer type &gt; SVG marker</code> or <code>Font marker</code> selected.</p>
 <blockquote class="blockquote">
 <p>The Properties dialog is quite large and makes it difficult to see the changes in symbology. You can use the “Layer Styling Panel” (button in the Layers panel, or <kbd>F7</kbd> shortcut) to use a side panel instead, with the “Live update” option on by default.</p>
 </blockquote>
 </section>
 <section id="add-labels" class="level3">
 <h3 class="anchored" data-anchor-id="add-labels">Add labels</h3>
-<p>Have a look at the attribute table for our “populated places” layer. What could we use to <strong>label</strong> our points?</p>
-<p>Double-click on the “populated places” layer: <img src="https://docs.qgis.org/3.40/en/_images/labelingSingle.png" class="img-fluid"> <code>Labels</code> and then click <code>No Labels &gt; Single labels</code>. You can also use the <code>Layer Labelling Options</code> button to open the sidebar, which allows you to “Live update” the map when you change a setting.</p>
-<p>Choose <code>Value &gt; Name</code> to label with the city names. In the “Text” tab, we can change the look of our labels: amend the size, the colour, the font… We can also add a text buffer with the “Buffer tab” to make them more readable.</p>
+<p>Have a look at the attribute table for our <strong>EH Turbines</strong> layer. What could we use to <strong>label</strong> our points?</p>
+<p>Double-click on the <strong>EH Turbines</strong> layer: <img src="https://docs.qgis.org/3.40/en/_images/labelingSingle.png" class="img-fluid"> <code>Labels</code> and then click <code>No Labels &gt; Single labels</code>. You can also use the <code>Layer Labelling Options</code> button to open the sidebar, which allows you to “Live update” the map when you change a setting.</p>
+<p>Choose <code>Value &gt; turb_id</code> to label with the Turbine IDs. In the “Text” tab, we can change the look of our labels: amend the size, the colour, the font… We can also add a text buffer with the “Buffer tab” to make them more readable.</p>
 <p>The placement tab allows us to fine-tune the placement of the labels in reference to the points. The default mode is “Cartographic”, and we can increase the distance to the symbol used. If we want the label to cover the point, we can use <code>Mode &gt; Offset from point</code> and use the middle quadrant. We might also want to set the layer’s Symbology to “No Symbols”.</p>
 </section>
 </section>
