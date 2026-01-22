@@ -38,14 +38,17 @@ Here's a few general tips. In addition, we strongly recommend using [the pandas 
 You can make RStudio a little nicer and suited to yourself by changing its appearance, colour and using Snippets
 
 **Appearance**
+
 `Tools > Global Options > Appearance`
 Under `Editor theme`, you can choose a colour palette that suits your eyes.
 
 **Rainbow Parentheses**
+
 `Tools > Global Options > Code > Display`
 Down the bottom, under `Syntax`, check `Use rainbow parentheses` to make it easier to distinguish your function brackets.
 
 **Snippets**
+
 Snippets allow you to create your own code-driven shortcuts.
 If you type `lib` into a .R file in RStudio, and then press `Tab`, it will give youthe option to auto-fill to `library(package)`.
 
