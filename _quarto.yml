@@ -11,7 +11,9 @@ project:
     - r/*
 
 website:
+  open-graph: true
   title: "UQ Library Training Intensives"
+  favicon: "/int_laptop_icon.svg"
   navbar:
     search: true
     left:
@@ -27,6 +29,8 @@ website:
         href: gallery/project_gallery.qmd
       - text: "UQ Library Technology Training"
         href: https://uqlibrary.github.io/technology-training
+      - text: "Communities of Practice"
+        href: community.qmd
       # - text: "**Book for Feb 2026**"
       #   href: https://studenthub.uq.edu.au/students/events/detail/5909456
   sidebar:   
