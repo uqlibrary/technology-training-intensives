@@ -154,7 +154,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">UQ Library Technology Training</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../community.qmd"> 
+    <a class="nav-link" href="../../community/community.qmd"> 
 <span class="menu-text">Communities of Practice</span></a>
   </li>  
 </ul>
@@ -463,18 +463,18 @@ format: dashboard
 warning: false
 ---
 
-```nnb
+```vgp
 players <- read.csv("../../data/Players2024.csv")
 ```
 
-```nnb
+```vgp
 library(dplyr)
 players <- players %>% filter(positions != "Missing", height_cm > 100)
 ```
 
 ## Figures {height=70%}
 
-```nnb
+```vgp
 #| title: Goalkeepers tend to be taller
 #| fig-alt: "A boxplot of the relationship between height and position."
 library(ggplot2)
@@ -483,7 +483,7 @@ ggplot(players, aes(x = positions, y = height_cm)) +
   labs(x = "Position", y = "Height (cm)")
 ```
 
-```nnb
+```vgp
 #| title: Age vs Height by position
 p <- ggplot(players, aes(x = age, y = height_cm, colour = positions, label = name, label2 = nationality)) + 
   geom_point() + 
@@ -495,7 +495,7 @@ ggplotly(p)
 
 ## Table
 
-```nnb
+```vgp
 #| title: A glimpse at the dataset
 library(knitr)
 kable(players)
