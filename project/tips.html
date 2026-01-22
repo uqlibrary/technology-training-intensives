@@ -347,9 +347,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="tab-content" data-group="lang">
 <div id="tabset-2-1" class="active tab-pane" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <p>You can make RStudio a little nicer and suited to yourself by changing its appearance, colour and using Snippets</p>
-<p><strong>Appearance</strong> <code>Tools &gt; Global Options &gt; Appearance</code> Under <code>Editor theme</code>, you can choose a colour palette that suits your eyes.</p>
-<p><strong>Rainbow Parentheses</strong> <code>Tools &gt; Global Options &gt; Code &gt; Display</code> Down the bottom, under <code>Syntax</code>, check <code>Use rainbow parentheses</code> to make it easier to distinguish your function brackets.</p>
-<p><strong>Snippets</strong> Snippets allow you to create your own code-driven shortcuts. If you type <code>lib</code> into a .R file in RStudio, and then press <code>Tab</code>, it will give youthe option to auto-fill to <code>library(package)</code>.</p>
+<p><strong>Appearance</strong></p>
+<p><code>Tools &gt; Global Options &gt; Appearance</code> Under <code>Editor theme</code>, you can choose a colour palette that suits your eyes.</p>
+<p><strong>Rainbow Parentheses</strong></p>
+<p><code>Tools &gt; Global Options &gt; Code &gt; Display</code> Down the bottom, under <code>Syntax</code>, check <code>Use rainbow parentheses</code> to make it easier to distinguish your function brackets.</p>
+<p><strong>Snippets</strong></p>
+<p>Snippets allow you to create your own code-driven shortcuts. If you type <code>lib</code> into a .R file in RStudio, and then press <code>Tab</code>, it will give youthe option to auto-fill to <code>library(package)</code>.</p>
 <p>You can find more Snippets, and add your own custom ones here: <code>Tools &gt; Edit Code Snippets...</code></p>
 <p>For example, normally when you copy a windows address location, the slashes are the wrong way around for most coding languages. If you add this snippet, when you copy a windows location, and then type <code>pp</code> and press <code>Tab</code> it will paste the location with the slashes changed.</p>
 <p>snippet pp “<code>r gsub('"', "", gsub("\\\\", "/", readClipboard()))</code>”</p>
