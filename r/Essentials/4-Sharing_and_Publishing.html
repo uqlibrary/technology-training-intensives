@@ -66,6 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../..//int_laptop_icon.svg" rel="icon" type="image/svg+xml">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -106,6 +107,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
+<meta property="og:title" content="Sharing and Publishing – UQ Library Training Intensives">
+<meta property="og:description" content="">
+<meta property="og:site_name" content="UQ Library Training Intensives">
 </head>
 
 <body class="nav-sidebar floating nav-fixed quarto-light">
@@ -148,6 +152,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li class="nav-item">
     <a class="nav-link" href="https://uqlibrary.github.io/technology-training"> 
 <span class="menu-text">UQ Library Technology Training</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../community.qmd"> 
+<span class="menu-text">Communities of Practice</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -455,18 +463,18 @@ format: dashboard
 warning: false
 ---
 
-```bdc
+```nnb
 players <- read.csv("../../data/Players2024.csv")
 ```
 
-```bdc
+```nnb
 library(dplyr)
 players <- players %>% filter(positions != "Missing", height_cm > 100)
 ```
 
 ## Figures {height=70%}
 
-```bdc
+```nnb
 #| title: Goalkeepers tend to be taller
 #| fig-alt: "A boxplot of the relationship between height and position."
 library(ggplot2)
@@ -475,7 +483,7 @@ ggplot(players, aes(x = positions, y = height_cm)) +
   labs(x = "Position", y = "Height (cm)")
 ```
 
-```bdc
+```nnb
 #| title: Age vs Height by position
 p <- ggplot(players, aes(x = age, y = height_cm, colour = positions, label = name, label2 = nationality)) + 
   geom_point() + 
@@ -487,7 +495,7 @@ ggplotly(p)
 
 ## Table
 
-```bdc
+```nnb
 #| title: A glimpse at the dataset
 library(knitr)
 kable(players)
