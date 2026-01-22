@@ -6,7 +6,6 @@ project:
     - gallery/project_gallery.qmd
     - gallery/*/*/*/*.qmd
     - project/*
-    - community/community.qmd
     - python/*
     - qgis/*
     - r/*
