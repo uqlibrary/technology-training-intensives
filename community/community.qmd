@@ -1,8 +1,6 @@
 ---
-title: "Community Groups"
- 
-metadata-files:
-  - _page.yml
+title: Community Groups
+subtitle: View a variety of Community Groups for support
 ---
 
 <!-- ## ResBaz2023Qld -->
