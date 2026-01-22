@@ -73,6 +73,8 @@ Let’s first create a new project:
 > already has R code and data. Everything then happens by default in
 > this directory. The .Rproj file stores information about your project
 > options, and allows you to go straight back to your work.
+> This also means you don't need to get or set the Working Directory with 
+> getwd() or setwd(), it will automatically be set as your project folder.
 
 ## Workshops
 
