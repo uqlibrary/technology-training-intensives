@@ -11,7 +11,7 @@ Registrations available for our next intensive!
 ## Overview
 Welcome to our three-day R training intensive! This runs twice a year and the next intensive will be in late January.
 
-By the end of the three days, you'll have learnt the Python skills to manipulate, visualise and present data. We'll spend roughly half the time learning content, and half the time working on a project in groups.
+By the end of the three days, you'll have learnt the R skills to manipulate, visualise and present data. We'll spend roughly half the time learning content, and half the time working on a project in groups.
 
 As we set up, there's a few things to do, if you haven't already
 
