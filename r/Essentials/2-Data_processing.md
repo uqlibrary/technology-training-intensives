@@ -499,9 +499,9 @@ gapminder %>%
 ```
 
 
-## More examples
+## Different dataset
 
-Another example of a summary, with a the starwars data set that dplyr
+Another example of a summary, with a the starwars dataset that dplyr
 provides:
 
 Grouping by species, summarise the number of characters per species and
@@ -529,65 +529,3 @@ starwars %>%
     7 Wookiee      2 124  
     8 Zabrak       2  80  
     9 <NA>         4  81  
-
-An example of data manipulation and data visualisation in the same
-command with gapminder:
-
-Summarise the gapminder population data into total population per
-continent per year and plot coloured by continent.
-
-``` r
-# increase in population per continent
-library(ggplot2)
-gapminder %>% 
-  group_by(continent, year) %>% 
-  summarise(pop = sum(pop)) %>% 
-  ggplot(aes(x = year,
-             y = pop,
-             colour = continent)) +
-  geom_line()
-```
-
-    `summarise()` has grouped output by 'continent'. You can override using the
-    `.groups` argument.
-
-And another example, using using our gapminder dataset:
-
-Let’s say we want to calulate the variation (range) in life expectancy
-per country and plot the top and bottom 10 countries?
-
-``` r
-gapminder %>% 
-  group_by(country) %>% 
-  summarise(maxLifeExp = max(lifeExp),
-            minLifeExp = min(lifeExp)) %>% 
-  mutate(dif = maxLifeExp - minLifeExp) %>%  # new col with difference betwen max/min lifeExp
-  arrange(desc(dif)) %>%  # arrange by dif, descending order for the next step
-  slice(1:10, (nrow(.)-10):nrow(.)) %>%  # slice top 10 rows and bottom 10 rows
-  ggplot(aes(x = reorder(country, dif), y = dif)) +
-  geom_col() +
-  coord_flip() + # flip the x and y axis for a horizontal bar chart
-  labs(x = "Country",
-       y = "Difference in Life Expectancy") + # prettier labels for axes (which have been flipped) 
-  annotate("segment", x = 11.5, xend = 21.5, y = 39, yend = 39, colour = "purple", size=1, alpha=0.6) +
-  annotate("segment", x = 0.5, xend = 11, y = 39, yend = 39, colour = "green", size=1, alpha=0.6) +
-    annotate("text", x = c(5, 16), y = c(40, 40), 
-           label = c("Smallest 10", "Largest 10") ,
-           color="black", size= 5 , angle=90) # add labels to colored lines
-```
-
-    Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-    ℹ Please use `linewidth` instead.
-
-
-
-
-## Close project
-
-If you want to close RStudio, make sure you save your script first.
-
-You can then close the window, and if your script contains all the steps
-necessary for your data processing, it is safer to *not* save your
-workspace at the prompt. It should only take a second te execute all the
-commands stored in your script when you re-open your project.
-
