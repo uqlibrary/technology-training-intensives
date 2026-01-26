@@ -16,24 +16,6 @@ process** a dataframe with the following verbs:
 - `summarise()`: collapse to a single summary
 - `group_by()`: change the scope of function
 
-## Keep in mind
-
-- Everything we write today will be saved in your project. Please
-  remember to save it somewhere you can access it later if you wish to revisit what we do today.
-- R is **case sensitive**: it will tell the difference between uppercase and
-  lowercase.
-- Respect the naming rules for objects (no spaces, does not start with a
-  number…)
-
-### Help
-
-For any dataset or function doubts that you might have, don’t forget the
-three ways of getting help in RStudio:
-
-1.  the shortcut command: `?functionname`
-2.  the help function: `help(functionname)`
-3.  the keyboard shortcut: press F1 after writing a function name
-
 ## Setting up
 
 ### Install the dplyr package
@@ -44,20 +26,6 @@ If you don’t have it already, you can install dplyr with the command:
 > Alternatively, you can install the whole
 > “[tidyverse](https://www.tidyverse.org/)”, a meta-package useful for
 > data science: `install.packages("tidyverse")`
-
-### Create a script
-
-We will use a script to write code more comfortably.
-
-- Menu: Top left corner, click the green “plus” symbol, or press the
-  shortcut (for Windows/Linux) <kbd>Ctrl</kbd>+Shift</kbd>+N</kbd> or
-  (for Mac) <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>N</kbd>. This will open
-  an “Untitled1” file.
-- Go to “File \> Save” or press (for Windows/Linux)
-  <kbd>Ctrl</kbd>+<kbd>S</kbd> or (for Mac) <kbd>Cmd</kbd>+<kbd>S</kbd>.
-  This will ask where you want to save your file and the name of the new
-  file.
-- Call your file “process.R”
 
 ### Introducing our data
 
