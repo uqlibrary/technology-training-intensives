@@ -119,6 +119,12 @@ You can also rename columns in the same command:
 gap_small <- select(gapminder, year, country, gdpPerPerson = gdpPercap)
 ```
 
+Note that your can also use the `rename()` function if you only want to rename columns, for example:
+
+``` r
+gap_small <- rename(gap_small, nation = country)
+```
+
 If you have many variables but only want to remove a small number, it
 might be better to deselect instead of selecting. You can do that by
 using the `-` character in front of a variable name:
