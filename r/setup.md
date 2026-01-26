@@ -2,23 +2,17 @@
 title: R with RStudio
 ---
 
-:::{.callout-tip}
-Registrations available for our next intensive!
-
-**[Book for 27th-29th Jan 2026](https://studenthub.uq.edu.au/students/events/detail/5914050)**
-:::
-
 ## Overview
 Welcome to our three-day R training intensive! This runs twice a year and the next intensive will be in late January.
 
 By the end of the three days, you'll have learnt the R skills to manipulate, visualise and present data. We'll spend roughly half the time learning content, and half the time working on a project in groups.
 
-As we set up, there's a few things to do, if you haven't already
+As we set up, there's a few things to do, if you haven't already:
 
-1. [Install the software](https://rstudio.com/products/rstudio/)
+1. [Install the software](https://uqlibrary.github.io/technology-training/R/installation.html)
 2. Introduce yourself to your table
 3. [Join our Teams channel](https://forms.office.com/Pages/ResponsePage.aspx?id=z3fjtrOdy0aRovrZYFuxXEzmI13TctBBiWhneXZv-1lUQ1MwQ0JUM0ZBS0hXV1NJSU04TEZEUFg2Si4u)
-4. [Register your attendance]()
+4. [Register your attendance](https://checkin.careerhub.com.au/UQ/provider/event/session=38571/setup)
 
 ## R + RStudio
 
@@ -52,7 +46,7 @@ far as programming languages go, R is more user-friendly than others.
 
 For this course, you need to have both R and RStudio installed
 ([installation
-instructions](https://github.com/uqlibrary/technology-training/blob/master/R/Installation.md#r--rstudio-installation-instructions)).
+instructions](https://uqlibrary.github.io/technology-training/R/installation.html)).
 
 ## R Projects
 
