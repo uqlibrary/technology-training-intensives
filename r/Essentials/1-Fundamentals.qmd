@@ -50,6 +50,8 @@ You should now see your objects listed in you **environment pane** (top right).
 
 As you can see, you can store different kinds of data as objects. If you want to store text data (a "string of characters"), you have to use quotes around them.
 
+You can use whatever object names you like, it doesn't have to be "num1" or "sentence", but you will want to be clear and consistent in the kinds of names you use, so you don't make typos and know what your objects contain.
+
 > You can recall your recent commands with the up arrow, which is especially useful to correct typos or slightly modify a long command.
 
 Using the console is great to test things and quickly run commands and get outputs. However, if we want to store our process and refine our code as we go over several sessions, it is best to work with a **script**. Let's do a bit more setting up of our project.
