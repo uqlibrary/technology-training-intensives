@@ -296,14 +296,17 @@ What if we don't know what the function is called? Or if we want general help ab
 
 ## Import data
 
-Let's bring in some data. [Download our gapminder dataset](../data_sources/gapminder.csv) and save it in the `data/` folder you just created.
+Let's bring in some data. [Download our gapminder dataset](../../data/gapminder.csv) and save it in the `data/` folder you just created.
 
 Once you've got the data, use the `read.csv()` command to bring it into R:
 
-```{r}
+```{r echo=FALSE}
 gapminder <- read.csv("../../data/gapminder.csv")
 ```
-What do you think they do? Describe each one in detail, and try executing them.
+
+```{r eval=FALSE}
+gapminder <- read.csv("data/gapminder.csv")
+```
 
 ## Explore data
 
