@@ -29,6 +29,38 @@ Here's a few general tips. In addition, we strongly recommend using [the pandas 
   
 :::
 
+## Interface Customisation
+
+::: {.panel-tabset group="lang"}
+
+## R {.active}
+
+You can make RStudio a little nicer and suited to yourself by changing its appearance, colour and using Snippets
+
+**Appearance**
+
+`Tools > Global Options > Appearance`
+Under `Editor theme`, you can choose a colour palette that suits your eyes.
+
+**Rainbow Parentheses**
+
+`Tools > Global Options > Code > Display`
+Down the bottom, under `Syntax`, check `Use rainbow parentheses` to make it easier to distinguish your function brackets.
+
+**Snippets**
+
+Snippets allow you to create your own code-driven shortcuts.
+If you type `lib` into a .R file in RStudio, and then press `Tab`, it will give youthe option to auto-fill to `library(package)`.
+
+You can find more Snippets, and add your own custom ones here:
+`Tools > Edit Code Snippets...`
+
+For example, normally when you copy a windows address location, the slashes are the wrong way around for most coding languages. If you add this snippet, when you copy a windows location, and then type `pp` and press `Tab` it will paste the location with the slashes changed.
+
+snippet pp
+	"`r gsub('"', "", gsub("\\\\", "/", readClipboard()))`"
+:::
+
 ## Data manipulation
 
 Import packages to make data manipulation easier

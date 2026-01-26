@@ -8,7 +8,7 @@ We currently run three intensives:
 * Python for Data Analysis
 * QGIS
 
-The website is rendered using [quarto](https://quarto.org/) and published with [GitHub pages](https://docs.github.com/en/pages).
+The website is rendered using [quarto](https://quarto.org/) and published with [GitHub pages](https://docs.github.com/en/pages). Rendering uses the latest patch of R v4.5 and Python v3.12 (see [.github/workflows/publish.yml](.github/workflows/publish.yml)).
 
 ## Format of this repository
 
@@ -16,24 +16,24 @@ As the website is produced with [quarto](https://quarto.org/), the majority of s
 
 ### Workshops
 
-The source material for each intensive can be found in the `r/`, `python/` and `qgis/` directories respectively. To view the content, we recommend visiting the [live website](https://uqlibrary.github.io/technology-training-intensives/).
+The source material for each intensive can be found in the [r/](/r/), [python/](/python/) and [qgis/](/qgis/) directories respectively. To view the content, we recommend visiting the [live website](https://uqlibrary.github.io/technology-training-intensives/).
 
 ### Projects
 
-The intensives involve the development of a significant project during the three days, supplementing the content sessions. Past project submissions can be viewed [in the gallery](https://uqlibrary.github.io/technology-training-intensives/gallery/project_gallery.html), and their source code in the `gallery/` directory. General project guidelines live in `project/`.
+The intensives involve the development of a significant project during the three days, supplementing the content sessions. Past project submissions can be viewed [in the gallery](https://uqlibrary.github.io/technology-training-intensives/gallery/project_gallery.html), and their source code in the [gallery/](/gallery/) directory. General project guidelines live in [project/](/project/).
 
 ### Data
 
-Both the project and content sessions make use of open source data. Details on the datasets, which live in `data/`, can be found on the project's [Getting Started](https://uqlibrary.github.io/technology-training-intensives/project/scaffold.html) page.
+Both the project and content sessions make use of open source data. Details on the datasets, which live in [data/](/data/), can be found on the project's [Getting Started](https://uqlibrary.github.io/technology-training-intensives/project/scaffold.html) page.
 
 ### Automation
 
-The `_processing/` directory contains various scripts which run before rendering. These serve two main purposes:
+The [_processing/](/_processing/) directory contains various scripts which run before rendering. These serve two main purposes:
 
 * Checking project submissions will render (or removing them before breaking the website)
 * Checking and updating the main content's links and tabsets
 
-In the unlikely event that automation is breaking your render, you can disable the scripts by removing the line `pre-render: _processing/pre_render.py` from `_quarto.yml`.
+In the unlikely event that automation is breaking your render, you can disable the scripts by removing the line `pre-render: _processing/pre_render.py` from [_quarto.yml](/_quarto.yml).
 
 ## Licence
 

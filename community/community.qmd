@@ -1,0 +1,220 @@
+---
+title: Community Groups
+subtitle: View a variety of Community Groups for support
+---
+
+<!-- ## ResBaz2023Qld -->
+
+<!-- ::: columns -->
+
+<!-- ::: {.column width="17%"} -->
+
+<!-- <p float="left"> -->
+
+<!-- [![](images/ResBazQLD_2023.png){fig-alt="ResBaz2023Qld Logo" width="100%"}](https://resbaz.github.io/resbaz2023qld/) -->
+
+<!-- </p> -->
+
+<!-- ::: -->
+
+<!-- ::: {.column width="3%"} -->
+
+<!-- empty column to create gap -->
+
+<!-- ::: -->
+
+<!-- ::: {.column width="80%"} -->
+
+<!-- The 2023 Queensland Research Bazaar will be a three-day intensive conference held at UQ where researchers will come together to attend workshops and network to up-skill in 'next generation digital research tools and skills'. -->
+
+<!-- Researchers at ALL levels from ALL disciplines. PhD candidates, research Masters students and early career researchers are especially encouraged to attend. -->
+
+<!-- |     **When**: November 21-23 2023 -->
+
+<!-- |     **Where**: UQ St Lucia in the Michie Building -->
+
+<!-- |     **More Details**: The [ResBaz2023Qld Website](https://resbaz.github.io/resbaz2023qld/) -->
+
+<!-- ::: -->
+
+<!-- ::: -->
+
+## UQ R User Group
+
+::: columns
+::: {.column width="17%"}
+<p float="left">
+
+[![](images/uqrug.png){fig-alt="UQRUG Logo" width="100%"}](https://uqrug.netlify.app/)
+
+</p>
+:::
+
+::: {.column width="3%"}
+<!-- empty column to create gap -->
+:::
+
+::: {.column width="80%"}
+UQRUG is a gathering for R users of all skills, to help each other solve problems, to share resources and tips, and to simply hang out with a nice community.
+
+|     **When**: Last **Thursday** of the month from 10am to 12pm
+
+|     **Where**: In-Person at UQ Central Library 12-N109
+
+|     **More Details**: The [UQ R User Group](https://uqrug.netlify.app/)
+:::
+:::
+
+## UQ Python User Group
+
+::: columns
+::: {.column width="17%"}
+<p float="left">
+
+[![](images/python-logo-only.svg){fig-alt="Python Logo" width="100%"}](https://bit.ly/uqpug)
+
+</p>
+:::
+
+::: {.column width="3%"}
+<!-- empty column to create gap -->
+:::
+
+::: {.column width="80%"}
+A gathering for Python users of any proficiency, to help each other solve problems, share resources and tips, discover new features and hang out as a friendly community.
+
+|     **When**: First **Thursday** of the month from 10am to 11:30am
+
+|     **Where**: In-Person at UQ Central Library 12-N109
+
+|     **More Details**: The [UQ Python User Group](https://bit.ly/uqpug)
+:::
+:::
+
+## R-Ladies Brisbane
+
+::: columns
+::: {.column width="17%"}
+<p float="left">
+
+[![](images/rladies.jpg){fig-alt="RLadies Logo" width="100%"}](https://github.com/rladies/meetup-presentations_brisbane)
+
+</p>
+:::
+
+::: {.column width="3%"}
+<!-- empty column to create gap -->
+:::
+
+::: {.column width="80%"}
+R-Ladies Brisbane welcomes members of all R proficiency levels. The community is designed to develop our members' R skills & knowledge through social, collaborative learning & sharing. Supporting minority identity access to STEM skills & careers, the Free Software Movement, and contributing to the global R community!
+
+|     **When**: Find their events on [MeetUP](https://www.meetup.com/rladies-brisbane/)
+
+|     **Where**: Online and in Person.
+
+|     **More Details**: The [R Ladies Brisbane GitHub](https://github.com/rladies/meetup-presentations_brisbane)
+:::
+:::
+
+## Language and Data Analysis Laboratory (LADAL)
+
+::: columns
+::: {.column width="17%"}
+<p float="left">
+
+[![](images/LadalPurple.png){fig-alt="LADAL" width="100%"}](https://ladal.edu.au/)
+
+</p>
+:::
+
+::: {.column width="3%"}
+<!-- empty column to create gap -->
+:::
+
+::: {.column width="80%"}
+LADAL is a free, open-source, collaborative support infrastructure for digital and computational humanities established 2019 by the School of Languages and Cultures at the University of Queensland.
+
+|     **Where**: Online [tutorials on the LADAL Websites](https://ladal.edu.au/tutorials.html)
+
+|     **More Details**: Contact [LADAL directly](https://ladal.edu.au/contact.html)
+:::
+:::
+
+## Hacky Hour UQ
+
+::: columns
+::: {.column width="17%"}
+<p float="left">
+
+[![](images/uqhackyhour.png){fig-alt="UQ Hack Hour" width="100%"}](https://rcc.uq.edu.au/meetups#hacky-hour)
+
+</p>
+:::
+
+::: {.column width="3%"}
+<!-- empty column to create gap -->
+:::
+
+::: {.column width="80%"}
+For UQ researchers to get support with research-related technical issues.
+
+|     **When**: Weekly on Tuesdays, 3pm--4pm (AEST)
+
+|     **Where**: Online. For Zoom meeting details please email rcc-support\@uq.edu.au
+
+|     **More Details**: The [RCC Hacky Hour UQ website](https://rcc.uq.edu.au/meetups#hacky-hour)
+:::
+:::
+
+## GeoSpatial Share
+
+::: columns
+::: {.column width="17%"}
+<p float="left">
+
+[![](images/turkeypin.svg){fig-alt="GeoSpatial Share Logo" width="100%"}](https://brisbane-geocommunity.netlify.app/)
+
+</p>
+:::
+
+::: {.column width="3%"}
+<!-- empty column to create gap -->
+:::
+
+::: {.column width="80%"}
+A monthly geospatial skill sharing tutorial sessions where a member of the community shares their skills, experiences and tricks in a friendly and inclusive environment.
+
+|     **When**: Around the last Thursday of the month in the afternoon.
+
+|     **Where**: Online. For meeting details please email geocommunity \@ gmail dot com
+
+|     **More Details**: The [GeoSpatial Share website](https://brisbane-geocommunity.netlify.app/)
+:::
+:::
+
+## Australian Digital Observatory
+
+::: columns
+::: {.column width="17%"}
+<p float="left">
+
+[![](images/ado.png){fig-alt="Australia Digital Observatory Logo" width="100%"}](https://www.digitalobservatory.net.au/office-hours/)
+
+</p>
+:::
+
+::: {.column width="3%"}
+<!-- empty column to create gap -->
+:::
+
+::: {.column width="80%"}
+For Australian researchers working with linguistics, text analytics, digital and computational methods, social media and web archives to bring their technical questions, research problems and rough ideas and get advice and feedback.
+
+|     **When**: Consultations by Appointment
+
+|     **Where**: Online.
+
+|     **More Details**: The [Australian Digital Observatory website](https://www.digitalobservatory.net.au/office-hours/).
+:::
+:::

@@ -250,6 +250,41 @@ If you forget to include that last bracket, R will run the code, and then wait f
 If you try to give any further instructions to R, it will likely just continue giving you `+` symbols, and not return anything.
 To stop this, click on the console and press the `Esc` key on your keyboard.
 
+### Other Common Errors and Warnings
+
+Errors and warnings are a normal part of coding, and nothing to be afraid of - they're there to help you!
+However, it can be frustrating when the error is confusing, or doesn't seem to make sense. 
+
+Warnings won't stop your code from running, but it's often worth investigating to make sure it's behaving the way you expect.
+
+Errors will stop your code, and will hopefully be accompanied by a message that makes sense.
+Most of the time errors are caused by simple typos, like the incomplete functions above.
+
+Typos
+```r 
+> man(c(1, 2, 3, 3, 10))
+Error in man(c(1, 2, 3, 3, 10)) : could not find function "man"
+```
+
+Case Sensitivity
+```r 
+> num1 <- 42
+> num2 <- Num1 / 9
+Error: object 'Num1' not found
+```
+
+Missing Commas
+```r
+> ages <- c(4, 10 2, NA, 3)
+Error: unexpected numeric constant in "ages <- c(4, 10 2"
+```
+
+Missing Quotes
+```r
+> barplot(ages, main = "How old are my dogs?, col = "pink")
+Error: unexpected symbol in "barplot(ages, main = "How old are my dogs?, col = "pink"
+```
+
 ### More help
 
 We've practised how to find help about functions we know the name of.
