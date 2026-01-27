@@ -47,11 +47,13 @@ To make life easy, we should set up our workspace well.
 
 Pandas offers a simple way to access data with its `read.csv()` function. We'll save it into the variable `df_raw`:
 
-```{python echo=FALSE}
+```{python}
+#| echo: false
 df_raw = pd.read_csv("../../data/Players2024.csv")
 ```
 
-```{python eval=FALSE}
+```{python}
+#| eval: false
 df_raw = pd.read_csv("data/Players2024.csv")
 ```
 
