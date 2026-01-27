@@ -32,15 +32,15 @@ We have nine datasets for you to choose from. **We recommend saving your data in
 
 | Dataset | Description | Source |
 | --- | --- | --- |
-| [World populations](data/population.csv) | A summary of world populations and corresponding statistics | Data from a [Tidy Tuesday post on 2014 CIA World Factbook data](https://github.com/rfordatascience/tidytuesday/blob/main/data/2024/2024-10-22/readme.md)
-| [Soccer players](data/Players2024.csv) | A summary of approx. 6000 soccer players from 2024 | Data from a [Kaggle submission](https://www.kaggle.com/datasets/asemmustafa/football-players-2024-dataset).
-| [Coffee survey](data/coffee_survey.csv) | A survey of blind coffee tasting results | Data from a [Kaggle submission](https://www.kaggle.com/datasets/sujaykapadnis/lets-do-some-coffee-tasting)
-| [Gapminder](data/gapminder.csv) | GDP and life expectancy data by country | Data from the [Research Bazaar's R novice tutorial](https://github.com/resbaz/r-novice-gapminder), sourced from [Gapminder](https://www.gapminder.org/).
-| [Melbourne housing data](data/melb_data.csv) | A collection of houses for sale in Melbourne. | Data from a [Kaggle submission](https://www.kaggle.com/datasets/dansbecker/melbourne-housing-snapshot) | 
-| [Goodreads books](data/books.csv) | A summary of books on Goodreads. | Data from a [Kaggle submission](https://www.kaggle.com/datasets/jealousleopard/goodreadsbooks)
-| [Queensland hospitals](data/hospital_data.csv) | Queensland emergency department statistics. | Data from the Queensland Government's [Open Data Portal](https://www.data.qld.gov.au/dataset/emergency-departments-quarterly-data). |
-| [Queensland fuel prices](data/qld_fuel.csv) | Fuel prices by the pump in Queensland | Data from the Queensland Government's [Open Data Portal](https://www.data.qld.gov.au/dataset/fuel-price-reporting-2024)
-| [Aeroplane bird strikes](data/birds_strikes.csv) | Aeroplane bird strike incidents fron the 90s| Data from a [Tidy Tuesday post](https://github.com/rfordatascience/tidytuesday/tree/2500765853ea5235409d936cf9bbbf7d5f8b6881/data/2019/2019-07-23) sourced from an [FAA database](https://wildlife.faa.gov/home)
+| [World populations](../data/population.csv) | A summary of world populations and corresponding statistics | Data from a [Tidy Tuesday post on 2014 CIA World Factbook data](https://github.com/rfordatascience/tidytuesday/blob/main/data/2024/2024-10-22/readme.md)
+| [Soccer players](../data/Players2024.csv) | A summary of approx. 6000 soccer players from 2024 | Data from a [Kaggle submission](https://www.kaggle.com/datasets/asemmustafa/football-players-2024-dataset).
+| [Coffee survey](../data/coffee_survey.csv) | A survey of blind coffee tasting results | Data from a [Kaggle submission](https://www.kaggle.com/datasets/sujaykapadnis/lets-do-some-coffee-tasting)
+| [Gapminder](../data/gapminder.csv) | GDP and life expectancy data by country | Data from the [Research Bazaar's R novice tutorial](https://github.com/resbaz/r-novice-gapminder), sourced from [Gapminder](https://www.gapminder.org/).
+| [Melbourne housing data](../data/melb_data.csv) | A collection of houses for sale in Melbourne. | Data from a [Kaggle submission](https://www.kaggle.com/datasets/dansbecker/melbourne-housing-snapshot) | 
+| [Goodreads books](../data/books.csv) | A summary of books on Goodreads. | Data from a [Kaggle submission](https://www.kaggle.com/datasets/jealousleopard/goodreadsbooks)
+| [Queensland hospitals](../data/hospital_data.csv) | Queensland emergency department statistics. | Data from the Queensland Government's [Open Data Portal](https://www.data.qld.gov.au/dataset/emergency-departments-quarterly-data). |
+| [Queensland fuel prices](../data/qld_fuel.csv) | Fuel prices by the pump in Queensland | Data from the Queensland Government's [Open Data Portal](https://www.data.qld.gov.au/dataset/fuel-price-reporting-2024)
+| [Aeroplane bird strikes](../data/birds_strikes.csv) | Aeroplane bird strike incidents fron the 90s| Data from a [Tidy Tuesday post](https://github.com/rfordatascience/tidytuesday/tree/2500765853ea5235409d936cf9bbbf7d5f8b6881/data/2019/2019-07-23) sourced from an [FAA database](https://wildlife.faa.gov/home)
 
 
 Remember, to work with data, we should import our useful packages and load the data in.
