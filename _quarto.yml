@@ -13,7 +13,7 @@ project:
 
 website:
   open-graph: true
-  title: "UQL Training Intensives"
+  title: "UQ Library Training Intensives"
   favicon: "/int_laptop_icon.svg"
   navbar:
     search: true
