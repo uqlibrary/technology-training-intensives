@@ -13,7 +13,7 @@ Here's a few general tips. In addition, we strongly recommend using [the pandas 
 | Code | Hotkey | Description |
 | --- | --- | --- |
 |  | <kbd>Ctrl</kbd>+<kbd>Enter</kbd> | Run current line (when in Script) |
-| `<-` | <kbd>Alt</kbd>+<kbd>Enter</kbd> | Assignment |
+| `<-` | <kbd>Alt</kbd>+<kbd>-</kbd> | Assignment |
 | `%>%` | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>M</kbd> | Pipe |
 |  | <kbd>Esc</kbd> | Cancel current operation (when in Console) |
 |  | <kbd>F1</kbd> | Help documentation for selected function |
