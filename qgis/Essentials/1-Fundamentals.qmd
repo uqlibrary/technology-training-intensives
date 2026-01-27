@@ -87,8 +87,6 @@ We will start by creating a good folder structure to work within. This folder is
 ::: {.column width="60%"}
 
 
-
-
 -   Inside that folder, create these folders:
 
   -   "**data**" - for all the data we will use to make our maps, split into:
@@ -126,6 +124,9 @@ The **data** for this session can be directly downloaded from [this link](https:
 
 Once downloaded, extract the archive into your **raw** folder within your **data** folder.
 
+This data folder contains all of the data that we will be using in these workshops. We're going to bring the data into our project lesson by lesson.
+
+To start with, we're going to import some project files that show us where our development will take place.
 
 ## Importing data
 
@@ -136,7 +137,7 @@ If you've already loaded in the OpenStreetMap Basemap, then you should get the p
 So where is the data?
 If you want to zoom in to your data, you don't have to use your mouse, you can use the `Zoom Full` button, or right-click on your **Project Area** layer and select `Zoom to Layer(s)`.
 
-You can also use the `Project Home` directory in the browser to add another layer: try loading the "Project_Area.gpkg" and "Access_Track.gpkg" shapefiles (format .shp), by drag-and-dropping or double-clicking.
+You can also use the `Project Home` directory in the browser to add another layer: try loading the "Project_Area.gpkg" and "Access_Track.gpkg" GeoPackages (format .gpkg), by drag-and-dropping or double-clicking.
 
 All layers are visible in the `Layers` panel, with the most recently loaded by default at the top. Layers are rendered as they are listed, which means the top ones will cover the bottom ones. Make sure you optimise the order for your map!
   
@@ -169,14 +170,15 @@ The new layer is loaded to the map by default.
 
 ## Clip
 
-Instead of using selections, we can also use polygon layers as an overlay layer to clip.
+Instead of just using selections, we can also clip out the data we want by using a polygon layes as an overlay layer.
+
+We'll use the Clip tool on the final piece of data for this session: the [Broad Vegetation Groups (BVGs)](https://www.qld.gov.au/environment/plants-animals/plants/ecosystems/broad-vegetation) for this area. BVG data shows us what vegetation types are found in a particular location. We've downloaded a section of this data from [QSpatial](https://qldspatial.information.qld.gov.au/catalogue/custom/detail.page?fid={43A2CB31-9D83-4BB9-ACE7-05E7BD271FE3}). Currently it covers a wide area, but we want to focus it down to our project.
 
 Use the `Project Home` directory in the browser to add the "BVG_SEQ.shp" file.
 
 > So far we have only used **.gpkg** GeoPackage files, the **VG_SEQ.shp** is a Shapefile. Both of these are common vector data types. Shapefiles are more established and widely used, where GeoPackages are leaner and more customisable.
 
-This layer contains vegetation data for the local area. is not very pretty at the moment, but we can change the symbology after we subset the data.
-
+This layer is not very pretty at the moment, but we can change the symbology after we subset the data.
 
 Follow these steps to **Clip**:
   
@@ -242,6 +244,20 @@ Now try to change the point symbology of our **EH Turbines** layer: we don't hav
 
 > The Properties dialog is quite large and makes it difficult to see the changes in symbology. You can use the "Layer Styling Panel" (button in the Layers panel, or <kbd>F7</kbd> shortcut) to use a side panel instead, with the "Live update" option on by default.
 
+
+### Classifying the symbology
+
+What if we want to colour according to a variable? Depending on the type of variable, we can choose "Categorised" (for categorical data) or "Graduated" (for continuous data).
+
+We can do this with our `EH BVG` data:
+
+1.  Click on the `Layer Styling Panel` button
+2.  Change from "Single Symbol" to "Categorised"
+3.  Use the bvg1m column
+4.  Pick a relevant colour ramp
+5.  Click "classify"
+
+The colours may not be very pretty right now, but at least we can differentiate them. We will make these much nicer later. 
 
 ### Add labels
 
