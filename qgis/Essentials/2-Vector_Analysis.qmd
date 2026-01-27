@@ -19,97 +19,97 @@ Vector data is made up of points, lines, and/or polygons. They are made up of pr
 
 The [Map School](https://mapschool.io/) has some useful explainers of what Vector data is.
 
-## What are we doing today?
+## What are we doing in this session?
 
-To look at vector data, we're going to use the example of koala populations and protected areas, and use some analyses to see how they interact. The QLD Government has set koala protection as a priority for the State, but how do their priorities match up with the data? We can use QGIS and spatial analysis to ask questions of the data.
+We've actually already looked at a lot of vector data: all our points, lines and polygons are vectors. To look at vector data in some more detail, we're going to bring in some ABS demographic data and a CSV of animal sightings, use some analyses to see how they interact, and create some spatial data of our own.
 
-
-## Gather some data
-
-We're going to explore a number of different online spatial data repositories. Please [download the full dataset here](https://github.com/uqlibrary/technology-training-assets/raw/refs/heads/master/QGIS/vector/vector_data.zip), and extract it into the qgis_vector folder you created earlier.
+For this Windfarm to go ahead, we need to look at the environmental impacts on vegetation, animals, and people in the local area. We can calculate the area of vegetation impacted, count animal sightings, and compare these to our population numbers.
 
 
-> In the zip file of today's data we have already trimmed it down to just QLD to save on file size
+## Load in our data
+
+For most spatial daa, we will simply be able to double click on it in the Project Home folder within the Browser window. When you load in this data, QGIS will give you a warning that your Project Projection is different to the data you're importing. Simply click cancel on this window. We will be fixing this issue later. Make sure your Project Projection remains as EPSG:7856.
+
+Load in:
+
+-   sa1_2021_bris_gda2020.gpkg (suburb data from the [Australian Bureau of Statistics](https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files))
+Right click the `sa1_2021_bris_gda2020` layer and `Rename...` it to "SA1 Boundaries".
+
+
+But what about the demographic and animal location data? We need to handle these differently, as they are currently not in a spatial format, but in csv files.
+
+-   animal_sightings.csv (Animal sightings from [iNaturalist](https://www.inaturalist.org))
+
+-   sa1_pop_age_qld.csv (demographic data from the ABS, but accessed through the [Queensland Government Statistician's Office](https://www.qgso.qld.gov.au/))
+
+
+### Tabular data
+
+QGIS can deal with plain tabular data. For example, try importing the file sa1_pop_age_qld.csv: it doesn't contain any coordinates, but we can still store it as a layer and use it in our project. You can see the data it contains by opening its attribute table.
+
+How can we add the Statistical Area 1 (SA1) Demographic data to our existing `SA1 Boundaries` shapefile?
+
+#### Joining tabular data
+
+To add the SA1 Demographic data to our SA1 shapefile, we can go the the `SA1 Boundaries` layer's properties, use the ![Join Button](https://docs.qgis.org/3.40/en/_images/join.png) `Joins` tab and click the `Add new join` button ![Add New Join Button](https://docs.qgis.org/3.40/en/_images/symbologyAdd.png) to create a new join. We can then choose the sa1_pop_age_qld data as the `Join layer`, and define what common field between the two tables we will merge on: the SA1_CODE21 code in our case.
+
+You can now see the joined data highlighted in green in the ![Fields Tab Button](https://docs.qgis.org/3.40/en/_images/mSourceFields.png)`Fields` tab, click "OK", and check the actual values in the `SA1 Bris` layer's attribute table.
+
+
+### Importing CSV data
+
+The animal sighting data has columns with coordinates so it effectively is spatial data and can be imported directly.
+
+-   Go to `Layer > Add Layer > Add Delimited Text Layer...`
+-   Click the three dots `...` next to the **File name** field, navigate to the project folder, and select `animal_sightings.csv`
+-   Click the Geometry Definition drop down
+    -   This should automatically identify Longitude as the X field, and Latitude as the Y field.
+    -   You may need to set the Geometry CRS. For this data from iNaturalist it is EPSG:4326 - WGS84
+-   Click `Add`
+
+> It's often the case that spatial data comes in EPSG:4326 - WGS84, as that is the standard used by most GPS units and Google Maps. However, it's still worth checking those details on the website you've downloaded it from. If your data doesn't come with a predefined projection, and the spatial portal doesn't specify, but it uses a Google Maps style interface, it's probably using EPSG:4326 - WGS84
+
 
 ### Data Summary
 
 You should have:
 
--   Point data for analysis
-    -   Koala Sightings
--   Boundary Files to spatially categorise our data
-    -   Koala Priority Areas
-    -   Protected Areas
-    -   SA2 Areas (with human population)
+- From earlier:
+  - Project Area
+  - Access Track
+  - Turbine Locations
+  - SA1 Boundaries
+- Just imported:
+  - Animal Sightings
+  - SA1 Demographics (joined to SA1 Boundaries)
 
 
+## Subset our SA1 Data down to closer suburbs - Select features using an expression
 
-## Load in our data
+The following code will allow you to select the SA1 features that are near to Enoggera Hills.
 
-For most of our data, we will simply be able to double click on it in the Project Home folder within the Browser window. When you load in this data, QGIS will give you a warning that your Project Projection is different to the data you're importing. Simply click cancel on this window. We will be fixing this issue later. Make sure your Project Projection remains as EPSG:7856.
-
-Load in:
-
--   SA2_ERP_2021_QLD.gpkg (suburb data)
-
--   CAPAD2020_terrestrial_QLD.gpkg (Protected Areas)
-
--   koala_priority_area.gpkg
-
-But what about the Koala Encounters location data? We need to handle this differently, as it is currently not in a spatial format, but in a csv file.
-
-### Importing CSV data
-
--   Go to `Layer > Add Layer > Add Delimited Text Layer...`
--   Click the three dots `...` next to the **File name** field, navigate to the project folder, and select `koala_reduced`
--   Click the Geometry Definition drop down
-    -   This should automatically identify decimalLongitude and the X field, and decimalLatitude as the Y field.
-    -   You may need to set the Geometry CRS. For this data from the ALA it is EPSG:4326 - WGS84
--   Click `Add`
-
-> It's usually the case that data like this is in EPSG:4326 - WGS84, as that is the standard used by most GPS units and Google Maps. However, it's still worth checking those details on the website you've downloaded it from. If your data doesn't come with a predefined projection, and the spatial portal doesn't specify, but it uses a Google Maps style interface, it's probably using EPSG:4326 - WGS84
-
-
-## Tabular data
-
-QGIS can deal with plain tabular data. For example, try importing the file HDI.ods: it doesn't contain any coordinates, but we can still store it as a layer and use it in our project. You can see the data it contains by opening its attribute table.
-
-How can we add the Human Development Index (HDI) data to our existing "admin" shapefile?
-
-### Joining tabular data
-
-To add the HDI data to our region shapefile, we can go the the "admin" layer's properties, use the ![Join Button](https://docs.qgis.org/3.40/en/_images/join.png) `Joins` tab and click the `Add new join` button ![Add New Join Button](https://docs.qgis.org/3.40/en/_images/symbologyAdd.png) to create a new join. We can then choose the HDI data as the `Join layer`, and define what common field between the two tables we will merge on: the ISO_3166_2 code in our case.
-
-You can now see the joined data highlighted in green in the ![Fields Tab Button](https://docs.qgis.org/3.40/en/_images/mSourceFields.png)`Fields` tab, click "OK", and check the actual values in the "admin" layer's attribute table.
-
-
-## Subset our SA2 data down to SEQ - Select features using an expression
-
-The following code will allow you to select the SA2 features that are in SEQ.
-
--   Right click on the reprojected SA2 layer, and select **Open Attribute Table**
+-   Right click on the SA1 layer, and select **Open Attribute Table**
 -   From the Attribute Table that opens, click the Select features using an expression button: ![image](https://docs.qgis.org/3.40/en/_images/mIconExpressionSelect.png)
 -   In the Select by Expression window that opens, paste the code from below into the Expression field, and then click `Select Features` in the bottom right of the window.
 
 ``` sql
- "SA4_name_2021" =  'Gold Coast' 
- OR
- "SA4_name_2021" =  'Sunshine Coast' 
-  OR
- "SA4_name_2021" =  'Toowoomba' 
- OR
-  "GCCSA_name_2021"  LIKE  '%Brisbane%' 
+"SA4_NAME21" = 'Brisbane - West'  OR
+"SA4_NAME21" = 'Brisbane Inner City'  OR
+"SA4_NAME21" = 'Brisbane - North'  OR
+"SA3_NAME21"  LIKE  '%Hills%'
 ```
 
 > This is SQL code, which is great for querying databases. This code selects any row that matches any of the criteria (this OR that). The first three look for exact matches, the last one looks to match the pattern given. The % acts like wildcard, so it's looking for any row that contains Brisbane.
 
 -   Close the Select by Expression window and Attribute Table
--   You should see the SEQ SA2 areas highlighted in yellow (you may need to turn off other layers or zoom in).
--   To permanently save this selection, right click on the reprojected SA2 layer, and select `Export > Save Selected Features As...`
--   Save your file as `SA2_SEQ`
+-   You should see the desired SA1 areas highlighted in yellow (you may need to turn off other layers or zoom in).
+-   To permanently save this selection, right click on the SA1 layer, and select `Export > Save Selected Features As...`
+-   Save your file as `SA1_EH`
 -   Make sure the CRS stays as `EPSG:7856 - GDA2020 / MGA zone 56`, then click `OK`
 
 If you haven't done so already, untick and hide all the original layers we aren't using any more.
+
+
 
 ## Analysis: Spatial Overlaps
 
