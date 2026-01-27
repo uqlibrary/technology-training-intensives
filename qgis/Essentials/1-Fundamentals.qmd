@@ -234,7 +234,7 @@ You can save your project with the floppy disk icon, or using <kbd>Ctrl</kbd> + 
 
 Our vector layers are assigned a random colour when we load them. We now want to make them look better.
 
-Double-click on the **Project Area** layer to open the `Layer Properties` click the ![](https://docs.qgis.org/3.40/en/_images/symbology.png) `Symbology` tab, and use `Color` to change to a better colour. Click `Apply`. We can also go into more details about the border (colour, width, type of line...) by clicking on `Simple fill`.
+Double-click on the **Project Area** layer to open the `Layer Properties` click the ![](https://docs.qgis.org/3.40/en/_images/symbology.png) `Symbology` tab, and use `Color` to change to a better colour. Click `Apply`. Perhaps we'd be better off with no fill, and work more with the border by clicking on `Simple fill`. Change the `Fill Style` to `No Brush`. We can now go into more details about the **Stroke** color, width and style.
 
 We can make more complex fills by adding an extra "symbol layer", and layering different kinds of fill styles. Try this with both polygons and lines. For example, style the Access Tracks so they look like roads (the `topo road` preset is a good start).
 
@@ -249,7 +249,7 @@ Have a look at the attribute table for our **EH Turbines** layer. What could we 
 
 Double-click on the **EH Turbines** layer: ![](https://docs.qgis.org/3.40/en/_images/labelingSingle.png) `Labels` and then click `No Labels > Single labels`. You can also use the `Layer Labelling Options` button to open the sidebar, which allows you to "Live update" the map when you change a setting.
 
-Choose `Value > turb_id` to label with the Turbine IDs. In the "Text" tab, we can change the look of our labels: amend the size, the colour, the font... We can also add a text buffer with the "Buffer tab" to make them more readable.
+Choose `Value > turb_id` to label with the Turbine IDs. In the "Text" tab, we can change the look of our labels: amend the size, the colour, the font... We can also add a text buffer with the `Buffer tab` to make them more readable.
 
 The placement tab allows us to fine-tune the placement of the labels in reference to the points. The default mode is "Cartographic", and we can increase the distance to the symbol used. If we want the label to cover the point, we can use `Mode > Offset from point` and use the middle quadrant. We might also want to set the layer's Symbology to "No Symbols".
 
