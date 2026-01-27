@@ -21,6 +21,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -152,6 +187,10 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#set-the-project-projection" id="toc-set-the-project-projection" class="nav-link" data-scroll-target="#set-the-project-projection">Set the Project Projection</a>
   <ul class="collapse">
+  <li><a href="#tabular-data" id="toc-tabular-data" class="nav-link" data-scroll-target="#tabular-data">Tabular data</a></li>
+  </ul></li>
+  <li><a href="#subset-our-sa1-data-down-to-closer-suburbs---select-features-using-an-expression" id="toc-subset-our-sa1-data-down-to-closer-suburbs---select-features-using-an-expression" class="nav-link" data-scroll-target="#subset-our-sa1-data-down-to-closer-suburbs---select-features-using-an-expression">Subset our SA1 Data down to closer suburbs - Select features using an expression</a>
+  <ul class="collapse">
   <li><a href="#reproject" id="toc-reproject" class="nav-link" data-scroll-target="#reproject">Reproject</a></li>
   </ul></li>
   <li><a href="#buffer-data" id="toc-buffer-data" class="nav-link" data-scroll-target="#buffer-data">Buffer Data</a></li>
@@ -277,6 +316,48 @@ ul.task-list li input[type="checkbox"] {
 <blockquote class="blockquote">
 <p>You will notice that the OpenStreetMap basemap looks very warped, except for the East Coast of Australia. This is because the projection we have selected is very focused on reducing distortion within the bounds of the projection’s area (Eastern Australia).</p>
 </blockquote>
+<p>Load in:</p>
+<ul>
+<li><p>sa1_2021_bris_gda2020.gpkg (suburb data from the <a href="https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files">Australian Bureau of Statistics</a>) Right click the <code>sa1_2021_bris_gda2020</code> layer and <code>Rename...</code> it to “SA1 Boundaries”.</p></li>
+<li><p>sa1_pop_age_qld.csv (demographic data from the ABS, but accessed through the <a href="https://www.qgso.qld.gov.au/">Queensland Government Statistician’s Office</a>)</p></li>
+</ul>
+<section id="tabular-data" class="level3">
+<h3 class="anchored" data-anchor-id="tabular-data">Tabular data</h3>
+<p>QGIS can deal with plain tabular data. For example, try importing the file sa1_pop_age_qld.csv: it doesn’t contain any coordinates, but we can still store it as a layer and use it in our project. You can see the data it contains by opening its attribute table.</p>
+<p>How can we add the Statistical Area 1 (SA1) Demographic data to our existing <code>SA1 Boundaries</code> shapefile?</p>
+<section id="joining-tabular-data" class="level4">
+<h4 class="anchored" data-anchor-id="joining-tabular-data">Joining tabular data</h4>
+<p>To add the SA1 Demographic data to our SA1 shapefile, we can go the the <code>SA1 Boundaries</code> layer’s properties, use the <img src="https://docs.qgis.org/3.40/en/_images/join.png" class="img-fluid" alt="Join Button"> <code>Joins</code> tab and click the <code>Add new join</code> button <img src="https://docs.qgis.org/3.40/en/_images/symbologyAdd.png" class="img-fluid" alt="Add New Join Button"> to create a new join. We can then choose the sa1_pop_age_qld data as the <code>Join layer</code>, and define what common field between the two tables we will merge on: the SA1_CODE21 code in our case.</p>
+<p>You can now see the joined data highlighted in green in the <img src="https://docs.qgis.org/3.40/en/_images/mSourceFields.png" class="img-fluid" alt="Fields Tab Button"><code>Fields</code> tab, click “OK”, and check the actual values in the <code>SA1 Bris</code> layer’s attribute table.</p>
+<ul>
+<li>SA1 Boundaries (joined to SA1 Demographics)</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="subset-our-sa1-data-down-to-closer-suburbs---select-features-using-an-expression" class="level2">
+<h2 class="anchored" data-anchor-id="subset-our-sa1-data-down-to-closer-suburbs---select-features-using-an-expression">Subset our SA1 Data down to closer suburbs - Select features using an expression</h2>
+<p>The following code will allow you to select the SA1 features that are near to Enoggera Hills.</p>
+<ul>
+<li>Right click on the SA1 layer, and select <strong>Open Attribute Table</strong></li>
+<li>From the Attribute Table that opens, click the Select features using an expression button: <img src="https://docs.qgis.org/3.40/en/_images/mIconExpressionSelect.png" class="img-fluid" alt="image"></li>
+<li>In the Select by Expression window that opens, paste the code from below into the Expression field, and then click <code>Select Features</code> in the bottom right of the window.</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ot">"SA4_NAME21"</span> <span class="op">=</span> <span class="st">'Brisbane - West'</span>  <span class="kw">OR</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ot">"SA4_NAME21"</span> <span class="op">=</span> <span class="st">'Brisbane Inner City'</span>  <span class="kw">OR</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ot">"SA4_NAME21"</span> <span class="op">=</span> <span class="st">'Brisbane - North'</span>  <span class="kw">OR</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ot">"SA3_NAME21"</span>  <span class="kw">LIKE</span>  <span class="st">'%Hills%'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p>This is SQL code, which is great for querying databases. This code selects any row that matches any of the criteria (this OR that). The first three look for exact matches, the last one looks to match the pattern given. The % acts like wildcard, so it’s looking for any row that contains Brisbane.</p>
+</blockquote>
+<ul>
+<li>Close the Select by Expression window and Attribute Table</li>
+<li>You should see the desired SA1 areas highlighted in yellow (you may need to turn off other layers or zoom in).</li>
+<li>To permanently save this selection, right click on the SA1 layer, and select <code>Export &gt; Save Selected Features As...</code></li>
+<li>Save your file as <code>SA1_EH</code></li>
+<li>Make sure the CRS stays as <code>EPSG:7856 - GDA2020 / MGA zone 56</code>, then click <code>OK</code></li>
+</ul>
+<p>If you haven’t done so already, untick and hide all the original layers we aren’t using any more.</p>
 <section id="reproject" class="level3">
 <h3 class="anchored" data-anchor-id="reproject">Reproject</h3>
 <p>For each of our layers, do the following:</p>
