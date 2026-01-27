@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-01-26">
+<meta name="dcterms.date" content="2026-01-27">
 
-<title>The Fundamentals – UQ Library Training Intensives</title>
+<title>The Fundamentals – UQL Training Intensives</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -107,10 +107,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<meta property="og:title" content="The Fundamentals – UQ Library Training Intensives">
+<meta property="og:title" content="The Fundamentals – UQL Training Intensives">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://uqlibrary.github.io/technology-training-intensives/r/Essentials/1-Fundamentals_files/figure-html/unnamed-chunk-10-1.png">
-<meta property="og:site_name" content="UQ Library Training Intensives">
+<meta property="og:site_name" content="UQL Training Intensives">
 <meta property="og:image:height" content="960">
 <meta property="og:image:width" content="1344">
 </head>
@@ -123,7 +123,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">UQ Library Training Intensives</span>
+    <span class="navbar-title">UQL Training Intensives</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -154,7 +154,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="https://uqlibrary.github.io/technology-training"> 
-<span class="menu-text">UQ Library Technology Training</span></a>
+<span class="menu-text">UQL Technology Training</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../community/community.html"> 
@@ -304,7 +304,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 26, 2026</p>
+      <p class="date">January 27, 2026</p>
     </div>
   </div>
   
@@ -368,6 +368,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>You should now see your objects listed in you <strong>environment pane</strong> (top right).</p>
 <p>As you can see, you can store different kinds of data as objects. If you want to store text data (a “string of characters”), you have to use quotes around them.</p>
+<p>You can use whatever object names you like, it doesn’t have to be “num1” or “sentence”, but you will want to be clear and consistent in the kinds of names you use, so you don’t make typos and know what your objects contain.</p>
 <blockquote class="blockquote">
 <p>You can recall your recent commands with the up arrow, which is especially useful to correct typos or slightly modify a long command.</p>
 </blockquote>
@@ -590,12 +591,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="import-data" class="level2">
 <h2 class="anchored" data-anchor-id="import-data">Import data</h2>
-<p>Let’s bring in some data. <a href="../data_sources/gapminder.csv">Download our gapminder dataset</a> and save it in the <code>data/</code> folder you just created.</p>
+<p>Let’s bring in some data. <a href="../../data/gapminder.csv">Download our gapminder dataset</a> and save it in the <code>data/</code> folder you just created.</p>
 <p>Once you’ve got the data, use the <code>read.csv()</code> command to bring it into R:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>gapminder <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../../data/gapminder.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>gapminder <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/gapminder.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>What do you think they do? Describe each one in detail, and try executing them.</p>
 </section>
 <section id="explore-data" class="level2">
 <h2 class="anchored" data-anchor-id="explore-data">Explore data</h2>
@@ -690,7 +690,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="1-Fundamentals_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="1-Fundamentals_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>

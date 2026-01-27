@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-01-26">
+<meta name="dcterms.date" content="2026-01-27">
 
-<title>Sharing and Publishing – UQ Library Training Intensives</title>
+<title>Sharing and Publishing – UQL Training Intensives</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -107,9 +107,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<meta property="og:title" content="Sharing and Publishing – UQ Library Training Intensives">
+<meta property="og:title" content="Sharing and Publishing – UQL Training Intensives">
 <meta property="og:description" content="">
-<meta property="og:site_name" content="UQ Library Training Intensives">
+<meta property="og:site_name" content="UQL Training Intensives">
 </head>
 
 <body class="nav-sidebar floating nav-fixed quarto-light">
@@ -120,7 +120,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">UQ Library Training Intensives</span>
+    <span class="navbar-title">UQL Training Intensives</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -151,7 +151,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="https://uqlibrary.github.io/technology-training"> 
-<span class="menu-text">UQ Library Technology Training</span></a>
+<span class="menu-text">UQL Technology Training</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../community/community.html"> 
@@ -290,7 +290,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 26, 2026</p>
+      <p class="date">January 27, 2026</p>
     </div>
   </div>
   
@@ -463,18 +463,18 @@ format: dashboard
 warning: false
 ---
 
-```uye
+```pbd
 players <- read.csv("../../data/Players2024.csv")
 ```
 
-```uye
+```pbd
 library(dplyr)
 players <- players %>% filter(positions != "Missing", height_cm > 100)
 ```
 
 ## Figures {height=70%}
 
-```uye
+```pbd
 #| title: Goalkeepers tend to be taller
 #| fig-alt: "A boxplot of the relationship between height and position."
 library(ggplot2)
@@ -483,7 +483,7 @@ ggplot(players, aes(x = positions, y = height_cm)) +
   labs(x = "Position", y = "Height (cm)")
 ```
 
-```uye
+```pbd
 #| title: Age vs Height by position
 p <- ggplot(players, aes(x = age, y = height_cm, colour = positions, label = name, label2 = nationality)) + 
   geom_point() + 
@@ -495,7 +495,7 @@ ggplotly(p)
 
 ## Table
 
-```uye
+```pbd
 #| title: A glimpse at the dataset
 library(knitr)
 kable(players)
