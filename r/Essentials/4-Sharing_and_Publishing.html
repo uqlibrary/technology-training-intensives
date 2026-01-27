@@ -463,18 +463,18 @@ format: dashboard
 warning: false
 ---
 
-```ocj
+```mpi
 players <- read.csv("../../data/Players2024.csv")
 ```
 
-```ocj
+```mpi
 library(dplyr)
 players <- players %>% filter(positions != "Missing", height_cm > 100)
 ```
 
 ## Figures {height=70%}
 
-```ocj
+```mpi
 #| title: Goalkeepers tend to be taller
 #| fig-alt: "A boxplot of the relationship between height and position."
 library(ggplot2)
@@ -483,7 +483,7 @@ ggplot(players, aes(x = positions, y = height_cm)) +
   labs(x = "Position", y = "Height (cm)")
 ```
 
-```ocj
+```mpi
 #| title: Age vs Height by position
 p <- ggplot(players, aes(x = age, y = height_cm, colour = positions, label = name, label2 = nationality)) + 
   geom_point() + 
@@ -495,7 +495,7 @@ ggplotly(p)
 
 ## Table
 
-```ocj
+```mpi
 #| title: A glimpse at the dataset
 library(knitr)
 kable(players)

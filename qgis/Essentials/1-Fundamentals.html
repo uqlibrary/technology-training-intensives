@@ -164,6 +164,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#personalise-your-map" id="toc-personalise-your-map" class="nav-link" data-scroll-target="#personalise-your-map">Personalise your map</a>
   <ul class="collapse">
   <li><a href="#change-the-symbology" id="toc-change-the-symbology" class="nav-link" data-scroll-target="#change-the-symbology">Change the symbology</a></li>
+  <li><a href="#classifying-the-symbology" id="toc-classifying-the-symbology" class="nav-link" data-scroll-target="#classifying-the-symbology">Classifying the symbology</a></li>
   <li><a href="#add-labels" id="toc-add-labels" class="nav-link" data-scroll-target="#add-labels">Add labels</a></li>
   </ul></li>
   <li><a href="#simple-map-export" id="toc-simple-map-export" class="nav-link" data-scroll-target="#simple-map-export">Simple Map Export</a></li>
@@ -297,13 +298,15 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="data-download">Data Download</h2>
 <p>The <strong>data</strong> for this session can be directly downloaded from <a href="https://github.com/uqlibrary/technology-training-assets/raw/master/QGIS/intro/QGIS_Intro_Data.zip">this link</a>.</p>
 <p>Once downloaded, extract the archive into your <strong>raw</strong> folder within your <strong>data</strong> folder.</p>
+<p>This data folder contains all of the data that we will be using in these workshops. We’re going to bring the data into our project lesson by lesson.</p>
+<p>To start with, we’re going to import some project files that show us where our development will take place.</p>
 </section>
 <section id="importing-data" class="level2">
 <h2 class="anchored" data-anchor-id="importing-data">Importing data</h2>
 <p>To add our own data: <code>Layer &gt; Add Layer &gt; Add Vector Layer...</code>, choose the “Turbine_Locations_SEQ.gpkg” file, and click “Add”. It is now in your <code>Layers</code> panel.</p>
 <p>If you’ve already loaded in the OpenStreetMap Basemap, then you should get the popup <code>Select Transformation for Project Area</code>. This is asking you how you want to deal with the difference between the basemap’s <em>projection</em> and the <em>projection</em> of your data. Projections are how we stretch “spherical” data to fit on a flat rectangular map, which we will cover in detail later in this workshop. Fortunately, for now, QGIS will handle this on the fly for us so we can simply click <code>OK</code>.</p>
 <p>So where is the data? If you want to zoom in to your data, you don’t have to use your mouse, you can use the <code>Zoom Full</code> button, or right-click on your <strong>Project Area</strong> layer and select <code>Zoom to Layer(s)</code>.</p>
-<p>You can also use the <code>Project Home</code> directory in the browser to add another layer: try loading the “Project_Area.gpkg” and “Access_Track.gpkg” shapefiles (format .shp), by drag-and-dropping or double-clicking.</p>
+<p>You can also use the <code>Project Home</code> directory in the browser to add another layer: try loading the “Project_Area.gpkg” and “Access_Track.gpkg” GeoPackages (format .gpkg), by drag-and-dropping or double-clicking.</p>
 <p>All layers are visible in the <code>Layers</code> panel, with the most recently loaded by default at the top. Layers are rendered as they are listed, which means the top ones will cover the bottom ones. Make sure you optimise the order for your map!</p>
 <p>You can also turn the <strong>layer visibility</strong> on and off from this panel with the tick box.</p>
 <blockquote class="blockquote">
@@ -332,12 +335,13 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="clip" class="level2">
 <h2 class="anchored" data-anchor-id="clip">Clip</h2>
-<p>Instead of using selections, we can also use polygon layers as an overlay layer to clip.</p>
+<p>Instead of just using selections, we can also clip out the data we want by using a polygon layes as an overlay layer.</p>
+<p>We’ll use the Clip tool on the final piece of data for this session: the <a href="https://www.qld.gov.au/environment/plants-animals/plants/ecosystems/broad-vegetation">Broad Vegetation Groups (BVGs)</a> for this area. BVG data shows us what vegetation types are found in a particular location. We’ve downloaded a section of this data from <a href="https://qldspatial.information.qld.gov.au/catalogue/custom/detail.page?fid=%7B43A2CB31-9D83-4BB9-ACE7-05E7BD271FE3%7D">QSpatial</a>. Currently it covers a wide area, but we want to focus it down to our project.</p>
 <p>Use the <code>Project Home</code> directory in the browser to add the “BVG_SEQ.shp” file.</p>
 <blockquote class="blockquote">
 <p>So far we have only used <strong>.gpkg</strong> GeoPackage files, the <strong>VG_SEQ.shp</strong> is a Shapefile. Both of these are common vector data types. Shapefiles are more established and widely used, where GeoPackages are leaner and more customisable.</p>
 </blockquote>
-<p>This layer contains vegetation data for the local area. is not very pretty at the moment, but we can change the symbology after we subset the data.</p>
+<p>This layer is not very pretty at the moment, but we can change the symbology after we subset the data.</p>
 <p>Follow these steps to <strong>Clip</strong>:</p>
 <ol type="1">
 <li>Select the layer you want to clip, in this case <strong>BVG_SEQ</strong></li>
@@ -387,18 +391,31 @@ ul.task-list li input[type="checkbox"] {
 <section id="change-the-symbology" class="level3">
 <h3 class="anchored" data-anchor-id="change-the-symbology">Change the symbology</h3>
 <p>Our vector layers are assigned a random colour when we load them. We now want to make them look better.</p>
-<p>Double-click on the <strong>Project Area</strong> layer to open the <code>Layer Properties</code> click the <img src="https://docs.qgis.org/3.40/en/_images/symbology.png" class="img-fluid"> <code>Symbology</code> tab, and use <code>Color</code> to change to a better colour. Click <code>Apply</code>. We can also go into more details about the border (colour, width, type of line…) by clicking on <code>Simple fill</code>.</p>
+<p>Double-click on the <strong>Project Area</strong> layer to open the <code>Layer Properties</code> click the <img src="https://docs.qgis.org/3.40/en/_images/symbology.png" class="img-fluid"> <code>Symbology</code> tab, and use <code>Color</code> to change to a better colour. Click <code>Apply</code>. Perhaps we’d be better off with no fill, and work more with the border by clicking on <code>Simple fill</code>. Change the <code>Fill Style</code> to <code>No Brush</code>. We can now go into more details about the <strong>Stroke</strong> color, width and style.</p>
 <p>We can make more complex fills by adding an extra “symbol layer”, and layering different kinds of fill styles. Try this with both polygons and lines. For example, style the Access Tracks so they look like roads (the <code>topo road</code> preset is a good start).</p>
 <p>Now try to change the point symbology of our <strong>EH Turbines</strong> layer: we don’t have to stick to <code>Simple marker</code>. Try for example the different icons available with <code>Symbol layer type &gt; SVG marker</code> or <code>Font marker</code> selected.</p>
 <blockquote class="blockquote">
 <p>The Properties dialog is quite large and makes it difficult to see the changes in symbology. You can use the “Layer Styling Panel” (button in the Layers panel, or <kbd>F7</kbd> shortcut) to use a side panel instead, with the “Live update” option on by default.</p>
 </blockquote>
 </section>
+<section id="classifying-the-symbology" class="level3">
+<h3 class="anchored" data-anchor-id="classifying-the-symbology">Classifying the symbology</h3>
+<p>What if we want to colour according to a variable? Depending on the type of variable, we can choose “Categorised” (for categorical data) or “Graduated” (for continuous data).</p>
+<p>We can do this with our <code>EH BVG</code> data:</p>
+<ol type="1">
+<li>Click on the <code>Layer Styling Panel</code> button</li>
+<li>Change from “Single Symbol” to “Categorised”</li>
+<li>Use the bvg1m column</li>
+<li>Pick a relevant colour ramp</li>
+<li>Click “classify”</li>
+</ol>
+<p>The colours may not be very pretty right now, but at least we can differentiate them. We will make these much nicer later.</p>
+</section>
 <section id="add-labels" class="level3">
 <h3 class="anchored" data-anchor-id="add-labels">Add labels</h3>
 <p>Have a look at the attribute table for our <strong>EH Turbines</strong> layer. What could we use to <strong>label</strong> our points?</p>
 <p>Double-click on the <strong>EH Turbines</strong> layer: <img src="https://docs.qgis.org/3.40/en/_images/labelingSingle.png" class="img-fluid"> <code>Labels</code> and then click <code>No Labels &gt; Single labels</code>. You can also use the <code>Layer Labelling Options</code> button to open the sidebar, which allows you to “Live update” the map when you change a setting.</p>
-<p>Choose <code>Value &gt; turb_id</code> to label with the Turbine IDs. In the “Text” tab, we can change the look of our labels: amend the size, the colour, the font… We can also add a text buffer with the “Buffer tab” to make them more readable.</p>
+<p>Choose <code>Value &gt; turb_id</code> to label with the Turbine IDs. In the “Text” tab, we can change the look of our labels: amend the size, the colour, the font… We can also add a text buffer with the <code>Buffer tab</code> to make them more readable.</p>
 <p>The placement tab allows us to fine-tune the placement of the labels in reference to the points. The default mode is “Cartographic”, and we can increase the distance to the symbol used. If we want the label to cover the point, we can use <code>Mode &gt; Offset from point</code> and use the middle quadrant. We might also want to set the layer’s Symbology to “No Symbols”.</p>
 </section>
 </section>

@@ -174,20 +174,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#what-are-we-going-to-learn" id="toc-what-are-we-going-to-learn" class="nav-link active" data-scroll-target="#what-are-we-going-to-learn">What are we going to learn?</a></li>
   <li><a href="#what-is-vector-data" id="toc-what-is-vector-data" class="nav-link" data-scroll-target="#what-is-vector-data">What is Vector Data?</a></li>
-  <li><a href="#what-are-we-doing-today" id="toc-what-are-we-doing-today" class="nav-link" data-scroll-target="#what-are-we-doing-today">What are we doing today?</a></li>
-  <li><a href="#gather-some-data" id="toc-gather-some-data" class="nav-link" data-scroll-target="#gather-some-data">Gather some data</a>
-  <ul class="collapse">
-  <li><a href="#data-summary" id="toc-data-summary" class="nav-link" data-scroll-target="#data-summary">Data Summary</a></li>
-  </ul></li>
+  <li><a href="#what-are-we-doing-in-this-session" id="toc-what-are-we-doing-in-this-session" class="nav-link" data-scroll-target="#what-are-we-doing-in-this-session">What are we doing in this session?</a></li>
   <li><a href="#load-in-our-data" id="toc-load-in-our-data" class="nav-link" data-scroll-target="#load-in-our-data">Load in our data</a>
   <ul class="collapse">
+  <li><a href="#tabular-data" id="toc-tabular-data" class="nav-link" data-scroll-target="#tabular-data">Tabular data</a></li>
   <li><a href="#importing-csv-data" id="toc-importing-csv-data" class="nav-link" data-scroll-target="#importing-csv-data">Importing CSV data</a></li>
+  <li><a href="#data-summary" id="toc-data-summary" class="nav-link" data-scroll-target="#data-summary">Data Summary</a></li>
   </ul></li>
-  <li><a href="#tabular-data" id="toc-tabular-data" class="nav-link" data-scroll-target="#tabular-data">Tabular data</a>
-  <ul class="collapse">
-  <li><a href="#joining-tabular-data" id="toc-joining-tabular-data" class="nav-link" data-scroll-target="#joining-tabular-data">Joining tabular data</a></li>
-  </ul></li>
-  <li><a href="#subset-our-sa2-data-down-to-seq---select-features-using-an-expression" id="toc-subset-our-sa2-data-down-to-seq---select-features-using-an-expression" class="nav-link" data-scroll-target="#subset-our-sa2-data-down-to-seq---select-features-using-an-expression">Subset our SA2 data down to SEQ - Select features using an expression</a></li>
+  <li><a href="#subset-our-sa1-data-down-to-closer-suburbs---select-features-using-an-expression" id="toc-subset-our-sa1-data-down-to-closer-suburbs---select-features-using-an-expression" class="nav-link" data-scroll-target="#subset-our-sa1-data-down-to-closer-suburbs---select-features-using-an-expression">Subset our SA1 Data down to closer suburbs - Select features using an expression</a></li>
   <li><a href="#analysis-spatial-overlaps" id="toc-analysis-spatial-overlaps" class="nav-link" data-scroll-target="#analysis-spatial-overlaps">Analysis: Spatial Overlaps</a>
   <ul class="collapse">
   <li><a href="#intersection" id="toc-intersection" class="nav-link" data-scroll-target="#intersection">Intersection</a></li>
@@ -242,93 +236,89 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Vector data is made up of points, lines, and/or polygons. They are made up of precise points with individual coordinates. Vector data is best contrasted with Raster data which has a grid of values evenly spaced apart, connected to one coordinate. Rasters are efficient at displaying large amounts of data, where vector data is very precise.</p>
 <p>The <a href="https://mapschool.io/">Map School</a> has some useful explainers of what Vector data is.</p>
 </section>
-<section id="what-are-we-doing-today" class="level2">
-<h2 class="anchored" data-anchor-id="what-are-we-doing-today">What are we doing today?</h2>
-<p>To look at vector data, we’re going to use the example of koala populations and protected areas, and use some analyses to see how they interact. The QLD Government has set koala protection as a priority for the State, but how do their priorities match up with the data? We can use QGIS and spatial analysis to ask questions of the data.</p>
-</section>
-<section id="gather-some-data" class="level2">
-<h2 class="anchored" data-anchor-id="gather-some-data">Gather some data</h2>
-<p>We’re going to explore a number of different online spatial data repositories. Please <a href="https://github.com/uqlibrary/technology-training-assets/raw/refs/heads/master/QGIS/vector/vector_data.zip">download the full dataset here</a>, and extract it into the qgis_vector folder you created earlier.</p>
-<blockquote class="blockquote">
-<p>In the zip file of today’s data we have already trimmed it down to just QLD to save on file size</p>
-</blockquote>
-<section id="data-summary" class="level3">
-<h3 class="anchored" data-anchor-id="data-summary">Data Summary</h3>
-<p>You should have:</p>
-<ul>
-<li>Point data for analysis
-<ul>
-<li>Koala Sightings</li>
-</ul></li>
-<li>Boundary Files to spatially categorise our data
-<ul>
-<li>Koala Priority Areas</li>
-<li>Protected Areas</li>
-<li>SA2 Areas (with human population)</li>
-</ul></li>
-</ul>
-</section>
+<section id="what-are-we-doing-in-this-session" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-we-doing-in-this-session">What are we doing in this session?</h2>
+<p>We’ve actually already looked at a lot of vector data: all our points, lines and polygons are vectors. To look at vector data in some more detail, we’re going to bring in some ABS demographic data and a CSV of animal sightings, use some analyses to see how they interact, and create some spatial data of our own.</p>
+<p>For this Windfarm to go ahead, we need to look at the environmental impacts on vegetation, animals, and people in the local area. We can calculate the area of vegetation impacted, count animal sightings, and compare these to our population numbers.</p>
 </section>
 <section id="load-in-our-data" class="level2">
 <h2 class="anchored" data-anchor-id="load-in-our-data">Load in our data</h2>
-<p>For most of our data, we will simply be able to double click on it in the Project Home folder within the Browser window. When you load in this data, QGIS will give you a warning that your Project Projection is different to the data you’re importing. Simply click cancel on this window. We will be fixing this issue later. Make sure your Project Projection remains as EPSG:7856.</p>
+<p>For most spatial daa, we will simply be able to double click on it in the Project Home folder within the Browser window. When you load in this data, QGIS will give you a warning that your Project Projection is different to the data you’re importing. Simply click cancel on this window. We will be fixing this issue later. Make sure your Project Projection remains as EPSG:7856.</p>
 <p>Load in:</p>
 <ul>
-<li><p>SA2_ERP_2021_QLD.gpkg (suburb data)</p></li>
-<li><p>CAPAD2020_terrestrial_QLD.gpkg (Protected Areas)</p></li>
-<li><p>koala_priority_area.gpkg</p></li>
+<li>sa1_2021_bris_gda2020.gpkg (suburb data from the <a href="https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files">Australian Bureau of Statistics</a>) Right click the <code>sa1_2021_bris_gda2020</code> layer and <code>Rename...</code> it to “SA1 Boundaries”.</li>
 </ul>
-<p>But what about the Koala Encounters location data? We need to handle this differently, as it is currently not in a spatial format, but in a csv file.</p>
+<p>But what about the demographic and animal location data? We need to handle these differently, as they are currently not in a spatial format, but in csv files.</p>
+<ul>
+<li><p>animal_sightings.csv (Animal sightings from <a href="https://www.inaturalist.org">iNaturalist</a>)</p></li>
+<li><p>sa1_pop_age_qld.csv (demographic data from the ABS, but accessed through the <a href="https://www.qgso.qld.gov.au/">Queensland Government Statistician’s Office</a>)</p></li>
+</ul>
+<section id="tabular-data" class="level3">
+<h3 class="anchored" data-anchor-id="tabular-data">Tabular data</h3>
+<p>QGIS can deal with plain tabular data. For example, try importing the file sa1_pop_age_qld.csv: it doesn’t contain any coordinates, but we can still store it as a layer and use it in our project. You can see the data it contains by opening its attribute table.</p>
+<p>How can we add the Statistical Area 1 (SA1) Demographic data to our existing <code>SA1 Boundaries</code> shapefile?</p>
+<section id="joining-tabular-data" class="level4">
+<h4 class="anchored" data-anchor-id="joining-tabular-data">Joining tabular data</h4>
+<p>To add the SA1 Demographic data to our SA1 shapefile, we can go the the <code>SA1 Boundaries</code> layer’s properties, use the <img src="https://docs.qgis.org/3.40/en/_images/join.png" class="img-fluid" alt="Join Button"> <code>Joins</code> tab and click the <code>Add new join</code> button <img src="https://docs.qgis.org/3.40/en/_images/symbologyAdd.png" class="img-fluid" alt="Add New Join Button"> to create a new join. We can then choose the sa1_pop_age_qld data as the <code>Join layer</code>, and define what common field between the two tables we will merge on: the SA1_CODE21 code in our case.</p>
+<p>You can now see the joined data highlighted in green in the <img src="https://docs.qgis.org/3.40/en/_images/mSourceFields.png" class="img-fluid" alt="Fields Tab Button"><code>Fields</code> tab, click “OK”, and check the actual values in the <code>SA1 Bris</code> layer’s attribute table.</p>
+</section>
+</section>
 <section id="importing-csv-data" class="level3">
 <h3 class="anchored" data-anchor-id="importing-csv-data">Importing CSV data</h3>
+<p>The animal sighting data has columns with coordinates so it effectively is spatial data and can be imported directly.</p>
 <ul>
 <li>Go to <code>Layer &gt; Add Layer &gt; Add Delimited Text Layer...</code></li>
-<li>Click the three dots <code>...</code> next to the <strong>File name</strong> field, navigate to the project folder, and select <code>koala_reduced</code></li>
+<li>Click the three dots <code>...</code> next to the <strong>File name</strong> field, navigate to the project folder, and select <code>animal_sightings.csv</code></li>
 <li>Click the Geometry Definition drop down
 <ul>
-<li>This should automatically identify decimalLongitude and the X field, and decimalLatitude as the Y field.</li>
-<li>You may need to set the Geometry CRS. For this data from the ALA it is EPSG:4326 - WGS84</li>
+<li>This should automatically identify Longitude as the X field, and Latitude as the Y field.</li>
+<li>You may need to set the Geometry CRS. For this data from iNaturalist it is EPSG:4326 - WGS84</li>
 </ul></li>
 <li>Click <code>Add</code></li>
 </ul>
 <blockquote class="blockquote">
-<p>It’s usually the case that data like this is in EPSG:4326 - WGS84, as that is the standard used by most GPS units and Google Maps. However, it’s still worth checking those details on the website you’ve downloaded it from. If your data doesn’t come with a predefined projection, and the spatial portal doesn’t specify, but it uses a Google Maps style interface, it’s probably using EPSG:4326 - WGS84</p>
+<p>It’s often the case that spatial data comes in EPSG:4326 - WGS84, as that is the standard used by most GPS units and Google Maps. However, it’s still worth checking those details on the website you’ve downloaded it from. If your data doesn’t come with a predefined projection, and the spatial portal doesn’t specify, but it uses a Google Maps style interface, it’s probably using EPSG:4326 - WGS84</p>
 </blockquote>
 </section>
-</section>
-<section id="tabular-data" class="level2">
-<h2 class="anchored" data-anchor-id="tabular-data">Tabular data</h2>
-<p>QGIS can deal with plain tabular data. For example, try importing the file HDI.ods: it doesn’t contain any coordinates, but we can still store it as a layer and use it in our project. You can see the data it contains by opening its attribute table.</p>
-<p>How can we add the Human Development Index (HDI) data to our existing “admin” shapefile?</p>
-<section id="joining-tabular-data" class="level3">
-<h3 class="anchored" data-anchor-id="joining-tabular-data">Joining tabular data</h3>
-<p>To add the HDI data to our region shapefile, we can go the the “admin” layer’s properties, use the <img src="https://docs.qgis.org/3.40/en/_images/join.png" class="img-fluid" alt="Join Button"> <code>Joins</code> tab and click the <code>Add new join</code> button <img src="https://docs.qgis.org/3.40/en/_images/symbologyAdd.png" class="img-fluid" alt="Add New Join Button"> to create a new join. We can then choose the HDI data as the <code>Join layer</code>, and define what common field between the two tables we will merge on: the ISO_3166_2 code in our case.</p>
-<p>You can now see the joined data highlighted in green in the <img src="https://docs.qgis.org/3.40/en/_images/mSourceFields.png" class="img-fluid" alt="Fields Tab Button"><code>Fields</code> tab, click “OK”, and check the actual values in the “admin” layer’s attribute table.</p>
-</section>
-</section>
-<section id="subset-our-sa2-data-down-to-seq---select-features-using-an-expression" class="level2">
-<h2 class="anchored" data-anchor-id="subset-our-sa2-data-down-to-seq---select-features-using-an-expression">Subset our SA2 data down to SEQ - Select features using an expression</h2>
-<p>The following code will allow you to select the SA2 features that are in SEQ.</p>
+<section id="data-summary" class="level3">
+<h3 class="anchored" data-anchor-id="data-summary">Data Summary</h3>
+<p>You should have:</p>
 <ul>
-<li>Right click on the reprojected SA2 layer, and select <strong>Open Attribute Table</strong></li>
+<li>From earlier:
+<ul>
+<li>Project Area</li>
+<li>Access Track</li>
+<li>Turbine Locations</li>
+<li>SA1 Boundaries</li>
+</ul></li>
+<li>Just imported:
+<ul>
+<li>Animal Sightings</li>
+<li>SA1 Demographics (joined to SA1 Boundaries)</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="subset-our-sa1-data-down-to-closer-suburbs---select-features-using-an-expression" class="level2">
+<h2 class="anchored" data-anchor-id="subset-our-sa1-data-down-to-closer-suburbs---select-features-using-an-expression">Subset our SA1 Data down to closer suburbs - Select features using an expression</h2>
+<p>The following code will allow you to select the SA1 features that are near to Enoggera Hills.</p>
+<ul>
+<li>Right click on the SA1 layer, and select <strong>Open Attribute Table</strong></li>
 <li>From the Attribute Table that opens, click the Select features using an expression button: <img src="https://docs.qgis.org/3.40/en/_images/mIconExpressionSelect.png" class="img-fluid" alt="image"></li>
 <li>In the Select by Expression window that opens, paste the code from below into the Expression field, and then click <code>Select Features</code> in the bottom right of the window.</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a> <span class="ot">"SA4_name_2021"</span> <span class="op">=</span>  <span class="st">'Gold Coast'</span> </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> <span class="kw">OR</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> <span class="ot">"SA4_name_2021"</span> <span class="op">=</span>  <span class="st">'Sunshine Coast'</span> </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">OR</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a> <span class="ot">"SA4_name_2021"</span> <span class="op">=</span>  <span class="st">'Toowoomba'</span> </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a> <span class="kw">OR</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="ot">"GCCSA_name_2021"</span>  <span class="kw">LIKE</span>  <span class="st">'%Brisbane%'</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ot">"SA4_NAME21"</span> <span class="op">=</span> <span class="st">'Brisbane - West'</span>  <span class="kw">OR</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ot">"SA4_NAME21"</span> <span class="op">=</span> <span class="st">'Brisbane Inner City'</span>  <span class="kw">OR</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ot">"SA4_NAME21"</span> <span class="op">=</span> <span class="st">'Brisbane - North'</span>  <span class="kw">OR</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ot">"SA3_NAME21"</span>  <span class="kw">LIKE</span>  <span class="st">'%Hills%'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
 <p>This is SQL code, which is great for querying databases. This code selects any row that matches any of the criteria (this OR that). The first three look for exact matches, the last one looks to match the pattern given. The % acts like wildcard, so it’s looking for any row that contains Brisbane.</p>
 </blockquote>
 <ul>
 <li>Close the Select by Expression window and Attribute Table</li>
-<li>You should see the SEQ SA2 areas highlighted in yellow (you may need to turn off other layers or zoom in).</li>
-<li>To permanently save this selection, right click on the reprojected SA2 layer, and select <code>Export &gt; Save Selected Features As...</code></li>
-<li>Save your file as <code>SA2_SEQ</code></li>
+<li>You should see the desired SA1 areas highlighted in yellow (you may need to turn off other layers or zoom in).</li>
+<li>To permanently save this selection, right click on the SA1 layer, and select <code>Export &gt; Save Selected Features As...</code></li>
+<li>Save your file as <code>SA1_EH</code></li>
 <li>Make sure the CRS stays as <code>EPSG:7856 - GDA2020 / MGA zone 56</code>, then click <code>OK</code></li>
 </ul>
 <p>If you haven’t done so already, untick and hide all the original layers we aren’t using any more.</p>
