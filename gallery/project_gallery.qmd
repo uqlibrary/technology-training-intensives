@@ -6,4 +6,5 @@ listing:
   sort: "date desc"
   contents: "/*/*/*/*.qmd"
   type: grid
+  fields: [image, date, title, author]
 ---

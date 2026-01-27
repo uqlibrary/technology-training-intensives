@@ -100,7 +100,7 @@ def remove_banner(source: str) -> str:
     raise NotImplementedError()
 
 
-def process_content() -> str:
+def process_content(write=True) -> str:
     # Determine all rendered files, exclude those in gallery
     qmds = find_rendered_files()
 
@@ -118,11 +118,12 @@ def process_content() -> str:
 
         content = change_active_tabset(content)
 
-        with open(qmd, "w") as f:
-            f.write(content)
+        if write:
+            with open(qmd, "w") as f:
+                f.write(content)
 
     return "COMPLETED"
 
 
 if __name__ == "__main__":
-    process_content()
+    process_content(False)

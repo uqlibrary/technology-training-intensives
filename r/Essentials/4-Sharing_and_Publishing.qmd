@@ -19,7 +19,7 @@ Let's create a document using some of the syntax we learned in previous sessions
 
 Use "New File > Quarto Document..." to create a `.qmd` file. The dialog that open allows us to change a few settings. Let's give the title "Reproducible Output", and untick "Use visual markdown editor" so we can learn about the syntax. Save the new file in your project directory.
 
-This new `.rmd` script will be made of **markdown text** and **code chunks**. Code chunks can be inserted with the editor pane's toolbar or the keyboard shortcut <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>I</kbd>.
+This new `.qmd` script will be made of **markdown text** and **code chunks**. Code chunks can be inserted with the editor pane's toolbar or the keyboard shortcut <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>I</kbd>.
 
 At the top of our script, we need to include a header (also called "front matter") that contains the document's settings. We can start with:
 

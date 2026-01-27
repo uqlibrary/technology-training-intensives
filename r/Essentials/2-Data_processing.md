@@ -29,7 +29,9 @@ If you don’t have it already, you can install dplyr with the command:
 
 ### Introducing our data
 
-Let’s import and explore the gapminder data again.
+We'll use the gapminder dataset, which we downloaded in the previous session. [Download it again](../../data/gapminder.csv) if you didn't get it.
+
+Let’s import and explore the data again.
 
 1.  use the `read.csv()` command to bring it into R:
 

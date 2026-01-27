@@ -23,14 +23,20 @@ proj_t = round(end - start, 2)
 print()
 print(f"Project processing took {proj_t}s")
 print()
-print(BLD, "Running general checker", O)
-start = time.time()
-general_status = general_processing.process_content()
-end = time.time()
-gen_t = round(end - start, 2)
-print()
-print(f"General processing took {gen_t}s")
-print()
+print(
+    project_processing.YLW,
+    "WARNING: general checker manually disable. Has been misbehaving!",
+    O,
+)
+if False:
+    print(BLD, "Running general checker", O)
+    start = time.time()
+    general_status = general_processing.process_content()
+    end = time.time()
+    gen_t = round(end - start, 2)
+    print()
+    print(f"General processing took {gen_t}s")
+    print()
 print("Pre-render jobs have finished with the following statuses:")
 print()
 print(
@@ -42,14 +48,14 @@ print(
     proj_t,
     "s",
 )
-print(
-    "general_processing.py:",
-    pick_ANSI_colour(general_status),
-    general_status,
-    O,
-    "in",
-    gen_t,
-    "s",
-)
+# print(
+#     "general_processing.py:",
+#     pick_ANSI_colour(general_status),
+#     general_status,
+#     O,
+#     "in",
+#     gen_t,
+#     "s",
+# )
 print()
 print("Proceeding with render.")

@@ -28,7 +28,7 @@ website:
         href: project/details.qmd
       - text: "Project Gallery"
         href: gallery/project_gallery.qmd
-      - text: "UQ Library Technology Training"
+      - text: "UQL Technology Training"
         href: https://uqlibrary.github.io/technology-training
       - text: "Communities of Practice "
         href: community/community.qmd
