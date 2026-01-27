@@ -21,39 +21,16 @@ The [Map School](https://mapschool.io/) has some useful explainers of what Vecto
 
 ## What are we doing in this session?
 
-We've actually already looked at a lot of vector data: all our points, lines and polygons are vectors. To look at vector data in some more detail, we're going to bring in some ABS demographic data and a CSV of animal sightings, use some analyses to see how they interact, and create some spatial data of our own.
+We've actually already looked at a lot of vector data: all our points, lines and polygons are vectors. To look at vector data in some more detail, we're going to bring a CSV of animal sightings, use some analyses to see how they interact with our existing data, and create some spatial data of our own.
 
-For this Windfarm to go ahead, we need to look at the environmental impacts on vegetation, animals, and people in the local area. We can calculate the area of vegetation impacted, count animal sightings, and compare these to our population numbers.
-
-
-## Load in our data
-
-For most spatial daa, we will simply be able to double click on it in the Project Home folder within the Browser window. When you load in this data, QGIS will give you a warning that your Project Projection is different to the data you're importing. Simply click cancel on this window. We will be fixing this issue later. Make sure your Project Projection remains as EPSG:7856.
-
-Load in:
-
--   sa1_2021_bris_gda2020.gpkg (suburb data from the [Australian Bureau of Statistics](https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files))
-Right click the `sa1_2021_bris_gda2020` layer and `Rename...` it to "SA1 Boundaries".
+For this Windfarm to go ahead, we need to look at the environmental impacts on vegetation, animals, and people in the local area. We can calculate the area of vegetation impacted, count animal sightings, and in the next session look at population numbers.
 
 
-But what about the demographic and animal location data? We need to handle these differently, as they are currently not in a spatial format, but in csv files.
+## Load in our data 
 
 -   animal_sightings.csv (Animal sightings from [iNaturalist](https://www.inaturalist.org))
 
--   sa1_pop_age_qld.csv (demographic data from the ABS, but accessed through the [Queensland Government Statistician's Office](https://www.qgso.qld.gov.au/))
-
-
-### Tabular data
-
-QGIS can deal with plain tabular data. For example, try importing the file sa1_pop_age_qld.csv: it doesn't contain any coordinates, but we can still store it as a layer and use it in our project. You can see the data it contains by opening its attribute table.
-
-How can we add the Statistical Area 1 (SA1) Demographic data to our existing `SA1 Boundaries` shapefile?
-
-#### Joining tabular data
-
-To add the SA1 Demographic data to our SA1 shapefile, we can go the the `SA1 Boundaries` layer's properties, use the ![Join Button](https://docs.qgis.org/3.40/en/_images/join.png) `Joins` tab and click the `Add new join` button ![Add New Join Button](https://docs.qgis.org/3.40/en/_images/symbologyAdd.png) to create a new join. We can then choose the sa1_pop_age_qld data as the `Join layer`, and define what common field between the two tables we will merge on: the SA1_CODE21 code in our case.
-
-You can now see the joined data highlighted in green in the ![Fields Tab Button](https://docs.qgis.org/3.40/en/_images/mSourceFields.png)`Fields` tab, click "OK", and check the actual values in the `SA1 Bris` layer's attribute table.
+For most spatial data, we will simply be able to double click on it in the Project Home folder within the Browser window. But we need to handle CSV data differently.
 
 
 ### Importing CSV data
@@ -78,181 +55,103 @@ You should have:
   - Project Area
   - Access Track
   - Turbine Locations
-  - SA1 Boundaries
+  - BVG Data
 - Just imported:
   - Animal Sightings
-  - SA1 Demographics (joined to SA1 Boundaries)
-
-
-## Subset our SA1 Data down to closer suburbs - Select features using an expression
-
-The following code will allow you to select the SA1 features that are near to Enoggera Hills.
-
--   Right click on the SA1 layer, and select **Open Attribute Table**
--   From the Attribute Table that opens, click the Select features using an expression button: ![image](https://docs.qgis.org/3.40/en/_images/mIconExpressionSelect.png)
--   In the Select by Expression window that opens, paste the code from below into the Expression field, and then click `Select Features` in the bottom right of the window.
-
-``` sql
-"SA4_NAME21" = 'Brisbane - West'  OR
-"SA4_NAME21" = 'Brisbane Inner City'  OR
-"SA4_NAME21" = 'Brisbane - North'  OR
-"SA3_NAME21"  LIKE  '%Hills%'
-```
-
-> This is SQL code, which is great for querying databases. This code selects any row that matches any of the criteria (this OR that). The first three look for exact matches, the last one looks to match the pattern given. The % acts like wildcard, so it's looking for any row that contains Brisbane.
-
--   Close the Select by Expression window and Attribute Table
--   You should see the desired SA1 areas highlighted in yellow (you may need to turn off other layers or zoom in).
--   To permanently save this selection, right click on the SA1 layer, and select `Export > Save Selected Features As...`
--   Save your file as `SA1_EH`
--   Make sure the CRS stays as `EPSG:7856 - GDA2020 / MGA zone 56`, then click `OK`
-
-If you haven't done so already, untick and hide all the original layers we aren't using any more.
 
 
 
 ## Analysis: Spatial Overlaps
 
-Let's find out how much of our Koala Priority areas are already under federally recognised protection. To do this we will use the Intersection tool. This tool is similar to the **Clip** tool, but rather than just cutting out the overlapping area, it also combines the Attribute Tables of the two layers.
+Let's find out what BVGs are in our Project Area, and the total area they take up. We've already clipped the BVG data to the size of our project area, now we just need to analyse it.
 
-### Intersection
+### Dissolve the polygons together
 
--   Go to `Vector > Geoprocessing Tools > Intersection`
--   Under **Input Layer** select **CAPAD_Reproj**
--   Under **Overlay Layer** select **KPA_Reproj**
--   Click `Run`
+Right-click on the `AH BVG` file and click `Open Atrribute Table`, you will see that there are many rows representing the separate polygons, even if they have the same BVG category (bvg1m). To calculate the area, it would be easier if we combined each polygon of the same BVG category.
 
-We get an error `Feature (26) from “CAPAD_Reproj” has invalid geometry.` This is caused by little issues in the polygon layer. Sometimes when polygons are drawn or exported from online sources, they will create errors, and sometimes little slither polygons on the edges. We can investigate the source of these errors using the `Check validity` tool, but for today, we're simply going to fix them with the `Fix Geometries` tool from the Processing Toolbox.
+  - Go to Vector > Geoprocessing Tools > Dissolve…
+  - Select `AH BVG` as the Input layer
+  - Click `...` next to `Dissolve field(s)`
+  - Tick `bvg1m`
+  - Click `Run`
+  
+If you look at the `AH BVG` Attribute Table now, you will see that they have now all been merged by `bvg1m.`
 
-### Fix Geometries
-
--   Open the Processing Toolbox by clicking the cog icon from the top menu ![Processing Toolbox](https://docs.qgis.org/3.40/en/_images/processingAlgorithm.png) (alternatively go to `View > Panels > Processing Toolbox`)
--   In the **Processing Toolbox** window `Search` for "Fix geometries"
--   Double-click on the **Fix geometries** option
--   In the **Fix Geometries** window, select `CAPAD_Reproj` from the **Input layer** options, then click `Run`
--   Right click **Fixed Geometries** in the Layer panel, click Rename Layer, and change it to **CAPAD_Fixed**
-
-You can now re-run the **Intersection** tool with the resulting **CAPAD_Fixed** layer (instead of the **CAPAD2020_terrestrial_QLD** layer)
-
--   Go to `Vector > Geoprocessing Tools > Intersection`
--   Under **Input Layer** select **CAPAD_Fixed**
--   Under **Overlay Layer** select **KPA_Reproj**
--   Click `Run`
-
-Magic. Our new layer with be the thin overlap between our two original layers, and will have their shared Attribute Tables. However, this is a double-edged sword, as it has retained the Area columns of the original CAPAD polygons. If we want to know our new shape's area, we need to calculate that.
 
 ### Field Calculator
 
-We can use the **Field Calculator** to calculate the area of our polygon.
+We can use the **Field Calculator** to calculate the area of our polygons.
 
-Select **Intersection** from the **Layers** panel, and the click the **Open Field Calculator** button ![Field Calculator Button](https://docs.qgis.org/3.40/en/_images/mActionCalculateField.png)
+Select `Dissovled` from the **Layers** panel, and the click the **Open Field Calculator** button ![Field Calculator Button](https://docs.qgis.org/3.40/en/_images/mActionCalculateField.png)
 
 In the **Field calculator** window, type the following code into the **Expression** tab:
 
 ``` sql
-sum($area)
+$area/10000
 ```
 
--   \$area will give us the area of a single polygon - we could use this to create a new field in our Attribute Table based on area if we wanted to
--   sum() will add together the area for every polygon in that layer.
--   Below the text box, you will see a field titled **Preview:**, the value following that contains the results of our expression. Copy that number.
--   Click `Cancel`
+-   $area will give us the area of a single polygon (converted to hectares by dividing by 10000)
+-   Below the text box, you will see a field titled **Preview:**, the value following that contains the results of our expression for one BVG category.
+-   We will use this to create a new field in our Attribute Table
+-   Next to `Output field name` type "**area_ha**"
+-   Next to `Output field type` change it to `Decimal Number (Real)`
+-   Click `OK`
 
-Do the same **Field Calculator** steps for the original koala_priority_area.
+To find the percentage:
 
-You can now use the **Field calculator** to determine the percentage of the Koala Priority area which is currently protected. 1506573200.936991 / 5776218019.211894 = 26%
+Open the **Field calculator**, and type the following code into the **Expression** tab:
 
-Only 26%! Let's look into this further. Perhaps our dataset is missing some new conservation areas.
+``` sql
+("area_ha" / sum("area_ha")) * 100
+```
 
-Let's turn on the OpenStreetMap to see if we can see anything missing here. Let's have a look at the dense collection of koala sightings near Springwood and the Daisy Hill Conservation Park (if you can't find them, paste these coordinates **-27.581128,153.176828** into the **Coordinate** box at the bottom of the window, and change the **Scale** to **1:10000**). We can see that there are some protected bushlands in this area that aren't in our CAPAD2020 dataset. It may be that these aren't strict enough conservation areas, or our dataset may be out of date. Regardless, this gives us a good opportunity to use an important tool in GIS: Digitisation.
+-   This will divide the area for each category by the total area, and find the percentage
+-   Next to `Output field name` type "**area_percent**"
+-   Next to `Output field type` change it to `Decimal Number (Real)`
+-   Click `OK`
 
-## Map Digitisation
+If you look at the `AH BVG` Attribute Table now, you will see that there is now an `area_ha` and an `area_percent` column, these are very useful values for reporting.
 
-You may often need to create your own points, lines, and polygons when digitising satellite data, or simply highlighting a particular area. Let's use the OpenStreeMap (in Browser, scroll down to XYZ Tiles, and double-click on OpenStreetMap) and digitise the Emu Street Bushland Refuge.
 
--   Go to `Layer > Create Layer > New GeoPackage Layer...`
 
--   Click the three dots `...` next to the **Database** section
-
--   Navigate to your `data > processed` folder and save the file as **ESBR_polygon**
-
--   From **Geometry type** select `MultiPolygon`
-
--   Make sure the CRS is set to `EPSG:7856 - GDA2020 / MGA zone 56`
-
--   Leave the other fields blank for now and click `OK`
-
-We now have a brand new layer that we can add polygons to.
-
--   Select the new **ESBR_polygon** layer and then click the **Toggle Editing** pencil ![Toggle Editing Button](https://docs.qgis.org/3.40/en/_images/mActionToggleEditing.png) from the top menu (or go to `Layer > Toggle Edititng`
-
--   On your keyboard, press `Ctrl + .` (or click ![Add Polygon Button](https://docs.qgis.org/3.40/en/_images/mActionCapturePolygon.png) Add Polygon Feature) to start adding a new polygon
-
--   Zoom in to a corner of the area you want to create the polygon, and then `Left click` to start drawing your polygon (You can use the mouse wheel to zoom in, and also press and drag on the mouse wheel to navigate)
-
-    -   A red dotted line will now appear between that first point and your cursor.
-
--   Continue adding points to your polygon until your return back to the start, `Right click` to stop digitising and create your polygon.
-
--   Leave the fid as `Autogenerate` and click `OK`
-
--   To save what you've done, click the **Save Layer Edits** button next to the **Toggle Editing** button
-
--   To finish editing your layer click the **Toggle Editing** button
-
-You now know how to digitise a polygon, but the same steps apply for creating a point or a line layer. We created a new layer here, and you can also do the same steps to edit a pre-exisitng layer too.
-
-The **Vertex Tool** ![Vertex Tool Button](https://docs.qgis.org/3.40/en/_images/mActionVertexToolActiveLayer.png) will allow you to move the location of points (or corners of polygons) that you have already created (you also need to click the **Toggle Editing** button for this tool)
-
-Despite these missing Refuge area polygons, you can still see that there are a lot of koalas which are found outside of protected areas. In fact, most sightings seem to occur outside of protected areas! Is this poor protected area management, or might our data be biased by when and where people are more likely to encounter koalas?
-
-## Analysis: How do koalas and people overlap?
+## Analysis: How many animal types are there in the project area?
 
 ### Count Points in Polygons
 
-Earlier we looked at overlap between polygons, we can also look at points overlapping with a polygon. Let's use the Count Points in Polygons tool to quickly count the number of points from a particular layer inside a polygon. We could look at a few things here, we could look at koala sightings in protected areas or in the priority areas, but let's try to get an idea of how people and koala sightings overlap. You would expect there to be more koalas where there are fewer people, but perhaps our data is skewed by population levels.
+Previously we looked at overlap between polygons, we can also look at points overlapping with a polygon. Let's use the Count Points in Polygons tool to quickly count the number of animal species sighted inside the BVG types in our Project Area.
 
-Let's determine how many koalas are inside of each SA2 suburb.
+Let's determine how many species are inside of each BVG.
 
 -   Go to `Vector > Analysis Tools > Count Points in Polygons...`
 
--   In the **Polygons** field select `SA2_SEQ`
+-   In the **Polygons** field select `dissolved`
 
--   In the **Points** field select `Koalas_Reproj`
+-   In the **Points** field select `animal_sightings`
 
--   In the **Count field name** field type in something like `NUM_KOALAS`
+-   In the **Class field** field select `scientific_name`
+    -   Note that if we didn't select anything here, it would simply count number of sightings (abundance) in the Project Area.
+
+-   In the **Count field name** field type in something like `Species_Richness`
 
 -   Click the three dots `...` next to the **Count** section, and click **Save to File...**
 
--   Navigate to your **processed** folder and save the file as **SA2_SEQ_koalas**
+-   Navigate to your **processed** folder and save the file as **BVG_Species**
 
 -   Click `Run`
 
-If it's being really slow, we might be able to benefit from the **Fix Geometries** tool again.
+> If this tool is ever being really slow, we might be able to benefit from cancelling and using the the **Fix Geometries** tool on the point layer
 
--   Click `Cancel` in the **Count Points in Polygons** window, but leave it open for now
+This will create a new copy of our BVG data which has now been clipped, dissolved, area calculated, and now has a species richness count.
 
--   In the **Processing Toolbox** double-click on the **Fix geometries** option
+You can now look at the **Attribute Table (F6)** for this layer to see the number of species sightings per BVG in our project area. 
 
-    -   For Input Layer choose **Koalas_Reproj**
-
-    -   Click `Run`
-
--   Return to the **Count Points in Polygons** window, click `Change Parameters`
-
--   Change the `Points` to the new **Fixed geometries** layer
-
--   Click `Run`
-
-You can now look at the **Attribute Table (F6)** for this layer to see the number of koala sightings in each suburb. Let's visualise this.
-
--   Click on the **SA2_SEQ_koalas** layer in the Layers panel
+-   Click on the **BVG_Species** layer in the Layers panel
 
 -   Open the Layer Styling Panel by pressing F7 (or fn + F7)
 
 -   Change the Symbology from `Single Symbol` to `Graduated`
 
--   Set the **Value** to `NUM_KOALAS`
+-   Set the **Value** to `Species_Richness`
 
 -   Choose a **Color ramp** of your liking
 
@@ -260,40 +159,83 @@ You can now look at the **Attribute Table (F6)** for this layer to see the numbe
 
 -   You might want to play with the **Mode** to get a feel for the data
 
-Now we can quickly see how many Koalas are in each suburb.
+Now we can quickly see which BVG has the greatest observed species richness
 
-We can go further and use the **Field Calculator** to compare koala numbers to the current human population in that area, and create a new field with that information.
+We can go further and use the **Field Calculator** to compare species richness to the area (ha), and create a new field with that information.
 
 -   Click on the **Field Calculator** button ![Field Calculator Button](https://docs.qgis.org/3.40/en/_images/mActionCalculateField.png){alt="image"}
 
-    -   Under **Create a new field** set the **Output field name** to `KOALAS_PP`
+    -   Under **Create a new field** set the **Output field name** to `richness_area`
 
     -   Set the **Output field type** to `Decimal number (real)` (we need to choose this option to ensure that we have decimals in our output)
 
-    -   In the `Expression` tab enter `"NUM_KOALAS" / "ERP_2021"`
-
-        -   ERP stands for Estimated Resident Population
+    -   In the `Expression` tab enter `"Species_Richness" / "area_ha"`
 
     -   Click OK
 
--   Now you can change the **Value** in **Layer Styling** to `KOALA_PP`
+-   Now you can change the **Value** in **Layer Styling** to `richness_area`
 
-    -   Click Classify again if needed
+    -   Click Classify again
 
-We can now see how koala populations compare with human populations.
-
-## Wrap up
-
-Today we explored projections, looked at a variety of data sources, questioned the quality of our data, used the Intersection tool, the Field Calculator, digitised a map, and used polygon point counts.
-
-After running these tests and analyses, do we feel that there is adequate protection and conservation areas for koalas in QLD? How might you show this?
-
-How might you use these tools in your own analysis?
+We can now clearly see that the richness was being skewed by the area.
 
 
-## Feedback
 
-Please visit our website to [provide feedback](https://web.library.uq.edu.au/study-and-learning-support/training-and-workshops/software-training-resources) and find upcoming training courses we have on offer.
+## Map Digitisation
 
+Now that we have a better idea of what the vegetation and animal locations look like, let's add another wind turbine location.
+
+You may often need to create your own points, lines, and polygons to add new points, digitising satellite data, or simply highlighting a particular area. Let's add a new point and road to the non-remnant area just north of Turbine 6 (T06).
+
+-   Go to `Layer > Create Layer > New GeoPackage Layer...`
+
+-   Click the three dots `...` next to the **Database** section
+
+-   Navigate to your `data > processed` folder and save the file as **New_Turbine**
+
+-   From **Geometry type** select `MultiPoint`
+
+-   Make sure the CRS is set to `EPSG:7856 - GDA2020 / MGA zone 56`
+
+-   Leave the other fields blank for now and click `OK`
+
+We now have a brand new layer that we can add points to.
+
+-   Select the new **New_Turbine** layer and then click the **Toggle Editing** pencil ![Toggle Editing Button](https://docs.qgis.org/3.40/en/_images/mActionToggleEditing.png) from the top menu (or go to `Layer > Toggle Edititng`
+
+-   On your keyboard, press `Ctrl + .` (or click ![Add Point Button](https://docs.qgis.org/3.40/en/_images/mActionCapturePoint.png) Add Point Feature) to start adding a new point
+
+-   Click in the non-remnant patch just north of T06
+
+-   Leave the fid as `Autogenerate` and click `OK`
+
+-   To save what you've done, click the **Save Layer Edits** button next to the **Toggle Editing** button
+
+-   To finish editing your layer click the **Toggle Editing** button
+
+You now know how to digitise a point, but the same steps apply for creating a polygon or a line layer. We created a new layer here, and you can also do the same steps to edit a pre-exisiting layer too.
+
+The **Vertex Tool** ![Vertex Tool Button](https://docs.qgis.org/3.40/en/_images/mActionVertexToolActiveLayer.png) will allow you to move the location of points (or corners of polygons) that you have already created (you also need to click the **Toggle Editing** button for this tool)
+
+-   Select the new **Access Track** layer and then click the **Toggle Editing** pencil ![Toggle Editing Button](https://docs.qgis.org/3.40/en/_images/mActionToggleEditing.png) from the top menu (or go to `Layer > Toggle Edititng`
+
+-   Click the **Vertex Tool** ![Vertex Tool Button](https://docs.qgis.org/3.40/en/_images/mActionVertexToolActiveLayer.png) to start editing an existing line
+
+-   Hover over the corner point north-west of T06
+
+-   You will see a grey + appear, hover over that, and click when it turns red
+
+-   A red dotted line will now appear between that corner point and your cursor.
+
+-   `Left click` to add the next point in the line.
+
+-   Continue adding points to the line until you click roughly on the `New_Turbine` Point you just added. `Right click` to stop digitising and create your new line segment.
+
+-   To save what you've done, click the **Save Layer Edits** button next to the **Toggle Editing** button
+
+-   To finish editing your layer click the **Toggle Editing** button
+
+
+Up next we will explore what we can do with Projections.
 
 
