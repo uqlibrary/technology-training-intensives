@@ -327,7 +327,7 @@ date: 2025-01-01
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>Let's **import** the data:</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>```{r}</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>players &lt;- read.csv("../../data/Players2024.csv")</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>players &lt;- read.csv("data/Players2024.csv")</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>```</span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>## Prepare the data</span>
@@ -463,18 +463,18 @@ format: dashboard
 warning: false
 ---
 
-```nek
+```jup
 players <- read.csv("../../data/Players2024.csv")
 ```
 
-```nek
+```jup
 library(dplyr)
 players <- players %>% filter(positions != "Missing", height_cm > 100)
 ```
 
 ## Figures {height=70%}
 
-```nek
+```jup
 #| title: Goalkeepers tend to be taller
 #| fig-alt: "A boxplot of the relationship between height and position."
 library(ggplot2)
@@ -483,7 +483,7 @@ ggplot(players, aes(x = positions, y = height_cm)) +
   labs(x = "Position", y = "Height (cm)")
 ```
 
-```nek
+```jup
 #| title: Age vs Height by position
 p <- ggplot(players, aes(x = age, y = height_cm, colour = positions, label = name, label2 = nationality)) + 
   geom_point() + 
@@ -495,7 +495,7 @@ ggplotly(p)
 
 ## Table
 
-```nek
+```jup
 #| title: A glimpse at the dataset
 library(knitr)
 kable(players)
