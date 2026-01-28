@@ -39,7 +39,7 @@ The rest of the document will be a mix of markdown-formatted prose and executabl
 Let's **import** the data:
 
 ```{r}
-players <- read.csv("../../data/Players2024.csv")
+players <- read.csv("data/Players2024.csv")
 ```
 
 ## Prepare the data
