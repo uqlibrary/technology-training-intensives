@@ -300,7 +300,28 @@ See below for a summary of data cleaning tips you might need to apply to your da
 
 ### Reshaping your data
 
-For simple (or complex) reshaping tasks, like filtering, subsetting and adding new columns, refresh yourself with our second session of this intensive: [2 - Data Processing](./Essentials/2-Data_processing.qmd). Alternatively, read one of the following user guides:
+For simple (or complex) reshaping tasks, like filtering, subsetting and adding new columns, refresh yourself with our second session of this intensive: [2 - Data Processing](./Essentials/2-Data_processing.qmd).
+
+The Tidyverse usually wants you to organise your data in the "[tidy data](https://www.jstatsoft.org/index.php/jss/article/view/v059i10/v59i10.pdf)" way: single variable per column, single case per row, one value per cell. To get to that point, we often have to reshape our dataframes, usually from "wide format" to "long format". The package [tidyr](https://tidyr.tidyverse.org/) is perfect for that, using the `pivot_longer()` function (and its `pivot_wider()` opposite).
+
+This tidyr example shows the process in a nutshell:
+
+```{r}
+library(tidyr)
+# This relig_income dataset has data split into income bracket columns:
+relig_income
+# To make it more "tidy":
+# Store income brackets in a column, so functions can access the data.
+reshaped <- relig_income |>
+  pivot_longer(!religion, # all columns except "religion"
+               # name the columns where data is stored:
+               names_to = "income", # what comes from the column headings
+               values_to = "count") # what comes from the cells
+```
+
+The [tidyr cheatsheet](https://github.com/rstudio/cheatsheets/raw/main/tidyr.pdf) is great to visualise what exactly the `pivot_*()` function do, with helpful pictograms.
+
+
 <!-- 
 * [10 minutes to pandas](https://pandas.pydata.org/pandas-docs/stable/user_guide/10min.html)
 * [Indexing and selecting data](https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html)
