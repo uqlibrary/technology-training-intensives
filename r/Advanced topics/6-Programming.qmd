@@ -60,9 +60,9 @@ if (pet_age > 10) {
 
 ### Logical operators
 
-Here is a table of the different operators you can make conditions with. When you run them, they always return either `True` or `False`. 
+Here is a table of the different operators you can make conditions with. When you run them, they always return either `TRUE` or `FALSE`. 
 
-| Operator | True example | Description |
+| Operator | TRUE example | Description |
 | --- | --- | --- |
 | `==` | `10 == 10` | Same value and type |
 | `!=` | `"10" != 10` | Different value **or** type |
@@ -73,9 +73,9 @@ Here is a table of the different operators you can make conditions with. When yo
 | `&&` | `10 == 10 && "apple" == "apple"` | Only true if **both** conditions are true. |
 | `||` | `10 == 10 || "a" == "b"` | Always true if **one** condition is true.|
 
-### `elif` and `else`
+### `else if` and `else`
 
-`if` statements only run if the condition is **True**. What happens if its **False**? That's what the `else` command is for, it's like a net that catches anything that slipped past `if`:
+`if` statements only run if the condition is **TRUE**. What happens if its **FALSE**? That's what the `else` command is for, it's like a net that catches anything that slipped past `if`:
 
 ```{r}
 pet_age <- 5
