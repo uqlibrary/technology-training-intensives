@@ -541,15 +541,15 @@ Attaching package: 'dplyr'</code></pre>
 <p>A linear model (like above) is one example of the more general relationship <span class="math inline">\(Y\sim X\)</span>, where <span class="math inline">\(Y\)</span> <em>is distributed as</em> <span class="math inline">\(X\)</span> (or, <span class="math inline">\(Y\)</span> <em>depends on</em> <span class="math inline">\(X\)</span>). For this reason, we can construct a linear model in R with three pieces of information</p>
 <ul>
 <li>The type of model (e.g.&nbsp;linear) as a function (e.g.&nbsp;<code>lm(...)</code>)</li>
-<li>The general relationship between variables as a string (e.g.&nbsp;<code>"height_cm ~ age"</code>)</li>
+<li>The general relationship between variables as a string (e.g.&nbsp;<code>height_cm ~ age</code>)</li>
 <li>The dataset we’re using (e.g.&nbsp;<code>players</code>)</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(<span class="at">formula =</span> <span class="st">"height_cm ~ age"</span>, <span class="at">data =</span> players)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(<span class="at">formula =</span> height_cm <span class="sc">~</span> age, <span class="at">data =</span> players)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
-lm(formula = "height_cm ~ age", data = players)
+lm(formula = height_cm ~ age, data = players)
 
 Coefficients:
 (Intercept)          age  
@@ -566,7 +566,7 @@ Coefficients:
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Performing statistical modelling with R inevitably requires using R’s powerful formula syntax, as we just did with `“height_cm ~ age”. For anything beyond simple linear regressions, you’ll need to include more terms and operators in these. Here’s a quick summary of a few, but <a href="https://www.econometrics.blog/post/the-r-formula-cheatsheet/">you should check out this handy blog post</a> for a better summary and the <a href="https://search.r-project.org/R/refmans/stats/html/formula.html">official documentation</a> for comprehensive details.</p>
+<p>Performing statistical modelling with R inevitably requires using R’s powerful formula syntax, as we just did with <code>height_cm ~ age</code>. For anything beyond simple linear regressions, you’ll need to include more terms and operators in these. Here’s a quick summary of a few, but <a href="https://www.econometrics.blog/post/the-r-formula-cheatsheet/">you should check out this handy blog post</a> for a better summary and the <a href="https://search.r-project.org/R/refmans/stats/html/formula.html">official documentation</a> for comprehensive details.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="sc">~</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Use <code>~</code> to separate the <span class="math inline">\(Y\)</span> variable from the <span class="math inline">\(X\)</span> variable(s), e.g.&nbsp;<code>y ~ x</code>.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -579,12 +579,12 @@ Coefficients:
 </div>
 <p>If we store this as a variable, we can then produce a summary of the results (note that we can remove the <code>formula =</code> and <code>data =</code> if the order is correct),</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="st">"height_cm ~ age"</span>, players)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(height_cm <span class="sc">~</span> age, players)</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
-lm(formula = "height_cm ~ age", data = players)
+lm(formula = height_cm ~ age, data = players)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
