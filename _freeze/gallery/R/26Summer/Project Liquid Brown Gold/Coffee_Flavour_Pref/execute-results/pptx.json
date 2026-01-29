@@ -1,0 +1,17 @@
+{
+  "hash": "43a99fec4af88c3ef4c2f14120eefbf7",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Coffee Flavour Preferences\"\nsubtitle: \"Perceived flavour Profiles of 4 different coffees\"\nauthor: \"Tom\"\nformat: pptx\neditor: visual\ndate: Jan-2026\ncategories: [R, 26Summer, \"data: coffee_survey.csv\"]\n---\n\n# Overall Favourite Coffee\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](Coffee_Flavour_Pref_files/figure-pptx/unnamed-chunk-1-1.png)\n:::\n:::\n\n\n# Coffee A Flavour Characteristics\n\n::: {.cell}\n::: {.cell-output-display}\n![](Coffee_Flavour_Pref_files/figure-pptx/unnamed-chunk-2-1.png)\n:::\n:::\n\n\n# Coffee B Flavour Characteristics\n\n::: {.cell}\n::: {.cell-output-display}\n![](Coffee_Flavour_Pref_files/figure-pptx/unnamed-chunk-3-1.png)\n:::\n:::\n\n\n# Coffee C Flavour Characteristics\n\n::: {.cell}\n::: {.cell-output-display}\n![](Coffee_Flavour_Pref_files/figure-pptx/unnamed-chunk-4-1.png)\n:::\n:::\n\n\n# Coffee D Flavour Characteristics\n\n::: {.cell}\n::: {.cell-output-display}\n![](Coffee_Flavour_Pref_files/figure-pptx/unnamed-chunk-5-1.png)\n:::\n:::\n\n",
+    "supporting": [
+      "Coffee_Flavour_Pref_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": null,
+    "postProcess": false
+  }
+}

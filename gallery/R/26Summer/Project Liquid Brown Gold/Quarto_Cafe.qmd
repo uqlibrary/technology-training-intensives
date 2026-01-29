@@ -1,0 +1,231 @@
+---
+title: "Cafe"
+author: "Amber Sewell-Green"
+# format: pdf
+editor: visual
+date: 28-Jan-2026
+categories: [R, 26Summer, "data: coffee_survey.csv"]
+---
+
+\<!--The `echo: false` option disables the printing of code (only output displayed). \<!-- CNTR + ALT + I to create new code chunks
+
+## PROJECT CAFE
+
+I'm using the ../../../../data/coffee_survey.csv and below is my analysis. Let's take a closer look!
+
+This is a survey of 3790 consumers who were asked 43 questions about their coffee preferences
+
+<!--# This CNT + SHIFT + C HIDES TEXT -->
+
+```{r}
+#| echo: false
+cafe <- read.csv("../../../../data/coffee_survey.csv")
+```
+
+```{r}
+#| echo: false
+head(cafe)
+names(cafe)
+str(cafe)
+summary(cafe)
+```
+
+```{r}
+#| echo: false
+library(dplyr)
+library(tidyr)
+nrow(cafe)
+```
+
+```{r}
+#| echo: false
+ncol(cafe)
+```
+
+## CLEANING THE CUPS (Data Cleaning)
+
+Let's look at a few interesting factors and remove missing values
+
+```{r}
+
+#Removing the NA's from the variables I am interested in as a new df called "clean_cup"
+unique(cafe$cups)
+library(tidyr)
+clean_cup <- cafe |> 
+  drop_na(political_affiliation, number_children, cups, favourite, strength, caffeine, expertise, total_spend, education_level, employment_status)
+
+#other way to remove NA
+#clean_cup <- cafe |>
+ # filter(!is.na(cups),
+        # !is.na(employment_status))
+
+
+```
+
+##BULDING THE CAFE (Changing the Data)
+
+Let's continue to make the data in a format we can use by changing the column names, replacing characters and making characters/factors into numerical data
+
+```{r}
+
+#First change the names of the columns to make the code easier to use: politics, kids, cups, caffeine
+
+clean_cup <- clean_cup %>% 
+  rename(politics = political_affiliation)
+
+clean_cup <- clean_cup %>% 
+  rename(kids = number_children)
+
+#clean_cup$politics
+#unique(clean_cup$politics)
+#summary(clean_cup$politics)
+
+#clean_cup$kids
+#unique(clean_cup$kids)
+#summary(clean_cup$kids)
+
+#clean_cup$caffeine
+#unique(clean_cup$caffeine)
+summary(clean_cup$caffeine)
+
+#clean_cup$cups
+#unique(clean_cup$cups)
+summary(clean_cup$cups)
+
+library(ggplot2)
+install.packages("stringr")
+library(stringr) #use to change characters quickly
+library(tidyverse)
+
+#Next let's change the order of "number of cups consumed" to be ordinal/incremental
+
+
+#Make a smaller more manageable data frame called small_cafe
+
+small_cafe <- clean_cup |> 
+  select("politics", "cups", "caffeine", "kids")
+
+#For number kids and cups make categorical variables numerical
+
+#Change to numbers: if its this turn to that if else leave as is
+small_cafe <- small_cafe |> 
+  mutate(kids = if_else(kids == "None",
+                        true = "0",
+                        false = kids),
+         kids = if_else(kids == "More than 3",
+                        true = "4",
+                        false = kids))
+
+#Another way to do the same thing by make it a case when this = this do this.
+ 
+small_cafe <- small_cafe |> 
+  mutate(kids = as.numeric(case_when(kids == "None" ~ "0", 
+                          kids == "More than 3" ~ "4",
+                          .default = kids)))
+
+#Apply to the "cups" data
+
+small_cafe <- small_cafe |> 
+  mutate(cups = if_else(cups == "Less than 1",
+                        true = "0",
+                        false = cups),
+         cups = if_else(cups == "More than 4",
+                        true = "5",
+                        false = cups))
+#Other Option
+ 
+small_cafe <- small_cafe |> 
+  mutate(cups = as.numeric(case_when(cups == "Less than 1" ~ "0", 
+                          cups == "More than 4" ~ "5",
+                          .default = cups)))
+#Make data numerical
+
+small_cafe <- small_cafe |> 
+  mutate(kids = as.numeric(kids),
+         cups = as.numeric(cups))
+
+# if(!is.numeric(small_cafe$cups)) small_cafe$cups <- as.numeric(small_cafe$cups)
+
+class(small_cafe$cups) #santity check the class is numeric
+class(small_cafe$kids)
+small_cafe$kids <- as.numeric(small_cafe$kids)#same
+```
+
+```{r}
+
+#Make cups & kids data ordinal
+#small_cafe2 <- small_cafe$cups <- factor(small_cafe$cups, levels = c(0, 1, 2,3, 4, 5)) #!!! ADDS NA BACK IN
+
+#view(small_cafe2)
+```
+
+## DESCRIBE THE ROAST (Descriptive Statistics)
+
+We can see most people in this data set drink 1-5+ cups of coffee daily, the average being 2 cups a day.
+
+Meanwhile most people have 0-4+ kids, with the majority having no kids.
+
+```{r}
+# Descriptive Statistics
+median(small_cafe$cups)
+min(small_cafe$cups)
+max(small_cafe$cups)
+range(small_cafe$cups)
+diff(range(small_cafe$cups))
+
+median(small_cafe$kids)
+min(small_cafe$kids)
+max(small_cafe$kids)
+range(small_cafe$kids)
+
+     
+#Quartiles
+quantile(small_cafe$cups)
+IQR(small_cafe$cups)
+quantile(small_cafe$kids)
+IQR(small_cafe$kids)
+
+#SD & Variance
+sd(small_cafe$cups)
+var(small_cafe$cups)
+sd(small_cafe$kids)
+var(small_cafe$kids)
+
+#Statistical Summary
+summary(small_cafe$cups)
+summary(small_cafe$kids)
+
+#2. Measures of Correlation - more than one set of data----
+
+#Covariance
+cov(small_cafe$cups, small_cafe$kids)
+
+#Correlation
+
+#Pearson
+cor(small_cafe$cups, small_cafe$kids)
+
+```
+
+## SEE THE AROMA (PLOTTING)
+
+Let's take a closer look at how political preferences and family number influence caffeine intake.
+
+\<!--\> Does family size (kids) influence caffeine intake?
+
+\<!--\> Does political preference (politics) influence caffeine intake?
+
+```{r}
+# Visualise in ggplot
+library(RColorBrewer)
+
+
+ggplot(data = small_cafe)+ # data = your data's name
+  (mapping = aes(x = cups, #x variable
+                 y = kids)) + #y variable
+  geom_bar(stat = "identity",
+           aes(fill = as.factor(cups))) + 
+  #scale_fill_brewer(palette = "Accent") +#plot type
+  theme_classic() #theme
+
+```

@@ -1,0 +1,50 @@
+---
+title: "What Determines a Goodreads Rating?"
+author: Eugene, Kira, Chen and Jaz
+warning: false
+format: html
+echo: false
+---
+
+# Import data
+
+```{r}
+library(dplyr)
+dataset <- read.csv("data/books.csv")
+```
+
+# Visualise raw data 
+```{r}
+library(ggplot2)
+ggplot(data = dataset,
+       mapping = aes(x = num_pages, y = average_rating)) +
+  geom_point()
+```
+# Clean data
+Identify outliers.
+```{r}
+ggplot(dataset, aes(x = average_rating, y = num_pages)) +
+  geom_boxplot() 
+```
+
+Remove outliers from the data.
+
+```{r}
+library(dplyr)
+dataset_v2 <- dataset %>% filter(num_pages < 4000)
+```
+
+## Visualise cleaned data
+```{r}
+# install.packages("ggthemes")
+library(ggplot2)
+library(ggthemes)
+ggplot(dataset_v2, aes(x = num_pages, y = average_rating)) + geom_point() + theme_economist() + labs(
+    x = "Number of Pages",
+    y = "Average Goodreads Rating",
+    title = "Number of Pages vs Average Goodreads Rating")
+```
+```{r}
+ggsave("tb.png")
+```
+

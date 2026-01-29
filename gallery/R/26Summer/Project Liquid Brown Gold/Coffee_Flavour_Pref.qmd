@@ -1,0 +1,91 @@
+---
+title: "Coffee Flavour Preferences"
+subtitle: "Perceived flavour Profiles of 4 different coffees"
+author: "Tom"
+# format: pptx
+editor: visual
+date: Jan-2026
+categories: [R, 26Summer, "data: coffee_survey.csv"]
+---
+
+# Overall Favourite Coffee
+
+```{r}
+
+library(plotly)
+library(dplyr)
+library(pheatmap)
+library(ggplot2)
+library(tidyr)
+
+coffee_survey <- read.csv("../../../../data/coffee_survey.csv")
+coffee_survey_pref <- drop_na(coffee_survey,prefer_overall)
+#experts prefer violin plot####
+experts_prefer  <-  ggplot(data = coffee_survey_pref,
+                     mapping = aes(x = prefer_overall, 
+                                   y = expertise,
+                                   fill = prefer_overall)) +
+  geom_violin(scale = "count")+
+  labs(x = "overall favourite", y = "expertise", title = "favourite coffee by expertise")
+experts_prefer
+```
+
+# Coffee A Flavour Characteristics
+
+```{r}
+#coffee a flavour profile heatmap ####
+coffee_a_bin2d  <-  ggplot(data = coffee_survey, 
+                           mapping = aes(x = coffee_a_bitterness + runif(1, min = -0.5, max = 0.5),
+                                         y = coffee_a_acidity + runif(1, min = -0.5, max = 0.5))) +
+  geom_bin_2d(bins = 5) +
+  scale_fill_continuous(type = "viridis") +
+  theme_bw() +
+  labs(x = "bitterness", y = "acidity", title = "coffee a flavour profile")
+
+coffee_a_bin2d
+```
+
+# Coffee B Flavour Characteristics
+
+```{r}
+#coffee b flavour profile heatmap ####
+coffee_b_bin2d  <-  ggplot(data = coffee_survey, 
+                           mapping = aes(x = coffee_b_bitterness + runif(1, min = -0.5, max = 0.5),
+                                         y = coffee_b_acidity + runif(1, min = -0.5, max = 0.5))) +
+  geom_bin_2d(bins = 5) +
+  scale_fill_continuous(type = "viridis") +
+  theme_bw() +
+  labs(x = "bitterness", y = "acidity", title = "coffee b flavour profile")
+
+coffee_b_bin2d
+```
+
+# Coffee C Flavour Characteristics
+
+```{r}
+#coffee c flavour profile heatmap ####
+coffee_c_bin2d  <-  ggplot(data = coffee_survey, 
+                           mapping = aes(x = coffee_c_bitterness + runif(1, min = -0.5, max = 0.5),
+                                         y = coffee_c_acidity + runif(1, min = -0.5, max = 0.5))) +
+  geom_bin_2d(bins = 5) +
+  scale_fill_continuous(type = "viridis") +
+  theme_bw() +
+  labs(x = "bitterness", y = "acidity", title = "coffee c flavour profile")
+
+coffee_c_bin2d
+```
+
+# Coffee D Flavour Characteristics
+
+```{r}
+#coffee d flavour profile heatmap ####
+coffee_d_bin2d  <-  ggplot(data = coffee_survey, 
+                           mapping = aes(x = coffee_d_bitterness + runif(1, min = -0.5, max = 0.5),
+                                         y = coffee_d_acidity + runif(1, min = -0.5, max = 0.5))) +
+  geom_bin_2d(bins = 5) +
+  scale_fill_continuous(type = "viridis") +
+  theme_bw() +
+  labs(x = "bitterness", y = "acidity", title = "coffee d flavour profile")
+
+coffee_d_bin2d
+```

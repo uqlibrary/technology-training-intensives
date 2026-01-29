@@ -1,0 +1,17 @@
+{
+  "hash": "09e2476b020f75eebf2886a4f9bf50cc",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Good reads\"\nformat: html\nauthor: \"Chuanqing Li\"\ndate: \"Jan 28, 2026\"\nexecute:\n  warning: false\ncategories: [R, 26Summer, \"data: books.csv\"]\n---\n\n## Importing the data\n\n**Import the data:**\n\n\n::: {.cell}\n\n```{.r .cell-code}\nbook_data <- read.csv(\"../../../../data/books.csv\")\n```\n:::\n\n\n## Prepare the data\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(dplyr)\n```\n:::\n\n\n### Dividing years into five groups\n\n\n::: {.cell}\n\n```{.r .cell-code}\nrating <- book_data |>\n  mutate(year1 = substr(publication_date, 1, 4),\n          year = floor(as.integer(year1) / 5) *5 )\n```\n:::\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nsmall_collect <- rating |>\n  select(average_rating,\n          ratings_count,\n          text_reviews_count,\n          year) |>\n  rename(Average_ratings = average_rating,\n         Years = year)\nhead(small_collect)\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n  Average_ratings ratings_count text_reviews_count Years\n1            4.57       2095690              27591  2005\n2            4.49       2153167              29221  2000\n3            4.42          6333                244  2000\n4            4.56       2339585              36325  2000\n5            4.78         41428                164  2000\n6            3.74            19                  1  2005\n```\n\n\n:::\n:::\n\n\n## Let's plot!\n\n### The overview\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](sharing_files/figure-html/unnamed-chunk-5-1.png){width=672}\n:::\n:::\n\n\n### Relationship between rating counts and review counts\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](sharing_files/figure-html/unnamed-chunk-6-1.png){width=672}\n:::\n:::\n\n\n### More comments more ratings?\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](sharing_files/figure-html/unnamed-chunk-7-1.png){width=672}\n:::\n:::\n\n",
+    "supporting": [
+      "sharing_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

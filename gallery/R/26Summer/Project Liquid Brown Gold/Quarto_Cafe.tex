@@ -1,0 +1,968 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrartcl}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
+
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Cafe},
+  pdfauthor={Amber Sewell-Green},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{Cafe}
+\author{Amber Sewell-Green}
+\date{2026-01-28}
+\begin{document}
+\maketitle
+
+
+\textless!-\/-The \texttt{echo:\ false} option disables the printing of
+code (only output displayed). \textless!-- CNTR + ALT + I to create new
+code chunks
+
+\subsection{PROJECT CAFE}\label{project-cafe}
+
+I'm using the ../../../../data/coffee\_survey.csv and below is my
+analysis. Let's take a closer look!
+
+This is a survey of 3790 consumers who were asked 43 questions about
+their coffee preferences
+
+\begin{verbatim}
+  X             age cups                                  where_drink
+1 1   <18 years old    3            At home, At the office, At a cafe
+2 2   >65 years old    3                     At the office, At a cafe
+3 3 25-34 years old    1            At home, At the office, On the go
+4 4 18-24 years old    2                                At the office
+5 5 45-54 years old    2 At home, At the office, At a cafe, On the go
+6 6   >65 years old    1                                      At home
+  purchase_other           favourite favorite_specify
+1           <NA>            Pourover             <NA>
+2           <NA>             Cortado             <NA>
+3           <NA> Regular drip coffee             <NA>
+4           <NA>         Iced coffee             <NA>
+5           <NA> Regular drip coffee             <NA>
+6           <NA> Regular drip coffee             <NA>
+                                                       additions
+1    No - just black, Milk, dairy alternative, or coffee creamer
+2                                                No - just black
+3 Milk, dairy alternative, or coffee creamer, Sugar or sweetener
+4                     Milk, dairy alternative, or coffee creamer
+5                                                No - just black
+6                                                No - just black
+  additions_other                     sweetener       style        strength
+1            <NA>                          <NA>      Bright          Medium
+2            <NA>                          <NA>      Fruity Somewhat strong
+3            <NA> Granulated Sugar, Brown Sugar       Sweet Somewhat strong
+4            <NA>                          <NA>       Nutty Somewhat strong
+5            <NA>                          <NA>      Floral          Medium
+6            <NA>                          <NA> Full Bodied Somewhat strong
+  roast_level      caffeine expertise coffee_a_bitterness coffee_a_acidity
+1       Light Full caffeine        10                   1                1
+2      Blonde Full caffeine         7                   3                3
+3      Medium Full caffeine         6                   3                3
+4      Nordic Full caffeine         4                   4                4
+5       Light Full caffeine         8                   3                3
+6        Dark          <NA>         2                   3                3
+  coffee_a_personal_preference coffee_b_bitterness coffee_b_acidity
+1                            1                   1                1
+2                            3                   3                3
+3                            3                   3                3
+4                            4                   4                4
+5                            4                   3                3
+6                            3                   3                3
+  coffee_b_personal_preference coffee_c_bitterness coffee_c_acidity
+1                            1                   1                1
+2                            3                   3                3
+3                            3                   3                3
+4                            4                  NA                4
+5                            5                   4                3
+6                            3                   4                3
+  coffee_c_personal_preference coffee_d_bitterness coffee_d_acidity
+1                            1                   1                1
+2                            3                   3                3
+3                            3                   3                3
+4                            4                   4                4
+5                            3                   5                2
+6                           NA                   4                3
+  coffee_d_personal_preference prefer_abc prefer_ad prefer_overall
+1                            1   Coffee A  Coffee D       Coffee B
+2                            3   Coffee C  Coffee D       Coffee D
+3                            3   Coffee A  Coffee A       Coffee B
+4                            4       <NA>  Coffee D       Coffee A
+5                            3   Coffee B  Coffee A       Coffee B
+6                            4   Coffee C  Coffee D       Coffee C
+                         wfh total_spend know_source most_paid most_willing
+1 I primarily work from home       >$100        <NA>      <NA>         <NA>
+2                       <NA>        <NA>        <NA>      <NA>         <NA>
+3 I primarily work from home     $40-$60        <NA>      <NA>         <NA>
+4                       <NA>        <NA>        <NA>      <NA>         <NA>
+5 I primarily work from home     $20-$40         Yes     $4-$6       $8-$10
+6                       <NA>        <NA>        <NA>      <NA>         <NA>
+  value_cafe spent_equipment value_equipment                 gender
+1       <NA>            <NA>            <NA> Other (please specify)
+2       <NA>            <NA>            <NA>                   <NA>
+3       <NA>            <NA>            <NA>                 Female
+4       <NA>            <NA>            <NA>                   <NA>
+5         No      $500-$1000             Yes                   Male
+6       <NA>            <NA>            <NA>                   <NA>
+    education_level  employment_status number_children political_affiliation
+1 Bachelor's degree Employed full-time     More than 3              Democrat
+2              <NA>               <NA>            <NA>                  <NA>
+3 Bachelor's degree Employed full-time            None              Democrat
+4              <NA>               <NA>            <NA>                  <NA>
+5   Master's degree Employed full-time               2        No affiliation
+6              <NA>               <NA>            <NA>                  <NA>
+\end{verbatim}
+
+\begin{verbatim}
+ [1] "X"                            "age"                         
+ [3] "cups"                         "where_drink"                 
+ [5] "purchase_other"               "favourite"                   
+ [7] "favorite_specify"             "additions"                   
+ [9] "additions_other"              "sweetener"                   
+[11] "style"                        "strength"                    
+[13] "roast_level"                  "caffeine"                    
+[15] "expertise"                    "coffee_a_bitterness"         
+[17] "coffee_a_acidity"             "coffee_a_personal_preference"
+[19] "coffee_b_bitterness"          "coffee_b_acidity"            
+[21] "coffee_b_personal_preference" "coffee_c_bitterness"         
+[23] "coffee_c_acidity"             "coffee_c_personal_preference"
+[25] "coffee_d_bitterness"          "coffee_d_acidity"            
+[27] "coffee_d_personal_preference" "prefer_abc"                  
+[29] "prefer_ad"                    "prefer_overall"              
+[31] "wfh"                          "total_spend"                 
+[33] "know_source"                  "most_paid"                   
+[35] "most_willing"                 "value_cafe"                  
+[37] "spent_equipment"              "value_equipment"             
+[39] "gender"                       "education_level"             
+[41] "employment_status"            "number_children"             
+[43] "political_affiliation"       
+\end{verbatim}
+
+\begin{verbatim}
+'data.frame':   3790 obs. of  43 variables:
+ $ X                           : int  1 2 3 4 5 6 7 8 9 10 ...
+ $ age                         : chr  "<18 years old" ">65 years old" "25-34 years old" "18-24 years old" ...
+ $ cups                        : chr  "3" "3" "1" "2" ...
+ $ where_drink                 : chr  "At home, At the office, At a cafe" "At the office, At a cafe" "At home, At the office, On the go" "At the office" ...
+ $ purchase_other              : chr  NA NA NA NA ...
+ $ favourite                   : chr  "Pourover" "Cortado" "Regular drip coffee" "Iced coffee" ...
+ $ favorite_specify            : chr  NA NA NA NA ...
+ $ additions                   : chr  "No - just black, Milk, dairy alternative, or coffee creamer" "No - just black" "Milk, dairy alternative, or coffee creamer, Sugar or sweetener" "Milk, dairy alternative, or coffee creamer" ...
+ $ additions_other             : chr  NA NA NA NA ...
+ $ sweetener                   : chr  NA NA "Granulated Sugar, Brown Sugar" NA ...
+ $ style                       : chr  "Bright" "Fruity" "Sweet" "Nutty" ...
+ $ strength                    : chr  "Medium" "Somewhat strong" "Somewhat strong" "Somewhat strong" ...
+ $ roast_level                 : chr  "Light" "Blonde" "Medium" "Nordic" ...
+ $ caffeine                    : chr  "Full caffeine" "Full caffeine" "Full caffeine" "Full caffeine" ...
+ $ expertise                   : int  10 7 6 4 8 2 10 6 7 8 ...
+ $ coffee_a_bitterness         : int  1 3 3 4 3 3 1 1 2 3 ...
+ $ coffee_a_acidity            : int  1 3 3 4 3 3 4 4 3 3 ...
+ $ coffee_a_personal_preference: int  1 3 3 4 4 3 4 3 4 2 ...
+ $ coffee_b_bitterness         : int  1 3 3 4 3 3 1 3 3 NA ...
+ $ coffee_b_acidity            : int  1 3 3 4 3 3 4 2 2 NA ...
+ $ coffee_b_personal_preference: int  1 3 3 4 5 3 4 4 2 NA ...
+ $ coffee_c_bitterness         : int  1 3 3 NA 4 4 1 3 2 NA ...
+ $ coffee_c_acidity            : int  1 3 3 4 3 3 4 4 2 NA ...
+ $ coffee_c_personal_preference: int  1 3 3 4 3 NA 4 1 2 NA ...
+ $ coffee_d_bitterness         : int  1 3 3 4 5 4 2 1 3 NA ...
+ $ coffee_d_acidity            : int  1 3 3 4 2 3 4 4 3 NA ...
+ $ coffee_d_personal_preference: int  1 3 3 4 3 4 4 5 2 NA ...
+ $ prefer_abc                  : chr  "Coffee A" "Coffee C" "Coffee A" NA ...
+ $ prefer_ad                   : chr  "Coffee D" "Coffee D" "Coffee A" "Coffee D" ...
+ $ prefer_overall              : chr  "Coffee B" "Coffee D" "Coffee B" "Coffee A" ...
+ $ wfh                         : chr  "I primarily work from home" NA "I primarily work from home" NA ...
+ $ total_spend                 : chr  ">$100" NA "$40-$60" NA ...
+ $ know_source                 : chr  NA NA NA NA ...
+ $ most_paid                   : chr  NA NA NA NA ...
+ $ most_willing                : chr  NA NA NA NA ...
+ $ value_cafe                  : chr  NA NA NA NA ...
+ $ spent_equipment             : chr  NA NA NA NA ...
+ $ value_equipment             : chr  NA NA NA NA ...
+ $ gender                      : chr  "Other (please specify)" NA "Female" NA ...
+ $ education_level             : chr  "Bachelor's degree" NA "Bachelor's degree" NA ...
+ $ employment_status           : chr  "Employed full-time" NA "Employed full-time" NA ...
+ $ number_children             : chr  "More than 3" NA "None" NA ...
+ $ political_affiliation       : chr  "Democrat" NA "Democrat" NA ...
+\end{verbatim}
+
+\begin{verbatim}
+       X              age                cups           where_drink       
+ Min.   :   1.0   Length:3790        Length:3790        Length:3790       
+ 1st Qu.: 948.2   Class :character   Class :character   Class :character  
+ Median :1895.5   Mode  :character   Mode  :character   Mode  :character  
+ Mean   :1895.5                                                           
+ 3rd Qu.:2842.8                                                           
+ Max.   :3790.0                                                           
+                                                                          
+ purchase_other      favourite         favorite_specify    additions        
+ Length:3790        Length:3790        Length:3790        Length:3790       
+ Class :character   Class :character   Class :character   Class :character  
+ Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+ additions_other     sweetener            style             strength        
+ Length:3790        Length:3790        Length:3790        Length:3790       
+ Class :character   Class :character   Class :character   Class :character  
+ Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+ roast_level          caffeine           expertise      coffee_a_bitterness
+ Length:3790        Length:3790        Min.   : 1.000   Min.   :1.000      
+ Class :character   Class :character   1st Qu.: 5.000   1st Qu.:1.000      
+ Mode  :character   Mode  :character   Median : 6.000   Median :2.000      
+                                       Mean   : 5.683   Mean   :2.141      
+                                       3rd Qu.: 7.000   3rd Qu.:3.000      
+                                       Max.   :10.000   Max.   :5.000      
+                                                                           
+ coffee_a_acidity coffee_a_personal_preference coffee_b_bitterness
+ Min.   :1.000    Min.   :1.000                Min.   :1.000      
+ 1st Qu.:3.000    1st Qu.:2.000                1st Qu.:2.000      
+ Median :4.000    Median :3.000                Median :3.000      
+ Mean   :3.634    Mean   :3.311                Mean   :3.014      
+ 3rd Qu.:4.000    3rd Qu.:4.000                3rd Qu.:4.000      
+ Max.   :5.000    Max.   :5.000                Max.   :5.000      
+ NA's   :18       NA's   :14                   NA's   :20         
+ coffee_b_acidity coffee_b_personal_preference coffee_c_bitterness
+ Min.   :1.000    Min.   :1.000                Min.   :1.000      
+ 1st Qu.:2.000    1st Qu.:2.000                1st Qu.:2.000      
+ Median :2.000    Median :3.000                Median :3.000      
+ Mean   :2.223    Mean   :3.067                Mean   :3.072      
+ 3rd Qu.:3.000    3rd Qu.:4.000                3rd Qu.:4.000      
+ Max.   :5.000    Max.   :5.000                Max.   :5.000      
+ NA's   :32       NA's   :28                   NA's   :33         
+ coffee_c_acidity coffee_c_personal_preference coffee_d_bitterness
+ Min.   :1.000    Min.   :1.000                Min.   :1.000      
+ 1st Qu.:2.000    1st Qu.:2.000                1st Qu.:1.000      
+ Median :2.000    Median :3.000                Median :2.000      
+ Mean   :2.366    Mean   :3.066                Mean   :2.162      
+ 3rd Qu.:3.000    3rd Qu.:4.000                3rd Qu.:3.000      
+ Max.   :5.000    Max.   :5.000                Max.   :5.000      
+ NA's   :45       NA's   :33                   NA's   :29         
+ coffee_d_acidity coffee_d_personal_preference  prefer_abc       
+ Min.   :1.000    Min.   :1.000                Length:3790       
+ 1st Qu.:3.000    1st Qu.:2.000                Class :character  
+ Median :4.000    Median :4.000                Mode  :character  
+ Mean   :3.858    Mean   :3.375                                  
+ 3rd Qu.:5.000    3rd Qu.:5.000                                  
+ Max.   :5.000    Max.   :5.000                                  
+ NA's   :32       NA's   :36                                     
+  prefer_ad         prefer_overall         wfh            total_spend       
+ Length:3790        Length:3790        Length:3790        Length:3790       
+ Class :character   Class :character   Class :character   Class :character  
+ Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+ know_source         most_paid         most_willing        value_cafe       
+ Length:3790        Length:3790        Length:3790        Length:3790       
+ Class :character   Class :character   Class :character   Class :character  
+ Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+ spent_equipment    value_equipment       gender          education_level   
+ Length:3790        Length:3790        Length:3790        Length:3790       
+ Class :character   Class :character   Class :character   Class :character  
+ Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+ employment_status  number_children    political_affiliation
+ Length:3790        Length:3790        Length:3790          
+ Class :character   Class :character   Class :character     
+ Mode  :character   Mode  :character   Mode  :character     
+                                                            
+                                                            
+                                                            
+                                                            
+\end{verbatim}
+
+\begin{verbatim}
+
+Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+The following objects are masked from 'package:stats':
+
+    filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{verbatim}
+[1] 3790
+\end{verbatim}
+
+\begin{verbatim}
+[1] 43
+\end{verbatim}
+
+\subsection{CLEANING THE CUPS (Data
+Cleaning)}\label{cleaning-the-cups-data-cleaning}
+
+Let's look at a few interesting factors and remove missing values
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Removing the NA\textquotesingle{}s from the variables I am interested in as a new df called "clean\_cup"}
+\FunctionTok{unique}\NormalTok{(cafe}\SpecialCharTok{$}\NormalTok{cups)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "3"           "1"           "2"           "More than 4" "Less than 1"
+[6] NA            "4"          
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyr)}
+\NormalTok{clean\_cup }\OtherTok{\textless{}{-}}\NormalTok{ cafe }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{drop\_na}\NormalTok{(political\_affiliation, number\_children, cups, favourite, strength, caffeine, expertise, total\_spend, education\_level, employment\_status)}
+
+\CommentTok{\#other way to remove NA}
+\CommentTok{\#clean\_cup \textless{}{-} cafe |\textgreater{}}
+ \CommentTok{\# filter(!is.na(cups),}
+        \CommentTok{\# !is.na(employment\_status))}
+\end{Highlighting}
+\end{Shaded}
+
+\#\#BULDING THE CAFE (Changing the Data)
+
+Let's continue to make the data in a format we can use by changing the
+column names, replacing characters and making characters/factors into
+numerical data
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#First change the names of the columns to make the code easier to use: politics, kids, cups, caffeine}
+
+\NormalTok{clean\_cup }\OtherTok{\textless{}{-}}\NormalTok{ clean\_cup }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{rename}\NormalTok{(}\AttributeTok{politics =}\NormalTok{ political\_affiliation)}
+
+\NormalTok{clean\_cup }\OtherTok{\textless{}{-}}\NormalTok{ clean\_cup }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{rename}\NormalTok{(}\AttributeTok{kids =}\NormalTok{ number\_children)}
+
+\CommentTok{\#clean\_cup$politics}
+\CommentTok{\#unique(clean\_cup$politics)}
+\CommentTok{\#summary(clean\_cup$politics)}
+
+\CommentTok{\#clean\_cup$kids}
+\CommentTok{\#unique(clean\_cup$kids)}
+\CommentTok{\#summary(clean\_cup$kids)}
+
+\CommentTok{\#clean\_cup$caffeine}
+\CommentTok{\#unique(clean\_cup$caffeine)}
+\FunctionTok{summary}\NormalTok{(clean\_cup}\SpecialCharTok{$}\NormalTok{caffeine)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   Length     Class      Mode 
+     3213 character character 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#clean\_cup$cups}
+\CommentTok{\#unique(clean\_cup$cups)}
+\FunctionTok{summary}\NormalTok{(clean\_cup}\SpecialCharTok{$}\NormalTok{cups)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   Length     Class      Mode 
+     3213 character character 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"stringr"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+The following package(s) will be installed:
+- stringr [1.6.0]
+These packages will be installed into "~/tech_training/training-intensives/renv/library/linux-ubuntu-jammy/R-4.5/x86_64-pc-linux-gnu".
+
+# Installing packages --------------------------------------------------------
+- Installing stringr ...                        OK [linked from cache]
+Successfully installed 1 package in 6.6 milliseconds.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(stringr) }\CommentTok{\#use to change characters quickly}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+-- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
+v forcats   1.0.0     v readr     2.1.5
+v lubridate 1.9.4     v tibble    3.2.1
+v purrr     1.0.4     
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+i Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Next let\textquotesingle{}s change the order of "number of cups consumed" to be ordinal/incremental}
+
+
+\CommentTok{\#Make a smaller more manageable data frame called small\_cafe}
+
+\NormalTok{small\_cafe }\OtherTok{\textless{}{-}}\NormalTok{ clean\_cup }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{select}\NormalTok{(}\StringTok{"politics"}\NormalTok{, }\StringTok{"cups"}\NormalTok{, }\StringTok{"caffeine"}\NormalTok{, }\StringTok{"kids"}\NormalTok{)}
+
+\CommentTok{\#For number kids and cups make categorical variables numerical}
+
+\CommentTok{\#Change to numbers: if its this turn to that if else leave as is}
+\NormalTok{small\_cafe }\OtherTok{\textless{}{-}}\NormalTok{ small\_cafe }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{kids =} \FunctionTok{if\_else}\NormalTok{(kids }\SpecialCharTok{==} \StringTok{"None"}\NormalTok{,}
+                        \AttributeTok{true =} \StringTok{"0"}\NormalTok{,}
+                        \AttributeTok{false =}\NormalTok{ kids),}
+         \AttributeTok{kids =} \FunctionTok{if\_else}\NormalTok{(kids }\SpecialCharTok{==} \StringTok{"More than 3"}\NormalTok{,}
+                        \AttributeTok{true =} \StringTok{"4"}\NormalTok{,}
+                        \AttributeTok{false =}\NormalTok{ kids))}
+
+\CommentTok{\#Another way to do the same thing by make it a case when this = this do this.}
+ 
+\NormalTok{small\_cafe }\OtherTok{\textless{}{-}}\NormalTok{ small\_cafe }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{kids =} \FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{case\_when}\NormalTok{(kids }\SpecialCharTok{==} \StringTok{"None"} \SpecialCharTok{\textasciitilde{}} \StringTok{"0"}\NormalTok{, }
+\NormalTok{                          kids }\SpecialCharTok{==} \StringTok{"More than 3"} \SpecialCharTok{\textasciitilde{}} \StringTok{"4"}\NormalTok{,}
+                          \AttributeTok{.default =}\NormalTok{ kids)))}
+
+\CommentTok{\#Apply to the "cups" data}
+
+\NormalTok{small\_cafe }\OtherTok{\textless{}{-}}\NormalTok{ small\_cafe }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{cups =} \FunctionTok{if\_else}\NormalTok{(cups }\SpecialCharTok{==} \StringTok{"Less than 1"}\NormalTok{,}
+                        \AttributeTok{true =} \StringTok{"0"}\NormalTok{,}
+                        \AttributeTok{false =}\NormalTok{ cups),}
+         \AttributeTok{cups =} \FunctionTok{if\_else}\NormalTok{(cups }\SpecialCharTok{==} \StringTok{"More than 4"}\NormalTok{,}
+                        \AttributeTok{true =} \StringTok{"5"}\NormalTok{,}
+                        \AttributeTok{false =}\NormalTok{ cups))}
+\CommentTok{\#Other Option}
+ 
+\NormalTok{small\_cafe }\OtherTok{\textless{}{-}}\NormalTok{ small\_cafe }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{cups =} \FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{case\_when}\NormalTok{(cups }\SpecialCharTok{==} \StringTok{"Less than 1"} \SpecialCharTok{\textasciitilde{}} \StringTok{"0"}\NormalTok{, }
+\NormalTok{                          cups }\SpecialCharTok{==} \StringTok{"More than 4"} \SpecialCharTok{\textasciitilde{}} \StringTok{"5"}\NormalTok{,}
+                          \AttributeTok{.default =}\NormalTok{ cups)))}
+\CommentTok{\#Make data numerical}
+
+\NormalTok{small\_cafe }\OtherTok{\textless{}{-}}\NormalTok{ small\_cafe }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{kids =} \FunctionTok{as.numeric}\NormalTok{(kids),}
+         \AttributeTok{cups =} \FunctionTok{as.numeric}\NormalTok{(cups))}
+
+\CommentTok{\# if(!is.numeric(small\_cafe$cups)) small\_cafe$cups \textless{}{-} as.numeric(small\_cafe$cups)}
+
+\FunctionTok{class}\NormalTok{(small\_cafe}\SpecialCharTok{$}\NormalTok{cups) }\CommentTok{\#santity check the class is numeric}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "numeric"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{class}\NormalTok{(small\_cafe}\SpecialCharTok{$}\NormalTok{kids)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "numeric"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{small\_cafe}\SpecialCharTok{$}\NormalTok{kids }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(small\_cafe}\SpecialCharTok{$}\NormalTok{kids)}\CommentTok{\#same}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Make cups \& kids data ordinal}
+\CommentTok{\#small\_cafe2 \textless{}{-} small\_cafe$cups \textless{}{-} factor(small\_cafe$cups, levels = c(0, 1, 2,3, 4, 5)) \#!!! ADDS NA BACK IN}
+
+\CommentTok{\#view(small\_cafe2)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{DESCRIBE THE ROAST (Descriptive
+Statistics)}\label{describe-the-roast-descriptive-statistics}
+
+We can see most people in this data set drink 1-5+ cups of coffee daily,
+the average being 2 cups a day.
+
+Meanwhile most people have 0-4+ kids, with the majority having no kids.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Descriptive Statistics}
+\FunctionTok{median}\NormalTok{(small\_cafe}\SpecialCharTok{$}\NormalTok{cups)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{min}\NormalTok{(small\_cafe}\SpecialCharTok{$}\NormalTok{cups)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{max}\NormalTok{(small\_cafe}\SpecialCharTok{$}\NormalTok{cups)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{range}\NormalTok{(small\_cafe}\SpecialCharTok{$}\NormalTok{cups)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{diff}\NormalTok{(}\FunctionTok{range}\NormalTok{(small\_cafe}\SpecialCharTok{$}\NormalTok{cups))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{median}\NormalTok{(small\_cafe}\SpecialCharTok{$}\NormalTok{kids)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{min}\NormalTok{(small\_cafe}\SpecialCharTok{$}\NormalTok{kids)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{max}\NormalTok{(small\_cafe}\SpecialCharTok{$}\NormalTok{kids)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{range}\NormalTok{(small\_cafe}\SpecialCharTok{$}\NormalTok{kids)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0 4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Quartiles}
+\FunctionTok{quantile}\NormalTok{(small\_cafe}\SpecialCharTok{$}\NormalTok{cups)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+  0%  25%  50%  75% 100% 
+   0    1    2    2    5 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{IQR}\NormalTok{(small\_cafe}\SpecialCharTok{$}\NormalTok{cups)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{quantile}\NormalTok{(small\_cafe}\SpecialCharTok{$}\NormalTok{kids)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+  0%  25%  50%  75% 100% 
+   0    0    0    0    4 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{IQR}\NormalTok{(small\_cafe}\SpecialCharTok{$}\NormalTok{kids)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#SD \& Variance}
+\FunctionTok{sd}\NormalTok{(small\_cafe}\SpecialCharTok{$}\NormalTok{cups)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0.9925849
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{var}\NormalTok{(small\_cafe}\SpecialCharTok{$}\NormalTok{cups)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0.9852248
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sd}\NormalTok{(small\_cafe}\SpecialCharTok{$}\NormalTok{kids)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0.9069454
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{var}\NormalTok{(small\_cafe}\SpecialCharTok{$}\NormalTok{kids)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0.82255
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Statistical Summary}
+\FunctionTok{summary}\NormalTok{(small\_cafe}\SpecialCharTok{$}\NormalTok{cups)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  0.000   1.000   2.000   1.735   2.000   5.000 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(small\_cafe}\SpecialCharTok{$}\NormalTok{kids)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 0.0000  0.0000  0.0000  0.4597  0.0000  4.0000 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#2. Measures of Correlation {-} more than one set of data{-}{-}{-}{-}}
+
+\CommentTok{\#Covariance}
+\FunctionTok{cov}\NormalTok{(small\_cafe}\SpecialCharTok{$}\NormalTok{cups, small\_cafe}\SpecialCharTok{$}\NormalTok{kids)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0.1538356
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Correlation}
+
+\CommentTok{\#Pearson}
+\FunctionTok{cor}\NormalTok{(small\_cafe}\SpecialCharTok{$}\NormalTok{cups, small\_cafe}\SpecialCharTok{$}\NormalTok{kids)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0.1708866
+\end{verbatim}
+
+\subsection{SEE THE AROMA (PLOTTING)}\label{see-the-aroma-plotting}
+
+Let's take a closer look at how political preferences and family number
+influence caffeine intake.
+
+\textless!-\/-\textgreater{} Does family size (kids) influence caffeine
+intake?
+
+\textless!-\/-\textgreater{} Does political preference (politics)
+influence caffeine intake?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Visualise in ggplot}
+\FunctionTok{library}\NormalTok{(RColorBrewer)}
+
+
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ small\_cafe)}\SpecialCharTok{+} \CommentTok{\# data = your data\textquotesingle{}s name}
+\NormalTok{  (}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ cups, }\CommentTok{\#x variable}
+                 \AttributeTok{y =}\NormalTok{ kids)) }\SpecialCharTok{+} \CommentTok{\#y variable}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{,}
+           \FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =} \FunctionTok{as.factor}\NormalTok{(cups))) }\SpecialCharTok{+} 
+  \CommentTok{\#scale\_fill\_brewer(palette = "Accent") +\#plot type}
+  \FunctionTok{theme\_classic}\NormalTok{() }\CommentTok{\#theme}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{Quarto_Cafe_files/figure-pdf/unnamed-chunk-9-1.pdf}}
+
+
+
+
+\end{document}

@@ -19,7 +19,7 @@ format:
     fontsize: larger
 lightbox: true
 categories: [R, 26Summer, "data: Players2024.csv"]
-# HeatMap, ViolinPlot, WorldMap]
+#HeatMap, ViolinPlot, WorldMap]
 ---
 
 \

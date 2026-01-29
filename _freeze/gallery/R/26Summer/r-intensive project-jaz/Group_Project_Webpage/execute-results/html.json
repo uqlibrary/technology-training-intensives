@@ -1,0 +1,17 @@
+{
+  "hash": "1611dce58acb41953d22fed48d2e9191",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"What Determines a Goodreads Rating?\"\nauthor: Eugene, Kira, Chen and Jaz\nwarning: false\nformat: html\necho: false\ndate: Jan-2026\ncategories: [R, 26Summer, \"data: books.csv\"]\n---\n\n# Import data\n\n\n::: {.cell}\n\n:::\n\n\n# Visualise raw data \n\n::: {.cell}\n::: {.cell-output-display}\n![](Group_Project_Webpage_files/figure-html/unnamed-chunk-2-1.png){width=672}\n:::\n:::\n\n# Clean data\nIdentify outliers.\n\n::: {.cell}\n::: {.cell-output-display}\n![](Group_Project_Webpage_files/figure-html/unnamed-chunk-3-1.png){width=672}\n:::\n:::\n\n\nRemove outliers from the data.\n\n\n::: {.cell}\n\n:::\n\n\n## Visualise cleaned data\n\n::: {.cell}\n::: {.cell-output-display}\n![](Group_Project_Webpage_files/figure-html/unnamed-chunk-5-1.png){width=672}\n:::\n:::\n\n\n::: {.cell}\n\n:::\n\n\n",
+    "supporting": [
+      "Group_Project_Webpage_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

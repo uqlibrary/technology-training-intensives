@@ -1,0 +1,85 @@
+---
+title: "Good reads"
+format: html
+author: "Chuanqing Li"
+date: "Jan 28, 2026"
+execute:
+  warning: false
+categories: [R, 26Summer, "data: books.csv"]
+---
+
+## Importing the data
+
+**Import the data:**
+
+```{r}
+book_data <- read.csv("../../../../data/books.csv")
+
+```
+
+## Prepare the data
+
+```{r}
+library(dplyr)
+```
+
+### Dividing years into five groups
+
+```{r}
+rating <- book_data |>
+  mutate(year1 = substr(publication_date, 1, 4),
+          year = floor(as.integer(year1) / 5) *5 )
+```
+
+```{r}
+small_collect <- rating |>
+  select(average_rating,
+          ratings_count,
+          text_reviews_count,
+          year) |>
+  rename(Average_ratings = average_rating,
+         Years = year)
+head(small_collect)
+```
+
+## Let's plot!
+
+### The overview
+
+```{r}
+#| echo: false
+library(ggplot2)
+ggplot(data = small_collect,
+       mapping = aes(x = Years,
+                     y = Average_ratings,
+                     colour = log10(ratings_count + 1))) + 
+  geom_point() +
+  scale_colour_gradient(low = "green", high = "#CC0000")  + 
+  labs(colour = "Ratings_count log10")
+```
+
+### Relationship between rating counts and review counts
+
+```{r}
+#| echo: false
+ggplot(data = small_collect, 
+       mapping = aes(x = log10(ratings_count + 1), 
+                     y = Average_ratings)) +
+  geom_point(alpha = 0.15) +
+  geom_smooth(se = FALSE) +
+  labs(x = "Ratings count (log10)", 
+       y = "Average ratings")
+```
+
+### More comments more ratings?
+
+```{r}
+#| echo: false
+ggplot(data = small_collect,
+       mapping = aes(x = log10(ratings_count + 1), 
+                     y = log10(text_reviews_count + 1))) +
+  geom_point(alpha = 0.15) +
+  geom_smooth(se = FALSE) + 
+  labs(x = "Ratings count (log10)", 
+       y = "Reviews count (log10)")
+```

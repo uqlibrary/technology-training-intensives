@@ -1,0 +1,110 @@
+---
+title: "Wildlife"
+author: "Nayomi and Julian"
+format: html
+editor: visual
+---
+
+## Introduction
+
+The database we used here contains records of reported wildlife strikes since 1990. this contains self reported strikes from airlines, airports, pilots, and other sources.
+
+## Import the data set and install data packages
+
+```{r}
+wildlife_raw <- read.csv('data/wildlife_impacts.csv')
+library(dplyr)
+library(ggplot2)
+library(knitr)
+```
+
+This is how the data set looks like
+
+```{r}
+head(wildlife_raw)
+Table1 <- head(wildlife_raw)
+kable(Table1)
+```
+
+Let's see the trend over years Is this really increasing over time or proportionately the same???
+
+```{r}
+ggplot(wildlife_raw,
+       aes(x=incident_year,))+geom_bar()+labs(x="Year of the incident", y="Number of Strikes")
+```
+
+## Data purification
+
+There were a lot of NAs in the data set and treated accordingly.
+
+e.g.
+
+```{r}
+wildlife_cor1 <- wildlife_raw %>% 
+  filter(!is.na(speed))
+wildlife_cor1 <- wildlife_cor1 %>% 
+  filter(!is.na(damage))
+```
+
+## Analysis
+
+## Differences in strike count according to month of year
+
+```{r}
+ggplot(wildlife_raw,
+       aes(x=incident_month, colour=operator))+geom_bar()+
+  labs(x="Month", y="Number of Strikes")
+```
+
+## Histogram number of strikes at height
+
+```{r}
+wildlife_impacts <- read.csv("data/wildlife_impacts.csv")
+wildlife_impacts <- wildlife_impacts %>%
+  filter(!is.na(height))
+wildlife_impacts <- wildlife_impacts %>%
+  filter(!is.na(time_of_day))
+ggplot(data = wildlife_impacts,
+       aes(x = time_of_day, y = height)) + 
+  geom_boxplot(colour = "black", fill = "gray") + 
+  labs(x = "time of day", y = "height")
+```
+
+## Time of day and strike count
+
+```{r}
+library(ggplot2)
+wildlife_impacts <- wildlife_impacts %>%
+  filter(!is.na(time_of_day))
+ggplot(data = wildlife_impacts,
+       aes(x = time_of_day)) + 
+         geom_bar(fill = "gray", colour = "black") + 
+  labs(x = "time of day", y = "number of strikes")
+```
+
+## Histogram of time of day and height of strike
+
+```{r}
+ggplot(data = wildlife_impacts,
+       mapping = aes(x = height)) + 
+  geom_histogram(bins = 24, colour = "black", fill = "gray")+ 
+  labs(y = "number of strikes")
+```
+
+## Stats
+
+```{r}
+summary(wildlife_impacts$height)
+model <- lm(formula = "speed ~ cost_repairs_infl_adj", data = wildlife_impacts)
+summary(model)
+wildlife_impacts <- wildlife_impacts %>%
+  filter(!is.na(speed))
+wildlife_impacts <- wildlife_impacts %>%
+  filter(!is.na(cost_repairs_infl_adj))
+library(scales)
+ggplot(wildlife_impacts, aes(x = speed, y = cost_repairs_infl_adj)) +
+  geom_jitter() +
+  scale_y_continuous(labels = dollar) +
+  labs(y = "cost of repairs")
+
+```
