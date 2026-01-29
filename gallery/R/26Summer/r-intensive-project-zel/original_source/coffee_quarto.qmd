@@ -1,0 +1,251 @@
+---
+title: "Taste testing coffee results"
+author: "zoë"
+format: html
+editor: visual
+
+
+---
+## <span style="color:#6F4E37;"> Does your age impact the way you like to make your coffee? </span>
+
+
+<span style="color:#8B5A2B;"> 
+This plot shows age group, preference of coffee making method, and the number of cups of coffee an individual generally consumes.</span>
+
+```{r}
+#| echo: false
+#| include: false
+
+ library(dplyr)
+ library(readr)
+ library(ggplot2)
+ library(plotly)
+ library(tidyr)
+```
+
+
+```{r}
+#| echo: false
+#| message: false
+
+#### Project 1 - bringing in coffee data #####
+
+coffee <- read_csv("data/coffee_survey.csv")
+
+coffee_age_plot_1 <- ggplot(
+  coffee %>%
+    filter(
+      !is.na(cups),
+      cups != "Less than 1"
+    ),
+  aes(x = age, y = favourite, color = cups)
+) +
+  geom_count() +
+  scale_color_manual(
+    name = "Cups per day",
+    values = c(
+      "1"           = "#CEBCB6",# light latte
+      "2"           = "#AD8F85",
+      "3"           = "#87655A",
+      "4"           = "#493731",
+      "More than 4" = "#0C0908" # dark espresso
+    )
+  ) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+
+ggplotly(coffee_age_plot_1)
+
+
+
+```
+
+
+## <span style="color:#6F4E37;"> What age group drinks the most cups of coffee? </span>
+
+```{r}
+#| echo: false
+ggplot(coffee, aes(x = age, y = cups)) +
+  geom_count()
+```
+
+<span style="color:#8B5A2B;"> Seems like 24-35 year olds usually have one or two cups of coffee (or, this means that there were more 24-35 year olds sampled than other age groups. Whoops.).</span>
+
+## <span style="color:#6F4E37;"> Which of the blind-tasted coffees are percieved as the most acidic? </span>
+
+```{r}
+#| echo: false
+##pivot
+
+coffee_acidity_long <- coffee %>%
+  pivot_longer(
+    cols = starts_with("coffee_") & ends_with("_acidity"),
+    names_to = "coffee",
+    values_to = "acidity"
+  )
+
+# add labels
+
+coffee_acidity_long <- coffee_acidity_long %>%
+  mutate(
+    coffee = recode(coffee,
+                    coffee_a_acidity = "Coffee A",
+                    coffee_b_acidity = "Coffee B",
+                    coffee_c_acidity = "Coffee C",
+                    coffee_d_acidity = "Coffee D"
+    )
+  )
+
+# remove NA
+
+coffee_acidity_long <- coffee_acidity_long %>%
+  filter(!is.na(acidity))
+
+# plot
+
+ggplot(coffee_acidity_long, aes(x = coffee, y = acidity)) +
+  geom_boxplot() +
+  labs(
+    x = "Coffee",
+    y = "Acidity rating",
+    title = "Perceived acidity of coffees A–D"
+  ) +
+  theme_minimal()
+```
+
+<span style="color:#8B5A2B;">Looks like coffee A and D were the most acidic, as voted by the taste-testers.</span>
+
+
+## <span style="color:#6F4E37;"> Comparing acidity and bitterness, and showing popularity </span>
+
+
+```{r}
+#| echo: false
+library(ggplot2)
+library(dplyr)
+library(plotly)
+
+
+coffee_acidity_long <- coffee %>%
+  pivot_longer(
+    cols = starts_with("coffee_") & ends_with("_acidity"),
+    names_to = "coffee",
+    values_to = "acidity"
+  )
+
+# add labels
+
+coffee_acidity_long <- coffee_acidity_long %>%
+  mutate(
+    coffee = recode(coffee,
+                    coffee_a_acidity = "Coffee A",
+                    coffee_b_acidity = "Coffee B",
+                    coffee_c_acidity = "Coffee C",
+                    coffee_d_acidity = "Coffee D"
+    )
+  )
+
+
+# remove NA
+
+coffee_acidity_long <- coffee_acidity_long %>%
+  filter(!is.na(acidity))
+
+
+# ## taking the mean of acidity
+# 
+# coffee_acidity_long %>%
+#   group_by(coffee) %>%
+#   summarise(
+#     mean_acidity = mean(acidity),
+#     se = sd(acidity) / sqrt(n()),
+#     .groups = "drop"
+#   ) %>%
+#   ggplot(aes(coffee, mean_acidity)) +
+#   geom_col() +
+#   geom_errorbar(
+#     aes(ymin = mean_acidity - se, ymax = mean_acidity + se),
+#     width = 0.2
+#   ) +
+#   labs(y = "Mean acidity rating") +
+#   theme_minimal()
+
+
+coffee_scores <- coffee %>%
+  pivot_longer(
+    cols = matches("^coffee_[abcd]_(bitterness|acidity)$"),
+    names_to = c("coffee", "metric"),
+    names_pattern = "^coffee_([abcd])_(bitterness|acidity)$",
+    values_to = "score"
+  ) %>%
+  filter(!is.na(score)) %>%
+  mutate(coffee = paste("Coffee", toupper(coffee))) %>%
+  group_by(coffee, metric) %>%
+  summarise(
+    mean_score = mean(score),
+    se = sd(score) / sqrt(n()),
+    n = n(),
+    .groups = "drop"
+  ) %>%
+  pivot_wider(
+    names_from = metric,
+    values_from = c(mean_score, se, n)
+  )
+coffee_scores <- coffee_scores %>%
+  rename(
+    mean_acidity    = mean_score_acidity,
+    mean_bitterness = mean_score_bitterness
+  )
+
+
+## determine coffee popularity
+
+coffee_pref_counts <- coffee %>%
+  filter(!is.na(prefer_overall)) %>%
+  count(prefer_overall, name = "n_prefer") %>%
+  rename(coffee = prefer_overall)
+
+# join to new coffee dataframe
+
+coffee_scores <- coffee_scores %>%
+  left_join(coffee_pref_counts, by = "coffee")
+
+
+
+
+# label coffees with color instead of text
+
+coffee_acid_bitter_pop <- ggplot(
+  coffee_scores,
+  aes(
+    x = mean_acidity,
+    y = mean_bitterness,
+    size = n_prefer,
+    color = coffee
+  )
+) +
+  geom_point(alpha = 0.8)+
+  scale_size(
+    name = "Number of respondents\npreferring this coffee",
+    range = c(4, 14)
+  ) +
+  scale_color_manual(
+    name = "Coffee",
+    values = c(
+      "Coffee A" = "#6F4E37",  # classic coffee brown
+      "Coffee B" = "#8B5A2B",  # lighter roast
+      "Coffee C" = "#4B2E2A",  # dark roast
+      "Coffee D" = "#A67C52"   # latte brown
+    )
+  ) +
+  labs(
+    x = "Mean perceived acidity",
+    y = "Mean perceived bitterness",
+    title = "Coffee flavor space (size = popularity)"
+  ) +
+  theme_minimal()
+
+ggplotly(coffee_acid_bitter_pop)
+
+```

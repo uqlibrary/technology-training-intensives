@@ -1,0 +1,17 @@
+{
+  "hash": "5fe19f7b50a3fab57fc3470d2c378577",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"sharing\"\nauthor: \"Li\"\nformat: html\neditor: visual\ndate: Jan-2026\ncategories: [R, 26Summer, \"data: Players2024.csv\", \"data: Players2024.csv\"]\n---\n\nI'am using ...\n\n## Importing the data\n\n<!-- ctrl alt I for new code chunks -->\n\nLet's **import** the data:\n\n\n::: {.cell}\n\n```{.r .cell-code}\nplayers <- read.csv(\"../../../../data/Players2024.csv\")\n```\n:::\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# this means this r code won't run\nplayers <- read.csv(\"../../../../../../../../data/Players2024.csv\")\n```\n:::\n\n\n## Prepare the data\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(dplyr)\n```\n\n::: {.cell-output .cell-output-stderr}\n\n```\n\nAttaching package: 'dplyr'\n```\n\n\n:::\n\n::: {.cell-output .cell-output-stderr}\n\n```\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n```\n\n\n:::\n\n::: {.cell-output .cell-output-stderr}\n\n```\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n```\n\n\n:::\n\n```{.r .cell-code}\nplayer <- players |>\n  filter(positions != \"Missing\", height_cm > 100)\nhead(players)\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n                 name birth_date height_cm  positions nationality age\n1        James Milner 1986-01-04       175   Midfield     England  38\n2 Anastasios Tsokanis 1991-05-02       176   Midfield      Greece  33\n3       Jonas Hofmann 1992-07-14       176   Midfield     Germany  32\n4          Pepe Reina 1982-08-31       188 Goalkeeper       Spain  42\n5       Lionel Carole 1991-04-12       180   Defender      France  33\n6     Ludovic Butelle 1983-04-03       188 Goalkeeper      France  41\n                                    club\n1 Brighton and Hove Albion Football Club\n2       Volou Neos Podosferikos Syllogos\n3            Bayer 04 Leverkusen Fußball\n4                            Calcio Como\n5                     Kayserispor Kulübü\n6                         Stade de Reims\n```\n\n\n:::\n:::\n\n\n## Plot the data\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](quarto_files/figure-html/unnamed-chunk-4-1.png){width=672}\n:::\n:::\n\n",
+    "supporting": [
+      "quarto_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

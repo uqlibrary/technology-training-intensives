@@ -1,0 +1,86 @@
+---
+title: "Predicting Book Ratings from Text Reviews Count"
+author: Eugene, Kira, Chen, and Jaz
+format: html
+editor: visual
+execute: 
+  warning: false
+date: Jan-2026
+categories: [R, 26Summer, "data: books.csv"]
+---
+
+```{r}
+#| echo: false
+
+library(dplyr)
+library(ggplot2)
+books <- read.csv("Data/books.csv")
+```
+
+We will be exploring the Goodreads books dataset.
+
+## Data Structure
+
+This is the general overview of what the dataset looks like.
+
+```{r}
+#| echo: false
+str(books)
+```
+
+## Columns
+
+These are the columns from the dataset. We will specifically be looking at the effect of text reviews count on average book ratings.
+
+```{r}
+#| echo: false
+names(books)
+```
+
+## Filtering
+
+Due the extreme outliers from both text review count and average rating, the ranges will be restricted to review counts less than or equal to 25000 and to ratings greater than or equal to 2 to allow for easier interpretation of the data (note that review counts range from 0 to 94265, and ratings range from 0 to 5 in the full dataset).
+
+```{r}
+books_small <- select(books, bookID, title, average_rating, num_pages, ratings_count, text_reviews_count, publisher)
+
+books_small_lessReviews <- books_small %>% 
+  filter(text_reviews_count <= 25000 & average_rating >= 2)
+```
+
+## Linear Regression Model
+
+We will run a linear regression model that predicts the effect of text reviews count on average book ratings. A regression line will be derived from this and fit to the raw data plot.
+
+```{r}
+#| echo: false
+model_books <- lm(average_rating ~ text_reviews_count, data = books_small_lessReviews)
+summary(model_books)
+```
+
+## Visualising the Data
+
+We will visualise the data by creating a scatterplot of average ratings on text reviews count and fit a regression line derived from the model in the previous step.
+
+```{r}
+#| echo: false
+b0 <- model_books$coefficients[1]
+b1 <- model_books$coefficients[2]
+
+ggplot(books_small_lessReviews,
+       aes(x = text_reviews_count,
+           y = average_rating)) +
+  geom_point() +
+  geom_abline(intercept = b0, slope = b1,
+    linewidth = 1,
+    colour = "blue",) +
+  labs(title = "Predicting Average Rating from Text Review Count",
+       x = "Text Reviews Count",
+       y = "Average Rating of Books") +
+  theme_classic() +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+## Interpretation
+
+We can see that number of text reviews has minimal effect on average book ratings. However, a small positive relationship is evident, whereby the greater the review count, the higher the ratings seem to be.

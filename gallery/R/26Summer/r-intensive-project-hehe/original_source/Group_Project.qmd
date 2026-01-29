@@ -1,0 +1,448 @@
+---
+title: "R Intensive Project"
+author: "Hehe"
+editor: visual
+date: 28-01-2026
+warning: false
+format:
+  html:
+    code-fold: true
+    code-summary: "Show code"
+    code-tools: true
+    toc: true
+    toc-location: body
+    smooth-scroll: true
+    highlight-style: espresso
+    mainfont: math
+    title-block-banner: "#74B72E"
+    title-block-banner-color: "#00040D"
+    fontsize: larger
+lightbox: true
+categories: [R, 2026Intensive, "data:Players2024.csv", BoxPlot,
+HeatMap, ViolinPlot, WorldMap]
+---
+
+\
+
+::: {.callout-tip}
+Plots will be images or interactive plots.\
+Note: images can be clicked on to zoom in on the plot itself\
+Have fun! :)
+:::
+
+# Data Exploration on Soccer Players
+
+# Load the relevant libraries
+
+```{r}
+#| output: false
+#| code-fold: false
+library(dplyr)
+library(ggplot2)
+library(plotly)
+library(tidyr)
+library(knitr)
+```
+
+# Let's look at the dataset first
+
+```{r}
+#| code-fold: false
+players_2024 <- read.csv("data/Players2024.csv") 
+```
+
+*........Loading data........*
+
+\
+What type of data exists in our dataset?
+
+```{r}
+#| code-fold: false
+#| echo: false
+kable(names(players_2024), col.names = "Headers")
+options(knitr.kable.NA = '')
+```
+
+\
+$\boldsymbol{Peak\text{ } at \text{ } data}$
+
+```{r}
+#| code-fold: false
+#| echo: false
+kable(head(players_2024))
+```
+
+\
+$\boldsymbol{Summary\text{ } of \text{ } data}$
+
+```{r}
+#| code-fold: false
+#| echo: false
+kable(summary(players_2024))
+```
+
+## Issues with dataset
+
+::: {.callout-caution}
+Visualising height_cm against positions shows issues with dataset
+:::
+
+```{r}
+# Standard box plots (error with missing)
+ggplot(players_2024,
+       aes(x = positions,
+           y = height_cm)) +
+  geom_boxplot()
+```
+
+\
+
+## Fix the dataset
+
+Here we will filter out "bad" values
+
+```{r}
+#| code-fold: false
+players <-  players_2024 %>% 
+  filter(positions != "Missing", height_cm > 100)
+```
+
+::: {.callout-note}
+NOTE: this is a specific filter command for our case,\
+it is common to check for na, blank etc etc.\
+Always check your dataset or adopt good practices when making dataset(csv).
+:::
+
+\
+
+# Distribution of height (and age) among different positions
+
+## Basic Box plot
+
+We first look at distribution of the height of players across different positions.
+
+```{r}
+# Boxplot with fixed dataset
+p1 <- ggplot(players,
+         aes(x = positions,
+             y = height_cm)) +
+    geom_boxplot()
+ggplotly(p1)
+```
+
+::: {.callout-tip}
+First Interactive Plot!!!\
+Interact with the plot to get IQR information about plots
+:::
+
+\
+
+### Violin Plot
+
+We *fancify* the basic box plot by surrounding the box plot with a violin plot
+
+```{r}
+# plot simple violin plot
+ggplot(players, 
+         aes(x = positions,
+             y = height_cm)) +
+    geom_violin(aes(fill=positions))+
+    geom_boxplot(width=0.1)
+```
+
+## Adding age as another variable
+
+What if we just added the age in as another box plot (layered box plot). While this will tell us the distribution as well, it is rather unappealing and the box plots are squeezed as a result of the unnecessarily long scales.
+
+```{r}
+# Include all 
+ggplot(players,
+       aes(x = positions,
+           y = height_cm)) +
+  geom_boxplot() +
+  geom_boxplot(
+    mapping = aes(y = age), data=players
+  ) +
+  scale_y_continuous(
+    "height in centimetres", 
+    sec.axis = sec_axis(~ . * 1.20, name = "age")
+  )
+```
+
+### Overlapping layers
+
+What if we added age points surrounding the box-plot to get the distribution of ages. It is rather messy because there is far too much (age) data for the same heights
+
+```{r}
+#Can i inform the audience about age? 
+ggplot(players, 
+       aes(x = positions,
+           y = height_cm)) +
+  geom_jitter(aes(colour=age))+
+  geom_boxplot(width=0.1)
+```
+
+::: {.callout-note title="Sidenote" collapse="true"}
+NOTE: I did attempt to add a distribution around the violin plot\
+with color gradient but it seems to more difficult that i thought\
+because the violin plot does not show data points but a distribution.\
+There are some stack overflow discussion on gradient colors in violin plots\
+but they are more complicated than a few hours debugging.
+:::
+
+\
+
+### (Somewhat) Informative layer plot
+
+Instead of plotting age as it is, let's get the average age per height.\
+Lets check if it is sensible to do so.
+
+```{r}
+#| code-fold: false
+#Collect for each position, the heights and find the average age per height 
+#for each positions
+height_age <- players %>% 
+  group_by(height_cm,positions) %>%  
+  arrange(desc(age)) %>% 
+  summarise(mean_age=mean(age),
+            n = n())
+```
+
+*........Collecting data........*
+
+\
+$\boldsymbol{Peak\text{ } at \text{ } data}$
+
+```{r}
+#| code-fold: false
+#| echo: false
+kable(head(height_age))
+```
+
+\
+$\boldsymbol{Summary \text{ } of \text{ } filtered \text{ } data}$
+
+```{r}
+#| code-fold: false
+#| echo: false
+kable(summary(height_age))
+```
+
+\
+
+$\boldsymbol{Interactive \text{ } Plot \text{ } of \text{ }
+mean\_age \text{ } against \text{ } height \text{ } with \text{ } count \text{ }
+of \text{ } players \text{ } given}$
+
+-   Red: more than 100 players
+-   Orange: more than 10 but less than 99
+-   Grey: less than 10
+-   Number labels: Number of players of the same height
+
+```{r}
+#feel of data
+p2 <- ggplot(height_age,
+          aes(x = height_cm,
+              y = mean_age)) +
+  geom_point()+
+  geom_point(data = subset(height_age, n >= 100), color = "red")+
+  geom_point(data = subset(height_age,  n>= 10 & n <= 99), color = "orange")+
+  geom_point(data = subset(height_age, n>=0 & n <=9), color = "grey")+
+  geom_text(aes(label = n), vjust = 1.2, size = 3)
+ggplotly(p2)
+```
+
+\
+We bring the violin plot (with the box plot within) back and\
+now add the mean age as coloured points\
+
+```{r}
+# Violin plot with box plot 
+ggplot(players, 
+       aes(x = positions,
+           y = height_cm)) +
+  geom_violin()+
+  geom_boxplot(width=0.2)+
+  geom_point(
+    data= height_age,
+    aes(x = positions, y = height_cm, colour =mean_age),
+    size = 4
+  ) + 
+  scale_colour_viridis_c(option = "plasma")
+```
+
+Area for improvement: Ideally, we can achieve a violin plot with colour gradient\
+of the mean age instead of coloured points.🙃
+
+## Heat map
+
+Let's drop the whole box or violin plots. What about a heat map?
+
+### Simple heat maps
+
+We could just plot a simple heatmap of height against age where positions\
+are shown in colours. However, positions are overlapping themselves.
+
+```{r}
+# Instead of a violin plot and keeping positions as "1 axis", 
+# what about a heatmap
+#Ugly heatmap
+ggplot(players,
+       aes(x = age,
+           y = height_cm)) + 
+  geom_tile(aes(fill=positions),alpha=0.5)
+```
+
+Instead, we separate out the heatmaps into the individual positions. While this is more informative, the colours struggle to exactly show the distribution.
+
+```{r}
+#Separated but ugly heatmap (no need show)
+ggplot(players, 
+          aes(x = age, 
+              y = height_cm)) + 
+  geom_tile(aes(fill=positions),alpha=0.7) + 
+  facet_wrap(vars(positions))
+```
+
+### More informative heatmap
+
+Since positions is already relayed by the separation of the heatmaps, we can\
+instead keep the same colour scheme for the distribution,\
+We then get this more informative map of distribution of height against age\
+
+```{r}
+# Decent heat map that shows concentration of points
+ggplot(players, aes(x = age, y = height_cm)) +
+  geom_bin2d(aes(fill = after_stat(count)), binwidth = c(1, 2)) +  # 1-year x 2-cm bins
+  facet_wrap(vars(positions))+
+  scale_fill_viridis_c(trans = "sqrt", name = "Count")
+```
+
+#### Visually appealing heatmap
+
+Hate the "0" data around the original data?\
+Fill up the 0s around the original data and get yourselves a more appealing\
+heatmap 🤗
+
+```{r}
+#| code-fold: false
+#| echo: false
+
+# Visually appealing heatmap
+bin_a <- 1
+bin_h <- 2
+age_bins    <- seq(15, 42, by = bin_a)        
+height_bins <- seq(160, 206, by = bin_h)
+
+heat <- players %>%
+  filter(between(age, min(age_bins), max(age_bins) + bin_a),
+         between(height_cm, min(height_bins), max(height_bins) + bin_h)) %>%
+  mutate(
+    age_bin    = floor(age / bin_a) * bin_a,
+    height_bin = floor(height_cm / bin_h) * bin_h
+  ) %>%
+  count(positions, age_bin, height_bin, name = "n") %>%
+  complete(
+    positions,
+    age_bin    = age_bins,
+    height_bin = height_bins,
+    fill = list(n = 0)
+  )
+
+lo <- 1                  # treat 0 as background
+hi <- max(heat$n, na.rm=TRUE)
+ggplot(heat, aes(age_bin, height_bin, fill = n)) +
+  geom_tile() +
+  facet_wrap(~positions, ncol = 2) +
+  scale_fill_viridis_c(
+    trans = "sqrt",
+    name  = "Count",
+    limits = c(lo, hi),
+    oob = scales::squish
+  ) +
+  scale_x_continuous(limits = c(15, 42), expand = c(0, 0)) +
+  scale_y_continuous(limits = c(160, 206), expand = c(0, 0)) +
+  theme_classic() +
+  theme(panel.grid = element_blank())
+```
+
+# Distribution of names with special characters across countries
+
+We played around with positions, age, height. \
+What about other data in the dataset? \
+Could we do something with name and nationality?
+
+## World map
+
+Some names of our players have special characters outside of the 26 characters (A-Z)\
+What if we looked at the distribution of players that have special characters\
+in their names?
+
+```{r}
+#| code-fold: false
+players_non_english <- players %>%
+    filter(grepl("[^A-Za-z '\\-]", name))
+```
+
+*........Extracting data........*
+
+\
+$\boldsymbol{Peak\text{ } at \text{ } data}$
+
+```{r}
+#| code-fold: false
+#| echo: false
+#Show the data
+kable(head(players_non_english,n=5))
+```
+\
+
+*........Collecting data as needed........*
+
+```{r}
+#| code-fold: false
+#Taken from exemplar 
+players_cty <- players_non_english %>% 
+  mutate(nationality = case_match(nationality,
+                                  "England" ~ "United Kingdom",
+                                  "Türkiye" ~ "Turkey",
+                                  "Cote d'Ivoire" ~ "Ivory Coast",
+                                  "Northern Ireland" ~ "United Kingdom",
+                                  "Wales" ~ "United Kingdom",
+                                  .default = nationality))
+
+# Make the country count
+countries <- players_cty %>%
+  group_by(nationality) %>%
+  summarise(n = n()) %>% 
+  arrange(desc(n))
+```
+
+::: {.callout-important title="CREDIT" collapse="true"}
+This part of the work (plotting world map) was adapted from exemplar for our 
+data
+:::
+
+
+\
+$\boldsymbol{Peak\text{ } at \text{ } data}$
+
+```{r}
+#| code-fold: false
+#| echo: false
+#Show the data
+kable(head(countries,n=20))
+```
+
+\
+$\boldsymbol{World\text{ } map \text{ } distribution}$
+
+```{r}
+# World map plots
+countries %>% 
+  plot_ly(type = "choropleth", 
+          locations = countries$nationality, 
+          locationmode = "country names", 
+          z = countries$n) %>%
+  colorbar(title = "# of Players")
+```

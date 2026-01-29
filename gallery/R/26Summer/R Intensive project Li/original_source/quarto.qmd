@@ -1,0 +1,43 @@
+---
+title: "sharing"
+author: "Li"
+format: html
+editor: visual
+---
+
+I'am using ...
+
+## Importing the data
+
+<!-- ctrl alt I for new code chunks -->
+
+Let's **import** the data:
+
+```{r}
+players <- read.csv("data/Players2024.csv")
+
+```
+
+```{r}
+#| eval: false
+# this means this r code won't run
+players <- read.csv("../data/Players2024.csv")
+```
+
+## Prepare the data
+
+```{r}
+library(dplyr)
+player <- players |>
+  filter(positions != "Missing", height_cm > 100)
+head(players)
+```
+
+## Plot the data
+
+```{r}
+#| echo: false
+library(ggplot2)
+ggplot(players, aes(x = positions, y = height_cm)) + 
+  geom_boxplot()
+```
