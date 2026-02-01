@@ -25,17 +25,31 @@ In this workshop, we will learn about:
 -   WMS etc
 
 
+The two main types of Coordinate Reference Systems (CRS) that you will come across are GCS and PCS.
 
-## What are Projections?
+-   **GCS - Geographic Coordinate Systems**: They tell you *where* something is on earth. They are spherical models and are usually measured in angular degrees along lines of latitude and longitude. The earth is a complex changing shape (for example plate tectonics), so there are different GCSs for different places.
 
-This content is currently in Vector and in Field Work.
+**EPSG:4326 – WGS 84** (World Geodetic System 1984) is the most common Geographic Coordinate System that you will come across, it's used as the default by most GPS devices, and works fairly well everywhere in the world. As a GCS it will give you locations in degrees of latitude and longitude like this: -27.497980, 153.014721
+
+**EPSG:7844 – GDA 2020** (Geocentric Datum of Australia 2020) is Australia's national coordinate system, and provides more accurate positioning, as it takes into account more localised factors rather than being generically suitable for the whole world.
+
+![Earth cutaway showing latitude and longitude](https://cdn.britannica.com/04/64904-050-D2054D06/cutaway-drawing-latitude-place-longitude-sizes-angles.jpg)
+[Encyclopædia Britannica](https://www.britannica.com/science/latitude#/media/1/331993/109269)
 
 
-## Projections
+-   **PCS - Projected Coordinate Systems**: They tell you *how* to make that map flat. They allow you to measure in metres rather than angular degrees. A PCS has an underlying GCS, as it needs a spherical model of the earth to then distort and make it flat. There are many ways to do this, and many different projections exist, they even talk about [projections on the West Wing](https://www.facebook.com/watch/?v=2834189703494594).
 
-### What are projections?
+To turn the geoid/spheroid shape of the Earth into a flat map, we need to squish, stretch, and distort the map to make it flat. The mathematical equations used to do this are what we're talking about when we say "**projections**". 
 
-To turn the geoid/spheroid shape of the Earth into a flat map, we need to squish, stretch, and distort the map to make it flat. The mathematical equations used to do this are what we're talking about when we say "**projections**". Imagine it like a soccer ball, if we have to squash it to make it flat, it's not going to look nice and square like our maps do. So we pull and stretch it to make it flat and rectangular. There will always be some kind of distortion when we stretch our map like this. This is why the Mercator Projection makes Greenland look large, and Africa look smaller than it really is.
+Imagine it like a soccer ball, if we have to squash it to make it flat, it's not going to look nice and square like our maps do. So we pull and stretch it to make it flat and rectangular. There will always be some kind of distortion when we stretch our map like this, so the projection you choose depends on what compromises you are happy to make, where you are, and what you're doing. Your projection choice will affect Area, Shape, Direction, Bearing, and Distance. For example, the Mercator Projection prioritises bearing for sea navigation, but greatly distorts area. This is why it makes Greenland look large, and Africa look smaller than it really is.
+
+![Map Projections](https://raw.githubusercontent.com/uqlibrary/technology-training-assets/refs/heads/master/QGIS/images/projections.png)
+
+
+**EPSG:3857 – WGS 84 / Psuedo-Mercator** is the most common Projected Coordinate System that you will come across, it's used as the default by platforms like Google Maps. As you might guess it uses the WGS84 GCS with a form of the Mercator projection.
+
+**EPSG:7844 – GDA 2020** (Geocentric Datum of Australia 2020) is Australia's national coordinate system, and provides more accurate positioning, as it takes into account more localised factors rather than being generically suitable for the whole world.
+
 
 ### Why are projections important to us?
 
@@ -259,6 +273,13 @@ The new **Buffered** layer is about 1m smaller!
 This is because **EPSG:3857 - WGS84 / Pseudo-Mercator** is a global projection that tries to preserve shapes. Although the units are in metres, the scaling factor changes as you move away from the equator to account for the curvature of the Earth.
 
 It can still be useful to use this projection to take points. But you have to be careful when you're making measurements and calculations, for those, a local projection is usually better.
+
+
+
+
+
+
+
 
 
 
