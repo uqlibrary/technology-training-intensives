@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-01-29">
+<meta name="dcterms.date" content="2026-02-01">
 
 <title>Data Sources and Projections – UQ Library Training Intensives</title>
 <style>
@@ -178,11 +178,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#projections" id="toc-projections" class="nav-link" data-scroll-target="#projections">Projections</a></li>
   <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources">Data Sources</a></li>
-  </ul></li>
-  <li><a href="#what-are-projections" id="toc-what-are-projections" class="nav-link" data-scroll-target="#what-are-projections">What are Projections?</a></li>
-  <li><a href="#projections-1" id="toc-projections-1" class="nav-link" data-scroll-target="#projections-1">Projections</a>
-  <ul class="collapse">
-  <li><a href="#what-are-projections-1" id="toc-what-are-projections-1" class="nav-link" data-scroll-target="#what-are-projections-1">What are projections?</a></li>
   <li><a href="#why-are-projections-important-to-us" id="toc-why-are-projections-important-to-us" class="nav-link" data-scroll-target="#why-are-projections-important-to-us">Why are projections important to us?</a></li>
   </ul></li>
   <li><a href="#set-the-project-projection" id="toc-set-the-project-projection" class="nav-link" data-scroll-target="#set-the-project-projection">Set the Project Projection</a>
@@ -253,7 +248,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 29, 2026</p>
+      <p class="date">February 1, 2026</p>
     </div>
   </div>
   
@@ -286,17 +281,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Corporate (ESRI, etc)</li>
 <li>WMS etc</li>
 </ul>
-</section>
-</section>
-<section id="what-are-projections" class="level2">
-<h2 class="anchored" data-anchor-id="what-are-projections">What are Projections?</h2>
-<p>This content is currently in Vector and in Field Work.</p>
-</section>
-<section id="projections-1" class="level2">
-<h2 class="anchored" data-anchor-id="projections-1">Projections</h2>
-<section id="what-are-projections-1" class="level3">
-<h3 class="anchored" data-anchor-id="what-are-projections-1">What are projections?</h3>
-<p>To turn the geoid/spheroid shape of the Earth into a flat map, we need to squish, stretch, and distort the map to make it flat. The mathematical equations used to do this are what we’re talking about when we say “<strong>projections</strong>”. Imagine it like a soccer ball, if we have to squash it to make it flat, it’s not going to look nice and square like our maps do. So we pull and stretch it to make it flat and rectangular. There will always be some kind of distortion when we stretch our map like this. This is why the Mercator Projection makes Greenland look large, and Africa look smaller than it really is.</p>
+<p>The two main types of Coordinate Reference Systems (CRS) that you will come across are GCS and PCS.</p>
+<ul>
+<li><strong>GCS - Geographic Coordinate Systems</strong>: They tell you <em>where</em> something is on earth. They are spherical models and are usually measured in angular degrees along lines of latitude and longitude. The earth is a complex changing shape (for example plate tectonics), so there are different GCSs for different places.</li>
+</ul>
+<p><strong>EPSG:4326 – WGS 84</strong> (World Geodetic System 1984) is the most common Geographic Coordinate System that you will come across, it’s used as the default by most GPS devices, and works fairly well everywhere in the world. As a GCS it will give you locations in degrees of latitude and longitude like this: -27.497980, 153.014721</p>
+<p><strong>EPSG:7844 – GDA 2020</strong> (Geocentric Datum of Australia 2020) is Australia’s national coordinate system, and provides more accurate positioning, as it takes into account more localised factors rather than being generically suitable for the whole world.</p>
+<p><img src="https://cdn.britannica.com/04/64904-050-D2054D06/cutaway-drawing-latitude-place-longitude-sizes-angles.jpg" class="img-fluid" alt="Earth cutaway showing latitude and longitude"> <a href="https://www.britannica.com/science/latitude#/media/1/331993/109269">Encyclopædia Britannica</a></p>
+<ul>
+<li><strong>PCS - Projected Coordinate Systems</strong>: They tell you <em>how</em> to make that map flat. They allow you to measure in metres rather than angular degrees. A PCS has an underlying GCS, as it needs a spherical model of the earth to then distort and make it flat. There are many ways to do this, and many different projections exist, they even talk about <a href="https://www.facebook.com/watch/?v=2834189703494594">projections on the West Wing</a>.</li>
+</ul>
+<p>To turn the geoid/spheroid shape of the Earth into a flat map, we need to squish, stretch, and distort the map to make it flat. The mathematical equations used to do this are what we’re talking about when we say “<strong>projections</strong>”.</p>
+<p>Imagine it like a soccer ball, if we have to squash it to make it flat, it’s not going to look nice and square like our maps do. So we pull and stretch it to make it flat and rectangular. There will always be some kind of distortion when we stretch our map like this, so the projection you choose depends on what compromises you are happy to make, where you are, and what you’re doing. Your projection choice will affect Area, Shape, Direction, Bearing, and Distance. For example, the Mercator Projection prioritises bearing for sea navigation, but greatly distorts area. This is why it makes Greenland look large, and Africa look smaller than it really is.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://raw.githubusercontent.com/uqlibrary/technology-training-assets/refs/heads/master/QGIS/images/projections.png" class="img-fluid figure-img"></p>
+<figcaption>Map Projections</figcaption>
+</figure>
+</div>
+<p><strong>EPSG:3857 – WGS 84 / Psuedo-Mercator</strong> is the most common Projected Coordinate System that you will come across, it’s used as the default by platforms like Google Maps. As you might guess it uses the WGS84 GCS with a form of the Mercator projection.</p>
+<p><strong>EPSG:7844 – GDA 2020</strong> (Geocentric Datum of Australia 2020) is Australia’s national coordinate system, and provides more accurate positioning, as it takes into account more localised factors rather than being generically suitable for the whole world.</p>
 </section>
 <section id="why-are-projections-important-to-us" class="level3">
 <h3 class="anchored" data-anchor-id="why-are-projections-important-to-us">Why are projections important to us?</h3>
