@@ -53,7 +53,7 @@ You should have:
 
 - From earlier:
   - Project Area
-  - Access Track
+  - Proposed Access Track
   - Turbine Locations
   - BVG Data
 - Just imported:
@@ -217,7 +217,7 @@ You now know how to digitise a point, but the same steps apply for creating a po
 
 The **Vertex Tool** ![Vertex Tool Button](https://docs.qgis.org/3.40/en/_images/mActionVertexToolActiveLayer.png) will allow you to move the location of points (or corners of polygons) that you have already created (you also need to click the **Toggle Editing** button for this tool)
 
--   Select the new **Access Track** layer and then click the **Toggle Editing** pencil ![Toggle Editing Button](https://docs.qgis.org/3.40/en/_images/mActionToggleEditing.png) from the top menu (or go to `Layer > Toggle Edititng`
+-   Select the **Proposed Access Track** layer and then click the **Toggle Editing** pencil ![Toggle Editing Button](https://docs.qgis.org/3.40/en/_images/mActionToggleEditing.png) from the top menu (or go to `Layer > Toggle Edititng`
 
 -   Click the **Vertex Tool** ![Vertex Tool Button](https://docs.qgis.org/3.40/en/_images/mActionVertexToolActiveLayer.png) to start editing an existing line
 

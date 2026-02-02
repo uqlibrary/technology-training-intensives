@@ -137,7 +137,7 @@ If you've already loaded in the OpenStreetMap Basemap, then you should get the p
 So where is the data?
 If you want to zoom in to your data, you don't have to use your mouse, you can use the `Zoom Full` button, or right-click on your **Project Area** layer and select `Zoom to Layer(s)`.
 
-You can also use the `Project Home` directory in the browser to add another layer: try loading the "Project_Area.gpkg" and "Access_Track.gpkg" GeoPackages (format .gpkg), by drag-and-dropping or double-clicking.
+You can also use the `Project Home` directory in the browser to add another layer: try loading the "Project_Area.gpkg" and "Proposed_Access_Track.gpkg" GeoPackages (format .gpkg), by drag-and-dropping or double-clicking.
 
 All layers are visible in the `Layers` panel, with the most recently loaded by default at the top. Layers are rendered as they are listed, which means the top ones will cover the bottom ones. Make sure you optimise the order for your map!
   
@@ -238,7 +238,7 @@ Our vector layers are assigned a random colour when we load them. We now want to
 
 Double-click on the **Project Area** layer to open the `Layer Properties` click the ![](https://docs.qgis.org/3.40/en/_images/symbology.png) `Symbology` tab, and use `Color` to change to a better colour. Click `Apply`. Perhaps we'd be better off with no fill, and work more with the border by clicking on `Simple fill`. Change the `Fill Style` to `No Brush`. We can now go into more details about the **Stroke** color, width and style.
 
-We can make more complex fills by adding an extra "symbol layer", and layering different kinds of fill styles. Try this with both polygons and lines. For example, style the Access Tracks so they look like roads (the `topo road` preset is a good start).
+We can make more complex fills by adding an extra "symbol layer", and layering different kinds of fill styles. Try this with both polygons and lines. For example, style the Proposed Access Track so they look like roads (the `topo road` preset is a good start).
 
 Now try to change the point symbology of our **EH Turbines** layer: we don't have to stick to `Simple marker`. Try for example the different icons available with `Symbol layer type > SVG marker` or `Font marker` selected.
 
