@@ -30,7 +30,7 @@ A Digital Elevation Model (DEM) is a common example of **raster data** which sho
 ## Aims for this session
 In the last session we found that a number of residential areas will likely receive dust from the construction. One way to reduce dust is to regularly spray water on the roads, and wash down the trucks. However you now need to deal with the water runoff from that creates. We can use watershed and basin analysis on a DEM to look at where the water will flow.
 
-We can also use our DEM to calculate how for away the wind turbines will be visible
+We can also use similar data to calculate how for away the wind turbines will be visible
 
 
 ## Install the SAGA Plugin
@@ -194,37 +194,26 @@ Let's link these two together.
 
 ## Viewshed
 
-If you want to know what can be seen from a certain point in a landscape, or where in the landscape can see a certain point, you can use a DEM to perform a Viewshed Analysis.
+If you want to know what can be seen from a certain point in a landscape, or where in the landscape can see a certain point, you can use a DEM to perform a Viewshed Analysis. To be even more accurate, we can use a DSM instead - a Digital Surface Model. It's very much like a DEM, but where a DEM has had the buildings and trees digitally removed, the DSM retains the heights of buildings and trees. This is useful for a viewshed, as it means that tall buildings might block the view in some areas.
 
 In our case, we may be interested to know how far away people can see the wind turbines.
 
 Open the Processing Toolbox ![Processing Toolbox](https://docs.qgis.org/3.40/en/_images/processingAlgorithm.png) and search for the GDAL tool called "**Viewshed**".
 
+Normally this tool is used from the perspective of what an Observer can see around them, but we can reverse this and have the wind turbine as the Observer. If they can see you, you can see them.
+
 -   **Input Layer**: Choose your **Bris_DEM_5m_reproj** layer
 -   Click the three dots next to **Observer location** to select a point on the map
--   **Observer height, DEM units**: 1.6 (the average human eye height is around 1.6m, choose a height you think might be appropriate)
--   **Target height, DEM units**: 1 (this means that the points around the observer will be obscured by any surface that is higher than 1m. If you want to know what *ground* your observer will see, choose something closer to 0)
--   **Maximum distance from observer to compute visibility**: 5000 (5km is the distance you can see on flat ground due to the curvature of the earth, this would change if you were higher up, for which you can find [calculators and a formula](https://www.omnicalculator.com/physics/distance-to-horizon))
+-   **Observer height, DEM units**: 150 (this is the height of the centre of these wind turbines, it may be approrpiate to take into account the rotor length, but we're keeping this simple)
+-   **Target height, DEM units**: 1.6 (the average human eye height is around 1.6m, choose a height you think might be appropriate)
+-   **Maximum distance from observer to compute visibility**: 15000 (5km is the distance you can see on flat ground due to the curvature of the earth, this changes as our "Observer" is much higher up, you can find [calculators and a formula](https://www.omnicalculator.com/physics/distance-to-horizon) for this maximum distance. While you could theoretically still see the turbines from greater distances, their visual detectability begins to decrease).
 
-This will produce a black and white raster showing what can be seen, and what can't. Go to the Layer **Styling Menu**, and change it to **Singleband Pseudocolor**, change the **Mode** to **Equal Interval**, and set the **Classes** to **2**. Change one of the Colors to transparent to highlight either what can be see, or what cannot.
-
-As an extra feature. You can do the reverse analysis with a Viewshed. That is, you could use this to know what landmarks are visible in a landscape. Set the Observer Height to that of a building or tree in the landscape, and the Target Height to be that of people in the landscape, and you'll know where it can be seen from.
+This will produce a black and white raster showing what can be seen, and what can't. Go to the Layer **Styling Menu**, and change it to **Singleband Pseudocolor**, change the **Mode** to **Equal Interval**, and set the **Classes** to **2**. Change one of the Colors to transparent to highlight either where the turbines can be seen, or where they cannot.
 
 If you want to get more sophisticated with your Viewshed analyses, there is, of course, a plugin called **Visibility Analysis** which will allow you to use one or multiple points as observers, take in account of the Earth's curvature, see what vector points can see other vector points, and more.
 
 
 
-## Saving your project
+Don't forget to save  your project
 
-Notice the little icon next to some of your layers? We previously created "temporary scratch layers". This is useful if you keep processing data and creating new layers that you want to discard afterwards. In our case, we do want to keep the "cities" and "rivers" layers, so we need to save them to a file. If we try to close QGIS with scratch layers loaded, it will give you a warning that they will be lost in the process.
-
-You can click on the scratch layer icon to save the file. In the dialog, we can give the layers a `File name` (in our project's home directory) and click OK.
-
-You can save your project with the floppy disk icon, or using <kbd>Ctrl</kbd> + <kbd>S</kbd>, and the project should be visible in a list as soon as you open QGIS again.
-
-
-
-## Feedback
-
-Please visit our website to [provide feedback](https://web.library.uq.edu.au/study-and-learning-support/training-and-workshops/software-training-resources) and find upcoming training courses we have on offer.
 
