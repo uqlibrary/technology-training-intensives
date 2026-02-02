@@ -8,6 +8,8 @@ date: today
 
 In this workshop, we will learn about:
 
+-   Rasters
+-   Plugins
 -   DEM
 -   Terrain Analysis
 -   Contours
@@ -15,57 +17,146 @@ In this workshop, we will learn about:
 
 
 ## What is Raster Data?
-A Digital Elevation Model (DEM) is a common example of **raster data**, i.e. grid data that contains a value in each cell (a bit like the pixels in a coloured picture).
+
+A good example of a raster is an image file (like a jpg). If you zoom in on that image, you will see that it is just a grid of coloured pixels. Each pixel is just a cell with a number in it which tells the computer what colour it should be. The cell size might be small (high resolution), or large (low resolution).
+
+A spatial raster is basically just a grid of cells like an image, but the values in those cells might represent the colours in an aerial photograph, or population density in that area, or the elevation. The main distinction of a *spatial* raster is that the grid is attached to a single coordinate point (usually in the top left corner), and the rest of the grid is laid on the map from there. The cells size of a spatial raster represents the distance each cell covers (for example they might be 1x1m or 10x10km).
+
+Rasters aren't as precise as vector data, as they are an approximation of the values in an area. For example every millimetre of a 1x1m cell might not have the same elevation, but the cell value is a helpful summary of the elevation in that area. This ability to neatly summarise and approximate data means that rasters are a very efficient way of showing continuous data across a large area.
+
+A Digital Elevation Model (DEM) is a common example of **raster data** which shows the elevation of the land.
+
+
+## Aims for this session
+In the last session we found that a number of residential areas will likely receive dust from the construction. One way to reduce dust is to regularly spray water on the roads, and wash down the trucks. However you now need to deal with the water runoff from that creates. We can use watershed and basin analysis on a DEM to look at where the water will flow.
+
+We can also use our DEM to calculate how for away the wind turbines will be visible
+
 
 ## Install the SAGA Plugin
 
 We need to install a plugin so we can access certain geoprocessing tools (the built-in SAGA provider has been [removed in version 3.30](https://changelog.qgis.org/en/qgis/version/3.30/#processing-drop-unmainted-saga-provider-from-qgis-)). Go to `Plugins > Manage and Install Plugins...` and `Search...` for "**SAGA**". From the list on options choose **Processing Saga NextGen Provider** then in the bottom right, click `Install Plugin`. You might also need to install SAGA (version 9 or above) on your computer, if not already available.
 
-## Gather some data
+There are many other plugins from the QGIS Community that you can explore to enhance QGIS, but we will stick with this for now.
 
-Use the download button to download each file into your project directory. You will need a login for that, which is free but can take a bit of time. You can instead **download the two raster files** as an archive from our GitHub repository [here](https://github.com/uqlibrary/technology-training-assets/raw/master/QGIS/raster/QGIS_Raster_Data.zip).
+## Load in our Raster data
 
-## Merge the two DEM layers
+-   Bris_DEM_5m (From Geoscience Australia through their [Elvis platform](https://elevation.fsdf.org.au/))
 
-If you downloaded the archive, make sure you place it into the project directory so you can find it in "Project Home" and easily **load the raster files**: from the Browser panel, we can go into the data archive and drag and drop each `.tif` file into the Layers panel.
-
-See the visible line between the two raster tiles? That is because the two separate raster files have different maximum and minimum values, so use different shades for different elevations. We have to **merge** them to make sure they use the same colour scale.
-
-To do that, we use the `Raster > Miscellaneous > Merge...` tool to create one single layer from them.
-
--   First, select both DEM layers for the "Input layers"
--   Make sure the option "Place each input file into a separate band" is off, as we want to end up with one single-band layer
--   We can save the output on disk instead of only creating a temporary file (for example, name it `SRTM_DEM_merged` and save it inside your project directory)
--   Click "Run"
-
-> You will need to have GDAL installed for this to work.
-
-We can now remove the two original raster files.
 
 ## Reproject the DEM
 
-In the merged layer's Properties (`Right click > Properties... > Source`), we can see that the Coordinate Reference System (CRS) in use is [EPSG:4326 - WGS 84](https://epsg.io/4326). It is the one that QGIS detected when opening the file. This Geographic Reference System is good for global data, but if we want to focus on a more precise area around Brisbane/Meanjin, and want our analyses to be accurate, we should reproject the data to a local Projected Reference System (PRS). We will also need a projection that uses Metres, rather than Degrees (as EPSG:4326 does). A good PRS for around Brisbane/Meanjin is "[EPSG:7856 - GDA2020 / MGA zone 56](https://epsg.io/7856)". We can't change that here, we instead will need to use the **Warp (Reproject)** tool.
+In the `Bris_DEM_5m` layer's Properties (`Right click > Properties... > Source`), we can see that the Coordinate Reference System (CRS) in use is [EPSG:7844 - GDA2020](https://epsg.io/7844). It is the one that QGIS detected when opening the file. While this is good for Australian data, we can't do slope and terrain measurements and analyses while our raster is measuring in degrees, we need it projected to use metres. A good PCS for around Brisbane/Meanjin is "[EPSG:7856 - GDA2020 / MGA zone 56](https://epsg.io/7856)". We can't change that here, we instead will need to use the **Warp (Reproject)** tool.
+
 
 -   Use the tool `Raster > Projections > Warp (Reproject)`
--   use the merged layer as an input
+-   Make sure `Input layer` is set as `Bris_DEM_5m`.
 -   pick "EPSG:7856 - GDA2020 / MGA zone 56" as the Target CRS
     -   you may need to click the Select CRS button ![image](https://user-images.githubusercontent.com/67612228/197653760-a9df4671-5852-499c-a085-3d995489599a.png)
     -   untick No CRS
     -   use the filter to search for "7856"
     -   You should be able to find "EPSG:7856 - GDA2020 / MGA zone 56" under **Predefined Coordinate Reference Systems**
+-   Scroll down to click the three dots `...` next to the **Reprojected** field, navigate to the project's **processed** data folder, and type in **Bris_DEM_5m_reproj** and click `Save`
+    
+    
 
 > If you want to learn more about the static datum GDA2020 (for "Geocentric Datum of Australia 2020"), an upgrade from the previous, less precise GDA94, head to the [ICSM website](https://www.icsm.gov.au/gda2020).
 
+
+## Risks of Reprojecting Rasters
+
+**Important note**: it is risky reprojecting **Raster** data, as this permanently changes the shape and structure of the underlying data.
+
+Changing **vector data** from one Projection to another is straightforward, as you are just converting each point's individual coordinates one-by-one. It's just a numerical conversion. You can keep reprojecting vector data without issue.
+
+When you reproject a **raster**, it will be in roughly the right location as the coordinate point in the top left corner will convert without issue. But because the raster is an interconnected grid, it will get stretched by the compromises made by the new projection.
+As we learned previously, the Mercator projection prioritises angles and direction, so converting to a Mercator projection might make your grid squares more rectangular. A projection like Albers Equal Area will prioritise area while distorting angles and shapes, so your raster might look very strange.
+
+To make the data fit in this new shape, the reprojection process will use something called resampling. There are different resampling methods, but they basically overlap the old shape with the new one to determine what data fits in the new cells.
+
+### So what do you do?
+
+Only reproject rasters when you must.
+
+For example, if you are doing terrain analysis (such as slope), distance calculations, or spatial modeling that requires accurate measurement, you must reproject to a suitable projected coordinate system (not in degrees).
+
+If you are analysing a raster with vectors, but your raster is in a different projection to your vectors, then reproject your vectors.
+
+There are other exceptions, but if you're unsure, check first.
+
+
+## Analyse Watersheds and Basins
+
+Now that our raster is in a projected coordinate system, we can start doing measurements. 
+
+Using the `Channel network and drainage basins` tool, we can create layers with **channels, drainage basins, and a watershed** raster that shows where water would flow according to the DEM.
+
+### Fill Sinks
+
+However before we can do watershed analyses we need to fix one more thing. A common problem with DEMs is that they have sinks and spikes that will make further analyses more difficult. This will mean the analysis is unable to best find where the water would flow. To resolve this, we need to use another tool to smooth out our raster before using the `Channel network and drainage basins` tool.
+
+We can use the "Fill sinks (Wang & Liu)" tool to **fill the sinks** in our clipped DEM.
+
+-   Open the Processing Toolbox by clicking the cog icon from the top menu ![Processing Toolbox](https://docs.qgis.org/3.40/en/_images/processingAlgorithm.png)
+-   In the **Processing Toolbox** window `Search` for "Fill sinks (Wang & Liu)"
+-   Double-click on the **Fill sinks (Wang & Liu)** option
+-   For`Input layer` choose **Bris_DEM_5m_reproj**
+-   We might have to play with the "Minimum slope" value. A value of 0.01 degrees should work well.
+-   As an output, we only need to tick the "Filled DEM" (first one in the list), which we can also save to file
+-   Click `Run`
+
+
+## Channel network and drainage basin
+
+Now we can use the `Channel network and drainage basins` tool to calculate the **watershed, flow direction, channels and drainage basins**.
+
+-   Open the Processing Toolbox ![Processing Toolbox](https://docs.qgis.org/3.40/en/_images/processingAlgorithm.png)
+-   `Search` for "Channel network and drainage basin"
+-   Double-click on the **Channel network and drainage basin** option
+-   Make sure `Input layer` is the **Filled DEM** option.
+-   We might have to change the threshold to a higher one if the output includes too many small basins and channels. 
+-   You will also need to tick the boxes of what you want it to output (see below), we will choose `Channel`, `Junctions`, and `Drainage Basins`.
+-   Click `Run`
+
+Strahler Order: A [Strahler Order](https://en.wikipedia.org/wiki/Strahler_number) raster that is used to classify stream hierarchy
+Channels: Vector lines showing river paths with Strahler Order values.
+Junctions: Vector points showing where channels meet.
+Drainage Basins: Vector polygons delineating the areas that drain to the same point.
+Drainage Basins [optional]: A raster grid version of the other Drainage Basins.
+Flow Direction: A raster grid representing the direction of flow for each cell.
+Flow Connectivity: A raster showing how well water could flow through sections of your map.
+
+These are some examples of **creating vector data from raster data**!
+
+We can now play with the **symbology** for those elements. For example:
+
+-   Try using different colours for each basin, by classifying by ID, or remove the fill (`Simple fill > Fill Style > No Brush`) so you can see the colours of the elevation colours underneath. You can also make the borders more obvious by changing the width of the stroke.
+
+-   Change the colour of the channels.
+    -   Change the symbol from "Single Symbol" to Graduated.
+    -   Set the `Value` to "Order"
+    -   Choose an appropriate colour ramp
+    -   Change the `Mode` down the bottom of the window to "Equal Interval"
+    -   Click Apply
+-   You can also further differentiate minor channels from major ones by using a "Data defined override" for the Width value:
+    -   Click on the bar next to `Symbol` ![image](https://user-images.githubusercontent.com/67612228/197659925-41753cd0-2fc7-4534-b6ec-7ddc4775d721.png)
+    -   Click on the "Data defined override" icon ![image](https://user-images.githubusercontent.com/67612228/197659891-5474b893-2de3-47a4-95f5-9991b394ecf3.png) next to the Width field
+    -   Use the "Assistant"
+    -   "Source" needs to be the column "ORDER" (which corresponds to the Strahler order)
+    -   Click the double-arrow icon to "Fetch value range from layer"
+    -   Change the "Size from" and "to" values to suitable values
+    
+    
+
 ## Clip the DEM
 
-We now use `Raster > Extraction > Clip Raster by Extent` to **focus on a smaller area of interest**.
+If we want to focus on the terrain inside our Project Area, we can use `Raster > Extraction > Clip Raster by Mask Layer`.
 
-Make sure the DEM is selected in the Input layer, and set the clip extent with `... > Draw on Canvas`. We want to select an area that is inland, and contains both some of the D'Aguilar National Park, and a section of the Brisbane river (you can untick the DEM in the Layers panel to reveal the basemap).
+-   Make sure the `Bris_DEM_5m` is selected in the `Input layer`
+-   Set `Mask Layer` to `Project Area`
+-   Scroll to the bottom and click the three dots `...` next to the **Clipped (mask)** field, navigate to the project's **processed** data folder, and type in **EH_DEM_5m** and click `Save`
+-   Click `Run`
 
-If you don't save to file directly, remember two things:
-
--   **rename** your clipped layer so it is more descriptive than the generic "Clipped (extent)"
--   you are currently using a temporary, **scratch layer**. It will be discarded if you exit QGIS. It is very useful for temporary intermediate files, but it can be safer to save copies of your intermediate data while you work, just in case! You can right-click on the layer and use `Export > Save As..`
 
 ## Change the symbology
 
@@ -81,13 +172,17 @@ We can style our DEM with a **terrain colour palette**:
 
 Adding a **hillshade** makes your visualisation of elevation more readable and visually pleasing by giving an artificial lighting look to your map.
 
--   Right-click on the DEM layer and "Duplicate layer"
--   Rename the duplicated layer "hillshade"
--   Open the Symbology menu for the hillshade layer
--   Change the "Render type" to "Hillshade"
--   The defaults should work well, but you can play with the settings, like the Altitude and the Azimuth
--   Make sure you apply some transparency to the pseudocolour DEM, and place the hillshade layer underneath (in `Properties > Symbology > Transparency`)
--   Down the bottom of the window under **Resampling** change the `Zoomed: in` and `out` from "Nearest Neighbour" to "Cubic" (this will remove some of the grid-like patterns you might see in your Hillshade layer otherwise)
+
+-   Go to `Raster > Analysis > Hillshade...`
+-   Make sure the `5m_DEM` is selected in the `Input layer`
+-   You could change the lighting direction, angle and height exageration, but the defaults are fine.
+-   Scroll to the bottom and click the three dots `...` next to the **Clipped (mask)** field, navigate to the project's **processed** data folder, and type in **EH_DEM_5m_Hillshade** and click `Save`
+
+You can get the best of both by adding transparency to the DEM or the Hillshade.
+
+-   Make sure the Hillshade is the above the DEM in the `Layers` panel.
+-   Right click on you Hillshade layer, select `Properties` and then the `Transparency` tab
+-   The best transparency will depend on your map and elevation, for this map, set the hillshade transparency to **5%**.
 
 Let's link these two together.
 
@@ -96,69 +191,16 @@ Let's link these two together.
 -   Call it DEM
 -   Make sure the DEM is above the Hillshade within this group
 
-> Another method is to use the hillshade tool instead of the symbology: `Raster > Analysis > Hillshade...`.
-
-## Create a watershed layer
-
-Using the Strahler tool, we can create a **watershed** raster that shows where water would flow according to the DEM.
-
-Open the Processing Toolbox (cog icon) and try using the SAGA Next Gen tool called "**Strahler order**" using the clipped DEM as an input (a temporary file is fine for now).
-
-Look at the result. It looks like there are few issues with our data. You may get a question mark symbol ![image](https://user-images.githubusercontent.com/67612228/197657028-314f7460-1c2c-4a5c-b447-25b82bea39ee.png) next to your data, when hovered over it will say "There is no coordinate reference system set!". To resolve this, issue, simply left-click on the question mark symbol and assign "EPSG:7856 - GDA2020 / MGA zone 56" as the CRS.
-
-However there is still another issue with our data. A common problem with DEMs is that they have sinks and spikes that will make further analyses more difficult. This will mean the analysis is unable to best find where the water would flow. To resolve this, we need to use another tool to smooth out our raster before using the Strahler order tool.
-
-We can use the "Fill sinks (Wang & Liu)" tool to **fill the sinks** in our clipped DEM.
-
--   When we do that, we might have to play with the "Minimum slope" value. A value of 0.01 degrees should work well if the layer was reprojected to a suitable Projected Reference System.
--   As an output, we only need to tick the "Filled DEM" (first one in the list), which we can also save to file. You can however keep the "Watershed Basins" output to check that your minimum slope is high enough.
-
-If we **re-run the Strahler order tool** on the filled DEM, we will be able to see more useful data.
-
-We can now colour the layer with "Singleband pseudocolor" to highlight the bigger streams. A palette that goes from white (for low values) to a dark colour (for high values) should work well. You can also set the smaller streams to be transparent to filter them out.
-
-> Another way to filter out the noise of the smaller streams and **highlight the major streams** in the network, we can use the `Raster > Raster Calculator` tool and use a formula like: `"name_of_layer@1" >= 6` (the value will depend on how many levels exist in the Strahler layer). We need to save to file to be able to do that (name it "strahler_filtered", for example). This will assign the value 1 to the cells matching the condition, and 0 to what is under the limit.
-
-## Channel network and drainage basin
-
-Another analysis we can do is use the "Channel network and drainage basins" tool to calculate the **flow direction, channels and drainage basins**.
-
--   Make sure you run this tool on the filled DEM.
--   We might have to change the threshold to a higher one if the output includes too many small basins and channels. As the threshold is related to the Strahler order number, the middle point of your previous Strahler order values is a usually a good default.
-
-You might want to play with different threshold values depending on what you're looking for. If you want to look at the main drainage basins of a region, you need to set the threshold higher. If you want to find all the small channels, you need to set the threshold lower. It's worth trying a few options to find what works best for your dataset and the story you're trying to tell.
-
-As an output, we only want to load (and save to file) the two non-optional outputs:
-
--   Channels
--   Drainage basins (shapefile) (to differentiate the two "Drainage basins" options, you can check what format it saves the file as)
-
-This is an example of **creating vector data from raster data**!
-
-We can now play with the **symbology** for those elements. For example:
-
--   Try using different colours for each basin, by classifying by ID, or remove the fill (`Simple fill > Fill Style > No Brush`) so you can see the colours of the elevation colours underneath. You can also make the borders more obvious by changing the width of the stroke.
--   Change the colour of the channels.
-    -   Change the symbol from "Single Symbol" to Graduated.
-    -   Set the `Value` to "Order"
-    -   Choose an appropriate colour ramp
-    -   Change the `Mode` down the bottom of the window to "Equal Interval"
-    -   Click Apply
--   You can also further differentiate minor channels from major ones by using a "Data defined override" for the Width value:
-    -   Click on the bar next to `Symbol` ![image](https://user-images.githubusercontent.com/67612228/197659925-41753cd0-2fc7-4534-b6ec-7ddc4775d721.png)
-    -   Click on the "Data defined override" icon ![image](https://user-images.githubusercontent.com/67612228/197659891-5474b893-2de3-47a4-95f5-9991b394ecf3.png) next to the Width field
-    -   Use the "Assistant"
-    -   "Source" needs to be the column "ORDER" (which corresponds to the Strahler order)
-    -   Click the double-arrow icon to "Fetch value range from layer"
-    -   Change the "Size from" and "to" values to suitable values
 
 ## Viewshed
 
-If you want to know what can be seen from a certain point in a landscape you can use a DEM to perform a Viewshed Analysis.
+If you want to know what can be seen from a certain point in a landscape, or where in the landscape can see a certain point, you can use a DEM to perform a Viewshed Analysis.
 
-Open the Processing Toolbox (cog icon) and search for the GDAL tool called "**Viewshed**".
+In our case, we may be interested to know how far away people can see the wind turbines.
 
--   **Input Layer**: Choose your **Reprojected DEM** layer
+Open the Processing Toolbox ![Processing Toolbox](https://docs.qgis.org/3.40/en/_images/processingAlgorithm.png) and search for the GDAL tool called "**Viewshed**".
+
+-   **Input Layer**: Choose your **Bris_DEM_5m_reproj** layer
 -   Click the three dots next to **Observer location** to select a point on the map
 -   **Observer height, DEM units**: 1.6 (the average human eye height is around 1.6m, choose a height you think might be appropriate)
 -   **Target height, DEM units**: 1 (this means that the points around the observer will be obscured by any surface that is higher than 1m. If you want to know what *ground* your observer will see, choose something closer to 0)
