@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-02-01">
+<meta name="dcterms.date" content="2026-02-02">
 
 <title>The Fundamentals – UQ Library Training Intensives</title>
 <style>
@@ -188,7 +188,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 1, 2026</p>
+      <p class="date">February 2, 2026</p>
     </div>
   </div>
   
@@ -306,7 +306,7 @@ ul.task-list li input[type="checkbox"] {
 <p>To add our own data: <code>Layer &gt; Add Layer &gt; Add Vector Layer...</code>, choose the “Turbine_Locations_SEQ.gpkg” file, and click “Add”. It is now in your <code>Layers</code> panel.</p>
 <p>If you’ve already loaded in the OpenStreetMap Basemap, then you should get the popup <code>Select Transformation for Project Area</code>. This is asking you how you want to deal with the difference between the basemap’s <em>projection</em> and the <em>projection</em> of your data. Projections are how we stretch “spherical” data to fit on a flat rectangular map, which we will cover in detail later in this workshop. Fortunately, for now, QGIS will handle this on the fly for us so we can simply click <code>OK</code>.</p>
 <p>So where is the data? If you want to zoom in to your data, you don’t have to use your mouse, you can use the <code>Zoom Full</code> button, or right-click on your <strong>Project Area</strong> layer and select <code>Zoom to Layer(s)</code>.</p>
-<p>You can also use the <code>Project Home</code> directory in the browser to add another layer: try loading the “Project_Area.gpkg” and “Access_Track.gpkg” GeoPackages (format .gpkg), by drag-and-dropping or double-clicking.</p>
+<p>You can also use the <code>Project Home</code> directory in the browser to add another layer: try loading the “Project_Area.gpkg” and “Proposed_Access_Track.gpkg” GeoPackages (format .gpkg), by drag-and-dropping or double-clicking.</p>
 <p>All layers are visible in the <code>Layers</code> panel, with the most recently loaded by default at the top. Layers are rendered as they are listed, which means the top ones will cover the bottom ones. Make sure you optimise the order for your map!</p>
 <p>You can also turn the <strong>layer visibility</strong> on and off from this panel with the tick box.</p>
 <blockquote class="blockquote">
@@ -392,7 +392,7 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="change-the-symbology">Change the symbology</h3>
 <p>Our vector layers are assigned a random colour when we load them. We now want to make them look better.</p>
 <p>Double-click on the <strong>Project Area</strong> layer to open the <code>Layer Properties</code> click the <img src="https://docs.qgis.org/3.40/en/_images/symbology.png" class="img-fluid"> <code>Symbology</code> tab, and use <code>Color</code> to change to a better colour. Click <code>Apply</code>. Perhaps we’d be better off with no fill, and work more with the border by clicking on <code>Simple fill</code>. Change the <code>Fill Style</code> to <code>No Brush</code>. We can now go into more details about the <strong>Stroke</strong> color, width and style.</p>
-<p>We can make more complex fills by adding an extra “symbol layer”, and layering different kinds of fill styles. Try this with both polygons and lines. For example, style the Access Tracks so they look like roads (the <code>topo road</code> preset is a good start).</p>
+<p>We can make more complex fills by adding an extra “symbol layer”, and layering different kinds of fill styles. Try this with both polygons and lines. For example, style the Proposed Access Track so they look like roads (the <code>topo road</code> preset is a good start).</p>
 <p>Now try to change the point symbology of our <strong>EH Turbines</strong> layer: we don’t have to stick to <code>Simple marker</code>. Try for example the different icons available with <code>Symbol layer type &gt; SVG marker</code> or <code>Font marker</code> selected.</p>
 <blockquote class="blockquote">
 <p>The Properties dialog is quite large and makes it difficult to see the changes in symbology. You can use the “Layer Styling Panel” (button in the Layers panel, or <kbd>F7</kbd> shortcut) to use a side panel instead, with the “Live update” option on by default.</p>

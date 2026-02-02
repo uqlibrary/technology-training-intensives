@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-02-01">
+<meta name="dcterms.date" content="2026-02-02">
 
-<title>Data Sources and Projections – UQ Library Training Intensives</title>
+<title>Projections – UQ Library Training Intensives</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -107,9 +107,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<meta property="og:title" content="Data Sources and Projections – UQ Library Training Intensives">
+<meta property="og:title" content="Projections – UQ Library Training Intensives">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://uqlibrary.github.io/technology-training-intensives/qgis/Essentials/projection.png">
 <meta property="og:site_name" content="UQ Library Training Intensives">
 </head>
 
@@ -174,31 +173,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#what-are-we-going-to-learn" id="toc-what-are-we-going-to-learn" class="nav-link active" data-scroll-target="#what-are-we-going-to-learn">What are we going to learn?</a>
+  <li><a href="#what-are-we-going-to-learn" id="toc-what-are-we-going-to-learn" class="nav-link active" data-scroll-target="#what-are-we-going-to-learn">What are we going to learn?</a></li>
+  <li><a href="#projections" id="toc-projections" class="nav-link" data-scroll-target="#projections">Projections</a>
   <ul class="collapse">
-  <li><a href="#projections" id="toc-projections" class="nav-link" data-scroll-target="#projections">Projections</a></li>
-  <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources">Data Sources</a></li>
-  <li><a href="#why-are-projections-important-to-us" id="toc-why-are-projections-important-to-us" class="nav-link" data-scroll-target="#why-are-projections-important-to-us">Why are projections important to us?</a></li>
+  <li><a href="#gcs---geographic-coordinate-systems" id="toc-gcs---geographic-coordinate-systems" class="nav-link" data-scroll-target="#gcs---geographic-coordinate-systems">GCS - Geographic Coordinate Systems</a></li>
+  <li><a href="#projected-coordinate-systems" id="toc-projected-coordinate-systems" class="nav-link" data-scroll-target="#projected-coordinate-systems">Projected Coordinate Systems</a></li>
+  <li><a href="#why-do-i-need-to-know-this" id="toc-why-do-i-need-to-know-this" class="nav-link" data-scroll-target="#why-do-i-need-to-know-this">Why do I need to know this?</a></li>
   </ul></li>
-  <li><a href="#set-the-project-projection" id="toc-set-the-project-projection" class="nav-link" data-scroll-target="#set-the-project-projection">Set the Project Projection</a>
-  <ul class="collapse">
-  <li><a href="#tabular-data" id="toc-tabular-data" class="nav-link" data-scroll-target="#tabular-data">Tabular data</a></li>
-  </ul></li>
-  <li><a href="#subset-our-sa1-data-down-to-closer-suburbs---select-features-using-an-expression" id="toc-subset-our-sa1-data-down-to-closer-suburbs---select-features-using-an-expression" class="nav-link" data-scroll-target="#subset-our-sa1-data-down-to-closer-suburbs---select-features-using-an-expression">Subset our SA1 Data down to closer suburbs - Select features using an expression</a>
-  <ul class="collapse">
-  <li><a href="#reproject" id="toc-reproject" class="nav-link" data-scroll-target="#reproject">Reproject</a></li>
-  </ul></li>
+  <li><a href="#set-the-project-projection" id="toc-set-the-project-projection" class="nav-link" data-scroll-target="#set-the-project-projection">Set the Project Projection</a></li>
   <li><a href="#buffer-data" id="toc-buffer-data" class="nav-link" data-scroll-target="#buffer-data">Buffer Data</a></li>
-  <li><a href="#select-and-reproject" id="toc-select-and-reproject" class="nav-link" data-scroll-target="#select-and-reproject">Select and Reproject</a></li>
-  <li><a href="#polygons-to-lines" id="toc-polygons-to-lines" class="nav-link" data-scroll-target="#polygons-to-lines">Polygons to Lines</a>
+  <li><a href="#reproject-data" id="toc-reproject-data" class="nav-link" data-scroll-target="#reproject-data">Reproject Data</a>
   <ul class="collapse">
   <li><a href="#buffer-the-lines" id="toc-buffer-the-lines" class="nav-link" data-scroll-target="#buffer-the-lines">Buffer the Lines</a></li>
-  <li><a href="#explore-projections" id="toc-explore-projections" class="nav-link" data-scroll-target="#explore-projections">Explore Projections</a>
-  <ul class="collapse">
-  <li><a href="#reproject-data" id="toc-reproject-data" class="nav-link" data-scroll-target="#reproject-data">Reproject Data</a></li>
+  <li><a href="#local-reprojection" id="toc-local-reprojection" class="nav-link" data-scroll-target="#local-reprojection">Local Reprojection</a></li>
   <li><a href="#buffer-reprojected-lines" id="toc-buffer-reprojected-lines" class="nav-link" data-scroll-target="#buffer-reprojected-lines">Buffer Reprojected Lines</a></li>
   </ul></li>
+  <li><a href="#extension---compare-buffer-to-population" id="toc-extension---compare-buffer-to-population" class="nav-link" data-scroll-target="#extension---compare-buffer-to-population">Extension - Compare Buffer to Population</a></li>
+  <li><a href="#load-in-data" id="toc-load-in-data" class="nav-link" data-scroll-target="#load-in-data">Load in data</a></li>
+  <li><a href="#tabular-data" id="toc-tabular-data" class="nav-link" data-scroll-target="#tabular-data">Tabular data</a>
+  <ul class="collapse">
+  <li><a href="#joining-tabular-data" id="toc-joining-tabular-data" class="nav-link" data-scroll-target="#joining-tabular-data">Joining tabular data</a></li>
   </ul></li>
+  <li><a href="#select-features-using-an-expression" id="toc-select-features-using-an-expression" class="nav-link" data-scroll-target="#select-features-using-an-expression">Select features using an expression</a></li>
+  <li><a href="#intersect-dust-buffer-with-population" id="toc-intersect-dust-buffer-with-population" class="nav-link" data-scroll-target="#intersect-dust-buffer-with-population">Intersect Dust Buffer with Population</a></li>
+  <li><a href="#add-and-calculate-fields" id="toc-add-and-calculate-fields" class="nav-link" data-scroll-target="#add-and-calculate-fields">Add and calculate fields</a></li>
   <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a>
   <ul class="collapse">
   <li><a href="#council-data" id="toc-council-data" class="nav-link" data-scroll-target="#council-data">Council Data</a></li>
@@ -237,7 +235,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Data Sources and Projections</h1>
+<h1 class="title">Projections</h1>
 </div>
 
 
@@ -248,7 +246,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 1, 2026</p>
+      <p class="date">February 2, 2026</p>
     </div>
   </div>
   
@@ -263,55 +261,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="what-are-we-going-to-learn" class="level2">
 <h2 class="anchored" data-anchor-id="what-are-we-going-to-learn">What are we going to learn?</h2>
 <p>In this workshop, we will learn about:</p>
-<section id="projections" class="level3">
-<h3 class="anchored" data-anchor-id="projections">Projections</h3>
 <ul>
-<li>Why we have them and what goes wrong without them</li>
+<li>Why we have Projections and what goes wrong without them</li>
 <li>GCS vs PCS</li>
 <li>Local Projections</li>
-<li>Area Calculation differences</li>
+<li>Projection Calculation differences</li>
+<li>Buffers and Intersections</li>
 </ul>
 </section>
-<section id="data-sources" class="level3">
-<h3 class="anchored" data-anchor-id="data-sources">Data Sources</h3>
-<ul>
-<li>Local, State, Federal Gov Data</li>
-<li>International</li>
-<li>NGO</li>
-<li>Corporate (ESRI, etc)</li>
-<li>WMS etc</li>
-</ul>
+<section id="projections" class="level2">
+<h2 class="anchored" data-anchor-id="projections">Projections</h2>
 <p>The two main types of Coordinate Reference Systems (CRS) that you will come across are GCS and PCS.</p>
-<ul>
-<li><strong>GCS - Geographic Coordinate Systems</strong>: They tell you <em>where</em> something is on earth. They are spherical models and are usually measured in angular degrees along lines of latitude and longitude. The earth is a complex changing shape (for example plate tectonics), so there are different GCSs for different places.</li>
-</ul>
+<section id="gcs---geographic-coordinate-systems" class="level3">
+<h3 class="anchored" data-anchor-id="gcs---geographic-coordinate-systems">GCS - Geographic Coordinate Systems</h3>
+<p><strong>Geographic Coordinate Systems (GCS)</strong> tell you <em>where</em> something is on earth. They are spherical models and are usually measured in angular degrees along lines of latitude and longitude. The earth is a complex changing shape (for example plate tectonics), so there are different GCSs for different places.</p>
 <p><strong>EPSG:4326 – WGS 84</strong> (World Geodetic System 1984) is the most common Geographic Coordinate System that you will come across, it’s used as the default by most GPS devices, and works fairly well everywhere in the world. As a GCS it will give you locations in degrees of latitude and longitude like this: -27.497980, 153.014721</p>
-<p><strong>EPSG:7844 – GDA 2020</strong> (Geocentric Datum of Australia 2020) is Australia’s national coordinate system, and provides more accurate positioning, as it takes into account more localised factors rather than being generically suitable for the whole world.</p>
+<p><strong>EPSG:7844 – GDA2020</strong> (Geocentric Datum of Australia 2020) is Australia’s national coordinate system, and provides more accurate positioning, as it takes into account more localised factors rather than being generically suitable for the whole world.</p>
 <p><img src="https://cdn.britannica.com/04/64904-050-D2054D06/cutaway-drawing-latitude-place-longitude-sizes-angles.jpg" class="img-fluid" alt="Earth cutaway showing latitude and longitude"> <a href="https://www.britannica.com/science/latitude#/media/1/331993/109269">Encyclopædia Britannica</a></p>
-<ul>
-<li><strong>PCS - Projected Coordinate Systems</strong>: They tell you <em>how</em> to make that map flat. They allow you to measure in metres rather than angular degrees. A PCS has an underlying GCS, as it needs a spherical model of the earth to then distort and make it flat. There are many ways to do this, and many different projections exist, they even talk about <a href="https://www.facebook.com/watch/?v=2834189703494594">projections on the West Wing</a>.</li>
-</ul>
+</section>
+<section id="projected-coordinate-systems" class="level3">
+<h3 class="anchored" data-anchor-id="projected-coordinate-systems">Projected Coordinate Systems</h3>
+<p><strong>Projected Coordinate Systems (PCS)</strong> tell you <em>how</em> to make that map flat. They allow you to measure in metres rather than angular degrees. A PCS has an underlying GCS, as it needs a spherical model of the earth to then distort and make it flat. There are many ways to do this, and many different projections exist, they even talk about <a href="https://www.facebook.com/watch/?v=2834189703494594">projections on the West Wing</a>.</p>
 <p>To turn the geoid/spheroid shape of the Earth into a flat map, we need to squish, stretch, and distort the map to make it flat. The mathematical equations used to do this are what we’re talking about when we say “<strong>projections</strong>”.</p>
-<p>Imagine it like a soccer ball, if we have to squash it to make it flat, it’s not going to look nice and square like our maps do. So we pull and stretch it to make it flat and rectangular. There will always be some kind of distortion when we stretch our map like this, so the projection you choose depends on what compromises you are happy to make, where you are, and what you’re doing. Your projection choice will affect Area, Shape, Direction, Bearing, and Distance. For example, the Mercator Projection prioritises bearing for sea navigation, but greatly distorts area. This is why it makes Greenland look large, and Africa look smaller than it really is.</p>
+<p>Imagine it like a soccer ball, if we have to squash it to make it flat, it’s not going to look nice and square like our maps do. So we either need to unfold it as a 2d net, or pull and stretch it to make it flat and rectangular. There will always be some kind of distortion when we stretch our map like this, so the projection you choose depends on what compromises you are happy to make, where you are, and what you’re doing. Your projection choice will affect Area, Shape, Direction, Bearing, and Distance. For example, the Mercator Projection prioritises bearing for sea navigation, but greatly distorts area. This is why it makes Greenland look large, and Africa look smaller than it really is.</p>
+<p><img src="https://www.f-lohmueller.de/pov_anim/geometry/Buckyball_soc_010b.gif" class="img-fluid"></p>
+<p>To avoid this kind of distortion caused by generic global projections, often local projections are used. There are fewer compromises needed when focused on a small area. By using a local projection, we don’t need to worry about keeping Greenland looking the right shape if we’re focused on Brisbane. Going back to Soccer balls, if we cut out a single panel from the ball, it will be much easier to make that flat. This is how systems like the Map Grid of Australia (MGA) work. The MGA (based off the Universal Transverse Mercator - UTM) slices Australia into strips and focus on reducing distortions . https://upload.wikimedia.org/wikipedia/commons/8/84/World_borders_utm.png</p>
+<p><strong>EPSG:3857 – WGS 84 / Psuedo-Mercator</strong> is the most common Projected Coordinate System that you will come across, it’s used as the default by platforms like Google Maps. As you might guess it uses the WGS84 GCS with a form of the Mercator projection.</p>
+<p><strong>EPSG:7856 – GDA2020 / MGA zone 56</strong> is a local projection that you would use for parts of Eastern Australia. It uses the Geodetic Datum of Australia GCS, and the Map Grid of Australia to project.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://raw.githubusercontent.com/uqlibrary/technology-training-assets/refs/heads/master/QGIS/images/projections.png" class="img-fluid figure-img"></p>
 <figcaption>Map Projections</figcaption>
 </figure>
 </div>
-<p><strong>EPSG:3857 – WGS 84 / Psuedo-Mercator</strong> is the most common Projected Coordinate System that you will come across, it’s used as the default by platforms like Google Maps. As you might guess it uses the WGS84 GCS with a form of the Mercator projection.</p>
-<p><strong>EPSG:7844 – GDA 2020</strong> (Geocentric Datum of Australia 2020) is Australia’s national coordinate system, and provides more accurate positioning, as it takes into account more localised factors rather than being generically suitable for the whole world.</p>
 </section>
-<section id="why-are-projections-important-to-us" class="level3">
-<h3 class="anchored" data-anchor-id="why-are-projections-important-to-us">Why are projections important to us?</h3>
-<p>Well, when we make these distortions, we have to compromise somewhere, and that means our lengths, or size or direction will be different to what it really is. To avoid this kind of distortion, often local projections are used. There are fewer compromises needed when focused on a small area. By using a local projection, we don’t need to worry about keeping Greenland looking the right shape if we’re focused on Brisbane. Going back to Soccer balls, if we cut out a single panel from the ball, it will be much easier to make that flat.</p>
-<p>The trouble with using data of different projections is that they might be slightly off around the edges, giving us different total areas in a polygon, or showing a point outside a boundary, when it’s really inside. To avoid this, it’s often best to convert all of your data to using the same projection.</p>
-<p>Today we’re going to use a suitable local projection: EPSG:7856 - GDA2020 / MGA zone 56</p>
+<section id="why-do-i-need-to-know-this" class="level3">
+<h3 class="anchored" data-anchor-id="why-do-i-need-to-know-this">Why do I need to know this?</h3>
+<p>When you import your data into QGIS it will reproject it “on-the-fly” (that’s the pop-up we’ve seen when importing data sometimes). This means you can view data in different projections at the same time, which is very convenient, but can cause issues!</p>
+<p>The trouble with using data of different projections is that the compromises those projections have made when data is transformed might lead to different total areas in a polygon, or showing us a point outside a boundary, when it’s really inside. To avoid this, it’s often best to convert all of your data to using the same projection.</p>
+<p>Most of our data is already in EPSG:7856 - GDA2020 / MGA zone 56, but there are some exceptions. Now we’re going to explore some of the ramifications of using different projections at the same time.</p>
 </section>
 </section>
 <section id="set-the-project-projection" class="level2">
 <h2 class="anchored" data-anchor-id="set-the-project-projection">Set the Project Projection</h2>
-<p>We need to choose the projection for our current session of QGIS. Today we will be focusing on South East Queensland (SEQ), so we will choose GDA2020 / MGA zone 56. We will go into projections in more detail soon.</p>
+<p>We need to choose the projection for our current session of QGIS. As we’re focusing on South East Queensland (SEQ), we will choose GDA2020 / MGA zone 56.</p>
 <ul>
 <li>Go to <code>Project &gt; Properties</code> select the <strong>CRS</strong> tab.</li>
 <li>In the filter section, type “GDA2020 56”</li>
@@ -320,27 +313,114 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p>You will notice that the OpenStreetMap basemap looks very warped, except for the East Coast of Australia. This is because the projection we have selected is very focused on reducing distortion within the bounds of the projection’s area (Eastern Australia).</p>
 </blockquote>
+</section>
+<section id="buffer-data" class="level2">
+<h2 class="anchored" data-anchor-id="buffer-data">Buffer Data</h2>
+<p>Buffers are a simple, but powerful, tool that we can use to extend the borders of our vector data. It’s useful for polygons, lines, and points. They’re also very susceptible to distortions in distance and area caused by some projections.</p>
+<p>Buffers will be very useful for our project if we want to create boundary offsets, or we want to know how the construction might affect the surrounding area.</p>
+<p>Construction of the turbine pads and connecting roads will create dust, which if carried by wind may be a health hazard for people in the surrounding area.</p>
+<p>To do this, we will want to create a 2km buffer around our Access Track, however, if you look at the <code>Properties &gt; Information</code> for that layer, you will notice that it isn’t a projected layer.</p>
+<p>Let’s look at what happens if we create a buffer in a Geographic Coordinate System:</p>
+<ul>
+<li><p>Go to <code>Vector &gt; Geoprocessing Tools &gt; Buffer</code></p></li>
+<li><p>Choose “<strong>Proposed Access Track</strong>” as the Input Layer</p></li>
+<li><p>We next want to choose distance that we want to create a buffer away from our vector.</p>
+<ul>
+<li>However, you’ll note that the distance is currently in <strong>degrees</strong>.</li>
+</ul></li>
+<li><p>If you click Run with 2 Degrees, your buffer will be nearly the size of Queensland.</p>
+<ul>
+<li>To change this to metres, we need to convert our layer to a projected coordinate system.</li>
+</ul></li>
+</ul>
+</section>
+<section id="reproject-data" class="level2">
+<h2 class="anchored" data-anchor-id="reproject-data">Reproject Data</h2>
+<p>Hopefully it’s clear why we need to convert from a Geographic Coordinate System to a Projected Coordinate System, but why is it important that we chose a local projection?</p>
+<p>Let’s see what would happen if we did our buffer on those lines in a generic global projection like <strong>EPSG:3857 - WGS84 / Pseudo-Mercator</strong></p>
+<ul>
+<li><p>Go to <code>Vector &gt; Data Management Tools &gt; Reproject Layer...</code></p></li>
+<li><p>Choose the <strong>Proposed Access Track</strong> in <code>Input layer</code></p></li>
+<li><p>Set the Target CRS to <code>EPSG:3857 - WGS84 / Pseudo-Mercator</code></p>
+<ul>
+<li>This is a very common projection that Google and your phones use</li>
+</ul></li>
+<li><p>Click <code>Run</code></p>
+<ul>
+<li>We don’t need to permanently save this, so we can leave it as a temporary layer</li>
+</ul></li>
+</ul>
+<section id="buffer-the-lines" class="level3">
+<h3 class="anchored" data-anchor-id="buffer-the-lines">Buffer the Lines</h3>
+<ul>
+<li><p>Go to <code>Vector &gt; Geoprocessing Tools &gt; Buffer</code></p></li>
+<li><p>Choose the newly created “<strong>Reprojected</strong>” as the <code>Input Layer</code></p></li>
+<li><p>Set the <code>Distance</code> to <strong>2</strong> kilometres</p>
+<ul>
+<li>We can also make the buffer squared if we want, but we will keep it with the rounded default</li>
+</ul></li>
+<li><p>Tick the <code>Dissolve result</code> box</p>
+<ul>
+<li>This will merge the polygons from our output, making for a cleaner look. The Dissolve tool also exists as a standalone tool.</li>
+</ul></li>
+<li><p>Click <code>Run</code></p></li>
+</ul>
+<p>Okay, this doesn’t look wrong, but let’s compare this output to a buffer made with a local projected coordinate system.</p>
+</section>
+<section id="local-reprojection" class="level3">
+<h3 class="anchored" data-anchor-id="local-reprojection">Local Reprojection</h3>
+<ul>
+<li><p>Go to <code>Vector &gt; Data Management Tools &gt; Reproject Layer...</code></p></li>
+<li><p>Again, choose the <strong>Proposed Access Track</strong> in <code>Input layer</code></p></li>
+<li><p>This time, set the Target CRS to <code>EPSG:7856 - GDA2020 / MGA zone 56</code></p></li>
+<li><p>Let’s save the output this time. Scroll down to click the three dots <code>...</code> next to the <strong>Reprojected</strong> field, navigate to the project’s <strong>processed</strong> data folder, and type in <strong>Access_Track</strong> and click <code>Save</code></p></li>
+<li><p>Click <code>Run</code></p></li>
+</ul>
+</section>
+<section id="buffer-reprojected-lines" class="level3">
+<h3 class="anchored" data-anchor-id="buffer-reprojected-lines">Buffer Reprojected Lines</h3>
+<ul>
+<li><p>Go to <code>Vector &gt; Geoprocessing Tools &gt; Buffer</code></p></li>
+<li><p>Choose the newly created “<strong>Access_Track</strong>” as the <code>Input Layer</code></p></li>
+<li><p>Set the <code>Distance</code> to <strong>2</strong> kilometres</p></li>
+<li><p>Tick the <code>Dissolve result</code> box</p></li>
+<li><p>Scroll down to click the three dots <code>...</code> next to the <strong>Buffered</strong> field, navigate to the project’s <strong>processed</strong> data folder, and type in <strong>Dust_2km</strong> and click <code>Save</code></p></li>
+<li><p>Click <code>Run</code></p></li>
+</ul>
+<p>Move the <strong>Buffered</strong> layer order so that it draws over the <strong>Dust_2km</strong> layer. Notice anything interesting?</p>
+<p>The <strong>Buffered</strong> layer is over 200m smaller!</p>
+<p>This is because <strong>EPSG:3857 - WGS84 / Pseudo-Mercator</strong> is a global projection that tries to preserve angles and shapes. Although the units are in metres, the scaling factor changes as you move away from the equator to account for the curvature of the Earth.</p>
+<p>It can still be useful to use this projection to take points. But you have to be careful when you’re making measurements and calculations, for those, a local projection is usually better.</p>
+<blockquote class="blockquote">
+<p>Optional: Create multiple Dust Bands at 250m, 750m, and 2km, use difference to take the smaller bands away from the larger bands, merge the three layers together, then assign a new field called dust_level with High / Medium / Low.</p>
+</blockquote>
+</section>
+</section>
+<section id="extension---compare-buffer-to-population" class="level2">
+<h2 class="anchored" data-anchor-id="extension---compare-buffer-to-population">Extension - Compare Buffer to Population</h2>
+<p>Now that we have this buffer we can compare it to the surrounding population.</p>
+</section>
+<section id="load-in-data" class="level2">
+<h2 class="anchored" data-anchor-id="load-in-data">Load in data</h2>
 <p>Load in:</p>
 <ul>
-<li><p>sa1_2021_bris_gda2020.gpkg (suburb data from the <a href="https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files">Australian Bureau of Statistics</a>) Right click the <code>sa1_2021_bris_gda2020</code> layer and <code>Rename...</code> it to “SA1 Boundaries”.</p></li>
+<li><p>sa1_2021_bris_mga56.gpkg (suburb data from the <a href="https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files">Australian Bureau of Statistics</a>) Right click the <code>sa1_2021_bris_gda2020</code> layer and <code>Rename...</code> it to “SA1 Boundaries”.</p></li>
 <li><p>sa1_pop_age_qld.csv (demographic data from the ABS, but accessed through the <a href="https://www.qgso.qld.gov.au/">Queensland Government Statistician’s Office</a>)</p></li>
 </ul>
-<section id="tabular-data" class="level3">
-<h3 class="anchored" data-anchor-id="tabular-data">Tabular data</h3>
+</section>
+<section id="tabular-data" class="level2">
+<h2 class="anchored" data-anchor-id="tabular-data">Tabular data</h2>
 <p>QGIS can deal with plain tabular data. For example, try importing the file sa1_pop_age_qld.csv: it doesn’t contain any coordinates, but we can still store it as a layer and use it in our project. You can see the data it contains by opening its attribute table.</p>
-<p>How can we add the Statistical Area 1 (SA1) Demographic data to our existing <code>SA1 Boundaries</code> shapefile?</p>
-<section id="joining-tabular-data" class="level4">
-<h4 class="anchored" data-anchor-id="joining-tabular-data">Joining tabular data</h4>
-<p>To add the SA1 Demographic data to our SA1 shapefile, we can go the the <code>SA1 Boundaries</code> layer’s properties, use the <img src="https://docs.qgis.org/3.40/en/_images/join.png" class="img-fluid" alt="Join Button"> <code>Joins</code> tab and click the <code>Add new join</code> button <img src="https://docs.qgis.org/3.40/en/_images/symbologyAdd.png" class="img-fluid" alt="Add New Join Button"> to create a new join. We can then choose the sa1_pop_age_qld data as the <code>Join layer</code>, and define what common field between the two tables we will merge on: the SA1_CODE21 code in our case.</p>
+<p>How can we add the Statistical Area 1 (SA1) Demographic data to our existing <code>SA1 Boundaries</code> layer?</p>
+<section id="joining-tabular-data" class="level3">
+<h3 class="anchored" data-anchor-id="joining-tabular-data">Joining tabular data</h3>
+<p>To add the SA1 Demographic data to our SA1 layer, we can go the the <code>SA1 Boundaries</code> layer’s properties, use the <img src="https://docs.qgis.org/3.40/en/_images/join.png" class="img-fluid" alt="Join Button"> <code>Joins</code> tab and click the <code>Add new join</code> button <img src="https://docs.qgis.org/3.40/en/_images/symbologyAdd.png" class="img-fluid" alt="Add New Join Button"> to create a new join. We can then choose the sa1_pop_age_qld data as the <code>Join layer</code>, and define what common field between the two tables we will merge on: the SA1_CODE21 code in our case.</p>
 <p>You can now see the joined data highlighted in green in the <img src="https://docs.qgis.org/3.40/en/_images/mSourceFields.png" class="img-fluid" alt="Fields Tab Button"><code>Fields</code> tab, click “OK”, and check the actual values in the <code>SA1 Bris</code> layer’s attribute table.</p>
-<ul>
-<li>SA1 Boundaries (joined to SA1 Demographics)</li>
-</ul>
 </section>
 </section>
-</section>
-<section id="subset-our-sa1-data-down-to-closer-suburbs---select-features-using-an-expression" class="level2">
-<h2 class="anchored" data-anchor-id="subset-our-sa1-data-down-to-closer-suburbs---select-features-using-an-expression">Subset our SA1 Data down to closer suburbs - Select features using an expression</h2>
+<section id="select-features-using-an-expression" class="level2">
+<h2 class="anchored" data-anchor-id="select-features-using-an-expression">Select features using an expression</h2>
+<p>Before running analyses on data, it’s worth subsetting down to the smallest necessary dataset so that your analyses run faster. We have already used different kinds of manual selection, but we can also use a select expression to subset our SA1 Data down to closer suburbs. This will be faster than manually picking them.</p>
 <p>The following code will allow you to select the SA1 features that are near to Enoggera Hills.</p>
 <ul>
 <li>Right click on the SA1 layer, and select <strong>Open Attribute Table</strong></li>
@@ -362,138 +442,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Make sure the CRS stays as <code>EPSG:7856 - GDA2020 / MGA zone 56</code>, then click <code>OK</code></li>
 </ul>
 <p>If you haven’t done so already, untick and hide all the original layers we aren’t using any more.</p>
-<section id="reproject" class="level3">
-<h3 class="anchored" data-anchor-id="reproject">Reproject</h3>
-<p>For each of our layers, do the following:</p>
+</section>
+<section id="intersect-dust-buffer-with-population" class="level2">
+<h2 class="anchored" data-anchor-id="intersect-dust-buffer-with-population">Intersect Dust Buffer with Population</h2>
 <ul>
-<li><p>Go to <code>Vector &gt; Data Management Tools &gt; Reproject Layer...</code></p></li>
-<li><p>Choose the layer in <code>Input layer</code></p></li>
-<li><p>Set the Target CRS to <code>EPSG:7856 - GDA2020 / MGA zone 56</code></p>
-<ul>
-<li>If that option isn’t available, click <img src="projection.png" class="img-fluid"> (Select CRS), and type “GDA2020 56” into the filter, the option should now appear under the <strong>Predefined Coordinate Reference Systems</strong> section.</li>
-</ul></li>
-<li><p>Click the three dots <code>...</code> next to the <code>Reprojected</code> section, and click <strong>Save to File…</strong></p></li>
-<li><p>Navigate to your <code>data &gt; processed</code> folder and save the file there. For example, save <strong>SA2_ERP_2021</strong> as <strong>SA2_Reproj</strong>, <strong>CAPAD2020_terrestrial_QLD</strong> as <strong>CAPAD_Reproj</strong>, <strong>koala_reduced</strong> as <strong>Koalas_Reproj</strong> and <strong>koala_priority_area</strong> as <strong>KPA_Reproj</strong></p></li>
+<li><p>Go to <code>Vector &gt; Geoprocessing Tools &gt; Intersection</code></p></li>
+<li><p>Choose the newly created “<strong>SA1_EH</strong>” as the <code>Input Layer</code></p></li>
+<li><p>Choose “<strong>Dust_2km</strong>” as the <code>Overlay Layer</code></p></li>
+<li><p>Scroll down to click the three dots <code>...</code> next to the <strong>Intersection</strong> field, navigate to the project’s <strong>processed</strong> data folder, and type in <strong>Dust_pop</strong> and click <code>Save</code></p></li>
 <li><p>Click <code>Run</code></p></li>
 </ul>
-<p>You won’t notice any difference, as QGIS is helpfully doing “on the fly projections” to make the layers sit nicely together. But now that you’ve reprojected your data, you can safely do your analyses.</p>
 </section>
-</section>
-<section id="buffer-data" class="level1">
-<h1>Buffer Data</h1>
-<p>Buffers are a simple, but powerful, tool that we can use to extend the borders of our vector data. It’s useful for polygons, lines, and points.</p>
-<p>Perhaps we need to keep 10m from the property boundaries when doing our fieldwork. A buffer can help us there.</p>
-<p>However, our <strong>St_Lucia_Property_Boundaries</strong> layer has some issues we need to resolve before we can buffer it.</p>
+<section id="add-and-calculate-fields" class="level2">
+<h2 class="anchored" data-anchor-id="add-and-calculate-fields">Add and calculate fields</h2>
+<p>Because only part of an SA1 may fall inside a buffer, apply a screening assumption: Population is evenly distributed within each SA1.</p>
 <ul>
-<li><p>It has extra properties that we don’t need</p></li>
-<li><p>A buffer on a polygon will grow out from the edges, not put a buffer either side of the edges</p></li>
-<li><p>It’s in a Geographic Coordinate System</p></li>
-</ul>
-<p>Let’s look at what happens if we create a buffer in a Geographic Coordinate System:</p>
+<li>Right-click <code>Dust_pop</code> and open it’s Attribute Table</li>
+<li>Click the <strong>Open Field Calculator</strong> button <img src="https://docs.qgis.org/3.40/en/_images/mActionCalculateField.png" class="img-fluid" alt="Field Calculator Button"></li>
+<li>Next to <code>Output field name</code> type “<strong>area_ha</strong>”</li>
+<li>Next to <code>Output field type</code> change it to <code>Decimal Number (Real)</code></li>
+<li>In the <code>Expression</code> window type: <code>($area/1e6) / "AREASQKM21"</code>
 <ul>
-<li><p>Go to <code>Vector &gt; Geoprocessing Tools &gt; Buffer</code></p></li>
-<li><p>Choose “<strong>St_Lucia_Property_Boundaries</strong>” as the Input Layer</p></li>
-<li><p>We next want to choose distance that we want to create a buffer away from our vector.</p>
-<ul>
-<li>However, you’ll note that because the layer projection is EPSG:4283 GDA94 (a geographic coordinate system), the distance is currently in <strong>degrees</strong>.</li>
+<li>That’s current area in metres converted to SQKM, divided by the previous area.</li>
 </ul></li>
-<li><p>If you click Run with 10 Degrees, your buffer will be nearly the size of Queensland.</p>
-<ul>
-<li>To change this to metres, we first need to convert our layer to a local projected coordinate system.</li>
-</ul></li>
-</ul>
-</section>
-<section id="select-and-reproject" class="level1">
-<h1>Select and Reproject</h1>
-<p>We can <strong>Select</strong> the data we want, and <strong>reproject</strong> at the same time!</p>
-<p>We first need to select the lots that are relevant to us:</p>
-<ul>
-<li><p>Click the dropdown next to the <strong>Select Feature(s)</strong> icon in the toolbar, and choose the <code>Select Feature by polygon</code> option</p>
-<ul>
-<li>This allows us to click around our desired selection</li>
-</ul></li>
-<li><p>Make sure <strong>St_Lucia_Property_Boundaries</strong> is the selected layer in the <code>Layers</code> panel</p></li>
-<li><p>Click around the lots to draw a shape around the lots we want to keep</p></li>
-<li><p>Right-click to finish selecting</p>
-<ul>
-<li>If you need to select any more features, press and hold <strong>Shift</strong> while drawing around your extra features, when you right-click they will be added to your selection</li>
-<li>To remove any accidentally selected features from the selection, press and hold <strong>Control</strong> and draw around the unwanted features.</li>
-</ul></li>
-<li><p>Right click on the <strong>St_Lucia_Property_Boundaries</strong> layer, and select <code>Export &gt; Save Selected Features As...</code></p></li>
-<li><p>Choose <strong>Geopackage</strong> as the <code>Format</code></p></li>
-<li><p>Click the three dots on the right of <code>File name</code>, navigate to your <strong>Processed</strong> data folder and save it as “<strong>UQ_Boundary</strong>”</p></li>
-<li><p>See the <code>Layer name</code> to “<strong>UQ Boundary</strong>”</p>
-<ul>
-<li>The Layer name can have spaces in it, but it’s best to avoid spaces in a File name</li>
-</ul></li>
-<li><p>Make sure you change the CRS, effectively reprojecting the layer</p>
-<ul>
-<li>Choose <code>EPSG:23856 - GDA94 / MGA zone 56</code>
-<ul>
-<li>This is the same projection as our DEM, and a good local projection</li>
-</ul></li>
-</ul></li>
-<li><p>Click <code>OK</code></p></li>
-</ul>
-</section>
-<section id="polygons-to-lines" class="level1">
-<h1>Polygons to Lines</h1>
-<p>To buffer either side of the edges of our boundaries, we need to convert them from Polygons to Lines.</p>
-<ul>
-<li>Go to <code>Vector &gt; Geometry Tools &gt; Polygons to Lines</code></li>
-<li>Set the <code>Input Layer</code> to <strong>UQ Boundary</strong></li>
 <li>Click <code>OK</code></li>
 </ul>
-<section id="buffer-the-lines" class="level2">
-<h2 class="anchored" data-anchor-id="buffer-the-lines">Buffer the Lines</h2>
+<p>Now that we have the area fraction, let’s calculate the population</p>
 <ul>
-<li><p>Go to <code>Vector &gt; Geoprocessing Tools &gt; Buffer</code></p></li>
-<li><p>Choose “<strong>Lines</strong>” as the <code>Input Layer</code></p></li>
-<li><p>Set the <code>Distance</code> to <strong>10</strong> metres</p>
-<ul>
-<li>We can also make the buffer squared if we want, but we will keep it with the rounded default</li>
-</ul></li>
-<li><p>Tick the <code>Dissolve result</code> box</p>
-<ul>
-<li>This will merge the polygons from our output, making for a cleaner look. The Dissolve tool also exists as a standalone tool.</li>
-</ul></li>
-<li><p>Click the three dots <code>...</code> next to the <strong>Buffered</strong> field, navigate to the project’s <strong>processed</strong> data folder, and type in <strong>UQ_Boundary_Buffer</strong> and click <code>Save</code></p></li>
-<li><p>Click <code>Run</code></p></li>
+<li>Right-click <code>Dust_pop</code> and open it’s Attribute Table</li>
+<li>Click the <strong>Open Field Calculator</strong> button <img src="https://docs.qgis.org/3.40/en/_images/mActionCalculateField.png" class="img-fluid" alt="Field Calculator Button"></li>
+<li>Next to <code>Output field name</code> type “<strong>affected_pop</strong>”</li>
+<li>Next to <code>Output field type</code> change it to <code>Decimal Number (Real)</code></li>
+<li>In the <code>Expression</code> window type: <code>"SA1_pop_2024 — Sheet1_2024p" * area_frac</code></li>
+<li>Click <code>OK</code></li>
 </ul>
-</section>
-<section id="explore-projections" class="level2">
-<h2 class="anchored" data-anchor-id="explore-projections">Explore Projections</h2>
-<p>Hopefully it’s clear why we needed to convert from a Geographic Coordinate System to a Projected Coordinate System, but why is it important that we chose the local projection <strong>EPSG:23856 - GDA94 / MGA zone 56</strong>?</p>
-<p>Let’s see what would happen if we did our buffer on those lines in a different projection.</p>
-<section id="reproject-data" class="level3">
-<h3 class="anchored" data-anchor-id="reproject-data">Reproject Data</h3>
-<ul>
-<li><p>Go to <code>Vector &gt; Data Management Tools &gt; Reproject Layer...</code></p></li>
-<li><p>Choose the <strong>Lines</strong> in <code>Input layer</code></p></li>
-<li><p>Set the Target CRS to <code>EPSG:3857 - WGS84 / Pseudo-Mercator</code></p>
-<ul>
-<li>This is a very common projection that Google and your phones use</li>
-</ul></li>
-<li><p>Click <code>Run</code></p>
-<ul>
-<li>We don’t need to permanently save this, so we can leave it as a temporary layer</li>
-</ul></li>
-</ul>
-</section>
-<section id="buffer-reprojected-lines" class="level3">
-<h3 class="anchored" data-anchor-id="buffer-reprojected-lines">Buffer Reprojected Lines</h3>
-<ul>
-<li><p>Go to <code>Vector &gt; Geoprocessing Tools &gt; Buffer</code></p></li>
-<li><p>Choose “<strong>Reprojected</strong>” as the <code>Input Layer</code></p></li>
-<li><p>Set the <code>Distance</code> to <strong>10</strong> metres</p></li>
-<li><p>Click <code>Run</code></p></li>
-</ul>
-<p>Move the new <strong>Buffered</strong> layer order so that it draws over the <strong>UQ_Boundar_Buffer</strong> layer. Notice anything interesting?</p>
-<p>The new <strong>Buffered</strong> layer is about 1m smaller!</p>
-<p>This is because <strong>EPSG:3857 - WGS84 / Pseudo-Mercator</strong> is a global projection that tries to preserve shapes. Although the units are in metres, the scaling factor changes as you move away from the equator to account for the curvature of the Earth.</p>
-<p>It can still be useful to use this projection to take points. But you have to be careful when you’re making measurements and calculations, for those, a local projection is usually better.</p>
-</section>
-</section>
+<p>If we open the <code>Field Calulator</code> again and type <code>sum(affected_pop)</code> we can see the total affected population in 27643.</p>
 </section>
 <section id="data" class="level1">
 <h1>Data</h1>
