@@ -174,7 +174,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#what-are-we-going-to-learn" id="toc-what-are-we-going-to-learn" class="nav-link active" data-scroll-target="#what-are-we-going-to-learn">What are we going to learn?</a></li>
-  <li><a href="#projections" id="toc-projections" class="nav-link" data-scroll-target="#projections">Projections</a>
+  <li><a href="#aims-for-this-session" id="toc-aims-for-this-session" class="nav-link" data-scroll-target="#aims-for-this-session">Aims for this session</a></li>
+  <li><a href="#projections-and-coordinate-systems" id="toc-projections-and-coordinate-systems" class="nav-link" data-scroll-target="#projections-and-coordinate-systems">Projections and Coordinate Systems</a>
   <ul class="collapse">
   <li><a href="#gcs---geographic-coordinate-systems" id="toc-gcs---geographic-coordinate-systems" class="nav-link" data-scroll-target="#gcs---geographic-coordinate-systems">GCS - Geographic Coordinate Systems</a></li>
   <li><a href="#projected-coordinate-systems" id="toc-projected-coordinate-systems" class="nav-link" data-scroll-target="#projected-coordinate-systems">Projected Coordinate Systems</a></li>
@@ -239,9 +240,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Buffers and Intersections</li>
 </ul>
 </section>
-<section id="projections" class="level2">
-<h2 class="anchored" data-anchor-id="projections">Projections</h2>
-<p>The two main types of Coordinate Reference Systems (CRS) that you will come across are GCS and PCS.</p>
+<section id="aims-for-this-session" class="level2">
+<h2 class="anchored" data-anchor-id="aims-for-this-session">Aims for this session</h2>
+<p>We need to use spatial analyses to demonstrate what impact the Wind Farm might have. Construction of the turbine pads and connecting roads will create dust, which if carried by wind may be a health hazard for people in the surrounding area. We can use buffers to show how far this may spread, and demographic data to see who is affected.</p>
+<p>However, before we can start analysing our spatial data, we need to make sure we have our data in the most appropriate coordinate system and projection.</p>
+</section>
+<section id="projections-and-coordinate-systems" class="level2">
+<h2 class="anchored" data-anchor-id="projections-and-coordinate-systems">Projections and Coordinate Systems</h2>
+<p>The two main types of Coordinate Reference Systems (CRS) that you will come across are Geographic Coordinate Systems (GCS) and Projected Coordinate Systems (PCS).</p>
 <section id="gcs---geographic-coordinate-systems" class="level3">
 <h3 class="anchored" data-anchor-id="gcs---geographic-coordinate-systems">GCS - Geographic Coordinate Systems</h3>
 <p><strong>Geographic Coordinate Systems (GCS)</strong> tell you <em>where</em> something is on earth. They are spherical models and are usually measured in angular degrees along lines of latitude and longitude. The earth is a complex changing shape (for example plate tectonics), so there are different GCSs for different places.</p>
@@ -288,7 +294,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="buffer-data">Buffer Data</h2>
 <p>Buffers are a simple, but powerful, tool that we can use to extend the borders of our vector data. It’s useful for polygons, lines, and points. They’re also very susceptible to distortions in distance and area caused by some projections.</p>
 <p>Buffers will be very useful for our project if we want to create boundary offsets, or we want to know how the construction might affect the surrounding area.</p>
-<p>Construction of the turbine pads and connecting roads will create dust, which if carried by wind may be a health hazard for people in the surrounding area.</p>
 <p>To do this, we will want to create a 2km buffer around our Access Track, however, if you look at the <code>Properties &gt; Information</code> for that layer, you will notice that it isn’t a projected layer.</p>
 <p>Let’s look at what happens if we create a buffer in a Geographic Coordinate System:</p>
 <ul>
