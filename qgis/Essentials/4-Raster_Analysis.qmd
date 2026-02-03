@@ -145,8 +145,46 @@ We can now play with the **symbology** for those elements. For example:
     -   "Source" needs to be the column "ORDER" (which corresponds to the Strahler order)
     -   Click the double-arrow icon to "Fetch value range from layer"
     -   Change the "Size from" and "to" values to suitable values
+
+
+## Georeferencing an Image
+
+
+-   Navigate to `Layer > Georeferencer...`
+    -   This will open the `Georeferencer` window
+-   Go to `File > Open Raster...`
+-   Open the `raster_data` folder and open `QAP1592_6735-1693dpi.JPG`
+    
+This should load a black and white image of Enoggera Hill on 13 August, 1964. This image is from [QImagery](https://qimagery.information.qld.gov.au/), to make georeferencing easier, we have already rotated this image so that north is at the top (which isn't always the case with historical images!).
+
+We now need to set a few Ground Control Points (GCPs) to align the image. We create these by clicking a point on the image, and then an associated point on our basemap.
+
+Make sure your `World Imagery` basemap is the top visible layer.
+
+Use the `Pan` tool ![Pan tool icon](https://docs.qgis.org/3.40/en/_images/mActionPan.png) to find similar points on the historical image and your basemap. Look for key terrain areas that will be consistent across the decades: fencelines, bridges, old buildings, large rocks, unqiue landforms, T-Intersections, etc.
+
+Be careful putting points on tall buildings, as the photo angle can make that vary wildly - try aiming for a bottom corner.
+
+When you want to add a point, change to the `Add GCP Point` Tool ![Add GCP Point Icon](https://docs.qgis.org/3.40/en/_images/mActionAddGCPPoint.png). Click to add a point on the Historical Image, in the pop-up click `From Map Cavnas`, and then the matching point on your Map.
+We will need at least 5 points spread throughout the map. As you add the points, you'll see them appear in the `GCP Table`, higher residuals suggests that your points might not be lining up perfectly compared to each other. You want to try to be as accurate as you can, but you can't be perfect.
+
+To make this process easier...
+-   Put the `Georeferencer` window on the right of your screen
+-   Put the `QGIS` window on the left.
+-   Press `Ctrl` + `Shift` + `Tab` to make the map full screen. Press those keys again to bring the toolbars back
+    -   `CMD` + `Shift` + `Tab` on Mac
     
     
+Once you've added all your points, you need to open the `Transformation Settings` ![Transformation Settings Icon](https://docs.qgis.org/3.40/en/_images/mActionTransformSettings.png)
+-   For `Transformation Type` if you're confident in all your points, choose `Thin Plate Spline`, if you've made some guesses or you have high residuals, go with `Polynomial` - it's also much faster.
+-   Choose where you want to save the output file
+-   For `Resampling Method` it depends. `Nearest Neighbour is faster`, but generally not as accurate. `Cubic` tends to be more accurate, but it's slow. `Bilinear` is a nice compromise.
+-   Tick the `Save GCP Points` box. This means that after you georeference the image, if you decide you want to try again, you can reload the same points, and then remove or add some if you like.
+-   Click `OK`
+-   Click `Start Georeferencing` ![Start Georeferencing Icon](https://docs.qgis.org/3.40/en/_images/mActionStart.png)
+
+Soon you will have a Georeferenced Historical Image. Try turning the layer visibility on and off to see where it has skewed compared to your basemap. This can help you better see where you might be able to shift, remove, or add some more GCPs.
+
 
 ## Clip the DEM
 
@@ -158,7 +196,7 @@ If we want to focus on the terrain inside our Project Area, we can use `Raster >
 -   Click `Run`
 
 
-## Change the symbology
+### Change the symbology
 
 We can style our DEM with a **terrain colour palette**:
 
@@ -192,6 +230,17 @@ Let's link these two together.
 -   Make sure the DEM is above the Hillshade within this group
 
 
+# Contours
+
+Adding a **contour** makes your elevation even more evident and can also be used to quickly show elevation on other layers
+
+-   Go to `Raster > Extraction > Contour...`.
+-   Ensure the Input Layer is your clipped DEM "EH_DEM_5m"
+-   For **Interval between contour lines**, the default is 10 m, which is good for this location. If you want to create finer the contour lines, it will take longer to process.
+-   Scroll down to "Contours" and click "..." next to \[Create Temporary Layer\]", then "Save to file", and save it as **EH_Contours_10m** to your project folder.
+-   Click Run
+
+
 ## Viewshed
 
 If you want to know what can be seen from a certain point in a landscape, or where in the landscape can see a certain point, you can use a DEM to perform a Viewshed Analysis. To be even more accurate, we can use a DSM instead - a Digital Surface Model. It's very much like a DEM, but where a DEM has had the buildings and trees digitally removed, the DSM retains the heights of buildings and trees. This is useful for a viewshed, as it means that tall buildings might block the view in some areas.
@@ -215,5 +264,10 @@ If you want to get more sophisticated with your Viewshed analyses, there is, of 
 
 
 Don't forget to save  your project
+
+
+## Contours
+
+
 
 

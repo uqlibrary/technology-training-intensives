@@ -194,15 +194,7 @@ It's not essential at this stage, it's just a good reminder to save your work re
 
 
 
-# Contours
 
-Adding a **contour** makes your elevation even more evident and can also be used to quickly show elevation on other layers
-
--   Go to `Raster > Extraction > Contour...`.
--   Ensure the Input Layer is your clipped DEM "St_Lucia_DEM"
--   For **Interval between contour lines**, the default is 10 m, which won't be greatly noticeable at UQ where the highest point is 25 m. However, the finer the contour lines, the longer it will take to process. I will choose 5 m.
--   Scroll down to "Contours" and click "..." next to \[Create Temporary Layer\]", then "Save to file", and save it as **UQ_Contours_5m** to your project folder.
--   Click Run
 
 
 # Layer for Data Collection
