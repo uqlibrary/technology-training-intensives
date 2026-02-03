@@ -36,7 +36,7 @@ Pandas is built upon one key feature: the DataFrame class. In Python we have dif
 To make life easy, we should set up our workspace well. 
 
 1. Open your project folder using your file explorer, and create a new folder called "data". 
-2. [Download the data for today's session](../data_sources/Players2024.csv)
+2. [Download the data for today's session](../../data/Players2024.csv)
 3. Move the file into your new "data" folder
 4. Next, open your project in Spyder, and create a new script called "analysis.py".
 5. Open the "Files" tab in Spyder and check that you see two objects:

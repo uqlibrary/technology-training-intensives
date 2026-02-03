@@ -358,7 +358,7 @@ import pandas as pd
 Now, let's import some data to get ready for the next session. 
 
 1. Create a new folder in your project called `data`
-1. [Download the Players2024.csv](../data_sources/Players2024.csv) file
+1. [Download the Players2024.csv](../../data/Players2024.csv) file
 1. Move it into your new `data` folder
 1. Use the function `pd.read_csv()` to load the data:
 
