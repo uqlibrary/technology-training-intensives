@@ -153,10 +153,17 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#fill-sinks" id="toc-fill-sinks" class="nav-link" data-scroll-target="#fill-sinks">Fill Sinks</a></li>
   </ul></li>
   <li><a href="#channel-network-and-drainage-basin" id="toc-channel-network-and-drainage-basin" class="nav-link" data-scroll-target="#channel-network-and-drainage-basin">Channel network and drainage basin</a></li>
-  <li><a href="#clip-the-dem" id="toc-clip-the-dem" class="nav-link" data-scroll-target="#clip-the-dem">Clip the DEM</a></li>
+  <li><a href="#georeferencing-an-image" id="toc-georeferencing-an-image" class="nav-link" data-scroll-target="#georeferencing-an-image">Georeferencing an Image</a></li>
+  <li><a href="#clip-the-dem" id="toc-clip-the-dem" class="nav-link" data-scroll-target="#clip-the-dem">Clip the DEM</a>
+  <ul class="collapse">
   <li><a href="#change-the-symbology" id="toc-change-the-symbology" class="nav-link" data-scroll-target="#change-the-symbology">Change the symbology</a></li>
+  </ul></li>
   <li><a href="#add-a-hillshade" id="toc-add-a-hillshade" class="nav-link" data-scroll-target="#add-a-hillshade">Add a hillshade</a></li>
+  <li><a href="#contours" id="toc-contours" class="nav-link" data-scroll-target="#contours">Contours</a>
+  <ul class="collapse">
   <li><a href="#viewshed" id="toc-viewshed" class="nav-link" data-scroll-target="#viewshed">Viewshed</a></li>
+  <li><a href="#contours-1" id="toc-contours-1" class="nav-link" data-scroll-target="#contours-1">Contours</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -311,6 +318,26 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
+<section id="georeferencing-an-image" class="level2">
+<h2 class="anchored" data-anchor-id="georeferencing-an-image">Georeferencing an Image</h2>
+<ul>
+<li>Navigate to <code>Layer &gt; Georeferencer...</code>
+<ul>
+<li>This will open the <code>Georeferencer</code> window</li>
+</ul></li>
+<li>Go to <code>File &gt; Open Raster...</code></li>
+<li>Open the <code>raster_data</code> folder and open <code>QAP1592_6735-1693dpi.JPG</code></li>
+</ul>
+<p>This should load a black and white image of Enoggera Hill on 13 August, 1964. This image is from <a href="https://qimagery.information.qld.gov.au/">QImagery</a>, to make georeferencing easier, we have already rotated this image so that north is at the top (which isn’t always the case with historical images!).</p>
+<p>We now need to set a few Ground Control Points (GCPs) to align the image. We create these by clicking a point on the image, and then an associated point on our basemap.</p>
+<p>Make sure your <code>World Imagery</code> basemap is the top visible layer.</p>
+<p>Use the <code>Pan</code> tool <img src="https://docs.qgis.org/3.40/en/_images/mActionPan.png" class="img-fluid" alt="Pan tool icon"> to find similar points on the historical image and your basemap. Look for key terrain areas that will be consistent across the decades: fencelines, bridges, old buildings, large rocks, unqiue landforms, T-Intersections, etc.</p>
+<p>Be careful putting points on tall buildings, as the photo angle can make that vary wildly - try aiming for a bottom corner.</p>
+<p>When you want to add a point, change to the <code>Add GCP Point</code> Tool <img src="https://docs.qgis.org/3.40/en/_images/mActionAddGCPPoint.png" class="img-fluid" alt="Add GCP Point Icon">. Click to add a point on the Historical Image, in the pop-up click <code>From Map Cavnas</code>, and then the matching point on your Map. We will need at least 5 points spread throughout the map. As you add the points, you’ll see them appear in the <code>GCP Table</code>, higher residuals suggests that your points might not be lining up perfectly compared to each other. You want to try to be as accurate as you can, but you can’t be perfect.</p>
+<p>To make this process easier… - Put the <code>Georeferencer</code> window on the right of your screen - Put the <code>QGIS</code> window on the left. - Press <code>Ctrl</code> + <code>Shift</code> + <code>Tab</code> to make the map full screen. Press those keys again to bring the toolbars back - <code>CMD</code> + <code>Shift</code> + <code>Tab</code> on Mac</p>
+<p>Once you’ve added all your points, you need to open the <code>Transformation Settings</code> <img src="https://docs.qgis.org/3.40/en/_images/mActionTransformSettings.png" class="img-fluid" alt="Transformation Settings Icon"> - For <code>Transformation Type</code> if you’re confident in all your points, choose <code>Thin Plate Spline</code>, if you’ve made some guesses or you have high residuals, go with <code>Polynomial</code> - it’s also much faster. - Choose where you want to save the output file - For <code>Resampling Method</code> it depends. <code>Nearest Neighbour is faster</code>, but generally not as accurate. <code>Cubic</code> tends to be more accurate, but it’s slow. <code>Bilinear</code> is a nice compromise. - Tick the <code>Save GCP Points</code> box. This means that after you georeference the image, if you decide you want to try again, you can reload the same points, and then remove or add some if you like. - Click <code>OK</code> - Click <code>Start Georeferencing</code> <img src="https://docs.qgis.org/3.40/en/_images/mActionStart.png" class="img-fluid" alt="Start Georeferencing Icon"></p>
+<p>Soon you will have a Georeferenced Historical Image. Try turning the layer visibility on and off to see where it has skewed compared to your basemap. This can help you better see where you might be able to shift, remove, or add some more GCPs.</p>
+</section>
 <section id="clip-the-dem" class="level2">
 <h2 class="anchored" data-anchor-id="clip-the-dem">Clip the DEM</h2>
 <p>If we want to focus on the terrain inside our Project Area, we can use <code>Raster &gt; Extraction &gt; Clip Raster by Mask Layer</code>.</p>
@@ -320,9 +347,8 @@ ul.task-list li input[type="checkbox"] {
 <li>Scroll to the bottom and click the three dots <code>...</code> next to the <strong>Clipped (mask)</strong> field, navigate to the project’s <strong>processed</strong> data folder, and type in <strong>EH_DEM_5m</strong> and click <code>Save</code></li>
 <li>Click <code>Run</code></li>
 </ul>
-</section>
-<section id="change-the-symbology" class="level2">
-<h2 class="anchored" data-anchor-id="change-the-symbology">Change the symbology</h2>
+<section id="change-the-symbology" class="level3">
+<h3 class="anchored" data-anchor-id="change-the-symbology">Change the symbology</h3>
 <p>We can style our DEM with a <strong>terrain colour palette</strong>:</p>
 <ul>
 <li>double-click on the clipped DEM layer</li>
@@ -331,6 +357,7 @@ ul.task-list li input[type="checkbox"] {
 <li>by default, it uses the min/max values, which is what we want</li>
 <li>we can change the “Color ramp” to something more suitable with the drop-down menu and <code>Create new color ramp... &gt; Catalog: cpt-city &gt; Topography &gt; Elevation</code>, for example.</li>
 </ul>
+</section>
 </section>
 <section id="add-a-hillshade" class="level2">
 <h2 class="anchored" data-anchor-id="add-a-hillshade">Add a hillshade</h2>
@@ -355,6 +382,16 @@ ul.task-list li input[type="checkbox"] {
 <li>Make sure the DEM is above the Hillshade within this group</li>
 </ul>
 </section>
+<section id="contours" class="level1">
+<h1>Contours</h1>
+<p>Adding a <strong>contour</strong> makes your elevation even more evident and can also be used to quickly show elevation on other layers</p>
+<ul>
+<li>Go to <code>Raster &gt; Extraction &gt; Contour...</code>.</li>
+<li>Ensure the Input Layer is your clipped DEM “EH_DEM_5m”</li>
+<li>For <strong>Interval between contour lines</strong>, the default is 10 m, which is good for this location. If you want to create finer the contour lines, it will take longer to process.</li>
+<li>Scroll down to “Contours” and click “…” next to [Create Temporary Layer]“, then”Save to file”, and save it as <strong>EH_Contours_10m</strong> to your project folder.</li>
+<li>Click Run</li>
+</ul>
 <section id="viewshed" class="level2">
 <h2 class="anchored" data-anchor-id="viewshed">Viewshed</h2>
 <p>If you want to know what can be seen from a certain point in a landscape, or where in the landscape can see a certain point, you can use a DEM to perform a Viewshed Analysis. To be even more accurate, we can use a DSM instead - a Digital Surface Model. It’s very much like a DEM, but where a DEM has had the buildings and trees digitally removed, the DSM retains the heights of buildings and trees. This is useful for a viewshed, as it means that tall buildings might block the view in some areas.</p>
@@ -371,8 +408,12 @@ ul.task-list li input[type="checkbox"] {
 <p>This will produce a black and white raster showing what can be seen, and what can’t. Go to the Layer <strong>Styling Menu</strong>, and change it to <strong>Singleband Pseudocolor</strong>, change the <strong>Mode</strong> to <strong>Equal Interval</strong>, and set the <strong>Classes</strong> to <strong>2</strong>. Change one of the Colors to transparent to highlight either where the turbines can be seen, or where they cannot.</p>
 <p>If you want to get more sophisticated with your Viewshed analyses, there is, of course, a plugin called <strong>Visibility Analysis</strong> which will allow you to use one or multiple points as observers, take in account of the Earth’s curvature, see what vector points can see other vector points, and more.</p>
 <p>Don’t forget to save your project</p>
+</section>
+<section id="contours-1" class="level2">
+<h2 class="anchored" data-anchor-id="contours-1">Contours</h2>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
