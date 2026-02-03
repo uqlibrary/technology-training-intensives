@@ -12,18 +12,25 @@ Main aims:
 -   Automate our map description
 -   Use templates
 
-If we have time:
 
--   Learn to use Web Mapping Services
--   Georeference an Image
+## Load in our data 
 
-## The Brief
+Within the `Styling_data` folder you will find"
+
+-   artefacts.gpkg (artefact location data we've made for this tutorial)
+-   Clearance_area.kml (a dissolved buffer of the area that will need to be cleared for construction)
+
+## Aims for this session
+
+We've been sent through the proposed clearing distance around the construction areas, as well as the data from the cultural heritage survey. We want to put this map into a report.
 
 We need to use our spatial files to make a map that:
 
 -   Shows the project outline
 
--   Show the access paths
+-   Shows the clearance area
+
+-   Show the access tracks
 
 -   Categorises the artefacts
 
