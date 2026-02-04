@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-02-03">
+<meta name="dcterms.date" content="2026-02-04">
 
 <title>Styling Themes and Templates – UQ Library Training Intensives</title>
 <style>
@@ -74,7 +74,7 @@ ul.task-list li input[type="checkbox"] {
 
 <meta property="og:title" content="Styling Themes and Templates – UQ Library Training Intensives">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://uqlibrary.github.io/technology-training-intensives/qgis/Advanced topics/mActionEditPaste.png">
+<meta property="og:image" content="https://uqlibrary.github.io/technology-training-intensives/qgis/Advanced topics/images/symbologyAdd.png">
 <meta property="og:site_name" content="UQ Library Training Intensives">
 </head>
 
@@ -143,9 +143,9 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#load-in-our-data" id="toc-load-in-our-data" class="nav-link" data-scroll-target="#load-in-our-data">Load in our data</a></li>
   <li><a href="#aims-for-this-session" id="toc-aims-for-this-session" class="nav-link" data-scroll-target="#aims-for-this-session">Aims for this session</a></li>
   <li><a href="#basemaps" id="toc-basemaps" class="nav-link" data-scroll-target="#basemaps">Basemaps</a></li>
-  <li><a href="#colours" id="toc-colours" class="nav-link" data-scroll-target="#colours">Colours</a></li>
   <li><a href="#change-the-symbology" id="toc-change-the-symbology" class="nav-link" data-scroll-target="#change-the-symbology">Change the Symbology</a>
   <ul class="collapse">
+  <li><a href="#colours" id="toc-colours" class="nav-link" data-scroll-target="#colours">Colours</a></li>
   <li><a href="#point-geometry" id="toc-point-geometry" class="nav-link" data-scroll-target="#point-geometry">Point Geometry</a></li>
   <li><a href="#polygon-geometry" id="toc-polygon-geometry" class="nav-link" data-scroll-target="#polygon-geometry">Polygon Geometry</a></li>
   <li><a href="#line-geometry" id="toc-line-geometry" class="nav-link" data-scroll-target="#line-geometry">Line Geometry</a></li>
@@ -166,11 +166,9 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#text" id="toc-text" class="nav-link" data-scroll-target="#text">Text</a></li>
   <li><a href="#title" id="toc-title" class="nav-link" data-scroll-target="#title">Title</a></li>
   <li><a href="#dynamic-text" id="toc-dynamic-text" class="nav-link" data-scroll-target="#dynamic-text">Dynamic Text</a></li>
-  <li><a href="#shapes" id="toc-shapes" class="nav-link" data-scroll-target="#shapes">Shapes</a></li>
   <li><a href="#legend" id="toc-legend" class="nav-link" data-scroll-target="#legend">Legend</a></li>
   <li><a href="#north-arrow" id="toc-north-arrow" class="nav-link" data-scroll-target="#north-arrow">North Arrow</a></li>
   <li><a href="#scalebar" id="toc-scalebar" class="nav-link" data-scroll-target="#scalebar">Scalebar</a></li>
-  <li><a href="#finessing" id="toc-finessing" class="nav-link" data-scroll-target="#finessing">Finessing</a></li>
   <li><a href="#export-options" id="toc-export-options" class="nav-link" data-scroll-target="#export-options">Export options</a></li>
   </ul></li>
   <li><a href="#save-a-map-template" id="toc-save-a-map-template" class="nav-link" data-scroll-target="#save-a-map-template">Save a Map Template</a></li>
@@ -180,10 +178,6 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#scalebar-1" id="toc-scalebar-1" class="nav-link" data-scroll-target="#scalebar-1">Scalebar</a></li>
   <li><a href="#legend-1" id="toc-legend-1" class="nav-link" data-scroll-target="#legend-1">Legend</a></li>
   <li><a href="#title-1" id="toc-title-1" class="nav-link" data-scroll-target="#title-1">Title</a></li>
-  </ul></li>
-  <li><a href="#feedback" id="toc-feedback" class="nav-link" data-scroll-target="#feedback">Feedback</a>
-  <ul class="collapse">
-  <li><a href="#georeferencing" id="toc-georeferencing" class="nav-link" data-scroll-target="#georeferencing">Georeferencing</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -204,7 +198,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 3, 2026</p>
+      <p class="date">February 4, 2026</p>
     </div>
   </div>
   
@@ -230,24 +224,22 @@ ul.task-list li input[type="checkbox"] {
 <p>Within the <code>Styling_data</code> folder you will find”</p>
 <ul>
 <li>artefacts.gpkg (artefact location data we’ve made for this tutorial)</li>
-<li>Clearance_area.kml (a dissolved buffer of the area that will need to be cleared for construction)</li>
 </ul>
 </section>
 <section id="aims-for-this-session" class="level2">
 <h2 class="anchored" data-anchor-id="aims-for-this-session">Aims for this session</h2>
-<p>We’ve been sent through the proposed clearing distance around the construction areas, as well as the data from the cultural heritage survey. We want to put this map into a report.</p>
+<p>We’ve been sent through the data from the cultural heritage survey. We want to put this map into a report for the public.</p>
 <p>We need to use our spatial files to make a map that:</p>
 <ul>
-<li><p>Shows the project outline</p></li>
-<li><p>Shows the clearance area</p></li>
-<li><p>Show the access tracks</p></li>
 <li><p>Categorises the artefacts</p></li>
+<li><p>Shows the project outline</p></li>
+<li><p>Shows the access tracks</p></li>
 </ul>
 <p>The current map in our project does accomplish these goals, but it’s not inviting to look at.</p>
 <p>To fix this, we need to ask some questions:</p>
 <p><strong>Who is the intended audience for our map</strong>?</p>
 <ul>
-<li>A good looking map for a <strong>Report</strong> map may look different to an <strong>Academic Paper</strong> or a <strong>Technical</strong> map or to a map for the <strong>Public</strong>.</li>
+<li>A good looking map for a generic <strong>Report</strong> map may look different to an <strong>Academic Paper</strong> or a <strong>Technical</strong> map or to a map for the <strong>Public</strong>.</li>
 </ul>
 <p><strong>What story am I trying to tell?</strong></p>
 <ul>
@@ -280,18 +272,55 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="basemaps" class="level2">
 <h2 class="anchored" data-anchor-id="basemaps">Basemaps</h2>
-<p>Let’s start by making a map we might use in an <strong>Academic Paper</strong> or in an <strong>Article for the Public</strong>, where we want to focus their attention on our data. Unless we really need <strong>Satellite</strong> imagery, or everything on the <strong>OpenStreetMap</strong>, it is too busy and distracting.</p>
+<p>Let’s start by turning our map into one we can use in our <strong>Report for the Public</strong>, where we want to focus their attention on our data. Unless we really <em>need</em> <strong>Satellite</strong> imagery, or everything on the <strong>OpenStreetMap</strong>, they’re both too busy and distracting.</p>
 <p>Let’s load in a new basemap.</p>
-<p>There are many ways of doing this, in the past we’ve used the <strong>QuickMapServices</strong> plugin to load in new basemaps, now we can go to the next step and source them externally. We can do this with WMTS (Web Map Tile Service), WCS (Web Coverage Service), ArcGIS REST Servers, and XYZ Tiles.</p>
-<p>Today we’re going to use the <strong>Voyager (no labels)</strong> XYZ Tile from CARTODB and <strong>Light Gray Basemap</strong> from ESRI.</p>
+<p>Today we’re going to use an XYZ Tile from CARTODB.</p>
+<ul>
+<li>Scroll down the <code>Browser</code> panel until your see <strong>XYZ Tiles</strong></li>
+<li>Right click XYZ Tiles and select <code>New Connection...</code></li>
+<li>In <code>Name</code> type <strong>Voyager (no labels)</strong></li>
+<li>In <code>URL</code> paste:<br>
+https://a.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}<span class="citation" data-cites="2x.png">@2x.png</span></li>
+<li>Increase the Max. Zoom Level to 20</li>
+<li>This value depends on what is available from the given service in different parts of the world. Increasing that value beyond 20 for this map in Brisbane will show “Map data not yet available” when you zoom in very close.</li>
+<li>Click <code>OK</code></li>
+<li>In the <code>Browser</code> panel, expand <code>XYZ Tiles</code> and double click on <code>Voyager (no labels)</code></li>
+</ul>
+<p>Arrange the layers so that the <strong>Voyager (no labels)</strong> layer is under your other layers (you can hide the <strong>OpenStreetMap</strong> for now).</p>
 <p>Isn’t that much less visually busy?!</p>
 </section>
-<section id="colours" class="level2">
-<h2 class="anchored" data-anchor-id="colours">Colours</h2>
+<section id="change-the-symbology" class="level2">
+<h2 class="anchored" data-anchor-id="change-the-symbology">Change the Symbology</h2>
+<section id="colours" class="level3">
+<h3 class="anchored" data-anchor-id="colours">Colours</h3>
 <p>The random colours that QGIS gives you aren’t always pretty, so let’s change the colours.</p>
 <p>Choosing a colour palette can be difficult and overwhelming, but once you have one, you can keep using those colours to form a more harmonious looking map. What story are you telling? Do you want your map to be bright and saturated, or warm and earthy?</p>
 <p>The built in color ramps provide some good options I quite like <strong><code>rainfall</code></strong> (in Precipitation), <strong><code>Set1</code></strong> (in QGIS), and <strong><code>wiki-knutux</code></strong> (in Topography).</p>
-<p>Today we’re being fancy, we’re going to import and build our own Color Ramp and Color Palette.</p>
+<p>We can use the <code>Style Manager</code> to edit the default options and Favorites that appear in the Layer Styling window.</p>
+<ul>
+<li><p>Navigate to <code>Settings &gt; Style Manager...</code></p>
+<ul>
+<li><p>Click the <img src="images/symbologyAdd.png" class="img-fluid"> <code>Add item</code> button at the bottom and select <code>Catalog: cpt-city...</code></p>
+<ul>
+<li>From the left panel under <code>Name</code>, select <code>Topography</code></li>
+<li>From the right panel under <code>Selected palettes for Topography</code>, scroll down click <code>wiki-knutux</code>, and click <code>OK</code></li>
+<li>Set the <code>Name</code> as “Knutux” (or something that makes sense to you), tick <code>Add to my favorites</code>, and click <code>Save</code></li>
+</ul></li>
+<li><p>Click <code>Close</code></p></li>
+</ul></li>
+</ul>
+<p>You can do this same process for any other colour ramp that you like. You can also create custom colour ramps of your choosing.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Custom Colours
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you want to be really fancy, you can import and build our own Color Ramp and Color Palette.</p>
 <ul>
 <li><p>In your internet browser, navigate to <a href="https://colorbrewer2.org/#type=qualitative&amp;scheme=Set2&amp;n=7">colorbrewer2.org</a></p>
 <ul>
@@ -313,8 +342,7 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 <p>We now have a custom palette we can use throughout our projects!</p>
-<p>Unfortunately we need to set up the Color Ramp separately.<br>
-</p>
+<p>Unfortunately we need to set up the Color Ramp separately.</p>
 <ul>
 <li><p>Navigate to <code>Settings &gt; Style Manager...</code></p>
 <ul>
@@ -332,36 +360,36 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 <li><p>Click <code>Close</code></p></li>
 </ul>
-<p>You can also use the <code>Style Manager</code> to edit the default options and Favorites that appear in the Layer Styling window.</p>
 <p>Now we’ve set up our colours, we can start using them!</p>
+</div>
+</div>
 </section>
-<section id="change-the-symbology" class="level2">
-<h2 class="anchored" data-anchor-id="change-the-symbology">Change the Symbology</h2>
 <section id="point-geometry" class="level3">
 <h3 class="anchored" data-anchor-id="point-geometry">Point Geometry</h3>
+<p>Now that we have added that colourramp to our favourites, we can more easily apply it to our layers.</p>
 <section id="categories" class="level4">
 <h4 class="anchored" data-anchor-id="categories">Categories</h4>
 <ul>
 <li>Select the <strong>Artefacts</strong> layer from the <code>Layer Styling</code> panel</li>
 <li>In the <code>Layer Styling</code> panel, change <strong><code>Single Symbol</code></strong> to <code>Categorized</code></li>
-<li>From <code>Value</code> select <strong>Artefact Type</strong></li>
-<li>From <code>Color ramp</code> choose our <strong>Report Colour Ramp</strong></li>
+<li>From <code>Value</code> select <strong>Artefact_Type</strong></li>
+<li>From <code>Color ramp</code> choose our <strong>Knutux</strong></li>
 <li>Click the <strong><code>Classify</code></strong> button</li>
 </ul>
 </section>
 <section id="symbols" class="level4">
 <h4 class="anchored" data-anchor-id="symbols">Symbols</h4>
-<p>With the <strong>Voyager (no labels)</strong> basemap, we can reduce the complexity of our symbology to make a cleaner looking map.</p>
+<p>With the <strong>Voyager (no labels)</strong> basemap, we can reduce the complexity of our symbology to make a cleaner looking map. Let’s keep styling the <strong>Artefacts</strong></p>
 <p>If you want, you can change the properties of all symbols at once:</p>
 <ul>
-<li><p>Simply click in the white space below your symbol classes so that none are selected.</p></li>
-<li><p>If you click on the button next to <code>Symbol</code>, it will take you to <code>Symbol Settings</code><strong>WARNING</strong> if you edit any individual symbols before this step, it will reset any changes you made to those individual symbols.</p>
+<li><p>Click in the white space below your symbol classes so that no categories are highlighted/selected.</p></li>
+<li><p>If you click on the button next to <code>Symbol</code>, it will take you to <code>Symbol Settings</code> <strong>WARNING</strong> if you edit any individual symbols before this step, it will reset any changes you made to those individual symbols.</p>
 <ul>
 <li><p>Try increasing the size of the symbols to 3mm</p></li>
 <li><p>Click <code>Simple Marker</code> and change the <code>Symbol layer type</code> to <strong>Filled Marker</strong></p>
 <ul>
 <li><p>Now click <code>Simple Fill</code> and change its <code>Symbol layer type</code> to <strong>Outline: Simple Line</strong></p></li>
-<li><p>Change the <code>Stroke width</code>&nbsp;to <strong>0.4</strong></p></li>
+<li><p>Change the <code>Stroke width</code> to <strong>0.4</strong></p></li>
 <li><p>This gives our points a very clean and simple appearance</p></li>
 </ul></li>
 </ul></li>
@@ -378,6 +406,7 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 <li>Click the <code>back arrow button</code> next to <strong>Artefact Scatter</strong></li>
 </ul>
+<p>By removing the fill from the points it reduces the visual noise from our map, and can reduce the effects of overplotting.</p>
 </section>
 </section>
 <section id="polygon-geometry" class="level3">
@@ -419,9 +448,9 @@ ul.task-list li input[type="checkbox"] {
 <section id="line-geometry" class="level3">
 <h3 class="anchored" data-anchor-id="line-geometry">Line Geometry</h3>
 <p>We <em>can</em> make our lines stand out. Sometimes it can be as simple as picking a contrasting colour, changing the width, or adding more symbol layers (with dashes, or arrows, or horizontal lines).</p>
-<p>In this case, we want to keep the attention on the point data, let’s keep the paths, but reduce their contrast.</p>
+<p>In this case, we want to keep the attention on the point data, let’s keep the tracks, but reduce their contrast.</p>
 <ul>
-<li>Select the <strong>Paths</strong> layer from the <code>Layer Styling</code> panel</li>
+<li>Select the <strong>Access Tracks</strong> layer from the <code>Layer Styling</code> panel</li>
 <li>Under <code>Line</code>, click <code>Simple Line</code>
 <ul>
 <li>Change the <code>Color</code> to a colour in your <strong>Report Palette</strong> that is different to your points, I’m going to use <strong>green</strong></li>
@@ -435,7 +464,9 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="themes">Themes</h2>
 <p>We can use themes to create multiple looks for our map that we can easily swap between. Let’s create a theme for our <strong>Data Map</strong></p>
 <ul>
-<li>Click the <strong>Eye</strong> icon (Manage Map Themes) at the top of the <code>Layers</code> panel, and click <code>Add theme...</code>
+<li><p>In the <code>Layers</code> panel, hide the <strong>Voyager (no labels)</strong> layer by unticking the box next to it.</p></li>
+<li><p>Unhide the <strong>World Imagery</strong></p></li>
+<li><p>Click the <strong>Eye</strong> icon (Manage Map Themes) at the top of the <code>Layers</code> panel, and click <code>Add theme...</code></p>
 <ul>
 <li>Let’s name our new theme <strong>Data Main</strong>, and click <code>OK</code></li>
 </ul></li>
@@ -471,22 +502,19 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="themes-again">Themes (again)</h3>
 <p>Now that we’ve made some style changes, we can see what themes do.</p>
 <ul>
-<li><p>In the <code>Layers</code> panel, hide the <strong>Voyager (no labels)</strong>, <strong>Paths</strong> and <strong>Artefacts</strong> layers by unticking the boxes next to them.</p></li>
-<li><p>Unhide the <strong>Light Gray Basemap</strong></p></li>
-</ul>
-<!-- -->
-<ul>
-<li>Click the <strong>Eye</strong> icon (Manage Map Themes) at the top of the <code>Layers</code> panel, and click <code>Add theme...</code>
+<li><p>In the <code>Layers</code> panel, hide the <strong>World Imagery</strong>, <strong>Access Tracks</strong> and <strong>Artefacts</strong> layers by unticking the boxes next to them.</p></li>
+<li><p>Unhide the <strong>Voyager (no labels)</strong></p></li>
+<li><p>Click Manage Map Themes <img src="https://docs.qgis.org/3.40/en/_images/mActionShowPresets.png" class="img-fluid" alt="Manage Map Themes Icon"> at the top of the <code>Layers</code> panel, and click <code>Add theme...</code></p>
 <ul>
 <li>Let’s name our new theme <strong>Data Inset</strong>, and click <code>OK</code></li>
 </ul></li>
-<li>Now, click the <strong>Eye</strong> icon again
+<li><p>Now, click the <strong>Eye</strong> icon again</p>
 <ul>
 <li>You will see that there are two check box options at the bottom: <strong>Data Inset</strong> and <strong>Data Main</strong></li>
 <li>You can cycle between these two themes by choosing one or the other</li>
 <li>If you want to update a theme, simply hide/unhide layers, change the layer Styles, go to <code>Eye icon &gt; Replace theme...</code> and then select the theme you want to overwrite.</li>
 </ul></li>
-<li>Save your project</li>
+<li><p>Save your project</p></li>
 </ul>
 </section>
 </section>
@@ -710,9 +738,16 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 <p>You could also add any extra text details such as the locality, disclaimers, or any other details needed.</p>
-</section>
-<section id="shapes" class="level3">
-<h3 class="anchored" data-anchor-id="shapes">Shapes</h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Shapes
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>We can add a border around our layout. This isn’t necessary, but it looks nice! It also has greater customisability than the map frame options.</p>
 <ul>
 <li>Add a rectangle to your map by clicking the <code>Add Shape</code> icon in the left menu, or navigating <code>Add Item &gt; Add Shape &gt; Add Rectangle</code>
@@ -744,6 +779,8 @@ ul.task-list li input[type="checkbox"] {
 <li>This means it stays on top of everything else, but you won’t select it every time you click the map canvas</li>
 </ul></li>
 </ul>
+</div>
+</div>
 </section>
 <section id="legend" class="level3">
 <h3 class="anchored" data-anchor-id="legend">Legend</h3>
@@ -770,8 +807,16 @@ ul.task-list li input[type="checkbox"] {
 <li>Change<code>Symbol height</code> to 12</li>
 </ul></li>
 </ul>
-<section id="custom-legend-symbols" class="level4">
-<h4 class="anchored" data-anchor-id="custom-legend-symbols">Custom Legend Symbols</h4>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Custom Legend Symbols
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Okay, we have a legend, but let’s get really fancy with a custom polygon legend.</p>
 <ul>
 <li><p>Save your Layout</p>
@@ -804,7 +849,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 <li><p>Click the back arrow button again</p></li>
 </ul>
-</section>
+</div>
+</div>
 </section>
 <section id="north-arrow" class="level3">
 <h3 class="anchored" data-anchor-id="north-arrow">North Arrow</h3>
@@ -840,9 +886,16 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul></li>
 </ul>
-</section>
-<section id="finessing" class="level3">
-<h3 class="anchored" data-anchor-id="finessing">Finessing</h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Finessing
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ul>
 <li><p>Go to the <code>Layout</code> panel and scroll down to <strong>Resize Layout to Content</strong></p>
 <ul>
@@ -851,6 +904,8 @@ ul.task-list li input[type="checkbox"] {
 <li>Now we can see the dark glow we added to the <strong>Outline</strong>, without interfering with our neat 200x200 layout</li>
 </ul></li>
 </ul>
+</div>
+</div>
 <p>Save your project.</p>
 <ul>
 <li><code>Layout &gt; Save Project</code></li>
@@ -942,14 +997,6 @@ ul.task-list li input[type="checkbox"] {
 <li>In the <code>Item Properties</code> panel, under the <strong>Main Properties</strong> rename the title</li>
 </ul>
 <p>And that’s it, you now have another map looking the way you want it, without too much hassle.</p>
-</section>
-</section>
-<section id="feedback" class="level2">
-<h2 class="anchored" data-anchor-id="feedback">Feedback</h2>
-<p>Please visit our website to <a href="https://web.library.uq.edu.au/study-and-learning-support/training-and-workshops/software-training-resources">provide feedback</a> and find upcoming training courses we have on offer.</p>
-<section id="georeferencing" class="level3">
-<h3 class="anchored" data-anchor-id="georeferencing">Georeferencing</h3>
-<p>I will be happy to go over this in person, but if you need a guide, here is the <a href="https://docs.qgis.org/3.40/en/docs/training_manual/forestry/map_georeferencing.html">QGIS how to</a></p>
 
 
 </section>

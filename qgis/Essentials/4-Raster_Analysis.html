@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-02-03">
+<meta name="dcterms.date" content="2026-02-04">
 
 <title>Raster Analysis – UQ Library Training Intensives</title>
 <style>
@@ -182,7 +182,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 3, 2026</p>
+      <p class="date">February 4, 2026</p>
     </div>
   </div>
   
@@ -336,6 +336,7 @@ ul.task-list li input[type="checkbox"] {
 <p>To make this process easier… - Put the <code>Georeferencer</code> window on the right of your screen - Put the <code>QGIS</code> window on the left. - Press <code>Ctrl</code> + <code>Shift</code> + <code>Tab</code> to make the map full screen. Press those keys again to bring the toolbars back - <code>CMD</code> + <code>Shift</code> + <code>Tab</code> on Mac</p>
 <p>Once you’ve added all your points, you need to open the <code>Transformation Settings</code> <img src="https://docs.qgis.org/3.40/en/_images/mActionTransformSettings.png" class="img-fluid" alt="Transformation Settings Icon"> - For <code>Transformation Type</code> if you’re confident in all your points, choose <code>Thin Plate Spline</code>, if you’ve made some guesses or you have high residuals, go with <code>Polynomial</code> - it’s also much faster. - Choose where you want to save the output file - For <code>Resampling Method</code> it depends. <code>Nearest Neighbour is faster</code>, but generally not as accurate. <code>Cubic</code> tends to be more accurate, but it’s slow. <code>Bilinear</code> is a nice compromise. - Tick the <code>Save GCP Points</code> box. This means that after you georeference the image, if you decide you want to try again, you can reload the same points, and then remove or add some if you like. - Click <code>OK</code> - Click <code>Start Georeferencing</code> <img src="https://docs.qgis.org/3.40/en/_images/mActionStart.png" class="img-fluid" alt="Start Georeferencing Icon"></p>
 <p>Soon you will have a Georeferenced Historical Image. Try turning the layer visibility on and off to see where it has skewed compared to your basemap. This can help you better see where you might be able to shift, remove, or add some more GCPs.</p>
+<p>Here is the <a href="https://docs.qgis.org/3.40/en/docs/training_manual/forestry/map_georeferencing.html">QGIS how to Guide for Georeferencing</a></p>
 </section>
 <section id="clip-the-dem" class="level2">
 <h2 class="anchored" data-anchor-id="clip-the-dem">Clip the DEM</h2>
