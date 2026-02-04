@@ -140,37 +140,18 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#folder-setup" id="toc-folder-setup" class="nav-link active" data-scroll-target="#folder-setup">Folder Setup</a></li>
   <li><a href="#install-qfield" id="toc-install-qfield" class="nav-link" data-scroll-target="#install-qfield">Install QField</a></li>
-  <li><a href="#download-data" id="toc-download-data" class="nav-link" data-scroll-target="#download-data">Download Data</a></li>
-  <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources">Data Sources</a>
+  <li><a href="#buffer-data" id="toc-buffer-data" class="nav-link" data-scroll-target="#buffer-data">Buffer Data</a>
   <ul class="collapse">
-  <li><a href="#dem" id="toc-dem" class="nav-link" data-scroll-target="#dem">DEM</a></li>
-  <li><a href="#aerial-imagery" id="toc-aerial-imagery" class="nav-link" data-scroll-target="#aerial-imagery">Aerial Imagery</a>
-  <ul class="collapse">
-  <li><a href="#local-raster-files" id="toc-local-raster-files" class="nav-link" data-scroll-target="#local-raster-files">Local Raster Files</a></li>
-  <li><a href="#mapserver-raster-files" id="toc-mapserver-raster-files" class="nav-link" data-scroll-target="#mapserver-raster-files">Mapserver Raster Files</a></li>
-  </ul></li>
-  <li><a href="#lot-plans" id="toc-lot-plans" class="nav-link" data-scroll-target="#lot-plans">Lot Plans</a></li>
-  </ul></li>
-  <li><a href="#import-data" id="toc-import-data" class="nav-link" data-scroll-target="#import-data">Import Data</a></li>
-  <li><a href="#buffer-data" id="toc-buffer-data" class="nav-link" data-scroll-target="#buffer-data">Buffer Data</a></li>
-  <li><a href="#select-and-reproject" id="toc-select-and-reproject" class="nav-link" data-scroll-target="#select-and-reproject">Select and Reproject</a></li>
-  <li><a href="#polygons-to-lines" id="toc-polygons-to-lines" class="nav-link" data-scroll-target="#polygons-to-lines">Polygons to Lines</a>
-  <ul class="collapse">
+  <li><a href="#polygons-to-lines" id="toc-polygons-to-lines" class="nav-link" data-scroll-target="#polygons-to-lines">Polygons to Lines</a></li>
   <li><a href="#buffer-the-lines" id="toc-buffer-the-lines" class="nav-link" data-scroll-target="#buffer-the-lines">Buffer the Lines</a></li>
-  <li><a href="#style-the-boundary-buffer-polygon" id="toc-style-the-boundary-buffer-polygon" class="nav-link" data-scroll-target="#style-the-boundary-buffer-polygon">Style the Boundary buffer polygon</a>
-  <ul class="collapse">
+  <li><a href="#style-the-boundary-buffer-polygon" id="toc-style-the-boundary-buffer-polygon" class="nav-link" data-scroll-target="#style-the-boundary-buffer-polygon">Style the Boundary buffer polygon</a></li>
   <li><a href="#save-your-project" id="toc-save-your-project" class="nav-link" data-scroll-target="#save-your-project">Save your project</a></li>
   </ul></li>
-  </ul></li>
-  <li><a href="#layer-for-data-collection" id="toc-layer-for-data-collection" class="nav-link" data-scroll-target="#layer-for-data-collection">Layer for Data Collection</a>
-  <ul class="collapse">
+  <li><a href="#layer-for-data-collection" id="toc-layer-for-data-collection" class="nav-link" data-scroll-target="#layer-for-data-collection">Layer for Data Collection</a></li>
   <li><a href="#add-another-field" id="toc-add-another-field" class="nav-link" data-scroll-target="#add-another-field">Add Another Field</a></li>
   <li><a href="#attributes-form-preparation" id="toc-attributes-form-preparation" class="nav-link" data-scroll-target="#attributes-form-preparation">Attributes Form Preparation</a></li>
-  </ul></li>
-  <li><a href="#tracks-layer" id="toc-tracks-layer" class="nav-link" data-scroll-target="#tracks-layer">Tracks Layer</a>
-  <ul class="collapse">
+  <li><a href="#tracks-layer" id="toc-tracks-layer" class="nav-link" data-scroll-target="#tracks-layer">Tracks Layer</a></li>
   <li><a href="#tracks-attributes-form-preparation" id="toc-tracks-attributes-form-preparation" class="nav-link" data-scroll-target="#tracks-attributes-form-preparation">Tracks Attributes Form Preparation</a></li>
-  </ul></li>
   <li><a href="#qfield" id="toc-qfield" class="nav-link" data-scroll-target="#qfield">QField</a>
   <ul class="collapse">
   <li><a href="#install-qfield-plugin" id="toc-install-qfield-plugin" class="nav-link" data-scroll-target="#install-qfield-plugin">Install QField Plugin</a></li>
@@ -184,12 +165,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#exporting-from-qfield-to-qgis" id="toc-exporting-from-qfield-to-qgis" class="nav-link" data-scroll-target="#exporting-from-qfield-to-qgis">Exporting from QField to QGIS</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#feedback" id="toc-feedback" class="nav-link" data-scroll-target="#feedback">Feedback</a></li>
-  <li><a href="#stretch-goals" id="toc-stretch-goals" class="nav-link" data-scroll-target="#stretch-goals">Stretch Goals</a>
-  <ul class="collapse">
-  <li><a href="#exporting-to-avenza-maps" id="toc-exporting-to-avenza-maps" class="nav-link" data-scroll-target="#exporting-to-avenza-maps">Exporting to Avenza Maps</a></li>
-  <li><a href="#autoid" id="toc-autoid" class="nav-link" data-scroll-target="#autoid">AutoID</a></li>
-  </ul></li>
+  <li><a href="#stretch-goals" id="toc-stretch-goals" class="nav-link" data-scroll-target="#stretch-goals">Stretch Goals</a></li>
   </ul>
 </nav>
     </div>
@@ -221,165 +197,35 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>This last session will look at using QField to collect data in the field. We can turn a QGIS project into a QField project we can use on our phones.</p>
 <section id="folder-setup" class="level2">
 <h2 class="anchored" data-anchor-id="folder-setup">Folder Setup</h2>
-<pre><code>-   "DCIM" - this is a new one, it's for storing images from our phone!
+<p>We need to create two new folders in our <strong>Enoggera_Windfarm_26</strong> folder</p>
+<pre><code>-   "DCIM" - this is for storing images from our phone!
 
--   "UQ_Fieldwork" - this is also new, it's for exporting our project to QField</code></pre>
+-   "EH_Fieldwork" - we need this one to export our project to QField</code></pre>
 </section>
 <section id="install-qfield" class="level2">
 <h2 class="anchored" data-anchor-id="install-qfield">Install QField</h2>
 <p>QField plugs directly in to QGIS, and allows you to link a QGIS project with your mobile phone for data collection.</p>
 <p><a href="https://play.google.com/store/apps/details?id=ch.opengis.qfield">Android Download</a> <a href="https://apps.apple.com/app/qfield-for-qgis/id1531726814">iOS Download</a></p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>You can also explore Avenza, which uses GeoPDFs
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>For Avenza Maps you just need to add a GeoPDF and you can collect data on it. It’s less functional than QField, but it’s a great fallback tool. <a href="https://play.google.com/store/apps/details?id=com.Avenza&amp;hl=en_AU">Android Download</a> <a href="https://apps.apple.com/app/avenza-maps/id388424049">iOS Download</a></p>
-<p>There are alternatives out there, such as <a href="https://merginmaps.com/features">Input (MerginMaps)</a>.</p>
-</div>
-</div>
-</div>
 </section>
-<section id="download-data" class="level1">
-<h1>Download Data</h1>
-<p>Our data for today is packaged in a zip file.</p>
-<ul>
-<li>Download today’s data from <a href="https://github.com/uqlibrary/technology-training-assets/raw/refs/heads/master/QGIS/fieldwork/QGIS_Fieldwork_Data.zip">here</a>.</li>
-<li>Extract/unzip the data and move it into your <strong>raw data</strong> folder</li>
-</ul>
-</section>
-<section id="data-sources" class="level1">
-<h1>Data Sources</h1>
-<p>We’re going to explore a number of different online spatial data repositories.</p>
-<section id="dem" class="level2">
-<h2 class="anchored" data-anchor-id="dem">DEM</h2>
-<p>A Digital Elevation Model (DEM) is a common example of <strong>raster data</strong>, i.e.&nbsp;grid data that contains a value in each cell (a bit like the pixels in a coloured picture).</p>
-<p>For this tutorial, we are using a DEM sourced from <a href="http://www.ga.gov.au/elvis/"><strong>ELVIS</strong></a> - Geoscience Australia’s ELeVation Information System.</p>
-</section>
-<section id="aerial-imagery" class="level2">
-<h2 class="anchored" data-anchor-id="aerial-imagery">Aerial Imagery</h2>
-<p>There are a few places you can acquire aerial photography.</p>
-<section id="local-raster-files" class="level3">
-<h3 class="anchored" data-anchor-id="local-raster-files">Local Raster Files</h3>
-<p>As a UQ student, you have access to very high resolution imagery from <a href="https://admin.nearmap.com/invitation/domain-signup?token=q9WIbXMtna1iskb2meNGhKpCaQp3WTRbMhXpQVGWkKouKUeqzkpjNznC_Ogz5iKYiw0Ev7vym2Ykaj_W_V4dBbTzR6qUX2eTDsNHpBuR4XbU9vDRxQN_Rg=="><strong>NearMap</strong></a>. You can activate an account here to download georeferenced aerial imagery. You can even access an array of imagery going back in time to around 2010.</p>
-<p>We won’t use NearMap today, but you’re welcome to explore it.</p>
-</section>
-<section id="mapserver-raster-files" class="level3">
-<h3 class="anchored" data-anchor-id="mapserver-raster-files">Mapserver Raster Files</h3>
-<p>Today we’re going to use a World Imagery XYZ Tile from ESRI.</p>
-<ul>
-<li>Scroll down the <code>Browser</code> panel until your see <strong>XYZ Tiles</strong></li>
-<li>Right click XYZ Tiles and select <code>New Connection...</code>
-<ul>
-<li>In <code>Name</code> type <strong>ESRI World Imagery</strong></li>
-<li>In <code>URL</code> paste:<br>
-https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}</li>
-<li>Increase the Max. Zoom Level to 20
-<ul>
-<li>This value depends on what is available from the given service in different parts of the world. Increasing that value beyond 20 for this map in Brisbane will show “Map data not yet available” when you zoom in very close.</li>
-</ul></li>
-<li>Click <code>OK</code></li>
-</ul></li>
-<li>In the <code>Browser</code> panel, expand <code>XYZ Tiles</code> and double click on <code>ESRI World Imagery</code></li>
-</ul>
-</section>
-</section>
-<section id="lot-plans" class="level2">
-<h2 class="anchored" data-anchor-id="lot-plans">Lot Plans</h2>
-<p>You can access a wide variety of QLD Government Data, including Spatial Data such as lot plans and vegetation maps, from <a href="https://qldspatial.information.qld.gov.au/">QLD Spatial</a>.</p>
-<p>Today we have extracted a selection from <a href="https://qldspatial.information.qld.gov.au/catalogue/custom/detail.page?fid=%7B3F217A59-1FDB-412A-813D-A1E7843FB618%7D">Property boundaries Queensland</a></p>
-<p>There are three ways to access data from QSpatial.</p>
-<ul>
-<li><p>Download all of the data from a layer</p></li>
-<li><p>Select a portion of a layer for download using the <a href="https://qldspatial.information.qld.gov.au/catalogue/custom/myList.page">My List</a> function</p></li>
-<li><p>Live load it into your project using a <a href="https://spatial-gis.information.qld.gov.au/arcgis/rest/services/PlanningCadastre/LandParcelPropertyFramework/MapServer">Mapserver</a>.</p></li>
-</ul>
-</section>
-</section>
-<section id="import-data" class="level1">
-<h1>Import Data</h1>
-<p>Our data should neatly appear within the <code>Project Home</code> folder within the <code>Browser</code> panel.</p>
-<ul>
-<li><p>Open the Data and Raw Data folder</p></li>
-<li><p>Drag in the <strong>UQ_DEM_1m.tif</strong> and <strong>St_Lucia_Property_Boundaries.gpkg</strong></p></li>
-</ul>
-</section>
-<section id="buffer-data" class="level1">
-<h1>Buffer Data</h1>
-<p>Buffers are a simple, but powerful, tool that we can use to extend the borders of our vector data. It’s useful for polygons, lines, and points.</p>
-<p>Perhaps we need to keep 10m from the property boundaries when doing our fieldwork. A buffer can help us there.</p>
-<p>However, our <strong>St_Lucia_Property_Boundaries</strong> layer has some issues we need to resolve before we can buffer it.</p>
-<ul>
-<li><p>It has extra properties that we don’t need</p></li>
-<li><p>A buffer on a polygon will grow out from the edges, not put a buffer either side of the edges</p></li>
-<li><p>It’s in a Geographic Coordinate System</p></li>
-</ul>
-<p>Let’s look at what happens if we create a buffer in a Geographic Coordinate System:</p>
-<ul>
-<li><p>Go to <code>Vector &gt; Geoprocessing Tools &gt; Buffer</code></p></li>
-<li><p>Choose “<strong>St_Lucia_Property_Boundaries</strong>” as the Input Layer</p></li>
-<li><p>We next want to choose distance that we want to create a buffer away from our vector.</p>
-<ul>
-<li>However, you’ll note that because the layer projection is EPSG:4283 GDA94 (a geographic coordinate system), the distance is currently in <strong>degrees</strong>.</li>
-</ul></li>
-<li><p>If you click Run with 10 Degrees, your buffer will be nearly the size of Queensland.</p>
-<ul>
-<li>To change this to metres, we first need to convert our layer to a local projected coordinate system.</li>
-</ul></li>
-</ul>
-</section>
-<section id="select-and-reproject" class="level1">
-<h1>Select and Reproject</h1>
-<p>We can <strong>Select</strong> the data we want, and <strong>reproject</strong> at the same time!</p>
-<p>We first need to select the lots that are relevant to us:</p>
-<ul>
-<li><p>Click the dropdown next to the <strong>Select Feature(s)</strong> icon in the toolbar, and choose the <code>Select Feature by polygon</code> option</p>
-<ul>
-<li>This allows us to click around our desired selection</li>
-</ul></li>
-<li><p>Make sure <strong>St_Lucia_Property_Boundaries</strong> is the selected layer in the <code>Layers</code> panel</p></li>
-<li><p>Click around the lots to draw a shape around the lots we want to keep</p></li>
-<li><p>Right-click to finish selecting</p>
-<ul>
-<li>If you need to select any more features, press and hold <strong>Shift</strong> while drawing around your extra features, when you right-click they will be added to your selection</li>
-<li>To remove any accidentally selected features from the selection, press and hold <strong>Control</strong> and draw around the unwanted features.</li>
-</ul></li>
-<li><p>Right click on the <strong>St_Lucia_Property_Boundaries</strong> layer, and select <code>Export &gt; Save Selected Features As...</code></p></li>
-<li><p>Choose <strong>Geopackage</strong> as the <code>Format</code></p></li>
-<li><p>Click the three dots on the right of <code>File name</code>, navigate to your <strong>Processed</strong> data folder and save it as “<strong>UQ_Boundary</strong>”</p></li>
-<li><p>See the <code>Layer name</code> to “<strong>UQ Boundary</strong>”</p>
-<ul>
-<li>The Layer name can have spaces in it, but it’s best to avoid spaces in a File name</li>
-</ul></li>
-<li><p>Make sure you change the CRS, effectively reprojecting the layer</p>
-<ul>
-<li>Choose <code>EPSG:23856 - GDA94 / MGA zone 56</code>
-<ul>
-<li>This is the same projection as our DEM, and a good local projection</li>
-</ul></li>
-</ul></li>
-<li><p>Click <code>OK</code></p></li>
-</ul>
-</section>
-<section id="polygons-to-lines" class="level1">
-<h1>Polygons to Lines</h1>
+<section id="buffer-data" class="level2">
+<h2 class="anchored" data-anchor-id="buffer-data">Buffer Data</h2>
+<p>As we’ve seen, buffers are a simple, but powerful, tool that we can use to extend the borders of our vector data. It’s useful for polygons, lines, and points.</p>
+<p>Perhaps we need to keep 10m from the <code>Project Area</code> boundaries when doing our fieldwork. A buffer can help us there.</p>
+<section id="polygons-to-lines" class="level3">
+<h3 class="anchored" data-anchor-id="polygons-to-lines">Polygons to Lines</h3>
 <p>To buffer either side of the edges of our boundaries, we need to convert them from Polygons to Lines.</p>
 <ul>
 <li>Go to <code>Vector &gt; Geometry Tools &gt; Polygons to Lines</code></li>
-<li>Set the <code>Input Layer</code> to <strong>UQ Boundary</strong></li>
+<li>Set the <code>Input Layer</code> to <strong>Project Area</strong></li>
 <li>Click <code>OK</code></li>
 </ul>
-<section id="buffer-the-lines" class="level2">
-<h2 class="anchored" data-anchor-id="buffer-the-lines">Buffer the Lines</h2>
+<p>This will create a temporary file called <code>Lines</code>, you can choose to save it instead, but that is optional.</p>
+</section>
+<section id="buffer-the-lines" class="level3">
+<h3 class="anchored" data-anchor-id="buffer-the-lines">Buffer the Lines</h3>
 <ul>
 <li><p>Go to <code>Vector &gt; Geoprocessing Tools &gt; Buffer</code></p></li>
 <li><p>Choose “<strong>Lines</strong>” as the <code>Input Layer</code></p></li>
@@ -391,15 +237,15 @@ https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/til
 <ul>
 <li>This will merge the polygons from our output, making for a cleaner look. The Dissolve tool also exists as a standalone tool.</li>
 </ul></li>
-<li><p>Click the three dots <code>...</code> next to the <strong>Buffered</strong> field, navigate to the project’s <strong>processed</strong> data folder, and type in <strong>UQ_Boundary_Buffer</strong> and click <code>Save</code></p></li>
+<li><p>Click the three dots <code>...</code> next to the <strong>Buffered</strong> field, navigate to the project’s <strong>processed</strong> data folder, and type in <strong>EH_Boundary_Buffer</strong> and click <code>Save</code></p></li>
 <li><p>Click <code>Run</code></p></li>
 </ul>
 </section>
-<section id="style-the-boundary-buffer-polygon" class="level2">
-<h2 class="anchored" data-anchor-id="style-the-boundary-buffer-polygon">Style the Boundary buffer polygon</h2>
+<section id="style-the-boundary-buffer-polygon" class="level3">
+<h3 class="anchored" data-anchor-id="style-the-boundary-buffer-polygon">Style the Boundary buffer polygon</h3>
 <ul>
 <li>Open the <code>Layer Styling</code> panel by pressing <strong>F7</strong> (or fn+F7)</li>
-<li>Select the <strong>UQ_Boundar_Buffer</strong> layer from either the <code>Layer Styling</code> panel, or the <code>Layers</code> panel.</li>
+<li>Select the <strong>Project_Boundar_Buffer</strong> layer from either the <code>Layer Styling</code> panel, or the <code>Layers</code> panel.</li>
 <li>Under <code>Fill</code>, click <code>Simple Fill</code>
 <ul>
 <li>Click the dropdown next to <code>Fill color</code> and select a colour that reminds us not to go there, like <strong>orange</strong>
@@ -408,14 +254,14 @@ https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/til
 </ul></li>
 </ul></li>
 </ul>
+</section>
 <section id="save-your-project" class="level3">
 <h3 class="anchored" data-anchor-id="save-your-project">Save your project</h3>
 <p>It’s not essential at this stage, it’s just a good reminder to save your work regularly so you don’t lose things when things go wrong.</p>
 </section>
 </section>
-</section>
-<section id="layer-for-data-collection" class="level1">
-<h1>Layer for Data Collection</h1>
+<section id="layer-for-data-collection" class="level2">
+<h2 class="anchored" data-anchor-id="layer-for-data-collection">Layer for Data Collection</h2>
 <p>This is a very important step, as you cannot create new layers in QField, so we need this to record the data we collect.</p>
 <ul>
 <li>Go to <code>Layer &gt; Create Layer &gt; New GeoPackage Layer...</code></li>
@@ -461,8 +307,9 @@ https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/til
 </ul></li>
 <li>Click <code>OK</code></li>
 </ul>
-<p>You might wonder why we’ve just chosen WGS84 after seeing the issues with it earlier. Placing points with this projection is less of an issue than doing measurements and analysis. For today we’re choosing WGS84 so that our Lat and Long values are in a format most people expect: WGS84. If we chose a Projected Coordinate System, it wouldn’t give us location in degrees <code>Lat: -27.4705, Lon: 153.0260</code>, it would give us a location meters <code>Easting: 500,000 Northing: 6,900,000</code> We could choose a local Geographic Coordinate System like <strong>EPSG:7844 - GDA2020</strong>, but again, most people will assume your values are in <strong>EPSG:4326 - WGS 84</strong>, so that’s a safe bet unless your group/company has a preferred option.</p>
+<p>You might wonder why we’ve just chosen WGS84 after seeing the issues with it earlier. Placing points with this projection is less of an issue than it is for doing measurements and analysis. For today we’re choosing WGS84 so that our Lat and Long values are in a format most people expect: WGS84. If we chose a Projected Coordinate System, it wouldn’t give us location in degrees <code>Lat: -27.4705, Lon: 153.0260</code>, it would give us a location meters <code>Easting: 500,000 Northing: 6,900,000</code> We could choose a local Geographic Coordinate System like <strong>EPSG:7844 - GDA2020</strong>, but again, most people will assume your values are in <strong>EPSG:4326 - WGS 84</strong>, so that’s a safe bet unless your group/company has a preferred option.</p>
 <p><strong>Always check and transform to a common CRS before analysis.</strong></p>
+</section>
 <section id="add-another-field" class="level2">
 <h2 class="anchored" data-anchor-id="add-another-field">Add Another Field</h2>
 <p>It would be nice to be able to take photos when we collect our data, let’s add another field.</p>
@@ -549,9 +396,8 @@ https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/til
 <li>Click the yellow pencil button to <strong>Toggle Editing</strong> off</li>
 </ul>
 </section>
-</section>
-<section id="tracks-layer" class="level1">
-<h1>Tracks Layer</h1>
+<section id="tracks-layer" class="level2">
+<h2 class="anchored" data-anchor-id="tracks-layer">Tracks Layer</h2>
 <p>This is another important step, as you need to create your tracking layer before you export to QField</p>
 <ul>
 <li>Go to <code>Layer &gt; Create Layer &gt; New GeoPackage Layer...</code></li>
@@ -566,6 +412,7 @@ https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/til
 <li>Click <code>Add to Fields List</code></li>
 </ul></li>
 </ul>
+</section>
 <section id="tracks-attributes-form-preparation" class="level2">
 <h2 class="anchored" data-anchor-id="tracks-attributes-form-preparation">Tracks Attributes Form Preparation</h2>
 <p>Let’s prepare the <strong>tracks</strong> DateTime as we did with the <strong>collected_data</strong> - Double click on the new <strong>tracks</strong> layer - Click on the <code>Attributes Form</code> tab - At the very top of the window, click <code>Autogenerate</code> and change it to <code>Drag and Drop Designer</code></p>
@@ -580,7 +427,6 @@ https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/til
 </ul></li>
 <li>Click <code>OK</code></li>
 </ul>
-</section>
 </section>
 <section id="qfield" class="level1">
 <h1>QField</h1>
@@ -605,10 +451,10 @@ https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/til
 <ul>
 <li>collected_data</li>
 <li>tracks</li>
-<li>UQ_Boundary_Buffer</li>
-<li>UQ_Contours_5m</li>
-<li>UQ_DEM_1m</li>
-<li>UQ_Hillshade</li>
+<li>EH_Boundary_Buffer</li>
+<li>EH_Contours_10m</li>
+<li>EH_DEM_5m</li>
+<li>EH_DEM_5m_Hillshade</li>
 <li>World Imagery Tile</li>
 </ul></li>
 </ul>
@@ -618,8 +464,8 @@ https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/til
 <ul>
 <li>Navigate to <code>Plugins &gt; QFieldSync &gt; Package for QField</code></li>
 <li>If you get a Message window popup, click <code>Next</code></li>
-<li>Give your project an appropriate title <strong>UQ_Fieldwork</strong></li>
-<li>Under <strong>Packaged Project Filename</strong> navigate to your <strong>UQ_Fieldwork</strong> folder and click <code>Save</code></li>
+<li>Give your project an appropriate title <strong>EH_Fieldwork</strong></li>
+<li>Under <strong>Packaged Project Filename</strong> navigate to your <strong>EH_Fieldwork</strong> folder and click <code>Save</code></li>
 <li>Under <strong>Advanced</strong> untick every folder except <code>DCIM</code>
 <ul>
 <li>We want a copy of this folder for our photos to be saved to. The rest of our data will be packaged into the QField folder.</li>
@@ -633,7 +479,7 @@ https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/til
 </ul></li>
 <li>Scroll down and tick <strong>Geofencing</strong>
 <ul>
-<li>Set <code>Geofencing areas layer</code> to UQ_Boundary_Buffer</li>
+<li>Set <code>Geofencing areas layer</code> to <strong>EH_Boundary_Buffer</strong></li>
 </ul></li>
 <li>Click <code>OK</code></li>
 </ul></li>
@@ -641,14 +487,14 @@ https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/til
 </ul>
 <p>We now need to zip the <code>QField</code> folder and send it to our phone!</p>
 <ul>
-<li>Navigate to your <strong>Project</strong> folder, right click on the <strong>UQ_Fieldwork</strong> folder and compress it to a zip file.</li>
+<li>Navigate to your <strong>Project</strong> folder, right click on the <strong>EH_Fieldwork</strong> folder and compress it to a zip file.</li>
 <li>Send this file to your phone via email, cloud, or using a cable.</li>
 </ul>
 </section>
 <section id="opening-the-qfield-project" class="level2">
 <h2 class="anchored" data-anchor-id="opening-the-qfield-project">Opening the QField Project</h2>
 <p><strong>Android</strong> - Open QField - Skip any popups - Tap <code>Open local file</code> - Tap the green plus button in the bottom right - Tap <code>Import project from ZIP</code> - Navigate to your zip file. In my case, I had to go to the top left menu, and tap on <strong>Downloads</strong> - The file should open in QField. You may need to tap on the outer folder, and then the <strong>Project</strong> itself.</p>
-<p><strong>iOS</strong> - Open the zip file and extract it to: <code>On My iPhone/QField/Imported Projects</code> - Open QField - Skip any popups - Tap <code>Open local file</code> - Tap <code>Imported projects</code> - Open the <strong>UQ_Fieldwork</strong> folder until you reach the <strong>UQ_Fieldwork</strong> Project file. - The project should open in QField.</p>
+<p><strong>iOS</strong> - Open the zip file and extract it to: <code>On My iPhone/QField/Imported Projects</code> - Open QField - Skip any popups - Tap <code>Open local file</code> - Tap <code>Imported projects</code> - Open the <strong>EH_Fieldwork</strong> folder until you reach the <strong>EH_Fieldwork</strong> Project file. - The project should open in QField.</p>
 <p>You can now access your map.</p>
 </section>
 <section id="using-qfield" class="level2">
@@ -687,6 +533,9 @@ https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/til
 <li>When the new menu appears, tap <code>Stop tracking</code></li>
 </ul></li>
 </ul>
+</section>
+<section id="exporting-from-qfield-to-qgis" class="level3">
+<h3 class="anchored" data-anchor-id="exporting-from-qfield-to-qgis">Exporting from QField to QGIS</h3>
 <p>To export your data back to QGIS, you can either copy the whole project folder in your phones storage back to your computer, or:</p>
 <ul>
 <li>Go to the menu</li>
@@ -694,34 +543,41 @@ https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/til
 <li>Tap the three dots next to your <strong>data_collected.gpkg</strong> file</li>
 <li>Send it to your email</li>
 </ul>
-<p>There’s more to explore, such as the very very helpful <a href="https://qfield.cloud/">QFieldCloud</a>, and I encourage you to do so.</p>
-<p>If you have any questions, reach out to the UQ Library Training Team at training@library.uq.edu.au</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>QFieldCloud
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Instead of the email/transfer by cable option, you can instead create a <a href="https://qfield.cloud/">QFieldCloud</a> account. This is a more convenient approach, but you are limited to 100mb projects.</p>
+</div>
+</div>
+</div>
 </section>
-<section id="exporting-from-qfield-to-qgis" class="level3">
-<h3 class="anchored" data-anchor-id="exporting-from-qfield-to-qgis">Exporting from QField to QGIS</h3>
 </section>
-</section>
-</section>
-<section id="feedback" class="level1">
-<h1>Feedback</h1>
-<p>Please visit our website to <a href="https://web.library.uq.edu.au/study-and-learning-support/training-and-workshops/software-training-resources">provide feedback</a> and find upcoming training courses we have on offer.</p>
 </section>
 <section id="stretch-goals" class="level1">
 <h1>Stretch Goals</h1>
-<section id="exporting-to-avenza-maps" class="level2">
-<h2 class="anchored" data-anchor-id="exporting-to-avenza-maps">Exporting to Avenza Maps</h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+<span class="screen-reader-only">Note</span>Exporting to Avenza Maps
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<p>For Avenza Maps you just need to add a GeoPDF and you can collect data on it. It’s less functional than QField, but it’s a great fallback tool. <a href="https://play.google.com/store/apps/details?id=com.Avenza&amp;hl=en_AU">Android Download</a> <a href="https://apps.apple.com/app/avenza-maps/id388424049">iOS Download</a></p>
+<p>There are alternatives out there, such as <a href="https://merginmaps.com/features">Input (MerginMaps)</a>.</p>
 <p>Click on <code>Show Layout Manager</code> in the toolbar or use <code>Project &gt; Layout Manager</code>. <code>Create</code> a new layout called “Avenza”. We can now see the Layout window.</p>
 <p>Normally we would add many elements to our layout if we were exporting it for print such as the map, a legend, a scale bar, a north arrow…</p>
 <p>In this case however, we are simply interested in our map. Let’s add the map to the canvas:</p>
@@ -741,9 +597,18 @@ Note
 </div>
 </div>
 </div>
-</section>
-<section id="autoid" class="level2">
-<h2 class="anchored" data-anchor-id="autoid">AutoID</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>AutoID
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p>We can use some fancy code to make the ID automated</p>
 <ul>
 <li>Double click on the new <strong>collected_data</strong> layer
@@ -781,9 +646,11 @@ Note
     )
 )
 </code></pre>
+</div>
+</div>
+</div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

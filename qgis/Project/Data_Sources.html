@@ -166,6 +166,16 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#australian-bureau-of-statistics-data" id="toc-australian-bureau-of-statistics-data" class="nav-link" data-scroll-target="#australian-bureau-of-statistics-data">Australian Bureau of Statistics Data</a></li>
   </ul></li>
   <li><a href="#get-some-elevation-data" id="toc-get-some-elevation-data" class="nav-link" data-scroll-target="#get-some-elevation-data">Get some elevation data</a></li>
+  <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources">Data Sources</a>
+  <ul class="collapse">
+  <li><a href="#dem-1" id="toc-dem-1" class="nav-link" data-scroll-target="#dem-1">DEM</a></li>
+  <li><a href="#aerial-imagery-2" id="toc-aerial-imagery-2" class="nav-link" data-scroll-target="#aerial-imagery-2">Aerial Imagery</a>
+  <ul class="collapse">
+  <li><a href="#local-raster-files" id="toc-local-raster-files" class="nav-link" data-scroll-target="#local-raster-files">Local Raster Files</a></li>
+  <li><a href="#mapserver-raster-files" id="toc-mapserver-raster-files" class="nav-link" data-scroll-target="#mapserver-raster-files">Mapserver Raster Files</a></li>
+  </ul></li>
+  <li><a href="#lot-plans-2" id="toc-lot-plans-2" class="nav-link" data-scroll-target="#lot-plans-2">Lot Plans</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -431,8 +441,56 @@ https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/til
 </ul>
 <p>“SRTM” stands for “<a href="https://www.usgs.gov/centers/eros/science/usgs-eros-archive-digital-elevation-shuttle-radar-topography-mission-srtm-1-arc?qt-science_center_objects=0#qt-science_center_objects">Shuttle Radar Topography Mission</a>”. It provides global elevation data collected in 2000 by the space shuttle Endeavour.</p>
 <p>Our area covers two separate raster files. We can click on the foot icon to see the footprint of each file, and the picture icon to see what the DEM looks like.</p>
+</section>
+<section id="data-sources" class="level1">
+<h1>Data Sources</h1>
+<p>We’re going to explore a number of different online spatial data repositories.</p>
+<section id="dem-1" class="level2">
+<h2 class="anchored" data-anchor-id="dem-1">DEM</h2>
+<p>A Digital Elevation Model (DEM) is a common example of <strong>raster data</strong>, i.e.&nbsp;grid data that contains a value in each cell (a bit like the pixels in a coloured picture).</p>
+<p>For this tutorial, we are using a DEM sourced from <a href="http://www.ga.gov.au/elvis/"><strong>ELVIS</strong></a> - Geoscience Australia’s ELeVation Information System.</p>
+</section>
+<section id="aerial-imagery-2" class="level2">
+<h2 class="anchored" data-anchor-id="aerial-imagery-2">Aerial Imagery</h2>
+<p>There are a few places you can acquire aerial photography.</p>
+<section id="local-raster-files" class="level3">
+<h3 class="anchored" data-anchor-id="local-raster-files">Local Raster Files</h3>
+<p>As a UQ student, you have access to very high resolution imagery from <a href="https://admin.nearmap.com/invitation/domain-signup?token=q9WIbXMtna1iskb2meNGhKpCaQp3WTRbMhXpQVGWkKouKUeqzkpjNznC_Ogz5iKYiw0Ev7vym2Ykaj_W_V4dBbTzR6qUX2eTDsNHpBuR4XbU9vDRxQN_Rg=="><strong>NearMap</strong></a>. You can activate an account here to download georeferenced aerial imagery. You can even access an array of imagery going back in time to around 2010.</p>
+<p>We won’t use NearMap today, but you’re welcome to explore it.</p>
+</section>
+<section id="mapserver-raster-files" class="level3">
+<h3 class="anchored" data-anchor-id="mapserver-raster-files">Mapserver Raster Files</h3>
+<p>Today we’re going to use a World Imagery XYZ Tile from ESRI.</p>
+<ul>
+<li>Scroll down the <code>Browser</code> panel until your see <strong>XYZ Tiles</strong></li>
+<li>Right click XYZ Tiles and select <code>New Connection...</code>
+<ul>
+<li>In <code>Name</code> type <strong>ESRI World Imagery</strong></li>
+<li>In <code>URL</code> paste:<br>
+https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}</li>
+<li>Increase the Max. Zoom Level to 20
+<ul>
+<li>This value depends on what is available from the given service in different parts of the world. Increasing that value beyond 20 for this map in Brisbane will show “Map data not yet available” when you zoom in very close.</li>
+</ul></li>
+<li>Click <code>OK</code></li>
+</ul></li>
+<li>In the <code>Browser</code> panel, expand <code>XYZ Tiles</code> and double click on <code>ESRI World Imagery</code></li>
+</ul>
+</section>
+</section>
+<section id="lot-plans-2" class="level2">
+<h2 class="anchored" data-anchor-id="lot-plans-2">Lot Plans</h2>
+<p>You can access a wide variety of QLD Government Data, including Spatial Data such as lot plans and vegetation maps, from <a href="https://qldspatial.information.qld.gov.au/">QLD Spatial</a>.</p>
+<p>Today we have extracted a selection from <a href="https://qldspatial.information.qld.gov.au/catalogue/custom/detail.page?fid=%7B3F217A59-1FDB-412A-813D-A1E7843FB618%7D">Property boundaries Queensland</a></p>
+<p>There are three ways to access data from QSpatial.</p>
+<ul>
+<li><p>Download all of the data from a layer</p></li>
+<li><p>Select a portion of a layer for download using the <a href="https://qldspatial.information.qld.gov.au/catalogue/custom/myList.page">My List</a> function</p></li>
+<li><p>Live load it into your project using a <a href="https://spatial-gis.information.qld.gov.au/arcgis/rest/services/PlanningCadastre/LandParcelPropertyFramework/MapServer">Mapserver</a>.</p></li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
