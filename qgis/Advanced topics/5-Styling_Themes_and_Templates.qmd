@@ -18,21 +18,19 @@ Main aims:
 Within the `Styling_data` folder you will find"
 
 -   artefacts.gpkg (artefact location data we've made for this tutorial)
--   Clearance_area.kml (a dissolved buffer of the area that will need to be cleared for construction)
 
 ## Aims for this session
 
-We've been sent through the proposed clearing distance around the construction areas, as well as the data from the cultural heritage survey. We want to put this map into a report.
+We've been sent through the data from the cultural heritage survey. We want to put this map into a report for the public.
 
 We need to use our spatial files to make a map that:
 
+-   Categorises the artefacts
+
 -   Shows the project outline
 
--   Shows the clearance area
+-   Shows the access tracks
 
--   Show the access tracks
-
--   Categorises the artefacts
 
 The current map in our project does accomplish these goals, but it's not inviting to look at.
 
@@ -40,7 +38,7 @@ To fix this, we need to ask some questions:
 
 **Who is the intended audience for our map**?
 
--   A good looking map for a **Report** map may look different to an **Academic Paper** or a **Technical** map or to a map for the **Public**.
+-   A good looking map for a generic **Report** map may look different to an **Academic Paper** or a **Technical** map or to a map for the **Public**.
 
 **What story am I trying to tell?**
 
@@ -76,18 +74,31 @@ The basemap sets the tone for the rest of the layers in the map, as they can gre
 
 ## Basemaps
 
-Let's start by making a map we might use in an **Academic Paper** or in an **Article for the Public**, where we want to focus their attention on our data. Unless we really need **Satellite** imagery, or everything on the **OpenStreetMap**, it is too busy and distracting.
+Let's start by turning our map into one we can use in our **Report for the Public**, where we want to focus their attention on our data. Unless we really *need* **Satellite** imagery, or everything on the **OpenStreetMap**, they're both too busy and distracting.
 
 Let's load in a new basemap.
 
-There are many ways of doing this, in the past we've used the **QuickMapServices** plugin to load in new basemaps, now we can go to the next step and source them externally. We can do this with WMTS (Web Map Tile Service), WCS (Web Coverage Service), ArcGIS REST Servers, and XYZ Tiles.
+Today we're going to use an XYZ Tile from CARTODB.
 
-Today we're going to use the **Voyager (no labels)** XYZ Tile from CARTODB and  **Light Gray Basemap** from ESRI.
+-   Scroll down the `Browser` panel until your see **XYZ Tiles**
+  -   Right click XYZ Tiles and select `New Connection...`
+-   In `Name` type **Voyager (no labels)**
+  -   In `URL` paste:\
+https://a.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}@2x.png
+-   Increase the Max. Zoom Level to 20
+-   This value depends on what is available from the given service in different parts of the world. Increasing that value beyond 20 for this map in Brisbane will show "Map data not yet available" when you zoom in very close.
+-   Click `OK`
+-   In the `Browser` panel, expand `XYZ Tiles` and double click on `Voyager (no labels)`
+
+
+Arrange the layers so that the **Voyager (no labels)** layer is under your other layers (you can hide the **OpenStreetMap** for now).
 
 Isn't that much less visually busy?!
 
 
-## Colours
+## Change the Symbology
+
+### Colours
 
 The random colours that QGIS gives you aren't always pretty, so let's change the colours.
 
@@ -95,7 +106,23 @@ Choosing a colour palette can be difficult and overwhelming, but once you have o
 
 The built in color ramps provide some good options I quite like **`rainfall`** (in Precipitation), **`Set1`** (in QGIS), and **`wiki-knutux`** (in Topography).
 
-Today we're being fancy, we're going to import and build our own Color Ramp and Color Palette.
+We can use the `Style Manager` to edit the default options and Favorites that appear in the Layer Styling window.
+
+-   Navigate to `Settings > Style Manager...`
+
+    -   Click the ![](images/symbologyAdd.png) `Add item` button at the bottom and select `Catalog: cpt-city...`
+
+        -   From the left panel under `Name`, select `Topography`
+        -   From the right panel under `Selected palettes for Topography`, scroll down click `wiki-knutux`, and click `OK`
+        -   Set the `Name` as "Knutux" (or something that makes sense to you), tick `Add to my favorites`, and click `Save`
+    -   Click `Close`
+
+You can do this same process for any other colour ramp that you like. You can also create custom colour ramps of your choosing.
+
+::: {.callout-tip}
+### Custom Colours
+
+If you want to be really fancy, you can import and build our own Color Ramp and Color Palette.
 
 -   In your internet browser, navigate to [colorbrewer2.org](https://colorbrewer2.org/#type=qualitative&scheme=Set2&n=7)
 
@@ -123,7 +150,7 @@ Today we're being fancy, we're going to import and build our own Color Ramp and 
 
 We now have a custom palette we can use throughout our projects!
 
-Unfortunately we need to set up the Color Ramp separately.\
+Unfortunately we need to set up the Color Ramp separately.
 
 -   Navigate to `Settings > Style Manager...`
 
@@ -147,31 +174,33 @@ Unfortunately we need to set up the Color Ramp separately.\
 
 -   Click `Close`
 
-You can also use the `Style Manager` to edit the default options and Favorites that appear in the Layer Styling window.
 
-Now we've set up our colours, we can start using them!
 
-## Change the Symbology
+Now we’ve set up our colours, we can start using them!
+
+:::
 
 ### Point Geometry
+
+Now that we have added that colourramp to our favourites, we can more easily apply it to our layers.
 
 #### Categories
 
 -   Select the **Artefacts** layer from the `Layer Styling` panel
 -   In the `Layer Styling` panel, change **`Single Symbol`** to `Categorized`
--   From `Value` select **Artefact Type**
--   From `Color ramp` choose our **Report Colour Ramp**
+-   From `Value` select **Artefact_Type**
+-   From `Color ramp` choose our **Knutux**
 -   Click the **`Classify`** button
 
 #### Symbols
 
-With the **Voyager (no labels)** basemap, we can reduce the complexity of our symbology to make a cleaner looking map.
+With the **Voyager (no labels)** basemap, we can reduce the complexity of our symbology to make a cleaner looking map. Let's keep styling the **Artefacts**
 
 If you want, you can change the properties of all symbols at once:
 
--   Simply click in the white space below your symbol classes so that none are selected.
+-   Click in the white space below your symbol classes so that no categories are highlighted/selected.
 
--   If you click on the button next to `Symbol`, it will take you to `Symbol Settings`**WARNING** if you edit any individual symbols before this step, it will reset any changes you made to those individual symbols.
+-   If you click on the  button next to `Symbol`, it will take you to `Symbol Settings` **WARNING** if you edit any individual symbols before this step, it will reset any changes you made to those individual symbols.
 
     -   Try increasing the size of the symbols to 3mm
 
@@ -179,7 +208,7 @@ If you want, you can change the properties of all symbols at once:
 
         -   Now click `Simple Fill` and change its `Symbol layer type` to **Outline: Simple Line**
 
-        -   Change the `Stroke width` to **0.4**
+        -   Change the `Stroke width` to **0.4**
 
         -   This gives our points a very clean and simple appearance
 
@@ -191,6 +220,8 @@ Now that we have a nice colour scheme, let's give it a new shape.
     -   Click **Filled Marker** - this will allow us to change many things including the shape of the marker
         -   From the bottom of the window select a shape, let's go with the **Triangle**
 -   Click the `back arrow button` next to **Artefact Scatter**
+
+By removing the fill from the points it reduces the visual noise from our map, and can reduce the effects of overplotting.
 
 ### Polygon Geometry
 
@@ -221,9 +252,9 @@ That's nicer, but let's make it *fancy.* Let's add a dropshadow.
 
 We *can* make our lines stand out. Sometimes it can be as simple as picking a contrasting colour, changing the width, or adding more symbol layers (with dashes, or arrows, or horizontal lines).
 
-In this case, we want to keep the attention on the point data, let's keep the paths, but reduce their contrast.
+In this case, we want to keep the attention on the point data, let's keep the tracks, but reduce their contrast.
 
--   Select the **Paths** layer from the `Layer Styling` panel
+-   Select the **Access Tracks** layer from the `Layer Styling` panel
 -   Under `Line`, click `Simple Line`
     -   Change the `Color` to a colour in your **Report Palette** that is different to your points, I'm going to use **green**
     -   Increase the `Stroke width` to **0.4mm**
@@ -232,6 +263,11 @@ In this case, we want to keep the attention on the point data, let's keep the pa
 ## Themes
 
 We can use themes to create multiple looks for our map that we can easily swap between. Let's create a theme for our **Data Map**
+
+
+-   In the `Layers` panel, hide the **Voyager (no labels)** layer by unticking the box next to it.
+
+-   Unhide the **World Imagery**
 
 -   Click the **Eye** icon (Manage Map Themes) at the top of the `Layers` panel, and click `Add theme...`
     -   Let's name our new theme **Data Main**, and click `OK`
@@ -261,13 +297,11 @@ Now we have a slightly different style to our **Project_area** that will look be
 
 Now that we’ve made some style changes, we can see what themes do.
 
--   In the `Layers` panel, hide the **Voyager (no labels)**, **Paths** and **Artefacts** layers by unticking the boxes next to them.
+-   In the `Layers` panel, hide the **World Imagery**, **Access Tracks** and **Artefacts** layers by unticking the boxes next to them.
 
--   Unhide the **Light Gray Basemap**
+-   Unhide the **Voyager (no labels)**
 
-<!-- -->
-
--   Click the **Eye** icon (Manage Map Themes) at the top of the `Layers` panel, and click `Add theme...`
+-   Click Manage Map Themes ![Manage Map Themes Icon](https://docs.qgis.org/3.40/en/_images/mActionShowPresets.png) at the top of the `Layers` panel, and click `Add theme...`
     -   Let's name our new theme **Data Inset**, and click `OK`
 -   Now, click the **Eye** icon again
     -   You will see that there are two check box options at the bottom: **Data Inset** and **Data Main**
@@ -426,6 +460,8 @@ Let's add another text box for our sources, but we'll make the font smaller
 
 You could also add any extra text details such as the locality, disclaimers, or any other details needed.
 
+
+::: {.callout-tip}
 ### Shapes
 
 We can add a border around our layout. This isn't necessary, but it looks nice! It also has greater customisability than the map frame options.
@@ -446,6 +482,8 @@ We can add a border around our layout. This isn't necessary, but it looks nice! 
 -   In the `Items` panel, change the name from \<Rectangle\> to **Outline**
     -   Then tick the lock box next to the **Outline**
     -   This means it stays on top of everything else, but you won't select it every time you click the map canvas
+    
+:::
 
 ### Legend
 
@@ -465,6 +503,7 @@ The legend always has too much detail to start with. Let's clean it up.
     -   Change`Symbol width` to 10
     -   Change`Symbol height` to 12
 
+::: {.callout-tip}
 #### Custom Legend Symbols
 
 Okay, we have a legend, but let's get really fancy with a custom polygon legend.
@@ -497,6 +536,7 @@ Okay, we have a legend, but let's get really fancy with a custom polygon legend.
     -   Click the back arrow button
 
 -   Click the back arrow button again
+:::
 
 ### North Arrow
 
@@ -517,6 +557,7 @@ Okay, we have a legend, but let's get really fancy with a custom polygon legend.
         -   Change the `Label margin` to **0mm**
         -   Change `Distance label placement` from **Above Segment Edges** to **Below Segment Edges**
 
+::: {.callout-tip}
 ### Finessing
 
 -   Go to the `Layout` panel and scroll down to **Resize Layout to Content**
@@ -524,6 +565,7 @@ Okay, we have a legend, but let's get really fancy with a custom polygon legend.
     -   Set the `Top`, `Right`, `Left` and `Bottom Margin` to **2mm**
     -   Click `Resize layout`
     -   Now we can see the dark glow we added to the **Outline**, without interfering with our neat 200x200 layout
+:::
 
 Save your project.
 
@@ -596,11 +638,3 @@ You will see that the inset and main maps are in the wrong location, the title i
 
 And that's it, you now have another map looking the way you want it, without too much hassle.
 
-## Feedback
-
-Please visit our website to [provide feedback](https://web.library.uq.edu.au/study-and-learning-support/training-and-workshops/software-training-resources) and find upcoming training courses we have on offer.
-
-
-### Georeferencing
-
-I will be happy to go over this in person, but if you need a guide, here is the [QGIS how to](https://docs.qgis.org/3.40/en/docs/training_manual/forestry/map_georeferencing.html)

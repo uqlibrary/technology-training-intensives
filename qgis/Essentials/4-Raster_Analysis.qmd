@@ -186,6 +186,9 @@ Once you've added all your points, you need to open the `Transformation Settings
 Soon you will have a Georeferenced Historical Image. Try turning the layer visibility on and off to see where it has skewed compared to your basemap. This can help you better see where you might be able to shift, remove, or add some more GCPs.
 
 
+Here is the [QGIS how to Guide for Georeferencing](https://docs.qgis.org/3.40/en/docs/training_manual/forestry/map_georeferencing.html)
+
+
 ## Clip the DEM
 
 If we want to focus on the terrain inside our Project Area, we can use `Raster > Extraction > Clip Raster by Mask Layer`.
