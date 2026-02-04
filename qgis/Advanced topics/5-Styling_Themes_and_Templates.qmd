@@ -119,7 +119,7 @@ We can use the `Style Manager` to edit the default options and Favorites that ap
 
 You can do this same process for any other colour ramp that you like. You can also create custom colour ramps of your choosing.
 
-::: {.callout-tip}
+:::  {.callout-tip collapse="true"}
 ### Custom Colours
 
 If you want to be really fancy, you can import and build our own Color Ramp and Color Palette.
@@ -461,7 +461,7 @@ Let's add another text box for our sources, but we'll make the font smaller
 You could also add any extra text details such as the locality, disclaimers, or any other details needed.
 
 
-::: {.callout-tip}
+:::  {.callout-tip collapse="true"}
 ### Shapes
 
 We can add a border around our layout. This isn't necessary, but it looks nice! It also has greater customisability than the map frame options.
@@ -503,7 +503,7 @@ The legend always has too much detail to start with. Let's clean it up.
     -   Change`Symbol width` to 10
     -   Change`Symbol height` to 12
 
-::: {.callout-tip}
+:::  {.callout-tip collapse="true"}
 #### Custom Legend Symbols
 
 Okay, we have a legend, but let's get really fancy with a custom polygon legend.
@@ -557,7 +557,7 @@ Okay, we have a legend, but let's get really fancy with a custom polygon legend.
         -   Change the `Label margin` to **0mm**
         -   Change `Distance label placement` from **Above Segment Edges** to **Below Segment Edges**
 
-::: {.callout-tip}
+:::  {.callout-tip collapse="true"}
 ### Finessing
 
 -   Go to the `Layout` panel and scroll down to **Resize Layout to Content**

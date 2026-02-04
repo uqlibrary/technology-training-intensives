@@ -4,164 +4,43 @@ editor: source
 date: today
 ---
 
-## Folder Setup
+This last session will look at using QField to collect data in the field. 
+We can turn a QGIS project into a QField project we can use on our phones.
 
-    -   "DCIM" - this is a new one, it's for storing images from our phone!
+## Folder Setup
+We need to create two new folders in our **Enoggera_Windfarm_26** folder
+
+    -   "DCIM" - this is for storing images from our phone!
     
-    -   "UQ_Fieldwork" - this is also new, it's for exporting our project to QField
+    -   "EH_Fieldwork" - we need this one to export our project to QField
 
 
 ## Install QField
 
 QField plugs directly in to QGIS, and allows you to link a QGIS project with your mobile phone for data collection.
 
-[Android Download](https://play.google.com/store/apps/details?id=ch.opengis.qfield) [iOS Download](https://apps.apple.com/app/qfield-for-qgis/id1531726814)
+[Android Download](https://play.google.com/store/apps/details?id=ch.opengis.qfield) 
+[iOS Download](https://apps.apple.com/app/qfield-for-qgis/id1531726814)
 
 
-::: {.callout-note collapse="true"}
-# You can also explore Avenza, which uses GeoPDFs
+## Buffer Data
 
-For Avenza Maps you just need to add a GeoPDF and you can collect data on it. It's less functional than QField, but it's a great fallback tool. [Android Download](https://play.google.com/store/apps/details?id=com.Avenza&hl=en_AU) [iOS Download](https://apps.apple.com/app/avenza-maps/id388424049)
-
-There are alternatives out there, such as [Input (MerginMaps)](https://merginmaps.com/features).
-
-:::
-
-# Download Data
-
-Our data for today is packaged in a zip file.
-
--   Download today's data from [here](https://github.com/uqlibrary/technology-training-assets/raw/refs/heads/master/QGIS/fieldwork/QGIS_Fieldwork_Data.zip).
--   Extract/unzip the data and move it into your **raw data** folder
-
-
-# Data Sources
-
-We're going to explore a number of different online spatial data repositories.
-
-## DEM
-
-A Digital Elevation Model (DEM) is a common example of **raster data**, i.e. grid data that contains a value in each cell (a bit like the pixels in a coloured picture).
-
-For this tutorial, we are using a DEM sourced from [**ELVIS**](http://www.ga.gov.au/elvis/) - Geoscience Australia's ELeVation Information System.
-
-## Aerial Imagery
-
-There are a few places you can acquire aerial photography.
-
-### Local Raster Files
-
-As a UQ student, you have access to very high resolution imagery from [**NearMap**](https://admin.nearmap.com/invitation/domain-signup?token=q9WIbXMtna1iskb2meNGhKpCaQp3WTRbMhXpQVGWkKouKUeqzkpjNznC_Ogz5iKYiw0Ev7vym2Ykaj_W_V4dBbTzR6qUX2eTDsNHpBuR4XbU9vDRxQN_Rg==). You can activate an account here to download georeferenced aerial imagery. You can even access an array of imagery going back in time to around 2010.
-
-We won't use NearMap today, but you're welcome to explore it.
-
-### Mapserver Raster Files
-
-Today we're going to use a World Imagery XYZ Tile from ESRI.
-
--   Scroll down the `Browser` panel until your see **XYZ Tiles**
--   Right click XYZ Tiles and select `New Connection...`
-    -   In `Name` type **ESRI World Imagery**
-    -   In `URL` paste:\
-        https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}
-    -   Increase the Max. Zoom Level to 20
-        -   This value depends on what is available from the given service in different parts of the world. Increasing that value beyond 20 for this map in Brisbane will show "Map data not yet available" when you zoom in very close.
-    -   Click `OK`
--   In the `Browser` panel, expand `XYZ Tiles` and double click on `ESRI World Imagery`
-
-
-## Lot Plans
-
-You can access a wide variety of QLD Government Data, including Spatial Data such as lot plans and vegetation maps, from [QLD Spatial](https://qldspatial.information.qld.gov.au/). 
-
-Today we have extracted a selection from [Property boundaries Queensland](https://qldspatial.information.qld.gov.au/catalogue/custom/detail.page?fid={3F217A59-1FDB-412A-813D-A1E7843FB618})
-
-There are three ways to access data from QSpatial. 
-
--   Download all of the data from a layer
-
--   Select a portion of a layer for download using the [My List](https://qldspatial.information.qld.gov.au/catalogue/custom/myList.page) function
-
--   Live load it into your project using a [Mapserver](https://spatial-gis.information.qld.gov.au/arcgis/rest/services/PlanningCadastre/LandParcelPropertyFramework/MapServer). 
-
-
-# Import Data
-
-Our data should neatly appear within the `Project Home` folder within the `Browser` panel.
-
--   Open the Data and Raw Data folder
-
--   Drag in the **UQ_DEM_1m.tif** and **St_Lucia_Property_Boundaries.gpkg**
-
-
-# Buffer Data
-
-Buffers are a simple, but powerful, tool that we can use to extend the borders of our vector data. 
+As we've seen, buffers are a simple, but powerful, tool that we can use to extend the borders of our vector data. 
 It's useful for polygons, lines, and points.
 
-Perhaps we need to keep 10m from the property boundaries when doing our fieldwork. A buffer can help us there.
-
-However, our **St_Lucia_Property_Boundaries** layer has some issues we need to resolve before we can buffer it.
-
-
--   It has extra properties that we don't need
-
--   A buffer on a polygon will grow out from the edges, not put a buffer either side of the edges
-
--   It's in a Geographic Coordinate System
-
-Let's look at what happens if we create a buffer in a Geographic Coordinate System:
-
--   Go to `Vector > Geoprocessing Tools > Buffer`
-
--   Choose "**St_Lucia_Property_Boundaries**" as the Input Layer
-
--   We next want to choose distance that we want to create a buffer away from our vector.
-
-    -   However, you'll note that because the layer projection is EPSG:4283 GDA94 (a geographic coordinate system), the distance is currently in **degrees**. 
-
--   If you click Run with 10 Degrees, your buffer will be nearly the size of Queensland.
-
-    -   To change this to metres, we first need to convert our layer to a local projected coordinate system.
+Perhaps we need to keep 10m from the `Project Area` boundaries when doing our fieldwork. A buffer can help us there.
     
-# Select and Reproject
-
-We can **Select** the data we want, and **reproject** at the same time!
-
-We first need to select the lots that are relevant to us: 
-
--   Click the dropdown next to the **Select Feature(s)** icon in the toolbar, and choose the `Select Feature by polygon` option 
-
-    -   This allows us to click around our desired selection
-    
--   Make sure **St_Lucia_Property_Boundaries** is the selected layer in the `Layers` panel
-    
--   Click around the lots to draw a shape around the lots we want to keep
-
--   Right-click to finish selecting
-
-    -   If you need to select any more features, press and hold **Shift** while drawing around your extra features, when you right-click they will be added to your selection
-    -   To remove any accidentally selected features from the selection, press and hold **Control** and draw around the unwanted features.
-    
--   Right click on the **St_Lucia_Property_Boundaries** layer, and select `Export > Save Selected Features As...`
--   Choose **Geopackage** as the `Format`
--   Click the three dots on the right of `File name`, navigate to your **Processed** data folder and save it as "**UQ_Boundary**"
--   See the `Layer name` to "**UQ Boundary**"
-    -   The Layer name can have spaces in it, but it's best to avoid spaces in a File name
--   Make sure you change the CRS, effectively reprojecting the layer 
-    -   Choose `EPSG:23856 - GDA94 / MGA zone 56` 
-        -   This is the same projection as our DEM, and a good local projection
--   Click `OK` 
-    
-# Polygons to Lines    
+### Polygons to Lines    
 
 To buffer either side of the edges of our boundaries, we need to convert them from Polygons to Lines.
 
 -   Go to `Vector > Geometry Tools > Polygons to Lines`
--   Set the `Input Layer` to **UQ Boundary**
+-   Set the `Input Layer` to **Project Area**
 -   Click `OK`
 
-## Buffer the Lines
+This will create a temporary file called `Lines`, you can choose to save it instead, but that is optional.
+
+### Buffer the Lines
 
 -   Go to `Vector > Geoprocessing Tools > Buffer`
 
@@ -175,15 +54,15 @@ To buffer either side of the edges of our boundaries, we need to convert them fr
 
     -   This will merge the polygons from our output, making for a cleaner look. The Dissolve tool also exists as a standalone tool.
     
--   Click the three dots `...` next to the **Buffered** field, navigate to the project's **processed** data folder, and type in **UQ_Boundary_Buffer** and click `Save`
+-   Click the three dots `...` next to the **Buffered** field, navigate to the project's **processed** data folder, and type in **EH_Boundary_Buffer** and click `Save`
 
 -   Click `Run`
 
 
-## Style the Boundary buffer polygon
+### Style the Boundary buffer polygon
 
 -   Open the `Layer Styling` panel by pressing **F7** (or fn+F7)
--   Select the **UQ_Boundar_Buffer** layer from either the `Layer Styling` panel, or the `Layers` panel.
+-   Select the **Project_Boundar_Buffer** layer from either the `Layer Styling` panel, or the `Layers` panel.
 -   Under `Fill`, click `Simple Fill`
     -   Click the dropdown next to `Fill color` and select a colour that reminds us not to go there, like **orange**
         -   Change the `Opacity` to something around 30%
@@ -194,10 +73,7 @@ It's not essential at this stage, it's just a good reminder to save your work re
 
 
 
-
-
-
-# Layer for Data Collection
+## Layer for Data Collection
 
 This is a very important step, as you cannot create new layers in QField, so we need this to record the data we collect.
 
@@ -232,7 +108,7 @@ This is a very important step, as you cannot create new layers in QField, so we 
     -   Click `Add to Fields List`
 - Click `OK`
 
-You might wonder why we've just chosen WGS84 after seeing the issues with it earlier. Placing points with this projection is less of an issue than doing measurements and analysis. For today we're choosing WGS84 so that our Lat and Long values are in a format most people expect: WGS84. If we chose a Projected Coordinate System, it wouldn't give us location in degrees `Lat: -27.4705, Lon: 153.0260`, it would give us a location meters `Easting: 500,000 Northing: 6,900,000` 
+You might wonder why we've just chosen WGS84 after seeing the issues with it earlier. Placing points with this projection is less of an issue than it is for doing measurements and analysis. For today we're choosing WGS84 so that our Lat and Long values are in a format most people expect: WGS84. If we chose a Projected Coordinate System, it wouldn't give us location in degrees `Lat: -27.4705, Lon: 153.0260`, it would give us a location meters `Easting: 500,000 Northing: 6,900,000` 
 We could choose a local Geographic Coordinate System like **EPSG:7844 - GDA2020**, but again, most people will assume your values are in **EPSG:4326 - WGS 84**, so that's a safe bet unless your group/company has a preferred option.
 
 **Always check and transform to a common CRS before analysis.**
@@ -318,7 +194,7 @@ We should now have a functional form, let's test it in QGIS before we send it to
 -   Click `Cancel`
 -   Click the yellow pencil button to **Toggle Editing** off
 
-# Tracks Layer
+## Tracks Layer
 
 This is another important step, as you need to create your tracking layer before you export to QField
 
@@ -373,10 +249,10 @@ You don't have to remove everything, but it's worth deciding what layers you wan
 -   Make sure your layer order makes sense, I recommend the following layers visible in this order:
     -   collected_data
     -   tracks
-    -   UQ_Boundary_Buffer
-    -   UQ_Contours_5m
-    -   UQ_DEM_1m
-    -   UQ_Hillshade
+    -   EH_Boundary_Buffer
+    -   EH_Contours_10m
+    -   EH_DEM_5m
+    -   EH_DEM_5m_Hillshade
     -   World Imagery Tile   
     
 
@@ -384,8 +260,8 @@ You don't have to remove everything, but it's worth deciding what layers you wan
 
 -   Navigate to `Plugins > QFieldSync > Package for QField`
 -   If you get a Message window popup, click `Next`
--   Give your project an appropriate title **UQ_Fieldwork** 
--   Under **Packaged Project Filename** navigate to your **UQ_Fieldwork** folder and click `Save`
+-   Give your project an appropriate title **EH_Fieldwork** 
+-   Under **Packaged Project Filename** navigate to your **EH_Fieldwork** folder and click `Save`
 -   Under **Advanced** untick every folder except `DCIM`
     -   We want a copy of this folder for our photos to be saved to. The rest of our data will be packaged into the QField folder.
 -   At the bottom of the window click `Configure current project...`
@@ -393,13 +269,13 @@ You don't have to remove everything, but it's worth deciding what layers you wan
     -   Click the `Toggle Layers` eye symbol on the right
         -   In the `Action` column change `Copy` to `Remove from project` for any layers you don't want to copy to QField.
     -   Scroll down and tick **Geofencing**
-        -   Set `Geofencing areas layer` to UQ_Boundary_Buffer 
+        -   Set `Geofencing areas layer` to **EH_Boundary_Buffer** 
     -   Click `OK`
 -   Click `Create`
 
 We now need to zip the `QField` folder and send it to our phone!
 
--   Navigate to your **Project** folder, right click on the **UQ_Fieldwork** folder and compress it to a zip file.
+-   Navigate to your **Project** folder, right click on the **EH_Fieldwork** folder and compress it to a zip file.
 -   Send this file to your phone via email, cloud, or using a cable.
 
 ## Opening the QField Project
@@ -419,7 +295,7 @@ We now need to zip the `QField` folder and send it to our phone!
 -   Skip any popups
 -   Tap `Open local file`
 -   Tap `Imported projects`
--   Open the **UQ_Fieldwork** folder until you reach the **UQ_Fieldwork** Project file.
+-   Open the **EH_Fieldwork** folder until you reach the **EH_Fieldwork** Project file.
 -   The project should open in QField.
 
 You can now access your map.
@@ -450,6 +326,9 @@ You can now access your map.
 -   Press and hold on your **Tracks** layer
     -   When the new menu appears, tap `Stop tracking`
 
+
+### Exporting from QField to QGIS
+
 To export your data back to QGIS, you can either copy the whole project folder in your phones storage back to your computer, or:
 
 -   Go to the menu
@@ -458,27 +337,26 @@ To export your data back to QGIS, you can either copy the whole project folder i
 -   Send it to your email
 
 
-There's more to explore, such as the very very helpful [QFieldCloud](https://qfield.cloud/), and I encourage you to do so.
+::: {.callout-note collapse="true"}
+## QFieldCloud
 
-If you have any questions, reach out to the UQ Library Training Team at training@library.uq.edu.au
-
-
-### Exporting from QField to QGIS
+Instead of the email/transfer by cable option, you can instead create a [QFieldCloud](https://qfield.cloud/) account. This is a more convenient approach, but you are limited to 100mb projects. 
 
 
-
-# Feedback
-
-Please visit our website to [provide feedback](https://web.library.uq.edu.au/study-and-learning-support/training-and-workshops/software-training-resources) and find upcoming training courses we have on offer.
-
+:::
 
 
 # Stretch Goals
 
+
+::: {.callout-note collapse="true"}
 ## Exporting to Avenza Maps
 
 
-::: {.callout-note collapse="true"}
+For Avenza Maps you just need to add a GeoPDF and you can collect data on it. It's less functional than QField, but it's a great fallback tool. [Android Download](https://play.google.com/store/apps/details?id=com.Avenza&hl=en_AU) [iOS Download](https://apps.apple.com/app/avenza-maps/id388424049)
+
+There are alternatives out there, such as [Input (MerginMaps)](https://merginmaps.com/features).
+
 
 Click on `Show Layout Manager` in the toolbar or use `Project > Layout Manager`. `Create` a new layout called "Avenza". We can now see the Layout window.
 
@@ -503,7 +381,7 @@ When you first open Avenza Maps it will ask you to create an account, but you ca
 :::
 
 
-
+::: {.callout-note collapse="true"}
 ## AutoID
 
 We can use some fancy code to make the ID automated
@@ -539,3 +417,4 @@ concat(
 )
 
 ```
+:::

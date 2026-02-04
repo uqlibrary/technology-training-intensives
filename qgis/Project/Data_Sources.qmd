@@ -293,3 +293,54 @@ For this tutorial, we are using a DEM sourced from the USGS website.
 "SRTM" stands for "[Shuttle Radar Topography Mission](https://www.usgs.gov/centers/eros/science/usgs-eros-archive-digital-elevation-shuttle-radar-topography-mission-srtm-1-arc?qt-science_center_objects=0#qt-science_center_objects)". It provides global elevation data collected in 2000 by the space shuttle Endeavour.
 
 Our area covers two separate raster files. We can click on the foot icon to see the footprint of each file, and the picture icon to see what the DEM looks like.
+
+
+
+# Data Sources
+
+We're going to explore a number of different online spatial data repositories.
+
+## DEM
+
+A Digital Elevation Model (DEM) is a common example of **raster data**, i.e. grid data that contains a value in each cell (a bit like the pixels in a coloured picture).
+
+For this tutorial, we are using a DEM sourced from [**ELVIS**](http://www.ga.gov.au/elvis/) - Geoscience Australia's ELeVation Information System.
+
+## Aerial Imagery
+
+There are a few places you can acquire aerial photography.
+
+### Local Raster Files
+
+As a UQ student, you have access to very high resolution imagery from [**NearMap**](https://admin.nearmap.com/invitation/domain-signup?token=q9WIbXMtna1iskb2meNGhKpCaQp3WTRbMhXpQVGWkKouKUeqzkpjNznC_Ogz5iKYiw0Ev7vym2Ykaj_W_V4dBbTzR6qUX2eTDsNHpBuR4XbU9vDRxQN_Rg==). You can activate an account here to download georeferenced aerial imagery. You can even access an array of imagery going back in time to around 2010.
+
+We won't use NearMap today, but you're welcome to explore it.
+
+### Mapserver Raster Files
+
+Today we're going to use a World Imagery XYZ Tile from ESRI.
+
+-   Scroll down the `Browser` panel until your see **XYZ Tiles**
+-   Right click XYZ Tiles and select `New Connection...`
+    -   In `Name` type **ESRI World Imagery**
+    -   In `URL` paste:\
+        https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}
+    -   Increase the Max. Zoom Level to 20
+        -   This value depends on what is available from the given service in different parts of the world. Increasing that value beyond 20 for this map in Brisbane will show "Map data not yet available" when you zoom in very close.
+    -   Click `OK`
+-   In the `Browser` panel, expand `XYZ Tiles` and double click on `ESRI World Imagery`
+
+
+## Lot Plans
+
+You can access a wide variety of QLD Government Data, including Spatial Data such as lot plans and vegetation maps, from [QLD Spatial](https://qldspatial.information.qld.gov.au/). 
+
+Today we have extracted a selection from [Property boundaries Queensland](https://qldspatial.information.qld.gov.au/catalogue/custom/detail.page?fid={3F217A59-1FDB-412A-813D-A1E7843FB618})
+
+There are three ways to access data from QSpatial. 
+
+-   Download all of the data from a layer
+
+-   Select a portion of a layer for download using the [My List](https://qldspatial.information.qld.gov.au/catalogue/custom/myList.page) function
+
+-   Live load it into your project using a [Mapserver](https://spatial-gis.information.qld.gov.au/arcgis/rest/services/PlanningCadastre/LandParcelPropertyFramework/MapServer). 
