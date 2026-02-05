@@ -47,6 +47,9 @@ website:
       collapse-level: 2
       contents:
         - qgis/setup.md
+        - auto: "r/Essentials"
+        - auto: "r/Advanced topics"
+        - auto: "r/The Project"
 
     - title: "Python for Data Analysis"
       collapse-level: 2
