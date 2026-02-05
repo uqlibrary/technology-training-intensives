@@ -163,7 +163,7 @@ On the left you will see all of our Fields, we can drag and drop these into the 
     -   Under **Widget Type** click `Text Edit` and change it to `Attachment`
     -   Under **Path** change `Default path` to *@project_home + '/DCIM'*
         -   Change `Absolute Path` to `Relative to Project Path`
-    -   Tick **Use a hyperlink for document path (read-only)
+    -   Tick **Use a hyperlink for document path (read-only)**
     -   Under **Integrated Document Viewer** change **Type** from `No Content` to `Image`
 
 
@@ -190,7 +190,7 @@ We should now have a functional form, let's test it in QGIS before we send it to
 -   Click the yellow pencil button to **Toggle Editing** on
 -   Click the green dots (or press Ctrl + .) to **Add Point Feature**
 -   Click on the map to add a point
--   The **Name** should be mandatory, the **Description** editable, **Photo** have an add option, **DateTime** should have the current date and time, and **Lat** and **Long** should have numbers like "-27.494066205142065" and "153.0153703956312"
+-   The **Name** should be mandatory, the **Description** editable, **Photo** have an add option, **DateTime** should have the current date and time, and **Lat** and **Long** should have numbers like "**-27.494066205142065**" and "**153.0153703956312**"
 -   Click `Cancel`
 -   Click the yellow pencil button to **Toggle Editing** off
 

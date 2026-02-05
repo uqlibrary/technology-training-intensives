@@ -110,7 +110,7 @@ We can use the `Style Manager` to edit the default options and Favorites that ap
 
 -   Navigate to `Settings > Style Manager...`
 
-    -   Click the ![](images/symbologyAdd.png) `Add item` button at the bottom and select `Catalog: cpt-city...`
+    -   Click the ![](https://docs.qgis.org/3.40/en/_images/symbologyAdd.png) `Add item` button at the bottom and select `Catalog: cpt-city...`
 
         -   From the left panel under `Name`, select `Topography`
         -   From the right panel under `Selected palettes for Topography`, scroll down click `wiki-knutux`, and click `OK`
@@ -142,7 +142,7 @@ If you want to be really fancy, you can import and build our own Color Ramp and 
 
     -   From the top right of the window click the `...` button and select `New Palette...`, name it **Report Palette**
 
-    -   Add your copied colours by clicking![](mActionEditPaste.png) `Paste colors` on the right
+    -   Add your copied colours by clicking![](https://docs.qgis.org/3.40/en/_images/mActionEditPaste.png) `Paste colors` on the right
 
     -   Click the `...` button again and tick the `Show in Color Buttons` box
 
@@ -154,11 +154,11 @@ Unfortunately we need to set up the Color Ramp separately.
 
 -   Navigate to `Settings > Style Manager...`
 
-    -   Click the ![](images/symbologyAdd.png) `Add item` button at the bottom and select `Color Presets...`
+    -   Click the ![](https://docs.qgis.org/3.40/en/_images/symbologyAdd.png) `Add item` button at the bottom and select `Color Presets...`
 
-        -   Select the colour that appeared there and remove it by pressing ![](symbologyRemove.png) `Remove color` at the bottom
+        -   Select the colour that appeared there and remove it by pressing ![](https://docs.qgis.org/3.40/en/_images/symbologyRemove.png) `Remove color` at the bottom
 
-        -   Add your copied colours by clicking![](mActionEditPaste.png) `Paste colors`
+        -   Add your copied colours by clicking![](https://docs.qgis.org/3.40/en/_images/mActionEditPaste.png) `Paste colors`
 
         -   Click `OK`
 
@@ -236,12 +236,12 @@ Depending on your map, you may want your polygon to remain solid, to be transpar
 
 That's nicer, but let's make it *fancy.* Let's add a dropshadow.
 
--   Click the ![](images/symbologyAdd-02.png) `Add symbology layer` next to `Fill` to add another fill symbol\
+-   Click the ![](https://docs.qgis.org/3.40/en/_images/symbologyAdd.png) `Add symbology layer` next to `Fill` to add another fill symbol\
     (You can add as many of these as you like, you can even change this with `Symbol layer type` to Arrows, Hashed lines, Filled lines, and more.)
 -   Click the new **Simple Fill**
     -   Change `Symbol layer type` from **Simple Fill** to **Outline: Simple Line**
     -   Set the `Stroke width` to 3
-    -   Scroll to the bottom, tick `Draw Effects`, then click the ![](images/mIconPaintEffects.png) `Customise effects` button (The one next to "Enable symbol layer", *not* the one in the "Layer Rendering" section!)
+    -   Scroll to the bottom, tick `Draw Effects`, then click the ![](https://docs.qgis.org/2.18/cs/_images/mIconPaintEffects.png) `Customise effects` button (The one next to "Enable symbol layer", *not* the one in the "Layer Rendering" section!)
         -   Untick `Source`
         -   Tick and select `Drop Shadow`
             -   Change the `Blur Radius` to **6mm**
@@ -336,7 +336,7 @@ Guides seem unnecessary, but they make lining things up much much easier.
 We will use a guide to place our map details.
 
 -   In the right panel, click `Guides`
--   Click ![](images/symbologyAdd-01.png) `Add new guide` under **Vertical Guides** (if your canvas is a Landscape, or you want your legend at the bottom, choose **Horizontal Guides** for this step)
+-   Click ![](https://docs.qgis.org/3.40/en/_images/symbologyAdd.png) `Add new guide` under **Vertical Guides** (if your canvas is a Landscape, or you want your legend at the bottom, choose **Horizontal Guides** for this step)
 -   A new row should appear, click on the **0** and change it to **140**
 
 ### Map
@@ -358,7 +358,7 @@ You *could* click the **Move item content** button on the left menu(or press `C`
     -   Right click on your **Project_area** layer and select **Zoom to Layer(s)**
 -   Navigate back to your **Project Map** window
     -   In the right menu, click `Item Properties`
-    -   You will see these options: ![](layoutmanager_scale.png)
+    -   You will see these options: ![](https://docs.qgis.org/3.40/en/_images/mActionSetToCanvasExtent.png)![](https://docs.qgis.org/3.40/en/_images/mActionViewExtentInCanvas.png)![](https://docs.qgis.org/3.40/en/_images/mActionSetToCanvasScale.png)![](https://docs.qgis.org/3.40/en/_images/mActionViewScaleInCanvas.png)
     -   Click the first orange arrow button to **Set Map Extent to Match Main Canvas Extent**
     -   Click the third orange arrow button to **Set Map Scale to Match Main Canvas Scale**
         -   The other buttons do the reverse
@@ -370,7 +370,7 @@ You *could* click the **Move item content** button on the left menu(or press `C`
 You can add your inset map to the blank space at the side of you map canvas, or you can put it on top of you main map in unused space. We don't have a lot of space around our map, so we'll put it to the right. Guides are useful here too.
 
 -   In the right menu, click `Guides`
-    -   Click ![](images/symbologyAdd-03.png) `Add new guide` under **Horizontal Guides** *twice*
+    -   Click ![](https://docs.qgis.org/3.40/en/_images/symbologyAdd.png) `Add new guide` under **Horizontal Guides** *twice*
         -   In the new row changethe **0** to **155**
         -   In the other new row change the **0** to **95**
 -   Add your map by clicking the map icon in the left menu, or navigating `Add Item > Add Map`
@@ -473,7 +473,7 @@ We can add a border around our layout. This isn't necessary, but it looks nice! 
     -   Click **Simple Fill**
         -   Change `Symbol layer type` from **Simple Fill** to **Outline: Simple Line**
         -   Increase the `Stroke width` to 1mm
-        -   Scroll to the bottom, tick `Draw Effects`, then click the ![](images/mIconPaintEffects.png) `Customise effects` button
+        -   Scroll to the bottom, tick `Draw Effects`, then click the ![](https://docs.qgis.org/3.40/en/_images/mIconPaintEffects.png) `Customise effects` button
             -   Untick `Source`
             -   Tick and select `Outer Glow`
                 -   Change the `Spread` to **0.8mm**
@@ -516,7 +516,7 @@ Okay, we have a legend, but let's get really fancy with a custom polygon legend.
 
     -   Select the **Project_area** in the `Layers` Panel
 
-    -   From the top toolbars open the ![](images/mActionCalculateField.png) `Field Calculator`
+    -   From the top toolbars open the ![](https://docs.qgis.org/3.40/en/_images/mActionCalculateField.png) `Field Calculator`
 
         -   In the `Expression` window paste **geom_to_wkt(\$geometry)**
 
@@ -612,7 +612,7 @@ You will see that the inset and main maps are in the wrong location, the title i
     -   Right click on the most suitable layer and select **Zoom to Layer(s)**
 -   Navigate back to your **Layout Manager** window
     -   Click the **Main** from the `Item` panel, and click the `Item Properties` panel
-    -   ![](layoutmanager_scale.png)
+    -    ![](https://docs.qgis.org/3.40/en/_images/mActionSetToCanvasExtent.png)![](https://docs.qgis.org/3.40/en/_images/mActionViewExtentInCanvas.png)![](https://docs.qgis.org/3.40/en/_images/mActionSetToCanvasScale.png)![](https://docs.qgis.org/3.40/en/_images/mActionViewScaleInCanvas.png)
     -   Click the first orange arrow button to **Set Map Extent to Match Main Canvas Extent**
     -   Click the third orange arrow button to **Set Map Scale to Match Main Canvas Scale**
         -   The other buttons do the reverse

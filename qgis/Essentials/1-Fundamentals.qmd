@@ -82,11 +82,6 @@ We will start by creating a good folder structure to work within. This folder is
 
 -   Navigate to where you want to save your project, and create a new folder, let's call it "**Enoggera_Windfarm_26**".
 
-
-:::::: columns
-::: {.column width="60%"}
-
-
 -   Inside that folder, create these folders:
 
   -   "**data**" - for all the data we will use to make our maps, split into:
@@ -100,20 +95,7 @@ We will start by creating a good folder structure to work within. This folder is
   -   "**temp**" - this folder isn't necessary, but when you're playing around and testing, it can be helpful to stop things getting messy.
 
 -   Finally, let's save our .qgz project file inside the "**Enoggera_Windfarm_26**" folder, named "Enoggera_Windfarm_26.qgz"
-:::
-  
-  ::: {.column width="5%"}
-<!-- empty column to create gap -->
-  :::
-  
-  ::: {.column width="30%"}
-![](folder.png)
-:::
-  
-  ::: {.column width="5%"}
-<!-- empty column to create gap -->
-  :::
-  ::::::
+
   
   Your .qgz file should always be in the highest level folder, so it's only looking down into folders for data, not back out. This might feel unnecessary now, but things quickly get out of control and hard to find if you don't have a good folder structure.
 
