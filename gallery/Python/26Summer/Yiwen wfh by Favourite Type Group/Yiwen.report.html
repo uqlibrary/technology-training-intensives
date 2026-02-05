@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Coco">
+<meta name="dcterms.date" content="2026-02-01">
 
-<title>Overview – UQ Library Training Intensives</title>
+<title>My reproducible report – UQ Library Training Intensives</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,30 +22,63 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="..//int_laptop_icon.svg" rel="icon" type="image/svg+xml">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d58b9a2750f78c4ba5585652ef45bd1c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../../">
+<link href="../../../..//int_laptop_icon.svg" rel="icon" type="image/svg+xml">
+<script src="../../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../../site_libs/bootstrap/bootstrap-d58b9a2750f78c4ba5585652ef45bd1c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -71,107 +106,24 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-py-example-proj .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-py-example-proj'] = new List('listing-py-example-proj', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-r-example-proj .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-r-example-proj'] = new List('listing-r-example-proj', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<meta property="og:title" content="Overview – UQ Library Training Intensives">
+<meta property="og:title" content="My reproducible report – UQ Library Training Intensives">
 <meta property="og:description" content="">
+<meta property="og:image" content="https://uqlibrary.github.io/technology-training-intensives/gallery/Python/26Summer/Yiwen wfh by Favourite Type Group/Yiwen.report_files/figure-html/cell-2-output-1.png">
 <meta property="og:site_name" content="UQ Library Training Intensives">
+<meta property="og:image:height" content="940">
+<meta property="og:image:width" content="1935">
 </head>
 
-<body class="nav-sidebar floating nav-fixed quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../../../index.html">
     <span class="navbar-title">UQ Library Training Intensives</span>
     </a>
   </div>
@@ -182,23 +134,23 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../r/setup.html"> 
+    <a class="nav-link" href="../../../../r/setup.html"> 
 <span class="menu-text">R</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../qgis/setup.html"> 
+    <a class="nav-link" href="../../../../qgis/setup.html"> 
 <span class="menu-text">QGIS</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../python/setup.html"> 
+    <a class="nav-link" href="../../../../python/setup.html"> 
 <span class="menu-text">Python</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../project/details.html" aria-current="page"> 
+    <a class="nav-link" href="../../../../project/details.html"> 
 <span class="menu-text">The Project</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../gallery/project_gallery.html"> 
+    <a class="nav-link" href="../../../../gallery/project_gallery.html"> 
 <span class="menu-text">Project Gallery</span></a>
   </li>  
   <li class="nav-item">
@@ -206,7 +158,7 @@ window.Quarto = {
 <span class="menu-text">UQL Technology Training</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../community/community.html"> 
+    <a class="nav-link" href="../../../../community/community.html"> 
 <span class="menu-text">Communities of Practice</span></a>
   </li>  
 </ul>
@@ -215,62 +167,18 @@ window.Quarto = {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../project/details.html">Overview</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-    </div>
-  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../project/details.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Overview</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../project/scaffold.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Getting started</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../project/template.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Project template</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../project/tips.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Tips</span></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#project-outline" id="toc-project-outline" class="nav-link active" data-scroll-target="#project-outline">Project outline</a></li>
-  <li><a href="#design-and-submissions" id="toc-design-and-submissions" class="nav-link" data-scroll-target="#design-and-submissions">Design and submissions</a>
-  <ul class="collapse">
-  <li><a href="#uploading-the-submission" id="toc-uploading-the-submission" class="nav-link" data-scroll-target="#uploading-the-submission">Uploading the submission</a></li>
-  </ul></li>
+  <li><a href="#heading-of-level-2" id="toc-heading-of-level-2" class="nav-link active" data-scroll-target="#heading-of-level-2">Heading of level 2</a></li>
+  <li><a href="#import-the-data" id="toc-import-the-data" class="nav-link" data-scroll-target="#import-the-data">Import the data</a></li>
   </ul>
 </nav>
     </div>
@@ -279,14 +187,31 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Overview</h1>
-</div>
+<h1 class="title">My reproducible report</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Python</div>
+    <div class="quarto-category">26Summer</div>
+    <div class="quarto-category">data: coffee_survey.csv</div>
+  </div>
+  </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Coco </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 1, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -296,179 +221,113 @@ window.Quarto = {
 </header>
 
 
-<p>The best way to learn is by doing. That’s why, over the these three days, <strong>you are tasked with analysing, visualising and reporting on a set of data!</strong></p>
-<p>Roughly 50% of our intensive is dedicated to working on the project. Working in groups of 2-4, you’ll need to use the techniques we learn to draw some observations about your chosen dataset.</p>
-<p>The end goal will be a quick fire (low stakes) one-minute presentation with a dashboard to complement.</p>
-<p>See the <a href="../project/scaffold.html">datasets</a> page for the data and <a href="#submission">below</a> for submission details.</p>
-<section id="project-outline" class="level2">
-<h2 class="anchored" data-anchor-id="project-outline">Project outline</h2>
-<p>There are a few key requirements for the project, but otherwise it’s up to you!</p>
-<ul>
-<li>Analyse a dataset and create some visualisations</li>
-<li>Put together a final quarto report. Anything from a single figure to an interactive website will do!</li>
-<li>Deliver a quick fire one-minute presentation with your group</li>
-</ul>
-<p>We’ll have 4 sessions during the intensive days to work on the project, totalling about five hours. The goal of these sessions is twofold</p>
-<ol type="1">
-<li>To work on the project, analysing data and creating visualisations</li>
-<li>To dive deeper into the content, perfect for questions and conversations</li>
-</ol>
-<p>While you’ll be working in groups, everyone should practise analysing and visualising the data. We recommend distributing roles amongst the group, maybe looking at different variables or different presentation formats.</p>
-<p>You’re welcome to use the project time however you’d like. Below is a rough guide if you’re unsure:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Session</th>
-<th>Recommendation</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Tuesday afternoon</td>
-<td>Pick a dataset and play with the data, consider dividing roles amongst group</td>
-</tr>
-<tr class="even">
-<td>Wednesday morning</td>
-<td>More exploratory analysis, start making visualisations</td>
-</tr>
-<tr class="odd">
-<td>Wednesday afternoon</td>
-<td>Prepare format, continue analysing and creating visualisation.</td>
-</tr>
-<tr class="even">
-<td>Thursday morning</td>
-<td>Polish up results and finalise report, submit.</td>
-</tr>
-</tbody>
-</table>
-<p>The presentations will happen on Thursday morning, before lunch.</p>
-<p>Good luck!</p>
+<section id="heading-of-level-2" class="level2">
+<h2 class="anchored" data-anchor-id="heading-of-level-2">Heading of level 2</h2>
+<p>This is a paragraph of <strong>wfh by Favourite Type Group</strong>.</p>
 </section>
-<section id="design-and-submissions" class="level2">
-<h2 class="anchored" data-anchor-id="design-and-submissions">Design and submissions</h2>
-<p>We recommend starting from our <a href="../project/template.html">template</a>.</p>
-<p>We’ve also put together an example reports which you’re welcome to look at - you can download the code from there.</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="lang">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Python</a></li></ul>
-<div class="tab-content" data-group="lang">
-<div id="tabset-1-1" class="active tab-pane" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<div id="listing-r-example-proj" class="quarto-listing quarto-listing-container-default">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="UiUyQzI2U3VtbWVyJTJDZGF0YSUzQSUyMFBsYXllcnMyMDI0LmNzdg==" data-listing-date-sort="1767225600000" data-listing-file-modified-sort="1770253951442" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="587">
-<div class="thumbnail"><a href="../gallery/R/26Summer/example_project/example_project.html" class="no-external">
-
-<p class="card-img-top"><img src="../gallery/R/26Summer/example_project/example_project_files/figure-html/unnamed-chunk-3-1.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../gallery/R/26Summer/example_project/example_project.html" class="no-external">Goalkeepers and their heights</a>
-</h3>
-<div class="delink listing-description"><a href="../gallery/R/26Summer/example_project/example_project.html" class="no-external">
-We’ll begin just by taking a glimpse at the dataset:
-</a></div>
+<section id="import-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="import-the-data">Import the data</h2>
+<p>We import the players dataset</p>
+<div id="d3fd7322" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"../../../../data/coffee_survey.csv"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>df.head()</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>sns.catplot(data <span class="op">=</span> df, x <span class="op">=</span> <span class="st">"wfh"</span>, kind<span class="op">=</span><span class="st">"count"</span>, height<span class="op">=</span><span class="dv">5</span>, aspect<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>df_focused <span class="op">=</span> df[[<span class="st">"age"</span>, <span class="st">"where_drink"</span>, <span class="st">"favourite"</span>, <span class="st">'wfh'</span>]].copy()</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>df_focused.head(<span class="dv">10</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>df_focused[<span class="st">'wfh'</span>] <span class="op">=</span> df_focused[<span class="st">'wfh'</span>].fillna(<span class="st">''</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>df_focused[<span class="st">'wfh'</span>]<span class="op">=</span>df_focused[<span class="st">'wfh'</span>].<span class="bu">str</span>.split(pat<span class="op">=</span><span class="st">", "</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>df_focused.head()</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>df_exploded <span class="op">=</span> df_focused.explode(<span class="st">'wfh'</span>)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>dummies <span class="op">=</span> pd.crosstab(df_exploded.index, df_exploded[<span class="st">'wfh'</span>])</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>df_final <span class="op">=</span> df_focused.join(dummies.groupby(dummies.index).<span class="bu">sum</span>())</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>df_final.head()</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>groupby_age <span class="op">=</span> df_final.groupby(<span class="st">'age'</span>)[df_final.select_dtypes(include<span class="op">=</span><span class="st">'number'</span>).columns].mean()</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>groupby_age.head()</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>groupby_age.plot(kind<span class="op">=</span><span class="st">'bar'</span>, stacked<span class="op">=</span><span class="va">True</span>, figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">6</span>), colormap<span class="op">=</span><span class="st">'tab20'</span>)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Preferred wfh by Age Group'</span>)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Proportion of Respondents'</span>)</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Age Group'</span>)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>plt.legend(title<span class="op">=</span><span class="st">'Preferred wfh'</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">1.05</span>, <span class="dv">1</span>), loc<span class="op">=</span><span class="st">'upper left'</span>)</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>favourite_by_wfhgroup <span class="op">=</span> df.groupby(<span class="st">'wfh'</span>)[<span class="st">'favourite'</span>].value_counts().unstack().fillna(<span class="dv">0</span>)</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>sns.heatmap(favourite_by_wfhgroup, annot<span class="op">=</span><span class="va">True</span>, fmt<span class="op">=</span><span class="st">'.0f'</span>, cmap<span class="op">=</span><span class="st">'twilight'</span>)</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Favorite Type by wfh Group'</span>)</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'wfh Group'</span>)</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Favorite'</span>)</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>df.head()</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>sns.catplot(data <span class="op">=</span> df, x <span class="op">=</span> <span class="st">"wfh"</span>, kind<span class="op">=</span><span class="st">"count"</span>, height<span class="op">=</span><span class="dv">5</span>, aspect<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>style_by_wfhgroup <span class="op">=</span> df.groupby(<span class="st">'wfh'</span>)[<span class="st">'style'</span>].value_counts().unstack().fillna(<span class="dv">0</span>)</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>sns.heatmap(style_by_wfhgroup, annot<span class="op">=</span><span class="va">True</span>, fmt<span class="op">=</span><span class="st">'.0f'</span>, cmap<span class="op">=</span><span class="st">'YlOrBr'</span>)</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'style Type by wfh Group'</span>)</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'wfh Group'</span>)</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'style'</span>)</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Yiwen.report_files/figure-html/cell-2-output-1.png" width="968" height="470" class="figure-img"></p>
+</figure>
 </div>
-<div class="metadata">
-<a href="../gallery/R/26Summer/example_project/example_project.html" class="no-external">
-<div class="listing-date">
-Jan 1, 2026
 </div>
-<div class="listing-author">
-Cameron West and Stéphane Guillou
-</div>
-</a>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Yiwen.report_files/figure-html/cell-2-output-2.png" width="941" height="566" class="figure-img"></p>
+</figure>
 </div>
 </div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Yiwen.report_files/figure-html/cell-2-output-3.png" width="1052" height="564" class="figure-img"></p>
+</figure>
 </div>
-<div class="listing-no-matching d-none">No matching items</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Yiwen.report_files/figure-html/cell-2-output-4.png" width="968" height="470" class="figure-img"></p>
+</figure>
 </div>
 </div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<div id="listing-py-example-proj" class="quarto-listing quarto-listing-container-default">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="UHl0aG9uJTJDMjZTdW1tZXIlMkNkYXRhJTNBJTIwUGxheWVyczIwMjQuY3N2" data-listing-date-sort="1769904000000" data-listing-file-modified-sort="1770253951366" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="565">
-<div class="thumbnail"><a href="../gallery/Python/26Summer/example_project/example_project.html" class="no-external">
-
-<p class="card-img-top"><img src="../gallery/Python/26Summer/example_project/example_project_files/figure-html/cell-4-output-1.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../gallery/Python/26Summer/example_project/example_project.html" class="no-external">Goalkeepers and their heights</a>
-</h3>
-<div class="delink listing-description"><a href="../gallery/Python/26Summer/example_project/example_project.html" class="no-external">
-We’ll begin just by taking a glimpse at the dataset:
-</a></div>
-</div>
-<div class="metadata">
-<a href="../gallery/Python/26Summer/example_project/example_project.html" class="no-external">
-<div class="listing-date">
-Feb 1, 2026
-</div>
-<div class="listing-author">
-Cameron West and Stéphane Guillou
-</div>
-</a>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Yiwen.report_files/figure-html/cell-2-output-5.png" width="1059" height="565" class="figure-img"></p>
+</figure>
 </div>
 </div>
 </div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div>
-</div>
-</div>
-</div>
-<p>Finally, you can also see a gallery of examples on <a href="https://quarto.org/docs/gallery/#dashboards">Quarto’s website</a>.</p>
-<section id="uploading-the-submission" class="level3">
-<h3 class="anchored" data-anchor-id="uploading-the-submission">Uploading the submission</h3>
-<p>Below are two ways you can upload your visualisations.</p>
-<p><strong>You should consider where your dashboard gets its data from.</strong> Our repo has all datasets in the <code>data_sources</code> folder, so you have two options:</p>
-<ol type="1">
-<li>Include the data in your dashboard’s folder that you upload.</li>
-<li>Use the relative reference <code>../../data_sources/data_set_of_your_choice.csv</code> to access the data on our repo</li>
-</ol>
-<p>We’ve used the second option in the example project.</p>
-<p>When you are ready to upload, you have two options:</p>
-<section id="upload-dashboard-to-github" class="level4">
-<h4 class="anchored" data-anchor-id="upload-dashboard-to-github">Upload dashboard to GitHub</h4>
-<p>This is the advanced way of doing things - we recommend this way, because it’ll show you a good insight into using GitHub.</p>
-<ol type="1">
-<li><a href="https://github.com/">Create a GitHub account and log in</a></li>
-<li>Create a fork of our <a href="https://github.com/camwest5/python-training-intensive">python-training-intensive</a> repository. This is a copy of the repo in your account, changes <em>will not automatically affect the main repo</em>. <strong>Leave all settings unchanged</strong>.</li>
-<li>Create a folder for your dashboard <strong>inside the <code>Projects</code> directory</strong>
-<ol type="1">
-<li>Go into the <code>Projects</code> folder, and click <code>Add file</code> <span class="math inline">\(\rightarrow\)</span> <code>Create new file</code>. This will be your folder.</li>
-<li>Give it a name but <strong>no content</strong>.</li>
-<li>Press <code>Commit changes...</code>.</li>
-</ol></li>
-<li>Upload your files
-<ol type="1">
-<li>Go into your new folder and click <code>Add file</code> <span class="math inline">\(\rightarrow\)</span> <code>Upload files</code>.</li>
-<li>Upload your dashboard and associated files.</li>
-<li>Press <code>Commit changes</code>.</li>
-</ol></li>
-<li>Merge your repo with ours
-<ol type="1">
-<li>Press <code>&lt;&gt; Code</code> (top left) to go back to the top level of the repo</li>
-<li>Press <code>Contribute</code> <span class="math inline">\(\rightarrow\)</span> <code>Open pull request</code> to request merging your files into the main repo</li>
-<li>Press <code>Create pull request</code> when you’re ready.</li>
-<li>If you need to make further changes, no worries - the pull request will stay up to date with these <strong>until approved or closed</strong>.</li>
-</ol></li>
-</ol>
-<p>Give it a go if you can!</p>
-<p>If there’s any issues, we’ll leave a comment for you to fix up the merge and we’ll approve it when ready.</p>
-</section>
-<section id="upload-dashboard-to-teams" class="level4">
-<h4 class="anchored" data-anchor-id="upload-dashboard-to-teams">Upload dashboard to Teams</h4>
-<p>If you’re having issues with the GitHub approach, we can upload it for you. Just put your folder with the dashboard into our <a href="https://uq.sharepoint.com/:f:/r/teams/1qktlisq/Shared%20Documents/R%20User%20Group/R%20Training%20Intensive%20Projects?csf=1&amp;web=1&amp;e=wwVB7w">Teams folder</a>.</p>
 
 
-
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->
