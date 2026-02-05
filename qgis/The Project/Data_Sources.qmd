@@ -71,6 +71,7 @@ A Digital Elevation Model (DEM) is **raster data** that shows the elevation of a
 
 [**ELVIS** - Geoscience Australia's ELeVation Information System.](http://www.ga.gov.au/elvis/)
 
+
 :::  {.callout-tip collapse="true"}
 #### ELVIS Instructions
 
@@ -92,6 +93,7 @@ A Digital Elevation Model (DEM) is **raster data** that shows the elevation of a
 
 [**USGS Earth Explorer**](https://earthexplorer.usgs.gov/)
 
+
 :::  {.callout-tip collapse="true"}
 #### USGS Earth Explorer - Access Instructions
 
@@ -111,6 +113,7 @@ A Digital Elevation Model (DEM) is **raster data** that shows the elevation of a
 There are a few places you can aquire aerial photography, some are freely available Government Data, some cost money, but can be accessed with your UQ credentials.
 
 [Nearmap](https://www.nearmap.com/) (account login required)
+
 
 :::  {.callout-tip collapse="true"}
 #### Nearmap Access Instructions
@@ -140,6 +143,7 @@ You can also use the [NearMap API](https://help.nearmap.com/kb/articles/752) to 
 
 [QImagery](https://qimagery.information.qld.gov.au/) (free access government data)
 
+
 :::  {.callout-tip collapse="true"}
 #### QImagery Access Instructions
 
@@ -158,6 +162,7 @@ QImagery is a repository of QLD Historical Images.
 
 
 Geoscience Australia's [Historical Aerial Photo (HAP) Collection](https://experience.arcgis.com/experience/9a0ecbafe94f49829712b46fc69186ff) (free access government data)
+
 
 :::  {.callout-tip collapse="true"}
 #### Historical Aerial Photo (HAP)
@@ -195,6 +200,7 @@ Most Councils have a spatial data service. It can be hard to find, but targetted
 ### State Government
 
 [QLD Spatial](https://qldspatial.information.qld.gov.au/).
+
 
 :::  {.callout-tip collapse="true"}
 #### QSpatial
@@ -246,6 +252,7 @@ Here is an example of extracting property boundaries.
 :::
 :::
 
+
 :::  {.callout-tip collapse="true"}
 #### QLD Gov Web Mapping Services
 [QLD Gov Roads](https://spatial-gis.information.qld.gov.au/arcgis/rest/services/Transportation/RoadsAndTracks/MapServer)
@@ -257,6 +264,7 @@ Here is an example of extracting property boundaries.
 
 
 [Queensland Globe](https://qldglobe.information.qld.gov.au).
+
 
 :::  {.callout-tip collapse="true"}
 #### Accessing Queensland Globe
@@ -282,6 +290,7 @@ Another way to access QSpatial Data is using the Queensland Globe portal. Here i
 
 [CSIRO spatial products](https://data.csiro.au/collections/search/SQDEM/STsearch-by-keyword/)
 
+
 :::  {.callout-tip collapse="true"}
 #### CSIRO Data
 
@@ -291,6 +300,7 @@ Another way to access QSpatial Data is using the Queensland Globe portal. Here i
 :::
   
 [Federal Environment Department Spatial Data](http://www.environment.gov.au/fed/catalog/main/home.page) - Species observation data
+
 
 :::  {.callout-tip collapse="true"}
 #### Federal Environmental Data
@@ -303,6 +313,7 @@ One example is the Collaborative Australian Protected Areas Database (CAPAD) 202
 
 
 [Australian Bureau of Statistics](https://www.abs.gov.au/)
+
 
 :::  {.callout-tip collapse="true"}
 #### Australian Bureau of Statistics Data Tips
@@ -321,6 +332,7 @@ The ABS have a lot of useful data, including population data. They provide it in
 
 [Atlas of Living Australia](https://www.ala.org.au/) - Species observation data
 
+
 :::  {.callout-tip collapse="true"}
 #### Atlas of Living Australia
   
@@ -333,6 +345,7 @@ You need to create an account and request the exact dataset you need.
 
 [Global Biodiversity Information Facility (GBIF)](https://www.gbif.org/) - Species observation data
 
+
 :::  {.callout-tip collapse="true"}
 #### Global Biodiversity Information Facility (GBIF)
 
@@ -341,6 +354,7 @@ This is another species observation database, but this one is worldwide.
 :::
 
 [iNaturalist](https://www.inaturalist.org/) - Species observation data
+
 
 :::  {.callout-tip collapse="true"}
 #### iNaturalist
