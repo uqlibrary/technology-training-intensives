@@ -323,36 +323,36 @@
     ]
   },
   {
-    "objectID": "qgis/Project/overview.html",
-    "href": "qgis/Project/overview.html",
+    "objectID": "qgis/The Project/overview.html",
+    "href": "qgis/The Project/overview.html",
     "title": "Overview",
     "section": "",
     "text": "The best way to learn is by doing. That’s why, over the these three days, you are tasked with analysing, visualising and reporting on a set of data!\nRoughly 50% of our intensive is dedicated to working on the project. Working in groups of 2-4, you’ll need to use the techniques we learn to draw some observations and create maps from your chosen datasets.\nThe end goal will be a quick fire (low stakes) one-minute presentation with a Map to complement.\nSee the datasets page for the data, Getting Started for a suggested approach, and below for submission details."
   },
   {
-    "objectID": "qgis/Project/overview.html#project-outline",
-    "href": "qgis/Project/overview.html#project-outline",
+    "objectID": "qgis/The Project/overview.html#project-outline",
+    "href": "qgis/The Project/overview.html#project-outline",
     "title": "Overview",
     "section": "Project outline",
     "text": "Project outline\nThe goal of this project is to create 1-3 maps that use spatial data to tell a story about a particular area.\nThere are a few key requirements for the project, but otherwise it’s up to you!\n\nTell a story about a location of your choosing using spatial data\nSource that spatial data from online\nDigitise some vector data yourself\nGenerate some statistics using spatial analyses\nCreate nice looking maps using the Layout Manager\nDeliver a quick fire one-minute presentation with your group\n\nWe’ll have 4 sessions during the intensive days to work on the project, totalling about five hours. The goal of these sessions is twofold\n\nTo work on the project, analysing data and creating maps\nTo dive deeper into the content, perfect for questions and conversations\n\nWhile you’ll be working in groups, everyone should practise analysing and visualising the data. We recommend distributing roles amongst the group, maybe looking at different sets of data or maps for different audiences.\nYou’re welcome to use the project time however you’d like. Below is a rough guide if you’re unsure:\n\n\n\n\n\n\n\nSession\nRecommendation\n\n\n\n\nTuesday afternoon\nPick some vector datasets and play with the data, consider dividing roles amongst group\n\n\nWednesday morning\nPick some raster data, decide on an approach and start running analyses\n\n\nWednesday afternoon\nPrepare in the layout manager, and continue analysing\n\n\nThursday morning\nPolish up results and finalise map, submit.\n\n\n\nThe presentations will happen on Thursday morning, before lunch.\nGood luck!"
   },
   {
-    "objectID": "qgis/Project/overview.html#design-and-submissions",
-    "href": "qgis/Project/overview.html#design-and-submissions",
+    "objectID": "qgis/The Project/overview.html#design-and-submissions",
+    "href": "qgis/The Project/overview.html#design-and-submissions",
     "title": "Overview",
     "section": "Design and submissions",
     "text": "Design and submissions\nWe’ve put together example maps which you’re welcome to look at:\n\nUpload Map to Teams\nWhen you are ready to upload, just put your maps into our Teams folder."
   },
   {
-    "objectID": "qgis/Project/scaffold.html",
-    "href": "qgis/Project/scaffold.html",
+    "objectID": "qgis/The Project/scaffold.html",
+    "href": "qgis/The Project/scaffold.html",
     "title": "Getting started",
     "section": "",
     "text": "You’re welcome to dive in and work as you please, but if you’re feeling at a loss where to begin, follow the scaffold below."
   },
   {
-    "objectID": "qgis/Project/scaffold.html#project-scaffold",
-    "href": "qgis/Project/scaffold.html#project-scaffold",
+    "objectID": "qgis/The Project/scaffold.html#project-scaffold",
+    "href": "qgis/The Project/scaffold.html#project-scaffold",
     "title": "Getting started",
     "section": "Project scaffold",
     "text": "Project scaffold\n\nStep 0: Pick a dataset\nThere are many datasets to choose from. Browse through online data sources and find some vector data and raster data that interest you.\nLearning how to find and import spatial data is a useful skill.\nWe recommend selecting a few vector datasets, a nice basemap, and a DEM (on day 2).\nChoose a location that might show an interesting combination of data types.\nWe recommend creating a new project folder, setting up a folder structure, and saving your data there.\n\n\n\n\n\n\nTipProject Folder Structure\n\n\n\n\n\n\nOpen QGIS and create a new project with Project &gt; New.\nLet’s now save our project: Project &gt; Save.\nNavigate to where you want to save your new project, and create a new folder, let’s call it “Workshop_Project”.\nInside that folder, create these folders:\n“data” - for all the data we will use to make our maps, split into:\n\n-   \"**raw**\" - raw data from your research or the internet\n\n-   \"**processed**\" - any data you've modified\n\n“output” - for any maps or images we export\n“temp” - this folder isn’t necessary, but when you’re playing around and testing, it can be helpful to stop things getting messy.\nFinally, let’s save our .qgz project file inside the “Workshop_Project” folder, named “Workshop_Project.qgz”\n\nRemember: Your .qgz file should always be in the highest level folder, so it’s only looking down into folders for data, not back out. This might feel unnecessary now, but things quickly get out of control and hard to find if you don’t have a good folder structure.\n\n\n\nGenerate 1-3 maps covering a location of your choosing\n\n\nStep 1: Understand the data\nImport the data into QGIS, look at the attributes and see what analyses you might be able to run.\n\n\nStep 2: Tidy and subset your data\nDefine a project are and clip your data where appropriate.\nStyle your vectors so that they have appropriate colours, and labels.\n\n\nStep 3: Run some analyses on your data\nTry running some tools to see how your data interacts\n\n\nStep 4: Looking ahead\nIn the coming days we will learn to analyse raster data, as well as create pretty looking exports of our maps."
@@ -2799,71 +2799,71 @@
     "text": "Viewshed\nIf you want to know what can be seen from a certain point in a landscape, or where in the landscape can see a certain point, you can use a DEM to perform a Viewshed Analysis. To be even more accurate, we can use a DSM instead - a Digital Surface Model. It’s very much like a DEM, but where a DEM has had the buildings and trees digitally removed, the DSM retains the heights of buildings and trees. This is useful for a viewshed, as it means that tall buildings might block the view in some areas.\nIn our case, we may be interested to know how far away people can see the wind turbines.\nOpen the Processing Toolbox  and search for the GDAL tool called “Viewshed”.\nNormally this tool is used from the perspective of what an Observer can see around them, but we can reverse this and have the wind turbine as the Observer. If they can see you, you can see them.\n\nInput Layer: Choose your Bris_DEM_5m_reproj layer\nClick the three dots next to Observer location to select a point on the map\nObserver height, DEM units: 150 (this is the height of the centre of these wind turbines, it may be approrpiate to take into account the rotor length, but we’re keeping this simple)\nTarget height, DEM units: 1.6 (the average human eye height is around 1.6m, choose a height you think might be appropriate)\nMaximum distance from observer to compute visibility: 15000 (5km is the distance you can see on flat ground due to the curvature of the earth, this changes as our “Observer” is much higher up, you can find calculators and a formula for this maximum distance. While you could theoretically still see the turbines from greater distances, their visual detectability begins to decrease).\n\nThis will produce a black and white raster showing what can be seen, and what can’t. Go to the Layer Styling Menu, and change it to Singleband Pseudocolor, change the Mode to Equal Interval, and set the Classes to 2. Change one of the Colors to transparent to highlight either where the turbines can be seen, or where they cannot.\nIf you want to get more sophisticated with your Viewshed analyses, there is, of course, a plugin called Visibility Analysis which will allow you to use one or multiple points as observers, take in account of the Earth’s curvature, see what vector points can see other vector points, and more.\nDon’t forget to save your project"
   },
   {
-    "objectID": "qgis/Project/tips.html",
-    "href": "qgis/Project/tips.html",
+    "objectID": "qgis/The Project/tips.html",
+    "href": "qgis/The Project/tips.html",
     "title": "Tips",
     "section": "",
     "text": "Here’s a few general tips. In addition, we strongly recommend using QGIS User Manual"
   },
   {
-    "objectID": "qgis/Project/tips.html#keyboard-shortcuts",
-    "href": "qgis/Project/tips.html#keyboard-shortcuts",
+    "objectID": "qgis/The Project/tips.html#keyboard-shortcuts",
+    "href": "qgis/The Project/tips.html#keyboard-shortcuts",
     "title": "Tips",
     "section": "Keyboard Shortcuts",
     "text": "Keyboard Shortcuts\nChange the below to QGIS things like F7 for Style Manager and CTRL + . for digitising\n\n\n\n\n\n\n\n\nCode\nHotkey\nDescription\n\n\n\n\n\nCtrl+Enter\nRun current line (when in Script)\n\n\n&lt;-\nAlt+-\nAssignment\n\n\n%&gt;%\nCtrl+Shift+M\nPipe\n\n\n\nEsc\nCancel current operation (when in Console)\n\n\n\nF1\nHelp documentation for selected function"
   },
   {
-    "objectID": "qgis/Project/tips.html#plugins",
-    "href": "qgis/Project/tips.html#plugins",
+    "objectID": "qgis/The Project/tips.html#plugins",
+    "href": "qgis/The Project/tips.html#plugins",
     "title": "Tips",
     "section": "Plugins",
     "text": "Plugins\nExplore plugins to make things easier"
   },
   {
-    "objectID": "qgis/Project/tips.html#importing-and-exporting-data",
-    "href": "qgis/Project/tips.html#importing-and-exporting-data",
+    "objectID": "qgis/The Project/tips.html#importing-and-exporting-data",
+    "href": "qgis/The Project/tips.html#importing-and-exporting-data",
     "title": "Tips",
     "section": "Importing and exporting data",
     "text": "Importing and exporting data\nHow tos for any data, csvs, as well as Project Home\nDifferent spatial file types\n\nInitial exploration\nYou’ll want to explore the data to start with - below are a few things to get started.\nAttribute table??"
   },
   {
-    "objectID": "qgis/Project/tips.html#exporting-with-qgis-cloud-or-qgis-to-html",
-    "href": "qgis/Project/tips.html#exporting-with-qgis-cloud-or-qgis-to-html",
+    "objectID": "qgis/The Project/tips.html#exporting-with-qgis-cloud-or-qgis-to-html",
+    "href": "qgis/The Project/tips.html#exporting-with-qgis-cloud-or-qgis-to-html",
     "title": "Tips",
     "section": "Exporting with QGIS Cloud or QGIS to HTML",
     "text": "Exporting with QGIS Cloud or QGIS to HTML"
   },
   {
-    "objectID": "qgis/Project/Data_Sources.html",
-    "href": "qgis/Project/Data_Sources.html",
+    "objectID": "qgis/The Project/Data_Sources.html",
+    "href": "qgis/The Project/Data_Sources.html",
     "title": "Data Sources",
     "section": "",
     "text": "In this workshop, we will learn about sourcing spatial data.\nWe will cover:\n\nAdding Base Maps\nImporting online data\n\nWe will explore data from:\n\nLocal, State, Federal Gov Data Repositories\nInternational Datasets\nNGOs\nCorporate (ESRI, etc)"
   },
   {
-    "objectID": "qgis/Project/Data_Sources.html#what-are-we-going-to-learn",
-    "href": "qgis/Project/Data_Sources.html#what-are-we-going-to-learn",
+    "objectID": "qgis/The Project/Data_Sources.html#what-are-we-going-to-learn",
+    "href": "qgis/The Project/Data_Sources.html#what-are-we-going-to-learn",
     "title": "Data Sources",
     "section": "",
     "text": "In this workshop, we will learn about sourcing spatial data.\nWe will cover:\n\nAdding Base Maps\nImporting online data\n\nWe will explore data from:\n\nLocal, State, Federal Gov Data Repositories\nInternational Datasets\nNGOs\nCorporate (ESRI, etc)"
   },
   {
-    "objectID": "qgis/Project/Data_Sources.html#basemaps",
-    "href": "qgis/Project/Data_Sources.html#basemaps",
+    "objectID": "qgis/The Project/Data_Sources.html#basemaps",
+    "href": "qgis/The Project/Data_Sources.html#basemaps",
     "title": "Data Sources",
     "section": "Basemaps",
     "text": "Basemaps\n\nPlugins\nSo far we’ve only been using OpenStreetMap, but there are a wide variety of other options available.\nLet’s load in a new basemap.\nThere are many ways of doing this, we can use the QuickMapServices plugin to load in new raster basemaps.\n\nNavigate to Plugins &gt; Manage and Install Plugins.... Search for “QuickMapServices”, select it from the list and click Install Plugin, once it has loaded, click Cloce\n\nThe plugin should automatically open a side panel in which you can search for terms. For example, search for “satellite” and add the ESRI satellite imagery to your project.\n\n\nWeb Mapping Services\nNow we can go to the next step and source them externally. We can do this with WMTS (Web Map Tile Service), WCS (Web Coverage Service), ArcGIS REST Servers, and XYZ Tiles. Some web services like ArcGIS REST Servers can also provide vector data too!\nToday we’re going to use an XYZ Tile from CARTODB.\n\nScroll down the Browser panel until your see XYZ Tiles\nRight click XYZ Tiles and select New Connection...\nIn Name type Voyager (no labels)\nIn URL paste:\nhttps://a.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}@2x.png\nIncrease the Max. Zoom Level to 20\nThis value depends on what is available from the given service in different parts of the world. Increasing that value beyond 20 for this map in Brisbane will show “Map data not yet available” when you zoom in very close.\nClick OK\nIn the Browser panel, expand XYZ Tiles and double click on Voyager (no labels)\nNow do the same for this Light Gray Basemap from ESRI, but set the Max. Zoom Level to 16:\nhttps://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}\nAnd the same for this ESRI World Imagery, but set the Max. Zoom Level to 20:\nhttps://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}\n\n\nMore Web Mapping Services\nSearching online for ArcGIS REST Servers may allow you to find more resources such as this QLD Gov Aerial Basemap"
   },
   {
-    "objectID": "qgis/Project/Data_Sources.html#raster-data",
-    "href": "qgis/Project/Data_Sources.html#raster-data",
+    "objectID": "qgis/The Project/Data_Sources.html#raster-data",
+    "href": "qgis/The Project/Data_Sources.html#raster-data",
     "title": "Data Sources",
     "section": "Raster Data",
     "text": "Raster Data\n\nDEM Repositories\nA Digital Elevation Model (DEM) is raster data that shows the elevation of an area. There are a few repositories you can access this kind of data, but ELVIS is great for Australia.\nELVIS - Geoscience Australia’s ELeVation Information System. ::: {.callout-tip collapse=“true”} #### ELVIS Instructions\n\nGo to http://www.ga.gov.au/elvis/\nSearch for “St Lucia” in the Location Search search box and select the first result\nClick Order Data\nChoose “Draw” and “Box” and then click the Draw button\nClick on the map to start drawing a rectangle around your desired area\nThen click Search\nThe right panel will show you all the different datasets available in that area\nWe want the QLD Government Digital Elevation Model 1 Metre, click the down arrow on the right\nAs you hover over the different options, they will highlight a red box on the map, click the tick box and select all that overlap the area you’re interested in (note that there may be data from different years here)\nWhen you have the data you want, scroll to the bottom of the Order Data window\nSelect your industry, enter your email, tick the reCAPTCHA, and click the Order Datasets button\nYou should receive an email within 5 minutes, download the files from the link in the email, extract the folder to your project folder, and add them to your map.\n\n:::\nUSGS Earth Explorer ::: {.callout-tip collapse=“true”} #### USGS Earth Explorer - Access Instructions\n\nGo to https://earthexplorer.usgs.gov/\nClick the World Features box, and then search for “Brisbane” in the “Feature Name” search box\nClick Show and select the first result\nZoom onto an area of interest around Brisbane and click “Use Map”\nClick the “Data Sets” button and then Digital Elevation &gt; SRTM, select “SRTM 1 Arc-Second Global” and click “Results”\n\n“SRTM” stands for “Shuttle Radar Topography Mission”. It provides global elevation data collected in 2000 by the space shuttle Endeavour.\n:::\n\n\nAerial Imagery\nThere are a few places you can aquire aerial photography, some are freely available Government Data, some cost money, but can be accessed with your UQ credentials.\nNearmap (account login required) ::: {.callout-tip collapse=“true”} #### Nearmap Access Instructions As a UQ student or staff member, you have access to very high resoltuion imagery from NearMap. You can even access an array of imagery going back in time.\n\nGo to the UQ NearMap Portal\nEnter your UQ Student (@student.uq.edu.au) or Staff (@uq.edu.au) email address, with the appropriate domain selected. Click “Invite me”.\nYou should receive an email soon after, click the “Accept Invitation” button, and go through the account setup process.\nGo to Login and enter your email address, click “Next” and enter your password.\nFrom the top right select MapBrowser.\nType “St Lucia, QLD” in the search box, press enter\nYou can click the date down the bottom to look at different snapshots in time, and even compare maps side-by-side.\nTo save imagery from NearMap, simply click the “Exports” button on the left handside (it is an image icon)\nFrom the menu that appears change the “Export type” to “Georeferenced image”\nFrom “Projection” choose GDA2020 / MGA zone 56\nYou can increase and decrease the size of the bounding box by adjusting its corners, a smaller box means you can have a finer resolution, down to 0.075m. If we select all of UQ St Lucia in one go, the highest resolution we can have is 0.299m.\nOnce you’re happy with your selection click Download Files\nMove the downloaded zip file to your project folder, and open them in QGIS\n\nYou can also use the NearMap API to bring the data in as a web mapping service.\n:::\n\n\nHistorical Aerial Imagery\nQImagery (free access government data) ::: {.callout-tip collapse=“true”} #### QImagery Access Instructions\nQImagery is a repository of QLD Historical Images.\n\nGo to QImagery\nRead and tick the “I acknowledge I have read and agree to the Terms & Conditions” box, and click Get Started\nClick the Search button, select ‘locality, town or city’ and search for “St Lucia” in the “Enter search term” search box and select the first result\nIt will zoom to your selected location then click the newly appeared Search button\nFrom here you can select from a wide array of images of QLD over many years.\nClick one of the drop-downs and hover over the options to see where those images are located. Preview the image by clicking View.\nYou can then download your desired images by clicking “Download” and selecting TIFF (georeferenced)\nMove the TIFF file(s) to your project folder, and open them in QGIS\n\n:::\nGeoscience Australia’s Historical Aerial Photo (HAP) Collection (free access government data) ::: {.callout-tip collapse=“true”} #### Historical Aerial Photo (HAP)\nGeoscience Australia’s Historical Aerial Photo (HAP) Collection is Australia wide, and may have different photos to QImagery. :::"
   },
   {
-    "objectID": "qgis/Project/Data_Sources.html#vector",
-    "href": "qgis/Project/Data_Sources.html#vector",
+    "objectID": "qgis/The Project/Data_Sources.html#vector",
+    "href": "qgis/The Project/Data_Sources.html#vector",
     "title": "Data Sources",
     "section": "Vector",
     "text": "Vector\n\nESRI Data\nESRI have a repository of 10000+ Searchable Feature Layers from ArcGIS, which you can use Web Mapping Services to bring in to QGIS. Unlike the basemaps, these will pull in vector data!\nFor example this User’s Data which has lots of useful QLD layers.\n\n\nCouncil Data\nMost Councils have a spatial data service. It can be hard to find, but targetted searching and trawling their websites can often yield useful local data.\nSunshine Coast MyMaps\n\n\n\n\n\n\nTipBrisbane City Council Web Mapping Services\n\n\n\n\n\nBrisbane/SEQ Utilities\nBCC Data\n\n\n\n\n\nState Government\nQLD Spatial. ::: {.callout-tip collapse=“true”} #### QSpatial\nYou can access a wide variety of QLD Government Data, including Spatial Data such as lot plans and vegetation maps, from QLD Spatial.\nFor example you could acces the Property boundaries Queensland dataset\nThere are three ways to access data from QSpatial.\n\nDownload all of the data from a layer\nSelect a portion of a layer for download using the My List function\nLive load it into your project using a Mapserver.\n\n\n\n\n\n\n\nNoteUsing My List on QSpatial\n\n\n\n\n\nHere is an example of extracting property boundaries.\n\nTo access data from QLD Spatial go to https://qldspatial.information.qld.gov.au/\nSearch for “property boundaries”\nScroll down to “Property boundaries Queensland” and click Add to my list\nClick My List from the top menu\nClick View/extract in map\nUnder Extractable Data, click the box next to Property boundaries Queensland, it will become green\nClick Extract/download\nClick Choose an area\nSelect BRISBANE CITY from the Select LGA option\nChoose GeoPackage 1.0 from Select output format\nEnter your Email Address\nAccept the Terms and Conditions\nClick Extract/Download\n\n\n\n\n:::\n\n\n\n\n\n\nTipQLD Gov Web Mapping Services\n\n\n\n\n\nQLD Gov Roads\nQLD Heritage Areas\nMore QLD Gov Services\n\n\n\nQueensland Globe. ::: {.callout-tip collapse=“true”} #### Accessing Queensland Globe\nAnother way to access QSpatial Data is using the Queensland Globe portal. Here is an example of extracting property boundaries from Queensland Globe.\n\nTo access data from Queensland Globe go to https://qldglobe.information.qld.gov.au\nAccept the T&Cs.\nClick Search, Select Locality (Suburb) within a Local Government Area, and search for the location you want and select it from the list.\nClick Layers, click Add Layers + here you can scroll through and filter different layer types\nWe want to tick the box next to Planning Cadastre &gt; Land Parcels &gt; Land Parcel (you may need to zoom in to see certain layers)\nTo export data click the Wrench Icon in the top right, and then click the Identify icon (i)\nUse the triangular Identify Polygon tool to select and area of interest. Double click when you’ve finished selecting your area.\nThe Layers menu will now show your selection. You can download all, or sections, of your selection.\nI will choose Land Parcel and then Download as a shp file.\nNote: You may need to disable other layers for this to work correctly. I needed to turn off the Transportation layer to prevent roads from being included in my selection.\n\n:::\n\n\nFederal Government Data\nCSIRO spatial products ::: {.callout-tip collapse=“true”} #### CSIRO Data\nCSIRO’s Norfolk Island Data Portal CSIRO spatial products\n:::\nFederal Environment Department Spatial Data - Species observation data ::: {.callout-tip collapse=“true”} #### Federal Environmental Data\nThe Federal Environment Department has a variety of different spatial datasets that you can browse through.\nOne example is the Collaborative Australian Protected Areas Database (CAPAD) 2020, which is a compilation of government, Indigenous and privately protected areas for Australia. You can search for “CAPAD” in on the Environment Department website, or by going directly to the data.\n:::\nAustralian Bureau of Statistics ::: {.callout-tip collapse=“true”} #### Australian Bureau of Statistics Data Tips\nThe ABS is a huge source of data, however, it can be a bit difficult to find that data, and use it in a spatial context.\nThe ABS has a variety of ways that it splits its data up. These Digital Boundary Files are very useful for classifying data. They generally classify all of Australia into discrete Statistical Areas. Level 1 are the smallest, and Level 4 are the coarsest. (notably, the link above also has non-ABS Structures/boundary files such as Electoral areas and Postcodes).\n\nPopulation Data\nThe ABS have a lot of useful data, including population data. They provide it in excel format, as GeoPackages (by SA2 and LGAs), and as population grid raster files. SA2 GeoPackages are a convenient format for QGIS. This means we have our digital boundaries, and population in one! :::\n\n\n\nOnline Community Spatial Repositories\nAtlas of Living Australia - Species observation data ::: {.callout-tip collapse=“true”} #### Atlas of Living Australia\nSpecies observation data can be downloaded from the Atlas of Living Australia.\nThis is an Australia Biodiversity occurrence database. It pulls data from a variety of different sources, including government data, individual collectors and community groups. This means that this data will contain sampling bias and will often simply represent encounters, rather than using robust sampling and collection methods. So, while we need to use this data with caution, it’s still a useful dataset!\nYou need to create an account and request the exact dataset you need. :::\nGlobal Biodiversity Information Facility (GBIF) - Species observation data ::: {.callout-tip collapse=“true”} #### Global Biodiversity Information Facility (GBIF)\nThis is another species observation database, but this one is worldwide.\n:::\niNaturalist - Species observation data ::: {.callout-tip collapse=“true”} #### iNaturalist\nCommunity/Citizen Science species observation database.\n:::"
