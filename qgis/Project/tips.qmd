@@ -1,0 +1,36 @@
+---
+title: Tips
+---
+
+Here's a few general tips. In addition, we strongly recommend using [QGIS User Manual](https://docs.qgis.org/3.40/en/docs/user_manual/index.html)
+
+## Keyboard Shortcuts
+
+Change the below to QGIS things like F7 for Style Manager and CTRL + . for digitising
+
+| Code | Hotkey | Description |
+| --- | --- | --- |
+|  | <kbd>Ctrl</kbd>+<kbd>Enter</kbd> | Run current line (when in Script) |
+| `<-` | <kbd>Alt</kbd>+<kbd>-</kbd> | Assignment |
+| `%>%` | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>M</kbd> | Pipe |
+|  | <kbd>Esc</kbd> | Cancel current operation (when in Console) |
+|  | <kbd>F1</kbd> | Help documentation for selected function |
+
+
+## Plugins
+
+Explore plugins to make things easier
+
+## Importing and exporting data
+
+How tos for any data, csvs, as well as Project Home
+
+Different spatial file types
+
+### Initial exploration
+You'll want to explore the data to start with - below are a few things to get started.
+
+Attribute table??
+
+
+## Exporting with QGIS Cloud or QGIS to HTML

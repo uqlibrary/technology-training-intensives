@@ -1,0 +1,54 @@
+---
+title: "Overview"
+order: 1
+---
+
+The best way to learn is by doing. That's why, over the these three days, **you are tasked with analysing, visualising and reporting on a set of data!**
+
+Roughly 50% of our intensive is dedicated to working on the project. Working in groups of 2-4, you'll need to use the techniques we learn to draw some observations and create maps from your chosen datasets. 
+
+The end goal will be a quick fire (low stakes) one-minute presentation with a Map to complement.
+
+See the [datasets](Data_Sources.qmd) page for the data, [Getting Started](scaffold.qmd) for a suggested approach, and [below](#Upload Map to Teams) for submission details.
+
+## Project outline
+
+The goal of this project is to create 1-3 maps that use spatial data to tell a story about a particular area.
+
+There are a few key requirements for the project, but otherwise it's up to you!
+
+- Tell a story about a location of your choosing using spatial data
+- Source that spatial data from online
+- Digitise some vector data yourself
+- Generate some statistics using spatial analyses
+- Create nice looking maps using the Layout Manager
+- Deliver a quick fire one-minute presentation with your group
+
+We'll have 4 sessions during the intensive days to work on the project, totalling about five hours. The goal of these sessions is twofold
+
+1. To work on the project, analysing data and creating maps
+2. To dive deeper into the content, perfect for questions and conversations
+
+While you'll be working in groups, everyone should practise analysing and visualising the data. We recommend distributing roles amongst the group, maybe looking at different sets of data or maps for different audiences.
+
+You're welcome to use the project time however you'd like. Below is a rough guide if you're unsure:
+
+| Session | Recommendation | 
+| --- | --- |
+| Tuesday afternoon | Pick some vector datasets and play with the data, consider dividing roles amongst group |
+| Wednesday morning | Pick some raster data, decide on an approach and start running analyses |
+| Wednesday afternoon | Prepare in the layout manager, and continue analysing |
+| Thursday morning | Polish up results and finalise map, submit. |
+
+The presentations will happen on Thursday morning, before lunch.
+
+Good luck!
+
+## Design and submissions
+
+We've put together example maps which you're welcome to look at:
+
+
+#### Upload Map to Teams
+
+When you are ready to upload, just put your maps into our [Teams folder](https://uq.sharepoint.com/:f:/r/teams/1qktlisq/Shared%20Documents/R%20User%20Group/R%20Training%20Intensive%20Projects?csf=1&web=1&e=wwVB7w).
