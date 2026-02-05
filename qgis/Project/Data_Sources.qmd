@@ -8,7 +8,7 @@ date: today
   
 In this workshop, we will learn about sourcing spatial data. 
 
-We will explain:
+We will cover:
   
 -   Adding Base Maps
 -   Importing online data
@@ -21,15 +21,24 @@ We will explore data from:
 -   Corporate (ESRI, etc)
 
 
-
-
 ## Basemaps
 
-Let's start by making a map we might use in an **Academic Paper** or in an **Article for the Public**, where we want to focus their attention on our data. Unless we really need **Satellite** imagery, or everything on the **OpenStreetMap**, it is too busy and distracting.\
-\
-Let's load in a new basemap.\
-\
-There are many ways of doing this, in the past we've used the **QuickMapServices** plugin to load in new basemaps, now we can go to the next step and source them externally. We can do this with WMTS (Web Map Tile Service), WCS (Web Coverage Service), ArcGIS REST Servers, and XYZ Tiles.
+### Plugins
+
+So far we've only been using **OpenStreetMap**, but there are a wide variety of other options available.
+
+Let's load in a new basemap.
+
+There are many ways of doing this, we can use the **QuickMapServices** plugin to load in new raster basemaps.
+
+-   Navigate to `Plugins > Manage and Install Plugins...`. `Search` for "QuickMapServices", select it from the list and click `Install Plugin`, once it has loaded, click `Cloce`
+
+The plugin should automatically open a side panel in which you can search for terms. For example, search for "satellite" and add the ESRI satellite imagery to your project.
+
+### Web Mapping Services
+
+Now we can go to the next step and source them externally. We can do this with WMTS (Web Map Tile Service), WCS (Web Coverage Service), ArcGIS REST Servers, and XYZ Tiles.
+Some web services like ArcGIS REST Servers can also provide vector data too!
 
 Today we're going to use an XYZ Tile from CARTODB.
 
@@ -44,72 +53,25 @@ https://a.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}@2x.png
 -   In the `Browser` panel, expand `XYZ Tiles` and double click on `Voyager (no labels)`
 -   Now do the same for this **Light Gray Basemap** from ESRI, but set the Max. Zoom Level to 16:\
 https://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}
-
-Arrange the layers so that the **Voyager (no labels)** layer is under your other layers (you can hide the **Light Gray Basemap** and **OpenStreetMap** for now).
-
-Isn't that much less visually busy?!
-
-## Online Mapserver Data
-
-Today we're going to use a World Imagery XYZ Tile from ESRI.
-
--   Scroll down the `Browser` panel until your see **XYZ Tiles**
-  -   Right click XYZ Tiles and select `New Connection...`
--   In `Name` type **ESRI World Imagery**
-  -   In `URL` paste:\
-https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}
--   Increase the Max. Zoom Level to 20
--   This value depends on what is available from the given service in different parts of the world. Increasing that value beyond 20 for this map in Brisbane will show "Map data not yet available" when you zoom in very close.
--   Click `OK`
--   In the `Browser` panel, expand `XYZ Tiles` and double click on `ESRI World Imagery`
-
-### More Web Mapping Services
-
-Add any of these URLs via **ArcGIS REST Servers** in QGIS
-
-[QLD Gov Aerial Basemap](https://www.data.qld.gov.au/dataset/queensland-imagery-latest-state-program-public-basemap-service)
-
-[QLD Gov Roads](https://spatial-gis.information.qld.gov.au/arcgis/rest/services/Transportation/RoadsAndTracks/MapServer)
-
-[QLD Heritage Areas](https://spatial-gis.information.qld.gov.au/arcgis/rest/services/Boundaries/AdminBoundariesFramework/MapServer)
-
-[More QLD Gov Services](https://spatial-gis.information.qld.gov.au/arcgis/rest/services)
-
-[Brisbane/SEQ Utilities](https://services3.arcgis.com/ocUCNI2h4moKOpKX/ArcGIS/rest/services)
-
-[BCC Data](https://services2.arcgis.com/dEKgZETqwmDAh1rP/ArcGIS/rest/services)
-
-[Random User's Data](https://services9.arcgis.com/Ov1diE0uxjL6wSzH/ArcGIS/rest/services/)
-
-[10000+ Searchable Feature Layers from ArcGIS](https://www.arcgis.com/home/search.html?restrict=false&sortField=relevance&sortOrder=desc&focus=layers-weblayers-features#content)
-
-[NearMap API](https://help.nearmap.com/kb/articles/752)
+-   And the same for this **ESRI World Imagery**, but set the Max. Zoom Level to 20:\
+https://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}
 
 
+#### More Web Mapping Services
 
-## Data Lists
-
-This is a list of Spatial data sources that you might find useful. Some are used in our workshops, others didn't fit, but are still very valuable.
-Some of the data sources will have instructions for extracting the data, some will not. This is primarily a repository to refer to and use to find data. 
+Searching online for **ArcGIS REST Servers** may allow you to find more resources such as this [QLD Gov Aerial Basemap](https://www.data.qld.gov.au/dataset/queensland-imagery-latest-state-program-public-basemap-service)
 
 
-### Council Data
-
-[Sunshine Coast MyMaps](https://scrc.maps.arcgis.com/apps/webappviewer/index.html?id=48501cb9e7294555be5b08e35e949616)
-
-
-### Federal Data
-
-CSIRO's [Norfolk Island Data Portal](https://data.csiro.au/collection/csiro:43016)
-[CSIRO spatial products](https://data.csiro.au/collections/search/SQDEM/STsearch-by-keyword/).
 
 ## Raster Data
 
-### DEM
+### DEM Repositories
 
-A Digital Elevation Model (DEM) is a common example of **raster data**, i.e. grid data that contains a value in each cell (a bit like the pixels in a coloured picture).
+A Digital Elevation Model (DEM) is **raster data** that shows the elevation of an area. There are a few repositories you can access this kind of data, but ELVIS is great for Australia.
 
-For this tutorial, we are using a DEM sourced from **ELVIS** - Geoscience Australia's ELeVation Information System.
+[**ELVIS** - Geoscience Australia's ELeVation Information System.](http://www.ga.gov.au/elvis/)
+:::  {.callout-tip collapse="true"}
+#### ELVIS Instructions
 
 -   Go to <http://www.ga.gov.au/elvis/>
 -   Search for "St Lucia" in the `Location Search` search box and select the first result
@@ -124,11 +86,32 @@ For this tutorial, we are using a DEM sourced from **ELVIS** - Geoscience Austra
 -   Select your industry, enter your email, tick the reCAPTCHA, and click the `Order Datasets` button
 -   You should receive an email within 5 minutes, download the files from the link in the email, extract the folder to your project folder, and add them to your map.
 
+::: 
+
+
+[**USGS Earth Explorer**](https://earthexplorer.usgs.gov/)
+:::  {.callout-tip collapse="true"}
+#### USGS Earth Explorer - Access Instructions
+
+-   Go to [https://earthexplorer.usgs.gov/]((https://earthexplorer.usgs.gov/))
+-   Click the World Features box, and then search for "Brisbane" in the "Feature Name" search box
+-   Click Show and select the first result
+-   Zoom onto an area of interest around Brisbane and click "Use Map"
+-   Click the "Data Sets" button and then `Digital Elevation > SRTM`, select "SRTM 1 Arc-Second Global" and click "Results"
+
+"SRTM" stands for "[Shuttle Radar Topography Mission](https://www.usgs.gov/centers/eros/science/usgs-eros-archive-digital-elevation-shuttle-radar-topography-mission-srtm-1-arc?qt-science_center_objects=0#qt-science_center_objects)". It provides global elevation data collected in 2000 by the space shuttle Endeavour.
+
+:::
+
+
 ### Aerial Imagery
 
-There are a few places you can aquire aerial photography, today we will look at two sources, one is freely available Government Data, the other is accessible from using your UQ credentials.
+There are a few places you can aquire aerial photography, some are freely available Government Data, some cost money, but can be accessed with your UQ credentials.
 
-As a UQ student, you also have access to very high resoltuion imagery from **NearMap**. You can even access an array of imagery going back in time.
+[Nearmap](https://www.nearmap.com/) (account login required)
+:::  {.callout-tip collapse="true"}
+#### Nearmap Access Instructions
+As a UQ student or staff member, you have access to very high resoltuion imagery from **NearMap**. You can even access an array of imagery going back in time.
 
 -   Go to the [UQ NearMap Portal](https://admin.nearmap.com/invitation/domain-signup?token=q9WIbXMtna1iskb2meNGhKpCaQp3WTRbMhXpQVGWkKouKUeqzkpjNznC_Ogz5iKYiw0Ev7vym2Ykaj_W_V4dBbTzR6qUX2eTDsNHpBuR4XbU9vDRxQN_Rg==)
 -   Enter your UQ Student (@student.uq.edu.au) or Staff (@uq.edu.au) email address, with the appropriate domain selected. Click "Invite me".
@@ -144,12 +127,19 @@ As a UQ student, you also have access to very high resoltuion imagery from **Nea
 -   Once you're happy with your selection click `Download Files`
 -   Move the downloaded zip file to your project folder, and open them in QGIS
 
+You can also use the [NearMap API](https://help.nearmap.com/kb/articles/752) to bring the data in as a web mapping service.
 
-## More Data Sources
 
-### Aerial Imagery
+:::
 
-There are a few places you can aquire aerial photography, today we will look at two sources, one is freely available Government Data from **QImagery**, the other is accessible from using your UQ credentials.
+
+### Historical Aerial Imagery
+
+[QImagery](https://qimagery.information.qld.gov.au/) (free access government data)
+:::  {.callout-tip collapse="true"}
+#### QImagery Access Instructions
+
+QImagery is a repository of QLD Historical Images.
 
 -   Go to [QImagery](https://qimagery.information.qld.gov.au/)
 -   Read and tick the "I acknowledge I have read and agree to the Terms & Conditions" box, and click `Get Started`
@@ -160,18 +150,51 @@ There are a few places you can aquire aerial photography, today we will look at 
 -   You can then download your desired images by clicking "Download" and selecting TIFF (georeferenced)
 -   Move the TIFF file(s) to your project folder, and open them in QGIS
 
-You can also get historical images from Geoscience Australia's [Historical Aerial Photo (HAP) Collection](https://experience.arcgis.com/experience/9a0ecbafe94f49829712b46fc69186ff)
+:::
+
+
+Geoscience Australia's [Historical Aerial Photo (HAP) Collection](https://experience.arcgis.com/experience/9a0ecbafe94f49829712b46fc69186ff) (free access government data)
+:::  {.callout-tip collapse="true"}
+#### Historical Aerial Photo (HAP)
+
+Geoscience Australia's [Historical Aerial Photo (HAP) Collection](https://experience.arcgis.com/experience/9a0ecbafe94f49829712b46fc69186ff) is Australia wide, and may have different photos to QImagery.
+:::
 
 
 
+## Vector 
 
-## Vector Data
+### ESRI Data
 
-## Lot Plans
+ESRI have a repository of [10000+ Searchable Feature Layers from ArcGIS](https://www.arcgis.com/home/search.html?restrict=false&sortField=relevance&sortOrder=desc&focus=layers-weblayers-features#content), which you can use Web Mapping Services to bring in to QGIS. Unlike the basemaps, these will pull in vector data!
+
+For example this [User's Data](https://services9.arcgis.com/Ov1diE0uxjL6wSzH/ArcGIS/rest/services/) which has lots of useful QLD layers.
+
+
+### Council Data
+
+Most Councils have a spatial data service. It can be hard to find, but targetted searching and trawling their websites can often yield useful local data.
+
+[Sunshine Coast MyMaps](https://scrc.maps.arcgis.com/apps/webappviewer/index.html?id=48501cb9e7294555be5b08e35e949616)
+
+
+:::  {.callout-tip collapse="true"}
+#### Brisbane City Council Web Mapping Services
+[Brisbane/SEQ Utilities](https://services3.arcgis.com/ocUCNI2h4moKOpKX/ArcGIS/rest/services)
+
+[BCC Data](https://services2.arcgis.com/dEKgZETqwmDAh1rP/ArcGIS/rest/services)
+:::
+
+
+### State Government
+
+[QLD Spatial](https://qldspatial.information.qld.gov.au/).
+:::  {.callout-tip collapse="true"}
+#### QSpatial
 
 You can access a wide variety of QLD Government Data, including Spatial Data such as lot plans and vegetation maps, from [QLD Spatial](https://qldspatial.information.qld.gov.au/). 
 
-Today we have extracted a selection from [Property boundaries Queensland](https://qldspatial.information.qld.gov.au/catalogue/custom/detail.page?fid={3F217A59-1FDB-412A-813D-A1E7843FB618})
+For example you could acces the [Property boundaries Queensland](https://qldspatial.information.qld.gov.au/catalogue/custom/detail.page?fid={3F217A59-1FDB-412A-813D-A1E7843FB618}) dataset
 
 There are three ways to access data from QSpatial. 
 
@@ -182,9 +205,10 @@ There are three ways to access data from QSpatial.
 -   Live load it into your project using a [Mapserver](https://spatial-gis.information.qld.gov.au/arcgis/rest/services/PlanningCadastre/LandParcelPropertyFramework/MapServer). 
 
 
-### Lot Plans
+:::  {.callout-note collapse="true"}
+##### Using My List on QSpatial
 
-You can access a wide variety of QLD Government Data, including Spatial Data such as lot plans and vegetation maps, from QLD Spatial. There are three ways to access this data. You can download all of it, you can select a portion for download, or you can live load it into your project. Today we  download the files covering our project area.
+Here is an example of extracting property boundaries.
 
 -   To access data from QLD Spatial go to <https://qldspatial.information.qld.gov.au/>
 
@@ -212,13 +236,24 @@ You can access a wide variety of QLD Government Data, including Spatial Data suc
 
 -   Click **Extract/Download**
 
--   You can can also just download the preprepared data [here](https://github.com/uqlibrary/technology-training/blob/8e0aebe078198cd8bb65630c9ac4c4c8558a4392/QGIS/mobile/QGIS_Mobile_Data.zip), just press the three dots and download.
+:::
+:::
 
--   Move the downloaded zip file to your project raw data folder, and open the shapefile in QGIS
+:::  {.callout-tip collapse="true"}
+#### QLD Gov Web Mapping Services
+[QLD Gov Roads](https://spatial-gis.information.qld.gov.au/arcgis/rest/services/Transportation/RoadsAndTracks/MapServer)
 
-### Queensland Globe
+[QLD Heritage Areas](https://spatial-gis.information.qld.gov.au/arcgis/rest/services/Boundaries/AdminBoundariesFramework/MapServer)
 
-Another way to access QSpatial Data is using the Queensland Globe portal.
+[More QLD Gov Services](https://spatial-gis.information.qld.gov.au/arcgis/rest/services)
+:::
+
+
+[Queensland Globe](https://qldglobe.information.qld.gov.au).
+:::  {.callout-tip collapse="true"}
+#### Accessing Queensland Globe
+
+Another way to access QSpatial Data is using the Queensland Globe portal. Here is an example of extracting property boundaries from Queensland Globe.
 
 -   To access data from Queensland Globe go to [https://qldglobe.information.qld.gov.au](https://qldglobe.information.qld.gov.au)
 -   Accept the T&Cs.
@@ -231,116 +266,73 @@ Another way to access QSpatial Data is using the Queensland Globe portal.
   -   I will choose **Land Parcel** and then **Download** as a **shp** file.
   -   Note: You may need to disable other layers for this to work correctly. I needed to turn off the **Transportation** layer to prevent roads from being included in my selection.
   
-  
-  
-  ### Online Community Spatial Repositories
-  
-  #### Koala Sighting Data (encounters)
-  
-  If we're looking at Koalas, we should get some occurence/sighting data.
+:::  
 
-We're getting our species observation data today from the [Atlas of Living Australia](https://www.ala.org.au/). This is an Australia Biodiversity occurrence database. It pulls data from a variety of different sources, including government data, individual collectors and community groups. This means that this data will contain sampling bias and will often simply represent encounters, rather than using robust sampling and collection methods. So, while we need to use this data with caution, it's still a useful dataset!
+### Federal Government Data
+  
+  
 
-You need to create an account and request the exact dataset you need, so to speed things up today, we've provided the data already cleaned and processed the data in the download link above.
-  
-  Some similar online repositories include the Global Biodiversity Information Facility (GBIF) and iNaturalist
-  
-  #### Cleaning and processing the ALA data
-  
-  What do we mean by processed? Well, the ALA dataset has 206 columns by default. This means that each occurrence has 206 associated cells, and when multiplied by \~200,000 sightings, our data gets huge (\>300mb!). To save time (and storage space!) today we have already deleted 200 of those columns (bringing the dataset down to 15mb).
-  
-  ### QLD Government Spatial Data
-  
-  We've seen the [QSpatial data portal](https://qldspatial.information.qld.gov.au/catalogue/custom/index.page) in previous sessions, and today we will be getting two lots of data from here.
+[CSIRO spatial products](https://data.csiro.au/collections/search/SQDEM/STsearch-by-keyword/)
+:::  {.callout-tip collapse="true"}
+#### CSIRO Data
 
-#### Koala Priority Areas
+[CSIRO's Norfolk Island Data Portal](https://data.csiro.au/collection/csiro:43016)
+[CSIRO spatial products](https://data.csiro.au/collections/search/SQDEM/STsearch-by-keyword/)
 
-Koala Priority Areas are areas in SEQ which have been identified as key areas for conservation as part of the South East Queensland Koala Conservation Strategy 2019-2024. You can search for "Koala Priority Areas" in QSpatial, or by going [directly to the data](https://qldspatial.information.qld.gov.au/catalogue/custom/detail.page?fid=%7BE4CCDBA7-11AB-45DD-A064-BDBC02899204%7D).
+:::
+  
+[Federal Environment Department Spatial Data](http://www.environment.gov.au/fed/catalog/main/home.page) - Species observation data
+:::  {.callout-tip collapse="true"}
+#### Federal Environmental Data
+  
+The Federal Environment Department has a variety of [different spatial datasets that you can browse through](http://www.environment.gov.au/fed/catalog/main/home.page). 
 
-Let's get a resource to compare with these QLD government priority areas...
-  
-  ### Federal Environment Data
-  
-  #### Protected Areas
-  
-  The Federal Environment Department has a variety of [different spatial datasets that you can browse through](http://www.environment.gov.au/fed/catalog/main/home.page). Today we are going to be using the Collaborative Australian Protected Areas Database (CAPAD) 2020, which is a compilation of government, Indigenous and privately protected areas for Australia. You can search for "CAPAD" in on the Environment Department website, or by going [directly to the data](http://www.environment.gov.au/fed/catalog/search/resource/details.page?uuid=%7B4448CACD-9DA8-43D1-A48F-48149FD5FCFD%7D).
-  
-  Finally let's get some data to put all of our protected areas and observations into context...
+One example is the Collaborative Australian Protected Areas Database (CAPAD) 2020, which is a compilation of government, Indigenous and privately protected areas for Australia. You can search for "CAPAD" in on the Environment Department website, or by going [directly to the data](http://www.environment.gov.au/fed/catalog/search/resource/details.page?uuid=%7B4448CACD-9DA8-43D1-A48F-48149FD5FCFD%7D).
 
-### Australian Bureau of Statistics Data
+:::
+
+
+[Australian Bureau of Statistics](https://www.abs.gov.au/)
+:::  {.callout-tip collapse="true"}
+#### Australian Bureau of Statistics Data Tips
 
 The ABS is a huge source of data, however, it can be a bit difficult to find that data, and use it in a spatial context.
 
-#### Digital Boundary Files - SA2 - Suburb data
-
-The ABS has a variety of ways that it splits its data up. These [Digital Boundary Files](https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files) are very useful for classifying data. They generally classify all of Australia into discrete Statistical Areas. Level 1 are the smallest, and Level 4 are the coarsest. (notably, the link above also has non-ABS Structures/boundary files such as Electoral areas and Postcodes). Today we are going to use the Statistical Area 2 data, which effectively represent suburbs, but we can take it a little further with more ABS data.
+The ABS has a variety of ways that it splits its data up. These [Digital Boundary Files](https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files) are very useful for classifying data. They generally classify all of Australia into discrete Statistical Areas. Level 1 are the smallest, and Level 4 are the coarsest. (notably, the link above also has non-ABS Structures/boundary files such as Electoral areas and Postcodes). 
 
 ##### Population Data
 
-The ABS have a lot of useful data, today we will be using their population data. They provide it in excel format, as GeoPackages (by SA2 and LGAs), and as population grid raster files. Today we will be using their SA2 [GeoPackages](https://www.abs.gov.au/statistics/people/population/regional-population/latest-release#data-download). This means we have our digital boundaries, and population in one!
+The ABS have a lot of useful data, including population data. They provide it in excel format, as GeoPackages (by SA2 and LGAs), and as population grid raster files. SA2 [GeoPackages](https://www.abs.gov.au/statistics/people/population/regional-population/latest-release#data-download) are a convenient format for QGIS. This means we have our digital boundaries, and population in one!
+:::
 
 
-## Get some elevation data
+### Online Community Spatial Repositories
 
-For this tutorial, we are using a DEM sourced from the USGS website.
+[Atlas of Living Australia](https://www.ala.org.au/) - Species observation data
+:::  {.callout-tip collapse="true"}
+#### Atlas of Living Australia
+  
+Species observation data can be downloaded from the [Atlas of Living Australia](https://www.ala.org.au/). 
 
--   Go to https://earthexplorer.usgs.gov/
--   Click the World Features box, and then search for "Brisbane" in the "Feature Name" search box
--   Click Show and select the first result
--   Zoom onto an area of interest around Brisbane and click "Use Map"
--   Click the "Data Sets" button and then `Digital Elevation > SRTM`, select "SRTM 1 Arc-Second Global" and click "Results"
+This is an Australia Biodiversity occurrence database. It pulls data from a variety of different sources, including government data, individual collectors and community groups. This means that this data will contain sampling bias and will often simply represent encounters, rather than using robust sampling and collection methods. So, while we need to use this data with caution, it's still a useful dataset!
 
-"SRTM" stands for "[Shuttle Radar Topography Mission](https://www.usgs.gov/centers/eros/science/usgs-eros-archive-digital-elevation-shuttle-radar-topography-mission-srtm-1-arc?qt-science_center_objects=0#qt-science_center_objects)". It provides global elevation data collected in 2000 by the space shuttle Endeavour.
+You need to create an account and request the exact dataset you need.
+:::
 
-Our area covers two separate raster files. We can click on the foot icon to see the footprint of each file, and the picture icon to see what the DEM looks like.
+[Global Biodiversity Information Facility (GBIF)](https://www.gbif.org/) - Species observation data
+:::  {.callout-tip collapse="true"}
+#### Global Biodiversity Information Facility (GBIF)
 
+This is another species observation database, but this one is worldwide.
 
+:::
 
-# Data Sources
+[iNaturalist](https://www.inaturalist.org/) - Species observation data
+:::  {.callout-tip collapse="true"}
+#### iNaturalist
 
-We're going to explore a number of different online spatial data repositories.
+Community/Citizen Science species observation database.
 
-## DEM
+:::
 
-A Digital Elevation Model (DEM) is a common example of **raster data**, i.e. grid data that contains a value in each cell (a bit like the pixels in a coloured picture).
-
-For this tutorial, we are using a DEM sourced from [**ELVIS**](http://www.ga.gov.au/elvis/) - Geoscience Australia's ELeVation Information System.
-
-## Aerial Imagery
-
-There are a few places you can acquire aerial photography.
-
-### Local Raster Files
-
-As a UQ student, you have access to very high resolution imagery from [**NearMap**](https://admin.nearmap.com/invitation/domain-signup?token=q9WIbXMtna1iskb2meNGhKpCaQp3WTRbMhXpQVGWkKouKUeqzkpjNznC_Ogz5iKYiw0Ev7vym2Ykaj_W_V4dBbTzR6qUX2eTDsNHpBuR4XbU9vDRxQN_Rg==). You can activate an account here to download georeferenced aerial imagery. You can even access an array of imagery going back in time to around 2010.
-
-We won't use NearMap today, but you're welcome to explore it.
-
-### Mapserver Raster Files
-
-Today we're going to use a World Imagery XYZ Tile from ESRI.
-
--   Scroll down the `Browser` panel until your see **XYZ Tiles**
--   Right click XYZ Tiles and select `New Connection...`
-    -   In `Name` type **ESRI World Imagery**
-    -   In `URL` paste:\
-        https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}
-    -   Increase the Max. Zoom Level to 20
-        -   This value depends on what is available from the given service in different parts of the world. Increasing that value beyond 20 for this map in Brisbane will show "Map data not yet available" when you zoom in very close.
-    -   Click `OK`
--   In the `Browser` panel, expand `XYZ Tiles` and double click on `ESRI World Imagery`
-
-
-## Lot Plans
-
-You can access a wide variety of QLD Government Data, including Spatial Data such as lot plans and vegetation maps, from [QLD Spatial](https://qldspatial.information.qld.gov.au/). 
-
-Today we have extracted a selection from [Property boundaries Queensland](https://qldspatial.information.qld.gov.au/catalogue/custom/detail.page?fid={3F217A59-1FDB-412A-813D-A1E7843FB618})
-
-There are three ways to access data from QSpatial. 
-
--   Download all of the data from a layer
-
--   Select a portion of a layer for download using the [My List](https://qldspatial.information.qld.gov.au/catalogue/custom/myList.page) function
-
--   Live load it into your project using a [Mapserver](https://spatial-gis.information.qld.gov.au/arcgis/rest/services/PlanningCadastre/LandParcelPropertyFramework/MapServer). 
+  
