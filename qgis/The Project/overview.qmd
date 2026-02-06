@@ -3,11 +3,11 @@ title: "Overview"
 order: 1
 ---
 
-The best way to learn is by doing. That's why, over the these three days, **you are tasked with analysing, visualising and reporting on a set of data!**
+The best way to learn is by doing. That's why, over these three days, **you are tasked with analysing, visualising and reporting on a set of data!**
 
-Roughly 50% of our intensive is dedicated to working on the project. Working in groups of 2-4, you'll need to use the techniques we learn to draw some observations and create maps from your chosen datasets. 
+Roughly 50% of our intensive is dedicated to working on the project. Working in groups of 2-4, you'll need to use your new skills to process data and create maps from your chosen datasets. 
 
-The end goal will be a quick fire (low stakes) one-minute presentation with a Map to complement.
+The end goal will be a quick-fire (low stakes) one-minute presentation with a Map to complement.
 
 See the [datasets](Data_Sources.qmd) page for the data, [Getting Started](scaffold.qmd) for a suggested approach, and [below](#Upload Map to Teams) for submission details.
 
@@ -21,33 +21,33 @@ There are a few key requirements for the project, but otherwise it's up to you!
 - Source that spatial data from online
 - Digitise some vector data yourself
 - Generate some statistics using spatial analyses
-- Create nice looking maps using the Layout Manager
-- Deliver a quick fire one-minute presentation with your group
+- Use symbology and labels to communicate effectively
+- Refine and export your maps using the Layout Manager
+- Deliver a quick-fire, one-minute presentation with your group
 
-We'll have 4 sessions during the intensive days to work on the project, totalling about five hours. The goal of these sessions is twofold
+We'll have 4 sessions during the intensive days to work on the project, totalling about five hours. The goal of these sessions is twofold:
 
 1. To work on the project, analysing data and creating maps
-2. To dive deeper into the content, perfect for questions and conversations
+1. To dive deeper into the content, perfect for experimentation, questions and conversations
 
 While you'll be working in groups, everyone should practise analysing and visualising the data. We recommend distributing roles amongst the group, maybe looking at different sets of data or maps for different audiences.
 
 You're welcome to use the project time however you'd like. Below is a rough guide if you're unsure:
 
-| Session | Recommendation | 
+| Session | Suggestion | 
 | --- | --- |
-| Tuesday afternoon | Pick some vector datasets and play with the data, consider dividing roles amongst group |
+| Tuesday afternoon | Pick some vector datasets, play with them and consider assigning roles |
 | Wednesday morning | Pick some raster data, decide on an approach and start running analyses |
-| Wednesday afternoon | Prepare in the layout manager, and continue analysing |
-| Thursday morning | Polish up results and finalise map, submit. |
+| Wednesday afternoon | Prepare in the Layout manager, and continue analysing data and refining your story |
+| Thursday morning | Polish up results, finalise layout, export and submit |
 
 The presentations will happen on Thursday morning, before lunch.
 
-Good luck!
+Good luck, and have fun!
 
 ## Design and submissions
 
-We've put together example maps which you're welcome to look at:
-
+We've put together example maps which you're welcome to look at: 
 
 #### Upload Map to Teams
 
