@@ -19,6 +19,7 @@ website:
     search: true
     tools:
       - icon: github
+        aria-label: "GitHub links"
         menu:
           - text: Source
             href: https://github.com/uqlibrary/technology-training-intensives
