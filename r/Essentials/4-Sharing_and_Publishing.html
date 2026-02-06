@@ -142,10 +142,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Python</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../project/details.html"> 
-<span class="menu-text">The Project</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="../../gallery/project_gallery.html"> 
 <span class="menu-text">Project Gallery</span></a>
   </li>  
@@ -248,6 +244,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../../r/7-your_own_data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Analysing your own data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../project/details.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../project/scaffold.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting started</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../project/template.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Project template</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../project/tips.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tips</span></a>
   </div>
 </li>
     </ul>
@@ -463,18 +483,18 @@ format: dashboard
 warning: false
 ---
 
-```rzh
+```qby
 players <- read.csv("../../data/Players2024.csv")
 ```
 
-```rzh
+```qby
 library(dplyr)
 players <- players %>% filter(positions != "Missing", height_cm > 100)
 ```
 
 ## Figures {height=70%}
 
-```rzh
+```qby
 #| title: Goalkeepers tend to be taller
 #| fig-alt: "A boxplot of the relationship between height and position."
 library(ggplot2)
@@ -483,7 +503,7 @@ ggplot(players, aes(x = positions, y = height_cm)) +
   labs(x = "Position", y = "Height (cm)")
 ```
 
-```rzh
+```qby
 #| title: Age vs Height by position
 p <- ggplot(players, aes(x = age, y = height_cm, colour = positions, label = name, label2 = nationality)) + 
   geom_point() + 
@@ -495,7 +515,7 @@ ggplotly(p)
 
 ## Table
 
-```rzh
+```qby
 #| title: A glimpse at the dataset
 library(knitr)
 kable(players)
