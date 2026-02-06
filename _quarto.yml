@@ -17,6 +17,13 @@ website:
   favicon: "/int_laptop_icon.svg"
   navbar:
     search: true
+    tools:
+      - icon: github
+        menu:
+          - text: Source
+            href: https://github.com/uqlibrary/technology-training-intensives
+          - text: Report an issue
+            href: https://github.com/uqlibrary/technology-training-intensives/issues/new
     left:
       - text: "R"
         href: r/setup.md
