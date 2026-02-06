@@ -287,7 +287,7 @@
     "href": "qgis/setup.html",
     "title": "QGIS",
     "section": "",
-    "text": "Warning🚧 Under construction 🚧\n\n\n\nThis content is still under construction and will be changing over the next few weeks.",
+    "text": "Welcome to our three-day QGIS training intensive! This runs twice a year, and is planned for February and July in 2026.\nBy the end of the three days, you’ll have learnt the QGIS skills to:\n\nImport different kinds of spatial data into a project\nFind relevant data from a variety of sources\nUnderstand and handle projections\nPrepare, filter and process both vector and raster data\nStyle and label data to communicate effectively\nDigitise your own data\nManage styles, themes and templates\nCollect spatial data with a smartphone\nCompose a publication-ready map\n\nAs we set up, there’s a few things to do, if you haven’t already:\n\nInstall the software\nIntroduce yourself to your table\nJoin our Teams channel\nRegister your attendance",
     "crumbs": [
       "QGIS"
     ]
@@ -296,8 +296,8 @@
     "objectID": "qgis/setup.html#overview",
     "href": "qgis/setup.html#overview",
     "title": "QGIS",
-    "section": "Overview",
-    "text": "Overview\nWelcome to our three-day QGIS training intensive! This runs twice a year and the next intensive will be in early February.\nBy the end of the three days, you’ll have learnt the QGIS skills to …\nAs we set up, there’s a few things to do, if you haven’t already\n\nInstall the software\nIntroduce yourself to your table\nJoin our Teams channel\nRegister your attendance",
+    "section": "",
+    "text": "Welcome to our three-day QGIS training intensive! This runs twice a year, and is planned for February and July in 2026.\nBy the end of the three days, you’ll have learnt the QGIS skills to:\n\nImport different kinds of spatial data into a project\nFind relevant data from a variety of sources\nUnderstand and handle projections\nPrepare, filter and process both vector and raster data\nStyle and label data to communicate effectively\nDigitise your own data\nManage styles, themes and templates\nCollect spatial data with a smartphone\nCompose a publication-ready map\n\nAs we set up, there’s a few things to do, if you haven’t already:\n\nInstall the software\nIntroduce yourself to your table\nJoin our Teams channel\nRegister your attendance",
     "crumbs": [
       "QGIS"
     ]
@@ -307,7 +307,7 @@
     "href": "qgis/setup.html#software",
     "title": "QGIS",
     "section": "Software",
-    "text": "Software\n…\n## Setting up\nThis tutorial is designed for QGIS 3.40. If you need to install it on your computer, go to the QGIS website.",
+    "text": "Software\nQGIS is open source, free and cross-platform (Windows, macOS and Linux). This tutorial is designed for QGIS 3.40, the Long Term Release at the time of writing. Even if you already have QGIS installed, please update to the latest 3.40 release if you can, because:\n\ndifferences in major versions (e.g. 3._36_ vs 3._40_) make it more difficult to follow, and\nminor bugfix versions are released every month (e.g. 3.40._15_ was released in January 2026)\n\n\n\n\n\n\n\nWarningmacOS users\n\n\n\nThere is no 3.40 installer for macOS. Please install version 3.44 instead, which is set to become the Long Term Release at the end of February 2026.\n\n\n\nIf you use your own computer, go to the QGIS website and install version 3.40 (or 3.44 for macOS)\nIf you use a UQ computer, install QGIS from Company Portal (Windows) or Self-Service (macOS)\nIf you use a UQ Library laptop, install QGIS from ZENworks\n\nOnce installed, open QGIS to see if it starts without issues.",
     "crumbs": [
       "QGIS"
     ]
@@ -317,7 +317,7 @@
     "href": "qgis/setup.html#workshops",
     "title": "QGIS",
     "section": "Workshops",
-    "text": "Workshops\n…\nThese content sessions are pretty packed, and we won’t have too much time to deviate. That’s why we’ll also have five project sessions - see The Project for details. You’re welcome to ask lengthier questions and play around there!",
+    "text": "Workshops\nOver these three days we’ll cover six sessions of content:\n\n\n\nSession\nDescription\n\n\n\n\nThe Fundamentals\nThe basics of QGIS: Projects, data import, data management, symbology, labelling\n\n\nVector Analysis\nImporting from CSV, vector data processing, digitisation\n\n\nProjections\nCoordinate systems, why they are important, and how to handle them\n\n\nRaster Analysis\nRaster data processing and styling, QGIS plugins, georeferencing\n\n\nStyling, Themes and Templates\nFeatures for efficient and publication-ready layouts\n\n\nField Data\nTools for fieldwork and collaboration\n\n\n\nThese content sessions are pretty packed, and while questions are encouraged, we won’t have too much time to deviate. That’s why we’ll also have five project sessions - see The Project. You’re welcome to ask trickier questions and experiment as you want during that time!",
     "crumbs": [
       "QGIS"
     ]
