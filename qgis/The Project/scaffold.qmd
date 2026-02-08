@@ -8,9 +8,9 @@ You're welcome to dive in and work as you please, but if you're feeling at a los
 
 ## Project scaffold
 
-### Step 0: Pick a dataset
+### Step 0: Pick a dataset and a scenario
 
-There are many [datasets](Data_Sources.qmd) to choose from. Browse through online data sources and find some vector data and raster data that interest you.
+There are many [scenarios and datasets](Data_Sources.qmd) to choose from. Choose or design and scenario, and browse through online data sources and find some vector data and raster data that interest you.
 
 Learning how to find and import spatial data is a useful skill.
 
@@ -47,8 +47,6 @@ Remember: Your .qgz file should always be in the highest level folder, so it's o
 
 :::
 
-
-Generate 1-3 maps covering a location of your choosing
 
 ### Step 1: Understand the data
 
