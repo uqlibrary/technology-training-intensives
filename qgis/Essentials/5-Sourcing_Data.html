@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-02-06">
+<meta name="dcterms.date" content="2026-02-08">
 
 <title>Data Sources – UQ Library Training Intensives</title>
 <style>
@@ -144,7 +144,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qgis/The Project/overview.html">The Project</a></li><li class="breadcrumb-item"><a href="../../qgis/The Project/Data_Sources.html">Data Sources</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qgis/Essentials/1-Fundamentals.html">Essentials</a></li><li class="breadcrumb-item"><a href="../../qgis/Essentials/5-Sourcing_Data.html">Data Sources</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -195,6 +195,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Raster Analysis</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../qgis/Essentials/5-Sourcing_Data.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Data Sources</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -237,8 +243,8 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qgis/The Project/Data_Sources.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Data Sources</span></a>
+  <a href="../../qgis/The Project/datasets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Scenarios and Datasets</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -266,23 +272,17 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#what-are-we-going-to-learn" id="toc-what-are-we-going-to-learn" class="nav-link active" data-scroll-target="#what-are-we-going-to-learn">What are we going to learn?</a></li>
-  <li><a href="#basemaps" id="toc-basemaps" class="nav-link" data-scroll-target="#basemaps">Basemaps</a>
+  <li><a href="#basemap-services" id="toc-basemap-services" class="nav-link" data-scroll-target="#basemap-services">Basemap Services</a>
   <ul class="collapse">
   <li><a href="#plugins" id="toc-plugins" class="nav-link" data-scroll-target="#plugins">Plugins</a></li>
   <li><a href="#web-mapping-services" id="toc-web-mapping-services" class="nav-link" data-scroll-target="#web-mapping-services">Web Mapping Services</a></li>
   </ul></li>
-  <li><a href="#raster-data" id="toc-raster-data" class="nav-link" data-scroll-target="#raster-data">Raster Data</a>
+  <li><a href="#raster-data-repositories" id="toc-raster-data-repositories" class="nav-link" data-scroll-target="#raster-data-repositories">Raster Data Repositories</a></li>
+  <li><a href="#vector-data-repositories" id="toc-vector-data-repositories" class="nav-link" data-scroll-target="#vector-data-repositories">Vector Data Repositories</a>
   <ul class="collapse">
-  <li><a href="#dem-repositories" id="toc-dem-repositories" class="nav-link" data-scroll-target="#dem-repositories">DEM Repositories</a></li>
-  <li><a href="#aerial-imagery" id="toc-aerial-imagery" class="nav-link" data-scroll-target="#aerial-imagery">Aerial Imagery</a></li>
-  <li><a href="#historical-aerial-imagery" id="toc-historical-aerial-imagery" class="nav-link" data-scroll-target="#historical-aerial-imagery">Historical Aerial Imagery</a></li>
-  </ul></li>
-  <li><a href="#vector" id="toc-vector" class="nav-link" data-scroll-target="#vector">Vector</a>
-  <ul class="collapse">
-  <li><a href="#esri-data" id="toc-esri-data" class="nav-link" data-scroll-target="#esri-data">ESRI Data</a></li>
-  <li><a href="#council-data" id="toc-council-data" class="nav-link" data-scroll-target="#council-data">Council Data</a></li>
-  <li><a href="#state-government" id="toc-state-government" class="nav-link" data-scroll-target="#state-government">State Government</a></li>
-  <li><a href="#federal-government-data" id="toc-federal-government-data" class="nav-link" data-scroll-target="#federal-government-data">Federal Government Data</a></li>
+  <li><a href="#direct-downloads" id="toc-direct-downloads" class="nav-link" data-scroll-target="#direct-downloads">Direct Downloads</a></li>
+  <li><a href="#feature-servers-and-rest-servers" id="toc-feature-servers-and-rest-servers" class="nav-link" data-scroll-target="#feature-servers-and-rest-servers">Feature Servers and REST Servers</a></li>
+  <li><a href="#tabular-data-and-boundaries" id="toc-tabular-data-and-boundaries" class="nav-link" data-scroll-target="#tabular-data-and-boundaries">Tabular Data and Boundaries</a></li>
   <li><a href="#online-community-spatial-repositories" id="toc-online-community-spatial-repositories" class="nav-link" data-scroll-target="#online-community-spatial-repositories">Online Community Spatial Repositories</a></li>
   </ul></li>
   </ul>
@@ -291,7 +291,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qgis/The Project/overview.html">The Project</a></li><li class="breadcrumb-item"><a href="../../qgis/The Project/Data_Sources.html">Data Sources</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qgis/Essentials/1-Fundamentals.html">Essentials</a></li><li class="breadcrumb-item"><a href="../../qgis/Essentials/5-Sourcing_Data.html">Data Sources</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Data Sources</h1>
 </div>
@@ -304,7 +304,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 6, 2026</p>
+      <p class="date">February 8, 2026</p>
     </div>
   </div>
   
@@ -332,13 +332,12 @@ ul.task-list li input[type="checkbox"] {
 <li>Corporate (ESRI, etc)</li>
 </ul>
 </section>
-<section id="basemaps" class="level2">
-<h2 class="anchored" data-anchor-id="basemaps">Basemaps</h2>
+<section id="basemap-services" class="level2">
+<h2 class="anchored" data-anchor-id="basemap-services">Basemap Services</h2>
+<p>So far we’ve only been using <strong>OpenStreetMap</strong>, but there are a wide variety of other options available.</p>
 <section id="plugins" class="level3">
 <h3 class="anchored" data-anchor-id="plugins">Plugins</h3>
-<p>So far we’ve only been using <strong>OpenStreetMap</strong>, but there are a wide variety of other options available.</p>
-<p>Let’s load in a new basemap.</p>
-<p>There are many ways of doing this, we can use the <strong>QuickMapServices</strong> plugin to load in new raster basemaps.</p>
+<p>There are many sources of basemaps, but a simple on is the <strong>QuickMapServices</strong> plugin, which we can use to load in new raster basemaps.</p>
 <ul>
 <li>Navigate to <code>Plugins &gt; Manage and Install Plugins...</code>. <code>Search</code> for “QuickMapServices”, select it from the list and click <code>Install Plugin</code>, once it has loaded, click <code>Cloce</code></li>
 </ul>
@@ -346,7 +345,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="web-mapping-services" class="level3">
 <h3 class="anchored" data-anchor-id="web-mapping-services">Web Mapping Services</h3>
-<p>Now we can go to the next step and source them externally. We can do this with WMTS (Web Map Tile Service), WCS (Web Coverage Service), ArcGIS REST Servers, and XYZ Tiles. Some web services like ArcGIS REST Servers can also provide vector data too!</p>
+<p>Now we can go to the next step and source our basemaps externally. We can do this with WMTS (Web Map Tile Service), WCS (Web Coverage Service), ArcGIS REST Servers, and XYZ Tiles. Some web services like ArcGIS REST Servers can also provide vector data too!</p>
 <p>Today we’re going to use an XYZ Tile from CARTODB.</p>
 <ul>
 <li>Scroll down the <code>Browser</code> panel until your see <strong>XYZ Tiles</strong></li>
@@ -361,35 +360,19 @@ https://a.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}<span cl
 <li>Now do the same for this <strong>Light Gray Basemap</strong> from ESRI, but set the Max. Zoom Level to 16:<br>
 https://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}</li>
 <li>And the same for this <strong>ESRI World Imagery</strong>, but set the Max. Zoom Level to 20:<br>
-https://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}</li>
+https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}</li>
 </ul>
-<section id="more-web-mapping-services" class="level4">
-<h4 class="anchored" data-anchor-id="more-web-mapping-services">More Web Mapping Services</h4>
-<p>Searching online for <strong>ArcGIS REST Servers</strong> may allow you to find more resources such as this <a href="https://www.data.qld.gov.au/dataset/queensland-imagery-latest-state-program-public-basemap-service">QLD Gov Aerial Basemap</a></p>
+<p>You can find more Basemaps on our <a href="https://uqlibrary.github.io/technology-training-intensives/qgis/The%20Project/datasets.html#basemaps">Datasets</a> page.</p>
 </section>
 </section>
-</section>
-<section id="raster-data" class="level2">
-<h2 class="anchored" data-anchor-id="raster-data">Raster Data</h2>
-<section id="dem-repositories" class="level3">
-<h3 class="anchored" data-anchor-id="dem-repositories">DEM Repositories</h3>
-<p>A Digital Elevation Model (DEM) is <strong>raster data</strong> that shows the elevation of an area. There are a few repositories you can access this kind of data, but ELVIS is great for Australia.</p>
+<section id="raster-data-repositories" class="level2">
+<h2 class="anchored" data-anchor-id="raster-data-repositories">Raster Data Repositories</h2>
+<p>Many raster data repositories have a similar interface where you draw a box around the area of interest, and then download the tiles that fall within that area.</p>
+<p>For example, ELVIS is great for getting Digital Elevation Models (DEM) in Australia. A DEM is <strong>raster data</strong> that shows the elevation of an area.</p>
 <p><a href="http://www.ga.gov.au/elvis/"><strong>ELVIS</strong> - Geoscience Australia’s ELeVation Information System.</a></p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>ELVIS Instructions
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
 <ul>
 <li>Go to <a href="http://www.ga.gov.au/elvis/" class="uri">http://www.ga.gov.au/elvis/</a></li>
-<li>Search for “St Lucia” in the <code>Location Search</code> search box and select the first result</li>
+<li>For example, search for “St Lucia” in the <code>Location Search</code> search box and select the first result</li>
 <li>Click <code>Order Data</code></li>
 <li>Choose “Draw” and “Box” and then click the <code>Draw</code> button</li>
 <li>Click on the map to start drawing a rectangle around your desired area</li>
@@ -401,183 +384,20 @@ https://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_B
 <li>Select your industry, enter your email, tick the reCAPTCHA, and click the <code>Order Datasets</code> button</li>
 <li>You should receive an email within 5 minutes, download the files from the link in the email, extract the folder to your project folder, and add them to your map.</li>
 </ul>
-</div>
-</div>
-</div>
-<p><a href="https://earthexplorer.usgs.gov/"><strong>USGS Earth Explorer</strong></a></p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>USGS Earth Explorer - Access Instructions
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ul>
-<li>Go to <a href="(https://earthexplorer.usgs.gov/)">https://earthexplorer.usgs.gov/</a></li>
-<li>Click the World Features box, and then search for “Brisbane” in the “Feature Name” search box</li>
-<li>Click Show and select the first result</li>
-<li>Zoom onto an area of interest around Brisbane and click “Use Map”</li>
-<li>Click the “Data Sets” button and then <code>Digital Elevation &gt; SRTM</code>, select “SRTM 1 Arc-Second Global” and click “Results”</li>
-</ul>
-<p>“SRTM” stands for “<a href="https://www.usgs.gov/centers/eros/science/usgs-eros-archive-digital-elevation-shuttle-radar-topography-mission-srtm-1-arc?qt-science_center_objects=0#qt-science_center_objects">Shuttle Radar Topography Mission</a>”. It provides global elevation data collected in 2000 by the space shuttle Endeavour.</p>
-</div>
-</div>
-</div>
+<p>You can find more Raster sources (such as Historical Aerial Imagery) on our <a href="https://uqlibrary.github.io/technology-training-intensives/qgis/The%20Project/datasets.html#raster-data">Datasets</a> page.</p>
 </section>
-<section id="aerial-imagery" class="level3">
-<h3 class="anchored" data-anchor-id="aerial-imagery">Aerial Imagery</h3>
-<p>There are a few places you can aquire aerial photography, some are freely available Government Data, some cost money, but can be accessed with your UQ credentials.</p>
-<p><a href="https://www.nearmap.com/">Nearmap</a> (account login required)</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Nearmap Access Instructions
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>As a UQ student or staff member, you have access to very high resoltuion imagery from <strong>NearMap</strong>. You can even access an array of imagery going back in time.</p>
-<ul>
-<li>Go to the <a href="https://admin.nearmap.com/invitation/domain-signup?token=q9WIbXMtna1iskb2meNGhKpCaQp3WTRbMhXpQVGWkKouKUeqzkpjNznC_Ogz5iKYiw0Ev7vym2Ykaj_W_V4dBbTzR6qUX2eTDsNHpBuR4XbU9vDRxQN_Rg==">UQ NearMap Portal</a></li>
-<li>Enter your UQ Student (<span class="citation" data-cites="student.uq.edu.au">@student.uq.edu.au</span>) or Staff (<span class="citation" data-cites="uq.edu.au">@uq.edu.au</span>) email address, with the appropriate domain selected. Click “Invite me”.</li>
-<li>You should receive an email soon after, click the “Accept Invitation” button, and go through the account setup process.</li>
-<li>Go to Login and enter your email address, click “Next” and enter your password.</li>
-<li>From the top right select <code>MapBrowser</code>.</li>
-<li>Type “St Lucia, QLD” in the search box, press enter</li>
-<li>You can click the date down the bottom to look at different snapshots in time, and even compare maps side-by-side.</li>
-<li>To save imagery from NearMap, simply click the “Exports” button on the left handside (it is an image icon)</li>
-<li>From the menu that appears change the “Export type” to “Georeferenced image”</li>
-<li>From “Projection” choose GDA2020 / MGA zone 56</li>
-<li>You can increase and decrease the size of the bounding box by adjusting its corners, a smaller box means you can have a finer resolution, down to 0.075m. If we select all of UQ St Lucia in one go, the highest resolution we can have is 0.299m.</li>
-<li>Once you’re happy with your selection click <code>Download Files</code></li>
-<li>Move the downloaded zip file to your project folder, and open them in QGIS</li>
-</ul>
-<p>You can also use the <a href="https://help.nearmap.com/kb/articles/752">NearMap API</a> to bring the data in as a web mapping service.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="historical-aerial-imagery" class="level3">
-<h3 class="anchored" data-anchor-id="historical-aerial-imagery">Historical Aerial Imagery</h3>
-<p><a href="https://qimagery.information.qld.gov.au/">QImagery</a> (free access government data)</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>QImagery Access Instructions
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>QImagery is a repository of QLD Historical Images.</p>
-<ul>
-<li>Go to <a href="https://qimagery.information.qld.gov.au/">QImagery</a></li>
-<li>Read and tick the “I acknowledge I have read and agree to the Terms &amp; Conditions” box, and click <code>Get Started</code></li>
-<li>Click the Search button, select ‘locality, town or city’ and search for “St Lucia” in the “Enter search term” search box and select the first result</li>
-<li>It will zoom to your selected location then click the newly appeared <code>Search</code> button</li>
-<li>From here you can select from a wide array of images of QLD over many years.</li>
-<li>Click one of the drop-downs and hover over the options to see where those images are located. Preview the image by clicking View.</li>
-<li>You can then download your desired images by clicking “Download” and selecting TIFF (georeferenced)</li>
-<li>Move the TIFF file(s) to your project folder, and open them in QGIS</li>
-</ul>
-</div>
-</div>
-</div>
-<p>Geoscience Australia’s <a href="https://experience.arcgis.com/experience/9a0ecbafe94f49829712b46fc69186ff">Historical Aerial Photo (HAP) Collection</a> (free access government data)</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Historical Aerial Photo (HAP)
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Geoscience Australia’s <a href="https://experience.arcgis.com/experience/9a0ecbafe94f49829712b46fc69186ff">Historical Aerial Photo (HAP) Collection</a> is Australia wide, and may have different photos to QImagery.</p>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="vector" class="level2">
-<h2 class="anchored" data-anchor-id="vector">Vector</h2>
-<section id="esri-data" class="level3">
-<h3 class="anchored" data-anchor-id="esri-data">ESRI Data</h3>
-<p>ESRI have a repository of <a href="https://www.arcgis.com/home/search.html?restrict=false&amp;sortField=relevance&amp;sortOrder=desc&amp;focus=layers-weblayers-features#content">10000+ Searchable Feature Layers from ArcGIS</a>, which you can use Web Mapping Services to bring in to QGIS. Unlike the basemaps, these will pull in vector data!</p>
-<p>For example this <a href="https://services9.arcgis.com/Ov1diE0uxjL6wSzH/ArcGIS/rest/services/">User’s Data</a> which has lots of useful QLD layers.</p>
-</section>
-<section id="council-data" class="level3">
-<h3 class="anchored" data-anchor-id="council-data">Council Data</h3>
-<p>Most Councils have a spatial data service. It can be hard to find, but targetted searching and trawling their websites can often yield useful local data.</p>
-<p><a href="https://scrc.maps.arcgis.com/apps/webappviewer/index.html?id=48501cb9e7294555be5b08e35e949616">Sunshine Coast MyMaps</a></p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Brisbane City Council Web Mapping Services
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><a href="https://services3.arcgis.com/ocUCNI2h4moKOpKX/ArcGIS/rest/services">Brisbane/SEQ Utilities</a></p>
-<p><a href="https://services2.arcgis.com/dEKgZETqwmDAh1rP/ArcGIS/rest/services">BCC Data</a></p>
-</div>
-</div>
-</div>
-</section>
-<section id="state-government" class="level3">
-<h3 class="anchored" data-anchor-id="state-government">State Government</h3>
-<p><a href="https://qldspatial.information.qld.gov.au/">QLD Spatial</a>.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>QSpatial
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>You can access a wide variety of QLD Government Data, including Spatial Data such as lot plans and vegetation maps, from <a href="https://qldspatial.information.qld.gov.au/">QLD Spatial</a>.</p>
-<p>For example you could acces the <a href="https://qldspatial.information.qld.gov.au/catalogue/custom/detail.page?fid=%7B3F217A59-1FDB-412A-813D-A1E7843FB618%7D">Property boundaries Queensland</a> dataset</p>
+<section id="vector-data-repositories" class="level2">
+<h2 class="anchored" data-anchor-id="vector-data-repositories">Vector Data Repositories</h2>
+<section id="direct-downloads" class="level3">
+<h3 class="anchored" data-anchor-id="direct-downloads">Direct Downloads</h3>
+<p>For a lot of repositories, you need to navigate their site and simply download the data you want. This can vary, for example, you can access a wide variety of QLD Government Data, including Spatial Data such as lot plans and vegetation maps, from <a href="https://qldspatial.information.qld.gov.au/">QLD Spatial</a>.</p>
 <p>There are three ways to access data from QSpatial.</p>
 <ul>
 <li><p>Download all of the data from a layer</p></li>
 <li><p>Select a portion of a layer for download using the <a href="https://qldspatial.information.qld.gov.au/catalogue/custom/myList.page">My List</a> function</p></li>
-<li><p>Live load it into your project using a <a href="https://spatial-gis.information.qld.gov.au/arcgis/rest/services/PlanningCadastre/LandParcelPropertyFramework/MapServer">Mapserver</a>.</p></li>
 </ul>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Using My List on QSpatial
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
+<section id="using-my-list-on-qspatial" class="level4">
+<h4 class="anchored" data-anchor-id="using-my-list-on-qspatial">Using My List on QSpatial</h4>
 <p>Here is an example of extracting property boundaries.</p>
 <ul>
 <li><p>To access data from QLD Spatial go to <a href="https://qldspatial.information.qld.gov.au/" class="uri">https://qldspatial.information.qld.gov.au/</a></p></li>
@@ -594,175 +414,51 @@ https://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_B
 <li><p>Accept the Terms and Conditions</p></li>
 <li><p>Click <strong>Extract/Download</strong></p></li>
 </ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>QLD Gov Web Mapping Services
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><a href="https://spatial-gis.information.qld.gov.au/arcgis/rest/services/Transportation/RoadsAndTracks/MapServer">QLD Gov Roads</a></p>
-<p><a href="https://spatial-gis.information.qld.gov.au/arcgis/rest/services/Boundaries/AdminBoundariesFramework/MapServer">QLD Heritage Areas</a></p>
-<p><a href="https://spatial-gis.information.qld.gov.au/arcgis/rest/services">More QLD Gov Services</a></p>
-</div>
-</div>
-</div>
-<p><a href="https://qldglobe.information.qld.gov.au">Queensland Globe</a>.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Accessing Queensland Globe
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Another way to access QSpatial Data is using the Queensland Globe portal. Here is an example of extracting property boundaries from Queensland Globe.</p>
+</section>
+</section>
+<section id="feature-servers-and-rest-servers" class="level3">
+<h3 class="anchored" data-anchor-id="feature-servers-and-rest-servers">Feature Servers and REST Servers</h3>
+<p>You can use Web Mapping Services to bring Vector Data directly in to QGIS, just like we did with the basemaps, but these will pull in extractable points, lines and polygons!</p>
+<p>Many government departments have ArcGIS REST servers, like the <a href="https://spatial-gis.information.qld.gov.au/arcgis/rest/services">QLD Government</a>.</p>
+<p>For example, if you click <strong>Biota</strong>, then <strong>[Biota/RegionalEcosystemMapping](https://spatial-gis.information.qld.gov.au/arcgis/rest/services/Biota/RegionalEcosystemMapping/MapServer</strong>, you can access the spatial files of regional ecosystem maps showing biodiversity status and broad vegetation groups within Queensland.</p>
+<p>To add this data to QGIS, copy that MapServer URL: <code>https://spatial-gis.information.qld.gov.au/arcgis/rest/services/Biota/RegionalEcosystemMapping/MapServer</code></p>
 <ul>
-<li>To access data from Queensland Globe go to <a href="https://qldglobe.information.qld.gov.au">https://qldglobe.information.qld.gov.au</a></li>
-<li>Accept the T&amp;Cs.</li>
-<li>Click <strong>Search</strong>, Select <strong>Locality (Suburb) within a Local Government Area</strong>, and search for the location you want and select it from the list.</li>
-<li>Click <strong>Layers</strong>, click <strong>Add Layers +</strong> here you can scroll through and filter different layer types</li>
-<li>We want to tick the box next to <code>Planning Cadastre &gt; Land Parcels &gt; Land Parcel</code> (you may need to zoom in to see certain layers)</li>
-<li>To export data click the Wrench Icon in the top right, and then click the Identify icon (i)</li>
-<li>Use the triangular Identify Polygon tool to select and area of interest. Double click when you’ve finished selecting your area.</li>
-<li>The Layers menu will now show your selection. You can download all, or sections, of your selection.</li>
-<li>I will choose <strong>Land Parcel</strong> and then <strong>Download</strong> as a <strong>shp</strong> file.</li>
-<li>Note: You may need to disable other layers for this to work correctly. I needed to turn off the <strong>Transportation</strong> layer to prevent roads from being included in my selection.</li>
+<li>Scroll down the <code>Browser</code> panel until you see <strong>ArcGIS REST Servers</strong></li>
+<li>Right click <code>ArcGIS REST Servers</code> and select <code>New Connection...</code></li>
+<li>In <code>Name</code> type ****</li>
+<li>In <code>URL</code> paste: <code>https://spatial-gis.information.qld.gov.au/arcgis/rest/services/Biota/RegionalEcosystemMapping/MapServer</code></li>
+<li>Click <code>OK</code></li>
+<li>In the <code>Browser</code> panel, expand <code>ArcGIS REST Servers</code>, expand <code>QLD Ecosystems</code>, expand <code>Broad vegetation groups [BVG]</code>, and double click on <code>Remnant BVG - 1:5 million</code> - This is the data we used earlier!
+<ul>
+<li>You’ll note that there is a raster and a vector option. The raster option will load faster, but the vector option is customisable.</li>
+</ul></li>
 </ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If the vector data imported this way is taking too long to load, you can hide it, and then use a vector layer in your project to clip the area of interest and save it on your computer.</p>
 </div>
 </div>
 </section>
-<section id="federal-government-data" class="level3">
-<h3 class="anchored" data-anchor-id="federal-government-data">Federal Government Data</h3>
-<p><a href="https://data.csiro.au/collections/search/SQDEM/STsearch-by-keyword/">CSIRO spatial products</a></p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>CSIRO Data
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><a href="https://data.csiro.au/collection/csiro:43016">CSIRO’s Norfolk Island Data Portal</a> <a href="https://data.csiro.au/collections/search/SQDEM/STsearch-by-keyword/">CSIRO spatial products</a></p>
-</div>
-</div>
-</div>
-<p><a href="http://www.environment.gov.au/fed/catalog/main/home.page">Federal Environment Department Spatial Data</a> - Species observation data</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Federal Environmental Data
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>The Federal Environment Department has a variety of <a href="http://www.environment.gov.au/fed/catalog/main/home.page">different spatial datasets that you can browse through</a>.</p>
-<p>One example is the Collaborative Australian Protected Areas Database (CAPAD) 2020, which is a compilation of government, Indigenous and privately protected areas for Australia. You can search for “CAPAD” in on the Environment Department website, or by going <a href="http://www.environment.gov.au/fed/catalog/search/resource/details.page?uuid=%7B4448CACD-9DA8-43D1-A48F-48149FD5FCFD%7D">directly to the data</a>.</p>
-</div>
-</div>
-</div>
-<p><a href="https://www.abs.gov.au/">Australian Bureau of Statistics</a></p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Australian Bureau of Statistics Data Tips
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-13" class="callout-13-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>The ABS is a huge source of data, however, it can be a bit difficult to find that data, and use it in a spatial context.</p>
+<section id="tabular-data-and-boundaries" class="level3">
+<h3 class="anchored" data-anchor-id="tabular-data-and-boundaries">Tabular Data and Boundaries</h3>
+<p>While many repositories hold tabular and boundary data, the <a href="https://www.abs.gov.au/">Australian Bureau of Statistics</a> is a huge source of data, however, it can be a bit difficult to find that data, and use it in a spatial context.</p>
 <p>The ABS has a variety of ways that it splits its data up. These <a href="https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files">Digital Boundary Files</a> are very useful for classifying data. They generally classify all of Australia into discrete Statistical Areas. Level 1 are the smallest, and Level 4 are the coarsest. (notably, the link above also has non-ABS Structures/boundary files such as Electoral areas and Postcodes).</p>
-<section id="population-data" class="level5">
-<h5 class="anchored" data-anchor-id="population-data">Population Data</h5>
-<p>The ABS have a lot of useful data, including population data. They provide it in excel format, as GeoPackages (by SA2 and LGAs), and as population grid raster files. SA2 <a href="https://www.abs.gov.au/statistics/people/population/regional-population/latest-release#data-download">GeoPackages</a> are a convenient format for QGIS. This means we have our digital boundaries, and population in one!</p>
-</section>
-</div>
-</div>
-</div>
 </section>
 <section id="online-community-spatial-repositories" class="level3">
 <h3 class="anchored" data-anchor-id="online-community-spatial-repositories">Online Community Spatial Repositories</h3>
 <p><a href="https://www.ala.org.au/">Atlas of Living Australia</a> - Species observation data</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Atlas of Living Australia
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-14" class="callout-14-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
 <p>Species observation data can be downloaded from the <a href="https://www.ala.org.au/">Atlas of Living Australia</a>.</p>
 <p>This is an Australia Biodiversity occurrence database. It pulls data from a variety of different sources, including government data, individual collectors and community groups. This means that this data will contain sampling bias and will often simply represent encounters, rather than using robust sampling and collection methods. So, while we need to use this data with caution, it’s still a useful dataset!</p>
 <p>You need to create an account and request the exact dataset you need.</p>
-</div>
-</div>
-</div>
-<p><a href="https://www.gbif.org/">Global Biodiversity Information Facility (GBIF)</a> - Species observation data</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Global Biodiversity Information Facility (GBIF)
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-15" class="callout-15-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>This is another species observation database, but this one is worldwide.</p>
-</div>
-</div>
-</div>
-<p><a href="https://www.inaturalist.org/">iNaturalist</a> - Species observation data</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>iNaturalist
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-16" class="callout-16-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Community/Citizen Science species observation database.</p>
-</div>
-</div>
-</div>
+<p>You can find more Vector sources (such as more state, fedeeral and council data, ESRI data, and community sources) on our <a href="https://uqlibrary.github.io/technology-training-intensives/qgis/The%20Project/datasets.html#vector-data">Datasets</a> page.</p>
 
 
 </section>

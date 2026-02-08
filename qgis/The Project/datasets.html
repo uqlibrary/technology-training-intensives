@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-02-08">
+
+<title>Scenarios and Datasets – UQ Library Training Intensives</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../..//int_laptop_icon.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-d58b9a2750f78c4ba5585652ef45bd1c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<meta property="og:title" content="Scenarios and Datasets – UQ Library Training Intensives">
+<meta property="og:description" content="">
+<meta property="og:site_name" content="UQ Library Training Intensives">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">UQ Library Training Intensives</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../r/setup.html"> 
+<span class="menu-text">R</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../../qgis/setup.html" aria-current="page"> 
+<span class="menu-text">QGIS</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../python/setup.html"> 
+<span class="menu-text">Python</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../gallery/project_gallery.html"> 
+<span class="menu-text">Project Gallery</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://uqlibrary.github.io/technology-training"> 
+<span class="menu-text">UQL Technology Training</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../community/community.html"> 
+<span class="menu-text">Communities of Practice</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+    <div class="dropdown">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="GitHub links"><i class="bi bi-github"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/uqlibrary/technology-training-intensives">
+            Source
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/uqlibrary/technology-training-intensives/issues/new">
+            Report an issue
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qgis/The Project/overview.html">The Project</a></li><li class="breadcrumb-item"><a href="../../qgis/The Project/datasets.html">Scenarios and Datasets</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../qgis/setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">QGIS</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Essentials</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../qgis/Essentials/1-Fundamentals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Fundamentals</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../qgis/Essentials/2-Vector_Analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vector Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../qgis/Essentials/3-Projections.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Projections</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../qgis/Essentials/4-Raster_Analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Raster Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../qgis/Essentials/5-Sourcing_Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Sources</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Advanced topics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../qgis/Advanced topics/5-Styling_Themes_and_Templates.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Styling Themes and Templates</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../qgis/Advanced topics/6-Field_Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Field Data Collection</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">The Project</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../qgis/The Project/overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../qgis/The Project/datasets.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Scenarios and Datasets</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../qgis/The Project/scaffold.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting started</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../qgis/The Project/tips.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tips</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#scenarios" id="toc-scenarios" class="nav-link active" data-scroll-target="#scenarios">Scenarios</a></li>
+  <li><a href="#datasets" id="toc-datasets" class="nav-link" data-scroll-target="#datasets">Datasets</a></li>
+  <li><a href="#basemaps" id="toc-basemaps" class="nav-link" data-scroll-target="#basemaps">Basemaps</a>
+  <ul class="collapse">
+  <li><a href="#quickmapservices-plugin" id="toc-quickmapservices-plugin" class="nav-link" data-scroll-target="#quickmapservices-plugin">QuickMapServices Plugin</a></li>
+  <li><a href="#web-mapping-services" id="toc-web-mapping-services" class="nav-link" data-scroll-target="#web-mapping-services">Web Mapping Services</a></li>
+  </ul></li>
+  <li><a href="#raster-data" id="toc-raster-data" class="nav-link" data-scroll-target="#raster-data">Raster Data</a>
+  <ul class="collapse">
+  <li><a href="#dem-repositories" id="toc-dem-repositories" class="nav-link" data-scroll-target="#dem-repositories">DEM Repositories</a></li>
+  <li><a href="#aerial-imagery" id="toc-aerial-imagery" class="nav-link" data-scroll-target="#aerial-imagery">Aerial Imagery</a></li>
+  <li><a href="#historical-aerial-imagery" id="toc-historical-aerial-imagery" class="nav-link" data-scroll-target="#historical-aerial-imagery">Historical Aerial Imagery</a></li>
+  </ul></li>
+  <li><a href="#vector" id="toc-vector" class="nav-link" data-scroll-target="#vector">Vector</a>
+  <ul class="collapse">
+  <li><a href="#esri-data" id="toc-esri-data" class="nav-link" data-scroll-target="#esri-data">ESRI Data</a></li>
+  <li><a href="#council-data" id="toc-council-data" class="nav-link" data-scroll-target="#council-data">Council Data</a></li>
+  <li><a href="#state-government" id="toc-state-government" class="nav-link" data-scroll-target="#state-government">State Government</a></li>
+  <li><a href="#federal-government-data" id="toc-federal-government-data" class="nav-link" data-scroll-target="#federal-government-data">Federal Government Data</a></li>
+  <li><a href="#online-community-spatial-repositories" id="toc-online-community-spatial-repositories" class="nav-link" data-scroll-target="#online-community-spatial-repositories">Online Community Spatial Repositories</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qgis/The Project/overview.html">The Project</a></li><li class="breadcrumb-item"><a href="../../qgis/The Project/datasets.html">Scenarios and Datasets</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Scenarios and Datasets</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 8, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="scenarios" class="level2">
+<h2 class="anchored" data-anchor-id="scenarios">Scenarios</h2>
+<p>These are suggested scenarios to explore, but feel free to create your own!</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Scenario 1: Access to Services
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Story question:</strong><br>
+How accessible are key services (e.g.&nbsp;health clinics, parks, libraries, public transport) in your chosen area?</p>
+<p><strong>What you might analyse:</strong> - Locations of services (points) - Population or suburb boundaries (polygons) - Distance or service catchments</p>
+<p><strong>Techniques to use:</strong> - Import vector data<br>
+- Reproject layers<br>
+- Buffer services<br>
+- Count services per area<br>
+- Style with graduated symbology<br>
+- Layout Manager</p>
+<p><strong>Possible outputs:</strong> - Map showing service access<br>
+- Statistic: services per suburb or per capita<br>
+- Digitised service catchments</p>
+<p><strong>Extension:</strong> - Add a population or elevation raster to assess accessibility by terrain or density.<br>
+- Try <strong>Zonal Statistics</strong> to calculate average population or elevation within service catchments.<br>
+- Explore <strong>Service Area (Network Analysis)</strong> for more realistic travel distances.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Scenario 2: Environmental Risk
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Story question:</strong><br>
+Which areas are most exposed to an environmental risk (e.g.&nbsp;flood, heat, bushfire, erosion)?</p>
+<p><strong>What you might analyse:</strong> - Hazard raster or vector data<br>
+- Elevation or land cover<br>
+- Administrative boundaries</p>
+<p><strong>Techniques to use:</strong> - Raster styling<br>
+- Clip rasters<br>
+- Reclassification<br>
+- Zonal statistics<br>
+- Choropleth mapping</p>
+<p><strong>Possible outputs:</strong> - Risk map<br>
+- Population or land area affected<br>
+- Styled layout for communication</p>
+<p><strong>Extension:</strong> - Add population polygons or building footprints as vector data.<br>
+- Use <strong>Raster Calculator</strong> to combine multiple risk layers.<br>
+- Try <strong>Extract by Mask</strong> to isolate high‑risk zones.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Scenario 3: Land Use and Human Activity
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Story question:</strong><br>
+How is land used in this area, and how does that relate to human activity?</p>
+<p><strong>What you might analyse:</strong> - Land use polygons<br>
+- Population or infrastructure<br>
+- Satellite imagery</p>
+<p><strong>Techniques to use:</strong> - Categorised symbology<br>
+- Area calculations<br>
+- Intersections<br>
+- Digitising land use areas</p>
+<p><strong>Possible outputs:</strong> - Land use map<br>
+- Chart or statistic by land use type<br>
+- Map layout with legend and labels</p>
+<p><strong>Extension:</strong> - Add a land surface temperature or vegetation raster.<br>
+- Use <strong>Zonal Statistics</strong> to summarise raster values by land use type.<br>
+- Try <strong>Spatial Join (Summary)</strong> to attach population counts to land use zones.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Scenario 4: Urban Heat and Shade
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Story question:</strong><br>
+Which parts of the city are most exposed to heat, and where is shade available?</p>
+<p><strong>What you might analyse:</strong> - Temperature or vegetation raster<br>
+- Tree canopy or parks<br>
+- Roads or footpaths</p>
+<p><strong>Techniques to use:</strong> - Raster symbology<br>
+- Overlay with vector data<br>
+- Buffer shade sources<br>
+- Zonal statistics</p>
+<p><strong>Possible outputs:</strong> - Heat exposure map<br>
+- Areas lacking shade<br>
+- Digitised shade zones</p>
+<p><strong>Extension:</strong> - Add suburb or census polygons as vector data.<br>
+- Use <strong>Raster Calculator</strong> to combine heat and vegetation layers.<br>
+- Try <strong>Line Density</strong> on footpaths to find heavily exposed walking routes.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Scenario 5: Habitat and Development
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Story question:</strong><br>
+Where do wildlife habitats overlap with urban or agricultural land?</p>
+<p><strong>What you might analyse:</strong> - Habitat polygons<br>
+- Urban extent or land use<br>
+- Roads or population data</p>
+<p><strong>Techniques to use:</strong> - Vector intersection<br>
+- Field Calculator<br>
+- Categorised symbology<br>
+- Layout Manager</p>
+<p><strong>Possible outputs:</strong> - Conflict or overlap map<br>
+- Area of habitat affected<br>
+- Styled map for communication</p>
+<p><strong>Extension:</strong> - Add elevation or vegetation raster.<br>
+- Use <strong>Zonal Statistics</strong> to summarise habitat quality by area.<br>
+- Try <strong>Proximity (Distance to Nearest Hub)</strong> to measure distance to roads or towns.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Scenario 6: Suitability for New Infrastructure
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Story question:</strong><br>
+Where would be the best location for a new park, school, clinic, or bike path?</p>
+<p><strong>What you might analyse:</strong> - Population density<br>
+- Existing services<br>
+- Slope or elevation</p>
+<p><strong>Techniques to use:</strong> - Buffers<br>
+- Intersections<br>
+- Raster slope or classification<br>
+- Digitising candidate sites</p>
+<p><strong>Possible outputs:</strong> - Suitability map<br>
+- Priority zones<br>
+- Digitised proposed locations</p>
+<p><strong>Extension:</strong> - Add land value or zoning polygons as vector data.<br>
+- Use <strong>Raster Calculator</strong> to weight suitability factors.<br>
+- Try <strong>Multi‑criteria Evaluation (simple overlay)</strong> with reclassified rasters.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Scenario 7: Spatial Patterns in Point Data
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Story question:</strong><br>
+What spatial patterns exist in a set of events or observations?</p>
+<p><strong>What you might analyse:</strong> - Disease cases<br>
+- Crime locations<br>
+- Wildlife sightings</p>
+<p><strong>Techniques to use:</strong> - Heatmaps or density<br>
+- Point-in-polygon<br>
+- Graduated symbology<br>
+- Labeling</p>
+<p><strong>Possible outputs:</strong> - Density map<br>
+- Counts by area<br>
+- Map layout for presentation</p>
+<p><strong>Extension:</strong> - Add a population or land cover raster.<br>
+- Use <strong>Kernel Density Estimation</strong> for smoother patterns.<br>
+- Try <strong>Nearest Neighbour Analysis</strong> for clustering insight.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Scenario 8: Field Data Collection and Analysis
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Story question:</strong><br>
+What can we learn from data you collect yourself?</p>
+<p><strong>What you might analyse:</strong> - Tree locations<br>
+- Street furniture<br>
+- Noise or pollution points</p>
+<p><strong>Techniques to use:</strong> - Smartphone data collection<br>
+- Importing CSV or GeoPackage<br>
+- Styling points<br>
+- Basic spatial analysis</p>
+<p><strong>Possible outputs:</strong> - Map of collected data<br>
+- Patterns or clusters<br>
+- Final layout map</p>
+<p><strong>Extension:</strong> - Add a satellite image or vegetation raster.<br>
+- Use <strong>Spatial Join (Summary)</strong> to link observations to areas.<br>
+- Try <strong>Point Density</strong> to highlight hotspots.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Scenario 9: Transport and Movement
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Story question:</strong><br>
+How does transport infrastructure shape access or movement?</p>
+<p><strong>What you might analyse:</strong> - Roads or public transport<br>
+- Population<br>
+- Service locations</p>
+<p><strong>Techniques to use:</strong> - Buffer analysis<br>
+- Intersections<br>
+- Thematic symbology<br>
+- Layout Manager</p>
+<p><strong>Possible outputs:</strong> - Transport access map<br>
+- Underserved areas<br>
+- Styled map with scale and legend</p>
+<p><strong>Extension:</strong> - Add a slope or elevation raster to model walking difficulty.<br>
+- Use <strong>Raster Calculator</strong> to combine slope and distance.<br>
+- Try <strong>Network Shortest Path</strong> for simple routing.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Scenario 10: A Place-Based Story
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Story question:</strong><br>
+What spatial story can you tell about a place that matters to you?</p>
+<p><strong>What you might analyse:</strong> - Any combination of raster and vector data<br>
+- Boundaries, services, environment, or population</p>
+<p><strong>Techniques to use:</strong> - Import and reproject data<br>
+- Digitise features<br>
+- Perform at least one spatial analysis<br>
+- Style and label layers<br>
+- Create a layout</p>
+<p><strong>Possible outputs:</strong> - 1–3 maps<br>
+- A clear spatial narrative<br>
+- One-minute presentation</p>
+<p><strong>Extension:</strong> - Add either a DEM or land cover raster if using mostly vector data.<br>
+- Try <strong>Zonal Statistics</strong> or <strong>Raster Calculator</strong> for deeper analysis.<br>
+- Explore <strong>Viewshed</strong> or <strong>Slope</strong> for terrain‑based stories.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="datasets" class="level2">
+<h2 class="anchored" data-anchor-id="datasets">Datasets</h2>
+<p>The following datasets are examples on online data that you can use in your project.</p>
+</section>
+<section id="basemaps" class="level2">
+<h2 class="anchored" data-anchor-id="basemaps">Basemaps</h2>
+<section id="quickmapservices-plugin" class="level3">
+<h3 class="anchored" data-anchor-id="quickmapservices-plugin">QuickMapServices Plugin</h3>
+<p>Explore the different basemaps on the <strong>QuickMapServices</strong> plugin</p>
+</section>
+<section id="web-mapping-services" class="level3">
+<h3 class="anchored" data-anchor-id="web-mapping-services">Web Mapping Services</h3>
+<p><a href="https://a.basemaps.cartocdn.com/rastertiles/voyager_nolabels/%7Bz%7D/%7Bx%7D/%7By%7D@2x.png">Voyager (no labels)</a> <a href="https://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/%7Bz%7D/%7By%7D/%7Bx%7D">Light Gray Basemap</a> <a href="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/%7Bz%7D/%7By%7D/%7Bx%7D">ESRI HiRes Aerial</a></p>
+<p>Searching online for <strong>ArcGIS REST Servers</strong> may allow you to find more resources such as this <a href="https://www.data.qld.gov.au/dataset/queensland-imagery-latest-state-program-public-basemap-service">QLD Gov Aerial Basemap</a></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Web Mapping Services Instructions
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Scroll down the <code>Browser</code> panel until your see <strong>XYZ Tiles</strong></li>
+<li>Right click XYZ Tiles and select <code>New Connection...</code></li>
+<li>In <code>Name</code> type <strong>Voyager (no labels)</strong></li>
+<li>In <code>URL</code> paste:<br>
+https://a.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}<span class="citation" data-cites="2x.png">@2x.png</span></li>
+<li>Increase the Max. Zoom Level to 20</li>
+<li>This value depends on what is available from the given service in different parts of the world. Increasing that value beyond 20 for this map in Brisbane will show “Map data not yet available” when you zoom in very close.</li>
+<li>Click <code>OK</code></li>
+<li>In the <code>Browser</code> panel, expand <code>XYZ Tiles</code> and double click on <code>Voyager (no labels)</code></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="raster-data" class="level2">
+<h2 class="anchored" data-anchor-id="raster-data">Raster Data</h2>
+<section id="dem-repositories" class="level3">
+<h3 class="anchored" data-anchor-id="dem-repositories">DEM Repositories</h3>
+<p>A Digital Elevation Model (DEM) is <strong>raster data</strong> that shows the elevation of an area. There are a few repositories you can access this kind of data, but ELVIS is great for Australia.</p>
+<p><a href="http://www.ga.gov.au/elvis/"><strong>ELVIS</strong> - Geoscience Australia’s ELeVation Information System.</a></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>ELVIS Instructions
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Go to <a href="http://www.ga.gov.au/elvis/" class="uri">http://www.ga.gov.au/elvis/</a></li>
+<li>Search for “St Lucia” in the <code>Location Search</code> search box and select the first result</li>
+<li>Click <code>Order Data</code></li>
+<li>Choose “Draw” and “Box” and then click the <code>Draw</code> button</li>
+<li>Click on the map to start drawing a rectangle around your desired area</li>
+<li>Then click <code>Search</code></li>
+<li>The right panel will show you all the different datasets available in that area</li>
+<li>We want the QLD Government Digital Elevation Model 1 Metre, click the down arrow on the right</li>
+<li>As you hover over the different options, they will highlight a red box on the map, click the tick box and select all that overlap the area you’re interested in (note that there may be data from different years here)</li>
+<li>When you have the data you want, scroll to the bottom of the Order Data window</li>
+<li>Select your industry, enter your email, tick the reCAPTCHA, and click the <code>Order Datasets</code> button</li>
+<li>You should receive an email within 5 minutes, download the files from the link in the email, extract the folder to your project folder, and add them to your map.</li>
+</ul>
+</div>
+</div>
+</div>
+<p><a href="https://earthexplorer.usgs.gov/"><strong>USGS Earth Explorer</strong></a></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>USGS Earth Explorer - Access Instructions
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Go to <a href="(https://earthexplorer.usgs.gov/)">https://earthexplorer.usgs.gov/</a></li>
+<li>Click the World Features box, and then search for “Brisbane” in the “Feature Name” search box</li>
+<li>Click Show and select the first result</li>
+<li>Zoom onto an area of interest around Brisbane and click “Use Map”</li>
+<li>Click the “Data Sets” button and then <code>Digital Elevation &gt; SRTM</code>, select “SRTM 1 Arc-Second Global” and click “Results”</li>
+</ul>
+<p>“SRTM” stands for “<a href="https://www.usgs.gov/centers/eros/science/usgs-eros-archive-digital-elevation-shuttle-radar-topography-mission-srtm-1-arc?qt-science_center_objects=0#qt-science_center_objects">Shuttle Radar Topography Mission</a>”. It provides global elevation data collected in 2000 by the space shuttle Endeavour.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="aerial-imagery" class="level3">
+<h3 class="anchored" data-anchor-id="aerial-imagery">Aerial Imagery</h3>
+<p>There are a few places you can aquire aerial photography, some are freely available Government Data, some cost money, but can be accessed with your UQ credentials.</p>
+<p><a href="https://www.nearmap.com/">Nearmap</a> (account login required)</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Nearmap Access Instructions
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>As a UQ student or staff member, you have access to very high resoltuion imagery from <strong>NearMap</strong>. You can even access an array of imagery going back in time.</p>
+<ul>
+<li>Go to the <a href="https://admin.nearmap.com/invitation/domain-signup?token=q9WIbXMtna1iskb2meNGhKpCaQp3WTRbMhXpQVGWkKouKUeqzkpjNznC_Ogz5iKYiw0Ev7vym2Ykaj_W_V4dBbTzR6qUX2eTDsNHpBuR4XbU9vDRxQN_Rg==">UQ NearMap Portal</a></li>
+<li>Enter your UQ Student (<span class="citation" data-cites="student.uq.edu.au">@student.uq.edu.au</span>) or Staff (<span class="citation" data-cites="uq.edu.au">@uq.edu.au</span>) email address, with the appropriate domain selected. Click “Invite me”.</li>
+<li>You should receive an email soon after, click the “Accept Invitation” button, and go through the account setup process.</li>
+<li>Go to Login and enter your email address, click “Next” and enter your password.</li>
+<li>From the top right select <code>MapBrowser</code>.</li>
+<li>Type “St Lucia, QLD” in the search box, press enter</li>
+<li>You can click the date down the bottom to look at different snapshots in time, and even compare maps side-by-side.</li>
+<li>To save imagery from NearMap, simply click the “Exports” button on the left handside (it is an image icon)</li>
+<li>From the menu that appears change the “Export type” to “Georeferenced image”</li>
+<li>From “Projection” choose GDA2020 / MGA zone 56</li>
+<li>You can increase and decrease the size of the bounding box by adjusting its corners, a smaller box means you can have a finer resolution, down to 0.075m. If we select all of UQ St Lucia in one go, the highest resolution we can have is 0.299m.</li>
+<li>Once you’re happy with your selection click <code>Download Files</code></li>
+<li>Move the downloaded zip file to your project folder, and open them in QGIS</li>
+</ul>
+<p>You can also use the <a href="https://help.nearmap.com/kb/articles/752">NearMap API</a> to bring the data in as a web mapping service.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="historical-aerial-imagery" class="level3">
+<h3 class="anchored" data-anchor-id="historical-aerial-imagery">Historical Aerial Imagery</h3>
+<p><a href="https://qimagery.information.qld.gov.au/">QImagery</a> (free access government data)</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>QImagery Access Instructions
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>QImagery is a repository of QLD Historical Images.</p>
+<ul>
+<li>Go to <a href="https://qimagery.information.qld.gov.au/">QImagery</a></li>
+<li>Read and tick the “I acknowledge I have read and agree to the Terms &amp; Conditions” box, and click <code>Get Started</code></li>
+<li>Click the Search button, select ‘locality, town or city’ and search for “St Lucia” in the “Enter search term” search box and select the first result</li>
+<li>It will zoom to your selected location then click the newly appeared <code>Search</code> button</li>
+<li>From here you can select from a wide array of images of QLD over many years.</li>
+<li>Click one of the drop-downs and hover over the options to see where those images are located. Preview the image by clicking View.</li>
+<li>You can then download your desired images by clicking “Download” and selecting TIFF (georeferenced)</li>
+<li>Move the TIFF file(s) to your project folder, and open them in QGIS</li>
+</ul>
+</div>
+</div>
+</div>
+<p>Geoscience Australia’s <a href="https://experience.arcgis.com/experience/9a0ecbafe94f49829712b46fc69186ff">Historical Aerial Photo (HAP) Collection</a> (free access government data)</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Historical Aerial Photo (HAP)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Geoscience Australia’s <a href="https://experience.arcgis.com/experience/9a0ecbafe94f49829712b46fc69186ff">Historical Aerial Photo (HAP) Collection</a> is Australia wide, and may have different photos to QImagery.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="vector" class="level2">
+<h2 class="anchored" data-anchor-id="vector">Vector</h2>
+<section id="esri-data" class="level3">
+<h3 class="anchored" data-anchor-id="esri-data">ESRI Data</h3>
+<p>ESRI have a repository of <a href="https://www.arcgis.com/home/search.html?restrict=false&amp;sortField=relevance&amp;sortOrder=desc&amp;focus=layers-weblayers-features#content">10000+ Searchable Feature Layers from ArcGIS</a>, which you can use Web Mapping Services to bring in to QGIS. Unlike the basemaps, these will pull in vector data!</p>
+<p>For example this <a href="https://services9.arcgis.com/Ov1diE0uxjL6wSzH/ArcGIS/rest/services/">User’s Data</a> which has lots of useful QLD layers.</p>
+</section>
+<section id="council-data" class="level3">
+<h3 class="anchored" data-anchor-id="council-data">Council Data</h3>
+<p>Most Councils have a spatial data service. It can be hard to find, but targetted searching and trawling their websites can often yield useful local data.</p>
+<p><a href="https://scrc.maps.arcgis.com/apps/webappviewer/index.html?id=48501cb9e7294555be5b08e35e949616">Sunshine Coast MyMaps</a></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Brisbane City Council Web Mapping Services
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><a href="https://services3.arcgis.com/ocUCNI2h4moKOpKX/ArcGIS/rest/services">Brisbane/SEQ Utilities</a></p>
+<p><a href="https://services2.arcgis.com/dEKgZETqwmDAh1rP/ArcGIS/rest/services">BCC Data</a></p>
+</div>
+</div>
+</div>
+</section>
+<section id="state-government" class="level3">
+<h3 class="anchored" data-anchor-id="state-government">State Government</h3>
+<p><a href="https://qldspatial.information.qld.gov.au/">QLD Spatial</a>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>QSpatial
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You can access a wide variety of QLD Government Data, including Spatial Data such as lot plans and vegetation maps, from <a href="https://qldspatial.information.qld.gov.au/">QLD Spatial</a>.</p>
+<p>For example you could acces the <a href="https://qldspatial.information.qld.gov.au/catalogue/custom/detail.page?fid=%7B3F217A59-1FDB-412A-813D-A1E7843FB618%7D">Property boundaries Queensland</a> dataset</p>
+<p>There are three ways to access data from QSpatial.</p>
+<ul>
+<li><p>Download all of the data from a layer</p></li>
+<li><p>Select a portion of a layer for download using the <a href="https://qldspatial.information.qld.gov.au/catalogue/custom/myList.page">My List</a> function</p></li>
+<li><p>Live load it into your project using a <a href="https://spatial-gis.information.qld.gov.au/arcgis/rest/services/PlanningCadastre/LandParcelPropertyFramework/MapServer">Mapserver</a>.</p></li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Using My List on QSpatial
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Here is an example of extracting property boundaries.</p>
+<ul>
+<li><p>To access data from QLD Spatial go to <a href="https://qldspatial.information.qld.gov.au/" class="uri">https://qldspatial.information.qld.gov.au/</a></p></li>
+<li><p>Search for “property boundaries”</p></li>
+<li><p>Scroll down to “Property boundaries Queensland” and click <strong>Add to my list</strong></p></li>
+<li><p>Click <strong>My List</strong> from the top menu</p></li>
+<li><p>Click <strong>View/extract in map</strong></p></li>
+<li><p>Under Extractable Data, click the box next to <strong>Property boundaries Queensland</strong>, it will become green</p></li>
+<li><p>Click <strong>Extract/download</strong></p></li>
+<li><p>Click <strong>Choose an area</strong></p></li>
+<li><p>Select <strong>BRISBANE CITY</strong> from the Select LGA option</p></li>
+<li><p>Choose GeoPackage 1.0 from Select output format</p></li>
+<li><p>Enter your Email Address</p></li>
+<li><p>Accept the Terms and Conditions</p></li>
+<li><p>Click <strong>Extract/Download</strong></p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>QLD Gov Web Mapping Services
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><a href="https://spatial-gis.information.qld.gov.au/arcgis/rest/services/Transportation/RoadsAndTracks/MapServer">QLD Gov Roads</a></p>
+<p><a href="https://spatial-gis.information.qld.gov.au/arcgis/rest/services/Boundaries/AdminBoundariesFramework/MapServer">QLD Heritage Areas</a></p>
+<p><a href="https://spatial-gis.information.qld.gov.au/arcgis/rest/services">More QLD Gov Services</a></p>
+</div>
+</div>
+</div>
+<p><a href="https://qldglobe.information.qld.gov.au">Queensland Globe</a>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Accessing Queensland Globe
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Another way to access QSpatial Data is using the Queensland Globe portal. Here is an example of extracting property boundaries from Queensland Globe.</p>
+<ul>
+<li>To access data from Queensland Globe go to <a href="https://qldglobe.information.qld.gov.au">https://qldglobe.information.qld.gov.au</a></li>
+<li>Accept the T&amp;Cs.</li>
+<li>Click <strong>Search</strong>, Select <strong>Locality (Suburb) within a Local Government Area</strong>, and search for the location you want and select it from the list.</li>
+<li>Click <strong>Layers</strong>, click <strong>Add Layers +</strong> here you can scroll through and filter different layer types</li>
+<li>We want to tick the box next to <code>Planning Cadastre &gt; Land Parcels &gt; Land Parcel</code> (you may need to zoom in to see certain layers)</li>
+<li>To export data click the Wrench Icon in the top right, and then click the Identify icon (i)</li>
+<li>Use the triangular Identify Polygon tool to select and area of interest. Double click when you’ve finished selecting your area.</li>
+<li>The Layers menu will now show your selection. You can download all, or sections, of your selection.</li>
+<li>I will choose <strong>Land Parcel</strong> and then <strong>Download</strong> as a <strong>shp</strong> file.</li>
+<li>Note: You may need to disable other layers for this to work correctly. I needed to turn off the <strong>Transportation</strong> layer to prevent roads from being included in my selection.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="federal-government-data" class="level3">
+<h3 class="anchored" data-anchor-id="federal-government-data">Federal Government Data</h3>
+<p><a href="https://data.csiro.au/collections/search/SQDEM/STsearch-by-keyword/">CSIRO spatial products</a></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>CSIRO Data
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><a href="https://data.csiro.au/collection/csiro:43016">CSIRO’s Norfolk Island Data Portal</a> <a href="https://data.csiro.au/collections/search/SQDEM/STsearch-by-keyword/">CSIRO spatial products</a></p>
+</div>
+</div>
+</div>
+<p><a href="http://www.environment.gov.au/fed/catalog/main/home.page">Federal Environment Department Spatial Data</a> - Species observation data</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Federal Environmental Data
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The Federal Environment Department has a variety of <a href="http://www.environment.gov.au/fed/catalog/main/home.page">different spatial datasets that you can browse through</a>.</p>
+<p>One example is the Collaborative Australian Protected Areas Database (CAPAD) 2020, which is a compilation of government, Indigenous and privately protected areas for Australia. You can search for “CAPAD” in on the Environment Department website, or by going <a href="http://www.environment.gov.au/fed/catalog/search/resource/details.page?uuid=%7B4448CACD-9DA8-43D1-A48F-48149FD5FCFD%7D">directly to the data</a>.</p>
+</div>
+</div>
+</div>
+<p><a href="https://www.abs.gov.au/">Australian Bureau of Statistics</a></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Australian Bureau of Statistics Data Tips
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-24" class="callout-24-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The ABS is a huge source of data, however, it can be a bit difficult to find that data, and use it in a spatial context.</p>
+<p>The ABS has a variety of ways that it splits its data up. These <a href="https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files">Digital Boundary Files</a> are very useful for classifying data. They generally classify all of Australia into discrete Statistical Areas. Level 1 are the smallest, and Level 4 are the coarsest. (notably, the link above also has non-ABS Structures/boundary files such as Electoral areas and Postcodes).</p>
+<section id="population-data" class="level5">
+<h5 class="anchored" data-anchor-id="population-data">Population Data</h5>
+<p>The ABS have a lot of useful data, including population data. They provide it in excel format, as GeoPackages (by SA2 and LGAs), and as population grid raster files. SA2 <a href="https://www.abs.gov.au/statistics/people/population/regional-population/latest-release#data-download">GeoPackages</a> are a convenient format for QGIS. This means we have our digital boundaries, and population in one!</p>
+</section>
+</div>
+</div>
+</div>
+</section>
+<section id="online-community-spatial-repositories" class="level3">
+<h3 class="anchored" data-anchor-id="online-community-spatial-repositories">Online Community Spatial Repositories</h3>
+<p><a href="https://www.ala.org.au/">Atlas of Living Australia</a> - Species observation data</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Atlas of Living Australia
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Species observation data can be downloaded from the <a href="https://www.ala.org.au/">Atlas of Living Australia</a>.</p>
+<p>This is an Australia Biodiversity occurrence database. It pulls data from a variety of different sources, including government data, individual collectors and community groups. This means that this data will contain sampling bias and will often simply represent encounters, rather than using robust sampling and collection methods. So, while we need to use this data with caution, it’s still a useful dataset!</p>
+<p>You need to create an account and request the exact dataset you need.</p>
+</div>
+</div>
+</div>
+<p><a href="https://www.gbif.org/">Global Biodiversity Information Facility (GBIF)</a> - Species observation data</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Global Biodiversity Information Facility (GBIF)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This is another species observation database, but this one is worldwide.</p>
+</div>
+</div>
+</div>
+<p><a href="https://www.inaturalist.org/">iNaturalist</a> - Species observation data</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>iNaturalist
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Community/Citizen Science species observation database.</p>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/uqlibrary\.github\.io\/technology-training-intensives\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
