@@ -383,13 +383,15 @@ The following datasets are examples on online data that you can use in your proj
 
 ### QuickMapServices Plugin
 
-Explore the different basemaps on the **QuickMapServices** plugin
+Explore the different basemaps available in the **QuickMapServices** plugin.
 
 ### Web Mapping Services
 
-[Voyager (no labels)](https://a.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}@2x.png)
-[Light Gray Basemap](https://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x})
-[ESRI HiRes Aerial](https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x})
+Some providers:
+
+* [Voyager (no labels)](https://a.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}@2x.png)
+* [Light Gray Basemap](https://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x})
+* [ESRI HiRes Aerial](https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x})
 
 Searching online for **ArcGIS REST Servers** may allow you to find more resources such as this [QLD Gov Aerial Basemap](https://www.data.qld.gov.au/dataset/queensland-imagery-latest-state-program-public-basemap-service)
 
@@ -460,11 +462,11 @@ GeoScience have a a varierty of [OGC Webservice Data](https://knowledge.dea.ga.g
 
 ### Climate Rasters
 
-The [Bureau of Meterology](https://www.bom.gov.au/climate/maps/averages/) has many types of Grid data of climate data (Rainfall, Temperature, Solar Exposure, etc) that you can download and import into QGIS.
+The [Bureau of Meterology](https://www.bom.gov.au/climate/maps/averages/) has many types of Grid data of climate data (Rainfall, Temperature, Solar Exposure, etc.) that you can download and import into QGIS.
 
 ### Population Rasters
 
-The ABS have a lot of useful data, including population data. They provide it in excel format, as GeoPackages (by SA2 and LGAs), and as [population grid raster files](https://www.abs.gov.au/statistics/people/population/regional-population/latest-release#data-download).
+The ABS have a lot of useful data, including population data. They provide it in Excel format, as GeoPackages (by SA2 and LGAs), and as [population grid raster files](https://www.abs.gov.au/statistics/people/population/regional-population/latest-release#data-download).
 
 ### Aerial Imagery
 
@@ -475,23 +477,23 @@ There are a few places you can aquire aerial photography, some are freely availa
 
 :::  {.callout-tip collapse="true"}
 #### Nearmap Access Instructions
-As a UQ student or staff member, you have access to very high resoltuion imagery from **NearMap**. You can even access an array of imagery going back in time.
+As a UQ student or staff member, you have access to very high resoltuion imagery from **Nearmap**. You can even access an array of imagery going back in time.
 
--   Go to the [UQ NearMap Portal](https://admin.nearmap.com/invitation/domain-signup?token=q9WIbXMtna1iskb2meNGhKpCaQp3WTRbMhXpQVGWkKouKUeqzkpjNznC_Ogz5iKYiw0Ev7vym2Ykaj_W_V4dBbTzR6qUX2eTDsNHpBuR4XbU9vDRxQN_Rg==)
+-   Go to the [UQ Nearmap Portal](https://admin.nearmap.com/invitation/domain-signup?token=q9WIbXMtna1iskb2meNGhKpCaQp3WTRbMhXpQVGWkKouKUeqzkpjNznC_Ogz5iKYiw0Ev7vym2Ykaj_W_V4dBbTzR6qUX2eTDsNHpBuR4XbU9vDRxQN_Rg==)
 -   Enter your UQ Student (@student.uq.edu.au) or Staff (@uq.edu.au) email address, with the appropriate domain selected. Click "Invite me".
 -   You should receive an email soon after, click the "Accept Invitation" button, and go through the account setup process.
 -   Go to Login and enter your email address, click "Next" and enter your password.
 -   From the top right select `MapBrowser`.
 -   Type "St Lucia, QLD" in the search box, press enter
 -   You can click the date down the bottom to look at different snapshots in time, and even compare maps side-by-side.
--   To save imagery from NearMap, simply click the "Exports" button on the left handside (it is an image icon)
+-   To save imagery from Nearmap, simply click the "Exports" button on the left handside (it is an image icon)
 -   From the menu that appears change the "Export type" to "Georeferenced image"
 -   From "Projection" choose GDA2020 / MGA zone 56
 -   You can increase and decrease the size of the bounding box by adjusting its corners, a smaller box means you can have a finer resolution, down to 0.075m. If we select all of UQ St Lucia in one go, the highest resolution we can have is 0.299m.
 -   Once you're happy with your selection click `Download Files`
 -   Move the downloaded zip file to your project folder, and open them in QGIS
 
-You can also use the [NearMap API](https://help.nearmap.com/kb/articles/752) to bring the data in as a web mapping service.
+You can also use the [Nearmap API](https://help.nearmap.com/kb/articles/752) to bring the data in as a web mapping service.
 
 
 :::
@@ -658,8 +660,8 @@ Explore data similar to data.gov, but explcitly for spatial data and interactive
 :::  {.callout-tip collapse="true"}
 #### CSIRO Data
 
-[CSIRO's Norfolk Island Data Portal](https://data.csiro.au/collection/csiro:43016)
-[CSIRO spatial products](https://data.csiro.au/collections/search/SQDEM/STsearch-by-keyword/)
+* [CSIRO's Norfolk Island Data Portal](https://data.csiro.au/collection/csiro:43016)
+* [CSIRO spatial products](https://data.csiro.au/collections/search/SQDEM/STsearch-by-keyword/)
 
 :::
   
@@ -686,11 +688,11 @@ One example is the Collaborative Australian Protected Areas Database (CAPAD) 202
 
 The ABS is a huge source of data, however, it can be a bit difficult to find that data, and use it in a spatial context.
 
-The ABS has a variety of ways that it splits its data up. These [Digital Boundary Files](https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files) are very useful for classifying data. They generally classify all of Australia into discrete Statistical Areas. Level 1 are the smallest, and Level 4 are the coarsest. (notably, the link above also has non-ABS Structures/boundary files such as Electoral areas and Postcodes). 
+The ABS has a variety of ways that it splits its data up. These [Digital Boundary Files](https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files) are very useful for classifying data. They generally classify all of Australia into discrete Statistical Areas. Level 1 are the smallest, and Level 4 are the coarsest. (Notably, the link above also has non-ABS Structures/boundary files such as Electoral areas and Postcodes.) 
 
 ##### Population Data
 
-The ABS have a lot of useful data, including population data. They provide it in excel format, as GeoPackages (by SA2 and LGAs), and as population grid raster files. SA2 [GeoPackages](https://www.abs.gov.au/statistics/people/population/regional-population/latest-release#data-download) are a convenient format for QGIS. This means we have our digital boundaries, and population in one!
+The ABS have a lot of useful data, including population data. They provide it in Excel format, as GeoPackages (by SA2 and LGAs), and as population grid raster files. SA2 [GeoPackages](https://www.abs.gov.au/statistics/people/population/regional-population/latest-release#data-download) are a convenient format for QGIS. This means we have our digital boundaries, and population in one!
 
 You can also find tabular data separated by state containing information like [Crime Data](https://www.abs.gov.au/statistics/people/crime-and-justice/recorded-crime-offenders/latest-release#data-downloads)
 :::
