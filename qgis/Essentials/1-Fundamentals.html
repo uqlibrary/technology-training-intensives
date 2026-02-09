@@ -273,7 +273,7 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#what-are-we-going-to-learn" id="toc-what-are-we-going-to-learn" class="nav-link active" data-scroll-target="#what-are-we-going-to-learn">What are we going to learn?</a></li>
   <li><a href="#interface" id="toc-interface" class="nav-link" data-scroll-target="#interface">Interface</a></li>
-  <li><a href="#load-a-basemap" id="toc-load-a-basemap" class="nav-link" data-scroll-target="#load-a-basemap">Load a Basemap</a></li>
+  <li><a href="#new-project-and-basemap" id="toc-new-project-and-basemap" class="nav-link" data-scroll-target="#new-project-and-basemap">New project and basemap</a></li>
   <li><a href="#controls" id="toc-controls" class="nav-link" data-scroll-target="#controls">Controls</a></li>
   <li><a href="#what-is-spatial-data" id="toc-what-is-spatial-data" class="nav-link" data-scroll-target="#what-is-spatial-data">What is Spatial Data?</a>
   <ul class="collapse">
@@ -349,16 +349,19 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="interface" class="level2">
 <h2 class="anchored" data-anchor-id="interface">Interface</h2>
-<p>The main elements of the interface are:</p>
+<p>When we open QGIS, we can see the 3 main elements of the interface:</p>
 <ul>
 <li>the <code>Browser</code> panel, to navigate our file system and data sources</li>
 <li>the <code>Layers</code> panel, to organise the different layers that compose our map</li>
-<li>the <code>Canvas</code>, where we see the map.</li>
+<li>the <code>Canvas</code>, where we see the map (at startup, QGIS uses that space to show recent projects and QGIS news)</li>
 </ul>
 </section>
-<section id="load-a-basemap" class="level2">
-<h2 class="anchored" data-anchor-id="load-a-basemap">Load a Basemap</h2>
-<p>We can straight away load an OpenStreetMap basemap to have a background: in the <code>Browser</code> panel, <code>XYZ Tiles &gt; OpenStreetMap</code>.</p>
+<section id="new-project-and-basemap" class="level2">
+<h2 class="anchored" data-anchor-id="new-project-and-basemap">New project and basemap</h2>
+<ul>
+<li><p>Create a <strong>new project</strong> with <code>Project &gt; New</code>.</p></li>
+<li><p>We can straight away load an OpenStreetMap basemap to have a background: in the <code>Browser</code> panel, <code>XYZ Tiles &gt; OpenStreetMap</code>.</p></li>
+</ul>
 </section>
 <section id="controls" class="level2">
 <h2 class="anchored" data-anchor-id="controls">Controls</h2>
@@ -396,7 +399,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="case-study---windfarm-proposal" class="level2">
 <h2 class="anchored" data-anchor-id="case-study---windfarm-proposal">Case Study - Windfarm Proposal</h2>
 <p>We have been asked to explore the feasibility of constructing a Windfarm on Enoggera Hill, which is part of the Enoggera Army Base (Gallipoli Barracks).</p>
-<p>Throughout these workshops we are going to make maps and run spatial that are useful in a wide variety of disciplines and relate to this particular case study. This scenario of a Windfarm Proposal allows us to use spatial analyses to explore concepts connected to the environment, health, culture, and landscape.</p>
+<p>Throughout these workshops we are going to make maps and run spatial analyses that are useful in a wide variety of disciplines and relate to this particular case study. This scenario of a Windfarm Proposal allows us to use spatial analyses to explore concepts connected to the environment, health, culture, and landscape.</p>
 <p>We will create a project folder, bring in different kinds of data, run a variety of spatial analyses, and export a few maps.</p>
 <p>While the location and data we will be using are all real, this scenario is entirely fictional.</p>
 </section>
@@ -404,15 +407,16 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="project-folder-structure">Project Folder Structure</h2>
 <p>We will start by creating a good folder structure to work within. This folder is where our project, our data, and creations will live. Folder structure is very important for keeping your data tidy, as well as for ease of sharing your project with others. You simply need to zip the project folder if you need to share the whole thing.</p>
 <ul>
-<li><p>Open QGIS and create a <strong>new project</strong> with <code>Project &gt; New</code>.</p></li>
-<li><p>Let’s now <strong>save</strong> our project: <code>Project &gt; Save</code>.</p></li>
+<li><p>Let’s <strong>save</strong> our project: <code>Project &gt; Save</code>.</p></li>
 <li><p>Navigate to where you want to save your project, and create a new folder, let’s call it “<strong>Enoggera_Windfarm_26</strong>”.</p></li>
 <li><p>Inside that folder, create these folders:</p></li>
-<li><p>“<strong>data</strong>” - for all the data we will use to make our maps, split into:</p></li>
+<li><p>“<strong>data</strong>” - for all the data we will use to make our maps, split into:</p>
+<ul>
+<li><p>“<strong>raw</strong>” - raw data from your research or the Internet</p></li>
+<li><p>“<strong>processed</strong>” - any data you’ve modified</p></li>
+</ul></li>
 </ul>
-<pre><code>-   "**raw**" - raw data from your research or the internet
-
--   "**processed**" - any data you've modified</code></pre>
+<!-- -->
 <ul>
 <li><p>“<strong>output</strong>” - for any maps or images we export</p></li>
 <li><p>“<strong>temp</strong>” - this folder isn’t necessary, but when you’re playing around and testing, it can be helpful to stop things getting messy.</p></li>
@@ -429,9 +433,14 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="importing-data" class="level2">
 <h2 class="anchored" data-anchor-id="importing-data">Importing data</h2>
-<p>To add our own data: - Go to the menu <code>Layer &gt; Add Layer &gt; Add Vector Layer...</code> - Open your folders <code>data &gt; raw &gt; 1-fundamentals_data</code> - Choose the “Turbine_Locations_SEQ.gpkg” file, and click “Add”. It is now in your <code>Layers</code> panel.</p>
+<p>To add our own data:</p>
+<ul>
+<li><p>Go to the menu <code>Layer &gt; Add Layer &gt; Add Vector Layer...</code></p></li>
+<li><p>Open your folders <code>data &gt; raw &gt; 1-fundamentals_data</code></p></li>
+<li><p>Choose the “Turbine_Locations_SEQ.gpkg” file, and click “Add”. It is now in your <code>Layers</code> panel.</p></li>
+</ul>
 <p>If you’ve already loaded in the OpenStreetMap Basemap, then you should get the popup <code>Select Transformation for Project Area</code>. This is asking you how you want to deal with the difference between the basemap’s <em>projection</em> and the <em>projection</em> of your data. Projections are how we stretch “spherical” data to fit on a flat rectangular map, which we will cover in detail later in this workshop. Fortunately, for now, QGIS will handle this on the fly for us so we can simply click <code>OK</code>.</p>
-<p>So where is the data? If you want to zoom in to your data, you don’t have to use your mouse, you can use the <code>Zoom Full</code> button, or right-click on your <strong>Project Area</strong> layer and select <code>Zoom to Layer(s)</code>.</p>
+<p>So where is the data? If you want to zoom in to your data, you don’t have to use your mouse, you can use the <code>Zoom Full</code> button, or right-click on your <strong>Turbine_Locations_SEQ</strong> layer and select <code>Zoom to Layer(s)</code>.</p>
 <p>You can also use the <code>Project Home</code> directory in the browser to add another layer:</p>
 <ul>
 <li>Click the <code>Project Home</code> dropdown, then <code>data &gt; raw &gt; 1-fundamentals_data</code></li>
@@ -489,7 +498,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Use the <strong>Project Area</strong> layer as the overlay.</li>
 <li>Click <code>Run</code></li>
 </ol>
-<p>We should get an error <code>Feature (243) from “BVG SEQ” has invalid geometry.</code> Never fear, we can fix this!</p>
+<p>We should get an error <code>Feature (242) from “BVG SEQ” has invalid geometry.</code> Never fear, we can fix this!</p>
 <p>This is caused by little issues in the polygon layer. Sometimes when polygons are drawn or exported from online sources, they will create errors, and sometimes little slither polygons on the edges. We can investigate the source of these errors using the <code>Check validity</code> tool, but for today, we’re simply going to fix them with the <code>Fix Geometries</code> tool from the Processing Toolbox.</p>
 <blockquote class="blockquote">
 <p>The <strong>Processing Toolbox</strong> is <em>full</em> of useful tools for data analysis and data management.</p>
@@ -499,7 +508,7 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="fix-geometries">Fix Geometries</h3>
 <ul>
 <li>Open the Processing Toolbox by clicking the cog icon from the top menu <img src="https://docs.qgis.org/3.40/en/_images/processingAlgorithm.png" class="img-fluid" alt="Processing Toolbox"> (alternatively go to <code>View &gt; Panels &gt; Processing Toolbox</code>)</li>
-<li>In the <strong>Processing Toolbox</strong> window <code>Search</code> for “Fix geometries”</li>
+<li>In the <strong>Processing Toolbox</strong> panel, <code>Search</code> for “Fix geometries”</li>
 <li>Double-click on the <strong>Fix geometries</strong> option</li>
 <li>In the <strong>Fix Geometries</strong> window, select <code>BVG SEQ</code> from the <strong>Input layer</strong> options, then click <code>Run</code></li>
 <li>Right click <strong>Fixed Geometries</strong> in the Layer panel, click Rename Layer, and change it to <strong>BVG Fixed</strong></li>
@@ -512,19 +521,19 @@ ul.task-list li input[type="checkbox"] {
 <li>Click <code>Run</code></li>
 </ul>
 <p>Magic. Our new layer has the BVG data cookie-cut to the Project Area shape.</p>
-<p>Notice how the clipped layers also doesn’t have a descriptive name? Make sure you rename them. Let’s changed <strong>Clipped</strong> to <strong>EH BVG</strong></p>
+<p>Notice how the clipped layers also doesn’t have a descriptive name? Make sure you rename them. Let’s change <strong>Clipped</strong> to <strong>EH BVG</strong></p>
 <p>You can now hide the original “BVG SEQ” and “Turbine Locations SEQ” layers.</p>
 </section>
 </section>
 <section id="saving-your-project" class="level2">
 <h2 class="anchored" data-anchor-id="saving-your-project">Saving your project</h2>
 <p>It’s always a good idea to regularly save your progress.</p>
+<p>You can save your project with the floppy disk icon, or using <kbd>Ctrl</kbd> + <kbd>S</kbd>, and the project should be visible in a list when you re-open QGIS again.</p>
 </section>
 <section id="temporary-scratch-layers" class="level2">
 <h2 class="anchored" data-anchor-id="temporary-scratch-layers">Temporary Scratch Layers</h2>
-<p>Notice the little icon next to some of your layers? We previously created “temporary scratch layers”, they’re basically temp files that will disappear when we close QGIS. This is useful if you keep processing data and creating new layers that you want to discard afterwards. In our case, we do want to keep the “cities” and “rivers” layers, so we need to save them to a file. If we try to close QGIS with scratch layers loaded, it will give you a warning that they will be lost in the process.</p>
+<p>Notice the little icon next to some of your layers? We have created “temporary scratch layers”: they are basically temporary files that will disappear when we close QGIS. This is useful if you keep processing data and creating new layers that you want to discard afterwards. In our case, we do want to keep the “EH BVG” layer, so we need to save it to a file. If we try to close QGIS with scratch layers loaded, it will give you a warning that they will be lost in the process.</p>
 <p>You can click on the scratch layer icon to save the file. In the dialog, we can give the layers a <code>File name</code> (in our project’s home directory) and click OK.</p>
-<p>You can save your project with the floppy disk icon, or using <kbd>Ctrl</kbd> + <kbd>S</kbd>, and the project should be visible in a list when you re-open QGIS again.</p>
 </section>
 <section id="personalise-your-map" class="level2">
 <h2 class="anchored" data-anchor-id="personalise-your-map">Personalise your map</h2>
@@ -545,7 +554,7 @@ ul.task-list li input[type="checkbox"] {
 <ol type="1">
 <li>Click on the <code>Layer Styling Panel</code> button</li>
 <li>Change from “Single Symbol” to “Categorised”</li>
-<li>Use the bvg1m column</li>
+<li>Use the bvg1m column in the “Value” field</li>
 <li>Pick a relevant colour ramp</li>
 <li>Click “classify”</li>
 </ol>
@@ -563,12 +572,19 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="simple-map-export">Simple Map Export</h2>
 <p>You can export your map with a very customised layout, or you can do a simple export. This morning we will look at the simple map export.</p>
 <p>Zoom to the level of detail you want your image to contain.</p>
-<p>To export out your map <code>Project &gt; Import/Export &gt; Export Map to Image...</code>, choose <code>Draw on Canvas</code>, increase the <code>Resolution</code> to 300 dpi, click <code>Save</code>. Navigate to where you want to save your image, name it, and click <code>Save</code></p>
+<p>To export out your map:</p>
+<ol type="1">
+<li><p>Go to <code>Project &gt; Import/Export &gt; Export Map to Image...</code></p></li>
+<li><p>Choose <code>Draw on Canvas</code> and draw the area you want to export</p></li>
+<li><p>Increase the <code>Resolution</code> to 300 DPI</p></li>
+<li><p>Click <code>Save</code></p></li>
+<li><p>Navigate to where you want to save your image (we created the “output” folder for that), name it, and click <code>Save</code></p></li>
+</ol>
 </section>
 <section id="resources" class="level2">
 <h2 class="anchored" data-anchor-id="resources">Resources</h2>
 <ul>
-<li>You can find help with QGIS in the <a href="https://docs.qgis.org/3.40/en/docs/index.html">QGIS Documentation</a>.</li>
+<li>You can find help in the <a href="https://docs.qgis.org/3.40/en/docs/index.html">QGIS Documentation</a></li>
 </ul>
 
 
