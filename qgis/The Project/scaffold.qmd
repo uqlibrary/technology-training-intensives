@@ -5,12 +5,11 @@ format: html
 
 You're welcome to dive in and work as you please, but if you're feeling at a loss where to begin, follow the scaffold below.
 
-
 ## Project scaffold
 
 ### Step 0: Pick a dataset and a scenario
 
-There are many [scenarios and datasets](Data_Sources.qmd) to choose from. Choose or design and scenario, and browse through online data sources and find some vector data and raster data that interest you.
+There are many [scenarios and datasets](datasets.qmd) to choose from. Choose or design a scenario, browse through online data sources and find some vector data and raster data that interest you.
 
 Learning how to find and import spatial data is a useful skill.
 
@@ -20,7 +19,7 @@ Choose a location that might show an interesting combination of data types.
 
 **We recommend creating a new project folder, setting up a folder structure, and saving your data there**.
 
-:::  {.callout-tip collapse="true"}
+::: {.callout-tip collapse="true"}
 #### Project Folder Structure
 
 -   Open QGIS and create a **new project** with `Project > New`.
@@ -31,36 +30,40 @@ Choose a location that might show an interesting combination of data types.
 
 -   Inside that folder, create these folders:
 
-  -   "**data**" - for all the data we will use to make our maps, split into:
+-   "**data**" - for all the data we will use to make our maps, split into:
 
     -   "**raw**" - raw data from your research or the internet
-    
+
     -   "**processed**" - any data you've modified
 
-  -   "**output**" - for any maps or images we export
+<!-- -->
 
-  -   "**temp**" - this folder isn't necessary, but when you're playing around and testing, it can be helpful to stop things getting messy.
+-   "**output**" - for any maps or images we export
+
+-   "**temp**" - this folder isn't necessary, but when you're playing around and testing, it can be helpful to stop things getting messy.
 
 -   Finally, let's save our .qgz project file inside the "**Workshop_Project**" folder, named "Workshop_Project.qgz"
 
 Remember: Your .qgz file should always be in the highest level folder, so it's only looking down into folders for data, not back out. This might feel unnecessary now, but things quickly get out of control and hard to find if you don't have a good folder structure.
-
 :::
-
 
 ### Step 1: Understand the data
 
-Import the data into QGIS, look at the attributes and see what analyses you might be able to run.
+Load a basemap to locate yourself on the Earth.
 
-### Step 2: Tidy and subset your data
+Import the data you downloaded, look at the attribute table and think about what analyses you might be able to run.
 
-Define a project are and clip your data where appropriate.
+### Step 2: Tidy, subset and style your data
 
-Style your vectors so that they have appropriate colours, and labels.
+Define a project area and clip your data where appropriate.
 
-### Step 3: Run some analyses on your data
+Style your vectors with appropriate colours, symbols and labels to make them more self-explanatory.
 
-Try running some tools to see how your data interacts
+Try alternatives to "Single Symbol" in order to visualise more variables, or to reveal trends when there is a too much data.
+
+### Step 3: Run some analyses
+
+Try using some geoprocessing tools to see how you might reveal more information, and how you can combine different datasets in interesting ways.
 
 ### Step 4: Looking ahead
 
