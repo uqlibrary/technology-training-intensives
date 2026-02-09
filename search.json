@@ -3331,7 +3331,7 @@
     "href": "qgis/The Project/tips.html",
     "title": "Tips",
     "section": "",
-    "text": "Here’s a few general tips. In addition, we strongly recommend using QGIS User Manual",
+    "text": "Here’s a few general tips. In addition, we strongly recommend using the QGIS User Manual.",
     "crumbs": [
       "QGIS",
       "The Project",
@@ -3343,7 +3343,7 @@
     "href": "qgis/The Project/tips.html#keyboard-shortcuts",
     "title": "Tips",
     "section": "Keyboard Shortcuts",
-    "text": "Keyboard Shortcuts\nChange the below to QGIS things like F7 for Style Manager and CTRL + . for digitising\n\n\n\n\n\n\n\nHotkey\nDescription\n\n\n\n\nF6\nOpen Attribute Table\n\n\nCtrl+J\nZoom to Selection\n\n\nCtrl+Alt+T\nToogle Processing Toolbox\n\n\nCtrl+Shift+Tab\nHide all panels (good for georeferencing)\n\n\nF7\nOpen Layer Styling Panel",
+    "text": "Keyboard Shortcuts\n\n\n\n\n\n\n\nShortcut\nDescription\n\n\n\n\nF6\nOpen Attribute Table\n\n\nF7\nOpen Layer Styling Panel\n\n\nCtrl+Alt+T\nToggle Processing Toolbox\n\n\nCtrl+J\nZoom to Selection\n\n\nCtrl+Tab\nToggle Panel Visibility (toolbars still visible)\n\n\nCtrl+Shift+Tab\nToggle Map Only (good for georeferencing)\n\n\nF11\nToggle Full Screen",
     "crumbs": [
       "QGIS",
       "The Project",
@@ -3355,7 +3355,7 @@
     "href": "qgis/The Project/tips.html#plugins",
     "title": "Tips",
     "section": "Plugins",
-    "text": "Plugins\nExplore plugins to make things easier",
+    "text": "Plugins\nClose to 3000 plugins are available to install and add functionalities to QGIS. You can install them with Plugins &gt; Manage and Install Plugins... but you might find it easier to explore the catalogue using the plugins website.\nHere are some example plugins to try:\n\nQuickMapServices to quickly load a variety of basemaps\nQuickOSM to download specific OpenStreetMap vector data\nAusMap to load a variety of Australian dataset\nqgis2web to convert a QGIS project to an interactive web map\nQField Sync to sync your projects with your QField account",
     "crumbs": [
       "QGIS",
       "The Project",
