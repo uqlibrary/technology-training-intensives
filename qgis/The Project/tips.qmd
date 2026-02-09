@@ -6,6 +6,8 @@ Here's a few general tips. In addition, we strongly recommend using the [QGIS Us
 
 ## Keyboard Shortcuts
 
+Here are some useful shortcuts you might want to get familiar with:
+
 | Shortcut | Description |
 | --- | --- |
 | <kbd>F6</kbd> | Open Attribute Table |
@@ -30,15 +32,37 @@ Here are some example plugins to try:
 
 ## Importing and exporting data
 
-How tos for any data, csvs, as well as Project Home
+### The Project Home
 
-Different spatial file types
+To quickly find your data files, make sure to create a logical folder structure, and save your project at the top. This makes it possible to find all your data files straight from the Browser panel ("Project Home" section).
+
+You can also choose your Project Home in you Project Properties: `Project > Properties... > General`
+
+### Importing from CSV and Excel spreadsheets
+
+QGIS allows you to add a table (e.g. from a CSV, ODS or XLSX file) to your layers. This allows you to look at the data in the Attribute Table, and create a Join to merge it into another layer. However, it does not automatically understand it as spatial data it can put on the map.
+
+To make that data spatial, you have to:
+
+1. Save the file as a CSV (if not in this format already)
+1. Use `Layer > Add Layer > Add Delimited Text Layer...`
+1. Pick the file
+1. Point to the column(s) that contain the spatial data: either longitude/latitude (X and Y respectively) or Well Known Text (WKT).
 
 ### Initial exploration
 
-You'll want to explore the data to start with - below are a few things to get started.
+One the spatial data is loaded, you'll want to familiarise yourself with it - below are a few things to get started.
 
-Attribute table??
+* Can't see it? Make sure the layer is at the top of the stack in the "Layers" panel.
+* Right-click on the layer and use "Zoom to Layer" to see all its features at once. Is some data in an unexpected place? There might be some erroneous data. Is the whole layer completely misplaced? You might have to play with its CRS, or check that the X and Y columns where correct when you imported a CSV.
+* For vector data, open the Attribute Table (<kbd>F6</kbd>) and see what variables are available. Could you style the data based on them? Use them to label the features? Base calculations on them? Or filter/subset the data thanks to them?
+* You can query single feature to see what data is associated to it by selecting the layer, and using the "Identify Features" button in the toolbar. After clicking on a feature, it highlights in bright red and the "Identify Results" panel shows the associated data.
+* With the Layer Styling panel open, play with Labels and Symbology to add information to the map. For example, pick a categorical variable with the "Categorized" symbology or a numeric variable with "Graduated" symbology.
 
+## Exporting and publishing interactive maps
 
-## Exporting with QGIS Cloud or QGIS to HTML
+You are not limited to only sharing static maps. To create (and publish) interactive web maps, here are some options:
+
+* [QGIC Cloud](https://qgiscloud.com/): you will need an account. You can then install the "QGIS Cloud Plugin" to publish your project from QGIS.
+* [MapHub](https://www.maphub.co/): similarly to QGIS Cloud, you can create an account (there is a free tier to trial it), install a plugin and upload projects.
+* [qgis2web](https://qgis2web.github.io/qgis2web/): a plugin that allows exporting a project to HTML, using either OpenLayers or Leaflet. This results in a HTML file that is interactive, and can be shared with others, or published on a website if you have one.
