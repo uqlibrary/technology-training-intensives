@@ -322,15 +322,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#local-reprojection" id="toc-local-reprojection" class="nav-link" data-scroll-target="#local-reprojection">Local Reprojection</a></li>
   <li><a href="#buffer-reprojected-lines" id="toc-buffer-reprojected-lines" class="nav-link" data-scroll-target="#buffer-reprojected-lines">Buffer Reprojected Lines</a></li>
   </ul></li>
-  <li><a href="#extension---compare-buffer-to-population" id="toc-extension---compare-buffer-to-population" class="nav-link" data-scroll-target="#extension---compare-buffer-to-population">Extension - Compare Buffer to Population</a></li>
-  <li><a href="#load-in-data" id="toc-load-in-data" class="nav-link" data-scroll-target="#load-in-data">Load in data</a></li>
-  <li><a href="#tabular-data" id="toc-tabular-data" class="nav-link" data-scroll-target="#tabular-data">Tabular data</a>
+  <li><a href="#extension---compare-buffer-to-population" id="toc-extension---compare-buffer-to-population" class="nav-link" data-scroll-target="#extension---compare-buffer-to-population">Extension - Compare Buffer to Population</a>
   <ul class="collapse">
-  <li><a href="#joining-tabular-data" id="toc-joining-tabular-data" class="nav-link" data-scroll-target="#joining-tabular-data">Joining tabular data</a></li>
-  </ul></li>
+  <li><a href="#load-in-data" id="toc-load-in-data" class="nav-link" data-scroll-target="#load-in-data">Load in data</a></li>
+  <li><a href="#tabular-data" id="toc-tabular-data" class="nav-link" data-scroll-target="#tabular-data">Tabular data</a></li>
   <li><a href="#select-features-using-an-expression" id="toc-select-features-using-an-expression" class="nav-link" data-scroll-target="#select-features-using-an-expression">Select features using an expression</a></li>
   <li><a href="#intersect-dust-buffer-with-population" id="toc-intersect-dust-buffer-with-population" class="nav-link" data-scroll-target="#intersect-dust-buffer-with-population">Intersect Dust Buffer with Population</a></li>
   <li><a href="#add-and-calculate-fields" id="toc-add-and-calculate-fields" class="nav-link" data-scroll-target="#add-and-calculate-fields">Add and calculate fields</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -367,7 +366,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In this workshop, we will learn about:</p>
 <ul>
 <li>Why we have Projections and what goes wrong without them</li>
-<li>GCS vs PCS</li>
+<li>Geographic Coordinate Systems vs Projected Coordinate Systems</li>
 <li>Local Projections</li>
 <li>Projection Calculation differences</li>
 <li>Buffers and Intersections</li>
@@ -392,10 +391,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="projected-coordinate-systems">Projected Coordinate Systems</h3>
 <p><strong>Projected Coordinate Systems (PCS)</strong> tell you <em>how</em> to make that map flat. They allow you to measure in metres rather than angular degrees. A PCS has an underlying GCS, as it needs a spherical model of the earth to then distort and make it flat. There are many ways to do this, and many different projections exist, they even talk about <a href="https://www.facebook.com/watch/?v=2834189703494594">projections on the West Wing</a>.</p>
 <p>To turn the geoid/spheroid shape of the Earth into a flat map, we need to squish, stretch, and distort the map to make it flat. The mathematical equations used to do this are what we’re talking about when we say “<strong>projections</strong>”.</p>
-<p>Imagine it like a soccer ball, if we have to squash it to make it flat, it’s not going to look nice and square like our maps do. So we either need to unfold it as a 2d net, or pull and stretch it to make it flat and rectangular. There will always be some kind of distortion when we stretch our map like this, so the projection you choose depends on what compromises you are happy to make, where you are, and what you’re doing. Your projection choice will affect Area, Shape, Direction, Bearing, and Distance. For example, the Mercator Projection prioritises bearing for sea navigation, but greatly distorts area. This is why it makes Greenland look large, and Africa look smaller than it really is.</p>
+<p>Imagine it like a soccer ball: if we have to squash it to make it flat, it’s not going to look nice and square like our maps do. So we either need to unfold it as a 2d net, or pull and stretch it to make it flat and rectangular. There will always be some kind of distortion when we stretch our map like this, so the projection you choose depends on what compromises you are happy to make, where you are, and what you’re doing. Your projection choice will affect Area, Shape, Direction, Bearing, and Distance. For example, the Mercator Projection prioritises bearing for sea navigation, but greatly distorts area. This is why it makes Greenland look large, and Africa look smaller than it really is.</p>
 <p><img src="https://www.f-lohmueller.de/pov_anim/geometry/Buckyball_soc_010b.gif" class="img-fluid"></p>
-<p>To avoid this kind of distortion caused by generic global projections, often local projections are used. There are fewer compromises needed when focused on a small area. By using a local projection, we don’t need to worry about keeping Greenland looking the right shape if we’re focused on Brisbane. Going back to Soccer balls, if we cut out a single panel from the ball, it will be much easier to make that flat. This is how systems like the Map Grid of Australia (MGA) work. The MGA (based off the Universal Transverse Mercator - UTM) slices Australia into strips and focus on reducing distortions . https://upload.wikimedia.org/wikipedia/commons/8/84/World_borders_utm.png</p>
-<p><strong>EPSG:3857 – WGS 84 / Psuedo-Mercator</strong> is the most common Projected Coordinate System that you will come across, it’s used as the default by platforms like Google Maps. As you might guess it uses the WGS84 GCS with a form of the Mercator projection.</p>
+<p>To avoid this kind of distortion caused by generic global projections, often local projections are used. There are fewer compromises needed when focused on a small area. By using a local projection, we don’t need to worry about keeping Greenland looking the right shape if we’re focused on Brisbane. Going back to Soccer balls, if we cut out a single panel from the ball, it will be much easier to make that flat. This is how systems like the Map Grid of Australia (MGA) work. The MGA (based off the Universal Transverse Mercator - UTM) slices Australia into strips and focus on reducing distortions.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://commons.wikimedia.org/wiki/File:World_borders_utm.png"><img src="https://upload.wikimedia.org/wikipedia/commons/8/84/World_borders_utm.png" class="img-fluid figure-img"></a></p>
+<figcaption>How the UTM divides the earth into strips (Koenb, [WIkimedia Commons](https://commons.wikimedia.org/wiki/File:World_borders_utm.png), Public Domain)</figcaption>
+</figure>
+</div>
+<p><strong>EPSG:3857 – WGS 84 / Pseudo-Mercator</strong> is the most common Projected Coordinate System that you will come across, it’s used as the default by platforms like Google Maps. As you might guess it uses the WGS84 GCS with a form of the Mercator projection.</p>
 <p><strong>EPSG:7856 – GDA2020 / MGA zone 56</strong> is a local projection that you would use for parts of Eastern Australia. It uses the Geodetic Datum of Australia GCS, and the Map Grid of Australia to project.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -432,7 +437,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><p>Go to <code>Vector &gt; Geoprocessing Tools &gt; Buffer</code></p></li>
 <li><p>Choose “<strong>Proposed Access Track</strong>” as the Input Layer</p></li>
-<li><p>We next want to choose distance that we want to create a buffer away from our vector.</p>
+<li><p>We next want to choose the distance between our vector data and the buffer’s edge.</p>
 <ul>
 <li>However, you’ll note that the distance is currently in <strong>degrees</strong>.</li>
 </ul></li>
@@ -480,8 +485,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><p>Go to <code>Vector &gt; Data Management Tools &gt; Reproject Layer...</code></p></li>
 <li><p>Again, choose the <strong>Proposed Access Track</strong> in <code>Input layer</code></p></li>
-<li><p>This time, set the Target CRS to <code>EPSG:7856 - GDA2020 / MGA zone 56</code></p></li>
-<li><p>Let’s save the output this time. Scroll down to click the three dots <code>...</code> next to the <strong>Reprojected</strong> field, navigate to the project’s <strong>processed</strong> data folder, and type in <strong>Access_Track</strong> and click <code>Save</code></p></li>
+<li><p>This time, set the Target CRS to <code>EPSG:7856 - GDA2020 / MGA zone 56</code> (our Project CRS)</p></li>
+<li><p>Let’s save the output this time. Scroll down to click the three dots <code>...</code> next to the <strong>Reprojected</strong> field, click on “<strong>Save to GeoPackage</strong>”, navigate to the project’s <strong>processed</strong> data folder, and type in <strong>Access_Track</strong> and click <code>Save</code></p></li>
 <li><p>Click <code>Run</code></p></li>
 </ul>
 </section>
@@ -492,42 +497,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Choose the newly created “<strong>Access_Track</strong>” as the <code>Input Layer</code></p></li>
 <li><p>Set the <code>Distance</code> to <strong>2</strong> kilometres</p></li>
 <li><p>Tick the <code>Dissolve result</code> box</p></li>
-<li><p>Scroll down to click the three dots <code>...</code> next to the <strong>Buffered</strong> field, navigate to the project’s <strong>processed</strong> data folder, and type in <strong>Dust_2km</strong> and click <code>Save</code></p></li>
+<li><p>Scroll down to click the three dots <code>...</code> next to the <strong>Buffered</strong> field, click on “<strong>Save to GeoPackage</strong>”, navigate to the project’s <strong>processed</strong> data folder, and type in <strong>Dust_2km</strong> and click <code>Save</code></p></li>
 <li><p>Click <code>Run</code></p></li>
 </ul>
 <p>Move the <strong>Buffered</strong> layer order so that it draws over the <strong>Dust_2km</strong> layer. Notice anything interesting?</p>
 <p>The <strong>Buffered</strong> layer is over 200m smaller!</p>
 <p>This is because <strong>EPSG:3857 - WGS84 / Pseudo-Mercator</strong> is a global projection that tries to preserve angles and shapes. Although the units are in metres, the scaling factor changes as you move away from the equator to account for the curvature of the Earth.</p>
-<p>It can still be useful to use this projection to take points. But you have to be careful when you’re making measurements and calculations, for those, a local projection is usually better.</p>
+<p>It can still be useful to use this projection to take points. But you have to be careful when you’re making measurements and calculations; for those, a local projection is usually better.</p>
 <blockquote class="blockquote">
-<p>Optional: Create multiple Dust Bands at 250m, 750m, and 2km, use difference to take the smaller bands away from the larger bands, merge the three layers together, then assign a new field called dust_level with High / Medium / Low.</p>
+<p>Optional: Create multiple Dust Bands at 250m, 750m, and 2km; use the Difference tool to take the smaller bands away from the larger bands,;merge the three layers together, then assign a new field called “dust_level” with High / Medium / Low.</p>
 </blockquote>
 </section>
 </section>
 <section id="extension---compare-buffer-to-population" class="level2">
 <h2 class="anchored" data-anchor-id="extension---compare-buffer-to-population">Extension - Compare Buffer to Population</h2>
 <p>Now that we have this buffer we can compare it to the surrounding population.</p>
-</section>
-<section id="load-in-data" class="level2">
-<h2 class="anchored" data-anchor-id="load-in-data">Load in data</h2>
+<section id="load-in-data" class="level3">
+<h3 class="anchored" data-anchor-id="load-in-data">Load in data</h3>
 <ul>
-<li><p>Click the <code>Project Home</code> dropdown, then <code>data &gt; raw &gt; 3-projections_data</code> and load in:</p></li>
-<li><p>sa1_2021_bris_mga56.gpkg (suburb data from the <a href="https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files">Australian Bureau of Statistics</a>) Right click the <code>sa1_2021_bris_mga56</code> layer and <code>Rename...</code> it to “SA1 Boundaries”.</p></li>
-<li><p>sa1_2021_pop_age.csv (demographic data from the ABS, but accessed through the <a href="https://www.qgso.qld.gov.au/">Queensland Government Statistician’s Office</a>)</p></li>
+<li><p>Click the <code>Project Home</code> dropdown, then <code>data &gt; raw &gt; 3-projections_data</code> and load in:</p>
+<ul>
+<li><p>“sa1_2021_bris_mga56.gpkg” (suburb data from the <a href="https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files">Australian Bureau of Statistics</a>)</p>
+<ul>
+<li>Right-click the <code>sa1_2021_bris_mga56</code> layer and <code>Rename...</code> it to “SA1 Boundaries”.</li>
+</ul></li>
+<li><p>“sa1_2021_pop_age.csv” (demographic data from the ABS, but accessed through the <a href="https://www.qgso.qld.gov.au/">Queensland Government Statistician’s Office</a>)</p></li>
+</ul></li>
 </ul>
 </section>
-<section id="tabular-data" class="level2">
-<h2 class="anchored" data-anchor-id="tabular-data">Tabular data</h2>
-<p>QGIS can deal with plain tabular data. For example, try importing the file sa1_2021_pop_age.csv: it doesn’t contain any coordinates, but we can still store it as a layer and use it in our project. You can see the data it contains by opening its attribute table.</p>
+<section id="tabular-data" class="level3">
+<h3 class="anchored" data-anchor-id="tabular-data">Tabular data</h3>
+<p>QGIS can deal with plain tabular data. For example, try importing the file “sa1_2021_pop_age.csv”: it doesn’t contain any coordinates, but we can still store it as a layer and use it in our project. You can see the data it contains by opening its attribute table.</p>
 <p>How can we add the Statistical Area 1 (SA1) Demographic data to our existing <code>SA1 Boundaries</code> layer?</p>
-<section id="joining-tabular-data" class="level3">
-<h3 class="anchored" data-anchor-id="joining-tabular-data">Joining tabular data</h3>
+<section id="joining-tabular-data" class="level4">
+<h4 class="anchored" data-anchor-id="joining-tabular-data">Joining tabular data</h4>
 <p>To add the SA1 Demographic data to our SA1 layer, we can go the the <code>SA1 Boundaries</code> layer’s properties, use the <img src="https://docs.qgis.org/3.40/en/_images/join.png" class="img-fluid" alt="Join Button"> <code>Joins</code> tab and click the <code>Add new join</code> button <img src="https://docs.qgis.org/3.40/en/_images/symbologyAdd.png" class="img-fluid" alt="Add New Join Button"> to create a new join. We can then choose the sa1_2021_pop_age data as the <code>Join layer</code>, and define what common field between the two tables we will merge on: the SA1_CODE21 code in our case.</p>
-<p>You can now see the joined data highlighted in green in the <img src="https://docs.qgis.org/3.40/en/_images/mSourceFields.png" class="img-fluid" alt="Fields Tab Button"><code>Fields</code> tab, click “OK”, and check the actual values in the <code>SA1 Bris</code> layer’s attribute table.</p>
+<p>You can now see the joined data highlighted in green in the <img src="https://docs.qgis.org/3.40/en/_images/mSourceFields.png" class="img-fluid" alt="Fields Tab Button"><code>Fields</code> tab, click “OK”, and check the actual values in the <code>SA1 Boundaries</code> layer’s attribute table.</p>
 </section>
 </section>
-<section id="select-features-using-an-expression" class="level2">
-<h2 class="anchored" data-anchor-id="select-features-using-an-expression">Select features using an expression</h2>
+<section id="select-features-using-an-expression" class="level3">
+<h3 class="anchored" data-anchor-id="select-features-using-an-expression">Select features using an expression</h3>
 <p>Before running analyses on data, it’s worth subsetting down to the smallest necessary dataset so that your analyses run faster. We have already used different kinds of manual selection, but we can also use a select expression to subset our SA1 Data down to closer suburbs. This will be faster than manually picking them.</p>
 <p>The following code will allow you to select the SA1 features that are near to Enoggera Hills.</p>
 <ul>
@@ -540,7 +549,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ot">"SA4_NAME21"</span> <span class="op">=</span> <span class="st">'Brisbane - North'</span>  <span class="kw">OR</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ot">"SA3_NAME21"</span>  <span class="kw">LIKE</span>  <span class="st">'%Hills%'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p>This is SQL code, which is great for querying databases. This code selects any row that matches any of the criteria (this OR that). The first three look for exact matches, the last one looks to match the pattern given. The % acts like wildcard, so it’s looking for any row that contains Brisbane.</p>
+<p>This is SQL code, which is great for querying databases. This code selects any row that matches any of the criteria (this OR that). The first three look for exact matches, the last one looks to match the pattern given. The % acts like wildcard, so it’s looking for any row that contains “Hills”.</p>
 </blockquote>
 <ul>
 <li>Close the Select by Expression window and Attribute Table</li>
@@ -551,18 +560,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>If you haven’t done so already, untick and hide all the original layers we aren’t using any more.</p>
 </section>
-<section id="intersect-dust-buffer-with-population" class="level2">
-<h2 class="anchored" data-anchor-id="intersect-dust-buffer-with-population">Intersect Dust Buffer with Population</h2>
+<section id="intersect-dust-buffer-with-population" class="level3">
+<h3 class="anchored" data-anchor-id="intersect-dust-buffer-with-population">Intersect Dust Buffer with Population</h3>
 <ul>
 <li><p>Go to <code>Vector &gt; Geoprocessing Tools &gt; Intersection</code></p></li>
 <li><p>Choose the newly created “<strong>SA1_EH</strong>” as the <code>Input Layer</code></p></li>
 <li><p>Choose “<strong>Dust_2km</strong>” as the <code>Overlay Layer</code></p></li>
-<li><p>Scroll down to click the three dots <code>...</code> next to the <strong>Intersection</strong> field, navigate to the project’s <strong>processed</strong> data folder, and type in <strong>Dust_pop</strong> and click <code>Save</code></p></li>
+<li><p>Scroll down to click the three dots <code>...</code> next to the <strong>Intersection</strong> field, click on “<strong>Save to GeoPackage</strong>”, navigate to the project’s <strong>processed</strong> data folder, and type in <strong>Dust_pop</strong> and click <code>Save</code></p></li>
 <li><p>Click <code>Run</code></p></li>
 </ul>
 </section>
-<section id="add-and-calculate-fields" class="level2">
-<h2 class="anchored" data-anchor-id="add-and-calculate-fields">Add and calculate fields</h2>
+<section id="add-and-calculate-fields" class="level3">
+<h3 class="anchored" data-anchor-id="add-and-calculate-fields">Add and calculate fields</h3>
 <p>Because only part of an SA1 may fall inside a buffer, apply a screening assumption: Population is evenly distributed within each SA1.</p>
 <ul>
 <li>Right-click <code>Dust_pop</code> and open it’s Attribute Table</li>
@@ -587,6 +596,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>If we open the <code>Field Calulator</code> again and type <code>sum(affected_pop)</code> we can see the total affected vulnerable population at the bottom of the window.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
