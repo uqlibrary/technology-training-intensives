@@ -18,7 +18,7 @@ How accessible are key services (e.g. health clinics, parks, libraries, public t
 **What you might analyse:**
 - Locations of services (points)
 - Population or suburb boundaries (polygons)
-- Distance or service catchments
+- Distance or service catchments (buffers)
 
 **Techniques to use:**
 - Import vector data  
@@ -35,8 +35,8 @@ How accessible are key services (e.g. health clinics, parks, libraries, public t
 
 **Extension:**
 - Add a population or elevation raster to assess accessibility by terrain or density.  
-- Try **Zonal Statistics** to calculate average population or elevation within service catchments.  
-- Explore **Service Area (Network Analysis)** for more realistic travel distances.
+- Try [**Zonal Statistics**](https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#zonal-statistics) to calculate average population or elevation within service catchments.
+- Explore [**Service Area (Network Analysis)**](https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/networkanalysis.html#service-area-from-layer) for more realistic travel distances.
 :::
 
 ::: {.callout-tip collapse="true"}
@@ -54,7 +54,6 @@ Which areas are most exposed to an environmental risk (e.g. flood, heat, bushfir
 - Raster styling  
 - Clip rasters  
 - Reclassification  
-- Zonal statistics  
 - Choropleth mapping
 
 **Possible outputs:**
@@ -64,8 +63,9 @@ Which areas are most exposed to an environmental risk (e.g. flood, heat, bushfir
 
 **Extension:**
 - Add population polygons or building footprints as vector data.  
-- Use **Raster Calculator** to combine multiple risk layers.  
-- Try **Extract by Mask** to isolate high‑risk zones.
+- Try [**Zonal Statistics**](https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#zonal-statistics) to calculate average population that may be affected.
+- Use [**Raster Calculator**](https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#raster-calculator) to combine multiple risk layers.  
+- Try [**Extract by Mask**](https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#extract-by-mask) to isolate high‑risk zones.
 :::
 
 ::: {.callout-tip collapse="true"}
@@ -86,14 +86,15 @@ How is land used in this area, and how does that relate to human activity?
 - Digitising land use areas
 
 **Possible outputs:**
-- Land use map  
+- Land use map  with legend and labels
 - Chart or statistic by land use type  
 - Map layout with legend and labels
 
 **Extension:**
 - Add a land surface temperature or vegetation raster.  
-- Use **Zonal Statistics** to summarise raster values by land use type.  
-- Try **Spatial Join (Summary)** to attach population counts to land use zones.
+- Use [**Zonal Statistics**](https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#zonal-statistics) to summarise raster values by land use type.  
+- Try [**Spatial Join (Summary)**](https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/vectoranalysis.html#join-attributes-by-location-summary) to attach population counts to land use zones.
+
 :::
 
 ::: {.callout-tip collapse="true"}
@@ -120,8 +121,8 @@ Which parts of the city are most exposed to heat, and where is shade available?
 
 **Extension:**
 - Add suburb or census polygons as vector data.  
-- Use **Raster Calculator** to combine heat and vegetation layers.  
-- Try **Line Density** on footpaths to find heavily exposed walking routes.
+- Use [**Raster Calculator**](https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#raster-calculator) to combine heat and vegetation layers.
+- Try [**Line Density**](https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/vectoranalysis.html#line-density) on footpaths to find heavily exposed walking routes.
 :::
 
 ::: {.callout-tip collapse="true"}
@@ -148,8 +149,8 @@ Where do wildlife habitats overlap with urban or agricultural land?
 
 **Extension:**
 - Add elevation or vegetation raster.  
-- Use **Zonal Statistics** to summarise habitat quality by area.  
-- Try **Proximity (Distance to Nearest Hub)** to measure distance to roads or towns.
+- Use [**Zonal Statistics**](https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#zonal-statistics) to summarise habitat quality by area.  
+- Try [**Proximity (Distance to Nearest Hub)**](https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/vectoranalysis.html#distance-to-nearest-hub) to measure distance to roads or towns.
 :::
 
 ::: {.callout-tip collapse="true"}
@@ -176,8 +177,8 @@ Where would be the best location for a new park, school, clinic, or bike path?
 
 **Extension:**
 - Add land value or zoning polygons as vector data.  
-- Use **Raster Calculator** to weight suitability factors.  
-- Try **Multi‑criteria Evaluation (simple overlay)** with reclassified rasters.
+- Use [**Raster Calculator**](https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#raster-calculator) to weight suitability factors.  
+- Try [**Multi‑criteria Evaluation (simple overlay)**](https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#weighted-overlay) with reclassified rasters.
 :::
 
 ::: {.callout-tip collapse="true"}
@@ -204,8 +205,8 @@ What spatial patterns exist in a set of events or observations?
 
 **Extension:**
 - Add a population or land cover raster.  
-- Use **Kernel Density Estimation** for smoother patterns.  
-- Try **Nearest Neighbour Analysis** for clustering insight.
+- Use [**Kernel Density Estimation**](https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/vectoranalysis.html#heatmap-kernel-density-estimation) for smoother patterns.  
+- Try [**Nearest Neighbour Analysis**](https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/vectoranalysis.html#nearest-neighbour-analysis) for clustering insight.
 :::
 
 ::: {.callout-tip collapse="true"}
@@ -220,7 +221,7 @@ What can we learn from data you collect yourself?
 - Noise or pollution points
 
 **Techniques to use:**
-- Smartphone data collection  
+- Smartphone data collection (or plot points using satellite data)
 - Importing CSV or GeoPackage  
 - Styling points  
 - Basic spatial analysis
@@ -232,8 +233,8 @@ What can we learn from data you collect yourself?
 
 **Extension:**
 - Add a satellite image or vegetation raster.  
-- Use **Spatial Join (Summary)** to link observations to areas.  
-- Try **Point Density** to highlight hotspots.
+- Use [**Spatial Join (Summary)**](https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/vectoranalysis.html#join-attributes-by-location-summary) to link observations to areas.  
+- Try [**Point Density**](https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/vectoranalysis.html#point-density) to highlight hotspots.
 :::
 
 ::: {.callout-tip collapse="true"}
@@ -260,12 +261,46 @@ How does transport infrastructure shape access or movement?
 
 **Extension:**
 - Add a slope or elevation raster to model walking difficulty.  
-- Use **Raster Calculator** to combine slope and distance.  
-- Try **Network Shortest Path** for simple routing.
+- Use [**Raster Calculator**](https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#raster-calculator) to combine slope and distance.  
+- Try [**Network Shortest Path**](https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/networkanalysis.html#shortest-path-point-to-point) for simple routing.
 :::
 
+## Scenario 10: Archaeological Sensitivity and Cultural Landscape Assessment
+
+**Story question:**  
+Which areas are more likely to contain Aboriginal archaeological sites, and how might proposed development impact cultural landscapes?
+
+**What you might analyse:**
+- Known site locations (points or polygons)  
+- Landforms (elevation, slope, aspect)  
+- Distance to water sources (rivers, wetlands, coast)  
+- Land use or disturbance layers  
+- Project or development boundaries
+
+**Techniques to use:**
+- Import vector and raster data from authoritative sources  
+- Reproject layers to an appropriate Australian projected CRS (e.g. MGA / GDA2020)  
+- Buffer water sources or landforms  
+- Try Extract by Mask to limit analysis to the project footprint or study area
+- Combine rasters to build a simple predictive surface  
+- Vector intersection with development footprints
+- Apply a **custom styling theme or template** to ensure consistent symbology across reports.  
+
+**Possible outputs:**
+- Archaeological sensitivity or probability surface  
+- Map of high, medium, and low sensitivity zones  
+- Areas of potential impact within development boundaries  
+- Styled map suitable for inclusion in a consulting report
+
+**Extension:**
+
+- Use the [**Raster Calculator to reclassify**](https://docs.qgis.org/3.40/en/docs/training_manual/rasters/terrain_analysis.html#follow-along-reclassifying-the-raster) and combine environmental predictors into a single sensitivity surface.
+- Use [**Zonal Statistics**](https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#zonal-statistics) to summarise sensitivity values within development parcels or survey areas.  
+- Explore [**Proximity (Raster Distance)**](https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#proximity-distance) as an input to a simple predictive model.  
+
+
 ::: {.callout-tip collapse="true"}
-### Scenario 10: A Place-Based Story
+### Scenario 11: A Place-Based Story of your Choosing
 
 **Story question:**  
 What spatial story can you tell about a place that matters to you?
@@ -288,8 +323,8 @@ What spatial story can you tell about a place that matters to you?
 
 **Extension:**
 - Add either a DEM or land cover raster if using mostly vector data.  
-- Try **Zonal Statistics** or **Raster Calculator** for deeper analysis.  
-- Explore **Viewshed** or **Slope** for terrain‑based stories.
+- Try [**Zonal Statistics**](https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#zonal-statistics) or [**Raster Calculator**](https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#raster-calculator) for deeper analysis.  
+- Explore [**Viewshed**](https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#viewshed) or [**Slope**](https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#slope) for terrain‑based stories.
 :::
 
   
@@ -373,6 +408,17 @@ A Digital Elevation Model (DEM) is **raster data** that shows the elevation of a
 
 :::
 
+### Land, Vegetation, Hazard Rasters
+
+GeoScience have a a varierty of [OGC Webservice Data](https://knowledge.dea.ga.gov.au/data/) that you can access Earth and Envrionment related rasters in the same way we used WebMapping Services to access Basemaps.
+
+### Climate Rasters
+
+The [Bureau of Meterology](https://www.bom.gov.au/climate/maps/averages/) has many types of Grid data of climate data (Rainfall, Temperature, Solar Exposure, etc) that you can download and import into QGIS.
+
+### Population Rasters
+
+The ABS have a lot of useful data, including population data. They provide it in excel format, as GeoPackages (by SA2 and LGAs), and as [population grid raster files](https://www.abs.gov.au/statistics/people/population/regional-population/latest-release#data-download).
 
 ### Aerial Imagery
 
@@ -551,7 +597,13 @@ Another way to access QSpatial Data is using the Queensland Globe portal. Here i
 :::  
 
 ### Federal Government Data
+
+#### Data.gov
+
+You can search for data on [data.gov](https://data.gov.au/data/dataset/), and then filter the formats only for spatial files like SHP, tif, GEOTIFF, GeoJSON, KML, KMZ, GDB, FGDB, GeoPackage, NetCDF, ASC, REST, WCS, ESRI, ArcGIS, WFS, WMS, WMTS, WCM, etc.
   
+#### Digital Atlas of Australia
+Explore data similar to data.gov, but explcitly for spatial data and interactive maps with the [Digital Atlas of Australia](https://digital.atlas.gov.au)
   
 
 [CSIRO spatial products](https://data.csiro.au/collections/search/SQDEM/STsearch-by-keyword/)
@@ -575,6 +627,8 @@ The Federal Environment Department has a variety of [different spatial datasets 
 
 One example is the Collaborative Australian Protected Areas Database (CAPAD) 2020, which is a compilation of government, Indigenous and privately protected areas for Australia. You can search for "CAPAD" in on the Environment Department website, or by going [directly to the data](http://www.environment.gov.au/fed/catalog/search/resource/details.page?uuid=%7B4448CACD-9DA8-43D1-A48F-48149FD5FCFD%7D).
 
+
+
 :::
 
 
@@ -591,6 +645,8 @@ The ABS has a variety of ways that it splits its data up. These [Digital Boundar
 ##### Population Data
 
 The ABS have a lot of useful data, including population data. They provide it in excel format, as GeoPackages (by SA2 and LGAs), and as population grid raster files. SA2 [GeoPackages](https://www.abs.gov.au/statistics/people/population/regional-population/latest-release#data-download) are a convenient format for QGIS. This means we have our digital boundaries, and population in one!
+
+You can also find tabular data separated by state containing information like [Crime Data](https://www.abs.gov.au/statistics/people/crime-and-justice/recorded-crime-offenders/latest-release#data-downloads)
 :::
 
 
