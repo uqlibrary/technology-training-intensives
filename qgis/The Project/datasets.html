@@ -341,20 +341,39 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Story question:</strong><br>
-How accessible are key services (e.g.&nbsp;health clinics, parks, libraries, public transport) in your chosen area?</p>
-<p><strong>What you might analyse:</strong> - Locations of services (points) - Population or suburb boundaries (polygons) - Distance or service catchments (buffers)</p>
-<p><strong>Techniques to use:</strong> - Import vector data<br>
-- Reproject layers<br>
-- Buffer services<br>
-- Count services per area<br>
-- Style with graduated symbology<br>
-- Layout Manager</p>
-<p><strong>Possible outputs:</strong> - Map showing service access<br>
-- Statistic: services per suburb or per capita<br>
-- Digitised service catchments</p>
-<p><strong>Extension:</strong> - Add a population or elevation raster to assess accessibility by terrain or density.<br>
-- Try <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#zonal-statistics"><strong>Zonal Statistics</strong></a> to calculate average population or elevation within service catchments. - Explore <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/networkanalysis.html#service-area-from-layer"><strong>Service Area (Network Analysis)</strong></a> for more realistic travel distances.</p>
+<p><strong>Story question:</strong></p>
+<p>How accessible are key services (e.g.&nbsp;health clinics, parks, libraries, public transport) in your chosen area?</p>
+<p><strong>What you might analyse:</strong></p>
+<ul>
+<li>Locations of services (points)</li>
+<li>Population or suburb boundaries (polygons)</li>
+<li>Distance or service catchments (buffers)</li>
+</ul>
+<p><strong>Techniques to use:</strong></p>
+<ul>
+<li>Import vector data</li>
+<li>Reproject layers<br>
+</li>
+<li>Buffer services<br>
+</li>
+<li>Count services per area<br>
+</li>
+<li>Style with graduated symbology</li>
+</ul>
+<p><strong>Possible outputs:</strong></p>
+<ul>
+<li>Map showing service access<br>
+</li>
+<li>Statistic: services per suburb or per capita<br>
+</li>
+<li>Digitised service catchments</li>
+</ul>
+<p><strong>Extension:</strong></p>
+<ul>
+<li>Add a population or elevation raster to assess accessibility by terrain or density.</li>
+<li>Try <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#zonal-statistics"><strong>Zonal Statistics</strong></a> to calculate average population or elevation within service catchments.</li>
+<li>Explore <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/networkanalysis.html#service-area-from-layer"><strong>Service Area (Network Analysis)</strong></a> for more realistic travel distances.</li>
+</ul>
 </div>
 </div>
 </div>
@@ -370,21 +389,41 @@ How accessible are key services (e.g.&nbsp;health clinics, parks, libraries, pub
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Story question:</strong><br>
-Which areas are most exposed to an environmental risk (e.g.&nbsp;flood, heat, bushfire, erosion)?</p>
-<p><strong>What you might analyse:</strong> - Hazard raster or vector data<br>
-- Elevation or land cover<br>
-- Administrative boundaries</p>
-<p><strong>Techniques to use:</strong> - Raster styling<br>
-- Clip rasters<br>
-- Reclassification<br>
-- Choropleth mapping</p>
-<p><strong>Possible outputs:</strong> - Risk map<br>
-- Population or land area affected<br>
-- Styled layout for communication</p>
-<p><strong>Extension:</strong> - Add population polygons or building footprints as vector data.<br>
-- Try <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#zonal-statistics"><strong>Zonal Statistics</strong></a> to calculate average population that may be affected. - Use <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#raster-calculator"><strong>Raster Calculator</strong></a> to combine multiple risk layers.<br>
-- Try <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#extract-by-mask"><strong>Extract by Mask</strong></a> to isolate high‑risk zones.</p>
+<p><strong>Story question:</strong></p>
+<p>Which areas are most exposed to an environmental risk (e.g.&nbsp;flood, heat, bushfire, erosion)?</p>
+<p><strong>What you might analyse:</strong></p>
+<ul>
+<li>Hazard raster or vector data<br>
+</li>
+<li>Elevation or land cover<br>
+</li>
+<li>Administrative boundaries</li>
+</ul>
+<p><strong>Techniques to use:</strong></p>
+<ul>
+<li>Raster styling<br>
+</li>
+<li>Clip rasters<br>
+</li>
+<li>Reclassification<br>
+</li>
+<li>Choropleth mapping</li>
+</ul>
+<p><strong>Possible outputs:</strong></p>
+<ul>
+<li>Risk map<br>
+</li>
+<li>Population or land area affected</li>
+</ul>
+<p><strong>Extension:</strong></p>
+<ul>
+<li>Add population polygons or building footprints as vector data.<br>
+</li>
+<li>Try <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#zonal-statistics"><strong>Zonal Statistics</strong></a> to calculate average population that may be affected.</li>
+<li>Use <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#raster-calculator"><strong>Raster Calculator</strong></a> to combine multiple risk layers.<br>
+</li>
+<li>Try <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/gdal/rasterextraction.html"><strong>Extract by Mask</strong></a> to isolate high‑risk zones.</li>
+</ul>
 </div>
 </div>
 </div>
@@ -400,20 +439,39 @@ Which areas are most exposed to an environmental risk (e.g.&nbsp;flood, heat, bu
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Story question:</strong><br>
-How is land used in this area, and how does that relate to human activity?</p>
-<p><strong>What you might analyse:</strong> - Land use polygons<br>
-- Population or infrastructure<br>
-- Satellite imagery</p>
-<p><strong>Techniques to use:</strong> - Categorised symbology<br>
-- Area calculations<br>
-- Intersections<br>
-- Digitising land use areas</p>
-<p><strong>Possible outputs:</strong> - Land use map with legend and labels - Chart or statistic by land use type<br>
-- Map layout with legend and labels</p>
-<p><strong>Extension:</strong> - Add a land surface temperature or vegetation raster.<br>
-- Use <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#zonal-statistics"><strong>Zonal Statistics</strong></a> to summarise raster values by land use type.<br>
-- Try <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/vectoranalysis.html#join-attributes-by-location-summary"><strong>Spatial Join (Summary)</strong></a> to attach population counts to land use zones.</p>
+<p><strong>Story question:</strong></p>
+<p>How is land used in this area, and how does that relate to human activity?</p>
+<p><strong>What you might analyse:</strong></p>
+<ul>
+<li>Land use polygons<br>
+</li>
+<li>Population or infrastructure<br>
+</li>
+<li>Satellite imagery</li>
+</ul>
+<p><strong>Techniques to use:</strong></p>
+<ul>
+<li>Categorised symbology<br>
+</li>
+<li>Area calculations<br>
+</li>
+<li>Intersections<br>
+</li>
+<li>Digitising land use areas</li>
+</ul>
+<p><strong>Possible outputs:</strong></p>
+<ul>
+<li>Land use map with legend and labels</li>
+<li>Chart or statistic by land use type</li>
+</ul>
+<p><strong>Extension:</strong></p>
+<ul>
+<li>Add a land surface temperature or vegetation raster.<br>
+</li>
+<li>Use <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#zonal-statistics"><strong>Zonal Statistics</strong></a> to summarise raster values by land use type.<br>
+</li>
+<li>Try <a href="https://docs.qgis.org/latest/en/docs/user_manual/working_with_vector/joins_relations.html"><strong>Spatial Join</strong></a> to attach population counts to land use zones.</li>
+</ul>
 </div>
 </div>
 </div>
@@ -429,20 +487,41 @@ How is land used in this area, and how does that relate to human activity?</p>
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Story question:</strong><br>
-Which parts of the city are most exposed to heat, and where is shade available?</p>
-<p><strong>What you might analyse:</strong> - Temperature or vegetation raster<br>
-- Tree canopy or parks<br>
-- Roads or footpaths</p>
-<p><strong>Techniques to use:</strong> - Raster symbology<br>
-- Overlay with vector data<br>
-- Buffer shade sources<br>
-- Zonal statistics</p>
-<p><strong>Possible outputs:</strong> - Heat exposure map<br>
-- Areas lacking shade<br>
-- Digitised shade zones</p>
-<p><strong>Extension:</strong> - Add suburb or census polygons as vector data.<br>
-- Use <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#raster-calculator"><strong>Raster Calculator</strong></a> to combine heat and vegetation layers. - Try <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/vectoranalysis.html#line-density"><strong>Line Density</strong></a> on footpaths to find heavily exposed walking routes.</p>
+<p><strong>Story question:</strong></p>
+<p>Which parts of the city are most exposed to heat, and where is shade available?</p>
+<p><strong>What you might analyse:</strong></p>
+<ul>
+<li>Temperature or vegetation raster<br>
+</li>
+<li>Tree canopy or parks<br>
+</li>
+<li>Roads or footpaths</li>
+</ul>
+<p><strong>Techniques to use:</strong></p>
+<ul>
+<li>Raster symbology<br>
+</li>
+<li>Overlay with vector data<br>
+</li>
+<li>Buffer shade sources<br>
+</li>
+<li>Zonal statistics</li>
+</ul>
+<p><strong>Possible outputs:</strong></p>
+<ul>
+<li>Heat exposure map<br>
+</li>
+<li>Areas lacking shade<br>
+</li>
+<li>Digitised shade zones</li>
+</ul>
+<p><strong>Extension:</strong></p>
+<ul>
+<li>Add suburb or census polygons as vector data.<br>
+</li>
+<li>Use <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#raster-calculator"><strong>Raster Calculator</strong></a> to combine heat and vegetation layers.</li>
+<li>Try <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/interpolation.html#line-density"><strong>Line Density</strong></a> on footpaths to find heavily exposed walking routes.</li>
+</ul>
 </div>
 </div>
 </div>
@@ -458,21 +537,40 @@ Which parts of the city are most exposed to heat, and where is shade available?<
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Story question:</strong><br>
-Where do wildlife habitats overlap with urban or agricultural land?</p>
-<p><strong>What you might analyse:</strong> - Habitat polygons<br>
-- Urban extent or land use<br>
-- Roads or population data</p>
-<p><strong>Techniques to use:</strong> - Vector intersection<br>
-- Field Calculator<br>
-- Categorised symbology<br>
-- Layout Manager</p>
-<p><strong>Possible outputs:</strong> - Conflict or overlap map<br>
-- Area of habitat affected<br>
-- Styled map for communication</p>
-<p><strong>Extension:</strong> - Add elevation or vegetation raster.<br>
-- Use <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#zonal-statistics"><strong>Zonal Statistics</strong></a> to summarise habitat quality by area.<br>
-- Try <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/vectoranalysis.html#distance-to-nearest-hub"><strong>Proximity (Distance to Nearest Hub)</strong></a> to measure distance to roads or towns.</p>
+<p><strong>Story question:</strong></p>
+<p>Where do wildlife habitats overlap with urban or agricultural land?</p>
+<p><strong>What you might analyse:</strong></p>
+<ul>
+<li>Habitat polygons<br>
+</li>
+<li>Urban extent or land use<br>
+</li>
+<li>Roads or population data</li>
+</ul>
+<p><strong>Techniques to use:</strong></p>
+<ul>
+<li>Vector intersection<br>
+</li>
+<li>Field Calculator<br>
+</li>
+<li>Categorised symbology</li>
+</ul>
+<p><strong>Possible outputs:</strong></p>
+<ul>
+<li>Conflict or overlap map<br>
+</li>
+<li>Area of habitat affected<br>
+</li>
+<li>Styled map for communication</li>
+</ul>
+<p><strong>Extension:</strong></p>
+<ul>
+<li>Add elevation or vegetation raster.<br>
+</li>
+<li>Use <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#zonal-statistics"><strong>Zonal Statistics</strong></a> to summarise habitat quality by area.<br>
+</li>
+<li>Try <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/vectoranalysis.html#distance-to-nearest-hub-line-to-hub"><strong>Proximity (Distance to Nearest Hub)</strong></a> to measure distance to roads or towns.</li>
+</ul>
 </div>
 </div>
 </div>
@@ -488,21 +586,42 @@ Where do wildlife habitats overlap with urban or agricultural land?</p>
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Story question:</strong><br>
-Where would be the best location for a new park, school, clinic, or bike path?</p>
-<p><strong>What you might analyse:</strong> - Population density<br>
-- Existing services<br>
-- Slope or elevation</p>
-<p><strong>Techniques to use:</strong> - Buffers<br>
-- Intersections<br>
-- Raster slope or classification<br>
-- Digitising candidate sites</p>
-<p><strong>Possible outputs:</strong> - Suitability map<br>
-- Priority zones<br>
-- Digitised proposed locations</p>
-<p><strong>Extension:</strong> - Add land value or zoning polygons as vector data.<br>
-- Use <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#raster-calculator"><strong>Raster Calculator</strong></a> to weight suitability factors.<br>
-- Try <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#weighted-overlay"><strong>Multi‑criteria Evaluation (simple overlay)</strong></a> with reclassified rasters.</p>
+<p><strong>Story question:</strong></p>
+<p>Where would be the best location for a new park, school, clinic, or bike path?</p>
+<p><strong>What you might analyse:</strong></p>
+<ul>
+<li>Population density<br>
+</li>
+<li>Existing services<br>
+</li>
+<li>Slope or elevation</li>
+</ul>
+<p><strong>Techniques to use:</strong></p>
+<ul>
+<li>Buffers<br>
+</li>
+<li>Intersections<br>
+</li>
+<li>Raster slope or classification<br>
+</li>
+<li>Digitising candidate sites</li>
+</ul>
+<p><strong>Possible outputs:</strong></p>
+<ul>
+<li>Suitability map<br>
+</li>
+<li>Priority zones<br>
+</li>
+<li>Digitised proposed locations</li>
+</ul>
+<p><strong>Extension:</strong></p>
+<ul>
+<li>Add land value or zoning polygons as vector data.<br>
+</li>
+<li>Use <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#raster-calculator"><strong>Raster Calculator</strong></a> to weight suitability factors.<br>
+</li>
+<li>Try <strong>Multi‑criteria Evaluation</strong> with reclassified rasters. See for example <a href="https://www.qgistutorials.com/en/docs/3/multi_criteria_overlay.html">this tutorial</a>.</li>
+</ul>
 </div>
 </div>
 </div>
@@ -518,21 +637,40 @@ Where would be the best location for a new park, school, clinic, or bike path?</
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Story question:</strong><br>
-What spatial patterns exist in a set of events or observations?</p>
-<p><strong>What you might analyse:</strong> - Disease cases<br>
-- Crime locations<br>
-- Wildlife sightings</p>
-<p><strong>Techniques to use:</strong> - Heatmaps or density<br>
-- Point-in-polygon<br>
-- Graduated symbology<br>
-- Labeling</p>
-<p><strong>Possible outputs:</strong> - Density map<br>
-- Counts by area<br>
-- Map layout for presentation</p>
-<p><strong>Extension:</strong> - Add a population or land cover raster.<br>
-- Use <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/vectoranalysis.html#heatmap-kernel-density-estimation"><strong>Kernel Density Estimation</strong></a> for smoother patterns.<br>
-- Try <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/vectoranalysis.html#nearest-neighbour-analysis"><strong>Nearest Neighbour Analysis</strong></a> for clustering insight.</p>
+<p><strong>Story question:</strong></p>
+<p>What spatial patterns exist in a set of events or observations?</p>
+<p><strong>What you might analyse:</strong></p>
+<ul>
+<li>Disease cases<br>
+</li>
+<li>Crime locations<br>
+</li>
+<li>Wildlife sightings</li>
+</ul>
+<p><strong>Techniques to use:</strong></p>
+<ul>
+<li>Heatmaps or density<br>
+</li>
+<li>Point-in-polygon<br>
+</li>
+<li>Graduated symbology<br>
+</li>
+<li>Labelling</li>
+</ul>
+<p><strong>Possible outputs:</strong></p>
+<ul>
+<li>Density map<br>
+</li>
+<li>Counts by area</li>
+</ul>
+<p><strong>Extension:</strong></p>
+<ul>
+<li>Add a population or land cover raster.<br>
+</li>
+<li>Use <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/interpolation.html#heatmap-kernel-density-estimation"><strong>Kernel Density Estimation</strong></a> for smoother patterns.<br>
+</li>
+<li>Try <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/vectoranalysis.html#nearest-neighbour-analysis"><strong>Nearest Neighbour Analysis</strong></a> for clustering insight.</li>
+</ul>
 </div>
 </div>
 </div>
@@ -548,20 +686,39 @@ What spatial patterns exist in a set of events or observations?</p>
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Story question:</strong><br>
-What can we learn from data you collect yourself?</p>
-<p><strong>What you might analyse:</strong> - Tree locations<br>
-- Street furniture<br>
-- Noise or pollution points</p>
-<p><strong>Techniques to use:</strong> - Smartphone data collection (or plot points using satellite data) - Importing CSV or GeoPackage<br>
-- Styling points<br>
-- Basic spatial analysis</p>
-<p><strong>Possible outputs:</strong> - Map of collected data<br>
-- Patterns or clusters<br>
-- Final layout map</p>
-<p><strong>Extension:</strong> - Add a satellite image or vegetation raster.<br>
-- Use <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/vectoranalysis.html#join-attributes-by-location-summary"><strong>Spatial Join (Summary)</strong></a> to link observations to areas.<br>
-- Try <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/vectoranalysis.html#point-density"><strong>Point Density</strong></a> to highlight hotspots.</p>
+<p><strong>Story question:</strong></p>
+<p>What can we learn from data you collect yourself?</p>
+<p><strong>What you might analyse:</strong></p>
+<ul>
+<li>Tree locations<br>
+</li>
+<li>Street furniture<br>
+</li>
+<li>Noise or pollution points</li>
+</ul>
+<p><strong>Techniques to use:</strong></p>
+<ul>
+<li>Smartphone data collection (or plot points using satellite data)</li>
+<li>Importing CSV or GeoPackage<br>
+</li>
+<li>Styling points<br>
+</li>
+<li>Basic spatial analysis</li>
+</ul>
+<p><strong>Possible outputs:</strong></p>
+<ul>
+<li>Map of collected data<br>
+</li>
+<li>Patterns or clusters</li>
+</ul>
+<p><strong>Extension:</strong></p>
+<ul>
+<li>Add a satellite image or vegetation raster.<br>
+</li>
+<li>Use <a href="https://docs.qgis.org/latest/en/docs/user_manual/working_with_vector/joins_relations.html"><strong>Spatial Join</strong></a> to link observations to areas.<br>
+</li>
+<li>Try <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/interpolation.html#heatmap-kernel-density-estimation"><strong>Point Density</strong></a> to highlight hotspots.</li>
+</ul>
 </div>
 </div>
 </div>
@@ -577,21 +734,38 @@ What can we learn from data you collect yourself?</p>
 </div>
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Story question:</strong><br>
-How does transport infrastructure shape access or movement?</p>
-<p><strong>What you might analyse:</strong> - Roads or public transport<br>
-- Population<br>
-- Service locations</p>
-<p><strong>Techniques to use:</strong> - Buffer analysis<br>
-- Intersections<br>
-- Thematic symbology<br>
-- Layout Manager</p>
-<p><strong>Possible outputs:</strong> - Transport access map<br>
-- Underserved areas<br>
-- Styled map with scale and legend</p>
-<p><strong>Extension:</strong> - Add a slope or elevation raster to model walking difficulty.<br>
-- Use <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#raster-calculator"><strong>Raster Calculator</strong></a> to combine slope and distance.<br>
-- Try <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/networkanalysis.html#shortest-path-point-to-point"><strong>Network Shortest Path</strong></a> for simple routing.</p>
+<p><strong>Story question:</strong></p>
+<p>How does transport infrastructure shape access or movement?</p>
+<p><strong>What you might analyse:</strong></p>
+<ul>
+<li>Roads or public transport<br>
+</li>
+<li>Population<br>
+</li>
+<li>Service locations</li>
+</ul>
+<p><strong>Techniques to use:</strong></p>
+<ul>
+<li>Buffer analysis<br>
+</li>
+<li>Intersections<br>
+</li>
+<li>Thematic symbology</li>
+</ul>
+<p><strong>Possible outputs:</strong></p>
+<ul>
+<li>Transport access map<br>
+</li>
+<li>Underserved areas</li>
+</ul>
+<p><strong>Extension:</strong></p>
+<ul>
+<li>Add a slope or elevation raster to model walking difficulty.<br>
+</li>
+<li>Use <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#raster-calculator"><strong>Raster Calculator</strong></a> to combine slope and distance.<br>
+</li>
+<li>Try <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/networkanalysis.html#shortest-path-point-to-point"><strong>Network Shortest Path</strong></a> for simple routing.</li>
+</ul>
 </div>
 </div>
 </div>
@@ -607,28 +781,49 @@ How does transport infrastructure shape access or movement?</p>
 </div>
 <div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Story question:</strong><br>
-Which areas are more likely to contain Aboriginal archaeological sites, and how might proposed development impact cultural landscapes?</p>
-<p><strong>What you might analyse:</strong> - Known site locations (points or polygons)<br>
-- Landforms (elevation, slope, aspect)<br>
-- Distance to water sources (rivers, wetlands, coast)<br>
-- Land use or disturbance layers<br>
-- Project or development boundaries</p>
-<p><strong>Techniques to use:</strong> - Import vector and raster data from authoritative sources<br>
-- Reproject layers to an appropriate Australian projected CRS (e.g.&nbsp;MGA / GDA2020)<br>
-- Buffer water sources or landforms<br>
-- Try Extract by Mask to limit analysis to the project footprint or study area - Combine rasters to build a simple predictive surface<br>
-- Vector intersection with development footprints - Apply a <strong>custom styling theme or template</strong> to ensure consistent symbology across reports.</p>
-<p><strong>Possible outputs:</strong> - Archaeological sensitivity or probability surface<br>
-- Map of high, medium, and low sensitivity zones<br>
-- Areas of potential impact within development boundaries<br>
-- Styled map suitable for inclusion in a consulting report</p>
+<p><strong>Story question:</strong></p>
+<p>Which areas are more likely to contain Aboriginal archaeological sites, and how might proposed development impact cultural landscapes?</p>
+<p><strong>What you might analyse:</strong></p>
+<ul>
+<li>Known site locations (points or polygons)<br>
+</li>
+<li>Landforms (elevation, slope, aspect)<br>
+</li>
+<li>Distance to water sources (rivers, wetlands, coast)<br>
+</li>
+<li>Land use or disturbance layers<br>
+</li>
+<li>Project or development boundaries</li>
+</ul>
+<p><strong>Techniques to use:</strong></p>
+<ul>
+<li>Import vector and raster data from authoritative sources<br>
+</li>
+<li>Reproject layers to an appropriate Australian projected CRS (e.g.&nbsp;MGA / GDA2020)<br>
+</li>
+<li>Buffer water sources or landforms<br>
+</li>
+<li>Try Extract by Mask to limit analysis to the project footprint or study area</li>
+<li>Combine rasters to build a simple predictive surface<br>
+</li>
+<li>Vector intersection with development footprints</li>
+<li>Apply a <strong>custom styling theme or template</strong> to ensure consistent symbology across reports.</li>
+</ul>
+<p><strong>Possible outputs:</strong></p>
+<ul>
+<li>Archaeological sensitivity or probability surface<br>
+</li>
+<li>Map of high, medium, and low sensitivity zones<br>
+</li>
+<li>Areas of potential impact within development boundaries<br>
+</li>
+<li>Styled map suitable for inclusion in a consulting report</li>
+</ul>
 <p><strong>Extension:</strong></p>
 <ul>
-<li>Use the <a href="https://docs.qgis.org/3.40/en/docs/training_manual/rasters/terrain_analysis.html#follow-along-reclassifying-the-raster"><strong>Raster Calculator to reclassify</strong></a> and combine environmental predictors into a single sensitivity surface.</li>
-<li>Use <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#zonal-statistics"><strong>Zonal Statistics</strong></a> to summarise sensitivity values within development parcels or survey areas.<br>
-</li>
-<li>Explore <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#proximity-distance"><strong>Proximity (Raster Distance)</strong></a> as an input to a simple predictive model.<br>
+<li>Use the <a href="https://docs.qgis.org/latest/en/docs/training_manual/rasters/terrain_analysis.html#follow-along-reclassifying-the-raster"><strong>Raster Calculator to reclassify</strong></a> and combine environmental predictors into a single sensitivity surface.</li>
+<li>Use <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#zonal-statistics"><strong>Zonal Statistics</strong></a> to summarise sensitivity values within development parcels or survey areas.</li>
+<li>Explore <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/gdal/rasteranalysis.html#proximity-raster-distance"><strong>Proximity (Raster Distance)</strong></a> as an input to a simple predictive model.<br>
 </li>
 </ul>
 </div>
@@ -646,21 +841,37 @@ Which areas are more likely to contain Aboriginal archaeological sites, and how 
 </div>
 <div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Story question:</strong><br>
-What spatial story can you tell about a place that matters to you?</p>
-<p><strong>What you might analyse:</strong> - Any combination of raster and vector data<br>
-- Boundaries, services, environment, or population</p>
-<p><strong>Techniques to use:</strong> - Import and reproject data<br>
-- Digitise features<br>
-- Perform at least one spatial analysis<br>
-- Style and label layers<br>
-- Create a layout</p>
-<p><strong>Possible outputs:</strong> - 1–3 maps<br>
-- A clear spatial narrative<br>
-- One-minute presentation</p>
-<p><strong>Extension:</strong> - Add either a DEM or land cover raster if using mostly vector data.<br>
-- Try <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#zonal-statistics"><strong>Zonal Statistics</strong></a> or <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#raster-calculator"><strong>Raster Calculator</strong></a> for deeper analysis.<br>
-- Explore <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#viewshed"><strong>Viewshed</strong></a> or <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#slope"><strong>Slope</strong></a> for terrain‑based stories.</p>
+<p><strong>Story question:</strong></p>
+<p>What spatial story can you tell about a place that matters to you?</p>
+<p><strong>What you might analyse:</strong></p>
+<ul>
+<li>Any combination of raster and vector data<br>
+</li>
+<li>Boundaries, services, environment, or population</li>
+</ul>
+<p><strong>Techniques to use:</strong></p>
+<ul>
+<li>Import and reproject data<br>
+</li>
+<li>Digitise features<br>
+</li>
+<li>Perform at least one spatial analysis<br>
+</li>
+<li>Style and label layers</li>
+</ul>
+<p><strong>Possible outputs:</strong></p>
+<ul>
+<li>1–3 maps that could support advocacy and encourage community awareness</li>
+<li>A clear spatial narrative</li>
+</ul>
+<p><strong>Extension:</strong></p>
+<ul>
+<li>Add either a DEM or land cover raster if using mostly vector data.<br>
+</li>
+<li>Try <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#zonal-statistics"><strong>Zonal Statistics</strong></a> or <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#raster-calculator"><strong>Raster Calculator</strong></a> for deeper analysis.<br>
+</li>
+<li>Explore <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/gdal/rastermiscellaneous.html#viewshed"><strong>Viewshed</strong></a> or <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasterterrainanalysis.html#slope"><strong>Slope</strong></a> for terrain‑based stories.</li>
+</ul>
 </div>
 </div>
 </div>
