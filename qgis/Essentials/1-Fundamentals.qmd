@@ -17,23 +17,23 @@ In this workshop, we will learn about:
 -   A basic map export
 -   Finding help and learning more
 
-
 ## Interface
-  
-  The main elements of the interface are:
-  
+
+When we open QGIS, we can see the 3 main elements of the interface:
+
 -   the `Browser` panel, to navigate our file system and data sources
 -   the `Layers` panel, to organise the different layers that compose our map
--   the `Canvas`, where we see the map.
+-   the `Canvas`, where we see the map (at startup, QGIS uses that space to show recent projects and QGIS news)
 
-## Load a Basemap
+## New project and basemap
 
-We can straight away load an OpenStreetMap basemap to have a background: in the `Browser` panel, `XYZ Tiles > OpenStreetMap`.
+-   Create a **new project** with `Project > New`.
+
+-   We can straight away load an OpenStreetMap basemap to have a background: in the `Browser` panel, `XYZ Tiles > OpenStreetMap`.
 
 ## Controls
 
 The default mouse mode is `Pan Map`, which allows to drag the map around. We can use the mouse wheel to zoom in and out, and press the <kbd>Ctrl</kbd> key to use more precision.
-
 
 ## What is Spatial Data?
 
@@ -45,60 +45,56 @@ What is spatial data? Most broadly-speaking, data is spatial when it has coordin
 
 There are three broad classes of spatial data that you may encounter.
 
-1. Vector
+1.  Vector
 
 -   Vector data can be points, lines, or polygons. Quite typically vector data is stored as shapefiles (.shp), although there are many file formats to store vector data. My go-to is geopackages (.gpkg) (more on this later).
 
 -   Often, vector data have multiple attributes, meaning that different variables have been measured for each vector geometry.
 
-2. Raster
+2.  Raster
 
 -   Raster data is gridded data, where each ‘grid cell’ (also referred to as a ‘pixel’) stores a data value. Data can be categorical (e.g. land use classes) or continuous (e.g. temperature).
 -   Grids can be regular, irregular, curvilinear, etc.
 
-3. Spatiotemporal data cubes
+3.  Spatiotemporal data cubes
 
 -   Spatiotemporal data cubes are when vector or raster data have an additional dimension beyond x & y coordinates: time.
 
-
 ## Case Study - Windfarm Proposal
 
-We have been asked to explore the feasibility of constructing a Windfarm on Enoggera Hill, which is part of the Enoggera Army Base (Gallipoli Barracks). 
+We have been asked to explore the feasibility of constructing a Windfarm on Enoggera Hill, which is part of the Enoggera Army Base (Gallipoli Barracks).
 
-Throughout these workshops we are going to make maps and run spatial that are useful in a wide variety of disciplines and relate to this particular case study. This scenario of a Windfarm Proposal allows us to use spatial analyses to explore concepts connected to the environment, health, culture, and landscape.
+Throughout these workshops we are going to make maps and run spatial analyses that are useful in a wide variety of disciplines and relate to this particular case study. This scenario of a Windfarm Proposal allows us to use spatial analyses to explore concepts connected to the environment, health, culture, and landscape.
 
 We will create a project folder, bring in different kinds of data, run a variety of spatial analyses, and export a few maps.
 
 While the location and data we will be using are all real, this scenario is entirely fictional.
 
-
 ## Project Folder Structure
 
 We will start by creating a good folder structure to work within. This folder is where our project, our data, and creations will live. Folder structure is very important for keeping your data tidy, as well as for ease of sharing your project with others. You simply need to zip the project folder if you need to share the whole thing.
 
--   Open QGIS and create a **new project** with `Project > New`.
-
--   Let's now **save** our project: `Project > Save`.
+-   Let's **save** our project: `Project > Save`.
 
 -   Navigate to where you want to save your project, and create a new folder, let's call it "**Enoggera_Windfarm_26**".
 
 -   Inside that folder, create these folders:
 
-  -   "**data**" - for all the data we will use to make our maps, split into:
+-   "**data**" - for all the data we will use to make our maps, split into:
 
-    -   "**raw**" - raw data from your research or the internet
-    
+    -   "**raw**" - raw data from your research or the Internet
+
     -   "**processed**" - any data you've modified
 
-  -   "**output**" - for any maps or images we export
+<!-- -->
 
-  -   "**temp**" - this folder isn't necessary, but when you're playing around and testing, it can be helpful to stop things getting messy.
+-   "**output**" - for any maps or images we export
+
+-   "**temp**" - this folder isn't necessary, but when you're playing around and testing, it can be helpful to stop things getting messy.
 
 -   Finally, let's save our .qgz project file inside the "**Enoggera_Windfarm_26**" folder, named "Enoggera_Windfarm_26.qgz"
 
-  
-  Your .qgz file should always be in the highest level folder, so it's only looking down into folders for data, not back out. This might feel unnecessary now, but things quickly get out of control and hard to find if you don't have a good folder structure.
-
+Your .qgz file should always be in the highest level folder, so it's only looking down into folders for data, not back out. This might feel unnecessary now, but things quickly get out of control and hard to find if you don't have a good folder structure.
 
 ## Data Download
 
@@ -112,15 +108,17 @@ To start with, we're going to import some project files that show us where our d
 
 ## Importing data
 
-To add our own data: 
--   Go to the menu `Layer > Add Layer > Add Vector Layer...` 
+To add our own data:
+
+-   Go to the menu `Layer > Add Layer > Add Vector Layer...`
+
 -   Open your folders `data > raw > 1-fundamentals_data`
+
 -   Choose the "Turbine_Locations_SEQ.gpkg" file, and click "Add". It is now in your `Layers` panel.
 
 If you've already loaded in the OpenStreetMap Basemap, then you should get the popup `Select Transformation for Project Area`. This is asking you how you want to deal with the difference between the basemap's *projection* and the *projection* of your data. Projections are how we stretch "spherical" data to fit on a flat rectangular map, which we will cover in detail later in this workshop. Fortunately, for now, QGIS will handle this on the fly for us so we can simply click `OK`.
 
-So where is the data?
-If you want to zoom in to your data, you don't have to use your mouse, you can use the `Zoom Full` button, or right-click on your **Project Area** layer and select `Zoom to Layer(s)`.
+So where is the data? If you want to zoom in to your data, you don't have to use your mouse, you can use the `Zoom Full` button, or right-click on your **Turbine_Locations_SEQ** layer and select `Zoom to Layer(s)`.
 
 You can also use the `Project Home` directory in the browser to add another layer:
 
@@ -128,7 +126,7 @@ You can also use the `Project Home` directory in the browser to add another laye
 -   Try loading the "Project_Area.gpkg" and "Proposed_Access_Track.gpkg" GeoPackages (format .gpkg), by drag-and-dropping or double-clicking.
 
 All layers are visible in the `Layers` panel, with the most recently loaded by default at the top. Layers are rendered as they are listed, which means the top ones will cover the bottom ones. Make sure you optimise the order for your map!
-  
+
 You can also turn the **layer visibility** on and off from this panel with the tick box.
 
 > You might notice that QGIS randomly chooses a colour for your data when you import it. We can change these colours later.
@@ -153,7 +151,7 @@ You can also use the `Identify Features` tool in the top toolbar. This allows yo
 We currently have data from two proposed Windfarm locations, which you can confirm by using the `Zoom Full` button. However, we no longer need the Mt Coot-Tha data.
 
 To remove the unneeded points, we can do the following:
-  
+
 1.  Select the "Turbine Locations SEQ" layer
 2.  Use the `Select Features` button, and draw a rectangle around Enoggera Hill, so all the points appear in yellow
 3.  Right-click on the "Turbine Locations SEQ" layer and use `Export > Save Selected Features As...`
@@ -161,14 +159,13 @@ To remove the unneeded points, we can do the following:
 
 The new layer is loaded to the map by default.
 
-> Notice how we keep using "_" underscores in our file names instead of spaces? Spaces in file names can cause some functions to fail to run, so it's worth practicing that. Spaces in layer names is fine - these are purely for display.
-
+> Notice how we keep using "\_" underscores in our file names instead of spaces? Spaces in file names can cause some functions to fail to run, so it's worth practicing that. Spaces in layer names is fine - these are purely for display.
 
 ## Clip
 
 Instead of just using selections, we can also clip out the data we want by using a polygon layes as an overlay layer.
 
-We'll use the Clip tool on the final piece of data for this session: the [Broad Vegetation Groups (BVGs)](https://www.qld.gov.au/environment/plants-animals/plants/ecosystems/broad-vegetation) for this area. BVG data shows us what vegetation types are found in a particular location. We've downloaded a section of this data from [QSpatial](https://qldspatial.information.qld.gov.au/catalogue/custom/detail.page?fid={43A2CB31-9D83-4BB9-ACE7-05E7BD271FE3}). Currently it covers a wide area, but we want to focus it down to our project.
+We'll use the Clip tool on the final piece of data for this session: the [Broad Vegetation Groups (BVGs)](https://www.qld.gov.au/environment/plants-animals/plants/ecosystems/broad-vegetation) for this area. BVG data shows us what vegetation types are found in a particular location. We've downloaded a section of this data from [QSpatial](https://qldspatial.information.qld.gov.au/catalogue/custom/detail.page?fid=%7B43A2CB31-9D83-4BB9-ACE7-05E7BD271FE3%7D). Currently it covers a wide area, but we want to focus it down to our project.
 
 Use the `Project Home` directory in the browser to add the "BVG_SEQ.shp" file.
 
@@ -177,25 +174,24 @@ Use the `Project Home` directory in the browser to add the "BVG_SEQ.shp" file.
 This layer is not very pretty at the moment, but we can change the symbology after we subset the data.
 
 Follow these steps to **Clip**:
-  
-  1.  Select the layer you want to clip, in this case **BVG_SEQ**
-  2.  Use the `Vector > Geoprocessing Tools > Clip...` tool
-  3.  Use the **Project Area** layer as the overlay.
-  4.  Click `Run`
 
-We should get an error `Feature (243) from “BVG SEQ” has invalid geometry.` Never fear, we can fix this!
+1.  Select the layer you want to clip, in this case **BVG_SEQ**
+2.  Use the `Vector > Geoprocessing Tools > Clip...` tool
+3.  Use the **Project Area** layer as the overlay.
+4.  Click `Run`
+
+We should get an error `Feature (242) from “BVG SEQ” has invalid geometry.` Never fear, we can fix this!
 
 This is caused by little issues in the polygon layer. Sometimes when polygons are drawn or exported from online sources, they will create errors, and sometimes little slither polygons on the edges. We can investigate the source of these errors using the `Check validity` tool, but for today, we're simply going to fix them with the `Fix Geometries` tool from the Processing Toolbox.
 
 > The **Processing Toolbox** is *full* of useful tools for data analysis and data management.
 
-Before we do this, let's remove the failed **Clipped** layer. 
-Right-click on the **Clipped** layer and select `Remove Layer...`
+Before we do this, let's remove the failed **Clipped** layer. Right-click on the **Clipped** layer and select `Remove Layer...`
 
 ### Fix Geometries
 
 -   Open the Processing Toolbox by clicking the cog icon from the top menu ![Processing Toolbox](https://docs.qgis.org/3.40/en/_images/processingAlgorithm.png) (alternatively go to `View > Panels > Processing Toolbox`)
--   In the **Processing Toolbox** window `Search` for "Fix geometries"
+-   In the **Processing Toolbox** panel, `Search` for "Fix geometries"
 -   Double-click on the **Fix geometries** option
 -   In the **Fix Geometries** window, select `BVG SEQ` from the **Input layer** options, then click `Run`
 -   Right click **Fixed Geometries** in the Layer panel, click Rename Layer, and change it to **BVG Fixed**
@@ -209,22 +205,21 @@ You can now re-run the **Clip** tool with the resulting **BVG Fixed** layer (ins
 
 Magic. Our new layer has the BVG data cookie-cut to the Project Area shape.
 
+Notice how the clipped layers also doesn't have a descriptive name? Make sure you rename them. Let's change **Clipped** to **EH BVG**
 
-Notice how the clipped layers also doesn't have a descriptive name? Make sure you rename them. Let's changed **Clipped** to **EH BVG**
-  
 You can now hide the original "BVG SEQ" and "Turbine Locations SEQ" layers.
 
 ## Saving your project
-  
+
 It's always a good idea to regularly save your progress.
+
+You can save your project with the floppy disk icon, or using <kbd>Ctrl</kbd> + <kbd>S</kbd>, and the project should be visible in a list when you re-open QGIS again.
 
 ## Temporary Scratch Layers
 
-Notice the little icon next to some of your layers? We previously created "temporary scratch layers", they're basically temp files that will disappear when we close QGIS. This is useful if you keep processing data and creating new layers that you want to discard afterwards. In our case, we do want to keep the "cities" and "rivers" layers, so we need to save them to a file. If we try to close QGIS with scratch layers loaded, it will give you a warning that they will be lost in the process.
+Notice the little icon next to some of your layers? We have created "temporary scratch layers": they are basically temporary files that will disappear when we close QGIS. This is useful if you keep processing data and creating new layers that you want to discard afterwards. In our case, we do want to keep the "EH BVG" layer, so we need to save it to a file. If we try to close QGIS with scratch layers loaded, it will give you a warning that they will be lost in the process.
 
 You can click on the scratch layer icon to save the file. In the dialog, we can give the layers a `File name` (in our project's home directory) and click OK.
-
-You can save your project with the floppy disk icon, or using <kbd>Ctrl</kbd> + <kbd>S</kbd>, and the project should be visible in a list when you re-open QGIS again.
 
 ## Personalise your map
 
@@ -240,7 +235,6 @@ Now try to change the point symbology of our **EH Turbines** layer: we don't hav
 
 > The Properties dialog is quite large and makes it difficult to see the changes in symbology. You can use the "Layer Styling Panel" (button in the Layers panel, or <kbd>F7</kbd> shortcut) to use a side panel instead, with the "Live update" option on by default.
 
-
 ### Classifying the symbology
 
 What if we want to colour according to a variable? Depending on the type of variable, we can choose "Categorised" (for categorical data) or "Graduated" (for continuous data).
@@ -249,11 +243,11 @@ We can do this with our `EH BVG` data:
 
 1.  Click on the `Layer Styling Panel` button
 2.  Change from "Single Symbol" to "Categorised"
-3.  Use the bvg1m column
+3.  Use the bvg1m column in the "Value" field
 4.  Pick a relevant colour ramp
 5.  Click "classify"
 
-The colours may not be very pretty right now, but at least we can differentiate them. We will make these much nicer later. 
+The colours may not be very pretty right now, but at least we can differentiate them. We will make these much nicer later.
 
 ### Add labels
 
@@ -265,18 +259,24 @@ Choose `Value > turb_id` to label with the Turbine IDs. In the "Text" tab, we ca
 
 The placement tab allows us to fine-tune the placement of the labels in reference to the points. The default mode is "Cartographic", and we can increase the distance to the symbol used. If we want the label to cover the point, we can use `Mode > Offset from point` and use the middle quadrant. We might also want to set the layer's Symbology to "No Symbols".
 
-
 ## Simple Map Export
 
 You can export your map with a very customised layout, or you can do a simple export. This morning we will look at the simple map export.
 
 Zoom to the level of detail you want your image to contain.
 
-To export out your map `Project > Import/Export > Export Map to Image...`, choose `Draw on Canvas`, increase the `Resolution` to 300 dpi, click `Save`. Navigate to where you want to save your image, name it, and click `Save`
+To export out your map:
 
+1.  Go to `Project > Import/Export > Export Map to Image...`
 
+2.  Choose `Draw on Canvas` and draw the area you want to export
+
+3.  Increase the `Resolution` to 300 DPI
+
+4.  Click `Save`
+
+5.  Navigate to where you want to save your image (we created the "output" folder for that), name it, and click `Save`
 
 ## Resources
 
-* You can find help with QGIS in the [QGIS Documentation](https://docs.qgis.org/3.40/en/docs/index.html).
-
+-   You can find help in the [QGIS Documentation](https://docs.qgis.org/3.40/en/docs/index.html)
