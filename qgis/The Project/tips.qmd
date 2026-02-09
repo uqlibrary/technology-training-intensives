@@ -8,13 +8,13 @@ Here's a few general tips. In addition, we strongly recommend using [QGIS User M
 
 Change the below to QGIS things like F7 for Style Manager and CTRL + . for digitising
 
-| Code | Hotkey | Description |
-| --- | --- | --- |
-|  | <kbd>Ctrl</kbd>+<kbd>Enter</kbd> | Run current line (when in Script) |
-| `<-` | <kbd>Alt</kbd>+<kbd>-</kbd> | Assignment |
-| `%>%` | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>M</kbd> | Pipe |
-|  | <kbd>Esc</kbd> | Cancel current operation (when in Console) |
-|  | <kbd>F1</kbd> | Help documentation for selected function |
+| Hotkey | Description |
+| --- | --- |
+| <kbd>F6</kbd> | Open Attribute Table |
+| <kbd>Ctrl</kbd>+<kbd>J</kbd> | Zoom to Selection |
+| <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>T</kbd> | Toogle Processing Toolbox |
+| <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Tab</kbd> | Hide all panels (good for georeferencing) |
+| <kbd>F7</kbd> | Open Layer Styling Panel |
 
 
 ## Plugins
