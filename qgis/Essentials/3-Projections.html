@@ -510,19 +510,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="load-in-data" class="level2">
 <h2 class="anchored" data-anchor-id="load-in-data">Load in data</h2>
-<p>Load in:</p>
 <ul>
-<li><p>sa1_2021_bris_mga56.gpkg (suburb data from the <a href="https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files">Australian Bureau of Statistics</a>) Right click the <code>sa1_2021_bris_gda2020</code> layer and <code>Rename...</code> it to “SA1 Boundaries”.</p></li>
-<li><p>sa1_pop_age_qld.csv (demographic data from the ABS, but accessed through the <a href="https://www.qgso.qld.gov.au/">Queensland Government Statistician’s Office</a>)</p></li>
+<li><p>Click the <code>Project Home</code> dropdown, then <code>data &gt; raw &gt; 3-projections_data</code> and load in:</p></li>
+<li><p>sa1_2021_bris_mga56.gpkg (suburb data from the <a href="https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files">Australian Bureau of Statistics</a>) Right click the <code>sa1_2021_bris_mga56</code> layer and <code>Rename...</code> it to “SA1 Boundaries”.</p></li>
+<li><p>sa1_2021_pop_age.csv (demographic data from the ABS, but accessed through the <a href="https://www.qgso.qld.gov.au/">Queensland Government Statistician’s Office</a>)</p></li>
 </ul>
 </section>
 <section id="tabular-data" class="level2">
 <h2 class="anchored" data-anchor-id="tabular-data">Tabular data</h2>
-<p>QGIS can deal with plain tabular data. For example, try importing the file sa1_pop_age_qld.csv: it doesn’t contain any coordinates, but we can still store it as a layer and use it in our project. You can see the data it contains by opening its attribute table.</p>
+<p>QGIS can deal with plain tabular data. For example, try importing the file sa1_2021_pop_age.csv: it doesn’t contain any coordinates, but we can still store it as a layer and use it in our project. You can see the data it contains by opening its attribute table.</p>
 <p>How can we add the Statistical Area 1 (SA1) Demographic data to our existing <code>SA1 Boundaries</code> layer?</p>
 <section id="joining-tabular-data" class="level3">
 <h3 class="anchored" data-anchor-id="joining-tabular-data">Joining tabular data</h3>
-<p>To add the SA1 Demographic data to our SA1 layer, we can go the the <code>SA1 Boundaries</code> layer’s properties, use the <img src="https://docs.qgis.org/3.40/en/_images/join.png" class="img-fluid" alt="Join Button"> <code>Joins</code> tab and click the <code>Add new join</code> button <img src="https://docs.qgis.org/3.40/en/_images/symbologyAdd.png" class="img-fluid" alt="Add New Join Button"> to create a new join. We can then choose the sa1_pop_age_qld data as the <code>Join layer</code>, and define what common field between the two tables we will merge on: the SA1_CODE21 code in our case.</p>
+<p>To add the SA1 Demographic data to our SA1 layer, we can go the the <code>SA1 Boundaries</code> layer’s properties, use the <img src="https://docs.qgis.org/3.40/en/_images/join.png" class="img-fluid" alt="Join Button"> <code>Joins</code> tab and click the <code>Add new join</code> button <img src="https://docs.qgis.org/3.40/en/_images/symbologyAdd.png" class="img-fluid" alt="Add New Join Button"> to create a new join. We can then choose the sa1_2021_pop_age data as the <code>Join layer</code>, and define what common field between the two tables we will merge on: the SA1_CODE21 code in our case.</p>
 <p>You can now see the joined data highlighted in green in the <img src="https://docs.qgis.org/3.40/en/_images/mSourceFields.png" class="img-fluid" alt="Fields Tab Button"><code>Fields</code> tab, click “OK”, and check the actual values in the <code>SA1 Bris</code> layer’s attribute table.</p>
 </section>
 </section>
@@ -567,7 +567,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Right-click <code>Dust_pop</code> and open it’s Attribute Table</li>
 <li>Click the <strong>Open Field Calculator</strong> button <img src="https://docs.qgis.org/3.40/en/_images/mActionCalculateField.png" class="img-fluid" alt="Field Calculator Button"></li>
-<li>Next to <code>Output field name</code> type “<strong>area_ha</strong>”</li>
+<li>Next to <code>Output field name</code> type “<strong>area_fraction</strong>”</li>
 <li>Next to <code>Output field type</code> change it to <code>Decimal Number (Real)</code></li>
 <li>In the <code>Expression</code> window type: <code>($area/1e6) / "AREASQKM21"</code>
 <ul>
@@ -575,16 +575,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 <li>Click <code>OK</code></li>
 </ul>
-<p>Now that we have the area fraction, let’s calculate the population</p>
+<p>Now that we have the area fraction, let’s calculate the vulnerable population as those under 5, and over 64.</p>
 <ul>
 <li>Right-click <code>Dust_pop</code> and open it’s Attribute Table</li>
 <li>Click the <strong>Open Field Calculator</strong> button <img src="https://docs.qgis.org/3.40/en/_images/mActionCalculateField.png" class="img-fluid" alt="Field Calculator Button"></li>
-<li>Next to <code>Output field name</code> type “<strong>affected_pop</strong>”</li>
+<li>Next to <code>Output field name</code> type “<strong>affected_pop_</strong>”</li>
 <li>Next to <code>Output field type</code> change it to <code>Decimal Number (Real)</code></li>
-<li>In the <code>Expression</code> window type: <code>"SA1_pop_2024 — Sheet1_2024p" * area_frac</code></li>
+<li>In the <code>Expression</code> window type: <code>("sa1_2021_pop_age_0-4" + "sa1_2021_pop_age_65+") * area_fraction</code></li>
 <li>Click <code>OK</code></li>
 </ul>
-<p>If we open the <code>Field Calulator</code> again and type <code>sum(affected_pop)</code> we can see the total affected population in 27643.</p>
+<p>If we open the <code>Field Calulator</code> again and type <code>sum(affected_pop)</code> we can see the total affected vulnerable population at the bottom of the window.</p>
 
 
 </section>
