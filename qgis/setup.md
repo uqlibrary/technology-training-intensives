@@ -20,10 +20,10 @@ By the end of the three days, you'll have learnt the QGIS skills to:
 
 As we set up, there's a few things to do, if you haven't already:
 
-1. [Install the software](#software)
+1. [Install the software](#Software)
 2. Introduce yourself to your table
 3. [Join our Teams channel](https://forms.office.com/Pages/ResponsePage.aspx?id=z3fjtrOdy0aRovrZYFuxXEzmI13TctBBiWhneXZv-1lUQ1MwQ0JUM0ZBS0hXV1NJSU04TEZEUFg2Si4u)
-4. [Register your attendance]()
+4. [Register your attendance](https://studenthub.uq.edu.au/students/me/whats-on/5abmgx3uh3muyh3id5hjxqzatx5h2468m665wubloc8hcqixtkoze7n)
 
 ## Software
 
