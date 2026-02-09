@@ -12,7 +12,6 @@ In this workshop, we will learn about:
 -   Digitisation
 -   Point counts within a polygon
 
-
 ## What is Vector Data?
 
 Vector data is made up of points, lines, and/or polygons. They are made up of precise points with individual coordinates. Vector data is best contrasted with Raster data which has a grid of values evenly spaced apart, connected to one coordinate. Rasters are efficient at displaying large amounts of data, where vector data is very precise.
@@ -25,18 +24,15 @@ We've actually already looked at a lot of vector data: all our points, lines and
 
 For this Windfarm to go ahead, we need to look at the environmental impacts on vegetation, animals, and people in the local area. We can calculate the area of vegetation impacted, count animal sightings, and in the next session look at population numbers.
 
+## Load in our data
 
-## Load in our data 
+-   Click the `Project Home` dropdown, then `data > raw > 2-vector_data` and load in: `animal_sightings.csv` (Animal sightings from [iNaturalist](https://www.inaturalist.org))
 
--   Click the `Project Home` dropdown, then `data > raw > 2-vector_data` and load in:
--   animal_sightings.csv (Animal sightings from [iNaturalist](https://www.inaturalist.org))
-
-For most spatial data, we will simply be able to double click on it in the Project Home folder within the Browser window. But we need to handle CSV data differently.
-
+For most spatial data, we will simply be able to double click on it in the Project Home folder within the Browser panel. But we need to handle CSV data differently. If you try to import it in the same way, it will add a layer to your project, but it is not a spatial layer: it in in essence an attribute table without geometries attached to it.
 
 ### Importing CSV data
 
-The animal sighting data has columns with coordinates so it effectively is spatial data and can be imported directly.
+The animal sighting data has columns with coordinates so it effectively is spatial data, but we need to point QGIS to those columns by using these import steps:
 
 -   Go to `Layer > Add Layer > Add Delimited Text Layer...`
 -   Click the three dots `...` next to the **File name** field, navigate to the project folder, and select `animal_sightings.csv`
@@ -45,22 +41,20 @@ The animal sighting data has columns with coordinates so it effectively is spati
     -   You may need to set the Geometry CRS. For this data from iNaturalist it is EPSG:4326 - WGS84
 -   Click `Add`
 
-> It's often the case that spatial data comes in EPSG:4326 - WGS84, as that is the standard used by most GPS units and Google Maps. However, it's still worth checking those details on the website you've downloaded it from. If your data doesn't come with a predefined projection, and the spatial portal doesn't specify, but it uses a Google Maps style interface, it's probably using EPSG:4326 - WGS84
-
+> It's often the case that spatial data comes in EPSG:4326 - WGS84, as that is the standard used by most GPS units and Google Maps. However, it's still worth checking those details on the website you've downloaded it from. If your data doesn't come with a predefined projection, and the spatial portal doesn't specify, but it uses a Google Maps style interface, it's probably using EPSG:4326 - WGS84.
 
 ### Data Summary
 
 You should have:
 
-- From earlier:
-  - Project Area
-  - Proposed Access Track
-  - Turbine Locations
-  - BVG Data
-- Just imported:
-  - Animal Sightings
-
-
+-   From earlier:
+    -   Turbine Locations
+    -   Proposed Access Track
+    -   Project Area
+    -   BVG Data
+    -   OpenStreetMap basemap
+-   Just imported:
+    -   Animal Sightings
 
 ## Analysis: Spatial Overlaps
 
@@ -70,14 +64,15 @@ Let's find out what BVGs are in our Project Area, and the total area they take u
 
 Right-click on the `AH BVG` file and click `Open Atrribute Table`, you will see that there are many rows representing the separate polygons, even if they have the same BVG category (bvg1m). To calculate the area, it would be easier if we combined each polygon of the same BVG category.
 
-  - Go to Vector > Geoprocessing Tools > Dissolve…
-  - Select `AH BVG` as the Input layer
-  - Click `...` next to `Dissolve field(s)`
-  - Tick `bvg1m`
-  - Click `Run`
-  
-If you look at the `AH BVG` Attribute Table now, you will see that they have now all been merged by `bvg1m.`
+-   Go to Vector \> Geoprocessing Tools \> Dissolve…
+-   Select `EH BVG` as the Input layer
+-   Click `...` next to `Dissolve field(s)`
+-   Tick `bvg1m` and click `OK`
+-   Click `Run`
 
+If you look at the `EH BVG` Attribute Table now, you will see that they have now all been merged by `bvg1m` .
+
+> A quick way to see the difference between the two layers is to select both in the Layers panel, right-click and select "Show Feature Count".
 
 ### Field Calculator
 
@@ -91,7 +86,7 @@ In the **Field calculator** window, type the following code into the **Expressio
 $area/10000
 ```
 
--   $area will give us the area of a single polygon (converted to hectares by dividing by 10000)
+-   `$area` will give us the area of a single polygon (converted to hectares by dividing by 10000)
 -   Below the text box, you will see a field titled **Preview:**, the value following that contains the results of our expression for one BVG category.
 -   We will use this to create a new field in our Attribute Table
 -   Next to `Output field name` type "**area_ha**"
@@ -111,9 +106,7 @@ Open the **Field calculator**, and type the following code into the **Expression
 -   Next to `Output field type` change it to `Decimal Number (Real)`
 -   Click `OK`
 
-If you look at the `AH BVG` Attribute Table now, you will see that there is now an `area_ha` and an `area_percent` column, these are very useful values for reporting.
-
-
+If you look at the `Dissolved` Attribute Table now, you will see that there is now an `area_ha` and an `area_percent` column, these are very useful values for reporting.
 
 ## Analysis: How many animal types are there in the project area?
 
@@ -125,11 +118,12 @@ Let's determine how many species are inside of each BVG.
 
 -   Go to `Vector > Analysis Tools > Count Points in Polygons...`
 
--   In the **Polygons** field select `dissolved`
+-   In the **Polygons** field select `Dissolved`
 
 -   In the **Points** field select `animal_sightings`
 
 -   In the **Class field** field select `scientific_name`
+
     -   Note that if we didn't select anything here, it would simply count number of sightings (abundance) in the Project Area.
 
 -   In the **Count field name** field type in something like `Species_Richness`
@@ -144,11 +138,11 @@ Let's determine how many species are inside of each BVG.
 
 This will create a new copy of our BVG data which has now been clipped, dissolved, area calculated, and now has a species richness count.
 
-You can now look at the **Attribute Table (F6)** for this layer to see the number of species sightings per BVG in our project area. 
+You can now look at the **Attribute Table** (<kbd>F6</kbd>) for this layer to see the number of species sightings per BVG in our project area. Let's use this new data:
 
 -   Click on the **BVG_Species** layer in the Layers panel
 
--   Open the Layer Styling Panel by pressing F7 (or fn + F7)
+-   Open the Layer Styling Panel by pressing <kbd>F7</kbd> (or <kbd>fn</kbd> + <kbd>F7</kbd>)
 
 -   Change the Symbology from `Single Symbol` to `Graduated`
 
@@ -179,8 +173,6 @@ We can go further and use the **Field Calculator** to compare species richness t
     -   Click Classify again
 
 We can now clearly see that the richness was being skewed by the area.
-
-
 
 ## Map Digitisation
 
@@ -236,7 +228,4 @@ The **Vertex Tool** ![Vertex Tool Button](https://docs.qgis.org/3.40/en/_images/
 
 -   To finish editing your layer click the **Toggle Editing** button
 
-
 Up next we will explore what we can do with Projections.
-
-
