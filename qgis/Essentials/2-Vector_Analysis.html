@@ -372,13 +372,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="load-in-our-data" class="level2">
 <h2 class="anchored" data-anchor-id="load-in-our-data">Load in our data</h2>
 <ul>
-<li>Click the <code>Project Home</code> dropdown, then <code>data &gt; raw &gt; 2-vector_data</code> and load in:</li>
-<li>animal_sightings.csv (Animal sightings from <a href="https://www.inaturalist.org">iNaturalist</a>)</li>
+<li>Click the <code>Project Home</code> dropdown, then <code>data &gt; raw &gt; 2-vector_data</code> and load in: <code>animal_sightings.csv</code> (Animal sightings from <a href="https://www.inaturalist.org">iNaturalist</a>)</li>
 </ul>
-<p>For most spatial data, we will simply be able to double click on it in the Project Home folder within the Browser window. But we need to handle CSV data differently.</p>
+<p>For most spatial data, we will simply be able to double click on it in the Project Home folder within the Browser panel. But we need to handle CSV data differently. If you try to import it in the same way, it will add a layer to your project, but it is not a spatial layer: it in in essence an attribute table without geometries attached to it.</p>
 <section id="importing-csv-data" class="level3">
 <h3 class="anchored" data-anchor-id="importing-csv-data">Importing CSV data</h3>
-<p>The animal sighting data has columns with coordinates so it effectively is spatial data and can be imported directly.</p>
+<p>The animal sighting data has columns with coordinates so it effectively is spatial data, but we need to point QGIS to those columns by using these import steps:</p>
 <ul>
 <li>Go to <code>Layer &gt; Add Layer &gt; Add Delimited Text Layer...</code></li>
 <li>Click the three dots <code>...</code> next to the <strong>File name</strong> field, navigate to the project folder, and select <code>animal_sightings.csv</code></li>
@@ -390,7 +389,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Click <code>Add</code></li>
 </ul>
 <blockquote class="blockquote">
-<p>It’s often the case that spatial data comes in EPSG:4326 - WGS84, as that is the standard used by most GPS units and Google Maps. However, it’s still worth checking those details on the website you’ve downloaded it from. If your data doesn’t come with a predefined projection, and the spatial portal doesn’t specify, but it uses a Google Maps style interface, it’s probably using EPSG:4326 - WGS84</p>
+<p>It’s often the case that spatial data comes in EPSG:4326 - WGS84, as that is the standard used by most GPS units and Google Maps. However, it’s still worth checking those details on the website you’ve downloaded it from. If your data doesn’t come with a predefined projection, and the spatial portal doesn’t specify, but it uses a Google Maps style interface, it’s probably using EPSG:4326 - WGS84.</p>
 </blockquote>
 </section>
 <section id="data-summary" class="level3">
@@ -399,10 +398,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>From earlier:
 <ul>
-<li>Project Area</li>
-<li>Proposed Access Track</li>
 <li>Turbine Locations</li>
+<li>Proposed Access Track</li>
+<li>Project Area</li>
 <li>BVG Data</li>
+<li>OpenStreetMap basemap</li>
 </ul></li>
 <li>Just imported:
 <ul>
@@ -419,12 +419,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Right-click on the <code>AH BVG</code> file and click <code>Open Atrribute Table</code>, you will see that there are many rows representing the separate polygons, even if they have the same BVG category (bvg1m). To calculate the area, it would be easier if we combined each polygon of the same BVG category.</p>
 <ul>
 <li>Go to Vector &gt; Geoprocessing Tools &gt; Dissolve…</li>
-<li>Select <code>AH BVG</code> as the Input layer</li>
+<li>Select <code>EH BVG</code> as the Input layer</li>
 <li>Click <code>...</code> next to <code>Dissolve field(s)</code></li>
-<li>Tick <code>bvg1m</code></li>
+<li>Tick <code>bvg1m</code> and click <code>OK</code></li>
 <li>Click <code>Run</code></li>
 </ul>
-<p>If you look at the <code>AH BVG</code> Attribute Table now, you will see that they have now all been merged by <code>bvg1m.</code></p>
+<p>If you look at the <code>EH BVG</code> Attribute Table now, you will see that they have now all been merged by <code>bvg1m</code> .</p>
+<blockquote class="blockquote">
+<p>A quick way to see the difference between the two layers is to select both in the Layers panel, right-click and select “Show Feature Count”.</p>
+</blockquote>
 </section>
 <section id="field-calculator" class="level3">
 <h3 class="anchored" data-anchor-id="field-calculator">Field Calculator</h3>
@@ -433,7 +436,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In the <strong>Field calculator</strong> window, type the following code into the <strong>Expression</strong> tab:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>$area<span class="op">/</span><span class="dv">10000</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
-<li>$area will give us the area of a single polygon (converted to hectares by dividing by 10000)</li>
+<li><code>$area</code> will give us the area of a single polygon (converted to hectares by dividing by 10000)</li>
 <li>Below the text box, you will see a field titled <strong>Preview:</strong>, the value following that contains the results of our expression for one BVG category.</li>
 <li>We will use this to create a new field in our Attribute Table</li>
 <li>Next to <code>Output field name</code> type “<strong>area_ha</strong>”</li>
@@ -449,7 +452,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Next to <code>Output field type</code> change it to <code>Decimal Number (Real)</code></li>
 <li>Click <code>OK</code></li>
 </ul>
-<p>If you look at the <code>AH BVG</code> Attribute Table now, you will see that there is now an <code>area_ha</code> and an <code>area_percent</code> column, these are very useful values for reporting.</p>
+<p>If you look at the <code>Dissolved</code> Attribute Table now, you will see that there is now an <code>area_ha</code> and an <code>area_percent</code> column, these are very useful values for reporting.</p>
 </section>
 </section>
 <section id="analysis-how-many-animal-types-are-there-in-the-project-area" class="level2">
@@ -460,7 +463,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Let’s determine how many species are inside of each BVG.</p>
 <ul>
 <li><p>Go to <code>Vector &gt; Analysis Tools &gt; Count Points in Polygons...</code></p></li>
-<li><p>In the <strong>Polygons</strong> field select <code>dissolved</code></p></li>
+<li><p>In the <strong>Polygons</strong> field select <code>Dissolved</code></p></li>
 <li><p>In the <strong>Points</strong> field select <code>animal_sightings</code></p></li>
 <li><p>In the <strong>Class field</strong> field select <code>scientific_name</code></p>
 <ul>
@@ -475,10 +478,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>If this tool is ever being really slow, we might be able to benefit from cancelling and using the the <strong>Fix Geometries</strong> tool on the point layer</p>
 </blockquote>
 <p>This will create a new copy of our BVG data which has now been clipped, dissolved, area calculated, and now has a species richness count.</p>
-<p>You can now look at the <strong>Attribute Table (F6)</strong> for this layer to see the number of species sightings per BVG in our project area.</p>
+<p>You can now look at the <strong>Attribute Table</strong> (<kbd>F6</kbd>) for this layer to see the number of species sightings per BVG in our project area. Let’s use this new data:</p>
 <ul>
 <li><p>Click on the <strong>BVG_Species</strong> layer in the Layers panel</p></li>
-<li><p>Open the Layer Styling Panel by pressing F7 (or fn + F7)</p></li>
+<li><p>Open the Layer Styling Panel by pressing <kbd>F7</kbd> (or <kbd>fn</kbd> + <kbd>F7</kbd>)</p></li>
 <li><p>Change the Symbology from <code>Single Symbol</code> to <code>Graduated</code></p></li>
 <li><p>Set the <strong>Value</strong> to <code>Species_Richness</code></p></li>
 <li><p>Choose a <strong>Color ramp</strong> of your liking</p></li>
