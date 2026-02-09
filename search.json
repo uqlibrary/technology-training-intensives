@@ -3101,61 +3101,61 @@
   {
     "objectID": "qgis/Essentials/5-Sourcing_Data.html",
     "href": "qgis/Essentials/5-Sourcing_Data.html",
-    "title": "Data Sources",
+    "title": "Sourcing Data",
     "section": "",
     "text": "In this workshop, we will learn about sourcing spatial data.\nWe will cover:\n\nAdding Base Maps\nImporting online data\n\nWe will explore data from:\n\nLocal, State, Federal Gov Data Repositories\nInternational Datasets\nNGOs\nCorporate (ESRI, etc)",
     "crumbs": [
       "QGIS",
       "Essentials",
-      "Data Sources"
+      "Sourcing Data"
     ]
   },
   {
     "objectID": "qgis/Essentials/5-Sourcing_Data.html#what-are-we-going-to-learn",
     "href": "qgis/Essentials/5-Sourcing_Data.html#what-are-we-going-to-learn",
-    "title": "Data Sources",
+    "title": "Sourcing Data",
     "section": "",
     "text": "In this workshop, we will learn about sourcing spatial data.\nWe will cover:\n\nAdding Base Maps\nImporting online data\n\nWe will explore data from:\n\nLocal, State, Federal Gov Data Repositories\nInternational Datasets\nNGOs\nCorporate (ESRI, etc)",
     "crumbs": [
       "QGIS",
       "Essentials",
-      "Data Sources"
+      "Sourcing Data"
     ]
   },
   {
     "objectID": "qgis/Essentials/5-Sourcing_Data.html#basemap-services",
     "href": "qgis/Essentials/5-Sourcing_Data.html#basemap-services",
-    "title": "Data Sources",
+    "title": "Sourcing Data",
     "section": "Basemap Services",
     "text": "Basemap Services\nSo far we’ve only been using OpenStreetMap, but there are a wide variety of other options available.\n\nPlugins\nThere are many sources of basemaps, but a simple on is the QuickMapServices plugin, which we can use to load in new raster basemaps.\n\nNavigate to Plugins &gt; Manage and Install Plugins.... Search for “QuickMapServices”, select it from the list and click Install Plugin, once it has loaded, click Cloce\n\nThe plugin should automatically open a side panel in which you can search for terms. For example, search for “satellite” and add the ESRI satellite imagery to your project.\n\n\nWeb Mapping Services\nNow we can go to the next step and source our basemaps externally. We can do this with WMTS (Web Map Tile Service), WCS (Web Coverage Service), ArcGIS REST Servers, and XYZ Tiles. Some web services like ArcGIS REST Servers can also provide vector data too!\nToday we’re going to use an XYZ Tile from CARTODB.\n\nScroll down the Browser panel until your see XYZ Tiles\nRight click XYZ Tiles and select New Connection...\nIn Name type Voyager (no labels)\nIn URL paste:\nhttps://a.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}@2x.png\nIncrease the Max. Zoom Level to 20\nThis value depends on what is available from the given service in different parts of the world. Increasing that value beyond 20 for this map in Brisbane will show “Map data not yet available” when you zoom in very close.\nClick OK\nIn the Browser panel, expand XYZ Tiles and double click on Voyager (no labels)\nNow do the same for this Light Gray Basemap from ESRI, but set the Max. Zoom Level to 16:\nhttps://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}\nAnd the same for this ESRI World Imagery, but set the Max. Zoom Level to 20:\nhttps://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}\n\nYou can find more Basemaps on our Datasets page.",
     "crumbs": [
       "QGIS",
       "Essentials",
-      "Data Sources"
+      "Sourcing Data"
     ]
   },
   {
     "objectID": "qgis/Essentials/5-Sourcing_Data.html#raster-data-repositories",
     "href": "qgis/Essentials/5-Sourcing_Data.html#raster-data-repositories",
-    "title": "Data Sources",
+    "title": "Sourcing Data",
     "section": "Raster Data Repositories",
     "text": "Raster Data Repositories\nMany raster data repositories have a similar interface where you draw a box around the area of interest, and then download the tiles that fall within that area.\nFor example, ELVIS is great for getting Digital Elevation Models (DEM) in Australia. A DEM is raster data that shows the elevation of an area.\nELVIS - Geoscience Australia’s ELeVation Information System.\n\nGo to http://www.ga.gov.au/elvis/\nFor example, search for “St Lucia” in the Location Search search box and select the first result\nClick Order Data\nChoose “Draw” and “Box” and then click the Draw button\nClick on the map to start drawing a rectangle around your desired area\nThen click Search\nThe right panel will show you all the different datasets available in that area\nWe want the QLD Government Digital Elevation Model 1 Metre, click the down arrow on the right\nAs you hover over the different options, they will highlight a red box on the map, click the tick box and select all that overlap the area you’re interested in (note that there may be data from different years here)\nWhen you have the data you want, scroll to the bottom of the Order Data window\nSelect your industry, enter your email, tick the reCAPTCHA, and click the Order Datasets button\nYou should receive an email within 5 minutes, download the files from the link in the email, extract the folder to your project folder, and add them to your map.\n\nYou can find more Raster sources (such as Historical Aerial Imagery) on our Datasets page.",
     "crumbs": [
       "QGIS",
       "Essentials",
-      "Data Sources"
+      "Sourcing Data"
     ]
   },
   {
     "objectID": "qgis/Essentials/5-Sourcing_Data.html#vector-data-repositories",
     "href": "qgis/Essentials/5-Sourcing_Data.html#vector-data-repositories",
-    "title": "Data Sources",
+    "title": "Sourcing Data",
     "section": "Vector Data Repositories",
     "text": "Vector Data Repositories\n\nDirect Downloads\nFor a lot of repositories, you need to navigate their site and simply download the data you want. This can vary, for example, you can access a wide variety of QLD Government Data, including Spatial Data such as lot plans and vegetation maps, from QLD Spatial.\nThere are three ways to access data from QSpatial.\n\nDownload all of the data from a layer\nSelect a portion of a layer for download using the My List function\n\n\nUsing My List on QSpatial\nHere is an example of extracting property boundaries.\n\nTo access data from QLD Spatial go to https://qldspatial.information.qld.gov.au/\nSearch for “property boundaries”\nScroll down to “Property boundaries Queensland” and click Add to my list\nClick My List from the top menu\nClick View/extract in map\nUnder Extractable Data, click the box next to Property boundaries Queensland, it will become green\nClick Extract/download\nClick Choose an area\nSelect BRISBANE CITY from the Select LGA option\nChoose GeoPackage 1.0 from Select output format\nEnter your Email Address\nAccept the Terms and Conditions\nClick Extract/Download\n\n\n\n\nFeature Servers and REST Servers\nYou can use Web Mapping Services to bring Vector Data directly in to QGIS, just like we did with the basemaps, but these will pull in extractable points, lines and polygons!\nMany government departments have ArcGIS REST servers, like the QLD Government.\nFor example, if you click Biota, then [Biota/RegionalEcosystemMapping](https://spatial-gis.information.qld.gov.au/arcgis/rest/services/Biota/RegionalEcosystemMapping/MapServer, you can access the spatial files of regional ecosystem maps showing biodiversity status and broad vegetation groups within Queensland.\nTo add this data to QGIS, copy that MapServer URL: https://spatial-gis.information.qld.gov.au/arcgis/rest/services/Biota/RegionalEcosystemMapping/MapServer\n\nScroll down the Browser panel until you see ArcGIS REST Servers\nRight click ArcGIS REST Servers and select New Connection...\nIn Name type ****\nIn URL paste: https://spatial-gis.information.qld.gov.au/arcgis/rest/services/Biota/RegionalEcosystemMapping/MapServer\nClick OK\nIn the Browser panel, expand ArcGIS REST Servers, expand QLD Ecosystems, expand Broad vegetation groups [BVG], and double click on Remnant BVG - 1:5 million - This is the data we used earlier!\n\nYou’ll note that there is a raster and a vector option. The raster option will load faster, but the vector option is customisable.\n\n\n\n\n\n\n\n\nTip\n\n\n\nIf the vector data imported this way is taking too long to load, you can hide it, and then use a vector layer in your project to clip the area of interest and save it on your computer.\n\n\n\n\nTabular Data and Boundaries\nWhile many repositories hold tabular and boundary data, the Australian Bureau of Statistics is a huge source of data, however, it can be a bit difficult to find that data, and use it in a spatial context.\nThe ABS has a variety of ways that it splits its data up. These Digital Boundary Files are very useful for classifying data. They generally classify all of Australia into discrete Statistical Areas. Level 1 are the smallest, and Level 4 are the coarsest. (notably, the link above also has non-ABS Structures/boundary files such as Electoral areas and Postcodes).\n\n\nOnline Community Spatial Repositories\nAtlas of Living Australia - Species observation data\nSpecies observation data can be downloaded from the Atlas of Living Australia.\nThis is an Australia Biodiversity occurrence database. It pulls data from a variety of different sources, including government data, individual collectors and community groups. This means that this data will contain sampling bias and will often simply represent encounters, rather than using robust sampling and collection methods. So, while we need to use this data with caution, it’s still a useful dataset!\nYou need to create an account and request the exact dataset you need.\nYou can find more Vector sources (such as more state, fedeeral and council data, ESRI data, and community sources) on our Datasets page.",
     "crumbs": [
       "QGIS",
       "Essentials",
-      "Data Sources"
+      "Sourcing Data"
     ]
   },
   {
