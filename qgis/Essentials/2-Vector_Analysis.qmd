@@ -28,6 +28,7 @@ For this Windfarm to go ahead, we need to look at the environmental impacts on v
 
 ## Load in our data 
 
+-   Click the `Project Home` dropdown, then `data > raw > 2-vector_data` and load in:
 -   animal_sightings.csv (Animal sightings from [iNaturalist](https://www.inaturalist.org))
 
 For most spatial data, we will simply be able to double click on it in the Project Home folder within the Browser window. But we need to handle CSV data differently.
