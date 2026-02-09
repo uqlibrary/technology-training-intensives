@@ -3343,7 +3343,7 @@
     "href": "qgis/The Project/tips.html#keyboard-shortcuts",
     "title": "Tips",
     "section": "Keyboard Shortcuts",
-    "text": "Keyboard Shortcuts\nChange the below to QGIS things like F7 for Style Manager and CTRL + . for digitising\n\n\n\n\n\n\n\n\nCode\nHotkey\nDescription\n\n\n\n\n\nCtrl+Enter\nRun current line (when in Script)\n\n\n&lt;-\nAlt+-\nAssignment\n\n\n%&gt;%\nCtrl+Shift+M\nPipe\n\n\n\nEsc\nCancel current operation (when in Console)\n\n\n\nF1\nHelp documentation for selected function",
+    "text": "Keyboard Shortcuts\nChange the below to QGIS things like F7 for Style Manager and CTRL + . for digitising\n\n\n\n\n\n\n\nHotkey\nDescription\n\n\n\n\nF6\nOpen Attribute Table\n\n\nCtrl+J\nZoom to Selection\n\n\nCtrl+Alt+T\nToogle Processing Toolbox\n\n\nCtrl+Shift+Tab\nHide all panels (good for georeferencing)\n\n\nF7\nOpen Layer Styling Panel",
     "crumbs": [
       "QGIS",
       "The Project",
