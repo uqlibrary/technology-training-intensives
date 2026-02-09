@@ -419,99 +419,171 @@
     ]
   },
   {
-    "objectID": "qgis/Essentials/2-Vector_Analysis.html",
-    "href": "qgis/Essentials/2-Vector_Analysis.html",
-    "title": "Vector Analysis",
+    "objectID": "qgis/Essentials/5-Raster_Analysis.html",
+    "href": "qgis/Essentials/5-Raster_Analysis.html",
+    "title": "Raster Analysis",
     "section": "",
-    "text": "In this workshop, we will learn about:\n\nImporting data from a CSV\nJoining Tabular data\nOverlaps/Intersections\nDigitisation\nPoint counts within a polygon",
+    "text": "In this workshop, we will learn about:\n\nRasters\nPlugins\nDEM\nTerrain Analysis\nContours\nGeoreferencing",
     "crumbs": [
       "QGIS",
       "Essentials",
-      "Vector Analysis"
+      "Raster Analysis"
     ]
   },
   {
-    "objectID": "qgis/Essentials/2-Vector_Analysis.html#what-are-we-going-to-learn",
-    "href": "qgis/Essentials/2-Vector_Analysis.html#what-are-we-going-to-learn",
-    "title": "Vector Analysis",
+    "objectID": "qgis/Essentials/5-Raster_Analysis.html#what-are-we-going-to-learn",
+    "href": "qgis/Essentials/5-Raster_Analysis.html#what-are-we-going-to-learn",
+    "title": "Raster Analysis",
     "section": "",
-    "text": "In this workshop, we will learn about:\n\nImporting data from a CSV\nJoining Tabular data\nOverlaps/Intersections\nDigitisation\nPoint counts within a polygon",
+    "text": "In this workshop, we will learn about:\n\nRasters\nPlugins\nDEM\nTerrain Analysis\nContours\nGeoreferencing",
     "crumbs": [
       "QGIS",
       "Essentials",
-      "Vector Analysis"
+      "Raster Analysis"
     ]
   },
   {
-    "objectID": "qgis/Essentials/2-Vector_Analysis.html#what-is-vector-data",
-    "href": "qgis/Essentials/2-Vector_Analysis.html#what-is-vector-data",
-    "title": "Vector Analysis",
-    "section": "What is Vector Data?",
-    "text": "What is Vector Data?\nVector data is made up of points, lines, and/or polygons. They are made up of precise points with individual coordinates. Vector data is best contrasted with Raster data which has a grid of values evenly spaced apart, connected to one coordinate. Rasters are efficient at displaying large amounts of data, where vector data is very precise.\nThe Map School has some useful explainers of what Vector data is.",
+    "objectID": "qgis/Essentials/5-Raster_Analysis.html#what-is-raster-data",
+    "href": "qgis/Essentials/5-Raster_Analysis.html#what-is-raster-data",
+    "title": "Raster Analysis",
+    "section": "What is Raster Data?",
+    "text": "What is Raster Data?\nA good example of a raster is an image file (like a jpg). If you zoom in on that image, you will see that it is just a grid of coloured pixels. Each pixel is just a cell with a number in it which tells the computer what colour it should be. The cell size might be small (high resolution), or large (low resolution).\nA spatial raster is basically just a grid of cells like an image, but the values in those cells might represent the colours in an aerial photograph, or population density in that area, or the elevation. The main distinction of a spatial raster is that the grid is attached to a single coordinate point (usually in the top left corner), and the rest of the grid is laid on the map from there. The cells size of a spatial raster represents the distance each cell covers (for example they might be 1x1m or 10x10km).\nRasters aren’t as precise as vector data, as they are an approximation of the values in an area. For example every millimetre of a 1x1m cell might not have the same elevation, but the cell value is a helpful summary of the elevation in that area. This ability to neatly summarise and approximate data means that rasters are a very efficient way of showing continuous data across a large area.\nA Digital Elevation Model (DEM) is a common example of raster data which shows the elevation of the land.",
     "crumbs": [
       "QGIS",
       "Essentials",
-      "Vector Analysis"
+      "Raster Analysis"
     ]
   },
   {
-    "objectID": "qgis/Essentials/2-Vector_Analysis.html#what-are-we-doing-in-this-session",
-    "href": "qgis/Essentials/2-Vector_Analysis.html#what-are-we-doing-in-this-session",
-    "title": "Vector Analysis",
-    "section": "What are we doing in this session?",
-    "text": "What are we doing in this session?\nWe’ve actually already looked at a lot of vector data: all our points, lines and polygons are vectors. To look at vector data in some more detail, we’re going to bring a CSV of animal sightings, use some analyses to see how they interact with our existing data, and create some spatial data of our own.\nFor this Windfarm to go ahead, we need to look at the environmental impacts on vegetation, animals, and people in the local area. We can calculate the area of vegetation impacted, count animal sightings, and in the next session look at population numbers.",
+    "objectID": "qgis/Essentials/5-Raster_Analysis.html#aims-for-this-session",
+    "href": "qgis/Essentials/5-Raster_Analysis.html#aims-for-this-session",
+    "title": "Raster Analysis",
+    "section": "Aims for this session",
+    "text": "Aims for this session\nIn the last session we found that a number of residential areas will likely receive dust from the construction. One way to reduce dust is to regularly spray water on the roads, and wash down the trucks. However you now need to deal with the water runoff from that creates. We can use watershed and basin analysis on a DEM to look at where the water will flow.\nWe can also use similar data to calculate how for away the wind turbines will be visible",
     "crumbs": [
       "QGIS",
       "Essentials",
-      "Vector Analysis"
+      "Raster Analysis"
     ]
   },
   {
-    "objectID": "qgis/Essentials/2-Vector_Analysis.html#load-in-our-data",
-    "href": "qgis/Essentials/2-Vector_Analysis.html#load-in-our-data",
-    "title": "Vector Analysis",
-    "section": "Load in our data",
-    "text": "Load in our data\n\nClick the Project Home dropdown, then data &gt; raw &gt; 2-vector_data and load in:\nanimal_sightings.csv (Animal sightings from iNaturalist)\n\nFor most spatial data, we will simply be able to double click on it in the Project Home folder within the Browser window. But we need to handle CSV data differently.\n\nImporting CSV data\nThe animal sighting data has columns with coordinates so it effectively is spatial data and can be imported directly.\n\nGo to Layer &gt; Add Layer &gt; Add Delimited Text Layer...\nClick the three dots ... next to the File name field, navigate to the project folder, and select animal_sightings.csv\nClick the Geometry Definition drop down\n\nThis should automatically identify Longitude as the X field, and Latitude as the Y field.\nYou may need to set the Geometry CRS. For this data from iNaturalist it is EPSG:4326 - WGS84\n\nClick Add\n\n\nIt’s often the case that spatial data comes in EPSG:4326 - WGS84, as that is the standard used by most GPS units and Google Maps. However, it’s still worth checking those details on the website you’ve downloaded it from. If your data doesn’t come with a predefined projection, and the spatial portal doesn’t specify, but it uses a Google Maps style interface, it’s probably using EPSG:4326 - WGS84\n\n\n\nData Summary\nYou should have:\n\nFrom earlier:\n\nProject Area\nProposed Access Track\nTurbine Locations\nBVG Data\n\nJust imported:\n\nAnimal Sightings",
+    "objectID": "qgis/Essentials/5-Raster_Analysis.html#install-the-saga-plugin",
+    "href": "qgis/Essentials/5-Raster_Analysis.html#install-the-saga-plugin",
+    "title": "Raster Analysis",
+    "section": "Install the SAGA Plugin",
+    "text": "Install the SAGA Plugin\nWe need to install a plugin so we can access certain geoprocessing tools (the built-in SAGA provider has been removed in version 3.30). Go to Plugins &gt; Manage and Install Plugins... and Search... for “SAGA”. From the list on options choose Processing Saga NextGen Provider then in the bottom right, click Install Plugin. You might also need to install SAGA (version 9 or above) on your computer, if not already available.\nThere are many other plugins from the QGIS Community that you can explore to enhance QGIS, but we will stick with this for now.",
     "crumbs": [
       "QGIS",
       "Essentials",
-      "Vector Analysis"
+      "Raster Analysis"
     ]
   },
   {
-    "objectID": "qgis/Essentials/2-Vector_Analysis.html#analysis-spatial-overlaps",
-    "href": "qgis/Essentials/2-Vector_Analysis.html#analysis-spatial-overlaps",
-    "title": "Vector Analysis",
-    "section": "Analysis: Spatial Overlaps",
-    "text": "Analysis: Spatial Overlaps\nLet’s find out what BVGs are in our Project Area, and the total area they take up. We’ve already clipped the BVG data to the size of our project area, now we just need to analyse it.\n\nDissolve the polygons together\nRight-click on the AH BVG file and click Open Atrribute Table, you will see that there are many rows representing the separate polygons, even if they have the same BVG category (bvg1m). To calculate the area, it would be easier if we combined each polygon of the same BVG category.\n\nGo to Vector &gt; Geoprocessing Tools &gt; Dissolve…\nSelect AH BVG as the Input layer\nClick ... next to Dissolve field(s)\nTick bvg1m\nClick Run\n\nIf you look at the AH BVG Attribute Table now, you will see that they have now all been merged by bvg1m.\n\n\nField Calculator\nWe can use the Field Calculator to calculate the area of our polygons.\nSelect Dissovled from the Layers panel, and the click the Open Field Calculator button \nIn the Field calculator window, type the following code into the Expression tab:\n$area/10000\n\n$area will give us the area of a single polygon (converted to hectares by dividing by 10000)\nBelow the text box, you will see a field titled Preview:, the value following that contains the results of our expression for one BVG category.\nWe will use this to create a new field in our Attribute Table\nNext to Output field name type “area_ha”\nNext to Output field type change it to Decimal Number (Real)\nClick OK\n\nTo find the percentage:\nOpen the Field calculator, and type the following code into the Expression tab:\n(\"area_ha\" / sum(\"area_ha\")) * 100\n\nThis will divide the area for each category by the total area, and find the percentage\nNext to Output field name type “area_percent”\nNext to Output field type change it to Decimal Number (Real)\nClick OK\n\nIf you look at the AH BVG Attribute Table now, you will see that there is now an area_ha and an area_percent column, these are very useful values for reporting.",
+    "objectID": "qgis/Essentials/5-Raster_Analysis.html#load-in-our-raster-data",
+    "href": "qgis/Essentials/5-Raster_Analysis.html#load-in-our-raster-data",
+    "title": "Raster Analysis",
+    "section": "Load in our Raster data",
+    "text": "Load in our Raster data\n\nClick the Project Home dropdown, then data &gt; raw &gt; 4-raster_data and load in:\nBris_DEM_5m.tif (From Geoscience Australia through their Elvis platform)",
     "crumbs": [
       "QGIS",
       "Essentials",
-      "Vector Analysis"
+      "Raster Analysis"
     ]
   },
   {
-    "objectID": "qgis/Essentials/2-Vector_Analysis.html#analysis-how-many-animal-types-are-there-in-the-project-area",
-    "href": "qgis/Essentials/2-Vector_Analysis.html#analysis-how-many-animal-types-are-there-in-the-project-area",
-    "title": "Vector Analysis",
-    "section": "Analysis: How many animal types are there in the project area?",
-    "text": "Analysis: How many animal types are there in the project area?\n\nCount Points in Polygons\nPreviously we looked at overlap between polygons, we can also look at points overlapping with a polygon. Let’s use the Count Points in Polygons tool to quickly count the number of animal species sighted inside the BVG types in our Project Area.\nLet’s determine how many species are inside of each BVG.\n\nGo to Vector &gt; Analysis Tools &gt; Count Points in Polygons...\nIn the Polygons field select dissolved\nIn the Points field select animal_sightings\nIn the Class field field select scientific_name\n\nNote that if we didn’t select anything here, it would simply count number of sightings (abundance) in the Project Area.\n\nIn the Count field name field type in something like Species_Richness\nClick the three dots ... next to the Count section, and click Save to File…\nNavigate to your processed folder and save the file as BVG_Species\nClick Run\n\n\nIf this tool is ever being really slow, we might be able to benefit from cancelling and using the the Fix Geometries tool on the point layer\n\nThis will create a new copy of our BVG data which has now been clipped, dissolved, area calculated, and now has a species richness count.\nYou can now look at the Attribute Table (F6) for this layer to see the number of species sightings per BVG in our project area.\n\nClick on the BVG_Species layer in the Layers panel\nOpen the Layer Styling Panel by pressing F7 (or fn + F7)\nChange the Symbology from Single Symbol to Graduated\nSet the Value to Species_Richness\nChoose a Color ramp of your liking\nClick Classify\nYou might want to play with the Mode to get a feel for the data\n\nNow we can quickly see which BVG has the greatest observed species richness\nWe can go further and use the Field Calculator to compare species richness to the area (ha), and create a new field with that information.\n\nClick on the Field Calculator button \n\nUnder Create a new field set the Output field name to richness_area\nSet the Output field type to Decimal number (real) (we need to choose this option to ensure that we have decimals in our output)\nIn the Expression tab enter \"Species_Richness\" / \"area_ha\"\nClick OK\n\nNow you can change the Value in Layer Styling to richness_area\n\nClick Classify again\n\n\nWe can now clearly see that the richness was being skewed by the area.",
+    "objectID": "qgis/Essentials/5-Raster_Analysis.html#reproject-the-dem",
+    "href": "qgis/Essentials/5-Raster_Analysis.html#reproject-the-dem",
+    "title": "Raster Analysis",
+    "section": "Reproject the DEM",
+    "text": "Reproject the DEM\nIn the Bris_DEM_5m layer’s Properties (Right click &gt; Properties... &gt; Source), we can see that the Coordinate Reference System (CRS) in use is EPSG:7844 - GDA2020. It is the one that QGIS detected when opening the file. While this is good for Australian data, we can’t do slope and terrain measurements and analyses while our raster is measuring in degrees, we need it projected to use metres. A good PCS for around Brisbane/Meanjin is “EPSG:7856 - GDA2020 / MGA zone 56”. We can’t change that here, we instead will need to use the Warp (Reproject) tool.\n\nUse the tool Raster &gt; Projections &gt; Warp (Reproject)\nMake sure Input layer is set as Bris_DEM_5m.\npick “EPSG:7856 - GDA2020 / MGA zone 56” as the Target CRS\n\nyou may need to click the Select CRS button \nuntick No CRS\nuse the filter to search for “7856”\nYou should be able to find “EPSG:7856 - GDA2020 / MGA zone 56” under Predefined Coordinate Reference Systems\n\nScroll down to click the three dots ... next to the Reprojected field, navigate to the project’s processed data folder, and type in Bris_DEM_5m_reproj and click Save\n\n\nIf you want to learn more about the static datum GDA2020 (for “Geocentric Datum of Australia 2020”), an upgrade from the previous, less precise GDA94, head to the ICSM website.",
     "crumbs": [
       "QGIS",
       "Essentials",
-      "Vector Analysis"
+      "Raster Analysis"
     ]
   },
   {
-    "objectID": "qgis/Essentials/2-Vector_Analysis.html#map-digitisation",
-    "href": "qgis/Essentials/2-Vector_Analysis.html#map-digitisation",
-    "title": "Vector Analysis",
-    "section": "Map Digitisation",
-    "text": "Map Digitisation\nNow that we have a better idea of what the vegetation and animal locations look like, let’s add another wind turbine location.\nYou may often need to create your own points, lines, and polygons to add new points, digitising satellite data, or simply highlighting a particular area. Let’s add a new point and road to the non-remnant area just north of Turbine 6 (T06).\n\nGo to Layer &gt; Create Layer &gt; New GeoPackage Layer...\nClick the three dots ... next to the Database section\nNavigate to your data &gt; processed folder and save the file as New_Turbine\nFrom Geometry type select MultiPoint\nMake sure the CRS is set to EPSG:7856 - GDA2020 / MGA zone 56\nLeave the other fields blank for now and click OK\n\nWe now have a brand new layer that we can add points to.\n\nSelect the new New_Turbine layer and then click the Toggle Editing pencil  from the top menu (or go to Layer &gt; Toggle Edititng\nOn your keyboard, press Ctrl + . (or click  Add Point Feature) to start adding a new point\nClick in the non-remnant patch just north of T06\nLeave the fid as Autogenerate and click OK\nTo save what you’ve done, click the Save Layer Edits button next to the Toggle Editing button\nTo finish editing your layer click the Toggle Editing button\n\nYou now know how to digitise a point, but the same steps apply for creating a polygon or a line layer. We created a new layer here, and you can also do the same steps to edit a pre-exisiting layer too.\nThe Vertex Tool  will allow you to move the location of points (or corners of polygons) that you have already created (you also need to click the Toggle Editing button for this tool)\n\nSelect the Proposed Access Track layer and then click the Toggle Editing pencil  from the top menu (or go to Layer &gt; Toggle Edititng\nClick the Vertex Tool  to start editing an existing line\nHover over the corner point north-west of T06\nYou will see a grey + appear, hover over that, and click when it turns red\nA red dotted line will now appear between that corner point and your cursor.\nLeft click to add the next point in the line.\nContinue adding points to the line until you click roughly on the New_Turbine Point you just added. Right click to stop digitising and create your new line segment.\nTo save what you’ve done, click the Save Layer Edits button next to the Toggle Editing button\nTo finish editing your layer click the Toggle Editing button\n\nUp next we will explore what we can do with Projections.",
+    "objectID": "qgis/Essentials/5-Raster_Analysis.html#risks-of-reprojecting-rasters",
+    "href": "qgis/Essentials/5-Raster_Analysis.html#risks-of-reprojecting-rasters",
+    "title": "Raster Analysis",
+    "section": "Risks of Reprojecting Rasters",
+    "text": "Risks of Reprojecting Rasters\nImportant note: it is risky reprojecting Raster data, as this permanently changes the shape and structure of the underlying data.\nChanging vector data from one Projection to another is straightforward, as you are just converting each point’s individual coordinates one-by-one. It’s just a numerical conversion. You can keep reprojecting vector data without issue.\nWhen you reproject a raster, it will be in roughly the right location as the coordinate point in the top left corner will convert without issue. But because the raster is an interconnected grid, it will get stretched by the compromises made by the new projection. As we learned previously, the Mercator projection prioritises angles and direction, so converting to a Mercator projection might make your grid squares more rectangular. A projection like Albers Equal Area will prioritise area while distorting angles and shapes, so your raster might look very strange.\nTo make the data fit in this new shape, the reprojection process will use something called resampling. There are different resampling methods, but they basically overlap the old shape with the new one to determine what data fits in the new cells.\n\nSo what do you do?\nOnly reproject rasters when you must.\nFor example, if you are doing terrain analysis (such as slope), distance calculations, or spatial modeling that requires accurate measurement, you must reproject to a suitable projected coordinate system (not in degrees).\nIf you are analysing a raster with vectors, but your raster is in a different projection to your vectors, then reproject your vectors.\nThere are other exceptions, but if you’re unsure, check first.",
     "crumbs": [
       "QGIS",
       "Essentials",
-      "Vector Analysis"
+      "Raster Analysis"
+    ]
+  },
+  {
+    "objectID": "qgis/Essentials/5-Raster_Analysis.html#analyse-watersheds-and-basins",
+    "href": "qgis/Essentials/5-Raster_Analysis.html#analyse-watersheds-and-basins",
+    "title": "Raster Analysis",
+    "section": "Analyse Watersheds and Basins",
+    "text": "Analyse Watersheds and Basins\nNow that our raster is in a projected coordinate system, we can start doing measurements.\nUsing the Channel network and drainage basins tool, we can create layers with channels, drainage basins, and a watershed raster that shows where water would flow according to the DEM.\n\nFill Sinks\nHowever before we can do watershed analyses we need to fix one more thing. A common problem with DEMs is that they have sinks and spikes that will make further analyses more difficult. This will mean the analysis is unable to best find where the water would flow. To resolve this, we need to use another tool to smooth out our raster before using the Channel network and drainage basins tool.\nWe can use the “Fill sinks (Wang & Liu)” tool to fill the sinks in our clipped DEM.\n\nOpen the Processing Toolbox by clicking the cog icon from the top menu \nIn the Processing Toolbox window Search for “Fill sinks (Wang & Liu)”\nDouble-click on the Fill sinks (Wang & Liu) option\nForInput layer choose Bris_DEM_5m_reproj\nWe might have to play with the “Minimum slope” value. A value of 0.01 degrees should work well.\nAs an output, we only need to tick the “Filled DEM” (first one in the list), which we can also save to file\nClick Run",
+    "crumbs": [
+      "QGIS",
+      "Essentials",
+      "Raster Analysis"
+    ]
+  },
+  {
+    "objectID": "qgis/Essentials/5-Raster_Analysis.html#channel-network-and-drainage-basin",
+    "href": "qgis/Essentials/5-Raster_Analysis.html#channel-network-and-drainage-basin",
+    "title": "Raster Analysis",
+    "section": "Channel network and drainage basin",
+    "text": "Channel network and drainage basin\nNow we can use the Channel network and drainage basins tool to calculate the watershed, flow direction, channels and drainage basins.\n\nOpen the Processing Toolbox \nSearch for “Channel network and drainage basin”\nDouble-click on the Channel network and drainage basin option\nMake sure Input layer is the Filled DEM option.\nWe might have to change the threshold to a higher one if the output includes too many small basins and channels.\nYou will also need to tick the boxes of what you want it to output (see below), we will choose Channel, Junctions, and Drainage Basins.\nClick Run\n\nStrahler Order: A Strahler Order raster that is used to classify stream hierarchy Channels: Vector lines showing river paths with Strahler Order values. Junctions: Vector points showing where channels meet. Drainage Basins: Vector polygons delineating the areas that drain to the same point. Drainage Basins [optional]: A raster grid version of the other Drainage Basins. Flow Direction: A raster grid representing the direction of flow for each cell. Flow Connectivity: A raster showing how well water could flow through sections of your map.\nThese are some examples of creating vector data from raster data!\nWe can now play with the symbology for those elements. For example:\n\nTry using different colours for each basin, by classifying by ID, or remove the fill (Simple fill &gt; Fill Style &gt; No Brush) so you can see the colours of the elevation colours underneath. You can also make the borders more obvious by changing the width of the stroke.\nChange the colour of the channels.\n\nChange the symbol from “Single Symbol” to Graduated.\nSet the Value to “Order”\nChoose an appropriate colour ramp\nChange the Mode down the bottom of the window to “Equal Interval”\nClick Apply\n\nYou can also further differentiate minor channels from major ones by using a “Data defined override” for the Width value:\n\nClick on the bar next to Symbol \nClick on the “Data defined override” icon  next to the Width field\nUse the “Assistant”\n“Source” needs to be the column “ORDER” (which corresponds to the Strahler order)\nClick the double-arrow icon to “Fetch value range from layer”\nChange the “Size from” and “to” values to suitable values",
+    "crumbs": [
+      "QGIS",
+      "Essentials",
+      "Raster Analysis"
+    ]
+  },
+  {
+    "objectID": "qgis/Essentials/5-Raster_Analysis.html#georeferencing-an-image",
+    "href": "qgis/Essentials/5-Raster_Analysis.html#georeferencing-an-image",
+    "title": "Raster Analysis",
+    "section": "Georeferencing an Image",
+    "text": "Georeferencing an Image\n\nNavigate to Layer &gt; Georeferencer...\n\nThis will open the Georeferencer window\n\nGo to File &gt; Open Raster...\nOpen the raster_data folder and open QAP1592_6735-1693dpi.JPG\n\nThis should load a black and white image of Enoggera Hill on 13 August, 1964. This image is from QImagery, to make georeferencing easier, we have already rotated this image so that north is at the top (which isn’t always the case with historical images!).\nWe now need to set a few Ground Control Points (GCPs) to align the image. We create these by clicking a point on the image, and then an associated point on our basemap.\nMake sure your World Imagery basemap is the top visible layer.\nUse the Pan tool  to find similar points on the historical image and your basemap. Look for key terrain areas that will be consistent across the decades: fencelines, bridges, old buildings, large rocks, unqiue landforms, T-Intersections, etc.\nBe careful putting points on tall buildings, as the photo angle can make that vary wildly - try aiming for a bottom corner.\nWhen you want to add a point, change to the Add GCP Point Tool . Click to add a point on the Historical Image, in the pop-up click From Map Cavnas, and then the matching point on your Map. We will need at least 5 points spread throughout the map. As you add the points, you’ll see them appear in the GCP Table, higher residuals suggests that your points might not be lining up perfectly compared to each other. You want to try to be as accurate as you can, but you can’t be perfect.\nTo make this process easier… - Put the Georeferencer window on the right of your screen - Put the QGIS window on the left. - Press Ctrl + Shift + Tab to make the map full screen. Press those keys again to bring the toolbars back - CMD + Shift + Tab on Mac\nOnce you’ve added all your points, you need to open the Transformation Settings  - For Transformation Type if you’re confident in all your points, choose Thin Plate Spline, if you’ve made some guesses or you have high residuals, go with Polynomial - it’s also much faster. - Choose where you want to save the output file - For Resampling Method it depends. Nearest Neighbour is faster, but generally not as accurate. Cubic tends to be more accurate, but it’s slow. Bilinear is a nice compromise. - Tick the Save GCP Points box. This means that after you georeference the image, if you decide you want to try again, you can reload the same points, and then remove or add some if you like. - Click OK - Click Start Georeferencing \nSoon you will have a Georeferenced Historical Image. Try turning the layer visibility on and off to see where it has skewed compared to your basemap. This can help you better see where you might be able to shift, remove, or add some more GCPs.\nHere is the QGIS how to Guide for Georeferencing",
+    "crumbs": [
+      "QGIS",
+      "Essentials",
+      "Raster Analysis"
+    ]
+  },
+  {
+    "objectID": "qgis/Essentials/5-Raster_Analysis.html#clip-the-dem",
+    "href": "qgis/Essentials/5-Raster_Analysis.html#clip-the-dem",
+    "title": "Raster Analysis",
+    "section": "Clip the DEM",
+    "text": "Clip the DEM\nIf we want to focus on the terrain inside our Project Area, we can use Raster &gt; Extraction &gt; Clip Raster by Mask Layer.\n\nMake sure the Bris_DEM_5m is selected in the Input layer\nSet Mask Layer to Project Area\nScroll to the bottom and click the three dots ... next to the Clipped (mask) field, navigate to the project’s processed data folder, and type in EH_DEM_5m and click Save\nClick Run\n\n\nChange the symbology\nWe can style our DEM with a terrain colour palette:\n\ndouble-click on the clipped DEM layer\ngo to the “Symbology” tab\nchange the Render type to “Singleband pseudocolor”\nby default, it uses the min/max values, which is what we want\nwe can change the “Color ramp” to something more suitable with the drop-down menu and Create new color ramp... &gt; Catalog: cpt-city &gt; Topography &gt; Elevation, for example.",
+    "crumbs": [
+      "QGIS",
+      "Essentials",
+      "Raster Analysis"
+    ]
+  },
+  {
+    "objectID": "qgis/Essentials/5-Raster_Analysis.html#add-a-hillshade",
+    "href": "qgis/Essentials/5-Raster_Analysis.html#add-a-hillshade",
+    "title": "Raster Analysis",
+    "section": "Add a hillshade",
+    "text": "Add a hillshade\nAdding a hillshade makes your visualisation of elevation more readable and visually pleasing by giving an artificial lighting look to your map.\n\nGo to Raster &gt; Analysis &gt; Hillshade...\nMake sure the 5m_DEM is selected in the Input layer\nYou could change the lighting direction, angle and height exageration, but the defaults are fine.\nScroll to the bottom and click the three dots ... next to the Clipped (mask) field, navigate to the project’s processed data folder, and type in EH_DEM_5m_Hillshade and click Save\n\nYou can get the best of both by adding transparency to the DEM or the Hillshade.\n\nMake sure the Hillshade is the above the DEM in the Layers panel.\nRight click on you Hillshade layer, select Properties and then the Transparency tab\nThe best transparency will depend on your map and elevation, for this map, set the hillshade transparency to 5%.\n\nLet’s link these two together.\n\nHold Ctrl and select both the Hillshade and the DEM layers\nPress the Add Group button from the top of the Layers panel\nCall it DEM\nMake sure the DEM is above the Hillshade within this group",
+    "crumbs": [
+      "QGIS",
+      "Essentials",
+      "Raster Analysis"
+    ]
+  },
+  {
+    "objectID": "qgis/Essentials/5-Raster_Analysis.html#viewshed",
+    "href": "qgis/Essentials/5-Raster_Analysis.html#viewshed",
+    "title": "Raster Analysis",
+    "section": "Viewshed",
+    "text": "Viewshed\nIf you want to know what can be seen from a certain point in a landscape, or where in the landscape can see a certain point, you can use a DEM to perform a Viewshed Analysis. To be even more accurate, we can use a DSM instead - a Digital Surface Model. It’s very much like a DEM, but where a DEM has had the buildings and trees digitally removed, the DSM retains the heights of buildings and trees. This is useful for a viewshed, as it means that tall buildings might block the view in some areas.\nIn our case, we may be interested to know how far away people can see the wind turbines.\nOpen the Processing Toolbox  and search for the GDAL tool called “Viewshed”.\nNormally this tool is used from the perspective of what an Observer can see around them, but we can reverse this and have the wind turbine as the Observer. If they can see you, you can see them.\n\nInput Layer: Choose your Bris_DEM_5m_reproj layer\nClick the three dots next to Observer location to select a point on the map\nObserver height, DEM units: 150 (this is the height of the centre of these wind turbines, it may be approrpiate to take into account the rotor length, but we’re keeping this simple)\nTarget height, DEM units: 1.6 (the average human eye height is around 1.6m, choose a height you think might be appropriate)\nMaximum distance from observer to compute visibility: 15000 (5km is the distance you can see on flat ground due to the curvature of the earth, this changes as our “Observer” is much higher up, you can find calculators and a formula for this maximum distance. While you could theoretically still see the turbines from greater distances, their visual detectability begins to decrease).\n\nThis will produce a black and white raster showing what can be seen, and what can’t. Go to the Layer Styling Menu, and change it to Singleband Pseudocolor, change the Mode to Equal Interval, and set the Classes to 2. Change one of the Colors to transparent to highlight either where the turbines can be seen, or where they cannot.\nIf you want to get more sophisticated with your Viewshed analyses, there is, of course, a plugin called Visibility Analysis which will allow you to use one or multiple points as observers, take in account of the Earth’s curvature, see what vector points can see other vector points, and more.\nDon’t forget to save your project",
+    "crumbs": [
+      "QGIS",
+      "Essentials",
+      "Raster Analysis"
     ]
   },
   {
@@ -3099,8 +3171,104 @@
     ]
   },
   {
-    "objectID": "qgis/Essentials/5-Sourcing_Data.html",
-    "href": "qgis/Essentials/5-Sourcing_Data.html",
+    "objectID": "qgis/Essentials/2-Vector_Analysis.html",
+    "href": "qgis/Essentials/2-Vector_Analysis.html",
+    "title": "Vector Analysis",
+    "section": "",
+    "text": "In this workshop, we will learn about:\n\nImporting data from a CSV\nJoining Tabular data\nOverlaps/Intersections\nDigitisation\nPoint counts within a polygon",
+    "crumbs": [
+      "QGIS",
+      "Essentials",
+      "Vector Analysis"
+    ]
+  },
+  {
+    "objectID": "qgis/Essentials/2-Vector_Analysis.html#what-are-we-going-to-learn",
+    "href": "qgis/Essentials/2-Vector_Analysis.html#what-are-we-going-to-learn",
+    "title": "Vector Analysis",
+    "section": "",
+    "text": "In this workshop, we will learn about:\n\nImporting data from a CSV\nJoining Tabular data\nOverlaps/Intersections\nDigitisation\nPoint counts within a polygon",
+    "crumbs": [
+      "QGIS",
+      "Essentials",
+      "Vector Analysis"
+    ]
+  },
+  {
+    "objectID": "qgis/Essentials/2-Vector_Analysis.html#what-is-vector-data",
+    "href": "qgis/Essentials/2-Vector_Analysis.html#what-is-vector-data",
+    "title": "Vector Analysis",
+    "section": "What is Vector Data?",
+    "text": "What is Vector Data?\nVector data is made up of points, lines, and/or polygons. They are made up of precise points with individual coordinates. Vector data is best contrasted with Raster data which has a grid of values evenly spaced apart, connected to one coordinate. Rasters are efficient at displaying large amounts of data, where vector data is very precise.\nThe Map School has some useful explainers of what Vector data is.",
+    "crumbs": [
+      "QGIS",
+      "Essentials",
+      "Vector Analysis"
+    ]
+  },
+  {
+    "objectID": "qgis/Essentials/2-Vector_Analysis.html#what-are-we-doing-in-this-session",
+    "href": "qgis/Essentials/2-Vector_Analysis.html#what-are-we-doing-in-this-session",
+    "title": "Vector Analysis",
+    "section": "What are we doing in this session?",
+    "text": "What are we doing in this session?\nWe’ve actually already looked at a lot of vector data: all our points, lines and polygons are vectors. To look at vector data in some more detail, we’re going to bring a CSV of animal sightings, use some analyses to see how they interact with our existing data, and create some spatial data of our own.\nFor this Windfarm to go ahead, we need to look at the environmental impacts on vegetation, animals, and people in the local area. We can calculate the area of vegetation impacted, count animal sightings, and in the next session look at population numbers.",
+    "crumbs": [
+      "QGIS",
+      "Essentials",
+      "Vector Analysis"
+    ]
+  },
+  {
+    "objectID": "qgis/Essentials/2-Vector_Analysis.html#load-in-our-data",
+    "href": "qgis/Essentials/2-Vector_Analysis.html#load-in-our-data",
+    "title": "Vector Analysis",
+    "section": "Load in our data",
+    "text": "Load in our data\n\nClick the Project Home dropdown, then data &gt; raw &gt; 2-vector_data and load in:\nanimal_sightings.csv (Animal sightings from iNaturalist)\n\nFor most spatial data, we will simply be able to double click on it in the Project Home folder within the Browser window. But we need to handle CSV data differently.\n\nImporting CSV data\nThe animal sighting data has columns with coordinates so it effectively is spatial data and can be imported directly.\n\nGo to Layer &gt; Add Layer &gt; Add Delimited Text Layer...\nClick the three dots ... next to the File name field, navigate to the project folder, and select animal_sightings.csv\nClick the Geometry Definition drop down\n\nThis should automatically identify Longitude as the X field, and Latitude as the Y field.\nYou may need to set the Geometry CRS. For this data from iNaturalist it is EPSG:4326 - WGS84\n\nClick Add\n\n\nIt’s often the case that spatial data comes in EPSG:4326 - WGS84, as that is the standard used by most GPS units and Google Maps. However, it’s still worth checking those details on the website you’ve downloaded it from. If your data doesn’t come with a predefined projection, and the spatial portal doesn’t specify, but it uses a Google Maps style interface, it’s probably using EPSG:4326 - WGS84\n\n\n\nData Summary\nYou should have:\n\nFrom earlier:\n\nProject Area\nProposed Access Track\nTurbine Locations\nBVG Data\n\nJust imported:\n\nAnimal Sightings",
+    "crumbs": [
+      "QGIS",
+      "Essentials",
+      "Vector Analysis"
+    ]
+  },
+  {
+    "objectID": "qgis/Essentials/2-Vector_Analysis.html#analysis-spatial-overlaps",
+    "href": "qgis/Essentials/2-Vector_Analysis.html#analysis-spatial-overlaps",
+    "title": "Vector Analysis",
+    "section": "Analysis: Spatial Overlaps",
+    "text": "Analysis: Spatial Overlaps\nLet’s find out what BVGs are in our Project Area, and the total area they take up. We’ve already clipped the BVG data to the size of our project area, now we just need to analyse it.\n\nDissolve the polygons together\nRight-click on the AH BVG file and click Open Atrribute Table, you will see that there are many rows representing the separate polygons, even if they have the same BVG category (bvg1m). To calculate the area, it would be easier if we combined each polygon of the same BVG category.\n\nGo to Vector &gt; Geoprocessing Tools &gt; Dissolve…\nSelect AH BVG as the Input layer\nClick ... next to Dissolve field(s)\nTick bvg1m\nClick Run\n\nIf you look at the AH BVG Attribute Table now, you will see that they have now all been merged by bvg1m.\n\n\nField Calculator\nWe can use the Field Calculator to calculate the area of our polygons.\nSelect Dissovled from the Layers panel, and the click the Open Field Calculator button \nIn the Field calculator window, type the following code into the Expression tab:\n$area/10000\n\n$area will give us the area of a single polygon (converted to hectares by dividing by 10000)\nBelow the text box, you will see a field titled Preview:, the value following that contains the results of our expression for one BVG category.\nWe will use this to create a new field in our Attribute Table\nNext to Output field name type “area_ha”\nNext to Output field type change it to Decimal Number (Real)\nClick OK\n\nTo find the percentage:\nOpen the Field calculator, and type the following code into the Expression tab:\n(\"area_ha\" / sum(\"area_ha\")) * 100\n\nThis will divide the area for each category by the total area, and find the percentage\nNext to Output field name type “area_percent”\nNext to Output field type change it to Decimal Number (Real)\nClick OK\n\nIf you look at the AH BVG Attribute Table now, you will see that there is now an area_ha and an area_percent column, these are very useful values for reporting.",
+    "crumbs": [
+      "QGIS",
+      "Essentials",
+      "Vector Analysis"
+    ]
+  },
+  {
+    "objectID": "qgis/Essentials/2-Vector_Analysis.html#analysis-how-many-animal-types-are-there-in-the-project-area",
+    "href": "qgis/Essentials/2-Vector_Analysis.html#analysis-how-many-animal-types-are-there-in-the-project-area",
+    "title": "Vector Analysis",
+    "section": "Analysis: How many animal types are there in the project area?",
+    "text": "Analysis: How many animal types are there in the project area?\n\nCount Points in Polygons\nPreviously we looked at overlap between polygons, we can also look at points overlapping with a polygon. Let’s use the Count Points in Polygons tool to quickly count the number of animal species sighted inside the BVG types in our Project Area.\nLet’s determine how many species are inside of each BVG.\n\nGo to Vector &gt; Analysis Tools &gt; Count Points in Polygons...\nIn the Polygons field select dissolved\nIn the Points field select animal_sightings\nIn the Class field field select scientific_name\n\nNote that if we didn’t select anything here, it would simply count number of sightings (abundance) in the Project Area.\n\nIn the Count field name field type in something like Species_Richness\nClick the three dots ... next to the Count section, and click Save to File…\nNavigate to your processed folder and save the file as BVG_Species\nClick Run\n\n\nIf this tool is ever being really slow, we might be able to benefit from cancelling and using the the Fix Geometries tool on the point layer\n\nThis will create a new copy of our BVG data which has now been clipped, dissolved, area calculated, and now has a species richness count.\nYou can now look at the Attribute Table (F6) for this layer to see the number of species sightings per BVG in our project area.\n\nClick on the BVG_Species layer in the Layers panel\nOpen the Layer Styling Panel by pressing F7 (or fn + F7)\nChange the Symbology from Single Symbol to Graduated\nSet the Value to Species_Richness\nChoose a Color ramp of your liking\nClick Classify\nYou might want to play with the Mode to get a feel for the data\n\nNow we can quickly see which BVG has the greatest observed species richness\nWe can go further and use the Field Calculator to compare species richness to the area (ha), and create a new field with that information.\n\nClick on the Field Calculator button \n\nUnder Create a new field set the Output field name to richness_area\nSet the Output field type to Decimal number (real) (we need to choose this option to ensure that we have decimals in our output)\nIn the Expression tab enter \"Species_Richness\" / \"area_ha\"\nClick OK\n\nNow you can change the Value in Layer Styling to richness_area\n\nClick Classify again\n\n\nWe can now clearly see that the richness was being skewed by the area.",
+    "crumbs": [
+      "QGIS",
+      "Essentials",
+      "Vector Analysis"
+    ]
+  },
+  {
+    "objectID": "qgis/Essentials/2-Vector_Analysis.html#map-digitisation",
+    "href": "qgis/Essentials/2-Vector_Analysis.html#map-digitisation",
+    "title": "Vector Analysis",
+    "section": "Map Digitisation",
+    "text": "Map Digitisation\nNow that we have a better idea of what the vegetation and animal locations look like, let’s add another wind turbine location.\nYou may often need to create your own points, lines, and polygons to add new points, digitising satellite data, or simply highlighting a particular area. Let’s add a new point and road to the non-remnant area just north of Turbine 6 (T06).\n\nGo to Layer &gt; Create Layer &gt; New GeoPackage Layer...\nClick the three dots ... next to the Database section\nNavigate to your data &gt; processed folder and save the file as New_Turbine\nFrom Geometry type select MultiPoint\nMake sure the CRS is set to EPSG:7856 - GDA2020 / MGA zone 56\nLeave the other fields blank for now and click OK\n\nWe now have a brand new layer that we can add points to.\n\nSelect the new New_Turbine layer and then click the Toggle Editing pencil  from the top menu (or go to Layer &gt; Toggle Edititng\nOn your keyboard, press Ctrl + . (or click  Add Point Feature) to start adding a new point\nClick in the non-remnant patch just north of T06\nLeave the fid as Autogenerate and click OK\nTo save what you’ve done, click the Save Layer Edits button next to the Toggle Editing button\nTo finish editing your layer click the Toggle Editing button\n\nYou now know how to digitise a point, but the same steps apply for creating a polygon or a line layer. We created a new layer here, and you can also do the same steps to edit a pre-exisiting layer too.\nThe Vertex Tool  will allow you to move the location of points (or corners of polygons) that you have already created (you also need to click the Toggle Editing button for this tool)\n\nSelect the Proposed Access Track layer and then click the Toggle Editing pencil  from the top menu (or go to Layer &gt; Toggle Edititng\nClick the Vertex Tool  to start editing an existing line\nHover over the corner point north-west of T06\nYou will see a grey + appear, hover over that, and click when it turns red\nA red dotted line will now appear between that corner point and your cursor.\nLeft click to add the next point in the line.\nContinue adding points to the line until you click roughly on the New_Turbine Point you just added. Right click to stop digitising and create your new line segment.\nTo save what you’ve done, click the Save Layer Edits button next to the Toggle Editing button\nTo finish editing your layer click the Toggle Editing button\n\nUp next we will explore what we can do with Projections.",
+    "crumbs": [
+      "QGIS",
+      "Essentials",
+      "Vector Analysis"
+    ]
+  },
+  {
+    "objectID": "qgis/Essentials/4-Sourcing_Data.html",
+    "href": "qgis/Essentials/4-Sourcing_Data.html",
     "title": "Sourcing Data",
     "section": "",
     "text": "In this workshop, we will learn about sourcing spatial data.\nWe will cover:\n\nAdding Base Maps\nImporting online data\n\nWe will explore data from:\n\nLocal, State, Federal Gov Data Repositories\nInternational Datasets\nNGOs\nCorporate (ESRI, etc)",
@@ -3111,8 +3279,8 @@
     ]
   },
   {
-    "objectID": "qgis/Essentials/5-Sourcing_Data.html#what-are-we-going-to-learn",
-    "href": "qgis/Essentials/5-Sourcing_Data.html#what-are-we-going-to-learn",
+    "objectID": "qgis/Essentials/4-Sourcing_Data.html#what-are-we-going-to-learn",
+    "href": "qgis/Essentials/4-Sourcing_Data.html#what-are-we-going-to-learn",
     "title": "Sourcing Data",
     "section": "",
     "text": "In this workshop, we will learn about sourcing spatial data.\nWe will cover:\n\nAdding Base Maps\nImporting online data\n\nWe will explore data from:\n\nLocal, State, Federal Gov Data Repositories\nInternational Datasets\nNGOs\nCorporate (ESRI, etc)",
@@ -3123,8 +3291,8 @@
     ]
   },
   {
-    "objectID": "qgis/Essentials/5-Sourcing_Data.html#basemap-services",
-    "href": "qgis/Essentials/5-Sourcing_Data.html#basemap-services",
+    "objectID": "qgis/Essentials/4-Sourcing_Data.html#basemap-services",
+    "href": "qgis/Essentials/4-Sourcing_Data.html#basemap-services",
     "title": "Sourcing Data",
     "section": "Basemap Services",
     "text": "Basemap Services\nSo far we’ve only been using OpenStreetMap, but there are a wide variety of other options available.\n\nPlugins\nThere are many sources of basemaps, but a simple on is the QuickMapServices plugin, which we can use to load in new raster basemaps.\n\nNavigate to Plugins &gt; Manage and Install Plugins.... Search for “QuickMapServices”, select it from the list and click Install Plugin, once it has loaded, click Cloce\n\nThe plugin should automatically open a side panel in which you can search for terms. For example, search for “satellite” and add the ESRI satellite imagery to your project.\n\n\nWeb Mapping Services\nNow we can go to the next step and source our basemaps externally. We can do this with WMTS (Web Map Tile Service), WCS (Web Coverage Service), ArcGIS REST Servers, and XYZ Tiles. Some web services like ArcGIS REST Servers can also provide vector data too!\nToday we’re going to use an XYZ Tile from CARTODB.\n\nScroll down the Browser panel until your see XYZ Tiles\nRight click XYZ Tiles and select New Connection...\nIn Name type Voyager (no labels)\nIn URL paste:\nhttps://a.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}@2x.png\nIncrease the Max. Zoom Level to 20\nThis value depends on what is available from the given service in different parts of the world. Increasing that value beyond 20 for this map in Brisbane will show “Map data not yet available” when you zoom in very close.\nClick OK\nIn the Browser panel, expand XYZ Tiles and double click on Voyager (no labels)\nNow do the same for this Light Gray Basemap from ESRI, but set the Max. Zoom Level to 16:\nhttps://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}\nAnd the same for this ESRI World Imagery, but set the Max. Zoom Level to 20:\nhttps://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}\n\nYou can find more Basemaps on our Datasets page.",
@@ -3135,8 +3303,8 @@
     ]
   },
   {
-    "objectID": "qgis/Essentials/5-Sourcing_Data.html#raster-data-repositories",
-    "href": "qgis/Essentials/5-Sourcing_Data.html#raster-data-repositories",
+    "objectID": "qgis/Essentials/4-Sourcing_Data.html#raster-data-repositories",
+    "href": "qgis/Essentials/4-Sourcing_Data.html#raster-data-repositories",
     "title": "Sourcing Data",
     "section": "Raster Data Repositories",
     "text": "Raster Data Repositories\nMany raster data repositories have a similar interface where you draw a box around the area of interest, and then download the tiles that fall within that area.\nFor example, ELVIS is great for getting Digital Elevation Models (DEM) in Australia. A DEM is raster data that shows the elevation of an area.\nELVIS - Geoscience Australia’s ELeVation Information System.\n\nGo to http://www.ga.gov.au/elvis/\nFor example, search for “St Lucia” in the Location Search search box and select the first result\nClick Order Data\nChoose “Draw” and “Box” and then click the Draw button\nClick on the map to start drawing a rectangle around your desired area\nThen click Search\nThe right panel will show you all the different datasets available in that area\nWe want the QLD Government Digital Elevation Model 1 Metre, click the down arrow on the right\nAs you hover over the different options, they will highlight a red box on the map, click the tick box and select all that overlap the area you’re interested in (note that there may be data from different years here)\nWhen you have the data you want, scroll to the bottom of the Order Data window\nSelect your industry, enter your email, tick the reCAPTCHA, and click the Order Datasets button\nYou should receive an email within 5 minutes, download the files from the link in the email, extract the folder to your project folder, and add them to your map.\n\nYou can find more Raster sources (such as Historical Aerial Imagery) on our Datasets page.",
@@ -3147,8 +3315,8 @@
     ]
   },
   {
-    "objectID": "qgis/Essentials/5-Sourcing_Data.html#vector-data-repositories",
-    "href": "qgis/Essentials/5-Sourcing_Data.html#vector-data-repositories",
+    "objectID": "qgis/Essentials/4-Sourcing_Data.html#vector-data-repositories",
+    "href": "qgis/Essentials/4-Sourcing_Data.html#vector-data-repositories",
     "title": "Sourcing Data",
     "section": "Vector Data Repositories",
     "text": "Vector Data Repositories\n\nDirect Downloads\nFor a lot of repositories, you need to navigate their site and simply download the data you want. This can vary, for example, you can access a wide variety of QLD Government Data, including Spatial Data such as lot plans and vegetation maps, from QLD Spatial.\nThere are three ways to access data from QSpatial.\n\nDownload all of the data from a layer\nSelect a portion of a layer for download using the My List function\n\n\nUsing My List on QSpatial\nHere is an example of extracting property boundaries.\n\nTo access data from QLD Spatial go to https://qldspatial.information.qld.gov.au/\nSearch for “property boundaries”\nScroll down to “Property boundaries Queensland” and click Add to my list\nClick My List from the top menu\nClick View/extract in map\nUnder Extractable Data, click the box next to Property boundaries Queensland, it will become green\nClick Extract/download\nClick Choose an area\nSelect BRISBANE CITY from the Select LGA option\nChoose GeoPackage 1.0 from Select output format\nEnter your Email Address\nAccept the Terms and Conditions\nClick Extract/Download\n\n\n\n\nFeature Servers and REST Servers\nYou can use Web Mapping Services to bring Vector Data directly in to QGIS, just like we did with the basemaps, but these will pull in extractable points, lines and polygons!\nMany government departments have ArcGIS REST servers, like the QLD Government.\nFor example, if you click Biota, then [Biota/RegionalEcosystemMapping](https://spatial-gis.information.qld.gov.au/arcgis/rest/services/Biota/RegionalEcosystemMapping/MapServer, you can access the spatial files of regional ecosystem maps showing biodiversity status and broad vegetation groups within Queensland.\nTo add this data to QGIS, copy that MapServer URL: https://spatial-gis.information.qld.gov.au/arcgis/rest/services/Biota/RegionalEcosystemMapping/MapServer\n\nScroll down the Browser panel until you see ArcGIS REST Servers\nRight click ArcGIS REST Servers and select New Connection...\nIn Name type ****\nIn URL paste: https://spatial-gis.information.qld.gov.au/arcgis/rest/services/Biota/RegionalEcosystemMapping/MapServer\nClick OK\nIn the Browser panel, expand ArcGIS REST Servers, expand QLD Ecosystems, expand Broad vegetation groups [BVG], and double click on Remnant BVG - 1:5 million - This is the data we used earlier!\n\nYou’ll note that there is a raster and a vector option. The raster option will load faster, but the vector option is customisable.\n\n\n\n\n\n\n\n\nTip\n\n\n\nIf the vector data imported this way is taking too long to load, you can hide it, and then use a vector layer in your project to clip the area of interest and save it on your computer.\n\n\n\n\nTabular Data and Boundaries\nWhile many repositories hold tabular and boundary data, the Australian Bureau of Statistics is a huge source of data, however, it can be a bit difficult to find that data, and use it in a spatial context.\nThe ABS has a variety of ways that it splits its data up. These Digital Boundary Files are very useful for classifying data. They generally classify all of Australia into discrete Statistical Areas. Level 1 are the smallest, and Level 4 are the coarsest. (notably, the link above also has non-ABS Structures/boundary files such as Electoral areas and Postcodes).\n\n\nOnline Community Spatial Repositories\nAtlas of Living Australia - Species observation data\nSpecies observation data can be downloaded from the Atlas of Living Australia.\nThis is an Australia Biodiversity occurrence database. It pulls data from a variety of different sources, including government data, individual collectors and community groups. This means that this data will contain sampling bias and will often simply represent encounters, rather than using robust sampling and collection methods. So, while we need to use this data with caution, it’s still a useful dataset!\nYou need to create an account and request the exact dataset you need.\nYou can find more Vector sources (such as more state, fedeeral and council data, ESRI data, and community sources) on our Datasets page.",
@@ -3156,174 +3324,6 @@
       "QGIS",
       "Essentials",
       "Sourcing Data"
-    ]
-  },
-  {
-    "objectID": "qgis/Essentials/4-Raster_Analysis.html",
-    "href": "qgis/Essentials/4-Raster_Analysis.html",
-    "title": "Raster Analysis",
-    "section": "",
-    "text": "In this workshop, we will learn about:\n\nRasters\nPlugins\nDEM\nTerrain Analysis\nContours\nGeoreferencing",
-    "crumbs": [
-      "QGIS",
-      "Essentials",
-      "Raster Analysis"
-    ]
-  },
-  {
-    "objectID": "qgis/Essentials/4-Raster_Analysis.html#what-are-we-going-to-learn",
-    "href": "qgis/Essentials/4-Raster_Analysis.html#what-are-we-going-to-learn",
-    "title": "Raster Analysis",
-    "section": "",
-    "text": "In this workshop, we will learn about:\n\nRasters\nPlugins\nDEM\nTerrain Analysis\nContours\nGeoreferencing",
-    "crumbs": [
-      "QGIS",
-      "Essentials",
-      "Raster Analysis"
-    ]
-  },
-  {
-    "objectID": "qgis/Essentials/4-Raster_Analysis.html#what-is-raster-data",
-    "href": "qgis/Essentials/4-Raster_Analysis.html#what-is-raster-data",
-    "title": "Raster Analysis",
-    "section": "What is Raster Data?",
-    "text": "What is Raster Data?\nA good example of a raster is an image file (like a jpg). If you zoom in on that image, you will see that it is just a grid of coloured pixels. Each pixel is just a cell with a number in it which tells the computer what colour it should be. The cell size might be small (high resolution), or large (low resolution).\nA spatial raster is basically just a grid of cells like an image, but the values in those cells might represent the colours in an aerial photograph, or population density in that area, or the elevation. The main distinction of a spatial raster is that the grid is attached to a single coordinate point (usually in the top left corner), and the rest of the grid is laid on the map from there. The cells size of a spatial raster represents the distance each cell covers (for example they might be 1x1m or 10x10km).\nRasters aren’t as precise as vector data, as they are an approximation of the values in an area. For example every millimetre of a 1x1m cell might not have the same elevation, but the cell value is a helpful summary of the elevation in that area. This ability to neatly summarise and approximate data means that rasters are a very efficient way of showing continuous data across a large area.\nA Digital Elevation Model (DEM) is a common example of raster data which shows the elevation of the land.",
-    "crumbs": [
-      "QGIS",
-      "Essentials",
-      "Raster Analysis"
-    ]
-  },
-  {
-    "objectID": "qgis/Essentials/4-Raster_Analysis.html#aims-for-this-session",
-    "href": "qgis/Essentials/4-Raster_Analysis.html#aims-for-this-session",
-    "title": "Raster Analysis",
-    "section": "Aims for this session",
-    "text": "Aims for this session\nIn the last session we found that a number of residential areas will likely receive dust from the construction. One way to reduce dust is to regularly spray water on the roads, and wash down the trucks. However you now need to deal with the water runoff from that creates. We can use watershed and basin analysis on a DEM to look at where the water will flow.\nWe can also use similar data to calculate how for away the wind turbines will be visible",
-    "crumbs": [
-      "QGIS",
-      "Essentials",
-      "Raster Analysis"
-    ]
-  },
-  {
-    "objectID": "qgis/Essentials/4-Raster_Analysis.html#install-the-saga-plugin",
-    "href": "qgis/Essentials/4-Raster_Analysis.html#install-the-saga-plugin",
-    "title": "Raster Analysis",
-    "section": "Install the SAGA Plugin",
-    "text": "Install the SAGA Plugin\nWe need to install a plugin so we can access certain geoprocessing tools (the built-in SAGA provider has been removed in version 3.30). Go to Plugins &gt; Manage and Install Plugins... and Search... for “SAGA”. From the list on options choose Processing Saga NextGen Provider then in the bottom right, click Install Plugin. You might also need to install SAGA (version 9 or above) on your computer, if not already available.\nThere are many other plugins from the QGIS Community that you can explore to enhance QGIS, but we will stick with this for now.",
-    "crumbs": [
-      "QGIS",
-      "Essentials",
-      "Raster Analysis"
-    ]
-  },
-  {
-    "objectID": "qgis/Essentials/4-Raster_Analysis.html#load-in-our-raster-data",
-    "href": "qgis/Essentials/4-Raster_Analysis.html#load-in-our-raster-data",
-    "title": "Raster Analysis",
-    "section": "Load in our Raster data",
-    "text": "Load in our Raster data\n\nClick the Project Home dropdown, then data &gt; raw &gt; 4-raster_data and load in:\nBris_DEM_5m.tif (From Geoscience Australia through their Elvis platform)",
-    "crumbs": [
-      "QGIS",
-      "Essentials",
-      "Raster Analysis"
-    ]
-  },
-  {
-    "objectID": "qgis/Essentials/4-Raster_Analysis.html#reproject-the-dem",
-    "href": "qgis/Essentials/4-Raster_Analysis.html#reproject-the-dem",
-    "title": "Raster Analysis",
-    "section": "Reproject the DEM",
-    "text": "Reproject the DEM\nIn the Bris_DEM_5m layer’s Properties (Right click &gt; Properties... &gt; Source), we can see that the Coordinate Reference System (CRS) in use is EPSG:7844 - GDA2020. It is the one that QGIS detected when opening the file. While this is good for Australian data, we can’t do slope and terrain measurements and analyses while our raster is measuring in degrees, we need it projected to use metres. A good PCS for around Brisbane/Meanjin is “EPSG:7856 - GDA2020 / MGA zone 56”. We can’t change that here, we instead will need to use the Warp (Reproject) tool.\n\nUse the tool Raster &gt; Projections &gt; Warp (Reproject)\nMake sure Input layer is set as Bris_DEM_5m.\npick “EPSG:7856 - GDA2020 / MGA zone 56” as the Target CRS\n\nyou may need to click the Select CRS button \nuntick No CRS\nuse the filter to search for “7856”\nYou should be able to find “EPSG:7856 - GDA2020 / MGA zone 56” under Predefined Coordinate Reference Systems\n\nScroll down to click the three dots ... next to the Reprojected field, navigate to the project’s processed data folder, and type in Bris_DEM_5m_reproj and click Save\n\n\nIf you want to learn more about the static datum GDA2020 (for “Geocentric Datum of Australia 2020”), an upgrade from the previous, less precise GDA94, head to the ICSM website.",
-    "crumbs": [
-      "QGIS",
-      "Essentials",
-      "Raster Analysis"
-    ]
-  },
-  {
-    "objectID": "qgis/Essentials/4-Raster_Analysis.html#risks-of-reprojecting-rasters",
-    "href": "qgis/Essentials/4-Raster_Analysis.html#risks-of-reprojecting-rasters",
-    "title": "Raster Analysis",
-    "section": "Risks of Reprojecting Rasters",
-    "text": "Risks of Reprojecting Rasters\nImportant note: it is risky reprojecting Raster data, as this permanently changes the shape and structure of the underlying data.\nChanging vector data from one Projection to another is straightforward, as you are just converting each point’s individual coordinates one-by-one. It’s just a numerical conversion. You can keep reprojecting vector data without issue.\nWhen you reproject a raster, it will be in roughly the right location as the coordinate point in the top left corner will convert without issue. But because the raster is an interconnected grid, it will get stretched by the compromises made by the new projection. As we learned previously, the Mercator projection prioritises angles and direction, so converting to a Mercator projection might make your grid squares more rectangular. A projection like Albers Equal Area will prioritise area while distorting angles and shapes, so your raster might look very strange.\nTo make the data fit in this new shape, the reprojection process will use something called resampling. There are different resampling methods, but they basically overlap the old shape with the new one to determine what data fits in the new cells.\n\nSo what do you do?\nOnly reproject rasters when you must.\nFor example, if you are doing terrain analysis (such as slope), distance calculations, or spatial modeling that requires accurate measurement, you must reproject to a suitable projected coordinate system (not in degrees).\nIf you are analysing a raster with vectors, but your raster is in a different projection to your vectors, then reproject your vectors.\nThere are other exceptions, but if you’re unsure, check first.",
-    "crumbs": [
-      "QGIS",
-      "Essentials",
-      "Raster Analysis"
-    ]
-  },
-  {
-    "objectID": "qgis/Essentials/4-Raster_Analysis.html#analyse-watersheds-and-basins",
-    "href": "qgis/Essentials/4-Raster_Analysis.html#analyse-watersheds-and-basins",
-    "title": "Raster Analysis",
-    "section": "Analyse Watersheds and Basins",
-    "text": "Analyse Watersheds and Basins\nNow that our raster is in a projected coordinate system, we can start doing measurements.\nUsing the Channel network and drainage basins tool, we can create layers with channels, drainage basins, and a watershed raster that shows where water would flow according to the DEM.\n\nFill Sinks\nHowever before we can do watershed analyses we need to fix one more thing. A common problem with DEMs is that they have sinks and spikes that will make further analyses more difficult. This will mean the analysis is unable to best find where the water would flow. To resolve this, we need to use another tool to smooth out our raster before using the Channel network and drainage basins tool.\nWe can use the “Fill sinks (Wang & Liu)” tool to fill the sinks in our clipped DEM.\n\nOpen the Processing Toolbox by clicking the cog icon from the top menu \nIn the Processing Toolbox window Search for “Fill sinks (Wang & Liu)”\nDouble-click on the Fill sinks (Wang & Liu) option\nForInput layer choose Bris_DEM_5m_reproj\nWe might have to play with the “Minimum slope” value. A value of 0.01 degrees should work well.\nAs an output, we only need to tick the “Filled DEM” (first one in the list), which we can also save to file\nClick Run",
-    "crumbs": [
-      "QGIS",
-      "Essentials",
-      "Raster Analysis"
-    ]
-  },
-  {
-    "objectID": "qgis/Essentials/4-Raster_Analysis.html#channel-network-and-drainage-basin",
-    "href": "qgis/Essentials/4-Raster_Analysis.html#channel-network-and-drainage-basin",
-    "title": "Raster Analysis",
-    "section": "Channel network and drainage basin",
-    "text": "Channel network and drainage basin\nNow we can use the Channel network and drainage basins tool to calculate the watershed, flow direction, channels and drainage basins.\n\nOpen the Processing Toolbox \nSearch for “Channel network and drainage basin”\nDouble-click on the Channel network and drainage basin option\nMake sure Input layer is the Filled DEM option.\nWe might have to change the threshold to a higher one if the output includes too many small basins and channels.\nYou will also need to tick the boxes of what you want it to output (see below), we will choose Channel, Junctions, and Drainage Basins.\nClick Run\n\nStrahler Order: A Strahler Order raster that is used to classify stream hierarchy Channels: Vector lines showing river paths with Strahler Order values. Junctions: Vector points showing where channels meet. Drainage Basins: Vector polygons delineating the areas that drain to the same point. Drainage Basins [optional]: A raster grid version of the other Drainage Basins. Flow Direction: A raster grid representing the direction of flow for each cell. Flow Connectivity: A raster showing how well water could flow through sections of your map.\nThese are some examples of creating vector data from raster data!\nWe can now play with the symbology for those elements. For example:\n\nTry using different colours for each basin, by classifying by ID, or remove the fill (Simple fill &gt; Fill Style &gt; No Brush) so you can see the colours of the elevation colours underneath. You can also make the borders more obvious by changing the width of the stroke.\nChange the colour of the channels.\n\nChange the symbol from “Single Symbol” to Graduated.\nSet the Value to “Order”\nChoose an appropriate colour ramp\nChange the Mode down the bottom of the window to “Equal Interval”\nClick Apply\n\nYou can also further differentiate minor channels from major ones by using a “Data defined override” for the Width value:\n\nClick on the bar next to Symbol \nClick on the “Data defined override” icon  next to the Width field\nUse the “Assistant”\n“Source” needs to be the column “ORDER” (which corresponds to the Strahler order)\nClick the double-arrow icon to “Fetch value range from layer”\nChange the “Size from” and “to” values to suitable values",
-    "crumbs": [
-      "QGIS",
-      "Essentials",
-      "Raster Analysis"
-    ]
-  },
-  {
-    "objectID": "qgis/Essentials/4-Raster_Analysis.html#georeferencing-an-image",
-    "href": "qgis/Essentials/4-Raster_Analysis.html#georeferencing-an-image",
-    "title": "Raster Analysis",
-    "section": "Georeferencing an Image",
-    "text": "Georeferencing an Image\n\nNavigate to Layer &gt; Georeferencer...\n\nThis will open the Georeferencer window\n\nGo to File &gt; Open Raster...\nOpen the raster_data folder and open QAP1592_6735-1693dpi.JPG\n\nThis should load a black and white image of Enoggera Hill on 13 August, 1964. This image is from QImagery, to make georeferencing easier, we have already rotated this image so that north is at the top (which isn’t always the case with historical images!).\nWe now need to set a few Ground Control Points (GCPs) to align the image. We create these by clicking a point on the image, and then an associated point on our basemap.\nMake sure your World Imagery basemap is the top visible layer.\nUse the Pan tool  to find similar points on the historical image and your basemap. Look for key terrain areas that will be consistent across the decades: fencelines, bridges, old buildings, large rocks, unqiue landforms, T-Intersections, etc.\nBe careful putting points on tall buildings, as the photo angle can make that vary wildly - try aiming for a bottom corner.\nWhen you want to add a point, change to the Add GCP Point Tool . Click to add a point on the Historical Image, in the pop-up click From Map Cavnas, and then the matching point on your Map. We will need at least 5 points spread throughout the map. As you add the points, you’ll see them appear in the GCP Table, higher residuals suggests that your points might not be lining up perfectly compared to each other. You want to try to be as accurate as you can, but you can’t be perfect.\nTo make this process easier… - Put the Georeferencer window on the right of your screen - Put the QGIS window on the left. - Press Ctrl + Shift + Tab to make the map full screen. Press those keys again to bring the toolbars back - CMD + Shift + Tab on Mac\nOnce you’ve added all your points, you need to open the Transformation Settings  - For Transformation Type if you’re confident in all your points, choose Thin Plate Spline, if you’ve made some guesses or you have high residuals, go with Polynomial - it’s also much faster. - Choose where you want to save the output file - For Resampling Method it depends. Nearest Neighbour is faster, but generally not as accurate. Cubic tends to be more accurate, but it’s slow. Bilinear is a nice compromise. - Tick the Save GCP Points box. This means that after you georeference the image, if you decide you want to try again, you can reload the same points, and then remove or add some if you like. - Click OK - Click Start Georeferencing \nSoon you will have a Georeferenced Historical Image. Try turning the layer visibility on and off to see where it has skewed compared to your basemap. This can help you better see where you might be able to shift, remove, or add some more GCPs.\nHere is the QGIS how to Guide for Georeferencing",
-    "crumbs": [
-      "QGIS",
-      "Essentials",
-      "Raster Analysis"
-    ]
-  },
-  {
-    "objectID": "qgis/Essentials/4-Raster_Analysis.html#clip-the-dem",
-    "href": "qgis/Essentials/4-Raster_Analysis.html#clip-the-dem",
-    "title": "Raster Analysis",
-    "section": "Clip the DEM",
-    "text": "Clip the DEM\nIf we want to focus on the terrain inside our Project Area, we can use Raster &gt; Extraction &gt; Clip Raster by Mask Layer.\n\nMake sure the Bris_DEM_5m is selected in the Input layer\nSet Mask Layer to Project Area\nScroll to the bottom and click the three dots ... next to the Clipped (mask) field, navigate to the project’s processed data folder, and type in EH_DEM_5m and click Save\nClick Run\n\n\nChange the symbology\nWe can style our DEM with a terrain colour palette:\n\ndouble-click on the clipped DEM layer\ngo to the “Symbology” tab\nchange the Render type to “Singleband pseudocolor”\nby default, it uses the min/max values, which is what we want\nwe can change the “Color ramp” to something more suitable with the drop-down menu and Create new color ramp... &gt; Catalog: cpt-city &gt; Topography &gt; Elevation, for example.",
-    "crumbs": [
-      "QGIS",
-      "Essentials",
-      "Raster Analysis"
-    ]
-  },
-  {
-    "objectID": "qgis/Essentials/4-Raster_Analysis.html#add-a-hillshade",
-    "href": "qgis/Essentials/4-Raster_Analysis.html#add-a-hillshade",
-    "title": "Raster Analysis",
-    "section": "Add a hillshade",
-    "text": "Add a hillshade\nAdding a hillshade makes your visualisation of elevation more readable and visually pleasing by giving an artificial lighting look to your map.\n\nGo to Raster &gt; Analysis &gt; Hillshade...\nMake sure the 5m_DEM is selected in the Input layer\nYou could change the lighting direction, angle and height exageration, but the defaults are fine.\nScroll to the bottom and click the three dots ... next to the Clipped (mask) field, navigate to the project’s processed data folder, and type in EH_DEM_5m_Hillshade and click Save\n\nYou can get the best of both by adding transparency to the DEM or the Hillshade.\n\nMake sure the Hillshade is the above the DEM in the Layers panel.\nRight click on you Hillshade layer, select Properties and then the Transparency tab\nThe best transparency will depend on your map and elevation, for this map, set the hillshade transparency to 5%.\n\nLet’s link these two together.\n\nHold Ctrl and select both the Hillshade and the DEM layers\nPress the Add Group button from the top of the Layers panel\nCall it DEM\nMake sure the DEM is above the Hillshade within this group",
-    "crumbs": [
-      "QGIS",
-      "Essentials",
-      "Raster Analysis"
-    ]
-  },
-  {
-    "objectID": "qgis/Essentials/4-Raster_Analysis.html#viewshed",
-    "href": "qgis/Essentials/4-Raster_Analysis.html#viewshed",
-    "title": "Raster Analysis",
-    "section": "Viewshed",
-    "text": "Viewshed\nIf you want to know what can be seen from a certain point in a landscape, or where in the landscape can see a certain point, you can use a DEM to perform a Viewshed Analysis. To be even more accurate, we can use a DSM instead - a Digital Surface Model. It’s very much like a DEM, but where a DEM has had the buildings and trees digitally removed, the DSM retains the heights of buildings and trees. This is useful for a viewshed, as it means that tall buildings might block the view in some areas.\nIn our case, we may be interested to know how far away people can see the wind turbines.\nOpen the Processing Toolbox  and search for the GDAL tool called “Viewshed”.\nNormally this tool is used from the perspective of what an Observer can see around them, but we can reverse this and have the wind turbine as the Observer. If they can see you, you can see them.\n\nInput Layer: Choose your Bris_DEM_5m_reproj layer\nClick the three dots next to Observer location to select a point on the map\nObserver height, DEM units: 150 (this is the height of the centre of these wind turbines, it may be approrpiate to take into account the rotor length, but we’re keeping this simple)\nTarget height, DEM units: 1.6 (the average human eye height is around 1.6m, choose a height you think might be appropriate)\nMaximum distance from observer to compute visibility: 15000 (5km is the distance you can see on flat ground due to the curvature of the earth, this changes as our “Observer” is much higher up, you can find calculators and a formula for this maximum distance. While you could theoretically still see the turbines from greater distances, their visual detectability begins to decrease).\n\nThis will produce a black and white raster showing what can be seen, and what can’t. Go to the Layer Styling Menu, and change it to Singleband Pseudocolor, change the Mode to Equal Interval, and set the Classes to 2. Change one of the Colors to transparent to highlight either where the turbines can be seen, or where they cannot.\nIf you want to get more sophisticated with your Viewshed analyses, there is, of course, a plugin called Visibility Analysis which will allow you to use one or multiple points as observers, take in account of the Earth’s curvature, see what vector points can see other vector points, and more.\nDon’t forget to save your project",
-    "crumbs": [
-      "QGIS",
-      "Essentials",
-      "Raster Analysis"
     ]
   },
   {
