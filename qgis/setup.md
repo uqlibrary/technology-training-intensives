@@ -29,8 +29,8 @@ As we set up, there's a few things to do, if you haven't already:
 
 QGIS is open source, free and cross-platform (Windows, macOS and Linux). This tutorial is designed for **QGIS 3.40**, the Long Term Release at the time of writing. Even if you already have QGIS installed, **please update** to the latest 3.40 release if you can, because:
 
-* differences in major versions (e.g. 3._36_ vs 3._40_) make it more difficult to follow, and
-* minor bugfix versions are released every month (e.g. 3.40._15_ was released in January 2026)
+* differences in major versions (e.g. 3.*36* vs 3.*40*) make it more difficult to follow, and
+* minor bugfix versions are released every month (e.g. 3.40.*15* was released in January 2026)
 
 ::: {.callout-warning}
 ## macOS users
