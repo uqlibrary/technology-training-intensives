@@ -41,7 +41,8 @@ There are many other plugins from the QGIS Community that you can explore to enh
 
 ## Load in our Raster data
 
--   Bris_DEM_5m (From Geoscience Australia through their [Elvis platform](https://elevation.fsdf.org.au/))
+-   Click the `Project Home` dropdown, then `data > raw > 4-raster_data` and load in:
+-   Bris_DEM_5m.tif (From Geoscience Australia through their [Elvis platform](https://elevation.fsdf.org.au/))
 
 
 ## Reproject the DEM

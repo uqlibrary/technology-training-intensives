@@ -102,7 +102,7 @@ We will start by creating a good folder structure to work within. This folder is
 
 ## Data Download
 
-The **data** for this session can be directly downloaded from [this link](https://github.com/uqlibrary/technology-training-assets/raw/master/QGIS/intro/QGIS_Intro_Data.zip).
+The **data** for this session can be directly downloaded from [this link](https://github.com/uqlibrary/technology-training-assets/raw/master/QGIS/intensives/QGIS_Intensive_Data.zip).
 
 Once downloaded, extract the archive into your **raw** folder within your **data** folder.
 
@@ -112,14 +112,20 @@ To start with, we're going to import some project files that show us where our d
 
 ## Importing data
 
-To add our own data: `Layer > Add Layer > Add Vector Layer...`, choose the "Turbine_Locations_SEQ.gpkg" file, and click "Add". It is now in your `Layers` panel.
+To add our own data: 
+-   Go to the menu `Layer > Add Layer > Add Vector Layer...` 
+-   Open your folders `data > raw > 1-fundamentals_data`
+-   Choose the "Turbine_Locations_SEQ.gpkg" file, and click "Add". It is now in your `Layers` panel.
 
 If you've already loaded in the OpenStreetMap Basemap, then you should get the popup `Select Transformation for Project Area`. This is asking you how you want to deal with the difference between the basemap's *projection* and the *projection* of your data. Projections are how we stretch "spherical" data to fit on a flat rectangular map, which we will cover in detail later in this workshop. Fortunately, for now, QGIS will handle this on the fly for us so we can simply click `OK`.
 
 So where is the data?
 If you want to zoom in to your data, you don't have to use your mouse, you can use the `Zoom Full` button, or right-click on your **Project Area** layer and select `Zoom to Layer(s)`.
 
-You can also use the `Project Home` directory in the browser to add another layer: try loading the "Project_Area.gpkg" and "Proposed_Access_Track.gpkg" GeoPackages (format .gpkg), by drag-and-dropping or double-clicking.
+You can also use the `Project Home` directory in the browser to add another layer:
+
+-   Click the `Project Home` dropdown, then `data > raw > 1-fundamentals_data`
+-   Try loading the "Project_Area.gpkg" and "Proposed_Access_Track.gpkg" GeoPackages (format .gpkg), by drag-and-dropping or double-clicking.
 
 All layers are visible in the `Layers` panel, with the most recently loaded by default at the top. Layers are rendered as they are listed, which means the top ones will cover the bottom ones. Make sure you optimise the order for your map!
   
@@ -127,6 +133,14 @@ You can also turn the **layer visibility** on and off from this panel with the t
 
 > You might notice that QGIS randomly chooses a colour for your data when you import it. We can change these colours later.
 
+### Data Summary
+
+You should now have the following layers
+
+-   Project_Area (polygon)
+-   Proposed_Access_Track (line)
+-   Turbine_Locations_SEQ (point)
+-   OpenStreetMap (basemap)
 
 ### Learn about the data
 
@@ -158,7 +172,7 @@ We'll use the Clip tool on the final piece of data for this session: the [Broad 
 
 Use the `Project Home` directory in the browser to add the "BVG_SEQ.shp" file.
 
-> So far we have only used **.gpkg** GeoPackage files, the **VG_SEQ.shp** is a Shapefile. Both of these are common vector data types. Shapefiles are more established and widely used, where GeoPackages are leaner and more customisable.
+> So far we have only used **.gpkg** GeoPackage files, the **VG_SEQ.shp** is a Shapefile. Both of these are common vector data types. Shapefiles are more established and widely used, where GeoPackages are leaner and more customisable. You can leave the shp files inside the zip folder and still access and edit them - most other file types will require you to extract them before you can edit them.
 
 This layer is not very pretty at the moment, but we can change the symbology after we subset the data.
 

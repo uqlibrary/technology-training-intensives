@@ -179,24 +179,24 @@ Now that we have this buffer we can compare it to the surrounding population.
 
 ## Load in data
 
-Load in:
+-   Click the `Project Home` dropdown, then `data > raw > 3-projections_data` and load in:
 
 -   sa1_2021_bris_mga56.gpkg (suburb data from the [Australian Bureau of Statistics](https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files))
-Right click the `sa1_2021_bris_gda2020` layer and `Rename...` it to "SA1 Boundaries".
+Right click the `sa1_2021_bris_mga56` layer and `Rename...` it to "SA1 Boundaries".
 
 
--   sa1_pop_age_qld.csv (demographic data from the ABS, but accessed through the [Queensland Government Statistician's Office](https://www.qgso.qld.gov.au/))
+-   sa1_2021_pop_age.csv (demographic data from the ABS, but accessed through the [Queensland Government Statistician's Office](https://www.qgso.qld.gov.au/))
 
 
 ## Tabular data
 
-QGIS can deal with plain tabular data. For example, try importing the file sa1_pop_age_qld.csv: it doesn't contain any coordinates, but we can still store it as a layer and use it in our project. You can see the data it contains by opening its attribute table.
+QGIS can deal with plain tabular data. For example, try importing the file sa1_2021_pop_age.csv: it doesn't contain any coordinates, but we can still store it as a layer and use it in our project. You can see the data it contains by opening its attribute table.
 
 How can we add the Statistical Area 1 (SA1) Demographic data to our existing `SA1 Boundaries` layer?
 
 ### Joining tabular data
 
-To add the SA1 Demographic data to our SA1 layer, we can go the the `SA1 Boundaries` layer's properties, use the ![Join Button](https://docs.qgis.org/3.40/en/_images/join.png) `Joins` tab and click the `Add new join` button ![Add New Join Button](https://docs.qgis.org/3.40/en/_images/symbologyAdd.png) to create a new join. We can then choose the sa1_pop_age_qld data as the `Join layer`, and define what common field between the two tables we will merge on: the SA1_CODE21 code in our case.
+To add the SA1 Demographic data to our SA1 layer, we can go the the `SA1 Boundaries` layer's properties, use the ![Join Button](https://docs.qgis.org/3.40/en/_images/join.png) `Joins` tab and click the `Add new join` button ![Add New Join Button](https://docs.qgis.org/3.40/en/_images/symbologyAdd.png) to create a new join. We can then choose the sa1_2021_pop_age data as the `Join layer`, and define what common field between the two tables we will merge on: the SA1_CODE21 code in our case.
 
 You can now see the joined data highlighted in green in the ![Fields Tab Button](https://docs.qgis.org/3.40/en/_images/mSourceFields.png)`Fields` tab, click "OK", and check the actual values in the `SA1 Bris` layer's attribute table.
 
@@ -248,20 +248,20 @@ Population is evenly distributed within each SA1.
 
 -   Right-click `Dust_pop` and open it's Attribute Table
 -   Click the **Open Field Calculator** button ![Field Calculator Button](https://docs.qgis.org/3.40/en/_images/mActionCalculateField.png)
--   Next to `Output field name` type "**area_ha**"
+-   Next to `Output field name` type "**area_fraction**"
 -   Next to `Output field type` change it to `Decimal Number (Real)`
 -   In the `Expression` window type: `($area/1e6) / "AREASQKM21"` 
     -   That's current area in metres converted to SQKM, divided by the previous area.
 -   Click `OK`
 
-Now that we have the area fraction, let's calculate the population
+Now that we have the area fraction, let's calculate the vulnerable population as those under 5, and over 64.
 
 
 -   Right-click `Dust_pop` and open it's Attribute Table
 -   Click the **Open Field Calculator** button ![Field Calculator Button](https://docs.qgis.org/3.40/en/_images/mActionCalculateField.png)
--   Next to `Output field name` type "**affected_pop**"
+-   Next to `Output field name` type "**affected_pop_**"
 -   Next to `Output field type` change it to `Decimal Number (Real)`
--   In the `Expression` window type: `"SA1_pop_2024 — Sheet1_2024p" * area_frac` 
+-   In the `Expression` window type: `("sa1_2021_pop_age_0-4" + "sa1_2021_pop_age_65+") * area_fraction` 
 -   Click `OK`
 
-If we open the `Field Calulator` again and type `sum(affected_pop)` we can see the total affected population in 27643.
+If we open the `Field Calulator` again and type `sum(affected_pop)` we can see the total affected vulnerable population at the bottom of the window.

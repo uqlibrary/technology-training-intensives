@@ -15,8 +15,7 @@ Main aims:
 
 ## Load in our data 
 
-Within the `Styling_data` folder you will find"
-
+-   Click the `Project Home` dropdown, then `data > raw > 5-styling_data` and load in:
 -   artefacts.gpkg (artefact location data we've made for this tutorial)
 
 ## Aims for this session
