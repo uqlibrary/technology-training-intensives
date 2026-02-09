@@ -2,20 +2,19 @@
 title: Tips
 ---
 
-Here's a few general tips. In addition, we strongly recommend using [QGIS User Manual](https://docs.qgis.org/3.40/en/docs/user_manual/index.html)
+Here's a few general tips. In addition, we strongly recommend using the [QGIS User Manual](https://docs.qgis.org/3.40/en/docs/user_manual/index.html).
 
 ## Keyboard Shortcuts
 
-Change the below to QGIS things like F7 for Style Manager and CTRL + . for digitising
-
-| Hotkey | Description |
+| Shortcut | Description |
 | --- | --- |
 | <kbd>F6</kbd> | Open Attribute Table |
-| <kbd>Ctrl</kbd>+<kbd>J</kbd> | Zoom to Selection |
-| <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>T</kbd> | Toogle Processing Toolbox |
-| <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Tab</kbd> | Hide all panels (good for georeferencing) |
 | <kbd>F7</kbd> | Open Layer Styling Panel |
-
+| <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>T</kbd> | Toggle Processing Toolbox |
+| <kbd>Ctrl</kbd>+<kbd>J</kbd> | Zoom to Selection |
+| <kbd>Ctrl</kbd>+<kbd>Tab</kbd> | Toggle Panel Visibility (toolbars still visible) |
+| <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Tab</kbd> | Toggle Map Only (good for georeferencing) |
+| <kbd>F11</kbd> | Toggle Full Screen |
 
 ## Plugins
 
