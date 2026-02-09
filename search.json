@@ -3343,7 +3343,7 @@
     "href": "qgis/The Project/tips.html#keyboard-shortcuts",
     "title": "Tips",
     "section": "Keyboard Shortcuts",
-    "text": "Keyboard Shortcuts\n\n\n\n\n\n\n\nShortcut\nDescription\n\n\n\n\nF6\nOpen Attribute Table\n\n\nF7\nOpen Layer Styling Panel\n\n\nCtrl+Alt+T\nToggle Processing Toolbox\n\n\nCtrl+J\nZoom to Selection\n\n\nCtrl+Tab\nToggle Panel Visibility (toolbars still visible)\n\n\nCtrl+Shift+Tab\nToggle Map Only (good for georeferencing)\n\n\nF11\nToggle Full Screen",
+    "text": "Keyboard Shortcuts\nHere are some useful shortcuts you might want to get familiar with:\n\n\n\n\n\n\n\nShortcut\nDescription\n\n\n\n\nF6\nOpen Attribute Table\n\n\nF7\nOpen Layer Styling Panel\n\n\nCtrl+Alt+T\nToggle Processing Toolbox\n\n\nCtrl+J\nZoom to Selection\n\n\nCtrl+Tab\nToggle Panel Visibility (toolbars still visible)\n\n\nCtrl+Shift+Tab\nToggle Map Only (good for georeferencing)\n\n\nF11\nToggle Full Screen",
     "crumbs": [
       "QGIS",
       "The Project",
@@ -3367,7 +3367,7 @@
     "href": "qgis/The Project/tips.html#importing-and-exporting-data",
     "title": "Tips",
     "section": "Importing and exporting data",
-    "text": "Importing and exporting data\nHow tos for any data, csvs, as well as Project Home\nDifferent spatial file types\n\nInitial exploration\nYou’ll want to explore the data to start with - below are a few things to get started.\nAttribute table??",
+    "text": "Importing and exporting data\n\nThe Project Home\nTo quickly find your data files, make sure to create a logical folder structure, and save your project at the top. This makes it possible to find all your data files straight from the Browser panel (“Project Home” section).\nYou can also choose your Project Home in you Project Properties: Project &gt; Properties... &gt; General\n\n\nImporting from CSV and Excel spreadsheets\nQGIS allows you to add a table (e.g. from a CSV, ODS or XLSX file) to your layers. This allows you to look at the data in the Attribute Table, and create a Join to merge it into another layer. However, it does not automatically understand it as spatial data it can put on the map.\nTo make that data spatial, you have to:\n\nSave the file as a CSV (if not in this format already)\nUse Layer &gt; Add Layer &gt; Add Delimited Text Layer...\nPick the file\nPoint to the column(s) that contain the spatial data: either longitude/latitude (X and Y respectively) or Well Known Text (WKT).\n\n\n\nInitial exploration\nOne the spatial data is loaded, you’ll want to familiarise yourself with it - below are a few things to get started.\n\nCan’t see it? Make sure the layer is at the top of the stack in the “Layers” panel.\nRight-click on the layer and use “Zoom to Layer” to see all its features at once. Is some data in an unexpected place? There might be some erroneous data. Is the whole layer completely misplaced? You might have to play with its CRS, or check that the X and Y columns where correct when you imported a CSV.\nFor vector data, open the Attribute Table (F6) and see what variables are available. Could you style the data based on them? Use them to label the features? Base calculations on them? Or filter/subset the data thanks to them?\nYou can query single feature to see what data is associated to it by selecting the layer, and using the “Identify Features” button in the toolbar. After clicking on a feature, it highlights in bright red and the “Identify Results” panel shows the associated data.\nWith the Layer Styling panel open, play with Labels and Symbology to add information to the map. For example, pick a categorical variable with the “Categorized” symbology or a numeric variable with “Graduated” symbology.",
     "crumbs": [
       "QGIS",
       "The Project",
@@ -3375,11 +3375,11 @@
     ]
   },
   {
-    "objectID": "qgis/The Project/tips.html#exporting-with-qgis-cloud-or-qgis-to-html",
-    "href": "qgis/The Project/tips.html#exporting-with-qgis-cloud-or-qgis-to-html",
+    "objectID": "qgis/The Project/tips.html#exporting-and-publishing-interactive-maps",
+    "href": "qgis/The Project/tips.html#exporting-and-publishing-interactive-maps",
     "title": "Tips",
-    "section": "Exporting with QGIS Cloud or QGIS to HTML",
-    "text": "Exporting with QGIS Cloud or QGIS to HTML",
+    "section": "Exporting and publishing interactive maps",
+    "text": "Exporting and publishing interactive maps\nYou are not limited to only sharing static maps. To create (and publish) interactive web maps, here are some options:\n\nQGIC Cloud: you will need an account. You can then install the “QGIS Cloud Plugin” to publish your project from QGIS.\nMapHub: similarly to QGIS Cloud, you can create an account (there is a free tier to trial it), install a plugin and upload projects.\nqgis2web: a plugin that allows exporting a project to HTML, using either OpenLayers or Leaflet. This results in a HTML file that is interactive, and can be shared with others, or published on a website if you have one.",
     "crumbs": [
       "QGIS",
       "The Project",

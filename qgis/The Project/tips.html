@@ -274,9 +274,11 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#plugins" id="toc-plugins" class="nav-link" data-scroll-target="#plugins">Plugins</a></li>
   <li><a href="#importing-and-exporting-data" id="toc-importing-and-exporting-data" class="nav-link" data-scroll-target="#importing-and-exporting-data">Importing and exporting data</a>
   <ul class="collapse">
+  <li><a href="#the-project-home" id="toc-the-project-home" class="nav-link" data-scroll-target="#the-project-home">The Project Home</a></li>
+  <li><a href="#importing-from-csv-and-excel-spreadsheets" id="toc-importing-from-csv-and-excel-spreadsheets" class="nav-link" data-scroll-target="#importing-from-csv-and-excel-spreadsheets">Importing from CSV and Excel spreadsheets</a></li>
   <li><a href="#initial-exploration" id="toc-initial-exploration" class="nav-link" data-scroll-target="#initial-exploration">Initial exploration</a></li>
   </ul></li>
-  <li><a href="#exporting-with-qgis-cloud-or-qgis-to-html" id="toc-exporting-with-qgis-cloud-or-qgis-to-html" class="nav-link" data-scroll-target="#exporting-with-qgis-cloud-or-qgis-to-html">Exporting with QGIS Cloud or QGIS to HTML</a></li>
+  <li><a href="#exporting-and-publishing-interactive-maps" id="toc-exporting-and-publishing-interactive-maps" class="nav-link" data-scroll-target="#exporting-and-publishing-interactive-maps">Exporting and publishing interactive maps</a></li>
   </ul>
 </nav>
     </div>
@@ -305,6 +307,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Here’s a few general tips. In addition, we strongly recommend using the <a href="https://docs.qgis.org/3.40/en/docs/user_manual/index.html">QGIS User Manual</a>.</p>
 <section id="keyboard-shortcuts" class="level2">
 <h2 class="anchored" data-anchor-id="keyboard-shortcuts">Keyboard Shortcuts</h2>
+<p>Here are some useful shortcuts you might want to get familiar with:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -362,16 +365,42 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="importing-and-exporting-data" class="level2">
 <h2 class="anchored" data-anchor-id="importing-and-exporting-data">Importing and exporting data</h2>
-<p>How tos for any data, csvs, as well as Project Home</p>
-<p>Different spatial file types</p>
+<section id="the-project-home" class="level3">
+<h3 class="anchored" data-anchor-id="the-project-home">The Project Home</h3>
+<p>To quickly find your data files, make sure to create a logical folder structure, and save your project at the top. This makes it possible to find all your data files straight from the Browser panel (“Project Home” section).</p>
+<p>You can also choose your Project Home in you Project Properties: <code>Project &gt; Properties... &gt; General</code></p>
+</section>
+<section id="importing-from-csv-and-excel-spreadsheets" class="level3">
+<h3 class="anchored" data-anchor-id="importing-from-csv-and-excel-spreadsheets">Importing from CSV and Excel spreadsheets</h3>
+<p>QGIS allows you to add a table (e.g.&nbsp;from a CSV, ODS or XLSX file) to your layers. This allows you to look at the data in the Attribute Table, and create a Join to merge it into another layer. However, it does not automatically understand it as spatial data it can put on the map.</p>
+<p>To make that data spatial, you have to:</p>
+<ol type="1">
+<li>Save the file as a CSV (if not in this format already)</li>
+<li>Use <code>Layer &gt; Add Layer &gt; Add Delimited Text Layer...</code></li>
+<li>Pick the file</li>
+<li>Point to the column(s) that contain the spatial data: either longitude/latitude (X and Y respectively) or Well Known Text (WKT).</li>
+</ol>
+</section>
 <section id="initial-exploration" class="level3">
 <h3 class="anchored" data-anchor-id="initial-exploration">Initial exploration</h3>
-<p>You’ll want to explore the data to start with - below are a few things to get started.</p>
-<p>Attribute table??</p>
+<p>One the spatial data is loaded, you’ll want to familiarise yourself with it - below are a few things to get started.</p>
+<ul>
+<li>Can’t see it? Make sure the layer is at the top of the stack in the “Layers” panel.</li>
+<li>Right-click on the layer and use “Zoom to Layer” to see all its features at once. Is some data in an unexpected place? There might be some erroneous data. Is the whole layer completely misplaced? You might have to play with its CRS, or check that the X and Y columns where correct when you imported a CSV.</li>
+<li>For vector data, open the Attribute Table (<kbd>F6</kbd>) and see what variables are available. Could you style the data based on them? Use them to label the features? Base calculations on them? Or filter/subset the data thanks to them?</li>
+<li>You can query single feature to see what data is associated to it by selecting the layer, and using the “Identify Features” button in the toolbar. After clicking on a feature, it highlights in bright red and the “Identify Results” panel shows the associated data.</li>
+<li>With the Layer Styling panel open, play with Labels and Symbology to add information to the map. For example, pick a categorical variable with the “Categorized” symbology or a numeric variable with “Graduated” symbology.</li>
+</ul>
 </section>
 </section>
-<section id="exporting-with-qgis-cloud-or-qgis-to-html" class="level2">
-<h2 class="anchored" data-anchor-id="exporting-with-qgis-cloud-or-qgis-to-html">Exporting with QGIS Cloud or QGIS to HTML</h2>
+<section id="exporting-and-publishing-interactive-maps" class="level2">
+<h2 class="anchored" data-anchor-id="exporting-and-publishing-interactive-maps">Exporting and publishing interactive maps</h2>
+<p>You are not limited to only sharing static maps. To create (and publish) interactive web maps, here are some options:</p>
+<ul>
+<li><a href="https://qgiscloud.com/">QGIC Cloud</a>: you will need an account. You can then install the “QGIS Cloud Plugin” to publish your project from QGIS.</li>
+<li><a href="https://www.maphub.co/">MapHub</a>: similarly to QGIS Cloud, you can create an account (there is a free tier to trial it), install a plugin and upload projects.</li>
+<li><a href="https://qgis2web.github.io/qgis2web/">qgis2web</a>: a plugin that allows exporting a project to HTML, using either OpenLayers or Leaflet. This results in a HTML file that is interactive, and can be shared with others, or published on a website if you have one.</li>
+</ul>
 
 
 </section>
