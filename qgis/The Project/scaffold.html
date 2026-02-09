@@ -274,8 +274,8 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#step-0-pick-a-dataset-and-a-scenario" id="toc-step-0-pick-a-dataset-and-a-scenario" class="nav-link" data-scroll-target="#step-0-pick-a-dataset-and-a-scenario">Step 0: Pick a dataset and a scenario</a></li>
   <li><a href="#step-1-understand-the-data" id="toc-step-1-understand-the-data" class="nav-link" data-scroll-target="#step-1-understand-the-data">Step 1: Understand the data</a></li>
-  <li><a href="#step-2-tidy-and-subset-your-data" id="toc-step-2-tidy-and-subset-your-data" class="nav-link" data-scroll-target="#step-2-tidy-and-subset-your-data">Step 2: Tidy and subset your data</a></li>
-  <li><a href="#step-3-run-some-analyses-on-your-data" id="toc-step-3-run-some-analyses-on-your-data" class="nav-link" data-scroll-target="#step-3-run-some-analyses-on-your-data">Step 3: Run some analyses on your data</a></li>
+  <li><a href="#step-2-tidy-subset-and-style-your-data" id="toc-step-2-tidy-subset-and-style-your-data" class="nav-link" data-scroll-target="#step-2-tidy-subset-and-style-your-data">Step 2: Tidy, subset and style your data</a></li>
+  <li><a href="#step-3-run-some-analyses" id="toc-step-3-run-some-analyses" class="nav-link" data-scroll-target="#step-3-run-some-analyses">Step 3: Run some analyses</a></li>
   <li><a href="#step-4-looking-ahead" id="toc-step-4-looking-ahead" class="nav-link" data-scroll-target="#step-4-looking-ahead">Step 4: Looking ahead</a></li>
   </ul></li>
   </ul>
@@ -308,7 +308,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="project-scaffold">Project scaffold</h2>
 <section id="step-0-pick-a-dataset-and-a-scenario" class="level3">
 <h3 class="anchored" data-anchor-id="step-0-pick-a-dataset-and-a-scenario">Step 0: Pick a dataset and a scenario</h3>
-<p>There are many <a href="Data_Sources.qmd">scenarios and datasets</a> to choose from. Choose or design and scenario, and browse through online data sources and find some vector data and raster data that interest you.</p>
+<p>There are many <a href="../../qgis/The Project/datasets.html">scenarios and datasets</a> to choose from. Choose or design a scenario, browse through online data sources and find some vector data and raster data that interest you.</p>
 <p>Learning how to find and import spatial data is a useful skill.</p>
 <p>We recommend selecting a few vector datasets, a nice basemap, and a DEM (on day 2).</p>
 <p>Choose a location that might show an interesting combination of data types.</p>
@@ -330,11 +330,13 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Let’s now <strong>save</strong> our project: <code>Project &gt; Save</code>.</p></li>
 <li><p>Navigate to where you want to save your new project, and create a new folder, let’s call it “<strong>Workshop_Project</strong>”.</p></li>
 <li><p>Inside that folder, create these folders:</p></li>
-<li><p>“<strong>data</strong>” - for all the data we will use to make our maps, split into:</p></li>
+<li><p>“<strong>data</strong>” - for all the data we will use to make our maps, split into:</p>
+<ul>
+<li><p>“<strong>raw</strong>” - raw data from your research or the internet</p></li>
+<li><p>“<strong>processed</strong>” - any data you’ve modified</p></li>
+</ul></li>
 </ul>
-<pre><code>-   "**raw**" - raw data from your research or the internet
-
--   "**processed**" - any data you've modified</code></pre>
+<!-- -->
 <ul>
 <li><p>“<strong>output</strong>” - for any maps or images we export</p></li>
 <li><p>“<strong>temp</strong>” - this folder isn’t necessary, but when you’re playing around and testing, it can be helpful to stop things getting messy.</p></li>
@@ -347,16 +349,18 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="step-1-understand-the-data" class="level3">
 <h3 class="anchored" data-anchor-id="step-1-understand-the-data">Step 1: Understand the data</h3>
-<p>Import the data into QGIS, look at the attributes and see what analyses you might be able to run.</p>
+<p>Load a basemap to locate yourself on the Earth.</p>
+<p>Import the data you downloaded, look at the attribute table and think about what analyses you might be able to run.</p>
 </section>
-<section id="step-2-tidy-and-subset-your-data" class="level3">
-<h3 class="anchored" data-anchor-id="step-2-tidy-and-subset-your-data">Step 2: Tidy and subset your data</h3>
-<p>Define a project are and clip your data where appropriate.</p>
-<p>Style your vectors so that they have appropriate colours, and labels.</p>
+<section id="step-2-tidy-subset-and-style-your-data" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-tidy-subset-and-style-your-data">Step 2: Tidy, subset and style your data</h3>
+<p>Define a project area and clip your data where appropriate.</p>
+<p>Style your vectors with appropriate colours, symbols and labels to make them more self-explanatory.</p>
+<p>Try alternatives to “Single Symbol” in order to visualise more variables, or to reveal trends when there is a too much data.</p>
 </section>
-<section id="step-3-run-some-analyses-on-your-data" class="level3">
-<h3 class="anchored" data-anchor-id="step-3-run-some-analyses-on-your-data">Step 3: Run some analyses on your data</h3>
-<p>Try running some tools to see how your data interacts</p>
+<section id="step-3-run-some-analyses" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-run-some-analyses">Step 3: Run some analyses</h3>
+<p>Try using some geoprocessing tools to see how you might reveal more information, and how you can combine different datasets in interesting ways.</p>
 </section>
 <section id="step-4-looking-ahead" class="level3">
 <h3 class="anchored" data-anchor-id="step-4-looking-ahead">Step 4: Looking ahead</h3>
