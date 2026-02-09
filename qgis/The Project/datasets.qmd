@@ -265,7 +265,9 @@ How does transport infrastructure shape access or movement?
 - Try [**Network Shortest Path**](https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/networkanalysis.html#shortest-path-point-to-point) for simple routing.
 :::
 
-## Scenario 10: Archaeological Sensitivity and Cultural Landscape Assessment
+
+::: {.callout-tip collapse="true"}
+### Scenario 10: Archaeological Sensitivity and Cultural Landscape Assessment
 
 **Story question:**  
 Which areas are more likely to contain Aboriginal archaeological sites, and how might proposed development impact cultural landscapes?
@@ -297,7 +299,7 @@ Which areas are more likely to contain Aboriginal archaeological sites, and how 
 - Use the [**Raster Calculator to reclassify**](https://docs.qgis.org/3.40/en/docs/training_manual/rasters/terrain_analysis.html#follow-along-reclassifying-the-raster) and combine environmental predictors into a single sensitivity surface.
 - Use [**Zonal Statistics**](https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#zonal-statistics) to summarise sensitivity values within development parcels or survey areas.  
 - Explore [**Proximity (Raster Distance)**](https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/rasteranalysis.html#proximity-distance) as an input to a simple predictive model.  
-
+:::
 
 ::: {.callout-tip collapse="true"}
 ### Scenario 11: A Place-Based Story of your Choosing
