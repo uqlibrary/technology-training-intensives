@@ -18,7 +18,15 @@ Here's a few general tips. In addition, we strongly recommend using the [QGIS Us
 
 ## Plugins
 
-Explore plugins to make things easier
+Close to 3000 plugins are available to install and add functionalities to QGIS. You can install them with `Plugins > Manage and Install Plugins...` but you might find it easier to explore the catalogue using the [plugins website](https://plugins.qgis.org/plugins/).
+
+Here are some example plugins to try:
+
+* **QuickMapServices** to quickly load a variety of basemaps
+* **QuickOSM** to download specific OpenStreetMap vector data
+* **AusMap** to load a variety of Australian dataset
+* **qgis2web** to convert a QGIS project to an interactive web map
+* **QField Sync** to sync your projects with your QField account
 
 ## Importing and exporting data
 
@@ -27,6 +35,7 @@ How tos for any data, csvs, as well as Project Home
 Different spatial file types
 
 ### Initial exploration
+
 You'll want to explore the data to start with - below are a few things to get started.
 
 Attribute table??
