@@ -13,5 +13,6 @@ gallery/**/*.pdf
 !_freeze/
 /.quarto/
 !_processing/
+!gallery/QGIS/**/*.pdf
 
 **/*.quarto_ipynb

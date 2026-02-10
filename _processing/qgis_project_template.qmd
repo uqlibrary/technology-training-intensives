@@ -1,0 +1,9 @@
+---
+format:
+  html:
+    toc: false
+    page-layout: full
+title:
+---
+
+![](){width=100% style=min-height:75vh;}
