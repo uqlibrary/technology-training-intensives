@@ -28,7 +28,7 @@ A Digital Elevation Model (DEM) is a common example of **raster data** which sho
 
 
 ## Aims for this session
-In the last session we found that a number of residential areas will likely receive dust from the construction. One way to reduce dust is to regularly spray water on the roads, and wash down the trucks. However you now need to deal with the water runoff from that creates. We can use watershed and basin analysis on a DEM to look at where the water will flow.
+In the last session we found that a number of residential areas will likely receive dust from the construction. One way to reduce dust is to regularly spray water on the roads, and wash down the trucks. However you now need to deal with the water runoff that creates. We can use watershed and basin analysis on a DEM to look at where the water will flow.
 
 We can also use similar data to calculate how for away the wind turbines will be visible
 
@@ -36,6 +36,20 @@ We can also use similar data to calculate how for away the wind turbines will be
 ## Install the SAGA Plugin
 
 We need to install a plugin so we can access certain geoprocessing tools (the built-in SAGA provider has been [removed in version 3.30](https://changelog.qgis.org/en/qgis/version/3.30/#processing-drop-unmainted-saga-provider-from-qgis-)). Go to `Plugins > Manage and Install Plugins...` and `Search...` for "**SAGA**". From the list on options choose **Processing Saga NextGen Provider** then in the bottom right, click `Install Plugin`. You might also need to install SAGA (version 9 or above) on your computer, if not already available.
+
+::: {.callout-tip collapse="true"}
+### Getting SAGA
+
+If the SAGA tools still don't show in the Processing Toolbox after installing the plugin, try the following on Windows / macOS (as suggested by the plugin developers):
+
+1. Get the [SAGA 9.2.1 binaries](https://sourceforge.net/projects/saga-gis/files/SAGA%20-%209/SAGA%20-%209.2.1/) (download 'saga_9.2.1_x64.zip' for Windows, or 'saga-9.2.1_mac.zip' for macOS)
+1. Unzip it
+1. in QGIS go to Settings > Options > Processing > Providers > SAGANG and point the SAGA folder to your unzipped folder
+
+If that doesn't work on Windows, and you have administrator rights, try installing SAGA with 'saga_9.2.1_x64_setup.exe' instead.
+
+For Linux, use your distribution's package manager to install it (e.g. `sudo apt install saga` on Debian-based).
+:::
 
 There are many other plugins from the QGIS Community that you can explore to enhance QGIS, but we will stick with this for now.
 
@@ -53,13 +67,11 @@ In the `Bris_DEM_5m` layer's Properties (`Right click > Properties... > Source`)
 -   Use the tool `Raster > Projections > Warp (Reproject)`
 -   Make sure `Input layer` is set as `Bris_DEM_5m`.
 -   pick "EPSG:7856 - GDA2020 / MGA zone 56" as the Target CRS
-    -   you may need to click the Select CRS button ![image](https://user-images.githubusercontent.com/67612228/197653760-a9df4671-5852-499c-a085-3d995489599a.png)
+    -   if it is not in the list (ideally it would already be your "Project CRS"), you may need to click the Select CRS button ![image](https://user-images.githubusercontent.com/67612228/197653760-a9df4671-5852-499c-a085-3d995489599a.png)
     -   untick No CRS
     -   use the filter to search for "7856"
     -   You should be able to find "EPSG:7856 - GDA2020 / MGA zone 56" under **Predefined Coordinate Reference Systems**
 -   Scroll down to click the three dots `...` next to the **Reprojected** field, navigate to the project's **processed** data folder, and type in **Bris_DEM_5m_reproj** and click `Save`
-    
-    
 
 > If you want to learn more about the static datum GDA2020 (for "Geocentric Datum of Australia 2020"), an upgrade from the previous, less precise GDA94, head to the [ICSM website](https://www.icsm.gov.au/gda2020).
 
@@ -113,19 +125,21 @@ Now we can use the `Channel network and drainage basins` tool to calculate the *
 
 -   Open the Processing Toolbox ![Processing Toolbox](https://docs.qgis.org/3.40/en/_images/processingAlgorithm.png)
 -   `Search` for "Channel network and drainage basin"
--   Double-click on the **Channel network and drainage basin** option
+-   Double-click on the **Channel network and drainage basin** tool
 -   Make sure `Input layer` is the **Filled DEM** option.
 -   We might have to change the threshold to a higher one if the output includes too many small basins and channels. 
 -   You will also need to tick the boxes of what you want it to output (see below), we will choose `Channel`, `Junctions`, and `Drainage Basins`.
 -   Click `Run`
 
-Strahler Order: A [Strahler Order](https://en.wikipedia.org/wiki/Strahler_number) raster that is used to classify stream hierarchy
-Channels: Vector lines showing river paths with Strahler Order values.
-Junctions: Vector points showing where channels meet.
-Drainage Basins: Vector polygons delineating the areas that drain to the same point.
-Drainage Basins [optional]: A raster grid version of the other Drainage Basins.
-Flow Direction: A raster grid representing the direction of flow for each cell.
-Flow Connectivity: A raster showing how well water could flow through sections of your map.
+What are the different options:
+
+- Strahler Order: A [Strahler Order](https://en.wikipedia.org/wiki/Strahler_number) raster that is used to classify stream hierarchy
+- Channels: Vector lines showing river paths with Strahler Order values.
+- Junctions: Vector points showing where channels meet.
+- Drainage Basins: Vector polygons delineating the areas that drain to the same point.
+- Drainage Basins [optional]: A _raster_ version of the other Drainage Basins.
+- Flow Direction: A _raster_ representing the direction of flow for each cell.
+- Flow Connectivity: A _raster_ showing how well water could flow through sections of your map.
 
 These are some examples of **creating vector data from raster data**!
 
@@ -147,6 +161,13 @@ We can now play with the **symbology** for those elements. For example:
     -   Click the double-arrow icon to "Fetch value range from layer"
     -   Change the "Size from" and "to" values to suitable values
 
+It is now evident that runoff from Enoggera Hill can flow into two different catchments: the Kedron Brook catchment, and the Enoggera Creek catchment (which itself runs into the Brisbane river), which matters when considering the project's impacts.
+
+To go further, we can play with our Drainage Basin layer to communicate better, for example by:
+
+- filtering to only show the two larger basins (for example: right-click on layer, click "Filter" and use the expression `"AREA" > 3e7`)
+- adding a "Name" column to the Attribute table, to then use them as labels
+- using different colours and some transparency to see what is behind, while making the borders thicker
 
 ## Georeferencing an Image
 
@@ -170,6 +191,7 @@ When you want to add a point, change to the `Add GCP Point` Tool ![Add GCP Point
 We will need at least 5 points spread throughout the map. As you add the points, you'll see them appear in the `GCP Table`, higher residuals suggests that your points might not be lining up perfectly compared to each other. You want to try to be as accurate as you can, but you can't be perfect.
 
 To make this process easier...
+
 -   Put the `Georeferencer` window on the right of your screen
 -   Put the `QGIS` window on the left.
 -   Press `Ctrl` + `Shift` + `Tab` to make the map full screen. Press those keys again to bring the toolbars back
@@ -177,6 +199,7 @@ To make this process easier...
     
     
 Once you've added all your points, you need to open the `Transformation Settings` ![Transformation Settings Icon](https://docs.qgis.org/3.40/en/_images/mActionTransformSettings.png)
+
 -   For `Transformation Type` if you're confident in all your points, choose `Thin Plate Spline`, if you've made some guesses or you have high residuals, go with `Polynomial` - it's also much faster.
 -   Choose where you want to save the output file
 -   For `Resampling Method` it depends. `Nearest Neighbour is faster`, but generally not as accurate. `Cubic` tends to be more accurate, but it's slow. `Bilinear` is a nice compromise.
