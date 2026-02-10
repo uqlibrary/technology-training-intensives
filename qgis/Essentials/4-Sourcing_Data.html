@@ -326,10 +326,10 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>We will explore data from:</p>
 <ul>
-<li>Local, State, Federal Gov Data Repositories</li>
+<li>Local, State, Federal Government data repositories</li>
 <li>International Datasets</li>
 <li>NGOs</li>
-<li>Corporate (ESRI, etc)</li>
+<li>Corporate (ESRI, etc.)</li>
 </ul>
 </section>
 <section id="basemap-services" class="level2">
@@ -337,9 +337,9 @@ ul.task-list li input[type="checkbox"] {
 <p>So far we’ve only been using <strong>OpenStreetMap</strong>, but there are a wide variety of other options available.</p>
 <section id="plugins" class="level3">
 <h3 class="anchored" data-anchor-id="plugins">Plugins</h3>
-<p>There are many sources of basemaps, but a simple on is the <strong>QuickMapServices</strong> plugin, which we can use to load in new raster basemaps.</p>
+<p>There are many sources of basemaps, but a simple one is the <strong>QuickMapServices</strong> plugin, which we can use to load in new raster basemaps.</p>
 <ul>
-<li>Navigate to <code>Plugins &gt; Manage and Install Plugins...</code>. <code>Search</code> for “QuickMapServices”, select it from the list and click <code>Install Plugin</code>, once it has loaded, click <code>Cloce</code></li>
+<li>Navigate to <code>Plugins &gt; Manage and Install Plugins...</code>. <code>Search</code> for “QuickMapServices”, select it from the list and click <code>Install Plugin</code>, once it has loaded, click <code>Close</code></li>
 </ul>
 <p>The plugin should automatically open a side panel in which you can search for terms. For example, search for “satellite” and add the ESRI satellite imagery to your project.</p>
 </section>
@@ -352,15 +352,15 @@ ul.task-list li input[type="checkbox"] {
 <li>Right click XYZ Tiles and select <code>New Connection...</code></li>
 <li>In <code>Name</code> type <strong>Voyager (no labels)</strong></li>
 <li>In <code>URL</code> paste:<br>
-https://a.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}<span class="citation" data-cites="2x.png">@2x.png</span></li>
+<code>https://a.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}@2x.png</code></li>
 <li>Increase the Max. Zoom Level to 20</li>
 <li>This value depends on what is available from the given service in different parts of the world. Increasing that value beyond 20 for this map in Brisbane will show “Map data not yet available” when you zoom in very close.</li>
 <li>Click <code>OK</code></li>
-<li>In the <code>Browser</code> panel, expand <code>XYZ Tiles</code> and double click on <code>Voyager (no labels)</code></li>
+<li>In the <code>Browser</code> panel, expand <code>XYZ Tiles</code> and double-click on <code>Voyager (no labels)</code></li>
 <li>Now do the same for this <strong>Light Gray Basemap</strong> from ESRI, but set the Max. Zoom Level to 16:<br>
-https://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}</li>
+<code>https://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}</code></li>
 <li>And the same for this <strong>ESRI World Imagery</strong>, but set the Max. Zoom Level to 20:<br>
-https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}</li>
+<code>https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}</code></li>
 </ul>
 <p>You can find more Basemaps on our <a href="https://uqlibrary.github.io/technology-training-intensives/qgis/The%20Project/datasets.html#basemaps">Datasets</a> page.</p>
 </section>
@@ -420,12 +420,12 @@ https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/til
 <h3 class="anchored" data-anchor-id="feature-servers-and-rest-servers">Feature Servers and REST Servers</h3>
 <p>You can use Web Mapping Services to bring Vector Data directly in to QGIS, just like we did with the basemaps, but these will pull in extractable points, lines and polygons!</p>
 <p>Many government departments have ArcGIS REST servers, like the <a href="https://spatial-gis.information.qld.gov.au/arcgis/rest/services">QLD Government</a>.</p>
-<p>For example, if you click <strong>Biota</strong>, then <strong>[Biota/RegionalEcosystemMapping](https://spatial-gis.information.qld.gov.au/arcgis/rest/services/Biota/RegionalEcosystemMapping/MapServer</strong>, you can access the spatial files of regional ecosystem maps showing biodiversity status and broad vegetation groups within Queensland.</p>
-<p>To add this data to QGIS, copy that MapServer URL: <code>https://spatial-gis.information.qld.gov.au/arcgis/rest/services/Biota/RegionalEcosystemMapping/MapServer</code></p>
+<p>For example, if you click <strong>Biota</strong>, then <a href="https://spatial-gis.information.qld.gov.au/arcgis/rest/services/Biota/RegionalEcosystemMapping/MapServer"><strong>Biota/RegionalEcosystemMapping</strong></a>, you can access the spatial files of regional ecosystem maps showing biodiversity status and broad vegetation groups within Queensland.</p>
+<p>To add this data to QGIS, copy this MapServer URL: <code>https://spatial-gis.information.qld.gov.au/arcgis/rest/services/Biota/RegionalEcosystemMapping/MapServer</code></p>
 <ul>
 <li>Scroll down the <code>Browser</code> panel until you see <strong>ArcGIS REST Servers</strong></li>
 <li>Right click <code>ArcGIS REST Servers</code> and select <code>New Connection...</code></li>
-<li>In <code>Name</code> type ****</li>
+<li>In <code>Name</code> type <strong>QLD Ecosystem Data</strong></li>
 <li>In <code>URL</code> paste: <code>https://spatial-gis.information.qld.gov.au/arcgis/rest/services/Biota/RegionalEcosystemMapping/MapServer</code></li>
 <li>Click <code>OK</code></li>
 <li>In the <code>Browser</code> panel, expand <code>ArcGIS REST Servers</code>, expand <code>QLD Ecosystems</code>, expand <code>Broad vegetation groups [BVG]</code>, and double click on <code>Remnant BVG - 1:5 million</code> - This is the data we used earlier!
