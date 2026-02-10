@@ -13,7 +13,7 @@ See the [datasets](Data_Sources.qmd) page for the data, [Getting Started](scaffo
 
 ## Project outline
 
-The goal of this project is to create 1-3 maps that use spatial data to tell a story about a particular area.
+The goal of this project is to create several maps that use spatial data to tell a story about a particular area, and the process you used to get there.
 
 There are a few key requirements for the project, but otherwise it's up to you!
 

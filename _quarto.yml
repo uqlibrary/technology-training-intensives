@@ -1,6 +1,7 @@
 project:
   type: website
-  pre-render: _processing/pre_render.py
+  # pre-render: _processing/pre_render.py
+  pre-render: _processing/qgis_projects.py
   render: 
     - index.qmd
     - gallery/project_gallery.qmd
