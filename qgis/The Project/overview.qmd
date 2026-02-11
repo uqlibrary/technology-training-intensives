@@ -51,4 +51,10 @@ We've put together example maps which you're welcome to look at:
 
 #### Upload Map to Teams
 
-When you are ready to upload, just put your maps into our [Teams folder](https://uq.sharepoint.com/:f:/r/teams/1qktlisq/Shared%20Documents/GIS/2026-02%20group%20projects?csf=1&web=1&e=PfjkDY).
+When you are ready to upload, just put your maps into our [Teams folder](https://uq.sharepoint.com/:f:/r/teams/1qktlisq/Shared%20Documents/GIS/2026-02%20group%20projects?csf=1&web=1&e=PfjkDY). Please upload it with the following format:
+
+```
+title-author.pdf
+```
+
+> Only include **one** hyphen `-`.
