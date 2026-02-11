@@ -38,7 +38,7 @@ We can also use similar data to calculate how for away the wind turbines will be
 We need to install a plugin so we can access certain geoprocessing tools (the built-in SAGA provider has been [removed in version 3.30](https://changelog.qgis.org/en/qgis/version/3.30/#processing-drop-unmainted-saga-provider-from-qgis-)). Go to `Plugins > Manage and Install Plugins...` and `Search...` for "**SAGA**". From the list on options choose **Processing Saga NextGen Provider** then in the bottom right, click `Install Plugin`. You might also need to install SAGA (version 9 or above) on your computer, if not already available.
 
 ::: {.callout-tip collapse="true"}
-### Getting SAGA
+### No SAGA tools?
 
 If the SAGA tools still don't show in the Processing Toolbox after installing the plugin, try the following on Windows / macOS (as suggested by the plugin developers):
 
@@ -48,7 +48,7 @@ If the SAGA tools still don't show in the Processing Toolbox after installing th
 
 If that doesn't work on Windows, and you have administrator rights, try installing SAGA with 'saga_9.2.1_x64_setup.exe' instead.
 
-For Linux, use your distribution's package manager to install it (e.g. `sudo apt install saga` on Debian-based).
+For Linux, use your distribution's package manager to install it (e.g. `sudo apt install saga` on Debian-based). If the repository's version is too old, consider adding an external repository that provides a more recent version (e.g. the UbuntuGIS PPA for Ubuntu-based distributions).
 :::
 
 There are many other plugins from the QGIS Community that you can explore to enhance QGIS, but we will stick with this for now.
