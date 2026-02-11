@@ -10,4 +10,4 @@ date: 2026-02-12
 ---
 
 [Download and view the project fullscreen]()
-![](){width=100% style=min-height:75vh;}
+![](){width=100% style=min-height:90vh;}
