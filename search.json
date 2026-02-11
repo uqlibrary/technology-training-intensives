@@ -3208,7 +3208,7 @@
     "href": "qgis/The Project/overview.html#designs",
     "title": "Overview",
     "section": "Designs",
-    "text": "Designs\nWe’ve put together example maps which you’re welcome to look at:\n\nUpload Map to Teams\nWhen you are ready to upload, just put your maps into our Teams folder.",
+    "text": "Designs\nWe’ve put together example maps which you’re welcome to look at:\n\nUpload Map to Teams\nWhen you are ready to upload, just put your maps into our Teams folder. Please upload it with the following format:\ntitle-author.pdf\n\nOnly include one hyphen -.",
     "crumbs": [
       "QGIS",
       "The Project",
