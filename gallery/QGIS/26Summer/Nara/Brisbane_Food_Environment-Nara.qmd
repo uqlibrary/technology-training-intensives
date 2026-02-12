@@ -3,11 +3,11 @@ format:
   html:
     toc: false
     page-layout: full
-title:
-author:
+title: Brisbane Food Environment
+author: Nara
 image: Brisbane_Food_Environment-Nara.png
 date: 2026-02-12
 ---
 
-[Download and view the project fullscreen]()
-![](){width=100% style=min-height:90vh;}
+[Download and view the project fullscreen](Brisbane Food Environment-Nara.pdf)
+![](Brisbane Food Environment-Nara.pdf){width=100% style=min-height:90vh;}
