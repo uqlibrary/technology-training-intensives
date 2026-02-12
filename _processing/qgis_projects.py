@@ -57,7 +57,8 @@ for pdf in qgis_pdfs:
         title = splitext(filename)[0]
         author = None
 
-    title = title.title()
+    if " " in title or title.islower() or title.isupper():
+        title = title.title()
 
     # Inject metadata into YAML header of .qmd
     replacements = {
@@ -67,9 +68,10 @@ for pdf in qgis_pdfs:
         "image:": "" if not img_path else f"image: {basename(img_path)}",
     }
 
+    final_qmd = template
     for key in replacements.keys():
-        template = template.replace(key, replacements[key])
+        final_qmd = final_qmd.replace(key, replacements[key])
 
     # Write .qmd files to disk
     with open(qmd, "w") as f:
-        f.write(template)
+        f.write(final_qmd)

@@ -1,0 +1,13 @@
+---
+format:
+  html:
+    toc: false
+    page-layout: full
+title: Bne Drop Bear Map
+author: Frank
+image: BNE_drop_bear_map-Frank.png
+date: 2026-02-12
+---
+
+[Download and view the project fullscreen](BNE drop bear map-Frank.pdf)
+![](BNE drop bear map-Frank.pdf){width=100% style=min-height:90vh;}
