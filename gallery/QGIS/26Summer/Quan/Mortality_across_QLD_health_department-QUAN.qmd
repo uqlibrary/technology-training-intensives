@@ -7,6 +7,7 @@ title: Mortality Across Qld Health Department
 author: Quan
 image: Mortality_across_QLD_health_department-QUAN.png
 date: 2026-02-12
+categories: [QGIS, Summer26]
 ---
 
 [Download and view the project fullscreen](Mortality across QLD health department-QUAN.pdf)
