@@ -1,0 +1,14 @@
+---
+format:
+  html:
+    toc: false
+    page-layout: full
+title: Ed Visits Among Ms Children
+author: Rh
+image: ED_visits_among_MS_children-RH.png
+date: 2026-02-12
+categories: [QGIS, Summer26]
+---
+
+[Download and view the project fullscreen](ED visits among MS children-RH.pdf)
+![](ED visits among MS children-RH.pdf){width=100% style=min-height:90vh;}
