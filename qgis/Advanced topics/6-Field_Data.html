@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-02-11">
+<meta name="dcterms.date" content="2026-02-12">
 
 <title>Field Data Collection – UQ Library Training Intensives</title>
 <style>
@@ -318,7 +318,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 11, 2026</p>
+      <p class="date">February 12, 2026</p>
     </div>
   </div>
   
@@ -334,14 +334,18 @@ ul.task-list li input[type="checkbox"] {
 <section id="folder-setup" class="level2">
 <h2 class="anchored" data-anchor-id="folder-setup">Folder Setup</h2>
 <p>We need to create two new folders in our <strong>Enoggera_Windfarm_26</strong> folder</p>
-<pre><code>-   "DCIM" - this is for storing images from our phone!
-
--   "EH_Fieldwork" - we need this one to export our project to QField</code></pre>
+<ul>
+<li>“DCIM” - this is for storing images from our phone!</li>
+<li>“EH_Fieldwork” - we need this one to export our project to QField</li>
+</ul>
 </section>
 <section id="install-qfield" class="level2">
 <h2 class="anchored" data-anchor-id="install-qfield">Install QField</h2>
 <p>QField plugs directly in to QGIS, and allows you to link a QGIS project with your mobile phone for data collection.</p>
-<p><a href="https://play.google.com/store/apps/details?id=ch.opengis.qfield">Android Download</a> <a href="https://apps.apple.com/app/qfield-for-qgis/id1531726814">iOS Download</a></p>
+<ul>
+<li><a href="https://play.google.com/store/apps/details?id=ch.opengis.qfield">Android Download</a></li>
+<li><a href="https://apps.apple.com/app/qfield-for-qgis/id1531726814">iOS Download</a></li>
+</ul>
 </section>
 <section id="buffer-data" class="level2">
 <h2 class="anchored" data-anchor-id="buffer-data">Buffer Data</h2>
@@ -377,8 +381,8 @@ ul.task-list li input[type="checkbox"] {
 <section id="style-the-boundary-buffer-polygon" class="level3">
 <h3 class="anchored" data-anchor-id="style-the-boundary-buffer-polygon">Style the Boundary buffer polygon</h3>
 <ul>
-<li>Open the <code>Layer Styling</code> panel by pressing <strong>F7</strong> (or fn+F7)</li>
-<li>Select the <strong>Project_Boundar_Buffer</strong> layer from either the <code>Layer Styling</code> panel, or the <code>Layers</code> panel.</li>
+<li>Open the <code>Layer Styling</code> panel by pressing <kbd>F7</kbd> (or <kbd>fn</kbd> + <kbd>F7</kbd>)</li>
+<li>Select the <strong>EH_Boundary_Buffer</strong> layer from either the <code>Layer Styling</code> panel, or the <code>Layers</code> panel.</li>
 <li>Under <code>Fill</code>, click <code>Simple Fill</code>
 <ul>
 <li>Click the dropdown next to <code>Fill color</code> and select a colour that reminds us not to go there, like <strong>orange</strong>
@@ -522,7 +526,7 @@ ul.task-list li input[type="checkbox"] {
 <p>We should now have a functional form, let’s test it in QGIS before we send it to our phones</p>
 <ul>
 <li>Click the yellow pencil button to <strong>Toggle Editing</strong> on</li>
-<li>Click the green dots (or press Ctrl + .) to <strong>Add Point Feature</strong></li>
+<li>Click the green dots (or press <kbd>Ctrl</kbd> + <kbd>.</kbd>) to <strong>Add Point Feature</strong></li>
 <li>Click on the map to add a point</li>
 <li>The <strong>Name</strong> should be mandatory, the <strong>Description</strong> editable, <strong>Photo</strong> have an add option, <strong>DateTime</strong> should have the current date and time, and <strong>Lat</strong> and <strong>Long</strong> should have numbers like “<strong>-27.494066205142065</strong>” and “<strong>153.0153703956312</strong>”</li>
 <li>Click <code>Cancel</code></li>
@@ -626,8 +630,26 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="opening-the-qfield-project" class="level2">
 <h2 class="anchored" data-anchor-id="opening-the-qfield-project">Opening the QField Project</h2>
-<p><strong>Android</strong> - Open QField - Skip any popups - Tap <code>Open local file</code> - Tap the green plus button in the bottom right - Tap <code>Import project from ZIP</code> - Navigate to your zip file. In my case, I had to go to the top left menu, and tap on <strong>Downloads</strong> - The file should open in QField. You may need to tap on the outer folder, and then the <strong>Project</strong> itself.</p>
-<p><strong>iOS</strong> - Open the zip file and extract it to: <code>On My iPhone/QField/Imported Projects</code> - Open QField - Skip any popups - Tap <code>Open local file</code> - Tap <code>Imported projects</code> - Open the <strong>EH_Fieldwork</strong> folder until you reach the <strong>EH_Fieldwork</strong> Project file. - The project should open in QField.</p>
+<p><strong>Android</strong></p>
+<ul>
+<li>Open QField</li>
+<li>Skip any popups</li>
+<li>Tap <code>Open local file</code></li>
+<li>Tap the green plus button in the bottom right</li>
+<li>Tap <code>Import project from ZIP</code></li>
+<li>Navigate to your zip file. In my case, I had to go to the top left menu, and tap on <strong>Downloads</strong></li>
+<li>The file should open in QField. You may need to tap on the outer folder, and then the <strong>Project</strong> itself.</li>
+</ul>
+<p><strong>iOS</strong></p>
+<ul>
+<li>Open the zip file and extract it to: <code>On My iPhone/QField/Imported Projects</code></li>
+<li>Open QField</li>
+<li>Skip any popups</li>
+<li>Tap <code>Open local file</code></li>
+<li>Tap <code>Imported projects</code></li>
+<li>Open the <strong>EH_Fieldwork</strong> folder until you reach the <strong>EH_Fieldwork</strong> Project file.</li>
+<li>The project should open in QField.</li>
+</ul>
 <p>You can now access your map.</p>
 </section>
 <section id="using-qfield" class="level2">
@@ -726,7 +748,17 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>You can repeat this process with the DEM and Hillshade to export out another kind of map.</p>
 <p>Now you simply need to export the pdf file(s) to your phone. You can email it, send it through the cloud, or transfer it using a cable.</p>
-<p>When you first open Avenza Maps it will ask you to create an account, but you can import up to three maps without doing so, you can avoid creating an account by selecting the ‘x’ in the top right corner. * Allow Avenza Maps to access your device location * Select the orange ‘+’ in the bottom right and select ‘Download or import a map’ * Choose ‘From Storage Locations’ (if requested, give Avenza Maps the permissions to access your files) * Do the same for the other map, if you created one. * Once it has been imported, tap on the map. * You can now move the map around with your finger, and pinching to zoom. * Tapping the placemark icon in the bottom left will add a placemark in the middle of the crosshairs. * Tapping the 3 dots in the bottom right will allow you to add GPS tracking and draw and measure distances.</p>
+<p>When you first open Avenza Maps it will ask you to create an account, but you can import up to three maps without doing so, you can avoid creating an account by selecting the ‘x’ in the top right corner.</p>
+<ul>
+<li>Allow Avenza Maps to access your device location</li>
+<li>Select the orange ‘+’ in the bottom right and select ‘Download or import a map’</li>
+<li>Choose ‘From Storage Locations’ (if requested, give Avenza Maps the permissions to access your files)</li>
+<li>Do the same for the other map, if you created one.</li>
+<li>Once it has been imported, tap on the map.</li>
+<li>You can now move the map around with your finger, and pinching to zoom.</li>
+<li>Tapping the placemark icon in the bottom left will add a placemark in the middle of the crosshairs.</li>
+<li>Tapping the 3 dots in the bottom right will allow you to add GPS tracking and draw and measure distances.</li>
+</ul>
 </div>
 </div>
 </div>

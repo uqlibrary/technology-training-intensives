@@ -1570,242 +1570,53 @@
     "text": "The Dataset\nWe will be using the publicly accessible dataset ‘Good reads books’ . (https://www.kaggle.com/datasets/jealousleopard/goodreadsbooks ).\n\n\nShow code\nlibrary(\"dplyr\")\nlibrary(\"ggplot2\")\nlibrary(\"plotly\")\nlibrary(\"knitr\")\n\n\nA Sneak-peak into the dataset\n\n\nShow code\ngoodreadsdata &lt;- read.csv(\"../../../../data/books.csv\")\n\nkable(head(goodreadsdata))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nX\nbookID\ntitle\nauthors\naverage_rating\nisbn\nisbn13\nlanguage_code\nnum_pages\nratings_count\ntext_reviews_count\npublication_date\npublisher\n\n\n\n\n1\n1\nHarry Potter and the Half-Blood Prince (Harry Potter #6)\nJ.K. Rowling/Mary GrandPré\n4.57\n0439785960\n9.780440e+12\neng\n652\n2095690\n27591\n2006-09-16\nScholastic Inc.\n\n\n2\n2\nHarry Potter and the Order of the Phoenix (Harry Potter #5)\nJ.K. Rowling/Mary GrandPré\n4.49\n0439358078\n9.780439e+12\neng\n870\n2153167\n29221\n2004-09-01\nScholastic Inc.\n\n\n3\n4\nHarry Potter and the Chamber of Secrets (Harry Potter #2)\nJ.K. Rowling\n4.42\n0439554896\n9.780440e+12\neng\n352\n6333\n244\n2003-11-01\nScholastic\n\n\n4\n5\nHarry Potter and the Prisoner of Azkaban (Harry Potter #3)\nJ.K. Rowling/Mary GrandPré\n4.56\n043965548X\n9.780440e+12\neng\n435\n2339585\n36325\n2004-05-01\nScholastic Inc.\n\n\n5\n8\nHarry Potter Boxed Set Books 1-5 (Harry Potter #1-5)\nJ.K. Rowling/Mary GrandPré\n4.78\n0439682584\n9.780440e+12\neng\n2690\n41428\n164\n2004-09-13\nScholastic\n\n\n6\n9\nUnauthorized Harry Potter Book Seven News: Half-Blood Prince Analysis and Speculation\nW. Frederick Zimmerman\n3.74\n0976540606\n9.780977e+12\nen-US\n152\n19\n1\n2005-04-26\nNimble Books\n\n\n\n\n\nLet’s visualize the book reviews and book ratings\n\n\nShow code\n#View(goodreadsdata)\n\nggplot(goodreadsdata, aes(x = average_rating, y = text_reviews_count)) +\n  geom_point( colour = \"blue\") \n\n\n\n\n\n\n\n\n\nMore ratings = more reviews :)"
   },
   {
-    "objectID": "gallery/Python/25Winter/example_project/example_project.html",
-    "href": "gallery/Python/25Winter/example_project/example_project.html",
-    "title": "Goalkeepers and their heights",
+    "objectID": "gallery/QGIS/26Summer/Stephane/books_-_Stéphane.html",
+    "href": "gallery/QGIS/26Summer/Stephane/books_-_Stéphane.html",
+    "title": "Books",
     "section": "",
-    "text": "Set up code\nimport matplotlib.pyplot as plt\nimport pandas as pd\nimport plotly.express as px\nimport seaborn as sns\n\ndf_raw = pd.read_csv(\"../../../../data/Players2024.csv\")"
+    "text": "Download and view the project fullscreen"
   },
   {
-    "objectID": "gallery/Python/25Winter/example_project/example_project.html#a-glimpse-at-the-dataset",
-    "href": "gallery/Python/25Winter/example_project/example_project.html#a-glimpse-at-the-dataset",
-    "title": "Goalkeepers and their heights",
-    "section": "A glimpse at the dataset",
-    "text": "A glimpse at the dataset\nWe’ll begin just by taking a glimpse at the dataset:\n\n\nShow code\ndf_raw.head(10)\n\n\n\n\n\n\n\n\n\nname\nbirth_date\nheight_cm\npositions\nnationality\nage\nclub\n\n\n\n\n0\nJames Milner\n1986-01-04\n175.0\nMidfield\nEngland\n38\nBrighton and Hove Albion Football Club\n\n\n1\nAnastasios Tsokanis\n1991-05-02\n176.0\nMidfield\nGreece\n33\nVolou Neos Podosferikos Syllogos\n\n\n2\nJonas Hofmann\n1992-07-14\n176.0\nMidfield\nGermany\n32\nBayer 04 Leverkusen Fußball\n\n\n3\nPepe Reina\n1982-08-31\n188.0\nGoalkeeper\nSpain\n42\nCalcio Como\n\n\n4\nLionel Carole\n1991-04-12\n180.0\nDefender\nFrance\n33\nKayserispor Kulübü\n\n\n5\nLudovic Butelle\n1983-04-03\n188.0\nGoalkeeper\nFrance\n41\nStade de Reims\n\n\n6\nDaley Blind\n1990-03-09\n180.0\nDefender\nNetherlands\n34\nGirona Fútbol Club S. A. D.\n\n\n7\nCraig Gordon\n1982-12-31\n193.0\nGoalkeeper\nScotland\n41\nHeart of Midlothian Football Club\n\n\n8\nDimitrios Sotiriou\n1987-09-13\n185.0\nGoalkeeper\nGreece\n37\nOmilos Filathlon Irakliou FC\n\n\n9\nAlessio Cragno\n1994-06-28\n184.0\nGoalkeeper\nItaly\n30\nAssociazione Calcio Monza"
-  },
-  {
-    "objectID": "gallery/Python/25Winter/example_project/example_project.html#cleaning-the-data",
-    "href": "gallery/Python/25Winter/example_project/example_project.html#cleaning-the-data",
-    "title": "Goalkeepers and their heights",
-    "section": "Cleaning the data",
-    "text": "Cleaning the data\nThe data had a few issues, as the following plot shows:\n\n\nShow code\nsns.catplot(df_raw, x = \"positions\", y = \"height_cm\")\n\n\n\n\n\n\n\n\n\nIt looks like some of the players’ positions and heights were recorded incorrectly. To clean, let’s remove the “Missing” positions and ensure that heights are reasonable:\n\n\nShow code\ndf = df_raw.copy()\n\n# Remove missing position\ndf = df[df[\"positions\"] != \"Missing\"]\n\n# Ensure reasonable heights\ndf = df[df[\"height_cm\"] &gt; 100]\n\n\nTo confirm, let’s plot the outliers in a different colour\n\n\nShow code\n# Identify outliers\noutliers = pd.concat([df_raw,df]).drop_duplicates(keep = False)\n\nsns.catplot(df, x = \"positions\", y = \"height_cm\")\nsns.stripplot(outliers, x = \"positions\", y = \"height_cm\", color = \"r\")"
-  },
-  {
-    "objectID": "gallery/Python/25Winter/example_project/example_project.html#visualising-the-players-heights",
-    "href": "gallery/Python/25Winter/example_project/example_project.html#visualising-the-players-heights",
-    "title": "Goalkeepers and their heights",
-    "section": "Visualising the players’ heights",
-    "text": "Visualising the players’ heights\nAfter cleaning the data we can now analyse the players’ heights to see if there’s differences between positions. A box plot can show the distribution of heights:\n\n\nShow code\nsns.catplot(data = df, x = \"positions\", y = \"height_cm\", kind = \"box\", order = [\"Goalkeeper\", \"Defender\", \"Midfield\", \"Attack\"])\nplt.xlabel(\"Position\")\nplt.ylabel(\"Height (cm)\")\nplt.savefig(\"tb.png\")\nplt.show()\n\n\n\n\n\n\n\n\n\nIt looks like goalkeepers are taller than the rest!\nLet’s through the age variable into the mix, to see if players’ heights allow them to compete longer.\n\n\nShow code\npx.scatter(data_frame = df, x = \"age\", y = \"height_cm\", color = \"positions\",\n           facet_col = \"positions\", facet_col_wrap = 2, hover_name = \"name\",\n           hover_data = \"nationality\", labels = {\"height_cm\": \"Height (cm)\",\n                                                 \"positions\": \"Position\"})\n\n\n                            \n                                            \n\n\nIt doesn’t look like there’s a relationship between heights and ages, but clearly it affects their position!"
-  },
-  {
-    "objectID": "gallery/Python/25Winter/example_project/example_project.html#global-spread",
-    "href": "gallery/Python/25Winter/example_project/example_project.html#global-spread",
-    "title": "Goalkeepers and their heights",
-    "section": "Global spread",
-    "text": "Global spread\nWe haven’t looked at the nationality column yet. Let’s draw up a map using plotly to see where the players come from.\n\n\nShow code\n# Change country names to match plotly reference\ndf[\"nationality\"] = df[\"nationality\"].replace([\"England\", \"Türkiye\", \"Cote d'Ivoire\", \n                                               \"Northern Ireland\", \"Wales\"], \n                                               [\"United Kingdom\", \"Turkey\", \"Ivory Coast\",\n                                                \"United Kingdom\", \"United Kingdom\"])\n\n# Make the count\ncountries = df.value_counts(\"nationality\")\n\n# Make the plot\npx.choropleth(locations = countries.index, locationmode = \"country names\", color = countries,\n              labels = {\"locations\": \"Country\", \"color\": \"# of players\"})\n\n\n                            \n                                            \n\n\nLooks like most players are from Europe. Pan and zoom to see the finer details."
-  },
-  {
-    "objectID": "gallery/Python/25Winter/Prince/gapminder2025.html",
-    "href": "gallery/Python/25Winter/Prince/gapminder2025.html",
-    "title": "GDP per Cap in different continents",
+    "objectID": "gallery/QGIS/26Summer/Quan/Mortality_across_QLD_health_department-QUAN.html",
+    "href": "gallery/QGIS/26Summer/Quan/Mortality_across_QLD_health_department-QUAN.html",
+    "title": "Mortality Across Qld Health Department",
     "section": "",
-    "text": "We will first load the essential packages and dataset\n\n\nSet up code\n#Import data\nimport pandas as pd \n\ndf = pd.read_csv(\"../../../../data/gapminder.csv\")"
+    "text": "Download and view the project fullscreen"
   },
   {
-    "objectID": "gallery/Python/25Winter/Prince/gapminder2025.html#loading-the-datasets-and-packages",
-    "href": "gallery/Python/25Winter/Prince/gapminder2025.html#loading-the-datasets-and-packages",
-    "title": "GDP per Cap in different continents",
+    "objectID": "gallery/QGIS/26Summer/Kent/map_kgari-kent.html",
+    "href": "gallery/QGIS/26Summer/Kent/map_kgari-kent.html",
+    "title": "Map Kgari",
     "section": "",
-    "text": "We will first load the essential packages and dataset\n\n\nSet up code\n#Import data\nimport pandas as pd \n\ndf = pd.read_csv(\"../../../../data/gapminder.csv\")"
+    "text": "Download and view the project fullscreen"
   },
   {
-    "objectID": "gallery/Python/25Winter/Prince/gapminder2025.html#inspect-data",
-    "href": "gallery/Python/25Winter/Prince/gapminder2025.html#inspect-data",
-    "title": "GDP per Cap in different continents",
-    "section": "Inspect data",
-    "text": "Inspect data\n\n\nShow code\ndf.columns\ndf.info()\ndf.describe() \ndf.dtypes\ndf[\"lifeExp\"] \ndf[\"lifeExp\"].unique()\ndf[\"lifeExp\"].describe()\ndf[\"continent\"].describe()\ndf[\"continent\"]\n\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 1704 entries, 0 to 1703\nData columns (total 6 columns):\n #   Column     Non-Null Count  Dtype  \n---  ------     --------------  -----  \n 0   country    1704 non-null   object \n 1   year       1704 non-null   int64  \n 2   pop        1704 non-null   float64\n 3   continent  1704 non-null   object \n 4   lifeExp    1704 non-null   float64\n 5   gdpPercap  1704 non-null   float64\ndtypes: float64(3), int64(1), object(2)\nmemory usage: 80.0+ KB\n\n\n0         Asia\n1         Asia\n2         Asia\n3         Asia\n4         Asia\n         ...  \n1699    Africa\n1700    Africa\n1701    Africa\n1702    Africa\n1703    Africa\nName: continent, Length: 1704, dtype: object"
-  },
-  {
-    "objectID": "gallery/Python/25Winter/Prince/gapminder2025.html#filter-and-subset-the-data-and-grouping",
-    "href": "gallery/Python/25Winter/Prince/gapminder2025.html#filter-and-subset-the-data-and-grouping",
-    "title": "GDP per Cap in different continents",
-    "section": "Filter and subset the data and grouping",
-    "text": "Filter and subset the data and grouping\n\n\nShow code\nsubset_con=df[[\"continent\", \"gdpPercap\", \"year\"]]\nsummary_con= subset_con.groupby(\"continent\")[\"gdpPercap\"].mean()\nsummary_con= summary_con.reset_index()"
-  },
-  {
-    "objectID": "gallery/Python/25Winter/Prince/gapminder2025.html#visualize-the-data",
-    "href": "gallery/Python/25Winter/Prince/gapminder2025.html#visualize-the-data",
-    "title": "GDP per Cap in different continents",
-    "section": "Visualize the data",
-    "text": "Visualize the data\nSummary of mean GDP per Cap in different continents\n\n\nShow code\nimport seaborn as sns\nsns.catplot(data=df,\n            x=\"continent\",\n            y=\"gdpPercap\",\n            kind=\"box\",\n            estimator=\"std\",\n            hue=\"continent\"\n            ) \n\n\n\n\n\nGPD per Capital in different continents"
-  },
-  {
-    "objectID": "gallery/Python/25Winter/Prince/gapminder2025.html#visualize-the-data-1",
-    "href": "gallery/Python/25Winter/Prince/gapminder2025.html#visualize-the-data-1",
-    "title": "GDP per Cap in different continents",
-    "section": "Visualize the data",
-    "text": "Visualize the data\nSummary of GDP per Cap in different continents\n\n\nShow code\nsns.catplot(data=summary_con,\n            x=\"continent\",\n            y=\"gdpPercap\",\n            kind=\"box\",\n            estimator=\"std\",\n            hue=\"continent\"\n            )"
-  },
-  {
-    "objectID": "gallery/Python/25Winter/Prince/gapminder2025.html#interactive-plot",
-    "href": "gallery/Python/25Winter/Prince/gapminder2025.html#interactive-plot",
-    "title": "GDP per Cap in different continents",
-    "section": "Interactive plot",
-    "text": "Interactive plot\n\n\nShow code\nimport plotly.express as px\nimport matplotlib.pyplot as plt\npx.scatter(data_frame = df, x = \"continent\", y = \"gdpPercap\", color = \"continent\")"
-  },
-  {
-    "objectID": "gallery/Python/25Winter/Prince/gapminder2025.html#make-a-global-chloropeth",
-    "href": "gallery/Python/25Winter/Prince/gapminder2025.html#make-a-global-chloropeth",
-    "title": "GDP per Cap in different continents",
-    "section": "Make a global chloropeth",
-    "text": "Make a global chloropeth\nWe will now visualize it on a world map\n\n\nShow code\n# Compute mean GDP per capita per continent\ncontinent_gdp = df.groupby(\"continent\")[\"gdpPercap\"].mean()\n\n# Map each country's continent GDP\ndf[\"continent_gdp\"] = df[\"continent\"].map(continent_gdp)\n\n# Drop duplicates to keep only one row per country\ncountry_continent_gdp = df.drop_duplicates(\"country\")[[\"country\", \"continent_gdp\"]]\n\n#plot\npx.choropleth(country_continent_gdp,\n                    locations=\"country\",\n                    locationmode=\"country names\",\n                    color=\"continent_gdp\",\n                    color_continuous_scale=\"Plasma\",\n                    title=\"Continent-Level Avg GDP per Capita (Mapped by Country)\",\n                    labels={\"continent_gdp\": \"Continent Avg GDP\"})\n\n\n                            \n                                            \nGPD per Capital in different continents"
-  },
-  {
-    "objectID": "gallery/Python/25Winter/Group2/group_project.html",
-    "href": "gallery/Python/25Winter/Group2/group_project.html",
-    "title": "Queensland Fuel Price",
+    "objectID": "gallery/QGIS/26Summer/Bardia_Danaei/Public_toilets_coverage_in_Brisbane-Bardia_Danaei.html",
+    "href": "gallery/QGIS/26Summer/Bardia_Danaei/Public_toilets_coverage_in_Brisbane-Bardia_Danaei.html",
+    "title": "Public Toilets Coverage In Brisbane",
     "section": "",
-    "text": "This Report will focus on Fuel price by Fuel types, Suburbs and change by months\n\nModules that used: pandas, seaborn\nDataset of Queensland Fuel Price (Fuel prices by the pump in Queensland)\nData from Data from the Queensland Government’s Open Data Portal\nInvestigation includes Fuel price corolation by types, date and suburbs"
+    "text": "Download and view the project fullscreen"
   },
   {
-    "objectID": "gallery/Python/25Winter/Group2/group_project.html#introduction",
-    "href": "gallery/Python/25Winter/Group2/group_project.html#introduction",
-    "title": "Queensland Fuel Price",
+    "objectID": "gallery/Python/25Winter/Sisay/report.html",
+    "href": "gallery/Python/25Winter/Sisay/report.html",
+    "title": "my python report",
     "section": "",
-    "text": "This Report will focus on Fuel price by Fuel types, Suburbs and change by months\n\nModules that used: pandas, seaborn\nDataset of Queensland Fuel Price (Fuel prices by the pump in Queensland)\nData from Data from the Queensland Government’s Open Data Portal\nInvestigation includes Fuel price corolation by types, date and suburbs"
+    "text": "Markdown is a markup language * we can create test, heading, and graphs for relationship between variables"
   },
   {
-    "objectID": "gallery/Python/25Winter/Group2/group_project.html#average-fuel-prices-by-fuel-types",
-    "href": "gallery/Python/25Winter/Group2/group_project.html#average-fuel-prices-by-fuel-types",
-    "title": "Queensland Fuel Price",
-    "section": "Average Fuel Prices by Fuel Types",
-    "text": "Average Fuel Prices by Fuel Types\n\n\nShow code\n# Set up code\nimport pandas as pd\ndf=pd.read_csv(\"../../../../data/qld_fuel.csv\")\nimport seaborn as sns\nfp=df[\"Price\"]\nft=df[\"Fuel_Type\"]\nimport matplotlib.pyplot as plt\nsns.barplot(data=df, x=ft, y=fp, errorbar=None, width=0.6, palette=\"muted\")\n\nplt.xticks(rotation=45, ha='right')\n\nplt.title(\"Average Fuel Prices by Type in QLD\")\nplt.xlabel(\"Fuel Type\")\nplt.ylabel(\"Price ($/L)\")\n\nplt.tight_layout()\nplt.show()"
-  },
-  {
-    "objectID": "gallery/Python/25Winter/Group2/group_project.html#fuel-price-by-suburbs",
-    "href": "gallery/Python/25Winter/Group2/group_project.html#fuel-price-by-suburbs",
-    "title": "Queensland Fuel Price",
-    "section": "Fuel Price by Suburbs",
-    "text": "Fuel Price by Suburbs\n\n\nShow code\ndf[\"TransactionDateutc\"] = pd.to_datetime(df[\"TransactionDateutc\"])\ndf[\"Price\"] = df[\"Price\"] / 100 \n\n# removing outliers \ndf = df[df[\"Price\"] &lt; 50] \ndf = df[df[\"Price\"] &gt; 10] \n\n# summary stats \nsummary_stats = df.groupby(\"Site_Suburb\")[\"Price\"].agg(min_price = \"min\", max_price = \"max\")\n\nsummary_stats[\"price_range\"] = summary_stats[\"max_price\"] - summary_stats[\"min_price\"]\n\n# Top 3 and bottom 3 suburbs \n\ntop3_change = summary_stats.sort_values(by=\"price_range\", ascending= False). head(3)\nbottom3_change = summary_stats.sort_values(by=\"price_range\", ascending= True). head(3)\n\nselected_suburbs = top3_change.index.tolist() + bottom3_change.index.tolist()\ndf_selected = df[df[\"Site_Suburb\"].isin(selected_suburbs)]\n\ndf_selected[\"Site_Suburb\"] = df_selected[\"Site_Suburb\"].str.strip().str.title()\n\n# Plot\nsns.catplot(data = df_selected, x = \"Site_Suburb\", y = \"Price\", kind = \"box\")\nplt.xlabel (\"Site_Suburb\")\nplt.ylabel (\"Price\")\nplt.savefig (\"tb.png\")\nplt.show()"
-  },
-  {
-    "objectID": "gallery/Python/25Winter/Group2/group_project.html#price-by-time",
-    "href": "gallery/Python/25Winter/Group2/group_project.html#price-by-time",
-    "title": "Queensland Fuel Price",
-    "section": "Price by Time",
-    "text": "Price by Time\n\n\nShow code\ndf.describe()\n\n# remove nulls\ndf[df[\"X_id\"].notna()]\ndf_full_X_id = df[df[\"X_id\"].notna()]\ndf_full_X_id.shape\n\n\ndf[\"Site_Suburb\"].count()\ndf[\"Site_Suburb\"].unique()\ndf[\"Site_Suburb\"].value_counts()\n\ndf[\"Fuel_Type\"].count()\ndf[\"Fuel_Type\"].unique()\ndf[\"Fuel_Type\"].value_counts()\n\n\ndf[\"TransactionDateutc\"] = pd.to_datetime(df[\"TransactionDateutc\"])\ndf[\"date_only\"] = df[\"TransactionDateutc\"].dt.date\n\n\n\n\ngb = df.groupby(\"date_only\")\navg_price_by_date = gb[\"Price\"].agg(\"mean\").reset_index()\navg_price_by_date.to_csv(\"./data/avg_price_by_date.csv\")  # export subset\n\ndf[\"TransactionDateutc\"].dtypes\n\ndf[\"year_month\"] = df[\"TransactionDateutc\"].dt.to_period(\"M\")\ngb_year_month = df.groupby(\"year_month\")\navg_price_by_year_month = gb_year_month[\"Price\"].agg(\"mean\").reset_index()\navg_price_by_year_month.to_csv(\"./data/avg_price_by_year_month.csv\")\nimport seaborn as sns\nimport scipy.stats as stats\nimport matplotlib.pyplot as plt\n\n\n\ntype(\"year_month\")\ntype(\"date_only\")\n\navg_price_by_year_month[\"year_month\"] = avg_price_by_year_month[\"year_month\"].dt.to_timestamp()\nsns.relplot(data = avg_price_by_date, x = \"date_only\", y = \"Price\", hue = \"Price\")\nsns.lineplot(data =avg_price_by_year_month, x = \"year_month\", y = \"Price\", color = \"red\")"
-  },
-  {
-    "objectID": "gallery/Python/25Winter/Coffee Preferences/ProjectCoffee.html",
-    "href": "gallery/Python/25Winter/Coffee Preferences/ProjectCoffee.html",
-    "title": "Coffee preferences",
+    "objectID": "gallery/Python/25Winter/Sisay/report.html#introducing-markdown",
+    "href": "gallery/Python/25Winter/Sisay/report.html#introducing-markdown",
+    "title": "my python report",
     "section": "",
-    "text": "We are investigating the relationship between coffee preferences and age, specifically preferred coffee style, amount consumed, coffee expertise and overall favourite coffee type from the tasing. The dataset we are using comes from a Great American Coffee Taste Test, during which thousands of people simultaneously blind-tasted the same four coffees.\n\n\nShow code\nimport seaborn as sns\nimport matplotlib.pyplot as plt\nimport numpy as np\nimport pandas as pd"
+    "text": "Markdown is a markup language * we can create test, heading, and graphs for relationship between variables"
   },
   {
-    "objectID": "gallery/Python/25Winter/Coffee Preferences/ProjectCoffee.html#introduction",
-    "href": "gallery/Python/25Winter/Coffee Preferences/ProjectCoffee.html#introduction",
-    "title": "Coffee preferences",
-    "section": "",
-    "text": "We are investigating the relationship between coffee preferences and age, specifically preferred coffee style, amount consumed, coffee expertise and overall favourite coffee type from the tasing. The dataset we are using comes from a Great American Coffee Taste Test, during which thousands of people simultaneously blind-tasted the same four coffees.\n\n\nShow code\nimport seaborn as sns\nimport matplotlib.pyplot as plt\nimport numpy as np\nimport pandas as pd"
-  },
-  {
-    "objectID": "gallery/Python/25Winter/Australia and Cambodia Populations/project_report.html",
-    "href": "gallery/Python/25Winter/Australia and Cambodia Populations/project_report.html",
-    "title": "Life expectancy comparison between Australian and Cambodian populations between 1950 and 2023",
-    "section": "",
-    "text": "We wanted to look at life expectancy and population over tie between Australia and Cambodia to compare differences bettwen diferent regions We used the popultion csvand extracted data from Janyary population column and also identified australia and Cambodia We generated graphs using seaborn and can see the effect of the war in Cambodiaduring the late 70s\n\n\nShow code\n# Set up code\nimport pandas as pd\n\n\nimport pandas as pd\n\nimport matplotlib.pyplot as plt\n\nimport seaborn as sns\n\n\n\ndf_raw = pd.read_csv(\"../../../../data/population.csv\")\n\ndf = df_raw.copy()\n\nplt.show()\n\ndf_raw.shape\n\ndf_raw.columns\n\nWorld=df.loc[df[\"Region\"]==\"World\"]\n\nsns.lineplot(data=World, x=\"Year\", y=\"Jan.Population\")\n\n\n \n\ndf_raw = pd.read_csv(\"../../../../data/population.csv\")\n\nplt.show()\n\ndf_raw.shape\n\ndf_raw.columns\n\n \n\ndf[\"Jan.Population\"]\n\nAustralia=df.loc[df[\"Region\"]==\"Australia\"]\n\nsns.lineplot(data=Australia, x=\"Year\", y=\"Life.Expectancy.at.Birth..both.sexes..years.\")\n\nCambodia=df.loc[df[\"Region\"]==\"Cambodia\"]\n\nsns.lineplot(data=Cambodia, x=\"Year\", y=\"Life.Expectancy.at.Birth..both.sexes..years.\")\n\n\n\nsns.lineplot(data=Cambodia, x=\"Year\", y=\"Jan.Population\")\n\n            \n\ncountries = [\"Australia\", \"Cambodia\",]\n\ndf_countries = df[df[\"Region\"].isin(countries)].copy()\n\n \n\nplt.figure(figsize=(10, 6))\n\nfor country in countries:\n\n    subset = df_countries[df_countries[\"Region\"] == country]\n\n    plt.plot(subset[\"Year\"], subset[\"Jan.Population\"], label=country)\n\nplt.xlabel(\"Year\")\n\nplt.ylabel(\"Population\")\n\nplt.title(\"Population Over Time\")\n\nplt.legend()\n\nplt.grid(True)\n\nplt.show()\n\n \n\nplt.figure(figsize=(10, 6))\n\nfor country in countries:\n\n    subset = df_countries[df_countries[\"Region\"] == country]\n\n    plt.plot(subset[\"Year\"], subset[\"Life.Expectancy.at.Birth..both.sexes..years.\"], label=country)\n\nplt.xlabel(\"Year\")\n\nplt.ylabel(\"Life Expectancy at Birth\")\n\nplt.title(\"Life Expectancy Over Time\")\n\nplt.legend()\n\nplt.grid(True)\n\nplt.show()"
-  },
-  {
-    "objectID": "gallery/Python/25Winter/Australia and Cambodia Populations/project_report.html#introduction",
-    "href": "gallery/Python/25Winter/Australia and Cambodia Populations/project_report.html#introduction",
-    "title": "Life expectancy comparison between Australian and Cambodian populations between 1950 and 2023",
-    "section": "",
-    "text": "We wanted to look at life expectancy and population over tie between Australia and Cambodia to compare differences bettwen diferent regions We used the popultion csvand extracted data from Janyary population column and also identified australia and Cambodia We generated graphs using seaborn and can see the effect of the war in Cambodiaduring the late 70s\n\n\nShow code\n# Set up code\nimport pandas as pd\n\n\nimport pandas as pd\n\nimport matplotlib.pyplot as plt\n\nimport seaborn as sns\n\n\n\ndf_raw = pd.read_csv(\"../../../../data/population.csv\")\n\ndf = df_raw.copy()\n\nplt.show()\n\ndf_raw.shape\n\ndf_raw.columns\n\nWorld=df.loc[df[\"Region\"]==\"World\"]\n\nsns.lineplot(data=World, x=\"Year\", y=\"Jan.Population\")\n\n\n \n\ndf_raw = pd.read_csv(\"../../../../data/population.csv\")\n\nplt.show()\n\ndf_raw.shape\n\ndf_raw.columns\n\n \n\ndf[\"Jan.Population\"]\n\nAustralia=df.loc[df[\"Region\"]==\"Australia\"]\n\nsns.lineplot(data=Australia, x=\"Year\", y=\"Life.Expectancy.at.Birth..both.sexes..years.\")\n\nCambodia=df.loc[df[\"Region\"]==\"Cambodia\"]\n\nsns.lineplot(data=Cambodia, x=\"Year\", y=\"Life.Expectancy.at.Birth..both.sexes..years.\")\n\n\n\nsns.lineplot(data=Cambodia, x=\"Year\", y=\"Jan.Population\")\n\n            \n\ncountries = [\"Australia\", \"Cambodia\",]\n\ndf_countries = df[df[\"Region\"].isin(countries)].copy()\n\n \n\nplt.figure(figsize=(10, 6))\n\nfor country in countries:\n\n    subset = df_countries[df_countries[\"Region\"] == country]\n\n    plt.plot(subset[\"Year\"], subset[\"Jan.Population\"], label=country)\n\nplt.xlabel(\"Year\")\n\nplt.ylabel(\"Population\")\n\nplt.title(\"Population Over Time\")\n\nplt.legend()\n\nplt.grid(True)\n\nplt.show()\n\n \n\nplt.figure(figsize=(10, 6))\n\nfor country in countries:\n\n    subset = df_countries[df_countries[\"Region\"] == country]\n\n    plt.plot(subset[\"Year\"], subset[\"Life.Expectancy.at.Birth..both.sexes..years.\"], label=country)\n\nplt.xlabel(\"Year\")\n\nplt.ylabel(\"Life Expectancy at Birth\")\n\nplt.title(\"Life Expectancy Over Time\")\n\nplt.legend()\n\nplt.grid(True)\n\nplt.show()"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "UQ Library Training Intensives",
-    "section": "",
-    "text": "UQ Library Training Intensives\nWelcome to our training intensives!\nHere you can find all the material for our three-day intensives, which run twice a year.\nThe next batch will be in late Jan / early Feb 2026.\nR with RStudio\nTraining Intensive\n\n27th to 29th Jan 2026 Python for Data Analysis\nTraining Intensive\n\n3rd to 5th Feb 2026 QGIS\nTraining Intensive\n\n10th to 12th Feb 2026"
-  },
-  {
-    "objectID": "gallery/project_gallery.html",
-    "href": "gallery/project_gallery.html",
-    "title": "Project gallery",
-    "section": "",
-    "text": "R Intensive Project\n\n\n\nHehe\n\n\nApr 1, 2028\n\n\n\n\n\n\n\n\n\n\n\nCafe\n\n\n\nAmber Sewell-Green\n\n\nJan 28, 2026\n\n\n\n\n\n\n\n\n\n\n\nGood reads\n\n\n\nChuanqing Li\n\n\nJan 28, 2026\n\n\n\n\n\n\n\n\n\n\n\nCoffee Flavour Preferences\n\n\n\nTom\n\n\nJan 1, 2026\n\n\n\n\n\n\n\n\n\n\n\nGoalkeepers and their heights\n\n\n\nCameron West and Stéphane Guillou\n\n\nJan 1, 2026\n\n\n\n\n\n\n\n\n\n\n\nWhat Determines a Goodreads Rating?\n\n\n\nEugene, Kira, Chen and Jaz\n\n\nJan 1, 2026\n\n\n\n\n\n\n\n\n\n\n\nPredicting Book Ratings from Text Reviews Count\n\n\n\nEugene, Kira, Chen, and Jaz\n\n\nJan 1, 2026\n\n\n\n\n\n\n\n\n\n\n\nWildlife\n\n\n\nNayomi and Julian\n\n\nJan 1, 2026\n\n\n\n\n\n\n\n\n\n\n\nTaste testing coffee results\n\n\n\nzoë\n\n\nJan 1, 2026\n\n\n\n\n\n\n\n\n\n\n\nMel Property\n\n\n\nSandya & Buddhika\n\n\nJul 17, 2025\n\n\n\n\n\n\n\n\n\n\n\nQueensland hospitals data analysis\n\n\n\nSwagata & Sandhya\n\n\nJul 17, 2025\n\n\n\n\n\n\n\n\n\n\n\nPopulation: Presentation for R training\n\n\n\n\n\n\nJul 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nLife expectancy comparison between Australian and Cambodian populations between 1950 and 2023\n\n\n\nRob Cincotta and Diana Sanabria\n\n\nJul 10, 2025\n\n\n\n\n\n\n\n\n\n\n\nMy Python project\n\n\n\nNahar\n\n\nJul 10, 2025\n\n\n\n\n\n\n\n\n\n\n\nCoffee Survey\n\n\n\nPawatsada Sanlom\n\n\nJul 9, 2025\n\n\n\n\n\n\n\n\n\n\n\nAnalysis of Coffee Preference\n\n\n\nKim, Janine, Sera & Akansha\n\n\nJul 9, 2025\n\n\n\n\n\n\n\n\n\n\n\nCoffee preferences\n\n\n\nHannah, Orlando and Grace\n\n\nJul 9, 2025\n\n\n\n\n\n\n\n\n\n\n\nMy Python Report\n\n\n\nYuli Astriani & Elisabeth Natalia Palan Bolen\n\n\nJul 9, 2025\n\n\n\n\n\n\n\n\n\n\n\nQueensland Fuel Price\n\n\n\nNana, Jia Vei Yar, Yawen\n\n\nJul 9, 2025\n\n\n\n\n\n\n\n\n\n\n\nGDP per Cap in different continents\n\n\n\nPrince\n\n\nJul 9, 2025\n\n\n\n\n\n\n\n\n\n\n\nmy python report\n\n\n\nSisay\n\n\nJul 9, 2025\n\n\n\n\n\n\n\n\n\n\n\nFC Barcelona Team Analysis\n\n\n\nAdriel Wijaya\n\n\nJul 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nGood Reads\n\n\n\nAisha Aslam\n\n\nJul 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nWorkshop Project Report\n\n\n\nAndrew\n\n\nJul 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nReport_ben\n\n\n\n\n\n\nJul 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nProject Hospital Report\n\n\n\nCasey Atkins & Jess\n\n\nJul 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nQLD fuel\n\n\n\n\n\n\nJul 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nQLD Fuel\n\n\n\n\n\n\nJul 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nBook Report\n\n\n\nLiz\n\n\nJul 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nNora project\n\n\n\nNora\n\n\nJul 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nMy Report\n\n\n\nCathy\n\n\nJul 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nGoalkeepers and their heights\n\n\n\nCameron West and Stéphane Guillou\n\n\nJun 23, 2025\n\n\n\n\n\n\n\n\n\n\n\nGoalkeepers and their heights\n\n\n\nCameron West and Stéphane Guillou\n\n\nJun 23, 2025\n\n\n\n\n\n\n\n\n\n\n\nQueensland Fuel Price in 2023\n\n\n\nAdelia & Lauren\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nGoodreads\n\n\n\nCaira\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nFuel Consumption\n\n\n\nEdison Vargas\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nFuel Consumption\n\n\n\nEdison Vargas\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nGoodreads document\n\n\n\nEmma\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nBird Strikes and Aeroplane Damages in the U.S. (1990-1999)\n\n\n\nLiz & Koyo\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nThe popular author\n\n\n\nGoodread\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nProject-Python\n\n\n\n\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nAeroplane Bird Strike Incidents\n\n\n\nKoyo Yanagisawa\n\n\nJan 15, 2025\n\n\n\n\n\n\n\n\n\n\n\nAnalyzing the Relationship between Ratings and Reviews for Books\n\n\n\nNurul Najihah\n\n\nJan 15, 2025\n\n\n\n\n\n\n\n\n\n\n\nGoalkeepers and their heights\n\n\n\nCameron West and Stéphane Guillou\n\n\nJan 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nCOFFEE\n\n\n\nAdelia\n\n\nJan 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nGoodreads books published in 2006\n\n\n\nBrittnee, Cleo, & David\n\n\nJan 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nBirdStrikes\n\n\n\n\n\n\nJan 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nCoffee\n\n\n\nCaira Loo\n\n\nJan 1, 2025\n\n\n\n\n\n\n\n\n\n\n\n📝 Coffee vs Employment status\n\n\n\nDawn\n\n\nJan 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nMelbourne Housing\n\n\n\n\n\n\nJan 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nHospital Data\n\n\n\n\n\n\nJan 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nImpact of Birth Month on Football careers\n\n\n\nMehershad Wadia\n\n\nJan 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nBird Strike Dashboard\n\n\n\nEdiana\n\n\nJan 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nCoffee\n\n\n\nWarren\n\n\nJan 1, 2025\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "gallery/Python/25Summer/Edison/fuel_project.html",
-    "href": "gallery/Python/25Summer/Edison/fuel_project.html",
-    "title": "Fuel Consumption",
-    "section": "",
-    "text": "import pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\ndf = pd.read_csv(\"./data/data/qld_fuel.csv\")\nprint(df)\n\n        Unnamed: 0    SiteId                   Site_Name   Site_Brand  \\\n0                1  61290151               Liberty Surat      Liberty   \n1                2  61290151               Liberty Surat      Liberty   \n2                3  61290151               Liberty Surat      Liberty   \n3                4  61291313          Lowes Mungindi Opt           BP   \n4                5  61291313          Lowes Mungindi Opt           BP   \n...            ...       ...                         ...          ...   \n615972      615973  61478211  Metro Petroleum Walkerston   Metro Fuel   \n615973      615974  61478211  Metro Petroleum Walkerston   Metro Fuel   \n615974      615975  61478212      Pitt Stop Classic Café  Independent   \n615975      615976  61478212      Pitt Stop Classic Café  Independent   \n615976      615977  61478212      Pitt Stop Classic Café  Independent   \n\n       Sites_Address_Line_1 Site_Suburb Site_State  Site_Post_Code  \\\n0        61 Burrowes Street       Surat        QLD            4417   \n1        61 Burrowes Street       Surat        QLD            4417   \n2        61 Burrowes Street       Surat        QLD            4417   \n3         126 Barwon Street    Mungindi        QLD            4497   \n4         126 Barwon Street    Mungindi        QLD            4497   \n...                     ...         ...        ...             ...   \n615972          2 Dutton St  Walkerston        QLD            4751   \n615973          2 Dutton St  Walkerston        QLD            4751   \n615974          34 Palm Ave    Seaforth        QLD            4741   \n615975          34 Palm Ave    Seaforth        QLD            4741   \n615976          34 Palm Ave    Seaforth        QLD            4741   \n\n        Site_Latitude  Site_Longitude    Fuel_Type  Price  \\\n0          -27.151687      149.067742       Diesel   1999   \n1          -27.151687      149.067742  PULP 98 RON   2159   \n2          -27.151687      149.067742     Unleaded   1959   \n3          -28.973467      148.983829       Diesel   1990   \n4          -28.973467      148.983829     Unleaded   1920   \n...               ...             ...          ...    ...   \n615972     -21.160166      149.063728     Unleaded   1959   \n615973     -21.160166      149.063728     Unleaded   1989   \n615974     -20.899741      148.964986     Unleaded   2049   \n615975     -20.899741      148.964986     Unleaded   2039   \n615976     -20.899741      148.964986     Unleaded   2099   \n\n         TransactionDateutc  X_id  \n0       2023-10-12 21:56:00   NaN  \n1       2023-12-30 06:54:00   NaN  \n2       2023-12-30 06:54:00   NaN  \n3       2023-06-12 22:00:00   NaN  \n4       2023-06-12 22:00:00   NaN  \n...                     ...   ...  \n615972  2023-09-20 05:14:00   NaN  \n615973  2023-09-25 08:08:00   NaN  \n615974  2023-04-09 04:15:00   NaN  \n615975  2023-04-09 04:24:00   NaN  \n615976  2023-09-25 06:26:00   NaN  \n\n[615977 rows x 14 columns]\n\n\n\n# initial exploration\ndf.columns\n\ndf.info()\n\ndf.head()\n\ndf[\"Fuel_Type\"]\n\npd.unique(df[\"Fuel_Type\"])\n\ndf.describe()\n\ndf[\"Fuel_Type\"].describe()\n\npd.unique(df[\"Site_Suburb\"])\n\ndf[\"Site_Suburb\"].describe()\n\npd.unique(df[\"Site_State\"])\n\ndf[\"Site_State\"].describe()\n\n\ndf[5 : 10]\n\npd.unique(df[\"Site_Name\"])\n\ndf[\"Site_Name\"].describe()\n\ndf.dtypes\n\ndf[\"Price\"].describe()\n\ndf[\"Site_Brand\"].describe()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 615977 entries, 0 to 615976\nData columns (total 14 columns):\n #   Column                Non-Null Count   Dtype  \n---  ------                --------------   -----  \n 0   Unnamed: 0            615977 non-null  int64  \n 1   SiteId                615977 non-null  int64  \n 2   Site_Name             615977 non-null  object \n 3   Site_Brand            615977 non-null  object \n 4   Sites_Address_Line_1  615977 non-null  object \n 5   Site_Suburb           615977 non-null  object \n 6   Site_State            615977 non-null  object \n 7   Site_Post_Code        615977 non-null  int64  \n 8   Site_Latitude         615977 non-null  float64\n 9   Site_Longitude        615977 non-null  float64\n 10  Fuel_Type             615977 non-null  object \n 11  Price                 615977 non-null  int64  \n 12  TransactionDateutc    615977 non-null  object \n 13  X_id                  121457 non-null  float64\ndtypes: float64(3), int64(4), object(7)\nmemory usage: 65.8+ MB\n\n\ncount       615977\nunique          25\ntop       7 Eleven\nfreq        118040\nName: Site_Brand, dtype: object\n\n\n\n# summaries\ngb = df.groupby(\"Fuel_Type\")\n\navg_fuel_by_price = gb[\"Price\"].agg(\"mean\")\n\nplt.ion()\navg_fuel_by_price.plot()\nplt.show()\n\n# Ensure reasonable heights\ndf = df[ (500 &lt; df[\"Price\"]) & (df[\"Price\"] &lt; 4000)]\n\ndf[\"unit_price\"] = df[\"Price\"] / 1000\n\ndf.to_csv(\"./data/filtered_fuel.csv\")\n\nsns.catplot(data = df, x = \"Fuel_Type\", y = \"Price\")\nplt.show()\n\n\nsns.catplot(data = df, x = \"Site_State\", y = \"Fuel_Type\")\nplt.show()\n\n\n# Remove unleaded Fuel_type\ndf1 = df[df[\"Fuel_Type\"] != \"Unleaded\"]\n\n# sns.catplot(data = df1, x = \"Site_State\", y = \"Fuel_Type\")\nplt.show()\n\n# Remove unknown Site_Brand\ndf2 = df[df[\"Site_Brand\"] != \"Unknown\"]\n\n# sns.catplot(data = df2, x = \"Site_State\", y = \"Site_Brand\", kind = \"bar\")\nplt.show()\n\n\nsns.displot(data = df, x = \"Price\", hue = \"Fuel_Type\", kind = \"kde\")\nplt.show()\n\nsns.displot(data = df, x = \"unit_price\", hue = \"Fuel_Type\", kind = \"kde\")\nplt.show()\n\n# sns.catplot(data=df, x=\"unit_price\", y=\"Fuel_type\")\nplt.show()\n\n\n\n\n\n\n\n\n/tmp/ipykernel_10770/3688228111.py:13: SettingWithCopyWarning:\n\n\nA value is trying to be set on a copy of a slice from a DataFrame.\nTry using .loc[row_indexer,col_indexer] = value instead\n\nSee the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nimport pandas as pd\nfuel = pd.read_csv(\"./data/data/qld_fuel.csv\")\nimport geopandas \nfuel_geo = geopandas.GeoDataFrame(fuel, geometry = geopandas.points_from_xy(x = fuel.Site_Longitude, y = fuel.Site_Latitude)) \nfuel_geo.plot()\n\n\n\n\n\n\n\n\n\nimport plotly.express as px\nfigure = px.scatter(data_frame = df, x = \"Fuel_Type\", y = \"unit_price\", color = \"Site_State\",\n           facet_col = \"Site_State\", hover_name = \"Site_Brand\",\n           hover_data = \"Site_Suburb\")\n\nfigure.write_html(\"fuel.html\")\n\n\nimport pandas as pd\nfuel = pd.read_csv(\"./data/data/qld_fuel.csv\")\nimport geopandas \nfuel_geo = geopandas.GeoDataFrame(fuel, geometry = geopandas.points_from_xy(x = fuel.Site_Longitude, y = fuel.Site_Latitude)) \nfuel_geo.plot()"
-  },
-  {
-    "objectID": "gallery/Python/25Winter/Another coffee survey/Pawatsada.html",
-    "href": "gallery/Python/25Winter/Another coffee survey/Pawatsada.html",
-    "title": "Coffee Survey",
-    "section": "",
-    "text": "1.1 Import modules and dataset\n\n\nShow code\nimport matplotlib.pyplot as plt\nimport pandas as pd\nimport plotly.express as px\nimport seaborn as sns\n\ndf = pd.read_csv(\"../../../../data/coffee_survey.csv\")\n\n\n1.2 Data Exploration\n\n\nShow code\ndf.head(10)\n\n\n\n\n\n\n\n\n\nUnnamed: 0\nage\ncups\nwhere_drink\npurchase_other\nfavourite\nfavorite_specify\nadditions\nadditions_other\nsweetener\n...\nmost_paid\nmost_willing\nvalue_cafe\nspent_equipment\nvalue_equipment\ngender\neducation_level\nemployment_status\nnumber_children\npolitical_affiliation\n\n\n\n\n0\n1\n&lt;18 years old\n3\nAt home, At the office, At a cafe\nNaN\nPourover\nNaN\nNo - just black, Milk, dairy alternative, or c...\nNaN\nNaN\n...\nNaN\nNaN\nNaN\nNaN\nNaN\nOther (please specify)\nBachelor's degree\nEmployed full-time\nMore than 3\nDemocrat\n\n\n1\n2\n&gt;65 years old\n3\nAt the office, At a cafe\nNaN\nCortado\nNaN\nNo - just black\nNaN\nNaN\n...\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n2\n3\n25-34 years old\n1\nAt home, At the office, On the go\nNaN\nRegular drip coffee\nNaN\nMilk, dairy alternative, or coffee creamer, Su...\nNaN\nGranulated Sugar, Brown Sugar\n...\nNaN\nNaN\nNaN\nNaN\nNaN\nFemale\nBachelor's degree\nEmployed full-time\nNaN\nDemocrat\n\n\n3\n4\n18-24 years old\n2\nAt the office\nNaN\nIced coffee\nNaN\nMilk, dairy alternative, or coffee creamer\nNaN\nNaN\n...\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n4\n5\n45-54 years old\n2\nAt home, At the office, At a cafe, On the go\nNaN\nRegular drip coffee\nNaN\nNo - just black\nNaN\nNaN\n...\n$4-$6\n$8-$10\nNo\n$500-$1000\nYes\nMale\nMaster's degree\nEmployed full-time\n2\nNo affiliation\n\n\n5\n6\n&gt;65 years old\n1\nAt home\nNaN\nRegular drip coffee\nNaN\nNo - just black\nNaN\nNaN\n...\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n6\n7\n25-34 years old\n2\nAt home, At the office\nNaN\nPourover\nNaN\nNo - just black\nNaN\nNaN\n...\n$2-$4\nMore than $20\nYes\n$50-$100\nYes\nMale\nMaster's degree\nUnemployed\nNaN\nIndependent\n\n\n7\n8\n35-44 years old\n1\nAt the office, At home\nNaN\nIced coffee\nNaN\nNo - just black\nNaN\nNaN\n...\n$10-$15\nMore than $20\nYes\n$100-$300\nYes\nMale\nBachelor's degree\nEmployed full-time\n3\nNo affiliation\n\n\n8\n9\n45-54 years old\nMore than 4\nAt home\nNaN\nPourover\nNaN\nNo - just black\nNaN\nNaN\n...\n$10-$15\n$15-$20\nYes\n$300-$500\nYes\nMale\nBachelor's degree\nEmployed full-time\n3\nNo affiliation\n\n\n9\n10\n35-44 years old\n1\nAt the office, At a cafe, At home\nNaN\nCappuccino\nNaN\nMilk, dairy alternative, or coffee creamer, Su...\nNaN\nGranulated Sugar, Brown Sugar\n...\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n\n\n10 rows × 43 columns\n\n\n\nAge exploration\n\n\nShow code\nsns.catplot(data = df, x = \"age\", kind=\"count\", height=5, aspect=2)\n\n\n\n\n\n\n\n\n\n\nAge 25 to 34 range is the highest age range among coffee customers.\n\n1.3 Data Filtering\n\n\nShow code\ndf_focused = df[[\"age\", \"where_drink\", \"favourite\", 'style']].copy()\ndf_focused.head(10)\n\n\n\n\n\n\n\n\n\nage\nwhere_drink\nfavourite\nstyle\n\n\n\n\n0\n&lt;18 years old\nAt home, At the office, At a cafe\nPourover\nBright\n\n\n1\n&gt;65 years old\nAt the office, At a cafe\nCortado\nFruity\n\n\n2\n25-34 years old\nAt home, At the office, On the go\nRegular drip coffee\nSweet\n\n\n3\n18-24 years old\nAt the office\nIced coffee\nNutty\n\n\n4\n45-54 years old\nAt home, At the office, At a cafe, On the go\nRegular drip coffee\nFloral\n\n\n5\n&gt;65 years old\nAt home\nRegular drip coffee\nFull Bodied\n\n\n6\n25-34 years old\nAt home, At the office\nPourover\nFloral\n\n\n7\n35-44 years old\nAt the office, At home\nIced coffee\nFruity\n\n\n8\n45-54 years old\nAt home\nPourover\nFull Bodied\n\n\n9\n35-44 years old\nAt the office, At a cafe, At home\nCappuccino\nNutty\n\n\n\n\n\n\n\n\nFocusing on 4 attributes including age, where to drink, favourite, and style of drinking coffee."
-  },
-  {
-    "objectID": "gallery/Python/25Winter/Another coffee survey/Pawatsada.html#introduction",
-    "href": "gallery/Python/25Winter/Another coffee survey/Pawatsada.html#introduction",
-    "title": "Coffee Survey",
-    "section": "",
-    "text": "1.1 Import modules and dataset\n\n\nShow code\nimport matplotlib.pyplot as plt\nimport pandas as pd\nimport plotly.express as px\nimport seaborn as sns\n\ndf = pd.read_csv(\"../../../../data/coffee_survey.csv\")\n\n\n1.2 Data Exploration\n\n\nShow code\ndf.head(10)\n\n\n\n\n\n\n\n\n\nUnnamed: 0\nage\ncups\nwhere_drink\npurchase_other\nfavourite\nfavorite_specify\nadditions\nadditions_other\nsweetener\n...\nmost_paid\nmost_willing\nvalue_cafe\nspent_equipment\nvalue_equipment\ngender\neducation_level\nemployment_status\nnumber_children\npolitical_affiliation\n\n\n\n\n0\n1\n&lt;18 years old\n3\nAt home, At the office, At a cafe\nNaN\nPourover\nNaN\nNo - just black, Milk, dairy alternative, or c...\nNaN\nNaN\n...\nNaN\nNaN\nNaN\nNaN\nNaN\nOther (please specify)\nBachelor's degree\nEmployed full-time\nMore than 3\nDemocrat\n\n\n1\n2\n&gt;65 years old\n3\nAt the office, At a cafe\nNaN\nCortado\nNaN\nNo - just black\nNaN\nNaN\n...\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n2\n3\n25-34 years old\n1\nAt home, At the office, On the go\nNaN\nRegular drip coffee\nNaN\nMilk, dairy alternative, or coffee creamer, Su...\nNaN\nGranulated Sugar, Brown Sugar\n...\nNaN\nNaN\nNaN\nNaN\nNaN\nFemale\nBachelor's degree\nEmployed full-time\nNaN\nDemocrat\n\n\n3\n4\n18-24 years old\n2\nAt the office\nNaN\nIced coffee\nNaN\nMilk, dairy alternative, or coffee creamer\nNaN\nNaN\n...\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n4\n5\n45-54 years old\n2\nAt home, At the office, At a cafe, On the go\nNaN\nRegular drip coffee\nNaN\nNo - just black\nNaN\nNaN\n...\n$4-$6\n$8-$10\nNo\n$500-$1000\nYes\nMale\nMaster's degree\nEmployed full-time\n2\nNo affiliation\n\n\n5\n6\n&gt;65 years old\n1\nAt home\nNaN\nRegular drip coffee\nNaN\nNo - just black\nNaN\nNaN\n...\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n6\n7\n25-34 years old\n2\nAt home, At the office\nNaN\nPourover\nNaN\nNo - just black\nNaN\nNaN\n...\n$2-$4\nMore than $20\nYes\n$50-$100\nYes\nMale\nMaster's degree\nUnemployed\nNaN\nIndependent\n\n\n7\n8\n35-44 years old\n1\nAt the office, At home\nNaN\nIced coffee\nNaN\nNo - just black\nNaN\nNaN\n...\n$10-$15\nMore than $20\nYes\n$100-$300\nYes\nMale\nBachelor's degree\nEmployed full-time\n3\nNo affiliation\n\n\n8\n9\n45-54 years old\nMore than 4\nAt home\nNaN\nPourover\nNaN\nNo - just black\nNaN\nNaN\n...\n$10-$15\n$15-$20\nYes\n$300-$500\nYes\nMale\nBachelor's degree\nEmployed full-time\n3\nNo affiliation\n\n\n9\n10\n35-44 years old\n1\nAt the office, At a cafe, At home\nNaN\nCappuccino\nNaN\nMilk, dairy alternative, or coffee creamer, Su...\nNaN\nGranulated Sugar, Brown Sugar\n...\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n\n\n10 rows × 43 columns\n\n\n\nAge exploration\n\n\nShow code\nsns.catplot(data = df, x = \"age\", kind=\"count\", height=5, aspect=2)\n\n\n\n\n\n\n\n\n\n\nAge 25 to 34 range is the highest age range among coffee customers.\n\n1.3 Data Filtering\n\n\nShow code\ndf_focused = df[[\"age\", \"where_drink\", \"favourite\", 'style']].copy()\ndf_focused.head(10)\n\n\n\n\n\n\n\n\n\nage\nwhere_drink\nfavourite\nstyle\n\n\n\n\n0\n&lt;18 years old\nAt home, At the office, At a cafe\nPourover\nBright\n\n\n1\n&gt;65 years old\nAt the office, At a cafe\nCortado\nFruity\n\n\n2\n25-34 years old\nAt home, At the office, On the go\nRegular drip coffee\nSweet\n\n\n3\n18-24 years old\nAt the office\nIced coffee\nNutty\n\n\n4\n45-54 years old\nAt home, At the office, At a cafe, On the go\nRegular drip coffee\nFloral\n\n\n5\n&gt;65 years old\nAt home\nRegular drip coffee\nFull Bodied\n\n\n6\n25-34 years old\nAt home, At the office\nPourover\nFloral\n\n\n7\n35-44 years old\nAt the office, At home\nIced coffee\nFruity\n\n\n8\n45-54 years old\nAt home\nPourover\nFull Bodied\n\n\n9\n35-44 years old\nAt the office, At a cafe, At home\nCappuccino\nNutty\n\n\n\n\n\n\n\n\nFocusing on 4 attributes including age, where to drink, favourite, and style of drinking coffee."
-  },
-  {
-    "objectID": "gallery/Python/25Winter/Another coffee survey/Pawatsada.html#data-analysis",
-    "href": "gallery/Python/25Winter/Another coffee survey/Pawatsada.html#data-analysis",
-    "title": "Coffee Survey",
-    "section": "2. Data Analysis",
-    "text": "2. Data Analysis\n2.1 Preferred Coffee Places by Age Group\n#Manage “where_drink” : spliting words\n\n\nShow code\ndf_focused['where_drink'] = df_focused['where_drink'].fillna('')\ndf_focused['where_list']=df_focused['where_drink'].str.split(pat=\", \")\ndf_focused.head()\n\n\n\n\n\n\n\n\n\nage\nwhere_drink\nfavourite\nstyle\nwhere_list\n\n\n\n\n0\n&lt;18 years old\nAt home, At the office, At a cafe\nPourover\nBright\n[At home, At the office, At a cafe]\n\n\n1\n&gt;65 years old\nAt the office, At a cafe\nCortado\nFruity\n[At the office, At a cafe]\n\n\n2\n25-34 years old\nAt home, At the office, On the go\nRegular drip coffee\nSweet\n[At home, At the office, On the go]\n\n\n3\n18-24 years old\nAt the office\nIced coffee\nNutty\n[At the office]\n\n\n4\n45-54 years old\nAt home, At the office, At a cafe, On the go\nRegular drip coffee\nFloral\n[At home, At the office, At a cafe, On the go]\n\n\n\n\n\n\n\n#Manage “where_drink” : exploding and making them to list then one-hot for the list\n\n\nShow code\ndf_exploded = df_focused.explode('where_list')\ndummies = pd.crosstab(df_exploded.index, df_exploded['where_list'])\ndf_final = df_focused.join(dummies.groupby(dummies.index).sum())\ndf_final.head()\n\n\n\n\n\n\n\n\n\nage\nwhere_drink\nfavourite\nstyle\nwhere_list\n\nAt a cafe\nAt home\nAt the office\nNone of these\nOn the go\n\n\n\n\n0\n&lt;18 years old\nAt home, At the office, At a cafe\nPourover\nBright\n[At home, At the office, At a cafe]\n0\n1\n1\n1\n0\n0\n\n\n1\n&gt;65 years old\nAt the office, At a cafe\nCortado\nFruity\n[At the office, At a cafe]\n0\n1\n0\n1\n0\n0\n\n\n2\n25-34 years old\nAt home, At the office, On the go\nRegular drip coffee\nSweet\n[At home, At the office, On the go]\n0\n0\n1\n1\n0\n1\n\n\n3\n18-24 years old\nAt the office\nIced coffee\nNutty\n[At the office]\n0\n0\n0\n1\n0\n0\n\n\n4\n45-54 years old\nAt home, At the office, At a cafe, On the go\nRegular drip coffee\nFloral\n[At home, At the office, At a cafe, On the go]\n0\n1\n1\n1\n0\n1\n\n\n\n\n\n\n\n#Manage “where_drink” : exploring mean for each group of age\n\n\nShow code\ngroupby_age = df_final.groupby('age')[df_final.select_dtypes(include='number').columns].mean()\ngroupby_age.head()\n\n\n\n\n\n\n\n\n\n\nAt a cafe\nAt home\nAt the office\nNone of these\nOn the go\n\n\nage\n\n\n\n\n\n\n\n\n\n\n18-24 years old\n0.002398\n0.414868\n0.872902\n0.342926\n0.016787\n0.194245\n\n\n25-34 years old\n0.001055\n0.329641\n0.912975\n0.390295\n0.011603\n0.188291\n\n\n35-44 years old\n0.001095\n0.265060\n0.933187\n0.369113\n0.003286\n0.181818\n\n\n45-54 years old\n0.000000\n0.161972\n0.957746\n0.250000\n0.000000\n0.140845\n\n\n55-64 years old\n0.017045\n0.085227\n0.948864\n0.284091\n0.000000\n0.102273\n\n\n\n\n\n\n\n#Stacked bar plot\n\n\nShow code\ngroupby_age.plot(kind='bar', stacked=True, figsize=(10,6), colormap='tab20')\nplt.title('Preferred Coffee Places by Age Group')\nplt.ylabel('Proportion of Respondents')\nplt.xlabel('Age Group')\nplt.legend(title='Where People Drink Coffee', bbox_to_anchor=(1.05, 1), loc='upper left')\nplt.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\n\n2.2 Preferred Type of Coffee by Age Group\n#Group favourite by Age\n\n\nShow code\nfavourite_by_agegroup = df_focused.groupby('age')['favourite'].value_counts().unstack().fillna(0)\n\n\n#Heatmap\n\n\nShow code\nplt.figure(figsize=(12, 6))\nsns.heatmap(favourite_by_agegroup, annot=True, fmt='.0f', cmap='YlGnBu')\nplt.title('Favorite Type by Age Group')\nplt.ylabel('Age Group')\nplt.xlabel('Favorite')\nplt.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\n\n2.3 Preferred Style of Coffee by Age Group\n#Group Style by Age\n\n\nShow code\nstyle_by_agegroup = df_focused.groupby('age')['style'].value_counts().unstack().fillna(0)\n\n\nGrouped bar plt\n\n\nShow code\nstyle_by_agegroup.T.plot(kind='bar', figsize=(12, 6))\nplt.title('Style Preference by Age Group')\nplt.ylabel('Number of Respondents')\nplt.xlabel('Style')\nplt.legend(title='Age Group', bbox_to_anchor=(1.05, 1), loc='upper left')\nplt.tight_layout()\nplt.show()"
-  },
-  {
-    "objectID": "gallery/Python/25Winter/Coffee Horror/coffee.html",
-    "href": "gallery/Python/25Winter/Coffee Horror/coffee.html",
-    "title": "Analysis of Coffee Preference",
-    "section": "",
-    "text": "import pandas as pd\ndf = pd.read_csv(\"../../../../data/coffee_survey.csv\")\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nsns.catplot (data = df, \n             x = \"coffee_c_personal_preference\",\n             y = \"coffee_c_bitterness\",\n             kind = \"box\")"
-  },
-  {
-    "objectID": "gallery/Python/25Winter/Coffee Horror/coffee.html#comparing-personal-preferences-and-bitterness-for-coffeec",
-    "href": "gallery/Python/25Winter/Coffee Horror/coffee.html#comparing-personal-preferences-and-bitterness-for-coffeec",
-    "title": "Analysis of Coffee Preference",
-    "section": "",
-    "text": "import pandas as pd\ndf = pd.read_csv(\"../../../../data/coffee_survey.csv\")\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nsns.catplot (data = df, \n             x = \"coffee_c_personal_preference\",\n             y = \"coffee_c_bitterness\",\n             kind = \"box\")"
-  },
-  {
-    "objectID": "gallery/Python/25Winter/Coffee Horror/coffee.html#distribution-of-age",
-    "href": "gallery/Python/25Winter/Coffee Horror/coffee.html#distribution-of-age",
-    "title": "Analysis of Coffee Preference",
-    "section": "Distribution of Age",
-    "text": "Distribution of Age\n\nsns.displot(data = df, y = \"age\")"
-  },
-  {
-    "objectID": "gallery/Python/25Winter/Coffee Horror/coffee.html#distribution-of-favourite-coffee",
-    "href": "gallery/Python/25Winter/Coffee Horror/coffee.html#distribution-of-favourite-coffee",
-    "title": "Analysis of Coffee Preference",
-    "section": "Distribution of Favourite coffee",
-    "text": "Distribution of Favourite coffee\n\nsns.displot(data = df,\n            y = \"favourite\",\n            binwidth = 1)"
-  },
-  {
-    "objectID": "gallery/Python/25Winter/Coffee Horror/coffee.html#favourite-coffee-based-on-gender",
-    "href": "gallery/Python/25Winter/Coffee Horror/coffee.html#favourite-coffee-based-on-gender",
-    "title": "Analysis of Coffee Preference",
-    "section": "Favourite coffee based on gender",
-    "text": "Favourite coffee based on gender\n\nsns.displot(data = df, x = \"gender\", y = \"favourite\")\nplt.xticks(rotation=45, ha='right')\n\n([0, 1, 2, 3, 4],\n [Text(0, 0, 'Other (please specify)'),\n  Text(1, 0, 'Female'),\n  Text(2, 0, 'Male'),\n  Text(3, 0, 'Non-binary'),\n  Text(4, 0, 'Prefer not to say')])"
-  },
-  {
-    "objectID": "gallery/Python/25Winter/Coffee Horror/coffee.html#preferred-coffee-style",
-    "href": "gallery/Python/25Winter/Coffee Horror/coffee.html#preferred-coffee-style",
-    "title": "Analysis of Coffee Preference",
-    "section": "Preferred Coffee Style",
-    "text": "Preferred Coffee Style\n\nnames = ['Pourover', 'Latte','Drip coffee', 'Cappuccino', 'Espresso','Cortado','Americano', 'Iced coffee', 'Mocha','Cold brew','Other', 'Blended drinks']\nsize = [1026, 654, 415, 330, 309, 295, 238, 147, 116, 108, 105, 45]\n# Create a circle at the center of the plot\nmy_circle = plt.Circle( (0,0), 0.7, color='white')\n# Give color names\nplt.pie(size, labels=names, colors=['red','green','blue','skyblue'])\np = plt.gcf()\np.gca().add_artist(my_circle)\n \n# Show the graph\nplt.show()"
+    "objectID": "gallery/Python/25Winter/Sisay/report.html#gapminder-data",
+    "href": "gallery/Python/25Winter/Sisay/report.html#gapminder-data",
+    "title": "my python report",
+    "section": "gapminder data",
+    "text": "gapminder data\nlet’s visualise life expectancy by gdp per captial:\n\n\n\n\n\nGDP per caspita would affect life expectancy\n\n\n\n\n##Effect of population size on GDP let’s visualise effect of populationy on gdp per captial:\n\n\n\n\n\npopulation size could affect GDP per capital\n\n\n\n\n##Effect of population size on lie expectancy let’s visualise effect of populationy on life expectancy:\n\n\n\n\n\npopulation size could affect life expectancy\n\n\n\n\n\n\n\n\n\ncontinent could affect life expectancy\n\n\n\n\n\n\n\n\n\ncontinent could affect life expectancy\n\n\n\n\n\n\n\n\n\npopulation distribution by continent"
   },
   {
     "objectID": "gallery/Python/25Winter/Mst Noorunnahar/project_nahar.html",
@@ -1878,25 +1689,263 @@
     "text": "Checking relationship between variables"
   },
   {
-    "objectID": "gallery/Python/25Winter/Sisay/report.html",
-    "href": "gallery/Python/25Winter/Sisay/report.html",
-    "title": "my python report",
+    "objectID": "gallery/Python/25Winter/Coffee Horror/coffee.html",
+    "href": "gallery/Python/25Winter/Coffee Horror/coffee.html",
+    "title": "Analysis of Coffee Preference",
     "section": "",
-    "text": "Markdown is a markup language * we can create test, heading, and graphs for relationship between variables"
+    "text": "import pandas as pd\ndf = pd.read_csv(\"../../../../data/coffee_survey.csv\")\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nsns.catplot (data = df, \n             x = \"coffee_c_personal_preference\",\n             y = \"coffee_c_bitterness\",\n             kind = \"box\")"
   },
   {
-    "objectID": "gallery/Python/25Winter/Sisay/report.html#introducing-markdown",
-    "href": "gallery/Python/25Winter/Sisay/report.html#introducing-markdown",
-    "title": "my python report",
+    "objectID": "gallery/Python/25Winter/Coffee Horror/coffee.html#comparing-personal-preferences-and-bitterness-for-coffeec",
+    "href": "gallery/Python/25Winter/Coffee Horror/coffee.html#comparing-personal-preferences-and-bitterness-for-coffeec",
+    "title": "Analysis of Coffee Preference",
     "section": "",
-    "text": "Markdown is a markup language * we can create test, heading, and graphs for relationship between variables"
+    "text": "import pandas as pd\ndf = pd.read_csv(\"../../../../data/coffee_survey.csv\")\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nsns.catplot (data = df, \n             x = \"coffee_c_personal_preference\",\n             y = \"coffee_c_bitterness\",\n             kind = \"box\")"
   },
   {
-    "objectID": "gallery/Python/25Winter/Sisay/report.html#gapminder-data",
-    "href": "gallery/Python/25Winter/Sisay/report.html#gapminder-data",
-    "title": "my python report",
-    "section": "gapminder data",
-    "text": "gapminder data\nlet’s visualise life expectancy by gdp per captial:\n\n\n\n\n\nGDP per caspita would affect life expectancy\n\n\n\n\n##Effect of population size on GDP let’s visualise effect of populationy on gdp per captial:\n\n\n\n\n\npopulation size could affect GDP per capital\n\n\n\n\n##Effect of population size on lie expectancy let’s visualise effect of populationy on life expectancy:\n\n\n\n\n\npopulation size could affect life expectancy\n\n\n\n\n\n\n\n\n\ncontinent could affect life expectancy\n\n\n\n\n\n\n\n\n\ncontinent could affect life expectancy\n\n\n\n\n\n\n\n\n\npopulation distribution by continent"
+    "objectID": "gallery/Python/25Winter/Coffee Horror/coffee.html#distribution-of-age",
+    "href": "gallery/Python/25Winter/Coffee Horror/coffee.html#distribution-of-age",
+    "title": "Analysis of Coffee Preference",
+    "section": "Distribution of Age",
+    "text": "Distribution of Age\n\nsns.displot(data = df, y = \"age\")"
+  },
+  {
+    "objectID": "gallery/Python/25Winter/Coffee Horror/coffee.html#distribution-of-favourite-coffee",
+    "href": "gallery/Python/25Winter/Coffee Horror/coffee.html#distribution-of-favourite-coffee",
+    "title": "Analysis of Coffee Preference",
+    "section": "Distribution of Favourite coffee",
+    "text": "Distribution of Favourite coffee\n\nsns.displot(data = df,\n            y = \"favourite\",\n            binwidth = 1)"
+  },
+  {
+    "objectID": "gallery/Python/25Winter/Coffee Horror/coffee.html#favourite-coffee-based-on-gender",
+    "href": "gallery/Python/25Winter/Coffee Horror/coffee.html#favourite-coffee-based-on-gender",
+    "title": "Analysis of Coffee Preference",
+    "section": "Favourite coffee based on gender",
+    "text": "Favourite coffee based on gender\n\nsns.displot(data = df, x = \"gender\", y = \"favourite\")\nplt.xticks(rotation=45, ha='right')\n\n([0, 1, 2, 3, 4],\n [Text(0, 0, 'Other (please specify)'),\n  Text(1, 0, 'Female'),\n  Text(2, 0, 'Male'),\n  Text(3, 0, 'Non-binary'),\n  Text(4, 0, 'Prefer not to say')])"
+  },
+  {
+    "objectID": "gallery/Python/25Winter/Coffee Horror/coffee.html#preferred-coffee-style",
+    "href": "gallery/Python/25Winter/Coffee Horror/coffee.html#preferred-coffee-style",
+    "title": "Analysis of Coffee Preference",
+    "section": "Preferred Coffee Style",
+    "text": "Preferred Coffee Style\n\nnames = ['Pourover', 'Latte','Drip coffee', 'Cappuccino', 'Espresso','Cortado','Americano', 'Iced coffee', 'Mocha','Cold brew','Other', 'Blended drinks']\nsize = [1026, 654, 415, 330, 309, 295, 238, 147, 116, 108, 105, 45]\n# Create a circle at the center of the plot\nmy_circle = plt.Circle( (0,0), 0.7, color='white')\n# Give color names\nplt.pie(size, labels=names, colors=['red','green','blue','skyblue'])\np = plt.gcf()\np.gca().add_artist(my_circle)\n \n# Show the graph\nplt.show()"
+  },
+  {
+    "objectID": "gallery/Python/25Winter/Another coffee survey/Pawatsada.html",
+    "href": "gallery/Python/25Winter/Another coffee survey/Pawatsada.html",
+    "title": "Coffee Survey",
+    "section": "",
+    "text": "1.1 Import modules and dataset\n\n\nShow code\nimport matplotlib.pyplot as plt\nimport pandas as pd\nimport plotly.express as px\nimport seaborn as sns\n\ndf = pd.read_csv(\"../../../../data/coffee_survey.csv\")\n\n\n1.2 Data Exploration\n\n\nShow code\ndf.head(10)\n\n\n\n\n\n\n\n\n\nUnnamed: 0\nage\ncups\nwhere_drink\npurchase_other\nfavourite\nfavorite_specify\nadditions\nadditions_other\nsweetener\n...\nmost_paid\nmost_willing\nvalue_cafe\nspent_equipment\nvalue_equipment\ngender\neducation_level\nemployment_status\nnumber_children\npolitical_affiliation\n\n\n\n\n0\n1\n&lt;18 years old\n3\nAt home, At the office, At a cafe\nNaN\nPourover\nNaN\nNo - just black, Milk, dairy alternative, or c...\nNaN\nNaN\n...\nNaN\nNaN\nNaN\nNaN\nNaN\nOther (please specify)\nBachelor's degree\nEmployed full-time\nMore than 3\nDemocrat\n\n\n1\n2\n&gt;65 years old\n3\nAt the office, At a cafe\nNaN\nCortado\nNaN\nNo - just black\nNaN\nNaN\n...\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n2\n3\n25-34 years old\n1\nAt home, At the office, On the go\nNaN\nRegular drip coffee\nNaN\nMilk, dairy alternative, or coffee creamer, Su...\nNaN\nGranulated Sugar, Brown Sugar\n...\nNaN\nNaN\nNaN\nNaN\nNaN\nFemale\nBachelor's degree\nEmployed full-time\nNaN\nDemocrat\n\n\n3\n4\n18-24 years old\n2\nAt the office\nNaN\nIced coffee\nNaN\nMilk, dairy alternative, or coffee creamer\nNaN\nNaN\n...\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n4\n5\n45-54 years old\n2\nAt home, At the office, At a cafe, On the go\nNaN\nRegular drip coffee\nNaN\nNo - just black\nNaN\nNaN\n...\n$4-$6\n$8-$10\nNo\n$500-$1000\nYes\nMale\nMaster's degree\nEmployed full-time\n2\nNo affiliation\n\n\n5\n6\n&gt;65 years old\n1\nAt home\nNaN\nRegular drip coffee\nNaN\nNo - just black\nNaN\nNaN\n...\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n6\n7\n25-34 years old\n2\nAt home, At the office\nNaN\nPourover\nNaN\nNo - just black\nNaN\nNaN\n...\n$2-$4\nMore than $20\nYes\n$50-$100\nYes\nMale\nMaster's degree\nUnemployed\nNaN\nIndependent\n\n\n7\n8\n35-44 years old\n1\nAt the office, At home\nNaN\nIced coffee\nNaN\nNo - just black\nNaN\nNaN\n...\n$10-$15\nMore than $20\nYes\n$100-$300\nYes\nMale\nBachelor's degree\nEmployed full-time\n3\nNo affiliation\n\n\n8\n9\n45-54 years old\nMore than 4\nAt home\nNaN\nPourover\nNaN\nNo - just black\nNaN\nNaN\n...\n$10-$15\n$15-$20\nYes\n$300-$500\nYes\nMale\nBachelor's degree\nEmployed full-time\n3\nNo affiliation\n\n\n9\n10\n35-44 years old\n1\nAt the office, At a cafe, At home\nNaN\nCappuccino\nNaN\nMilk, dairy alternative, or coffee creamer, Su...\nNaN\nGranulated Sugar, Brown Sugar\n...\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n\n\n10 rows × 43 columns\n\n\n\nAge exploration\n\n\nShow code\nsns.catplot(data = df, x = \"age\", kind=\"count\", height=5, aspect=2)\n\n\n\n\n\n\n\n\n\n\nAge 25 to 34 range is the highest age range among coffee customers.\n\n1.3 Data Filtering\n\n\nShow code\ndf_focused = df[[\"age\", \"where_drink\", \"favourite\", 'style']].copy()\ndf_focused.head(10)\n\n\n\n\n\n\n\n\n\nage\nwhere_drink\nfavourite\nstyle\n\n\n\n\n0\n&lt;18 years old\nAt home, At the office, At a cafe\nPourover\nBright\n\n\n1\n&gt;65 years old\nAt the office, At a cafe\nCortado\nFruity\n\n\n2\n25-34 years old\nAt home, At the office, On the go\nRegular drip coffee\nSweet\n\n\n3\n18-24 years old\nAt the office\nIced coffee\nNutty\n\n\n4\n45-54 years old\nAt home, At the office, At a cafe, On the go\nRegular drip coffee\nFloral\n\n\n5\n&gt;65 years old\nAt home\nRegular drip coffee\nFull Bodied\n\n\n6\n25-34 years old\nAt home, At the office\nPourover\nFloral\n\n\n7\n35-44 years old\nAt the office, At home\nIced coffee\nFruity\n\n\n8\n45-54 years old\nAt home\nPourover\nFull Bodied\n\n\n9\n35-44 years old\nAt the office, At a cafe, At home\nCappuccino\nNutty\n\n\n\n\n\n\n\n\nFocusing on 4 attributes including age, where to drink, favourite, and style of drinking coffee."
+  },
+  {
+    "objectID": "gallery/Python/25Winter/Another coffee survey/Pawatsada.html#introduction",
+    "href": "gallery/Python/25Winter/Another coffee survey/Pawatsada.html#introduction",
+    "title": "Coffee Survey",
+    "section": "",
+    "text": "1.1 Import modules and dataset\n\n\nShow code\nimport matplotlib.pyplot as plt\nimport pandas as pd\nimport plotly.express as px\nimport seaborn as sns\n\ndf = pd.read_csv(\"../../../../data/coffee_survey.csv\")\n\n\n1.2 Data Exploration\n\n\nShow code\ndf.head(10)\n\n\n\n\n\n\n\n\n\nUnnamed: 0\nage\ncups\nwhere_drink\npurchase_other\nfavourite\nfavorite_specify\nadditions\nadditions_other\nsweetener\n...\nmost_paid\nmost_willing\nvalue_cafe\nspent_equipment\nvalue_equipment\ngender\neducation_level\nemployment_status\nnumber_children\npolitical_affiliation\n\n\n\n\n0\n1\n&lt;18 years old\n3\nAt home, At the office, At a cafe\nNaN\nPourover\nNaN\nNo - just black, Milk, dairy alternative, or c...\nNaN\nNaN\n...\nNaN\nNaN\nNaN\nNaN\nNaN\nOther (please specify)\nBachelor's degree\nEmployed full-time\nMore than 3\nDemocrat\n\n\n1\n2\n&gt;65 years old\n3\nAt the office, At a cafe\nNaN\nCortado\nNaN\nNo - just black\nNaN\nNaN\n...\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n2\n3\n25-34 years old\n1\nAt home, At the office, On the go\nNaN\nRegular drip coffee\nNaN\nMilk, dairy alternative, or coffee creamer, Su...\nNaN\nGranulated Sugar, Brown Sugar\n...\nNaN\nNaN\nNaN\nNaN\nNaN\nFemale\nBachelor's degree\nEmployed full-time\nNaN\nDemocrat\n\n\n3\n4\n18-24 years old\n2\nAt the office\nNaN\nIced coffee\nNaN\nMilk, dairy alternative, or coffee creamer\nNaN\nNaN\n...\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n4\n5\n45-54 years old\n2\nAt home, At the office, At a cafe, On the go\nNaN\nRegular drip coffee\nNaN\nNo - just black\nNaN\nNaN\n...\n$4-$6\n$8-$10\nNo\n$500-$1000\nYes\nMale\nMaster's degree\nEmployed full-time\n2\nNo affiliation\n\n\n5\n6\n&gt;65 years old\n1\nAt home\nNaN\nRegular drip coffee\nNaN\nNo - just black\nNaN\nNaN\n...\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n6\n7\n25-34 years old\n2\nAt home, At the office\nNaN\nPourover\nNaN\nNo - just black\nNaN\nNaN\n...\n$2-$4\nMore than $20\nYes\n$50-$100\nYes\nMale\nMaster's degree\nUnemployed\nNaN\nIndependent\n\n\n7\n8\n35-44 years old\n1\nAt the office, At home\nNaN\nIced coffee\nNaN\nNo - just black\nNaN\nNaN\n...\n$10-$15\nMore than $20\nYes\n$100-$300\nYes\nMale\nBachelor's degree\nEmployed full-time\n3\nNo affiliation\n\n\n8\n9\n45-54 years old\nMore than 4\nAt home\nNaN\nPourover\nNaN\nNo - just black\nNaN\nNaN\n...\n$10-$15\n$15-$20\nYes\n$300-$500\nYes\nMale\nBachelor's degree\nEmployed full-time\n3\nNo affiliation\n\n\n9\n10\n35-44 years old\n1\nAt the office, At a cafe, At home\nNaN\nCappuccino\nNaN\nMilk, dairy alternative, or coffee creamer, Su...\nNaN\nGranulated Sugar, Brown Sugar\n...\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n\n\n10 rows × 43 columns\n\n\n\nAge exploration\n\n\nShow code\nsns.catplot(data = df, x = \"age\", kind=\"count\", height=5, aspect=2)\n\n\n\n\n\n\n\n\n\n\nAge 25 to 34 range is the highest age range among coffee customers.\n\n1.3 Data Filtering\n\n\nShow code\ndf_focused = df[[\"age\", \"where_drink\", \"favourite\", 'style']].copy()\ndf_focused.head(10)\n\n\n\n\n\n\n\n\n\nage\nwhere_drink\nfavourite\nstyle\n\n\n\n\n0\n&lt;18 years old\nAt home, At the office, At a cafe\nPourover\nBright\n\n\n1\n&gt;65 years old\nAt the office, At a cafe\nCortado\nFruity\n\n\n2\n25-34 years old\nAt home, At the office, On the go\nRegular drip coffee\nSweet\n\n\n3\n18-24 years old\nAt the office\nIced coffee\nNutty\n\n\n4\n45-54 years old\nAt home, At the office, At a cafe, On the go\nRegular drip coffee\nFloral\n\n\n5\n&gt;65 years old\nAt home\nRegular drip coffee\nFull Bodied\n\n\n6\n25-34 years old\nAt home, At the office\nPourover\nFloral\n\n\n7\n35-44 years old\nAt the office, At home\nIced coffee\nFruity\n\n\n8\n45-54 years old\nAt home\nPourover\nFull Bodied\n\n\n9\n35-44 years old\nAt the office, At a cafe, At home\nCappuccino\nNutty\n\n\n\n\n\n\n\n\nFocusing on 4 attributes including age, where to drink, favourite, and style of drinking coffee."
+  },
+  {
+    "objectID": "gallery/Python/25Winter/Another coffee survey/Pawatsada.html#data-analysis",
+    "href": "gallery/Python/25Winter/Another coffee survey/Pawatsada.html#data-analysis",
+    "title": "Coffee Survey",
+    "section": "2. Data Analysis",
+    "text": "2. Data Analysis\n2.1 Preferred Coffee Places by Age Group\n#Manage “where_drink” : spliting words\n\n\nShow code\ndf_focused['where_drink'] = df_focused['where_drink'].fillna('')\ndf_focused['where_list']=df_focused['where_drink'].str.split(pat=\", \")\ndf_focused.head()\n\n\n\n\n\n\n\n\n\nage\nwhere_drink\nfavourite\nstyle\nwhere_list\n\n\n\n\n0\n&lt;18 years old\nAt home, At the office, At a cafe\nPourover\nBright\n[At home, At the office, At a cafe]\n\n\n1\n&gt;65 years old\nAt the office, At a cafe\nCortado\nFruity\n[At the office, At a cafe]\n\n\n2\n25-34 years old\nAt home, At the office, On the go\nRegular drip coffee\nSweet\n[At home, At the office, On the go]\n\n\n3\n18-24 years old\nAt the office\nIced coffee\nNutty\n[At the office]\n\n\n4\n45-54 years old\nAt home, At the office, At a cafe, On the go\nRegular drip coffee\nFloral\n[At home, At the office, At a cafe, On the go]\n\n\n\n\n\n\n\n#Manage “where_drink” : exploding and making them to list then one-hot for the list\n\n\nShow code\ndf_exploded = df_focused.explode('where_list')\ndummies = pd.crosstab(df_exploded.index, df_exploded['where_list'])\ndf_final = df_focused.join(dummies.groupby(dummies.index).sum())\ndf_final.head()\n\n\n\n\n\n\n\n\n\nage\nwhere_drink\nfavourite\nstyle\nwhere_list\n\nAt a cafe\nAt home\nAt the office\nNone of these\nOn the go\n\n\n\n\n0\n&lt;18 years old\nAt home, At the office, At a cafe\nPourover\nBright\n[At home, At the office, At a cafe]\n0\n1\n1\n1\n0\n0\n\n\n1\n&gt;65 years old\nAt the office, At a cafe\nCortado\nFruity\n[At the office, At a cafe]\n0\n1\n0\n1\n0\n0\n\n\n2\n25-34 years old\nAt home, At the office, On the go\nRegular drip coffee\nSweet\n[At home, At the office, On the go]\n0\n0\n1\n1\n0\n1\n\n\n3\n18-24 years old\nAt the office\nIced coffee\nNutty\n[At the office]\n0\n0\n0\n1\n0\n0\n\n\n4\n45-54 years old\nAt home, At the office, At a cafe, On the go\nRegular drip coffee\nFloral\n[At home, At the office, At a cafe, On the go]\n0\n1\n1\n1\n0\n1\n\n\n\n\n\n\n\n#Manage “where_drink” : exploring mean for each group of age\n\n\nShow code\ngroupby_age = df_final.groupby('age')[df_final.select_dtypes(include='number').columns].mean()\ngroupby_age.head()\n\n\n\n\n\n\n\n\n\n\nAt a cafe\nAt home\nAt the office\nNone of these\nOn the go\n\n\nage\n\n\n\n\n\n\n\n\n\n\n18-24 years old\n0.002398\n0.414868\n0.872902\n0.342926\n0.016787\n0.194245\n\n\n25-34 years old\n0.001055\n0.329641\n0.912975\n0.390295\n0.011603\n0.188291\n\n\n35-44 years old\n0.001095\n0.265060\n0.933187\n0.369113\n0.003286\n0.181818\n\n\n45-54 years old\n0.000000\n0.161972\n0.957746\n0.250000\n0.000000\n0.140845\n\n\n55-64 years old\n0.017045\n0.085227\n0.948864\n0.284091\n0.000000\n0.102273\n\n\n\n\n\n\n\n#Stacked bar plot\n\n\nShow code\ngroupby_age.plot(kind='bar', stacked=True, figsize=(10,6), colormap='tab20')\nplt.title('Preferred Coffee Places by Age Group')\nplt.ylabel('Proportion of Respondents')\nplt.xlabel('Age Group')\nplt.legend(title='Where People Drink Coffee', bbox_to_anchor=(1.05, 1), loc='upper left')\nplt.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\n\n2.2 Preferred Type of Coffee by Age Group\n#Group favourite by Age\n\n\nShow code\nfavourite_by_agegroup = df_focused.groupby('age')['favourite'].value_counts().unstack().fillna(0)\n\n\n#Heatmap\n\n\nShow code\nplt.figure(figsize=(12, 6))\nsns.heatmap(favourite_by_agegroup, annot=True, fmt='.0f', cmap='YlGnBu')\nplt.title('Favorite Type by Age Group')\nplt.ylabel('Age Group')\nplt.xlabel('Favorite')\nplt.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\n\n2.3 Preferred Style of Coffee by Age Group\n#Group Style by Age\n\n\nShow code\nstyle_by_agegroup = df_focused.groupby('age')['style'].value_counts().unstack().fillna(0)\n\n\nGrouped bar plt\n\n\nShow code\nstyle_by_agegroup.T.plot(kind='bar', figsize=(12, 6))\nplt.title('Style Preference by Age Group')\nplt.ylabel('Number of Respondents')\nplt.xlabel('Style')\nplt.legend(title='Age Group', bbox_to_anchor=(1.05, 1), loc='upper left')\nplt.tight_layout()\nplt.show()"
+  },
+  {
+    "objectID": "gallery/Python/25Summer/Edison/fuel_project.html",
+    "href": "gallery/Python/25Summer/Edison/fuel_project.html",
+    "title": "Fuel Consumption",
+    "section": "",
+    "text": "import pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\ndf = pd.read_csv(\"./data/data/qld_fuel.csv\")\nprint(df)\n\n        Unnamed: 0    SiteId                   Site_Name   Site_Brand  \\\n0                1  61290151               Liberty Surat      Liberty   \n1                2  61290151               Liberty Surat      Liberty   \n2                3  61290151               Liberty Surat      Liberty   \n3                4  61291313          Lowes Mungindi Opt           BP   \n4                5  61291313          Lowes Mungindi Opt           BP   \n...            ...       ...                         ...          ...   \n615972      615973  61478211  Metro Petroleum Walkerston   Metro Fuel   \n615973      615974  61478211  Metro Petroleum Walkerston   Metro Fuel   \n615974      615975  61478212      Pitt Stop Classic Café  Independent   \n615975      615976  61478212      Pitt Stop Classic Café  Independent   \n615976      615977  61478212      Pitt Stop Classic Café  Independent   \n\n       Sites_Address_Line_1 Site_Suburb Site_State  Site_Post_Code  \\\n0        61 Burrowes Street       Surat        QLD            4417   \n1        61 Burrowes Street       Surat        QLD            4417   \n2        61 Burrowes Street       Surat        QLD            4417   \n3         126 Barwon Street    Mungindi        QLD            4497   \n4         126 Barwon Street    Mungindi        QLD            4497   \n...                     ...         ...        ...             ...   \n615972          2 Dutton St  Walkerston        QLD            4751   \n615973          2 Dutton St  Walkerston        QLD            4751   \n615974          34 Palm Ave    Seaforth        QLD            4741   \n615975          34 Palm Ave    Seaforth        QLD            4741   \n615976          34 Palm Ave    Seaforth        QLD            4741   \n\n        Site_Latitude  Site_Longitude    Fuel_Type  Price  \\\n0          -27.151687      149.067742       Diesel   1999   \n1          -27.151687      149.067742  PULP 98 RON   2159   \n2          -27.151687      149.067742     Unleaded   1959   \n3          -28.973467      148.983829       Diesel   1990   \n4          -28.973467      148.983829     Unleaded   1920   \n...               ...             ...          ...    ...   \n615972     -21.160166      149.063728     Unleaded   1959   \n615973     -21.160166      149.063728     Unleaded   1989   \n615974     -20.899741      148.964986     Unleaded   2049   \n615975     -20.899741      148.964986     Unleaded   2039   \n615976     -20.899741      148.964986     Unleaded   2099   \n\n         TransactionDateutc  X_id  \n0       2023-10-12 21:56:00   NaN  \n1       2023-12-30 06:54:00   NaN  \n2       2023-12-30 06:54:00   NaN  \n3       2023-06-12 22:00:00   NaN  \n4       2023-06-12 22:00:00   NaN  \n...                     ...   ...  \n615972  2023-09-20 05:14:00   NaN  \n615973  2023-09-25 08:08:00   NaN  \n615974  2023-04-09 04:15:00   NaN  \n615975  2023-04-09 04:24:00   NaN  \n615976  2023-09-25 06:26:00   NaN  \n\n[615977 rows x 14 columns]\n\n\n\n# initial exploration\ndf.columns\n\ndf.info()\n\ndf.head()\n\ndf[\"Fuel_Type\"]\n\npd.unique(df[\"Fuel_Type\"])\n\ndf.describe()\n\ndf[\"Fuel_Type\"].describe()\n\npd.unique(df[\"Site_Suburb\"])\n\ndf[\"Site_Suburb\"].describe()\n\npd.unique(df[\"Site_State\"])\n\ndf[\"Site_State\"].describe()\n\n\ndf[5 : 10]\n\npd.unique(df[\"Site_Name\"])\n\ndf[\"Site_Name\"].describe()\n\ndf.dtypes\n\ndf[\"Price\"].describe()\n\ndf[\"Site_Brand\"].describe()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 615977 entries, 0 to 615976\nData columns (total 14 columns):\n #   Column                Non-Null Count   Dtype  \n---  ------                --------------   -----  \n 0   Unnamed: 0            615977 non-null  int64  \n 1   SiteId                615977 non-null  int64  \n 2   Site_Name             615977 non-null  object \n 3   Site_Brand            615977 non-null  object \n 4   Sites_Address_Line_1  615977 non-null  object \n 5   Site_Suburb           615977 non-null  object \n 6   Site_State            615977 non-null  object \n 7   Site_Post_Code        615977 non-null  int64  \n 8   Site_Latitude         615977 non-null  float64\n 9   Site_Longitude        615977 non-null  float64\n 10  Fuel_Type             615977 non-null  object \n 11  Price                 615977 non-null  int64  \n 12  TransactionDateutc    615977 non-null  object \n 13  X_id                  121457 non-null  float64\ndtypes: float64(3), int64(4), object(7)\nmemory usage: 65.8+ MB\n\n\ncount       615977\nunique          25\ntop       7 Eleven\nfreq        118040\nName: Site_Brand, dtype: object\n\n\n\n# summaries\ngb = df.groupby(\"Fuel_Type\")\n\navg_fuel_by_price = gb[\"Price\"].agg(\"mean\")\n\nplt.ion()\navg_fuel_by_price.plot()\nplt.show()\n\n# Ensure reasonable heights\ndf = df[ (500 &lt; df[\"Price\"]) & (df[\"Price\"] &lt; 4000)]\n\ndf[\"unit_price\"] = df[\"Price\"] / 1000\n\ndf.to_csv(\"./data/filtered_fuel.csv\")\n\nsns.catplot(data = df, x = \"Fuel_Type\", y = \"Price\")\nplt.show()\n\n\nsns.catplot(data = df, x = \"Site_State\", y = \"Fuel_Type\")\nplt.show()\n\n\n# Remove unleaded Fuel_type\ndf1 = df[df[\"Fuel_Type\"] != \"Unleaded\"]\n\n# sns.catplot(data = df1, x = \"Site_State\", y = \"Fuel_Type\")\nplt.show()\n\n# Remove unknown Site_Brand\ndf2 = df[df[\"Site_Brand\"] != \"Unknown\"]\n\n# sns.catplot(data = df2, x = \"Site_State\", y = \"Site_Brand\", kind = \"bar\")\nplt.show()\n\n\nsns.displot(data = df, x = \"Price\", hue = \"Fuel_Type\", kind = \"kde\")\nplt.show()\n\nsns.displot(data = df, x = \"unit_price\", hue = \"Fuel_Type\", kind = \"kde\")\nplt.show()\n\n# sns.catplot(data=df, x=\"unit_price\", y=\"Fuel_type\")\nplt.show()\n\n\n\n\n\n\n\n\n/tmp/ipykernel_10770/3688228111.py:13: SettingWithCopyWarning:\n\n\nA value is trying to be set on a copy of a slice from a DataFrame.\nTry using .loc[row_indexer,col_indexer] = value instead\n\nSee the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nimport pandas as pd\nfuel = pd.read_csv(\"./data/data/qld_fuel.csv\")\nimport geopandas \nfuel_geo = geopandas.GeoDataFrame(fuel, geometry = geopandas.points_from_xy(x = fuel.Site_Longitude, y = fuel.Site_Latitude)) \nfuel_geo.plot()\n\n\n\n\n\n\n\n\n\nimport plotly.express as px\nfigure = px.scatter(data_frame = df, x = \"Fuel_Type\", y = \"unit_price\", color = \"Site_State\",\n           facet_col = \"Site_State\", hover_name = \"Site_Brand\",\n           hover_data = \"Site_Suburb\")\n\nfigure.write_html(\"fuel.html\")\n\n\nimport pandas as pd\nfuel = pd.read_csv(\"./data/data/qld_fuel.csv\")\nimport geopandas \nfuel_geo = geopandas.GeoDataFrame(fuel, geometry = geopandas.points_from_xy(x = fuel.Site_Longitude, y = fuel.Site_Latitude)) \nfuel_geo.plot()"
+  },
+  {
+    "objectID": "gallery/project_gallery.html",
+    "href": "gallery/project_gallery.html",
+    "title": "Project gallery",
+    "section": "",
+    "text": "R Intensive Project\n\n\n\nHehe\n\n\nApr 1, 2028\n\n\n\n\n\n\n\n\n\n\n\n\n\nPublic Toilets Coverage In Brisbane\n\n\n\nBardia Danaei\n\n\nFeb 12, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nBne Drop Bear Map\n\n\n\nFrank\n\n\nFeb 12, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nMap Kgari\n\n\n\nKent\n\n\nFeb 12, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nBrisbane Food Environment\n\n\n\nNara\n\n\nFeb 12, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nMortality Across Qld Health Department\n\n\n\nQuan\n\n\nFeb 12, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nMuralagIslandSampleLocations\n\n\n\nShawneegorringe\n\n\nFeb 12, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nBooks\n\n\n\nStéphane\n\n\nFeb 12, 2026\n\n\n\n\n\n\n\n\n\n\n\nCafe\n\n\n\nAmber Sewell-Green\n\n\nJan 28, 2026\n\n\n\n\n\n\n\n\n\n\n\nGood reads\n\n\n\nChuanqing Li\n\n\nJan 28, 2026\n\n\n\n\n\n\n\n\n\n\n\nCoffee Flavour Preferences\n\n\n\nTom\n\n\nJan 1, 2026\n\n\n\n\n\n\n\n\n\n\n\nGoalkeepers and their heights\n\n\n\nCameron West and Stéphane Guillou\n\n\nJan 1, 2026\n\n\n\n\n\n\n\n\n\n\n\nWhat Determines a Goodreads Rating?\n\n\n\nEugene, Kira, Chen and Jaz\n\n\nJan 1, 2026\n\n\n\n\n\n\n\n\n\n\n\nPredicting Book Ratings from Text Reviews Count\n\n\n\nEugene, Kira, Chen, and Jaz\n\n\nJan 1, 2026\n\n\n\n\n\n\n\n\n\n\n\nWildlife\n\n\n\nNayomi and Julian\n\n\nJan 1, 2026\n\n\n\n\n\n\n\n\n\n\n\nTaste testing coffee results\n\n\n\nzoë\n\n\nJan 1, 2026\n\n\n\n\n\n\n\n\n\n\n\nMel Property\n\n\n\nSandya & Buddhika\n\n\nJul 17, 2025\n\n\n\n\n\n\n\n\n\n\n\nQueensland hospitals data analysis\n\n\n\nSwagata & Sandhya\n\n\nJul 17, 2025\n\n\n\n\n\n\n\n\n\n\n\nPopulation: Presentation for R training\n\n\n\n\n\n\nJul 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nLife expectancy comparison between Australian and Cambodian populations between 1950 and 2023\n\n\n\nRob Cincotta and Diana Sanabria\n\n\nJul 10, 2025\n\n\n\n\n\n\n\n\n\n\n\nMy Python project\n\n\n\nNahar\n\n\nJul 10, 2025\n\n\n\n\n\n\n\n\n\n\n\nCoffee Survey\n\n\n\nPawatsada Sanlom\n\n\nJul 9, 2025\n\n\n\n\n\n\n\n\n\n\n\nAnalysis of Coffee Preference\n\n\n\nKim, Janine, Sera & Akansha\n\n\nJul 9, 2025\n\n\n\n\n\n\n\n\n\n\n\nCoffee preferences\n\n\n\nHannah, Orlando and Grace\n\n\nJul 9, 2025\n\n\n\n\n\n\n\n\n\n\n\nMy Python Report\n\n\n\nYuli Astriani & Elisabeth Natalia Palan Bolen\n\n\nJul 9, 2025\n\n\n\n\n\n\n\n\n\n\n\nQueensland Fuel Price\n\n\n\nNana, Jia Vei Yar, Yawen\n\n\nJul 9, 2025\n\n\n\n\n\n\n\n\n\n\n\nGDP per Cap in different continents\n\n\n\nPrince\n\n\nJul 9, 2025\n\n\n\n\n\n\n\n\n\n\n\nmy python report\n\n\n\nSisay\n\n\nJul 9, 2025\n\n\n\n\n\n\n\n\n\n\n\nFC Barcelona Team Analysis\n\n\n\nAdriel Wijaya\n\n\nJul 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nGood Reads\n\n\n\nAisha Aslam\n\n\nJul 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nWorkshop Project Report\n\n\n\nAndrew\n\n\nJul 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nReport_ben\n\n\n\n\n\n\nJul 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nProject Hospital Report\n\n\n\nCasey Atkins & Jess\n\n\nJul 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nQLD fuel\n\n\n\n\n\n\nJul 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nQLD Fuel\n\n\n\n\n\n\nJul 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nBook Report\n\n\n\nLiz\n\n\nJul 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nNora project\n\n\n\nNora\n\n\nJul 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nMy Report\n\n\n\nCathy\n\n\nJul 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nGoalkeepers and their heights\n\n\n\nCameron West and Stéphane Guillou\n\n\nJun 23, 2025\n\n\n\n\n\n\n\n\n\n\n\nGoalkeepers and their heights\n\n\n\nCameron West and Stéphane Guillou\n\n\nJun 23, 2025\n\n\n\n\n\n\n\n\n\n\n\nQueensland Fuel Price in 2023\n\n\n\nAdelia & Lauren\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nGoodreads\n\n\n\nCaira\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nFuel Consumption\n\n\n\nEdison Vargas\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nFuel Consumption\n\n\n\nEdison Vargas\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nGoodreads document\n\n\n\nEmma\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nBird Strikes and Aeroplane Damages in the U.S. (1990-1999)\n\n\n\nLiz & Koyo\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nThe popular author\n\n\n\nGoodread\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nProject-Python\n\n\n\n\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nAeroplane Bird Strike Incidents\n\n\n\nKoyo Yanagisawa\n\n\nJan 15, 2025\n\n\n\n\n\n\n\n\n\n\n\nAnalyzing the Relationship between Ratings and Reviews for Books\n\n\n\nNurul Najihah\n\n\nJan 15, 2025\n\n\n\n\n\n\n\n\n\n\n\nGoalkeepers and their heights\n\n\n\nCameron West and Stéphane Guillou\n\n\nJan 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nCOFFEE\n\n\n\nAdelia\n\n\nJan 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nGoodreads books published in 2006\n\n\n\nBrittnee, Cleo, & David\n\n\nJan 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nBirdStrikes\n\n\n\n\n\n\nJan 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nCoffee\n\n\n\nCaira Loo\n\n\nJan 1, 2025\n\n\n\n\n\n\n\n\n\n\n\n📝 Coffee vs Employment status\n\n\n\nDawn\n\n\nJan 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nMelbourne Housing\n\n\n\n\n\n\nJan 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nHospital Data\n\n\n\n\n\n\nJan 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nImpact of Birth Month on Football careers\n\n\n\nMehershad Wadia\n\n\nJan 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nBird Strike Dashboard\n\n\n\nEdiana\n\n\nJan 1, 2025\n\n\n\n\n\n\n\n\n\n\n\nCoffee\n\n\n\nWarren\n\n\nJan 1, 2025\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "UQ Library Training Intensives",
+    "section": "",
+    "text": "UQ Library Training Intensives\nWelcome to our training intensives!\nHere you can find all the material for our three-day intensives, which run twice a year.\nThe next batch will be in late Jan / early Feb 2026.\nR with RStudio\nTraining Intensive\n\n27th to 29th Jan 2026 Python for Data Analysis\nTraining Intensive\n\n3rd to 5th Feb 2026 QGIS\nTraining Intensive\n\n10th to 12th Feb 2026"
+  },
+  {
+    "objectID": "gallery/Python/25Winter/Australia and Cambodia Populations/project_report.html",
+    "href": "gallery/Python/25Winter/Australia and Cambodia Populations/project_report.html",
+    "title": "Life expectancy comparison between Australian and Cambodian populations between 1950 and 2023",
+    "section": "",
+    "text": "We wanted to look at life expectancy and population over tie between Australia and Cambodia to compare differences bettwen diferent regions We used the popultion csvand extracted data from Janyary population column and also identified australia and Cambodia We generated graphs using seaborn and can see the effect of the war in Cambodiaduring the late 70s\n\n\nShow code\n# Set up code\nimport pandas as pd\n\n\nimport pandas as pd\n\nimport matplotlib.pyplot as plt\n\nimport seaborn as sns\n\n\n\ndf_raw = pd.read_csv(\"../../../../data/population.csv\")\n\ndf = df_raw.copy()\n\nplt.show()\n\ndf_raw.shape\n\ndf_raw.columns\n\nWorld=df.loc[df[\"Region\"]==\"World\"]\n\nsns.lineplot(data=World, x=\"Year\", y=\"Jan.Population\")\n\n\n \n\ndf_raw = pd.read_csv(\"../../../../data/population.csv\")\n\nplt.show()\n\ndf_raw.shape\n\ndf_raw.columns\n\n \n\ndf[\"Jan.Population\"]\n\nAustralia=df.loc[df[\"Region\"]==\"Australia\"]\n\nsns.lineplot(data=Australia, x=\"Year\", y=\"Life.Expectancy.at.Birth..both.sexes..years.\")\n\nCambodia=df.loc[df[\"Region\"]==\"Cambodia\"]\n\nsns.lineplot(data=Cambodia, x=\"Year\", y=\"Life.Expectancy.at.Birth..both.sexes..years.\")\n\n\n\nsns.lineplot(data=Cambodia, x=\"Year\", y=\"Jan.Population\")\n\n            \n\ncountries = [\"Australia\", \"Cambodia\",]\n\ndf_countries = df[df[\"Region\"].isin(countries)].copy()\n\n \n\nplt.figure(figsize=(10, 6))\n\nfor country in countries:\n\n    subset = df_countries[df_countries[\"Region\"] == country]\n\n    plt.plot(subset[\"Year\"], subset[\"Jan.Population\"], label=country)\n\nplt.xlabel(\"Year\")\n\nplt.ylabel(\"Population\")\n\nplt.title(\"Population Over Time\")\n\nplt.legend()\n\nplt.grid(True)\n\nplt.show()\n\n \n\nplt.figure(figsize=(10, 6))\n\nfor country in countries:\n\n    subset = df_countries[df_countries[\"Region\"] == country]\n\n    plt.plot(subset[\"Year\"], subset[\"Life.Expectancy.at.Birth..both.sexes..years.\"], label=country)\n\nplt.xlabel(\"Year\")\n\nplt.ylabel(\"Life Expectancy at Birth\")\n\nplt.title(\"Life Expectancy Over Time\")\n\nplt.legend()\n\nplt.grid(True)\n\nplt.show()"
+  },
+  {
+    "objectID": "gallery/Python/25Winter/Australia and Cambodia Populations/project_report.html#introduction",
+    "href": "gallery/Python/25Winter/Australia and Cambodia Populations/project_report.html#introduction",
+    "title": "Life expectancy comparison between Australian and Cambodian populations between 1950 and 2023",
+    "section": "",
+    "text": "We wanted to look at life expectancy and population over tie between Australia and Cambodia to compare differences bettwen diferent regions We used the popultion csvand extracted data from Janyary population column and also identified australia and Cambodia We generated graphs using seaborn and can see the effect of the war in Cambodiaduring the late 70s\n\n\nShow code\n# Set up code\nimport pandas as pd\n\n\nimport pandas as pd\n\nimport matplotlib.pyplot as plt\n\nimport seaborn as sns\n\n\n\ndf_raw = pd.read_csv(\"../../../../data/population.csv\")\n\ndf = df_raw.copy()\n\nplt.show()\n\ndf_raw.shape\n\ndf_raw.columns\n\nWorld=df.loc[df[\"Region\"]==\"World\"]\n\nsns.lineplot(data=World, x=\"Year\", y=\"Jan.Population\")\n\n\n \n\ndf_raw = pd.read_csv(\"../../../../data/population.csv\")\n\nplt.show()\n\ndf_raw.shape\n\ndf_raw.columns\n\n \n\ndf[\"Jan.Population\"]\n\nAustralia=df.loc[df[\"Region\"]==\"Australia\"]\n\nsns.lineplot(data=Australia, x=\"Year\", y=\"Life.Expectancy.at.Birth..both.sexes..years.\")\n\nCambodia=df.loc[df[\"Region\"]==\"Cambodia\"]\n\nsns.lineplot(data=Cambodia, x=\"Year\", y=\"Life.Expectancy.at.Birth..both.sexes..years.\")\n\n\n\nsns.lineplot(data=Cambodia, x=\"Year\", y=\"Jan.Population\")\n\n            \n\ncountries = [\"Australia\", \"Cambodia\",]\n\ndf_countries = df[df[\"Region\"].isin(countries)].copy()\n\n \n\nplt.figure(figsize=(10, 6))\n\nfor country in countries:\n\n    subset = df_countries[df_countries[\"Region\"] == country]\n\n    plt.plot(subset[\"Year\"], subset[\"Jan.Population\"], label=country)\n\nplt.xlabel(\"Year\")\n\nplt.ylabel(\"Population\")\n\nplt.title(\"Population Over Time\")\n\nplt.legend()\n\nplt.grid(True)\n\nplt.show()\n\n \n\nplt.figure(figsize=(10, 6))\n\nfor country in countries:\n\n    subset = df_countries[df_countries[\"Region\"] == country]\n\n    plt.plot(subset[\"Year\"], subset[\"Life.Expectancy.at.Birth..both.sexes..years.\"], label=country)\n\nplt.xlabel(\"Year\")\n\nplt.ylabel(\"Life Expectancy at Birth\")\n\nplt.title(\"Life Expectancy Over Time\")\n\nplt.legend()\n\nplt.grid(True)\n\nplt.show()"
+  },
+  {
+    "objectID": "gallery/Python/25Winter/Coffee Preferences/ProjectCoffee.html",
+    "href": "gallery/Python/25Winter/Coffee Preferences/ProjectCoffee.html",
+    "title": "Coffee preferences",
+    "section": "",
+    "text": "We are investigating the relationship between coffee preferences and age, specifically preferred coffee style, amount consumed, coffee expertise and overall favourite coffee type from the tasing. The dataset we are using comes from a Great American Coffee Taste Test, during which thousands of people simultaneously blind-tasted the same four coffees.\n\n\nShow code\nimport seaborn as sns\nimport matplotlib.pyplot as plt\nimport numpy as np\nimport pandas as pd"
+  },
+  {
+    "objectID": "gallery/Python/25Winter/Coffee Preferences/ProjectCoffee.html#introduction",
+    "href": "gallery/Python/25Winter/Coffee Preferences/ProjectCoffee.html#introduction",
+    "title": "Coffee preferences",
+    "section": "",
+    "text": "We are investigating the relationship between coffee preferences and age, specifically preferred coffee style, amount consumed, coffee expertise and overall favourite coffee type from the tasing. The dataset we are using comes from a Great American Coffee Taste Test, during which thousands of people simultaneously blind-tasted the same four coffees.\n\n\nShow code\nimport seaborn as sns\nimport matplotlib.pyplot as plt\nimport numpy as np\nimport pandas as pd"
+  },
+  {
+    "objectID": "gallery/Python/25Winter/Group2/group_project.html",
+    "href": "gallery/Python/25Winter/Group2/group_project.html",
+    "title": "Queensland Fuel Price",
+    "section": "",
+    "text": "This Report will focus on Fuel price by Fuel types, Suburbs and change by months\n\nModules that used: pandas, seaborn\nDataset of Queensland Fuel Price (Fuel prices by the pump in Queensland)\nData from Data from the Queensland Government’s Open Data Portal\nInvestigation includes Fuel price corolation by types, date and suburbs"
+  },
+  {
+    "objectID": "gallery/Python/25Winter/Group2/group_project.html#introduction",
+    "href": "gallery/Python/25Winter/Group2/group_project.html#introduction",
+    "title": "Queensland Fuel Price",
+    "section": "",
+    "text": "This Report will focus on Fuel price by Fuel types, Suburbs and change by months\n\nModules that used: pandas, seaborn\nDataset of Queensland Fuel Price (Fuel prices by the pump in Queensland)\nData from Data from the Queensland Government’s Open Data Portal\nInvestigation includes Fuel price corolation by types, date and suburbs"
+  },
+  {
+    "objectID": "gallery/Python/25Winter/Group2/group_project.html#average-fuel-prices-by-fuel-types",
+    "href": "gallery/Python/25Winter/Group2/group_project.html#average-fuel-prices-by-fuel-types",
+    "title": "Queensland Fuel Price",
+    "section": "Average Fuel Prices by Fuel Types",
+    "text": "Average Fuel Prices by Fuel Types\n\n\nShow code\n# Set up code\nimport pandas as pd\ndf=pd.read_csv(\"../../../../data/qld_fuel.csv\")\nimport seaborn as sns\nfp=df[\"Price\"]\nft=df[\"Fuel_Type\"]\nimport matplotlib.pyplot as plt\nsns.barplot(data=df, x=ft, y=fp, errorbar=None, width=0.6, palette=\"muted\")\n\nplt.xticks(rotation=45, ha='right')\n\nplt.title(\"Average Fuel Prices by Type in QLD\")\nplt.xlabel(\"Fuel Type\")\nplt.ylabel(\"Price ($/L)\")\n\nplt.tight_layout()\nplt.show()"
+  },
+  {
+    "objectID": "gallery/Python/25Winter/Group2/group_project.html#fuel-price-by-suburbs",
+    "href": "gallery/Python/25Winter/Group2/group_project.html#fuel-price-by-suburbs",
+    "title": "Queensland Fuel Price",
+    "section": "Fuel Price by Suburbs",
+    "text": "Fuel Price by Suburbs\n\n\nShow code\ndf[\"TransactionDateutc\"] = pd.to_datetime(df[\"TransactionDateutc\"])\ndf[\"Price\"] = df[\"Price\"] / 100 \n\n# removing outliers \ndf = df[df[\"Price\"] &lt; 50] \ndf = df[df[\"Price\"] &gt; 10] \n\n# summary stats \nsummary_stats = df.groupby(\"Site_Suburb\")[\"Price\"].agg(min_price = \"min\", max_price = \"max\")\n\nsummary_stats[\"price_range\"] = summary_stats[\"max_price\"] - summary_stats[\"min_price\"]\n\n# Top 3 and bottom 3 suburbs \n\ntop3_change = summary_stats.sort_values(by=\"price_range\", ascending= False). head(3)\nbottom3_change = summary_stats.sort_values(by=\"price_range\", ascending= True). head(3)\n\nselected_suburbs = top3_change.index.tolist() + bottom3_change.index.tolist()\ndf_selected = df[df[\"Site_Suburb\"].isin(selected_suburbs)]\n\ndf_selected[\"Site_Suburb\"] = df_selected[\"Site_Suburb\"].str.strip().str.title()\n\n# Plot\nsns.catplot(data = df_selected, x = \"Site_Suburb\", y = \"Price\", kind = \"box\")\nplt.xlabel (\"Site_Suburb\")\nplt.ylabel (\"Price\")\nplt.savefig (\"tb.png\")\nplt.show()"
+  },
+  {
+    "objectID": "gallery/Python/25Winter/Group2/group_project.html#price-by-time",
+    "href": "gallery/Python/25Winter/Group2/group_project.html#price-by-time",
+    "title": "Queensland Fuel Price",
+    "section": "Price by Time",
+    "text": "Price by Time\n\n\nShow code\ndf.describe()\n\n# remove nulls\ndf[df[\"X_id\"].notna()]\ndf_full_X_id = df[df[\"X_id\"].notna()]\ndf_full_X_id.shape\n\n\ndf[\"Site_Suburb\"].count()\ndf[\"Site_Suburb\"].unique()\ndf[\"Site_Suburb\"].value_counts()\n\ndf[\"Fuel_Type\"].count()\ndf[\"Fuel_Type\"].unique()\ndf[\"Fuel_Type\"].value_counts()\n\n\ndf[\"TransactionDateutc\"] = pd.to_datetime(df[\"TransactionDateutc\"])\ndf[\"date_only\"] = df[\"TransactionDateutc\"].dt.date\n\n\n\n\ngb = df.groupby(\"date_only\")\navg_price_by_date = gb[\"Price\"].agg(\"mean\").reset_index()\navg_price_by_date.to_csv(\"./data/avg_price_by_date.csv\")  # export subset\n\ndf[\"TransactionDateutc\"].dtypes\n\ndf[\"year_month\"] = df[\"TransactionDateutc\"].dt.to_period(\"M\")\ngb_year_month = df.groupby(\"year_month\")\navg_price_by_year_month = gb_year_month[\"Price\"].agg(\"mean\").reset_index()\navg_price_by_year_month.to_csv(\"./data/avg_price_by_year_month.csv\")\nimport seaborn as sns\nimport scipy.stats as stats\nimport matplotlib.pyplot as plt\n\n\n\ntype(\"year_month\")\ntype(\"date_only\")\n\navg_price_by_year_month[\"year_month\"] = avg_price_by_year_month[\"year_month\"].dt.to_timestamp()\nsns.relplot(data = avg_price_by_date, x = \"date_only\", y = \"Price\", hue = \"Price\")\nsns.lineplot(data =avg_price_by_year_month, x = \"year_month\", y = \"Price\", color = \"red\")"
+  },
+  {
+    "objectID": "gallery/Python/25Winter/Prince/gapminder2025.html",
+    "href": "gallery/Python/25Winter/Prince/gapminder2025.html",
+    "title": "GDP per Cap in different continents",
+    "section": "",
+    "text": "We will first load the essential packages and dataset\n\n\nSet up code\n#Import data\nimport pandas as pd \n\ndf = pd.read_csv(\"../../../../data/gapminder.csv\")"
+  },
+  {
+    "objectID": "gallery/Python/25Winter/Prince/gapminder2025.html#loading-the-datasets-and-packages",
+    "href": "gallery/Python/25Winter/Prince/gapminder2025.html#loading-the-datasets-and-packages",
+    "title": "GDP per Cap in different continents",
+    "section": "",
+    "text": "We will first load the essential packages and dataset\n\n\nSet up code\n#Import data\nimport pandas as pd \n\ndf = pd.read_csv(\"../../../../data/gapminder.csv\")"
+  },
+  {
+    "objectID": "gallery/Python/25Winter/Prince/gapminder2025.html#inspect-data",
+    "href": "gallery/Python/25Winter/Prince/gapminder2025.html#inspect-data",
+    "title": "GDP per Cap in different continents",
+    "section": "Inspect data",
+    "text": "Inspect data\n\n\nShow code\ndf.columns\ndf.info()\ndf.describe() \ndf.dtypes\ndf[\"lifeExp\"] \ndf[\"lifeExp\"].unique()\ndf[\"lifeExp\"].describe()\ndf[\"continent\"].describe()\ndf[\"continent\"]\n\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 1704 entries, 0 to 1703\nData columns (total 6 columns):\n #   Column     Non-Null Count  Dtype  \n---  ------     --------------  -----  \n 0   country    1704 non-null   object \n 1   year       1704 non-null   int64  \n 2   pop        1704 non-null   float64\n 3   continent  1704 non-null   object \n 4   lifeExp    1704 non-null   float64\n 5   gdpPercap  1704 non-null   float64\ndtypes: float64(3), int64(1), object(2)\nmemory usage: 80.0+ KB\n\n\n0         Asia\n1         Asia\n2         Asia\n3         Asia\n4         Asia\n         ...  \n1699    Africa\n1700    Africa\n1701    Africa\n1702    Africa\n1703    Africa\nName: continent, Length: 1704, dtype: object"
+  },
+  {
+    "objectID": "gallery/Python/25Winter/Prince/gapminder2025.html#filter-and-subset-the-data-and-grouping",
+    "href": "gallery/Python/25Winter/Prince/gapminder2025.html#filter-and-subset-the-data-and-grouping",
+    "title": "GDP per Cap in different continents",
+    "section": "Filter and subset the data and grouping",
+    "text": "Filter and subset the data and grouping\n\n\nShow code\nsubset_con=df[[\"continent\", \"gdpPercap\", \"year\"]]\nsummary_con= subset_con.groupby(\"continent\")[\"gdpPercap\"].mean()\nsummary_con= summary_con.reset_index()"
+  },
+  {
+    "objectID": "gallery/Python/25Winter/Prince/gapminder2025.html#visualize-the-data",
+    "href": "gallery/Python/25Winter/Prince/gapminder2025.html#visualize-the-data",
+    "title": "GDP per Cap in different continents",
+    "section": "Visualize the data",
+    "text": "Visualize the data\nSummary of mean GDP per Cap in different continents\n\n\nShow code\nimport seaborn as sns\nsns.catplot(data=df,\n            x=\"continent\",\n            y=\"gdpPercap\",\n            kind=\"box\",\n            estimator=\"std\",\n            hue=\"continent\"\n            ) \n\n\n\n\n\nGPD per Capital in different continents"
+  },
+  {
+    "objectID": "gallery/Python/25Winter/Prince/gapminder2025.html#visualize-the-data-1",
+    "href": "gallery/Python/25Winter/Prince/gapminder2025.html#visualize-the-data-1",
+    "title": "GDP per Cap in different continents",
+    "section": "Visualize the data",
+    "text": "Visualize the data\nSummary of GDP per Cap in different continents\n\n\nShow code\nsns.catplot(data=summary_con,\n            x=\"continent\",\n            y=\"gdpPercap\",\n            kind=\"box\",\n            estimator=\"std\",\n            hue=\"continent\"\n            )"
+  },
+  {
+    "objectID": "gallery/Python/25Winter/Prince/gapminder2025.html#interactive-plot",
+    "href": "gallery/Python/25Winter/Prince/gapminder2025.html#interactive-plot",
+    "title": "GDP per Cap in different continents",
+    "section": "Interactive plot",
+    "text": "Interactive plot\n\n\nShow code\nimport plotly.express as px\nimport matplotlib.pyplot as plt\npx.scatter(data_frame = df, x = \"continent\", y = \"gdpPercap\", color = \"continent\")"
+  },
+  {
+    "objectID": "gallery/Python/25Winter/Prince/gapminder2025.html#make-a-global-chloropeth",
+    "href": "gallery/Python/25Winter/Prince/gapminder2025.html#make-a-global-chloropeth",
+    "title": "GDP per Cap in different continents",
+    "section": "Make a global chloropeth",
+    "text": "Make a global chloropeth\nWe will now visualize it on a world map\n\n\nShow code\n# Compute mean GDP per capita per continent\ncontinent_gdp = df.groupby(\"continent\")[\"gdpPercap\"].mean()\n\n# Map each country's continent GDP\ndf[\"continent_gdp\"] = df[\"continent\"].map(continent_gdp)\n\n# Drop duplicates to keep only one row per country\ncountry_continent_gdp = df.drop_duplicates(\"country\")[[\"country\", \"continent_gdp\"]]\n\n#plot\npx.choropleth(country_continent_gdp,\n                    locations=\"country\",\n                    locationmode=\"country names\",\n                    color=\"continent_gdp\",\n                    color_continuous_scale=\"Plasma\",\n                    title=\"Continent-Level Avg GDP per Capita (Mapped by Country)\",\n                    labels={\"continent_gdp\": \"Continent Avg GDP\"})\n\n\n                            \n                                            \nGPD per Capital in different continents"
+  },
+  {
+    "objectID": "gallery/Python/25Winter/example_project/example_project.html",
+    "href": "gallery/Python/25Winter/example_project/example_project.html",
+    "title": "Goalkeepers and their heights",
+    "section": "",
+    "text": "Set up code\nimport matplotlib.pyplot as plt\nimport pandas as pd\nimport plotly.express as px\nimport seaborn as sns\n\ndf_raw = pd.read_csv(\"../../../../data/Players2024.csv\")"
+  },
+  {
+    "objectID": "gallery/Python/25Winter/example_project/example_project.html#a-glimpse-at-the-dataset",
+    "href": "gallery/Python/25Winter/example_project/example_project.html#a-glimpse-at-the-dataset",
+    "title": "Goalkeepers and their heights",
+    "section": "A glimpse at the dataset",
+    "text": "A glimpse at the dataset\nWe’ll begin just by taking a glimpse at the dataset:\n\n\nShow code\ndf_raw.head(10)\n\n\n\n\n\n\n\n\n\nname\nbirth_date\nheight_cm\npositions\nnationality\nage\nclub\n\n\n\n\n0\nJames Milner\n1986-01-04\n175.0\nMidfield\nEngland\n38\nBrighton and Hove Albion Football Club\n\n\n1\nAnastasios Tsokanis\n1991-05-02\n176.0\nMidfield\nGreece\n33\nVolou Neos Podosferikos Syllogos\n\n\n2\nJonas Hofmann\n1992-07-14\n176.0\nMidfield\nGermany\n32\nBayer 04 Leverkusen Fußball\n\n\n3\nPepe Reina\n1982-08-31\n188.0\nGoalkeeper\nSpain\n42\nCalcio Como\n\n\n4\nLionel Carole\n1991-04-12\n180.0\nDefender\nFrance\n33\nKayserispor Kulübü\n\n\n5\nLudovic Butelle\n1983-04-03\n188.0\nGoalkeeper\nFrance\n41\nStade de Reims\n\n\n6\nDaley Blind\n1990-03-09\n180.0\nDefender\nNetherlands\n34\nGirona Fútbol Club S. A. D.\n\n\n7\nCraig Gordon\n1982-12-31\n193.0\nGoalkeeper\nScotland\n41\nHeart of Midlothian Football Club\n\n\n8\nDimitrios Sotiriou\n1987-09-13\n185.0\nGoalkeeper\nGreece\n37\nOmilos Filathlon Irakliou FC\n\n\n9\nAlessio Cragno\n1994-06-28\n184.0\nGoalkeeper\nItaly\n30\nAssociazione Calcio Monza"
+  },
+  {
+    "objectID": "gallery/Python/25Winter/example_project/example_project.html#cleaning-the-data",
+    "href": "gallery/Python/25Winter/example_project/example_project.html#cleaning-the-data",
+    "title": "Goalkeepers and their heights",
+    "section": "Cleaning the data",
+    "text": "Cleaning the data\nThe data had a few issues, as the following plot shows:\n\n\nShow code\nsns.catplot(df_raw, x = \"positions\", y = \"height_cm\")\n\n\n\n\n\n\n\n\n\nIt looks like some of the players’ positions and heights were recorded incorrectly. To clean, let’s remove the “Missing” positions and ensure that heights are reasonable:\n\n\nShow code\ndf = df_raw.copy()\n\n# Remove missing position\ndf = df[df[\"positions\"] != \"Missing\"]\n\n# Ensure reasonable heights\ndf = df[df[\"height_cm\"] &gt; 100]\n\n\nTo confirm, let’s plot the outliers in a different colour\n\n\nShow code\n# Identify outliers\noutliers = pd.concat([df_raw,df]).drop_duplicates(keep = False)\n\nsns.catplot(df, x = \"positions\", y = \"height_cm\")\nsns.stripplot(outliers, x = \"positions\", y = \"height_cm\", color = \"r\")"
+  },
+  {
+    "objectID": "gallery/Python/25Winter/example_project/example_project.html#visualising-the-players-heights",
+    "href": "gallery/Python/25Winter/example_project/example_project.html#visualising-the-players-heights",
+    "title": "Goalkeepers and their heights",
+    "section": "Visualising the players’ heights",
+    "text": "Visualising the players’ heights\nAfter cleaning the data we can now analyse the players’ heights to see if there’s differences between positions. A box plot can show the distribution of heights:\n\n\nShow code\nsns.catplot(data = df, x = \"positions\", y = \"height_cm\", kind = \"box\", order = [\"Goalkeeper\", \"Defender\", \"Midfield\", \"Attack\"])\nplt.xlabel(\"Position\")\nplt.ylabel(\"Height (cm)\")\nplt.savefig(\"tb.png\")\nplt.show()\n\n\n\n\n\n\n\n\n\nIt looks like goalkeepers are taller than the rest!\nLet’s through the age variable into the mix, to see if players’ heights allow them to compete longer.\n\n\nShow code\npx.scatter(data_frame = df, x = \"age\", y = \"height_cm\", color = \"positions\",\n           facet_col = \"positions\", facet_col_wrap = 2, hover_name = \"name\",\n           hover_data = \"nationality\", labels = {\"height_cm\": \"Height (cm)\",\n                                                 \"positions\": \"Position\"})\n\n\n                            \n                                            \n\n\nIt doesn’t look like there’s a relationship between heights and ages, but clearly it affects their position!"
+  },
+  {
+    "objectID": "gallery/Python/25Winter/example_project/example_project.html#global-spread",
+    "href": "gallery/Python/25Winter/example_project/example_project.html#global-spread",
+    "title": "Goalkeepers and their heights",
+    "section": "Global spread",
+    "text": "Global spread\nWe haven’t looked at the nationality column yet. Let’s draw up a map using plotly to see where the players come from.\n\n\nShow code\n# Change country names to match plotly reference\ndf[\"nationality\"] = df[\"nationality\"].replace([\"England\", \"Türkiye\", \"Cote d'Ivoire\", \n                                               \"Northern Ireland\", \"Wales\"], \n                                               [\"United Kingdom\", \"Turkey\", \"Ivory Coast\",\n                                                \"United Kingdom\", \"United Kingdom\"])\n\n# Make the count\ncountries = df.value_counts(\"nationality\")\n\n# Make the plot\npx.choropleth(locations = countries.index, locationmode = \"country names\", color = countries,\n              labels = {\"locations\": \"Country\", \"color\": \"# of players\"})\n\n\n                            \n                                            \n\n\nLooks like most players are from Europe. Pan and zoom to see the finer details."
+  },
+  {
+    "objectID": "gallery/QGIS/26Summer/Frank/BNE_drop_bear_map-Frank.html",
+    "href": "gallery/QGIS/26Summer/Frank/BNE_drop_bear_map-Frank.html",
+    "title": "Bne Drop Bear Map",
+    "section": "",
+    "text": "Download and view the project fullscreen"
+  },
+  {
+    "objectID": "gallery/QGIS/26Summer/Nara/Brisbane_Food_Environment-Nara.html",
+    "href": "gallery/QGIS/26Summer/Nara/Brisbane_Food_Environment-Nara.html",
+    "title": "Brisbane Food Environment",
+    "section": "",
+    "text": "Download and view the project fullscreen"
+  },
+  {
+    "objectID": "gallery/QGIS/26Summer/ShawneeGorringe/MuralagIslandSampleLocations-ShawneeGorringe.html",
+    "href": "gallery/QGIS/26Summer/ShawneeGorringe/MuralagIslandSampleLocations-ShawneeGorringe.html",
+    "title": "MuralagIslandSampleLocations",
+    "section": "",
+    "text": "Download and view the project fullscreen"
   },
   {
     "objectID": "gallery/R/25Winter/Adriel Project/Report-Test.html",
@@ -2608,7 +2657,7 @@
     "href": "qgis/Advanced topics/6-Field_Data.html#folder-setup",
     "title": "Field Data Collection",
     "section": "Folder Setup",
-    "text": "Folder Setup\nWe need to create two new folders in our Enoggera_Windfarm_26 folder\n-   \"DCIM\" - this is for storing images from our phone!\n\n-   \"EH_Fieldwork\" - we need this one to export our project to QField",
+    "text": "Folder Setup\nWe need to create two new folders in our Enoggera_Windfarm_26 folder\n\n“DCIM” - this is for storing images from our phone!\n“EH_Fieldwork” - we need this one to export our project to QField",
     "crumbs": [
       "QGIS",
       "Advanced topics",
@@ -2620,7 +2669,7 @@
     "href": "qgis/Advanced topics/6-Field_Data.html#install-qfield",
     "title": "Field Data Collection",
     "section": "Install QField",
-    "text": "Install QField\nQField plugs directly in to QGIS, and allows you to link a QGIS project with your mobile phone for data collection.\nAndroid Download iOS Download",
+    "text": "Install QField\nQField plugs directly in to QGIS, and allows you to link a QGIS project with your mobile phone for data collection.\n\nAndroid Download\niOS Download",
     "crumbs": [
       "QGIS",
       "Advanced topics",
@@ -2632,7 +2681,7 @@
     "href": "qgis/Advanced topics/6-Field_Data.html#buffer-data",
     "title": "Field Data Collection",
     "section": "Buffer Data",
-    "text": "Buffer Data\nAs we’ve seen, buffers are a simple, but powerful, tool that we can use to extend the borders of our vector data. It’s useful for polygons, lines, and points.\nPerhaps we need to keep 10m from the Project Area boundaries when doing our fieldwork. A buffer can help us there.\n\nPolygons to Lines\nTo buffer either side of the edges of our boundaries, we need to convert them from Polygons to Lines.\n\nGo to Vector &gt; Geometry Tools &gt; Polygons to Lines\nSet the Input Layer to Project Area\nClick OK\n\nThis will create a temporary file called Lines, you can choose to save it instead, but that is optional.\n\n\nBuffer the Lines\n\nGo to Vector &gt; Geoprocessing Tools &gt; Buffer\nChoose “Lines” as the Input Layer\nSet the Distance to 10 metres\n\nWe can also make the buffer squared if we want, but we will keep it with the rounded default\n\nTick the Dissolve result box\n\nThis will merge the polygons from our output, making for a cleaner look. The Dissolve tool also exists as a standalone tool.\n\nClick the three dots ... next to the Buffered field, navigate to the project’s processed data folder, and type in EH_Boundary_Buffer and click Save\nClick Run\n\n\n\nStyle the Boundary buffer polygon\n\nOpen the Layer Styling panel by pressing F7 (or fn+F7)\nSelect the Project_Boundar_Buffer layer from either the Layer Styling panel, or the Layers panel.\nUnder Fill, click Simple Fill\n\nClick the dropdown next to Fill color and select a colour that reminds us not to go there, like orange\n\nChange the Opacity to something around 30%\n\n\n\n\n\nSave your project\nIt’s not essential at this stage, it’s just a good reminder to save your work regularly so you don’t lose things when things go wrong.",
+    "text": "Buffer Data\nAs we’ve seen, buffers are a simple, but powerful, tool that we can use to extend the borders of our vector data. It’s useful for polygons, lines, and points.\nPerhaps we need to keep 10m from the Project Area boundaries when doing our fieldwork. A buffer can help us there.\n\nPolygons to Lines\nTo buffer either side of the edges of our boundaries, we need to convert them from Polygons to Lines.\n\nGo to Vector &gt; Geometry Tools &gt; Polygons to Lines\nSet the Input Layer to Project Area\nClick OK\n\nThis will create a temporary file called Lines, you can choose to save it instead, but that is optional.\n\n\nBuffer the Lines\n\nGo to Vector &gt; Geoprocessing Tools &gt; Buffer\nChoose “Lines” as the Input Layer\nSet the Distance to 10 metres\n\nWe can also make the buffer squared if we want, but we will keep it with the rounded default\n\nTick the Dissolve result box\n\nThis will merge the polygons from our output, making for a cleaner look. The Dissolve tool also exists as a standalone tool.\n\nClick the three dots ... next to the Buffered field, navigate to the project’s processed data folder, and type in EH_Boundary_Buffer and click Save\nClick Run\n\n\n\nStyle the Boundary buffer polygon\n\nOpen the Layer Styling panel by pressing F7 (or fn + F7)\nSelect the EH_Boundary_Buffer layer from either the Layer Styling panel, or the Layers panel.\nUnder Fill, click Simple Fill\n\nClick the dropdown next to Fill color and select a colour that reminds us not to go there, like orange\n\nChange the Opacity to something around 30%\n\n\n\n\n\nSave your project\nIt’s not essential at this stage, it’s just a good reminder to save your work regularly so you don’t lose things when things go wrong.",
     "crumbs": [
       "QGIS",
       "Advanced topics",
@@ -2740,7 +2789,7 @@
     "href": "qgis/Advanced topics/6-Field_Data.html#opening-the-qfield-project",
     "title": "Field Data Collection",
     "section": "Opening the QField Project",
-    "text": "Opening the QField Project\nAndroid - Open QField - Skip any popups - Tap Open local file - Tap the green plus button in the bottom right - Tap Import project from ZIP - Navigate to your zip file. In my case, I had to go to the top left menu, and tap on Downloads - The file should open in QField. You may need to tap on the outer folder, and then the Project itself.\niOS - Open the zip file and extract it to: On My iPhone/QField/Imported Projects - Open QField - Skip any popups - Tap Open local file - Tap Imported projects - Open the EH_Fieldwork folder until you reach the EH_Fieldwork Project file. - The project should open in QField.\nYou can now access your map.",
+    "text": "Opening the QField Project\nAndroid\n\nOpen QField\nSkip any popups\nTap Open local file\nTap the green plus button in the bottom right\nTap Import project from ZIP\nNavigate to your zip file. In my case, I had to go to the top left menu, and tap on Downloads\nThe file should open in QField. You may need to tap on the outer folder, and then the Project itself.\n\niOS\n\nOpen the zip file and extract it to: On My iPhone/QField/Imported Projects\nOpen QField\nSkip any popups\nTap Open local file\nTap Imported projects\nOpen the EH_Fieldwork folder until you reach the EH_Fieldwork Project file.\nThe project should open in QField.\n\nYou can now access your map.",
     "crumbs": [
       "QGIS",
       "Advanced topics",

@@ -2,358 +2,386 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/r/setup.html</loc>
-    <lastmod>2026-02-11T23:24:15.205Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.595Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/r/Essentials/1-Fundamentals.html</loc>
-    <lastmod>2026-02-11T23:24:15.205Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.594Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/r/Essentials/2-Data_processing.html</loc>
-    <lastmod>2026-02-11T23:24:15.205Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.594Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/r/Advanced topics/5-Statistics.html</loc>
-    <lastmod>2026-02-11T23:24:15.205Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.594Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/qgis/setup.html</loc>
-    <lastmod>2026-02-11T23:24:15.204Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.594Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/qgis/The Project/datasets.html</loc>
-    <lastmod>2026-02-11T23:24:15.204Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.593Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/qgis/The Project/scaffold.html</loc>
-    <lastmod>2026-02-11T23:24:15.204Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.593Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/qgis/Essentials/5-Raster_Analysis.html</loc>
-    <lastmod>2026-02-11T23:24:15.204Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.593Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/qgis/Essentials/3-Projections.html</loc>
-    <lastmod>2026-02-11T23:24:15.204Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.593Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/qgis/Advanced topics/5-Styling_Themes_and_Templates.html</loc>
-    <lastmod>2026-02-11T23:24:15.203Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.593Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/python/setup.html</loc>
-    <lastmod>2026-02-11T23:24:15.203Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.592Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/python/Essentials/1-Fundamentals.html</loc>
-    <lastmod>2026-02-11T23:24:15.203Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.592Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/python/Essentials/3-Visualisation.html</loc>
-    <lastmod>2026-02-11T23:24:15.203Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.592Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/python/Advanced topics/5-Statistics.html</loc>
-    <lastmod>2026-02-11T23:24:15.202Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.592Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/community/community.html</loc>
-    <lastmod>2026-02-11T23:24:14.012Z</lastmod>
+    <lastmod>2026-02-12T01:39:34.358Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/project/template.html</loc>
-    <lastmod>2026-02-11T23:24:15.202Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.591Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/project/details.html</loc>
-    <lastmod>2026-02-11T23:24:15.202Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.591Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/R/26Summer/r-intensive-project-j&amp;n/group_project_final.html</loc>
-    <lastmod>2026-02-11T23:24:15.180Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.571Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/R/26Summer/r-intensive-project-eugene/Predicting_Book_Ratings.html</loc>
-    <lastmod>2026-02-11T23:24:15.160Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.553Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/R/26Summer/example_project/example_project.html</loc>
-    <lastmod>2026-02-11T23:24:15.149Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.543Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/R/26Summer/Project Liquid Brown Gold/Quarto_Cafe.html</loc>
-    <lastmod>2026-02-11T23:24:15.149Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.542Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/R/25Winter/example_project/example_project.html</loc>
-    <lastmod>2026-02-11T23:24:15.147Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.541Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/R/25Winter/Swagata &amp; Sandhya&#39;s Project/Queensland_hospital_dataanalysis.html</loc>
-    <lastmod>2026-02-11T23:24:15.147Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.541Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/R/25Winter/Nora&#39;s Project/Nora_project.html</loc>
-    <lastmod>2026-02-11T23:24:15.147Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.541Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/R/25Winter/Claudine &amp; Emman/QLD_fuel.html</loc>
-    <lastmod>2026-02-11T23:24:15.146Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.540Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/R/25Winter/Chris/Population_-_Presentation_for_R_Training.html</loc>
-    <lastmod>2026-02-11T23:24:15.146Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.540Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/R/25Winter/Ben&#39;s Project/report_ben.html</loc>
-    <lastmod>2026-02-11T23:24:15.145Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.540Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/R/25Winter/Aisha Aslam/R_Intensive_Report.html</loc>
-    <lastmod>2026-02-11T23:24:15.125Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.522Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/R/25Summer/Warren/DashbdProjW.html</loc>
-    <lastmod>2026-02-11T23:24:15.125Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.521Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/R/25Summer/Mehershad/Football_Birth_Month.html</loc>
-    <lastmod>2026-02-11T23:24:15.111Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.511Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/R/25Summer/Karunarathna/dashboard.html</loc>
-    <lastmod>2026-02-11T23:24:15.108Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.508Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/R/25Summer/Caira/Coffee.html</loc>
-    <lastmod>2026-02-11T23:24:15.097Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.497Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/R/25Summer/BCD/Goodreads_books.html</loc>
-    <lastmod>2026-02-11T23:24:15.081Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.481Z</lastmod>
   </url>
   <url>
-    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Winter/example_project/example_project.html</loc>
-    <lastmod>2026-02-11T23:24:15.069Z</lastmod>
+    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/QGIS/26Summer/Stephane/books_-_Stéphane.html</loc>
+    <lastmod>2026-02-12T01:44:16.499Z</lastmod>
   </url>
   <url>
-    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Winter/Prince/gapminder2025.html</loc>
-    <lastmod>2026-02-11T23:24:15.066Z</lastmod>
+    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/QGIS/26Summer/Quan/Mortality_across_QLD_health_department-QUAN.html</loc>
+    <lastmod>2026-02-12T01:44:16.394Z</lastmod>
   </url>
   <url>
-    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Winter/Group2/group_project.html</loc>
-    <lastmod>2026-02-11T23:24:15.065Z</lastmod>
+    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/QGIS/26Summer/Kent/map_kgari-kent.html</loc>
+    <lastmod>2026-02-12T01:44:17.007Z</lastmod>
   </url>
   <url>
-    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Winter/Coffee Preferences/ProjectCoffee.html</loc>
-    <lastmod>2026-02-11T23:24:15.064Z</lastmod>
-  </url>
-  <url>
-    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Winter/Australia and Cambodia Populations/project_report.html</loc>
-    <lastmod>2026-02-11T23:24:15.064Z</lastmod>
-  </url>
-  <url>
-    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Summer/example_project/example_project.html</loc>
-    <lastmod>2026-02-11T23:24:15.063Z</lastmod>
-  </url>
-  <url>
-    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Summer/Najiha/dashboardbooks.html</loc>
-    <lastmod>2026-02-11T23:24:15.056Z</lastmod>
-  </url>
-  <url>
-    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Summer/Koyo &amp; Liz/project.html</loc>
-    <lastmod>2026-02-11T23:24:15.040Z</lastmod>
-  </url>
-  <url>
-    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Summer/Emma/Goodread.html</loc>
-    <lastmod>2026-02-11T23:24:15.023Z</lastmod>
-  </url>
-  <url>
-    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Summer/Edison/fuel_db.html</loc>
-    <lastmod>2026-02-11T23:24:15.023Z</lastmod>
-  </url>
-  <url>
-    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Summer/Adelia &amp; Lauren/Fuel.html</loc>
-    <lastmod>2026-02-11T23:24:14.263Z</lastmod>
-  </url>
-  <url>
-    <loc>https://uqlibrary.github.io/technology-training-intensives/index.html</loc>
-    <lastmod>2026-02-11T23:24:15.202Z</lastmod>
-  </url>
-  <url>
-    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/project_gallery.html</loc>
-    <lastmod>2026-02-11T23:24:15.202Z</lastmod>
-  </url>
-  <url>
-    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Summer/Caira/dashboardbooks.html</loc>
-    <lastmod>2026-02-11T23:24:14.445Z</lastmod>
-  </url>
-  <url>
-    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Summer/Edison/fuel_project.html</loc>
-    <lastmod>2026-02-11T23:24:15.023Z</lastmod>
-  </url>
-  <url>
-    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Summer/Koyo &amp; Liz/Plane.html</loc>
-    <lastmod>2026-02-11T23:24:15.032Z</lastmod>
-  </url>
-  <url>
-    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Summer/Lydeth/Goodread.html</loc>
-    <lastmod>2026-02-11T23:24:15.040Z</lastmod>
-  </url>
-  <url>
-    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Summer/Python-project-Nish/dashboard.html</loc>
-    <lastmod>2026-02-11T23:24:15.056Z</lastmod>
-  </url>
-  <url>
-    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Winter/Another coffee survey/Pawatsada.html</loc>
-    <lastmod>2026-02-11T23:24:15.064Z</lastmod>
-  </url>
-  <url>
-    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Winter/Coffee Horror/coffee.html</loc>
-    <lastmod>2026-02-11T23:24:15.064Z</lastmod>
-  </url>
-  <url>
-    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Winter/Coffee Survey/MyReport.html</loc>
-    <lastmod>2026-02-11T23:24:15.065Z</lastmod>
-  </url>
-  <url>
-    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Winter/Mst Noorunnahar/project_nahar.html</loc>
-    <lastmod>2026-02-11T23:24:15.066Z</lastmod>
+    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/QGIS/26Summer/Bardia_Danaei/Public_toilets_coverage_in_Brisbane-Bardia_Danaei.html</loc>
+    <lastmod>2026-02-12T01:44:17.208Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Winter/Sisay/report.html</loc>
-    <lastmod>2026-02-11T23:24:15.069Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.366Z</lastmod>
+  </url>
+  <url>
+    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Winter/Mst Noorunnahar/project_nahar.html</loc>
+    <lastmod>2026-02-12T01:39:35.364Z</lastmod>
+  </url>
+  <url>
+    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Winter/Coffee Survey/MyReport.html</loc>
+    <lastmod>2026-02-12T01:39:35.364Z</lastmod>
+  </url>
+  <url>
+    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Winter/Coffee Horror/coffee.html</loc>
+    <lastmod>2026-02-12T01:39:35.363Z</lastmod>
+  </url>
+  <url>
+    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Winter/Another coffee survey/Pawatsada.html</loc>
+    <lastmod>2026-02-12T01:39:35.363Z</lastmod>
+  </url>
+  <url>
+    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Summer/Python-project-Nish/dashboard.html</loc>
+    <lastmod>2026-02-12T01:39:35.355Z</lastmod>
+  </url>
+  <url>
+    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Summer/Lydeth/Goodread.html</loc>
+    <lastmod>2026-02-12T01:39:35.339Z</lastmod>
+  </url>
+  <url>
+    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Summer/Koyo &amp; Liz/Plane.html</loc>
+    <lastmod>2026-02-12T01:39:35.332Z</lastmod>
+  </url>
+  <url>
+    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Summer/Edison/fuel_project.html</loc>
+    <lastmod>2026-02-12T01:39:35.324Z</lastmod>
+  </url>
+  <url>
+    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Summer/Caira/dashboardbooks.html</loc>
+    <lastmod>2026-02-12T01:39:34.771Z</lastmod>
+  </url>
+  <url>
+    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/project_gallery.html</loc>
+    <lastmod>2026-02-12T01:39:35.591Z</lastmod>
+  </url>
+  <url>
+    <loc>https://uqlibrary.github.io/technology-training-intensives/index.html</loc>
+    <lastmod>2026-02-12T01:39:35.591Z</lastmod>
+  </url>
+  <url>
+    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Summer/Adelia &amp; Lauren/Fuel.html</loc>
+    <lastmod>2026-02-12T01:39:34.599Z</lastmod>
+  </url>
+  <url>
+    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Summer/Edison/fuel_db.html</loc>
+    <lastmod>2026-02-12T01:39:35.324Z</lastmod>
+  </url>
+  <url>
+    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Summer/Emma/Goodread.html</loc>
+    <lastmod>2026-02-12T01:39:35.324Z</lastmod>
+  </url>
+  <url>
+    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Summer/Koyo &amp; Liz/project.html</loc>
+    <lastmod>2026-02-12T01:39:35.339Z</lastmod>
+  </url>
+  <url>
+    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Summer/Najiha/dashboardbooks.html</loc>
+    <lastmod>2026-02-12T01:39:35.355Z</lastmod>
+  </url>
+  <url>
+    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Summer/example_project/example_project.html</loc>
+    <lastmod>2026-02-12T01:39:35.363Z</lastmod>
+  </url>
+  <url>
+    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Winter/Australia and Cambodia Populations/project_report.html</loc>
+    <lastmod>2026-02-12T01:39:35.363Z</lastmod>
+  </url>
+  <url>
+    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Winter/Coffee Preferences/ProjectCoffee.html</loc>
+    <lastmod>2026-02-12T01:39:35.363Z</lastmod>
+  </url>
+  <url>
+    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Winter/Group2/group_project.html</loc>
+    <lastmod>2026-02-12T01:39:35.364Z</lastmod>
+  </url>
+  <url>
+    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Winter/Prince/gapminder2025.html</loc>
+    <lastmod>2026-02-12T01:39:35.364Z</lastmod>
+  </url>
+  <url>
+    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/Python/25Winter/example_project/example_project.html</loc>
+    <lastmod>2026-02-12T01:39:35.366Z</lastmod>
+  </url>
+  <url>
+    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/QGIS/26Summer/Frank/BNE_drop_bear_map-Frank.html</loc>
+    <lastmod>2026-02-12T01:44:17.424Z</lastmod>
+  </url>
+  <url>
+    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/QGIS/26Summer/Nara/Brisbane_Food_Environment-Nara.html</loc>
+    <lastmod>2026-02-12T01:44:16.781Z</lastmod>
+  </url>
+  <url>
+    <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/QGIS/26Summer/ShawneeGorringe/MuralagIslandSampleLocations-ShawneeGorringe.html</loc>
+    <lastmod>2026-02-12T01:44:15.847Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/R/25Summer/Adelia/COFFEE.html</loc>
-    <lastmod>2026-02-11T23:24:15.070Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.470Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/R/25Summer/Birdstrike/Birdstrikes.html</loc>
-    <lastmod>2026-02-11T23:24:15.089Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.489Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/R/25Summer/Dawn/project_dashboard.html</loc>
-    <lastmod>2026-02-11T23:24:15.101Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.501Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/R/25Summer/Krystie/dashy_presentation.html</loc>
-    <lastmod>2026-02-11T23:24:15.109Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.508Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/R/25Summer/Toasted/Bird_Strike_Dashboard.html</loc>
-    <lastmod>2026-02-11T23:24:15.114Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.514Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/R/25Winter/Adriel Project/Report-Test.html</loc>
-    <lastmod>2026-02-11T23:24:15.125Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.522Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/R/25Winter/Andrew Proj/report.html</loc>
-    <lastmod>2026-02-11T23:24:15.136Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.530Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/R/25Winter/Casey &amp; Jess Project/Project_Hospital_Report.html</loc>
-    <lastmod>2026-02-11T23:24:15.145Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.540Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/R/25Winter/Claudine &amp; Emman/Fuel_sites.html</loc>
-    <lastmod>2026-02-11T23:24:15.146Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.540Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/R/25Winter/Liz&#39;s Project/Report.html</loc>
-    <lastmod>2026-02-11T23:24:15.146Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.540Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/R/25Winter/Sandya &amp; Buddhika/melb_property.html</loc>
-    <lastmod>2026-02-11T23:24:15.147Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.541Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/R/25Winter/cathys project/report.html</loc>
-    <lastmod>2026-02-11T23:24:15.147Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.541Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/R/26Summer/Project Liquid Brown Gold/Coffee_Flavour_Pref.html</loc>
-    <lastmod>2026-02-11T23:24:15.148Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.542Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/R/26Summer/R Intensive project Li/sharing.html</loc>
-    <lastmod>2026-02-11T23:24:15.149Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.543Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/R/26Summer/r-intensive project-jaz/Group_Project_Webpage.html</loc>
-    <lastmod>2026-02-11T23:24:15.150Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.543Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/R/26Summer/r-intensive-project-hehe/Group_Project.html</loc>
-    <lastmod>2026-02-11T23:24:15.160Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.553Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/gallery/R/26Summer/r-intensive-project-zel/coffee_quarto.html</loc>
-    <lastmod>2026-02-11T23:24:15.180Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.571Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/project/scaffold.html</loc>
-    <lastmod>2026-02-11T23:24:15.202Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.591Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/project/tips.html</loc>
-    <lastmod>2026-02-11T23:24:15.202Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.592Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/python/7-your_own_data.html</loc>
-    <lastmod>2026-02-11T23:24:15.202Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.592Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/python/Advanced topics/6-Programming.html</loc>
-    <lastmod>2026-02-11T23:24:15.202Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.592Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/python/Essentials/2-Data_processing.html</loc>
-    <lastmod>2026-02-11T23:24:15.203Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.592Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/python/Essentials/4-Sharing_and_Publishing.html</loc>
-    <lastmod>2026-02-11T23:24:15.203Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.592Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/qgis/Advanced topics/6-Field_Data.html</loc>
-    <lastmod>2026-02-11T23:24:15.203Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.593Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/qgis/Essentials/1-Fundamentals.html</loc>
-    <lastmod>2026-02-11T23:24:15.204Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.593Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/qgis/Essentials/2-Vector_Analysis.html</loc>
-    <lastmod>2026-02-11T23:24:15.204Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.593Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/qgis/Essentials/4-Sourcing_Data.html</loc>
-    <lastmod>2026-02-11T23:24:15.204Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.593Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/qgis/The Project/tips.html</loc>
-    <lastmod>2026-02-11T23:24:15.204Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.593Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/qgis/The Project/overview.html</loc>
-    <lastmod>2026-02-11T23:24:15.204Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.593Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/r/7-your_own_data.html</loc>
-    <lastmod>2026-02-11T23:24:15.205Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.594Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/r/Advanced topics/6-Programming.html</loc>
-    <lastmod>2026-02-11T23:24:15.205Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.594Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/r/Essentials/3-Visualisation.html</loc>
-    <lastmod>2026-02-11T23:24:15.205Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.594Z</lastmod>
   </url>
   <url>
     <loc>https://uqlibrary.github.io/technology-training-intensives/r/Essentials/4-Sharing_and_Publishing.html</loc>
-    <lastmod>2026-02-11T23:24:15.205Z</lastmod>
+    <lastmod>2026-02-12T01:39:35.595Z</lastmod>
   </url>
 </urlset>
