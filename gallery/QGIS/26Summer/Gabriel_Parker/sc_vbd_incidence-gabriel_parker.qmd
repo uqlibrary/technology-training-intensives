@@ -7,7 +7,7 @@ title: Sc Vbd Incidence
 author: Gabriel Parker
 image: sc_vbd_incidence-gabriel_parker.png
 date: 2026-02-12
-categories: [QGIS, Summer26]
+categories: [QGIS, 26Summer]
 ---
 
 [Download and view the project fullscreen](sc_vbd_incidence-gabriel_parker.pdf)

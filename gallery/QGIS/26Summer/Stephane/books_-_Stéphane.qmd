@@ -7,7 +7,7 @@ title: Books
 author:  Stéphane
 image: books_-_Stéphane.png
 date: 2026-02-12
-categories: [QGIS, Summer26]
+categories: [QGIS, 26Summer]
 ---
 
 [Download and view the project fullscreen](books - Stéphane.pdf)

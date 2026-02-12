@@ -7,7 +7,7 @@ title: Yeppoon Acid Sulphate Soils
 author: Collins
 image: Yeppoon_acid_sulphate_soils-Collins.png
 date: 2026-02-12
-categories: [QGIS, Summer26]
+categories: [QGIS, 26Summer]
 ---
 
 [Download and view the project fullscreen](Yeppoon acid sulphate soils-Collins.pdf)

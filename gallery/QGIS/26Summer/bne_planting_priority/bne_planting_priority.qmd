@@ -7,7 +7,7 @@ title: Bne_Planting_Priority
 
 image: bne_planting_priority.png
 date: 2026-02-12
-categories: [QGIS, Summer26]
+categories: [QGIS, 26Summer]
 ---
 
 [Download and view the project fullscreen](bne_planting_priority.pdf)
