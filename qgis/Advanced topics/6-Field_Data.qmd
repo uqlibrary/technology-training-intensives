@@ -10,17 +10,16 @@ We can turn a QGIS project into a QField project we can use on our phones.
 ## Folder Setup
 We need to create two new folders in our **Enoggera_Windfarm_26** folder
 
-    -   "DCIM" - this is for storing images from our phone!
-    
-    -   "EH_Fieldwork" - we need this one to export our project to QField
+- "DCIM" - this is for storing images from our phone!
+- "EH_Fieldwork" - we need this one to export our project to QField
 
 
 ## Install QField
 
 QField plugs directly in to QGIS, and allows you to link a QGIS project with your mobile phone for data collection.
 
-[Android Download](https://play.google.com/store/apps/details?id=ch.opengis.qfield) 
-[iOS Download](https://apps.apple.com/app/qfield-for-qgis/id1531726814)
+- [Android Download](https://play.google.com/store/apps/details?id=ch.opengis.qfield) 
+- [iOS Download](https://apps.apple.com/app/qfield-for-qgis/id1531726814)
 
 
 ## Buffer Data
@@ -61,8 +60,8 @@ This will create a temporary file called `Lines`, you can choose to save it inst
 
 ### Style the Boundary buffer polygon
 
--   Open the `Layer Styling` panel by pressing **F7** (or fn+F7)
--   Select the **Project_Boundar_Buffer** layer from either the `Layer Styling` panel, or the `Layers` panel.
+-   Open the `Layer Styling` panel by pressing <kbd>F7</kbd> (or <kbd>fn</kbd> + <kbd>F7</kbd>)
+-   Select the **EH_Boundary_Buffer** layer from either the `Layer Styling` panel, or the `Layers` panel.
 -   Under `Fill`, click `Simple Fill`
     -   Click the dropdown next to `Fill color` and select a colour that reminds us not to go there, like **orange**
         -   Change the `Opacity` to something around 30%
@@ -188,7 +187,7 @@ We should now have a functional form, let's test it in QGIS before we send it to
 
 
 -   Click the yellow pencil button to **Toggle Editing** on
--   Click the green dots (or press Ctrl + .) to **Add Point Feature**
+-   Click the green dots (or press <kbd>Ctrl</kbd> + <kbd>.</kbd>) to **Add Point Feature**
 -   Click on the map to add a point
 -   The **Name** should be mandatory, the **Description** editable, **Photo** have an add option, **DateTime** should have the current date and time, and **Lat** and **Long** should have numbers like "**-27.494066205142065**" and "**153.0153703956312**"
 -   Click `Cancel`
@@ -281,6 +280,7 @@ We now need to zip the `QField` folder and send it to our phone!
 ## Opening the QField Project
 
 **Android**
+
 -   Open QField
 -   Skip any popups
 -   Tap `Open local file`
@@ -290,6 +290,7 @@ We now need to zip the `QField` folder and send it to our phone!
 -   The file should open in QField. You may need to tap on the outer folder, and then the **Project** itself.
 
 **iOS**
+
 -   Open the zip file and extract it to: `On My iPhone/QField/Imported Projects`
 -   Open QField
 -   Skip any popups
@@ -377,7 +378,16 @@ You can repeat this process with the DEM and Hillshade to export out another kin
 
 Now you simply need to export the pdf file(s) to your phone. You can email it, send it through the cloud, or transfer it using a cable.
 
-When you first open Avenza Maps it will ask you to create an account, but you can import up to three maps without doing so, you can avoid creating an account by selecting the 'x' in the top right corner. \* Allow Avenza Maps to access your device location \* Select the orange '+' in the bottom right and select 'Download or import a map' \* Choose 'From Storage Locations' (if requested, give Avenza Maps the permissions to access your files) \* Do the same for the other map, if you created one. \* Once it has been imported, tap on the map. \* You can now move the map around with your finger, and pinching to zoom. \* Tapping the placemark icon in the bottom left will add a placemark in the middle of the crosshairs. \* Tapping the 3 dots in the bottom right will allow you to add GPS tracking and draw and measure distances.
+When you first open Avenza Maps it will ask you to create an account, but you can import up to three maps without doing so, you can avoid creating an account by selecting the 'x' in the top right corner.
+
+* Allow Avenza Maps to access your device location
+* Select the orange '+' in the bottom right and select 'Download or import a map'
+* Choose 'From Storage Locations' (if requested, give Avenza Maps the permissions to access your files)
+* Do the same for the other map, if you created one.
+* Once it has been imported, tap on the map.
+* You can now move the map around with your finger, and pinching to zoom.
+* Tapping the placemark icon in the bottom left will add a placemark in the middle of the crosshairs.
+* Tapping the 3 dots in the bottom right will allow you to add GPS tracking and draw and measure distances.
 :::
 
 
