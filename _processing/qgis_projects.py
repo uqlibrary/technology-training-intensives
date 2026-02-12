@@ -57,7 +57,8 @@ for pdf in qgis_pdfs:
         title = splitext(filename)[0]
         author = None
 
-    title = title.title()
+    if " " in title or title.islower() or title.isupper():
+        title = title.title()
 
     # Inject metadata into YAML header of .qmd
     replacements = {
@@ -66,6 +67,7 @@ for pdf in qgis_pdfs:
         "author:": "" if not author else f"author: {author}",
         "image:": "" if not img_path else f"image: {basename(img_path)}",
     }
+    input(replacements)
 
     for key in replacements.keys():
         template = template.replace(key, replacements[key])

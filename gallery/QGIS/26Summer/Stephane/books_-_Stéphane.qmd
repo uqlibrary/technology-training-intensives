@@ -1,0 +1,13 @@
+---
+format:
+  html:
+    toc: false
+    page-layout: full
+title: Books  Public Toilets Coverage In Brisbane MuralagIslandSampleLocations
+author:  Stéphane Bardia Danaei Shawneegorringe
+image: books_-_Stéphane.png Public_toilets_coverage_in_Brisbane-Bardia_Danaei.png MuralagIslandSampleLocations-ShawneeGorringe.png
+date: 2026-02-12
+---
+
+[Download and view the project fullscreen](MuralagIslandSampleLocations-ShawneeGorringe.pdf)
+![](MuralagIslandSampleLocations-ShawneeGorringe.pdf){width=100% style=min-height:90vh;}

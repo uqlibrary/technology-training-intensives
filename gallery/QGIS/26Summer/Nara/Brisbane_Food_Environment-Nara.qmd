@@ -1,0 +1,13 @@
+---
+format:
+  html:
+    toc: false
+    page-layout: full
+title: Brisbane Food Environment Map Kgari Bne Drop Bear Map Mortality Across Qld Health Department Books  Public Toilets Coverage In Brisbane MuralagIslandSampleLocations
+author: Nara Kent Frank Quan  Stéphane Bardia Danaei Shawneegorringe
+image: Brisbane_Food_Environment-Nara.png map_kgari-kent.png BNE_drop_bear_map-Frank.png Mortality_across_QLD_health_department-QUAN.png books_-_Stéphane.png Public_toilets_coverage_in_Brisbane-Bardia_Danaei.png MuralagIslandSampleLocations-ShawneeGorringe.png
+date: 2026-02-12
+---
+
+[Download and view the project fullscreen](MuralagIslandSampleLocations-ShawneeGorringe.pdf)
+![](MuralagIslandSampleLocations-ShawneeGorringe.pdf){width=100% style=min-height:90vh;}
