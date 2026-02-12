@@ -67,11 +67,10 @@ for pdf in qgis_pdfs:
         "author:": "" if not author else f"author: {author}",
         "image:": "" if not img_path else f"image: {basename(img_path)}",
     }
-    input(replacements)
 
     for key in replacements.keys():
-        template = template.replace(key, replacements[key])
+        final_qmd = template.replace(key, replacements[key])
 
     # Write .qmd files to disk
     with open(qmd, "w") as f:
-        f.write(template)
+        f.write(final_qmd)

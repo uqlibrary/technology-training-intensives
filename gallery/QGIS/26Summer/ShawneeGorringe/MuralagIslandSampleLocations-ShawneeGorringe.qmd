@@ -3,11 +3,11 @@ format:
   html:
     toc: false
     page-layout: full
-title: MuralagIslandSampleLocations
-author: Shawneegorringe
+title:
+author:
 image: MuralagIslandSampleLocations-ShawneeGorringe.png
 date: 2026-02-12
 ---
 
-[Download and view the project fullscreen](MuralagIslandSampleLocations-ShawneeGorringe.pdf)
-![](MuralagIslandSampleLocations-ShawneeGorringe.pdf){width=100% style=min-height:90vh;}
+[Download and view the project fullscreen]()
+![](){width=100% style=min-height:90vh;}
