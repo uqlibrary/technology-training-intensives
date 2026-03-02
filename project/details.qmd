@@ -36,7 +36,7 @@ You're welcome to use the project time however you'd like. Below is a rough guid
 | Session | Recommendation | 
 | --- | --- |
 | Tuesday afternoon | Pick a dataset and play with the data, consider dividing roles amongst group |
-| Wednesday morning | More exploratory analysis, start making visualisations |
+| Wednesday morning | More exploratory analysis, start making visualisations, we will check in with you to see what your plans are |
 | Wednesday afternoon | Prepare format, continue analysing and creating visualisation. |
 | Thursday morning | Polish up results and finalise report, submit. |
 
