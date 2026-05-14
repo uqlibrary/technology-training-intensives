@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.27">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Python for Data Analysis – UQ Library Training Intensives</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -33,15 +36,14 @@ ul.task-list li input[type="checkbox"] {
 <link href="..//int_laptop_icon.svg" rel="icon" type="image/svg+xml">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-29e30ad51269866b34b1e3bc15e2871e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-04828c24a4de90e8e639dc49f30237f4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -94,16 +96,16 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../r/setup.html"> 
-<span class="menu-text">R</span></a>
+    <a class="nav-link active" href="../python/setup.html" aria-current="page"> 
+<span class="menu-text">Python</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../qgis/setup.html"> 
 <span class="menu-text">QGIS</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../python/setup.html" aria-current="page"> 
-<span class="menu-text">Python</span></a>
+    <a class="nav-link" href="../r/setup.html"> 
+<span class="menu-text">R</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../gallery/project_gallery.html"> 
@@ -286,7 +288,7 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#google-colab" id="toc-google-colab" class="nav-link" data-scroll-target="#google-colab">Google Colab</a></li>
   </ul></li>
-  <li><a href="#creating-a-project" id="toc-creating-a-project" class="nav-link" data-scroll-target="#creating-a-project">Creating a Project</a></li>
+  <li><a href="#creating-a-working-directory" id="toc-creating-a-working-directory" class="nav-link" data-scroll-target="#creating-a-working-directory">Creating a working directory</a></li>
   <li><a href="#workshops" id="toc-workshops" class="nav-link" data-scroll-target="#workshops">Workshops</a></li>
   </ul>
 </nav>
@@ -327,30 +329,41 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="software" class="level2">
 <h2 class="anchored" data-anchor-id="software">Software</h2>
-<p>We are going to use Spyder for writing and running Python. This is a friendly interactive development environment (IDE) aimed at researchers. <strong>However, you are more than welcome to use your own!</strong></p>
-<p>We recommend <a href="https://www.anaconda.com/download/success">installing the Anaconda distribution</a>, which comes with Spyder and Python. You’re welcome to use your own IDE if you’d prefer.</p>
-<p>Once you have Anaconda installed, <strong>launch Spyder</strong>, either by searching for “Spyder” on your computer or opening the Anaconda Navigator.</p>
-<p>We’ll also be using the rendering and publishing tool Quarto from day 2. You’re welcome to try set this up, the easiest way is</p>
-<ol type="1">
-<li>Open an “Anaconda prompt” from the navigator</li>
-<li>Run <code>conda install conda-forge::quarto</code></li>
-</ol>
-<p>You can also install it directly from the <a href="https://quarto.org/docs/download/">Quarto website</a>.</p>
+<p>We are going to use <a href="https://positron.posit.co/">Positron</a> for writing and running Python. This is a friendly interactive development environment (IDE) aimed at researchers.</p>
+<p>Once you <a href="https://positron.posit.co/">download and install Positron</a>, launch it on your computer.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Using a non-Positron IDE
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>TL;DR: If you’re not using Positron, please <a href="https://quarto.org/docs/get-started/">download and install Quarto manually</a>.</p>
+<p>You’re more than welcome to use a different IDE than Positron. Some popular IDEs include</p>
+<ul>
+<li>VS Code</li>
+<li>Spyder</li>
+<li>Pycharm</li>
+<li>IDLE</li>
+</ul>
+<p>We’ll be using the rendering and publishing tool <a href="https://quarto.org/">Quarto</a> from day 2. While Positron is shipped with Quarto, <strong>most other IDEs are not</strong>.</p>
+<p>If you’re not using Positron, <strong><a href="https://quarto.org/docs/get-started/">please download and install Quarto</a></strong> or chat to a trainer.</p>
+</div>
+</div>
 <section id="google-colab" class="level3">
 <h3 class="anchored" data-anchor-id="google-colab">Google Colab</h3>
 <p>If you aren’t able to install Python and a suitable IDE on your device (e.g.&nbsp;if you do not have permission) then we can find an online alternative for you, likely in the form of <a href="https://colab.google/">Google Colab</a>. Let us know and we’ll help you get set up!</p>
 </section>
 </section>
-<section id="creating-a-project" class="level2">
-<h2 class="anchored" data-anchor-id="creating-a-project">Creating a Project</h2>
-<p>If you’re using Spyder, we recommend you create a <strong>project</strong>. Projects are just fancy folders, and they make it easier to access files (i.e.&nbsp;data) and export images (i.e.&nbsp;visualisations) all in the one place.</p>
-<ol type="1">
-<li>Open Spyder</li>
-<li>In the <em>Projects</em> menu, click <em>New Project…</em></li>
-<li>Choose <em>New Directory</em>, give your project a name and find an appropriate place on your computer for it.</li>
-<li>Press <em>Create</em></li>
-</ol>
-<p>Done! We’ll work in this project for the duration of the intensives.</p>
+<section id="creating-a-working-directory" class="level2">
+<h2 class="anchored" data-anchor-id="creating-a-working-directory">Creating a working directory</h2>
+<p>Positron, like VS Code, let’s you choose a folder to work from. This is convenient for, e.g., filepaths.</p>
+<p>We recommend that you create a dedicated folder for the intensive’s training. Once you’ve created one, you should open it in Positron with</p>
+<p><code>File &gt; Open folder... &gt; Click the folder &gt; Select folder</code></p>
+<p>You should find that positron has ‘restarted’ and placed you <em>inside</em> the folder.</p>
 </section>
 <section id="workshops" class="level2">
 <h2 class="anchored" data-anchor-id="workshops">Workshops</h2>
