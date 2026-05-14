@@ -27,12 +27,12 @@ website:
           - text: Report an issue
             href: https://github.com/uqlibrary/technology-training-intensives/issues/new
     left:
-      - text: "R"
-        href: r/setup.md
-      - text: "QGIS"
-        href: qgis/setup.md
       - text: "Python"
         href: python/setup.md
+      - text: "QGIS"
+        href: qgis/setup.md
+      - text: "R"
+        href: r/setup.md
       - text: "Project Gallery"
         href: gallery/project_gallery.qmd
       - text: "UQL Technology Training"

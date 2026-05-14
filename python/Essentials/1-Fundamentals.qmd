@@ -9,21 +9,18 @@ In this first workshop we will cover
 - Modules
 - Importing data
 
-## Introducing Python and Spyder
+## Introducing Python and Positron
 
 Python is a **programming language** that can be used to build programs (i.e. a "general programming language"), but it can also be used to analyse data by importing a number of useful modules.
 
-We are using **Spyder** to interact with Python more comfortably. If you have used RStudio to interact with R before, you should feel right at home: Spyder is a program designed for doing data science with Python.
+We are using **Positron** to interact with Python more comfortably. If you have used RStudio to interact with R before, you should feel right at home: Positron is a program designed for data science with Python (and developed by the RStudio devs!).
 
-Python can be used **interactively** in a console, or we can build **scripts and programs** with it, making the most out of Spyder's code editor.
+Python can be used **interactively** in a console, or we can build **scripts and programs** with it, making the most out of Positron's code editor.
 
 We will start by using the **console** to work interactively. This is
 our direct line to the computer, and is the simplest way to run code.
 Don’t worry about any unfamiliar language, fonts or colours - we can
-ignore most of it for now - all you need to know is that
-
-- `In [1]: ...` is code that we’ve sent to the computer, and
-- `Out[1]: ...` is its response.
+ignore most of it for now.
 
 ## First glance: arithmetic
 
@@ -75,7 +72,7 @@ product = example_int * example_float
 product
 ```
 
-> Spyder helps us with extra panels and features apart from the Console. To see what variables you have created, look at the "Variable explorer" tab in the top right.
+> Positron helps us with extra panels and features apart from the Console. To see what variables you have created, look at the "Variable explorer" tab in the top right.
 
 ### Types
 
@@ -200,17 +197,12 @@ They are useful to
 - share a process with peers easily, and
 - make your work reproducible
 
-Let’s create a folder system to store our script in by creating a
-**project**.
+Let's set things up
 
-- Press `Projects > New project...` and name your project,
-perhaps “python_training”.
-- Create a new script with
-<kbd>ctrl</kbd>+<kbd>N</kbd>, `File > New file...` or the new file
-button.
+1. Make sure you're in your Python intensive folder
+2. Press *New* > *New File...* > type *fundamentals.py*
 
-You should now see a script on the left panel in Spyder, looking
-something like this:
+You should now have a blank Python script which you can edit.
 
 Try typing a line of code in your new script, such as
 
@@ -219,15 +211,18 @@ example_message = "This is an example message"
 example_message
 ```
 
-Press <kbd>F9</kbd> to run each line, or
-<kbd>ctrl</kbd>+<kbd>enter</kbd> for the whole script. You should see
-something like the following appear in the **console** (depending on how
-you ran it):
+Press <kbd>ctrl</kbd>+<kbd>enter</kbd> to run each line, making sure they're selected, or
+<kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>enter</kbd> for the whole script. You should see the result appear **in the console**.
+
+:::{.callout-tip}
+# Remember: <kbd>enter</kbd> alone doesn't run scripts
+
+If you find that nothing is happening, make sure you're using <kbd>ctrl</kbd>+<kbd>enter</kbd> and selecting a line. Unlike in the console, pressing <kbd>enter</kbd> by itself just makes a new line,
+:::
 
 We’ll work out of a script for the rest of the session. Don’t forget to
 save your script by pressing <kbd>ctrl</kbd>+<kbd>S</kbd> or the save
 button.
-)
 
 ## Functions
 
@@ -254,8 +249,12 @@ Here, we use two arguments to modify the default behaviour of the
 round(example_float, 2)
 ```
 
-> Notice how Spyder gives you hints about the available arguments after
-> typing the function name?
+:::{.callout-tip}
+# Hints
+
+Notice how Positron gives you hints about the available arguments after
+typing the function name?
+:::
 
 ### Operators
 
@@ -304,8 +303,6 @@ help(max)
 print?
 ```
 
-In Spyder, you can use the <kbd>Ctrl</kbd> + <kbd>I</kbd> keyboard
-shortcut to open the help in a separate pane.
 
 For a comprehensive manual, go to the [official online
 documentation](https://docs.python.org/). For questions and answers,
@@ -383,72 +380,7 @@ import matplotlib.pyplot as plt
 plt.plot(example_array)
 ```
 
-This shows a plot in the Plots tab of Spyder.
-
-::: {.callout-warning collapse="true"}
-# Plots not appearing
-
-If your plots aren't appearing, then it might be due to a known bug. The latest versions of Spyder and matplotlib solve the problem, but we can apply a fix locally for now.
-
-**Step 1.**
-
-Check that it's not a different issue. If you see *any* error message, **then this bug is not the problem** - you should solve the error first.
-
-Assuming there is no error message, this bug is featuring if
-
-- The plot is not appearing, and
-- The console has this output:
-
-```bash
-<seaborn.axisgrid.FacetGrid at 0x1e80c2e94f0>
-```
-
-To apply a quick fix (and ensure that the plots are otherwise ok), try running
-
-```python
-plt.show()
-```
-
-This won't fix the problem, but it will let you manually see the plots.
-
-**Step 2.**
-
-Before you try to fix the issue manually, updating Spyder to the latest version should solve the issue.
-
-1. Save your work and close Spyder
-2. Open the Anaconda Navigator
-3. Press the settings button **on the Spyder pane**
-4. Press "Update Application"
-
-Once it's done, relaunch Spyder and give it a go.
-
-**Step 3.**
-
-There are three ways which might fix the bug if you can't update Spyder. The first is to run
-
-```python
-plt.ion()
-```
-
-Try running the plot again. If it works, great!
-
-If it doesn't work, try
-
-```python
-import matplotlib as mpl
-mpl.rcParams["backend"] = "agg"
-```
-
-If *that* doesn't work, then you should adjust your Spyder settings.
-
-1. Go to Tools > Preferences > IPython Console > Graphics
-2. Under "Graphics Backend" change the setting to "Automatic"
-
-Try running your plots again. 
-
-**Step 4.**
-If they *still* aren't working, then ask a trainer for assistance.
-:::
+This shows a plot in the Plots pane of Positron.
 
 The default look is a line plot that joins all the points, but we can style a plot with only a few characters:
 
@@ -475,43 +407,26 @@ plt.plot?
 
 ### Installing modules that aren't built in
 
-The math module is **built-in** - the module came when I installed Python, and the numpy, pandas and matplotlib come with conda installations. Most other modules live online, so we need to download and install them first.
+The math module is **built-in** - the module came with the Python installation. Other, external modules need to be installed before they can be used.
 
-Installing modules depends on whether you have a conda environment or not. To check, run
+For non-Anaconda users, you can run the following code **in the console**:
 
-```{python}
-#| eval: false
-conda
+```
+%pip install ...
 ```
 
-|Message | conda Environment?|
-|--- | ---|
-|`conda is a tool for managing and deployi...` or something similar  | **Yes**|
-|`NameError: name 'conda' is not defined` | **No**|
+to install modules (replace `...` with the module name(s), separated by spaces). You only need to do this once, so you should use the console to do so.
 
-#### If you have a conda environment
+The `%` symbol is a 'magic' code - it doesn't mean anything in Python (and non-Positron users will find this breaks), but Positron has interpreted it to mean *send the rest of the line to a* ***terminal***. 
 
-You can install packages with
+Anaconda users should replace `pip` with `conda`.
 
-```{python}
-#| eval: false
+You should run the following to get the modules you need for this intensive:
 
-conda install package_name
+```
+%pip install pandas seaborn matplotlib plotly scipy statsmodels
 ```
 
-> You likely have a conda environment if you installed Anaconda or you installed Spyder 6 (Since Oct 2024)
-
-#### If you do not have a conda environment
-
-You can install packages with
-
-```{python}
-#| eval: false
-
-pip install package_name
-```
-
-> You likely have a pip environment if you installed Python manually or are using an older (before Oct 2024) version of Spyder (e.g. Spyder 5) 
 
 ### Plotly Express for interactive visualisations
 
@@ -539,11 +454,7 @@ px.histogram(df, x = "age", color = "positions")
 
 ## Saving your work
 
-Press "Save" or <kbd>Ctrl</kbd> + <kbd>S</kbd> to save your script.
-
-Your project can be reopened from the "Projects" menu in Spyder.
-
-By default, your variables are *not* saved, which is another reason why working with a script is important: you can execute the whole script in one go to get everything back. You can however save your variables as a `.spydata` file if you want to (for example, if it takes a lot of time to process your data).
+Press "Save" or <kbd>Ctrl</kbd> + <kbd>S</kbd> to save your script. Note that, while your variables are *not* saved, you can execute the whole script in one go to get everything back.
 
 ## Summary
 

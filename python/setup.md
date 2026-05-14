@@ -16,33 +16,40 @@ As we set up, there's a few things to do, if you haven't already
 
 ## Software
 
-We are going to use Spyder for writing and running Python. This is a friendly interactive development environment (IDE) aimed at researchers. **However, you are more than welcome to use your own!**
+We are going to use [Positron](https://positron.posit.co/) for writing and running Python. This is a friendly interactive development environment (IDE) aimed at researchers.
 
-We recommend [installing the Anaconda distribution](https://www.anaconda.com/download/success), which comes with Spyder and Python. You're welcome to use your own IDE if you'd prefer.
+Once you [download and install Positron](https://positron.posit.co/), launch it on your computer.
 
-Once you have Anaconda installed, **launch Spyder**, either by searching for "Spyder" on your computer or opening the Anaconda Navigator.
+:::{.callout-warning}
+# Using a non-Positron IDE
 
-We'll also be using the rendering and publishing tool Quarto from day 2. You're welcome to try set this up, the easiest way is 
+TL;DR: If you're not using Positron, please [download and install Quarto manually](https://quarto.org/docs/get-started/).
 
-1. Open an "Anaconda prompt" from the navigator
-2. Run `conda install conda-forge::quarto`
+You're more than welcome to use a different IDE than Positron. Some popular IDEs include
 
-You can also install it directly from the [Quarto website](https://quarto.org/docs/download/).
+* VS Code
+* Spyder
+* Pycharm
+* IDLE
+
+We'll be using the rendering and publishing tool [Quarto](https://quarto.org/) from day 2. While Positron is shipped with Quarto, **most other IDEs are not**.
+
+If you're not using Positron, **[please download and install Quarto](https://quarto.org/docs/get-started/)** or chat to a trainer.
+:::
 
 ### Google Colab
 
 If you aren't able to install Python and a suitable IDE on your device (e.g. if you do not have permission) then we can find an online alternative for you, likely in the form of [Google Colab](https://colab.google/). Let us know and we'll help you get set up!
 
-## Creating a Project
+## Creating a working directory
 
-If you're using Spyder, we recommend you create a **project**. Projects are just fancy folders, and they make it easier to access files (i.e. data) and export images (i.e. visualisations) all in the one place.
+Positron, like VS Code, let's you choose a folder to work from. This is convenient for, e.g., filepaths.
 
-1. Open Spyder
-2. In the *Projects* menu, click *New Project...*
-3. Choose *New Directory*, give your project a name and find an appropriate place on your computer for it.
-4. Press *Create*
+We recommend that you create a dedicated folder for the intensive's training. Once you've created one, you should open it in Positron with
 
-Done! We'll work in this project for the duration of the intensives.
+`File > Open folder... > Click the folder > Select folder`
+
+You should find that positron has 'restarted' and placed you *inside* the folder.
 
 ## Workshops
 

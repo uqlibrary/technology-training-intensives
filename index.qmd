@@ -10,18 +10,18 @@ Welcome to our training intensives!
 
 Here you can find all the material for our three-day intensives, which run twice a year. 
 
-The next batch will be in late Jan / early Feb 2026.
+The next batch will be in July 2026.
 
-[R with RStudio\
-Training Intensive \
-\
-27<sup>th</sup> to 29<sup>th</sup> Jan 2026](r/setup.md){.btn .btn-outline-primary}
 [Python for Data Analysis\
 Training Intensive \
 \
-3<sup>rd</sup> to 5<sup>th</sup> Feb 2026](python/setup.md){.btn .btn-outline-primary}
+30<sup>th</sup> Jun to 2<sup>nd</sup> Jul 2026](python/setup.md){.btn .btn-outline-primary}
 [QGIS\
 Training Intensive \
 \
-10<sup>th</sup> to 12<sup>th</sup> Feb 2026](qgis/setup.md){.btn .btn-outline-primary}
+7<sup>th</sup> to 9<sup>th</sup> Jul 2026](qgis/setup.md){.btn .btn-outline-primary}
+[R with RStudio\
+Training Intensive \
+\
+14<sup>th</sup> to 16<sup>th</sup> Jul 2026](r/setup.md){.btn .btn-outline-primary}
 :::
