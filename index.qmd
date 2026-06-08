@@ -20,7 +20,7 @@ Training Intensive \
 Training Intensive \
 \
 7<sup>th</sup> to 9<sup>th</sup> Jul 2026](qgis/setup.md){.btn .btn-outline-primary}
-[R with RStudio\
+[R for Data Analysis\
 Training Intensive \
 \
 14<sup>th</sup> to 16<sup>th</sup> Jul 2026](r/setup.md){.btn .btn-outline-primary}

@@ -1,5 +1,5 @@
 ---
-title: R with RStudio
+title: R with Positron
 ---
 
 ## Overview
@@ -14,14 +14,14 @@ As we set up, there's a few things to do, if you haven't already:
 3. [Join our Teams channel](https://forms.office.com/Pages/ResponsePage.aspx?id=z3fjtrOdy0aRovrZYFuxXEzmI13TctBBiWhneXZv-1lUQ1MwQ0JUM0ZBS0hXV1NJSU04TEZEUFg2Si4u)
 4. [Register your attendance](https://checkin.careerhub.com.au/UQ/provider/event/session=38571/setup)
 
-## R + RStudio
+## R + Positron
 
 The [R programming language](https://cran.r-project.org/) is a language
 used for calculations, statistics, visualisations and many more data
 science tasks.
 
-[RStudio](https://rstudio.com/products/rstudio/) is an open source
-Integrated Development Environment (IDE) for R, which means it provides
+[Positron](https://positron.posit.co/) is an open source
+Integrated Development Environment (IDE) for R and Python, which means it provides
 many features on top of R to make it easier to write and run code.
 
 R’s main strong points are:
@@ -44,7 +44,7 @@ far as programming languages go, R is more user-friendly than others.
 
 ### Installation
 
-For this course, you need to have both R and RStudio installed
+For this course, you need to have both R and Positron installed
 ([installation
 instructions](https://uqlibrary.github.io/technology-training/R/installation.html)).
 
