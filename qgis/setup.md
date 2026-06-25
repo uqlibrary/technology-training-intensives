@@ -27,20 +27,13 @@ As we set up, there's a few things to do, if you haven't already:
 
 ## Software
 
-QGIS is open source, free and cross-platform (Windows, macOS and Linux). This tutorial is designed for **QGIS 3.40**, the Long Term Release at the time of writing. Even if you already have QGIS installed, **please update** to the latest 3.40 release if you can, because:
+QGIS is open source, free and cross-platform (Windows, macOS and Linux). This tutorial is designed for **QGIS 3.44**, the Long Term Release at the time of writing. Even if you already have QGIS installed, **please update** to the latest 3.44 release if you can, because:
 
-* differences in major versions (e.g. 3.*36* vs 3.*40*) make it more difficult to follow, and
-* minor bugfix versions are released every month (e.g. 3.40.*15* was released in January 2026)
+* differences in major versions (e.g. 3.*40* vs 3.*44*) make it more difficult to follow, and
+* minor bugfix versions are released every month (e.g. 3.44.*11* was released in May 2026)
 
-::: {.callout-warning}
-## macOS users
-
-There is no 3.40 installer for macOS. Please install version 3.44 instead, which is set to become the Long Term Release at the end of February 2026.
-
-:::
-
-* If you use your own computer, go to the [QGIS website](https://qgis.org/download/) and install version 3.40 (or 3.44 for macOS)
-* If you use a UQ computer, install QGIS from Company Portal (Windows) or Self-Service (macOS)
+* If you use your own computer, go to the [QGIS website](https://qgis.org/download/) and install version 3.44
+* If you use a UQ computer, install QGIS from Company Portal (Windows) or Self-Service (macOS) (pay attention to the version number if there are several available)
 * If you use a UQ Library laptop, install QGIS from ZENworks
 
 Once installed, open QGIS to see if it starts without issues.
