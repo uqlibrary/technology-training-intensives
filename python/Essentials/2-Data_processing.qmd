@@ -38,8 +38,8 @@ To make life easy, we should set up our workspace well.
 1. Open your project folder using your file explorer, and create a new folder called "data". 
 2. [Download the data for today's session](../../data/Players2024.csv)
 3. Move the file into your new "data" folder
-4. Next, open your project in Spyder, and create a new script called "analysis.py".
-5. Open the "Files" tab in Spyder and check that you see two objects:
+4. Next, open your project in Positron, and create a new script called "analysis.py".
+5. Open the "Explorer" tab in Positron and check that you see two objects:
    * The file "analysis.py"
    * The folder "data"
  
