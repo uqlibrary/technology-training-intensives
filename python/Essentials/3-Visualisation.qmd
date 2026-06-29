@@ -11,12 +11,21 @@ In this third workshop we will cover
 
 
 ## Setting up
-With the data manipulation tools from pandas, we can now visualise our data. For this workshop we'll be working from the "../../data/Players2024.csv" dataset, which we should bring in with pandas:
+With the data manipulation tools from pandas, we can now visualise our data. For this workshop we'll be working from the "data/Players2024.csv" dataset, which we should bring in with pandas:
 
 ```{python}
-import pandas as pd
+#| echo: false
+#| import pandas as pd
+
 df = pd.read_csv("../../data/Players2024.csv")
 ```
+
+```{python}
+#| eval: false
+df = pd.read_csv("data/Players2024.csv")
+```
+
+
 
 Take a quick peak at the dataset to remind yourself
 ```{python}
