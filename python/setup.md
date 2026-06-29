@@ -20,6 +20,30 @@ We are going to use [Positron](https://positron.posit.co/) for writing and runni
 
 Once you [download and install Positron](https://positron.posit.co/), launch it on your computer.
 
+:::{.callout-note}
+# UQ Devices
+
+If you're on a UQ (or another organisation-managed) device, you may not be able install Positron directly.
+
+:::{.panel-tabset}
+# UQ Staff
+Please download and install Positron **via Company Portal** (or self-service where applicable). This is an application on your device.
+
+# UQ Library Staff and Loan Laptops
+Please download and install Positron **via Zenworks**. This is an application on your device.
+
+# Other organisations
+
+1. If your organisation has a software installer (e.g. Company Portal), see if Positron is available there (likely not).
+1. If permitted, try installing Positron locally, using the official installer and ensuring the location is in your User folder.
+1. Otherwise, look for another Python IDE (e.g. VS Code, Spyder, Spyder via Anaconda, Pycharm etc.) in your organisation's software installer
+1. If unable to install any IDE, use [Google Colab](https://colab.research.google.com/) (see below).
+
+:::
+
+:::
+
+
 :::{.callout-warning}
 # Using a non-Positron IDE
 
