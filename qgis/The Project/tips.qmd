@@ -66,3 +66,35 @@ You are not limited to only sharing static maps. To create (and publish) interac
 * [QGIC Cloud](https://qgiscloud.com/): you will need an account. You can then install the "QGIS Cloud Plugin" to publish your project from QGIS.
 * [MapHub](https://www.maphub.co/): similarly to QGIS Cloud, you can create an account (there is a free tier to trial it), install a plugin and upload projects.
 * [qgis2web](https://qgis2web.github.io/qgis2web/): a plugin that allows exporting a project to HTML, using either OpenLayers or Leaflet. This results in a HTML file that is interactive, and can be shared with others, or published on a website if you have one.
+
+## Going further
+
+Here are some more ideas to explore further what QGIS is capable of.
+
+### Map View
+
+You can add "Map Views" to the canvas to look at different areas at the same time (and assign different themes to them). Add them with the menu: "View - New Map View".
+
+### Overviews
+
+In the Layout editor, if you use an inset map, you can use the item property "Overviews" on the main map to show exactly which area the inset map corresponds to.
+
+### Blending modes
+
+"Blending modes" change how different layers' colours interact. You can find them in the Layer Properties (or Layer Styling panel), Symbology tab, Layer Rendering section. Play with them to use colors creatively!
+
+### 3D maps
+
+Using a DEM, you can generate 3D maps. Start with adding a new "3D Map View" from the "View" menu, and then use the view's settings to point to the DEM, exaggerate altitude, and increase the tile resolution. You can use several 2D and 3D map views concurrently.
+
+### Preview modes
+
+Preview Modes allow you to see what your map would look like in greyscale or with different types of colourblindness. Check regularly to increase the accessibility of your map and influence your choice of colour ramps. Find them in View - Preview Mode.
+
+### Using layer metadata
+
+Just like projects, each layer can hold very rich metadata (right-click - Properties... - "Layer metadata" tab). This is useful to organise information like what the data is, its history, its provenance, the copyright holder, conditions of reuse, who to contact, as well as standardised categories and keywords. Once these fields are populated, they can be reused elsewhere (for example, in the field calculator and in a layout's text boxes).
+
+### Diagrams as symbology
+
+In the Layer Styling pannel, see how there is a "Diagrams" tab (for vector layers)? Try visualising different numeric attributes as a chart for one of your vector layers.
