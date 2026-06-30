@@ -15,7 +15,7 @@ With the data manipulation tools from pandas, we can now visualise our data. For
 
 ```{python}
 #| echo: false
-#| import pandas as pd
+import pandas as pd
 
 df = pd.read_csv("../../data/Players2024.csv")
 ```
