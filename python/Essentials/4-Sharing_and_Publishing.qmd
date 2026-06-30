@@ -2,6 +2,14 @@
 title: Sharing and Publishing
 --- 
 
+:::{.callout-warning}
+# Move to Positron
+
+We've recently moved our intensives to the Positron IDE, but some instructions on this page may still reflect old steps. We're working to update them as fast as we can!
+
+:::
+
+
 In this workshop we cover using GitHub for sharing your source code, Git for version control, and Quarto for publishing outputs. Specifically, we look at:
 
 * How to create code-dependent documents, dashboards and presentation using Quarto
@@ -13,28 +21,33 @@ In this workshop we cover using GitHub for sharing your source code, Git for ver
 
 [Quarto](https://quarto.org) is a publishing system that allows creating documents, presentations, websites and dashboards that contain prose, code and code outputs. This means that such outputs can detail exactly what happened to the data, and outputs can be re-generated very quickly if, for example, the underlying dataset was updated, or if the analysis needs to change.
 
-### Installing Quarto
+With [Positron](https://positron.posit.co/), our recommended IDE, Quarto is **already installed**.
 
-The simplest way to install Quarto is with Anaconda.
+:::{.callout-note}
+# If you **are not** using Positron
+
+If you aren't using Positron, you'll need to install Quarto yourself.
+
+:::{.panel-tabset}
+# Anaconda / Spyder 6.0 users
+If you have Anaconda, you can install Quarto from its channels:
 
 1. Open an "Anaconda prompt" from the navigator
 2. Run `conda install conda-forge::quarto`
 3. When prompted with `Continue? ([y]/n)`, type `y` and press <kbd>enter</kbd>
-4. Restart the Spyder kernel and type 
+4. Restart the your terminal / Spyder kernel and type 
 
 ```bash
-!quarto version
+quarto version
 ```
 
-If you get a number, then it's worked!
 
-Alternatively, follow the [instructions to install Quarto](https://quarto.org/docs/get-started/) on your computer. Quarto is a command line tool available for all major operating systems.
+# Direct installation (Non-Anaconda / Spyder < v6 users)
+If you're not using Anaconda, its simplest just to download and install Quarto [from their website](https://quarto.org/docs/get-started/)
 
-::: {.callout-note}
-We can write Quarto files in Spyder, but there is (at the time of writing) no integration of it into the Spyder interface. Other IDEs make it easier to interact with Quarto functions and write Quarto files, like R Studio.
-::: 
+:::
 
-If the IPython console can't find Quarto, try to run `quarto version` (without the `!`) in a command line interface outside Spyder (bash, macOS's Terminal, PowerShell...). You will have to use the tool that finds Quarto to run Quarto commands later.
+:::
 
 ### Create a Quarto file
 
@@ -114,7 +127,7 @@ This is a simple Quarto markdown file, which will render **formatted text**!
 Then, then in your **Spyder terminal**, render the document to produce an HTML output:
 
 ```bash
-!quarto render document.qmd
+quarto render document.qmd
 ```
 
 #### Troubleshooting
@@ -131,7 +144,7 @@ Either you've misspelt the filename, you've put he file in a folder, or the work
 Specify the filepath, not just the filename:
 
 ```bash
-!quarto render folder_name/document.qmd
+quarto render folder_name/document.qmd
 ```
 
 **If the working directory is wrong**
@@ -177,7 +190,7 @@ pip install some_module
 You've probably forgotten the exclamation mark: make sure to use it if you're in Spyder
 
 ```bash
-!quarto render document.qmd
+quarto render document.qmd
 ```
 :::
 
@@ -187,7 +200,7 @@ You've probably forgotten the exclamation mark: make sure to use it if you're in
 You've probably forgotten the exclamation mark: make sure to use it if you're in Spyder
 
 ```bash
-!quarto render document.qmd
+quarto render document.qmd
 ```
 :::
 
@@ -197,7 +210,7 @@ You've probably forgotten the exclamation mark: make sure to use it if you're in
 Try running 
 
 ```bash
-!quarto help
+quarto help
 ```
 
 **If this returns a list of commands**
@@ -229,20 +242,20 @@ You might have to install jupyter. See options for different package managers in
 Sometimes Quarto is a bit slow, particularly if you've got a lot to render. If you've waited for over one minute, and there's a red square in the console's top right, then ask a trainer for help. To troubleshoot, you can try the following steps:
 
 1. Cancel the operation (press the red square)
-2. Run `!quarto help`. This should be quick - if it's not, then you might need to use a terminal, see the **Not using Spyder** note below.
+2. Run `quarto help`. This should be quick - if it's not, then you might need to use a terminal, see the **Not using Spyder** note below.
 :::
 
 :::{.callout-note collapse="true"}
 # Not using Spyder
 
-If you're using a different IDE, you might not be able to use `!quarto ...`. 
+If you're using a different IDE, you might not be able to use `quarto ...`. 
 
 **If you're using Jupyter notebooks**
 
 Then you probably can. Try running 
 
 ```bash
-!quarto render document.qmd
+quarto render document.qmd
 ```
 
 and seeing if an error arises.
@@ -282,7 +295,7 @@ We can include Python chunks for quarto to execute before rendering our file. Re
 print("This code will be executed")
 ```
 
-Placing this chunk into our file and then rendering again with `!quarto render document.qmd`, you should see the code block *and* its output in the document, like this
+Placing this chunk into our file and then rendering again with `quarto render document.qmd`, you should see the code block *and* its output in the document, like this
 
 ```{python}
 print("This code will be executed")
@@ -387,7 +400,7 @@ format: pdf
 When rendering PDFs, the first issue we might run into is the lack of a LaTeX distribution. If Quarto didn't detect one, it will suggest to install tinytex (a minimal LaTeX distribution) with:
 
 ```bash
-!quarto install tinytex
+quarto install tinytex
 ```
 
 Once that is installed, Quarto should render a PDF.
