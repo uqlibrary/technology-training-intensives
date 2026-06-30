@@ -281,6 +281,16 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#initial-exploration" id="toc-initial-exploration" class="nav-link" data-scroll-target="#initial-exploration">Initial exploration</a></li>
   </ul></li>
   <li><a href="#exporting-and-publishing-interactive-maps" id="toc-exporting-and-publishing-interactive-maps" class="nav-link" data-scroll-target="#exporting-and-publishing-interactive-maps">Exporting and publishing interactive maps</a></li>
+  <li><a href="#going-further" id="toc-going-further" class="nav-link" data-scroll-target="#going-further">Going further</a>
+  <ul class="collapse">
+  <li><a href="#map-view" id="toc-map-view" class="nav-link" data-scroll-target="#map-view">Map View</a></li>
+  <li><a href="#overviews" id="toc-overviews" class="nav-link" data-scroll-target="#overviews">Overviews</a></li>
+  <li><a href="#blending-modes" id="toc-blending-modes" class="nav-link" data-scroll-target="#blending-modes">Blending modes</a></li>
+  <li><a href="#d-maps" id="toc-d-maps" class="nav-link" data-scroll-target="#d-maps">3D maps</a></li>
+  <li><a href="#preview-modes" id="toc-preview-modes" class="nav-link" data-scroll-target="#preview-modes">Preview modes</a></li>
+  <li><a href="#using-layer-metadata" id="toc-using-layer-metadata" class="nav-link" data-scroll-target="#using-layer-metadata">Using layer metadata</a></li>
+  <li><a href="#diagrams-as-symbology" id="toc-diagrams-as-symbology" class="nav-link" data-scroll-target="#diagrams-as-symbology">Diagrams as symbology</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -403,8 +413,40 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="https://www.maphub.co/">MapHub</a>: similarly to QGIS Cloud, you can create an account (there is a free tier to trial it), install a plugin and upload projects.</li>
 <li><a href="https://qgis2web.github.io/qgis2web/">qgis2web</a>: a plugin that allows exporting a project to HTML, using either OpenLayers or Leaflet. This results in a HTML file that is interactive, and can be shared with others, or published on a website if you have one.</li>
 </ul>
+</section>
+<section id="going-further" class="level2">
+<h2 class="anchored" data-anchor-id="going-further">Going further</h2>
+<p>Here are some more ideas to explore further what QGIS is capable of.</p>
+<section id="map-view" class="level3">
+<h3 class="anchored" data-anchor-id="map-view">Map View</h3>
+<p>You can add “Map Views” to the canvas to look at different areas at the same time (and assign different themes to them). Add them with the menu: “View - New Map View”.</p>
+</section>
+<section id="overviews" class="level3">
+<h3 class="anchored" data-anchor-id="overviews">Overviews</h3>
+<p>In the Layout editor, if you use an inset map, you can use the item property “Overviews” on the main map to show exactly which area the inset map corresponds to.</p>
+</section>
+<section id="blending-modes" class="level3">
+<h3 class="anchored" data-anchor-id="blending-modes">Blending modes</h3>
+<p>“Blending modes” change how different layers’ colours interact. You can find them in the Layer Properties (or Layer Styling panel), Symbology tab, Layer Rendering section. Play with them to use colors creatively!</p>
+</section>
+<section id="d-maps" class="level3">
+<h3 class="anchored" data-anchor-id="d-maps">3D maps</h3>
+<p>Using a DEM, you can generate 3D maps. Start with adding a new “3D Map View” from the “View” menu, and then use the view’s settings to point to the DEM, exaggerate altitude, and increase the tile resolution. You can use several 2D and 3D map views concurrently.</p>
+</section>
+<section id="preview-modes" class="level3">
+<h3 class="anchored" data-anchor-id="preview-modes">Preview modes</h3>
+<p>Preview Modes allow you to see what your map would look like in greyscale or with different types of colourblindness. Check regularly to increase the accessibility of your map and influence your choice of colour ramps. Find them in View - Preview Mode.</p>
+</section>
+<section id="using-layer-metadata" class="level3">
+<h3 class="anchored" data-anchor-id="using-layer-metadata">Using layer metadata</h3>
+<p>Just like projects, each layer can hold very rich metadata (right-click - Properties… - “Layer metadata” tab). This is useful to organise information like what the data is, its history, its provenance, the copyright holder, conditions of reuse, who to contact, as well as standardised categories and keywords. Once these fields are populated, they can be reused elsewhere (for example, in the field calculator and in a layout’s text boxes).</p>
+</section>
+<section id="diagrams-as-symbology" class="level3">
+<h3 class="anchored" data-anchor-id="diagrams-as-symbology">Diagrams as symbology</h3>
+<p>In the Layer Styling pannel, see how there is a “Diagrams” tab (for vector layers)? Try visualising different numeric attributes as a chart for one of your vector layers.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
