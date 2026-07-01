@@ -2,17 +2,9 @@
 title: Sharing and Publishing
 --- 
 
-:::{.callout-warning}
-# Move to Positron
+In this workshop we cover Quarto for publishing outputs, Git for version control, and GitHub for hosting Git repositories. Specifically, we look at:
 
-We've recently moved our intensives to the Positron IDE, but some instructions on this page may still reflect old steps. We're working to update them as fast as we can!
-
-:::
-
-
-In this workshop we cover using GitHub for sharing your source code, Git for version control, and Quarto for publishing outputs. Specifically, we look at:
-
-* How to create code-dependent documents, dashboards and presentation using Quarto
+* How to create code-dependent documents, dashboards and presentations using Quarto
 * How to create a Git repository on GitHub and add files to it
 * How Git can help record a clean history of a project and collaborate with others
 * How Git and GitHub integrate with different tools
@@ -21,39 +13,36 @@ In this workshop we cover using GitHub for sharing your source code, Git for ver
 
 [Quarto](https://quarto.org) is a publishing system that allows creating documents, presentations, websites and dashboards that contain prose, code and code outputs. This means that such outputs can detail exactly what happened to the data, and outputs can be re-generated very quickly if, for example, the underlying dataset was updated, or if the analysis needs to change.
 
-With [Positron](https://positron.posit.co/), our recommended IDE, Quarto is **already installed**.
+### Quarto setup
 
-:::{.callout-note}
-# If you **are not** using Positron
+I you are using Positron, you should be able to use Quarto straight away as it comes bundles with it.
 
-If you aren't using Positron, you'll need to install Quarto yourself.
+If you use a different IDE, see some instructions below.
 
-:::{.panel-tabset}
-# Anaconda / Spyder 6.0 users
-If you have Anaconda, you can install Quarto from its channels:
+::: {.callout-note collapse="true"}
+# Using a different IDE
+
+Follow the [instructions to install Quarto](https://quarto.org/docs/get-started/) on your computer. Quarto is a command line tool available for all major operating systems, and the website should be able to guide your through most cases.
+
+For example, if you are using the Spyder IDE installed via Anaconda:
 
 1. Open an "Anaconda prompt" from the navigator
-2. Run `conda install conda-forge::quarto`
-3. When prompted with `Continue? ([y]/n)`, type `y` and press <kbd>enter</kbd>
-4. Restart the your terminal / Spyder kernel and type 
+1. Run `conda install conda-forge::quarto`
+1. When prompted with `Continue? ([y]/n)`, type `y` and press <kbd>enter</kbd>
+1. Restart the interpreter and check the Quarto version. In Spyder, you restart the "kernel" and run `!quarto version` in the console.  If you get a number, then it's worked!
 
-```bash
-quarto version
-```
+Note that we can write Quarto files in Spyder, but there is (at the time of writing) no integration of it into the Spyder interface. Other IDEs make it easier to interact with Quarto functions and write Quarto files, like RStudio and Positron.
+::: 
 
-
-# Direct installation (Non-Anaconda / Spyder < v6 users)
-If you're not using Anaconda, its simplest just to download and install Quarto [from their website](https://quarto.org/docs/get-started/)
-
-:::
-
-:::
+If all fails and your IDE can't find Quarto, try to run `quarto version` in a command line interface (bash, macOS's Terminal, PowerShell... or a "Terminal" integrated into your IDE). You will have to use the tool that finds Quarto to run Quarto commands later.
 
 ### Create a Quarto file
 
-Let's try to create a document based on the visualisations we created earlier. First, create a new script. Then, save it as "document.qmd" - be sure to change the extension!
+Let's try to create a document based on the visualisations we created earlier. First, create a new script. Then, save it as "document.qmd" - be sure use that `.qmd` file extension! 
 
 :::{.callout-warning}
+# Paths are relative to the Quarto file location!
+
 When rendering individual Quarto files, paths to files (like the one you use to import some data) will be understood as `relative to the file itself`. This means that, to avoid confusion, it is best to save your Quarto file at the top of your project directory, so you can use the same relative paths as in the rest of your scripts.
 :::
 
@@ -114,21 +103,38 @@ and
 :::
 
 :::  {.callout-tip}
+# Markdown help
 See [more Markdown hints in the Quarto documentation](https://quarto.org/docs/authoring/markdown-basics.html).
 :::
 
-Let's make a simple markdown file and render it with quarto. In your file, write a simple document like the following:
+Let's make a simple markdown file and render it with Quarto. In your file, write a simple document like the following:
+
 ```markdown
 # Quarto document workshop
 
 This is a simple Quarto markdown file, which will render **formatted text**!
 ```
+Then, render the document by clicking "Preview" at the top of the file editor.
 
-Then, then in your **Spyder terminal**, render the document to produce an HTML output:
+
+::: {.callout-note collapse="true"}
+# Using an IDE that does not integrate Quarto
+
+If you don't have Quarto integrated in your IDE, you'll have to run Quarto commands.
+
+For example, in your terminal of choice (assuming that the workind directory is where your Quarto file is):
 
 ```bash
 quarto render document.qmd
 ```
+
+Or from a Python console (like in Spyder), run the same command with the extra `!` to run it outside Python:
+
+```bash
+!quarto render document.qmd
+```
+
+:::
 
 #### Troubleshooting
 
@@ -137,19 +143,19 @@ You may encounter a few issues which can be fixed:
 ::: {.callout-warning collapse="true"}
 # `ERROR: No valid input files passed to render`
 
-Either you've misspelt the filename, you've put he file in a folder, or the working directory is wrong. Once you've checked the spelling, 
+Either you've misspelt the filename, you've put the file in a subfolder, or the working directory is wrong. Once you've checked the spelling:
 
 **If `document.qmd` is in a folder**
 
 Specify the filepath, not just the filename:
 
 ```bash
-quarto render folder_name/document.qmd
+!quarto render folder_name/document.qmd
 ```
 
 **If the working directory is wrong**
 
-Make sure you're in the Spyder project for intensives. You can check this by opening Spyder's "files" pane (above the console) to see where your working directory is. 
+Make sure you're in your project folder. For example, in Spyder, you can check this by opening the "files" pane (above the console) to see where your working directory is. 
 
 If you need to change it, the easiest way is to open the Spyder project you created in a previous workshop. 
 
@@ -169,7 +175,7 @@ and check that you've spelt the module correctly. If it's still broken, then you
 
 **Installing modules for Anaconda users**
 
-If you installed the Anaconda distribution to set up Spyder (and you haven't manually changed environments - you'd know if you did), then use the following command to *install* the module
+If you use an interpreter managed by Anaconda (and you haven't manually changed environments - you'd know if you did), then use the following command to *install* the module
 
 ```bash
 conda install some_module
@@ -177,7 +183,7 @@ conda install some_module
 
 **Installing modules with `pip`**
 
-If you aren't using Anaconda then you can use the `pip` package to install the module. You can do so with
+If you aren't using Anaconda then you should be able to use the `pip` package to install the module. You can do so with:
 
 ```bash
 pip install some_module
@@ -187,20 +193,20 @@ pip install some_module
 :::{.callout-warning collapse="true"}
 # `NameError: name 'quarto' is not defined`
 
-You've probably forgotten the exclamation mark: make sure to use it if you're in Spyder
+You've probably forgotten the exclamation mark when running the command from the Python console:
 
 ```bash
-quarto render document.qmd
+!quarto render document.qmd
 ```
 :::
 
 :::{.callout-warning collapse="true"}
 # `error: incomplete escape \U at position 28
 
-You've probably forgotten the exclamation mark: make sure to use it if you're in Spyder
+You've probably forgotten the exclamation mark when running the command from the Python console:
 
 ```bash
-quarto render document.qmd
+!quarto render document.qmd
 ```
 :::
 
@@ -210,7 +216,7 @@ quarto render document.qmd
 Try running 
 
 ```bash
-quarto help
+!quarto help
 ```
 
 **If this returns a list of commands**
@@ -219,15 +225,13 @@ Then something's wrong with your render command. Double check it's the same as h
 
 **If this returns the same error**
 
-Then you won't be able to use Spyder, and will need to use a command prompt instead. See the note **Not using Spyder** below.
+Then you won't be able this particular Python console, and will need to use a terminal instead. If you are not using Spyder, see the note **Other IDEs** below.
 :::
 
 ::: {.callout-warning collapse="true"}
 # `'quarto' is not recognized as an internal or external command...` or `quarto: command not found` etc.
 
-
-
-Something's wrong with your Quarto installation. Check that you've installed it correctly and ask for help from a trainer.
+Something's wrong with your Quarto installation. Check that you've installed it correctly and ask for help from a trainer, or go through the [install instructions](https://quarto.org/docs/get-started/) again.
 :::
 
 ::: {.callout-warning collapse="true"}
@@ -242,36 +246,34 @@ You might have to install jupyter. See options for different package managers in
 Sometimes Quarto is a bit slow, particularly if you've got a lot to render. If you've waited for over one minute, and there's a red square in the console's top right, then ask a trainer for help. To troubleshoot, you can try the following steps:
 
 1. Cancel the operation (press the red square)
-2. Run `quarto help`. This should be quick - if it's not, then you might need to use a terminal, see the **Not using Spyder** note below.
+2. Run `!quarto help`. This should be quick - if it's not, then you might need to use a terminal, see the **Not using Spyder** note below.
 :::
 
 :::{.callout-note collapse="true"}
-# Not using Spyder
-
-If you're using a different IDE, you might not be able to use `quarto ...`. 
+# Other IDEs
 
 **If you're using Jupyter notebooks**
 
-Then you probably can. Try running 
+Then you probably can use the same command. Try running:
 
 ```bash
-quarto render document.qmd
+!quarto render document.qmd
 ```
 
 and seeing if an error arises.
 
-**If you're using an alternative or have encountered issues within Spyder**
+**If you're using an alternative or the `!quarto` command does not work**
 
 You'll need to use a command prompt to run the Quarto commands. Give it a go yourself, and then ask a trainer for assistance if you're having trouble.
 
-1. Open a command prompt / shell on your device. 
+1. Open a terminal (or "command prompt" or "shell"...) on your device. 
 2. Navigate to your project folder with the command `cd` to change directories:
 
 ```bash
 cd path/to/your/project/
 ```
 
-You can find the path inside Spyder - it's the address in the top right.
+You can find the path inside your IDE - in Spyder, it's the address in the top right.
 
 3. Use the render command *without* the exclamation mark:
 
@@ -281,21 +283,21 @@ quarto render document.qmd
 :::
 
 
-Once it's finished, you should see a new file in your project folder: "document.html". Open it in your browser.
+Once it's finished, you should see the rendered document in the "Viewer" pane, on the right of Positron. There is new file in your project folder: "document.html". It's your rendered document, which you can open in any web browser, and share with others!
 
 :::{.callout-tip}
-Right click on the file and press "Open externally" within Spyder.
+Right click on the file and press "Open in Browser".
 :::
 
-### Including Python
+### Including Python code
 
-We can include Python chunks for quarto to execute before rendering our file. Returning to the `.qmd` file, we fence code chunks with backticks
+We can include Python chunks for Quarto to execute before rendering our file. Returning to the `.qmd` file, we fence code chunks with backticks
 
 ```{{python}}
 print("This code will be executed")
 ```
 
-Placing this chunk into our file and then rendering again with `quarto render document.qmd`, you should see the code block *and* its output in the document, like this
+Placing this chunk into our file and then rendering again with `!quarto render document.qmd`, you should see the code block *and* its output in the document, like this
 
 ```{python}
 print("This code will be executed")
@@ -305,7 +307,7 @@ print("This code will be executed")
 
 We'll now look to using Python and markdown to develop a report with Quarto. Let's start by bringing in some of the work we did yesterday.
 
-We'll start with set up message and import the packages and data:
+We'll start with a set up message and a code cell to import the packages and data:
 
 ````
 ## Import the data
@@ -320,7 +322,7 @@ df = pd.read_csv("../../data/Players2024.csv")
 ```
 ````
 
-We can then follow by plotting it the data
+We can then follow by plotting the data
 
 ````
 ## Plot the data
@@ -382,6 +384,7 @@ warning: false
 error: false
 ---
 ```
+
 ### Output formats
 
 The default output format in Quarto is HTML, which is by far the most flexible. However, Quarto is a very versatile publishing system and can generate many different output formats, including PDF, DOCX and ODT, slide formats, Markdown suited for GitHub... and even whole blogs, books and dashboards.
@@ -397,13 +400,13 @@ format: pdf
 ---
 ```
 
-When rendering PDFs, the first issue we might run into is the lack of a LaTeX distribution. If Quarto didn't detect one, it will suggest to install tinytex (a minimal LaTeX distribution) with:
+When rendering PDFs, the first issue we might run into is the lack of a LaTeX distribution. If Quarto didn't detect one, it will suggest to install tinytex (a minimal LaTeX distribution) by running this in Positron's terminal (or whichever terminal you have been using to run Quarto commands):
 
 ```bash
 quarto install tinytex
 ```
 
-Once that is installed, Quarto should render a PDF.
+Once that is installed, Quarto should be bale to render a PDF.
 
 Another issue with our example document is that an interactive HTML visualisation won't be renderd in the PDF. You can supress it by using the `#| eval: false` option:
 
@@ -540,8 +543,9 @@ To practice managing a git repository on GitHub, try creating a personal portfol
 
 ## Further resources
 
-* Some alternatives to GitHub: [Codeberg](https://codeberg.org/) and [Gitlab](https://gitlab.com)
 * [Quarto documentation](https://quarto.org/)
+* [Quarto cheatsheet](https://opensource.posit.co/resources/cheatsheets/quarto/quarto.pdf)
 * [Course on Git from the command line](https://github.com/uqlibrary/technology-training/blob/master/Git/git.md)
 * [Course on Git with GitHub](https://github.com/uqlibrary/technology-training/blob/master/Git/GitHub/GitHub_intro.md)
 * [How to use GitHub Pages to publish Quarto outputs](https://quarto.org/docs/publishing/github-pages.html)
+* Some alternatives to GitHub: [Codeberg](https://codeberg.org/) and [Gitlab](https://gitlab.com)
