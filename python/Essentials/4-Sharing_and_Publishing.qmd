@@ -15,7 +15,7 @@ In this workshop we cover Quarto for publishing outputs, Git for version control
 
 ### Quarto setup
 
-I you are using Positron, you should be able to use Quarto straight away as it comes bundles with it.
+I you are using Positron, you should be able to use Quarto straight away as it comes bundled with it.
 
 If you use a different IDE, see some instructions below.
 
@@ -45,7 +45,6 @@ Let's try to create a document based on the visualisations we created earlier. F
 
 When rendering individual Quarto files, paths to files (like the one you use to import some data) will be understood as `relative to the file itself`. This means that, to avoid confusion, it is best to save your Quarto file at the top of your project directory, so you can use the same relative paths as in the rest of your scripts.
 :::
-
 
 This new `.qmd` script is a *Quarto Markdown* file. Markdown is a formatting language which we'll go through shortly.
 
@@ -81,10 +80,9 @@ and
     2. levels
 
 ```
+
 ::: {.callout-note collapse="true" appearance="minimal"}
 # Markdown example
-
-
 
 This contains **bold** and *italicised* text. You can also ~~strikethrough~~, create
 
@@ -99,7 +97,6 @@ and
 2. lists
     1. with
     2. levels
-
 :::
 
 :::  {.callout-tip}
@@ -114,8 +111,8 @@ Let's make a simple markdown file and render it with Quarto. In your file, write
 
 This is a simple Quarto markdown file, which will render **formatted text**!
 ```
-Then, render the document by clicking "Preview" at the top of the file editor.
 
+Then, render the document by clicking "Preview" at the top of the file editor.
 
 ::: {.callout-note collapse="true"}
 # Using an IDE that does not integrate Quarto
@@ -133,7 +130,6 @@ Or from a Python console (like in Spyder), run the same command with the extra `
 ```bash
 !quarto render document.qmd
 ```
-
 :::
 
 #### Troubleshooting
@@ -336,7 +332,6 @@ sns.catplot(data = df, x = "positions", y = "height_cm")
 We now have a plot!
 ````
 
-
 ### Cell options
 
 As the default Quarto output is a HTML file, we can include interactive visualisations too.
@@ -389,6 +384,10 @@ error: false
 
 The default output format in Quarto is HTML, which is by far the most flexible. However, Quarto is a very versatile publishing system and can generate many different output formats, including PDF, DOCX and ODT, slide formats, Markdown suited for GitHub... and even whole blogs, books and dashboards.
 
+Here, we introduce two popular formats: PDF, and the HTML-based dashboard.
+
+#### PDF
+
 Let's try rendering a PDF by including the `format: pdf` option at the top of the file:
 
 ```yml
@@ -406,7 +405,7 @@ When rendering PDFs, the first issue we might run into is the lack of a LaTeX di
 quarto install tinytex
 ```
 
-Once that is installed, Quarto should be bale to render a PDF.
+Once that is installed, Quarto should be able to render a PDF.
 
 Another issue with our example document is that an interactive HTML visualisation won't be renderd in the PDF. You can supress it by using the `#| eval: false` option:
 
@@ -416,73 +415,65 @@ import plotly.express as px
 px.scatter(data_frame = df, x = "age", y = "height_cm")
 ``` 
 
-
-<!-- #### Dashboard
+#### Dashboards
 
 A great way to present a variety of outputs in a grid is by creating a HTML dashboard.
 
 Let's modify our script to render a dashboard. First, change the output format:
 
-```python
-# %% [markdown]
-# ---
-# title: Reproducible Output
-# author: Your Name
-# date: 2025-01-01
-# format: dashboard
-# ---
+```yml
+---
+title: Reproducible Output
+author: Your Name
+date: 2025-01-01
+format: dashboard
+---
 ```
 
 We can already render the dashboard and see the result. Each panel can be expanded with the bottom-right button. Note that by default:
 
-* each cell is rendered in a separate card
-* headings define the rows
-* the heading text is discarded
+* each code cell output is rendered in a separate card
+* headings of level 1 create tabs, headings of level 2 create rows
 * code is not shown (but can be by using `echo: true`)
 
 Given this default behaviour, you might have to rethink a good part of your script to make it suited for a striking dashboard. For example, removing most of the text, customising the layout (tabsets, rows, card heights...) and adding custom cards like "value boxes". Learn more about all these in the [Quarto Dashboards documentation](https://quarto.org/docs/dashboards/).
 
 As a starting point, copy the current script across to a new script called `dashboard.py` and modify it so it matches the following:
-```python
-# %% [markdown]
-# ---
-# title: Reproducible Outputs
-# author: Your Name
-# date: today
-# warning: false
-# error: false
-# format: dashboard
-# ---
 
-# %%
+````
+---
+title: Reproducible Outputs
+author: Your Name
+format: dashboard
+---
+
+```{{python}}
 import pandas as pd
 df = pd.read_csv("../../data/Players2024.csv")
+```
 
-# %% [markdown]
-"""
 ## Figures {height=70%}
-"""
 
-# %%
+```{{python}}
 #| title: Goalkeepers tend to be taller
 #| fig-alt: "A scatterplot of the relationsip between height and position."
 import seaborn as sns
 sns.catplot(data = df, x = "positions", y = "height_cm")
+```
 
-# %%
+```{{python}}
 #| title: Age vs Height
 import plotly.express as px
 px.scatter(data_frame = df, x = "age", y = "height_cm")
+```
 
-# %% [markdown]
-"""
 ## Table
-"""
 
-# %%
+```{{python}}
 #| title: A glimpse at the dataset
 df.head(10)
 ```
+````
 
 This results in a dashboard containing three cards organised in two rows. The top row uses 70% of the available height, and the bottom row shows a table of the top 10 rows of the dataset. Each card has a title.
 
@@ -492,26 +483,34 @@ This results in a dashboard containing three cards organised in two rows. The to
 
 To quickly style your dashboard differently, you can use a Bootstrap theme in your header like so:
 
-```
-# %% [markdown]
-# ---
-# title: Reproducible Outputs
-# author: Your Name
-# date: today
-# warning: false
-# error: false
-# format:
-#   dashboard:
-#     theme: quartz
-# ---
+```yml
+---
+title: Reproducible Outputs
+author: Your Name
+format:
+  dashboard:
+    theme: quartz
+---
 ```
 
-See [a list of what other themes are available](https://quarto.org/docs/dashboards/theming.html). 
--->
+See [a list of what other themes are available](https://quarto.org/docs/dashboards/theming.html).
+
+:::{.callout-note}
+#### Unwanted text in plot cards
+
+If you see unwanted text outputs printed along plots, like `Text(...)`, you are hitting [this Quarto issue](https://github.com/quarto-dev/quarto-cli/issues/11150).
+
+One workaround is to add a semicolon `;` at the end of the last command. For example:
+
+```{{python}}
+plt.boxplot(my_data)
+plt.title("My title");
+```
+:::
 
 ## Git and GitHub
 
-**Git** is a version control system that allows to record a clean history of your project, track precise authorship, and collaborate asynchronously with others. It can be used offline, from the command line or with integration into Integrated Desktop Environments (like RStudio, VS Code... Unfortunately, Spyder does not have Git integration).
+**Git** is a version control system that allows to record a clean history of your project, track precise authorship, and collaborate asynchronously with others. It can be used offline, from the command line or with integration into Integrated Desktop Environments (like Positron, RStudio, VS Code... Unfortunately, Spyder does not have Git integration).
 
 **GitHub** is one of many websites that allow you to host project that are tracked with Git. But even without using Git at all, it is possible to use GitHub to share and make your project public. Many researchers use it to make their code public alongside a published paper, to increase reproducibility and transparency. It can also be useful to build and share a portfolio of your work.
 
