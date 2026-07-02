@@ -110,6 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <meta property="og:title" content="Sharing and Publishing – UQ Library Training Intensives">
 <meta property="og:description" content="">
+<meta property="og:image" content="https://uqlibrary.github.io/technology-training-intensives/python/Essentials/img/dashboard.png">
 <meta property="og:site_name" content="UQ Library Training Intensives">
 </head>
 
@@ -326,6 +327,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#building-an-example-report" id="toc-building-an-example-report" class="nav-link" data-scroll-target="#building-an-example-report">Building an example report</a></li>
   <li><a href="#cell-options" id="toc-cell-options" class="nav-link" data-scroll-target="#cell-options">Cell options</a></li>
   <li><a href="#output-formats" id="toc-output-formats" class="nav-link" data-scroll-target="#output-formats">Output formats</a></li>
+  <li><a href="#themes" id="toc-themes" class="nav-link" data-scroll-target="#themes">Themes</a></li>
   </ul></li>
   <li><a href="#git-and-github" id="toc-git-and-github" class="nav-link" data-scroll-target="#git-and-github">Git and GitHub</a>
   <ul class="collapse">
@@ -369,7 +371,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><a href="https://quarto.org">Quarto</a> is a publishing system that allows creating documents, presentations, websites and dashboards that contain prose, code and code outputs. This means that such outputs can detail exactly what happened to the data, and outputs can be re-generated very quickly if, for example, the underlying dataset was updated, or if the analysis needs to change.</p>
 <section id="quarto-setup" class="level3">
 <h3 class="anchored" data-anchor-id="quarto-setup">Quarto setup</h3>
-<p>I you are using Positron, you should be able to use Quarto straight away as it comes bundles with it.</p>
+<p>I you are using Positron, you should be able to use Quarto straight away as it comes bundled with it.</p>
 <p>If you use a different IDE, see some instructions below.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
@@ -720,7 +722,7 @@ Tip
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"This code will be executed"</span>)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Placing this chunk into our file and then rendering again with <code>!quarto render document.qmd</code>, you should see the code block <em>and</em> its output in the document, like this</p>
-<div id="ae349cf0" class="cell" data-execution_count="1">
+<div id="fe481ba6" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"This code will be executed"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>This code will be executed</code></pre>
@@ -792,6 +794,9 @@ Tip
 <section id="output-formats" class="level3">
 <h3 class="anchored" data-anchor-id="output-formats">Output formats</h3>
 <p>The default output format in Quarto is HTML, which is by far the most flexible. However, Quarto is a very versatile publishing system and can generate many different output formats, including PDF, DOCX and ODT, slide formats, Markdown suited for GitHub… and even whole blogs, books and dashboards.</p>
+<p>Here, we introduce two popular formats: PDF, and the HTML-based dashboard.</p>
+<section id="pdf" class="level4">
+<h4 class="anchored" data-anchor-id="pdf">PDF</h4>
 <p>Let’s try rendering a PDF by including the <code>format: pdf</code> option at the top of the file:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> Reproducible Output</span></span>
@@ -801,109 +806,107 @@ Tip
 <span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>When rendering PDFs, the first issue we might run into is the lack of a LaTeX distribution. If Quarto didn’t detect one, it will suggest to install tinytex (a minimal LaTeX distribution) by running this in Positron’s terminal (or whichever terminal you have been using to run Quarto commands):</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> install tinytex</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Once that is installed, Quarto should be bale to render a PDF.</p>
+<p>Once that is installed, Quarto should be able to render a PDF.</p>
 <p>Another issue with our example document is that an interactive HTML visualisation won’t be renderd in the PDF. You can supress it by using the <code>#| eval: false</code> option:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>px.scatter(data_frame <span class="op">=</span> df, x <span class="op">=</span> <span class="st">"age"</span>, y <span class="op">=</span> <span class="st">"height_cm"</span>)</span>
 <span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!-- #### Dashboard
-
-A great way to present a variety of outputs in a grid is by creating a HTML dashboard.
-
-Let's modify our script to render a dashboard. First, change the output format:
-
-```python
-# %% [markdown]
-# ---
-# title: Reproducible Output
-# author: Your Name
-# date: 2025-01-01
-# format: dashboard
-# ---
-```
-
-We can already render the dashboard and see the result. Each panel can be expanded with the bottom-right button. Note that by default:
-
-* each cell is rendered in a separate card
-* headings define the rows
-* the heading text is discarded
-* code is not shown (but can be by using `echo: true`)
-
-Given this default behaviour, you might have to rethink a good part of your script to make it suited for a striking dashboard. For example, removing most of the text, customising the layout (tabsets, rows, card heights...) and adding custom cards like "value boxes". Learn more about all these in the [Quarto Dashboards documentation](https://quarto.org/docs/dashboards/).
-
-As a starting point, copy the current script across to a new script called `dashboard.py` and modify it so it matches the following:
-```python
-# %% [markdown]
-# ---
-# title: Reproducible Outputs
-# author: Your Name
-# date: today
-# warning: false
-# error: false
-# format: dashboard
-# ---
-
-# %%
-import pandas as pd
-df = pd.read_csv("../../data/Players2024.csv")
-
-# %% [markdown]
-"""
-## Figures {height=70%}
-"""
-
-# %%
-#| title: Goalkeepers tend to be taller
-#| fig-alt: "A scatterplot of the relationsip between height and position."
-import seaborn as sns
-sns.catplot(data = df, x = "positions", y = "height_cm")
-
-# %%
-#| title: Age vs Height
-import plotly.express as px
-px.scatter(data_frame = df, x = "age", y = "height_cm")
-
-# %% [markdown]
-"""
-## Table
-"""
-
-# %%
-#| title: A glimpse at the dataset
-df.head(10)
-```
-
-This results in a dashboard containing three cards organised in two rows. The top row uses 70% of the available height, and the bottom row shows a table of the top 10 rows of the dataset. Each card has a title.
-
-![Quarto dashboard with three cards: static visualisation, interactive visualisation, and table.](img/dashboard.png)
-
-### Themes
-
-To quickly style your dashboard differently, you can use a Bootstrap theme in your header like so:
-
-```
-# %% [markdown]
-# ---
-# title: Reproducible Outputs
-# author: Your Name
-# date: today
-# warning: false
-# error: false
-# format:
-#   dashboard:
-#     theme: quartz
-# ---
-```
-
-See [a list of what other themes are available](https://quarto.org/docs/dashboards/theming.html). 
--->
+</section>
+<section id="dashboards" class="level4">
+<h4 class="anchored" data-anchor-id="dashboards">Dashboards</h4>
+<p>A great way to present a variety of outputs in a grid is by creating a HTML dashboard.</p>
+<p>Let’s modify our script to render a dashboard. First, change the output format:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> Reproducible Output</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> Your Name</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> 2025-01-01</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> dashboard</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>We can already render the dashboard and see the result. Each panel can be expanded with the bottom-right button. Note that by default:</p>
+<ul>
+<li>each code cell output is rendered in a separate card</li>
+<li>headings of level 1 create tabs, headings of level 2 create rows</li>
+<li>code is not shown (but can be by using <code>echo: true</code>)</li>
+</ul>
+<p>Given this default behaviour, you might have to rethink a good part of your script to make it suited for a striking dashboard. For example, removing most of the text, customising the layout (tabsets, rows, card heights…) and adding custom cards like “value boxes”. Learn more about all these in the <a href="https://quarto.org/docs/dashboards/">Quarto Dashboards documentation</a>.</p>
+<p>As a starting point, copy the current script across to a new script called <code>dashboard.py</code> and modify it so it matches the following:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Reproducible Outputs</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> Your Name</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> dashboard</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"../../data/Players2024.csv"</span>)</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="fu">## Figures {height=70%}</span></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="co">#| title: Goalkeepers tend to be taller</span></span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-alt: "A scatterplot of the relationsip between height and position."</span></span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>sns.catplot(data <span class="op">=</span> df, x <span class="op">=</span> <span class="st">"positions"</span>, y <span class="op">=</span> <span class="st">"height_cm"</span>)</span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a><span class="co">#| title: Age vs Height</span></span>
+<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a>px.scatter(data_frame <span class="op">=</span> df, x <span class="op">=</span> <span class="st">"age"</span>, y <span class="op">=</span> <span class="st">"height_cm"</span>)</span>
+<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb28-26"><a href="#cb28-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-27"><a href="#cb28-27" aria-hidden="true" tabindex="-1"></a><span class="fu">## Table</span></span>
+<span id="cb28-28"><a href="#cb28-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-29"><a href="#cb28-29" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb28-30"><a href="#cb28-30" aria-hidden="true" tabindex="-1"></a><span class="co">#| title: A glimpse at the dataset</span></span>
+<span id="cb28-31"><a href="#cb28-31" aria-hidden="true" tabindex="-1"></a>df.head(<span class="dv">10</span>)</span>
+<span id="cb28-32"><a href="#cb28-32" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This results in a dashboard containing three cards organised in two rows. The top row uses 70% of the available height, and the bottom row shows a table of the top 10 rows of the dataset. Each card has a title.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/dashboard.png" class="img-fluid figure-img"></p>
+<figcaption>Quarto dashboard with three cards: static visualisation, interactive visualisation, and table.</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="themes" class="level3">
+<h3 class="anchored" data-anchor-id="themes">Themes</h3>
+<p>To quickly style your dashboard differently, you can use a Bootstrap theme in your header like so:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> Reproducible Outputs</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> Your Name</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">dashboard</span><span class="kw">:</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> quartz</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>See <a href="https://quarto.org/docs/dashboards/theming.html">a list of what other themes are available</a>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Unwanted text in plot cards
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you see unwanted text outputs printed along plots, like <code>Text(...)</code>, you are hitting <a href="https://github.com/quarto-dev/quarto-cli/issues/11150">this Quarto issue</a>.</p>
+<p>One workaround is to add a semicolon <code>;</code> at the end of the last command. For example:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>plt.boxplot(my_data)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"My title"</span>)<span class="op">;</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
 </section>
 </section>
 <section id="git-and-github" class="level2">
 <h2 class="anchored" data-anchor-id="git-and-github">Git and GitHub</h2>
-<p><strong>Git</strong> is a version control system that allows to record a clean history of your project, track precise authorship, and collaborate asynchronously with others. It can be used offline, from the command line or with integration into Integrated Desktop Environments (like RStudio, VS Code… Unfortunately, Spyder does not have Git integration).</p>
+<p><strong>Git</strong> is a version control system that allows to record a clean history of your project, track precise authorship, and collaborate asynchronously with others. It can be used offline, from the command line or with integration into Integrated Desktop Environments (like Positron, RStudio, VS Code… Unfortunately, Spyder does not have Git integration).</p>
 <p><strong>GitHub</strong> is one of many websites that allow you to host project that are tracked with Git. But even without using Git at all, it is possible to use GitHub to share and make your project public. Many researchers use it to make their code public alongside a published paper, to increase reproducibility and transparency. It can also be useful to build and share a portfolio of your work.</p>
 <p>Learning about the ins and out of Git takes time, so in this section we will mainly use GitHub as a place to upload and share your code and outputs, and as a starting point for learning more about Git in the future.</p>
 <section id="github" class="level3">
