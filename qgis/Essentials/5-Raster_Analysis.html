@@ -276,28 +276,25 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#what-are-we-going-to-learn" id="toc-what-are-we-going-to-learn" class="nav-link active" data-scroll-target="#what-are-we-going-to-learn">What are we going to learn?</a></li>
   <li><a href="#what-is-raster-data" id="toc-what-is-raster-data" class="nav-link" data-scroll-target="#what-is-raster-data">What is Raster Data?</a></li>
   <li><a href="#aims-for-this-session" id="toc-aims-for-this-session" class="nav-link" data-scroll-target="#aims-for-this-session">Aims for this session</a></li>
-  <li><a href="#install-the-saga-plugin" id="toc-install-the-saga-plugin" class="nav-link" data-scroll-target="#install-the-saga-plugin">Install the SAGA Plugin</a></li>
+  <li><a href="#install-the-arcgeek-calculator-plugin" id="toc-install-the-arcgeek-calculator-plugin" class="nav-link" data-scroll-target="#install-the-arcgeek-calculator-plugin">Install the ArcGeek Calculator plugin</a></li>
   <li><a href="#load-in-our-raster-data" id="toc-load-in-our-raster-data" class="nav-link" data-scroll-target="#load-in-our-raster-data">Load in our Raster data</a></li>
   <li><a href="#reproject-the-dem" id="toc-reproject-the-dem" class="nav-link" data-scroll-target="#reproject-the-dem">Reproject the DEM</a></li>
   <li><a href="#risks-of-reprojecting-rasters" id="toc-risks-of-reprojecting-rasters" class="nav-link" data-scroll-target="#risks-of-reprojecting-rasters">Risks of Reprojecting Rasters</a>
   <ul class="collapse">
   <li><a href="#so-what-do-you-do" id="toc-so-what-do-you-do" class="nav-link" data-scroll-target="#so-what-do-you-do">So what do you do?</a></li>
   </ul></li>
+  <li><a href="#style-the-dem" id="toc-style-the-dem" class="nav-link" data-scroll-target="#style-the-dem">Style the DEM</a></li>
   <li><a href="#analyse-watersheds-and-basins" id="toc-analyse-watersheds-and-basins" class="nav-link" data-scroll-target="#analyse-watersheds-and-basins">Analyse Watersheds and Basins</a>
   <ul class="collapse">
-  <li><a href="#fill-sinks" id="toc-fill-sinks" class="nav-link" data-scroll-target="#fill-sinks">Fill Sinks</a></li>
+  <li><a href="#stream-network" id="toc-stream-network" class="nav-link" data-scroll-target="#stream-network">Stream network</a></li>
+  <li><a href="#watershed-basins" id="toc-watershed-basins" class="nav-link" data-scroll-target="#watershed-basins">Watershed basins</a></li>
+  <li><a href="#style-the-layers" id="toc-style-the-layers" class="nav-link" data-scroll-target="#style-the-layers">Style the layers</a></li>
+  <li><a href="#what-does-it-mean" id="toc-what-does-it-mean" class="nav-link" data-scroll-target="#what-does-it-mean">What does it mean?</a></li>
   </ul></li>
-  <li><a href="#channel-network-and-drainage-basin" id="toc-channel-network-and-drainage-basin" class="nav-link" data-scroll-target="#channel-network-and-drainage-basin">Channel network and drainage basin</a></li>
   <li><a href="#georeferencing-an-image" id="toc-georeferencing-an-image" class="nav-link" data-scroll-target="#georeferencing-an-image">Georeferencing an Image</a></li>
-  <li><a href="#clip-the-dem" id="toc-clip-the-dem" class="nav-link" data-scroll-target="#clip-the-dem">Clip the DEM</a>
-  <ul class="collapse">
-  <li><a href="#change-the-symbology" id="toc-change-the-symbology" class="nav-link" data-scroll-target="#change-the-symbology">Change the symbology</a></li>
-  </ul></li>
-  <li><a href="#add-a-hillshade" id="toc-add-a-hillshade" class="nav-link" data-scroll-target="#add-a-hillshade">Add a hillshade</a></li>
-  <li><a href="#contours" id="toc-contours" class="nav-link" data-scroll-target="#contours">Contours</a>
-  <ul class="collapse">
+  <li><a href="#clip-the-dem" id="toc-clip-the-dem" class="nav-link" data-scroll-target="#clip-the-dem">Clip the DEM</a></li>
+  <li><a href="#contours" id="toc-contours" class="nav-link" data-scroll-target="#contours">Contours</a></li>
   <li><a href="#viewshed" id="toc-viewshed" class="nav-link" data-scroll-target="#viewshed">Viewshed</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -353,21 +350,27 @@ ul.task-list li input[type="checkbox"] {
 <p>In the last session we found that a number of residential areas will likely receive dust from the construction. One way to reduce dust is to regularly spray water on the roads, and wash down the trucks. However you now need to deal with the water runoff that creates. We can use watershed and basin analysis on a DEM to look at where the water will flow.</p>
 <p>We can also use similar data to calculate how for away the wind turbines will be visible</p>
 </section>
-<section id="install-the-saga-plugin" class="level2">
-<h2 class="anchored" data-anchor-id="install-the-saga-plugin">Install the SAGA Plugin</h2>
-<p>We need to install a plugin so we can access certain geoprocessing tools (the built-in SAGA provider has been <a href="https://changelog.qgis.org/en/qgis/version/3.30/#processing-drop-unmainted-saga-provider-from-qgis-">removed in version 3.30</a>). Go to <code>Plugins &gt; Manage and Install Plugins...</code> and <code>Search...</code> for “<strong>SAGA</strong>”. From the list on options choose <strong>Processing Saga NextGen Provider</strong> then in the bottom right, click <code>Install Plugin</code>. You might also need to install SAGA (version 9 or above) on your computer, if not already available.</p>
+<section id="install-the-arcgeek-calculator-plugin" class="level2">
+<h2 class="anchored" data-anchor-id="install-the-arcgeek-calculator-plugin">Install the ArcGeek Calculator plugin</h2>
+<p>We need to install a plugin so we can access certain geoprocessing tools useful for basin analysis: the “ArcGeek Calculator” plugin.</p>
+<p>There are many other plugins from the QGIS Community that you can explore to enhance QGIS, but we will stick with this for now.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>No SAGA tools?
+<span class="screen-reader-only">Tip</span>Alternative: SAGA tools
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<p>A useful spatial library for basin analysis (and more) is SAGA.</p>
+<p>Unfortunately, the built-in SAGA provider was <a href="https://changelog.qgis.org/en/qgis/version/3.30/#processing-drop-unmainted-saga-provider-from-qgis-">removed in version 3.30</a>, and it can be a little involved to get it working, which is why we use ArcGeek Calculator.</p>
+<p>If you would like to access the SAGA tools, you can go to <code>Plugins &gt; Manage and Install Plugins...</code> and <code>Search...</code> for “<strong>SAGA</strong>”. From the list on options choose <strong>Processing Saga NextGen Provider</strong> then in the bottom right, click <code>Install Plugin</code>. You might also need to install SAGA (version 9 or above) on your computer, if not already available.</p>
+<section id="no-saga-tools" class="level3">
+<h3 class="anchored" data-anchor-id="no-saga-tools">No SAGA tools?</h3>
 <p>If the SAGA tools still don’t show in the Processing Toolbox after installing the plugin, try the following on Windows / macOS (as suggested by the plugin developers):</p>
 <ol type="1">
 <li>Get the <a href="https://sourceforge.net/projects/saga-gis/files/SAGA%20-%209/SAGA%20-%209.2.1/">SAGA 9.2.1 binaries</a> (download ‘saga_9.2.1_x64.zip’ for Windows, or ‘saga-9.2.1_mac.zip’ for macOS)</li>
@@ -376,16 +379,17 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 <p>If that doesn’t work on Windows, and you have administrator rights, try installing SAGA with ‘saga_9.2.1_x64_setup.exe’ instead.</p>
 <p>For Linux, use your distribution’s package manager to install it (e.g.&nbsp;<code>sudo apt install saga</code> on Debian-based). If the repository’s version is too old, consider adding an external repository that provides a more recent version (e.g.&nbsp;the UbuntuGIS PPA for Ubuntu-based distributions).</p>
+</section>
 </div>
 </div>
 </div>
-<p>There are many other plugins from the QGIS Community that you can explore to enhance QGIS, but we will stick with this for now.</p>
 </section>
 <section id="load-in-our-raster-data" class="level2">
 <h2 class="anchored" data-anchor-id="load-in-our-raster-data">Load in our Raster data</h2>
+<p>Our DEM comes from Geoscience Australia through their <a href="https://elevation.fsdf.org.au/">Elvis platform</a>, but we have it ready to use in our raw data folder:</p>
 <ul>
-<li>Click the <code>Project Home</code> dropdown, then <code>data &gt; raw &gt; 4-raster_data</code> and load in:</li>
-<li>Bris_DEM_5m.tif (From Geoscience Australia through their <a href="https://elevation.fsdf.org.au/">Elvis platform</a>)</li>
+<li>Click the <code>Project Home</code> dropdown, then <code>data &gt; raw &gt; 4-raster_data</code></li>
+<li>Load in: Bris_DEM_5m.tif</li>
 </ul>
 </section>
 <section id="reproject-the-dem" class="level2">
@@ -402,6 +406,7 @@ ul.task-list li input[type="checkbox"] {
 <li>You should be able to find “EPSG:7856 - GDA2020 / MGA zone 56” under <strong>Predefined Coordinate Reference Systems</strong></li>
 </ul></li>
 <li>Scroll down to click the three dots <code>...</code> next to the <strong>Reprojected</strong> field, navigate to the project’s <strong>processed</strong> data folder, and type in <strong>Bris_DEM_5m_reproj</strong> and click <code>Save</code></li>
+<li>Click <code>Run</code></li>
 </ul>
 <blockquote class="blockquote">
 <p>If you want to learn more about the static datum GDA2020 (for “Geocentric Datum of Australia 2020”), an upgrade from the previous, less precise GDA94, head to the <a href="https://www.icsm.gov.au/gda2020">ICSM website</a>.</p>
@@ -421,27 +426,145 @@ ul.task-list li input[type="checkbox"] {
 <p>There are other exceptions, but if you’re unsure, check first.</p>
 </section>
 </section>
+<section id="style-the-dem" class="level2">
+<h2 class="anchored" data-anchor-id="style-the-dem">Style the DEM</h2>
+<p>We can use the Layer Styling Panel to make the elevation layer more appealing.</p>
+<ul>
+<li>Use “Singleband pseudocolour” to apply a <strong>terrain colour palette</strong> suitable for elevation:
+<ul>
+<li>Open the Color ramp dropdown</li>
+<li>Click “Create New Color Ramp”</li>
+<li>Choose “Catalog: cpt-city” and click “OK”</li>
+<li>In “Topography”, choose “wiki-schwarzwald-d050” and click “OK”</li>
+<li>Click “Classify”</li>
+</ul></li>
+<li>You can also add a <strong>hillshade</strong> to make your visualisation of elevation more readable and visually pleasing by giving an artificial lighting look to your map:
+<ul>
+<li>Duplicate the DEM layer</li>
+<li>Rename it to “Hillshade”</li>
+<li>Make sure it is above the pseudocolour layer</li>
+<li>Change the symbology to “Hillshade”</li>
+<li>Change its “Resampling - Zoomed in” setting from “Nearest neighbour” to “Cubic” to make it look smoother</li>
+<li>In the “Transparency” tab of the Layer Styling Panel, change the opacity of the hillshade layer to about 10%</li>
+</ul></li>
+</ul>
+<p>Let’s link these two together:</p>
+<ul>
+<li>Hold <code>Ctrl</code> and select both the Hillshade and the DEM layers</li>
+<li>Press the <code>Add Group</code> button from the top of the <code>Layers</code> panel</li>
+<li>Call it “DEM”</li>
+</ul>
+</section>
 <section id="analyse-watersheds-and-basins" class="level2">
 <h2 class="anchored" data-anchor-id="analyse-watersheds-and-basins">Analyse Watersheds and Basins</h2>
 <p>Now that our raster is in a projected coordinate system, we can start doing measurements.</p>
-<p>Using the <code>Channel network and drainage basins</code> tool, we can create layers with <strong>channels, drainage basins, and a watershed</strong> raster that shows where water would flow according to the DEM.</p>
-<section id="fill-sinks" class="level3">
-<h3 class="anchored" data-anchor-id="fill-sinks">Fill Sinks</h3>
-<p>However before we can do watershed analyses we need to fix one more thing. A common problem with DEMs is that they have sinks and spikes that will make further analyses more difficult. This will mean the analysis is unable to best find where the water would flow. To resolve this, we need to use another tool to smooth out our raster before using the <code>Channel network and drainage basins</code> tool.</p>
+<p>Using the ArcGeek Calculator plugin, we can infer the <strong>stream network</strong> and <strong>watershed basins</strong> from the DEM.</p>
+<p>These are some examples of <strong>creating vector data from raster data</strong>!</p>
+<section id="stream-network" class="level3">
+<h3 class="anchored" data-anchor-id="stream-network">Stream network</h3>
+<ul>
+<li>Go to “Plugins - ArcGeek Calculator - Stream Network with Order”</li>
+<li>For <code>Input DEM</code>, use <strong>Bris_DEM_5m_reproj</strong></li>
+<li>Keep the default for the other settings:
+<ul>
+<li><code>Flow Accumulation Threshold</code> makes sure we don’t include smaller streams (that might not even exist)</li>
+<li><code>Smooth Iterations</code> and <code>Smooth Offset</code> control the amount of smoothing applied to the streams</li>
+</ul></li>
+<li>Click “Run”</li>
+<li>Once finished (it takes a while), make the scratch layer permanent with the name “stream_network”</li>
+</ul>
+<p>We now have a stream network we can style according to the “Strahler order” column.</p>
+</section>
+<section id="watershed-basins" class="level3">
+<h3 class="anchored" data-anchor-id="watershed-basins">Watershed basins</h3>
+<p>First, create a new vector layer for our basins’ “pour points”:</p>
+<ul>
+<li>Go to “Layer - Create Layer - New GeoPackage Layer…”</li>
+<li>Name the file “pour_points”</li>
+<li>The “Geometry type” can be “Point”</li>
+<li>Use the Project CRS (EPSG:7856)</li>
+<li>Click “OK”</li>
+<li>Select the new layer and click the “Edit” button</li>
+<li>Click “Add Point Feature”</li>
+<li>Place a point at the end of each of the two main streams</li>
+<li>Click “Save Layer Edits”</li>
+<li>Click “Toggle Editing”</li>
+</ul>
+<p>We can now use these two pour points to find out which two basins they correspond to:</p>
+<ul>
+<li>Go to “Plugins - ArcGeek Calculator - Multiple Basin Delineation by Points”</li>
+<li>For <code>Input DEM</code>, use <strong>Bris_DEM_5m_reproj</strong></li>
+<li>For <code>Input Point Shapefile</code>, use <strong>pour_points</strong></li>
+<li>Keep the other values as default and click “Run”</li>
+</ul>
+<p>We end up with two polygons that delineate the watershed basins for the two main streams, and we can see</p>
+</section>
+<section id="style-the-layers" class="level3">
+<h3 class="anchored" data-anchor-id="style-the-layers">Style the layers</h3>
+<p>We can now play with the <strong>symbology</strong> for those elements.</p>
+<p>For the basins:</p>
+<ul>
+<li>Try using different colours for each basin, by classifying by “basin_id”, or remove the fill (<code>Simple fill &gt; Symbol layer type &gt; Outline: Simple Line</code>) so you can see the elevation colours underneath.</li>
+<li>You can also make the borders more obvious by changing the width of the stroke.</li>
+<li>We can add a new “name” column in the attribute table to label them (“Kedron Brook catchment” and “Enoggera Creek catchment”).</li>
+</ul>
+<p>For the stream network:</p>
+<ul>
+<li>Change the colour of the streams:
+<ul>
+<li>Change the symbol from “Single Symbol” to Graduated.</li>
+<li>Set the <code>Value</code> to “Strahler”</li>
+<li>Choose an appropriate colour ramp</li>
+<li>Change the <code>Mode</code> down the bottom of the window to “Equal Interval”</li>
+<li>Click Apply</li>
+</ul></li>
+<li>You can also further differentiate minor channels from major ones by using a “Data defined override” for the Width value:
+<ul>
+<li>Click on the bar next to <code>Symbol</code> <img src="https://user-images.githubusercontent.com/67612228/197659925-41753cd0-2fc7-4534-b6ec-7ddc4775d721.png" class="img-fluid" alt="image"></li>
+<li>Click on the “Data defined override” icon <img src="https://user-images.githubusercontent.com/67612228/197659891-5474b893-2de3-47a4-95f5-9991b394ecf3.png" class="img-fluid" alt="image"> next to the Width field</li>
+<li>Use the “Assistant”</li>
+<li>“Source” needs to be the column “Strahler” (which corresponds to the Strahler order)</li>
+<li>Click the double-arrow icon to “Fetch value range from layer”</li>
+<li>Change the “Size from” and “to” values to suitable values (e.g.&nbsp;from 0.1 to 0.5)</li>
+</ul></li>
+</ul>
+</section>
+<section id="what-does-it-mean" class="level3">
+<h3 class="anchored" data-anchor-id="what-does-it-mean">What does it mean?</h3>
+<p>It is now evident that runoff from Enoggera Hill can flow into two different catchments: the Kedron Brook catchment, and the Enoggera Creek catchment (which itself runs into the Brisbane river), which matters when considering the project’s impacts.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Using SAGA
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>To do a similar thing using SAGA tools, we need to:</p>
+<ul>
+<li>Fill the sinks in the DEM with the <code>Fill sinks (Wang &amp; Liu)</code> (which would allow us to create a valid Strahler Order)</li>
+<li>Use the <code>Channel network and drainage basins</code> tool, and pick the outputs we want to keep (basins and channels)</li>
+</ul>
+<section id="fill-sinks" class="level4">
+<h4 class="anchored" data-anchor-id="fill-sinks">Fill Sinks</h4>
+<p>A common problem with DEMs is that they have “sinks” that will make further analyses more difficult. This will mean the analysis is unable to best find where the water would flow. To resolve this, we need to use another tool to smooth out our raster before using the <code>Channel network and drainage basins</code> tool.</p>
 <p>We can use the “Fill sinks (Wang &amp; Liu)” tool to <strong>fill the sinks</strong> in our clipped DEM.</p>
 <ul>
-<li>Open the Processing Toolbox by clicking the cog icon from the top menu <img src="https://docs.qgis.org/3.40/en/_images/processingAlgorithm.png" class="img-fluid" alt="Processing Toolbox"></li>
+<li>Open the Processing Toolbox by clicking the cog icon from the top menu <img src="https://docs.qgis.org/3.4/en/_images/processingAlgorithm.png" class="img-fluid" alt="Processing Toolbox"></li>
 <li>In the <strong>Processing Toolbox</strong> window <code>Search</code> for “Fill sinks (Wang &amp; Liu)”</li>
 <li>Double-click on the <strong>Fill sinks (Wang &amp; Liu)</strong> option</li>
-<li>For<code>Input layer</code> choose <strong>Bris_DEM_5m_reproj</strong></li>
+<li>For <code>Input layer</code> choose <strong>Bris_DEM_5m_reproj</strong></li>
 <li>We might have to play with the “Minimum slope” value. A value of 0.01 degrees should work well.</li>
 <li>As an output, we only need to tick the “Filled DEM” (first one in the list), which we can also save to file</li>
 <li>Click <code>Run</code></li>
 </ul>
 </section>
-</section>
-<section id="channel-network-and-drainage-basin" class="level2">
-<h2 class="anchored" data-anchor-id="channel-network-and-drainage-basin">Channel network and drainage basin</h2>
+<section id="channel-network-and-drainage-basin" class="level4">
+<h4 class="anchored" data-anchor-id="channel-network-and-drainage-basin">Channel network and drainage basin</h4>
 <p>Now we can use the <code>Channel network and drainage basins</code> tool to calculate the <strong>watershed, flow direction, channels and drainage basins</strong>.</p>
 <ul>
 <li>Open the Processing Toolbox <img src="https://docs.qgis.org/3.40/en/_images/processingAlgorithm.png" class="img-fluid" alt="Processing Toolbox"></li>
@@ -462,35 +585,11 @@ ul.task-list li input[type="checkbox"] {
 <li>Flow Direction: A <em>raster</em> representing the direction of flow for each cell.</li>
 <li>Flow Connectivity: A <em>raster</em> showing how well water could flow through sections of your map.</li>
 </ul>
-<p>These are some examples of <strong>creating vector data from raster data</strong>!</p>
-<p>We can now play with the <strong>symbology</strong> for those elements. For example:</p>
-<ul>
-<li><p>Try using different colours for each basin, by classifying by ID, or remove the fill (<code>Simple fill &gt; Fill Style &gt; No Brush</code>) so you can see the colours of the elevation colours underneath. You can also make the borders more obvious by changing the width of the stroke.</p></li>
-<li><p>Change the colour of the channels.</p>
-<ul>
-<li>Change the symbol from “Single Symbol” to Graduated.</li>
-<li>Set the <code>Value</code> to “Order”</li>
-<li>Choose an appropriate colour ramp</li>
-<li>Change the <code>Mode</code> down the bottom of the window to “Equal Interval”</li>
-<li>Click Apply</li>
-</ul></li>
-<li><p>You can also further differentiate minor channels from major ones by using a “Data defined override” for the Width value:</p>
-<ul>
-<li>Click on the bar next to <code>Symbol</code> <img src="https://user-images.githubusercontent.com/67612228/197659925-41753cd0-2fc7-4534-b6ec-7ddc4775d721.png" class="img-fluid" alt="image"></li>
-<li>Click on the “Data defined override” icon <img src="https://user-images.githubusercontent.com/67612228/197659891-5474b893-2de3-47a4-95f5-9991b394ecf3.png" class="img-fluid" alt="image"> next to the Width field</li>
-<li>Use the “Assistant”</li>
-<li>“Source” needs to be the column “ORDER” (which corresponds to the Strahler order)</li>
-<li>Click the double-arrow icon to “Fetch value range from layer”</li>
-<li>Change the “Size from” and “to” values to suitable values</li>
-</ul></li>
-</ul>
-<p>It is now evident that runoff from Enoggera Hill can flow into two different catchments: the Kedron Brook catchment, and the Enoggera Creek catchment (which itself runs into the Brisbane river), which matters when considering the project’s impacts.</p>
-<p>To go further, we can play with our Drainage Basin layer to communicate better, for example by:</p>
-<ul>
-<li>filtering to only show the two larger basins (for example: right-click on layer, click “Filter” and use the expression <code>"AREA" &gt; 3e7</code>)</li>
-<li>adding a “Name” column to the Attribute table, to then use them as labels</li>
-<li>using different colours and some transparency to see what is behind, while making the borders thicker</li>
-</ul>
+</section>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="georeferencing-an-image" class="level2">
 <h2 class="anchored" data-anchor-id="georeferencing-an-image">Georeferencing an Image</h2>
@@ -538,43 +637,9 @@ ul.task-list li input[type="checkbox"] {
 <li>Scroll to the bottom and click the three dots <code>...</code> next to the <strong>Clipped (mask)</strong> field, navigate to the project’s <strong>processed</strong> data folder, and type in <strong>EH_DEM_5m</strong> and click <code>Save</code></li>
 <li>Click <code>Run</code></li>
 </ul>
-<section id="change-the-symbology" class="level3">
-<h3 class="anchored" data-anchor-id="change-the-symbology">Change the symbology</h3>
-<p>We can style our DEM with a <strong>terrain colour palette</strong>:</p>
-<ul>
-<li>double-click on the clipped DEM layer</li>
-<li>go to the “Symbology” tab</li>
-<li>change the Render type to “Singleband pseudocolor”</li>
-<li>by default, it uses the min/max values, which is what we want</li>
-<li>we can change the “Color ramp” to something more suitable with the drop-down menu and <code>Create new color ramp... &gt; Catalog: cpt-city &gt; Topography &gt; Elevation</code>, for example.</li>
-</ul>
 </section>
-</section>
-<section id="add-a-hillshade" class="level2">
-<h2 class="anchored" data-anchor-id="add-a-hillshade">Add a hillshade</h2>
-<p>Adding a <strong>hillshade</strong> makes your visualisation of elevation more readable and visually pleasing by giving an artificial lighting look to your map.</p>
-<ul>
-<li>Go to <code>Raster &gt; Analysis &gt; Hillshade...</code></li>
-<li>Make sure the <code>5m_DEM</code> is selected in the <code>Input layer</code></li>
-<li>You could change the lighting direction, angle and height exageration, but the defaults are fine.</li>
-<li>Scroll to the bottom and click the three dots <code>...</code> next to the <strong>Clipped (mask)</strong> field, navigate to the project’s <strong>processed</strong> data folder, and type in <strong>EH_DEM_5m_Hillshade</strong> and click <code>Save</code></li>
-</ul>
-<p>You can get the best of both by adding transparency to the DEM or the Hillshade.</p>
-<ul>
-<li>Make sure the Hillshade is the above the DEM in the <code>Layers</code> panel.</li>
-<li>Right click on you Hillshade layer, select <code>Properties</code> and then the <code>Transparency</code> tab</li>
-<li>The best transparency will depend on your map and elevation, for this map, set the hillshade transparency to <strong>5%</strong>.</li>
-</ul>
-<p>Let’s link these two together.</p>
-<ul>
-<li>Hold <code>Ctrl</code> and select both the Hillshade and the DEM layers</li>
-<li>Press the <code>Add Group</code> button from the top of the <code>Layers</code> panel</li>
-<li>Call it DEM</li>
-<li>Make sure the DEM is above the Hillshade within this group</li>
-</ul>
-</section>
-<section id="contours" class="level1">
-<h1>Contours</h1>
+<section id="contours" class="level2">
+<h2 class="anchored" data-anchor-id="contours">Contours</h2>
 <p>Adding a <strong>contour</strong> makes your elevation even more evident and can also be used to quickly show elevation on other layers</p>
 <ul>
 <li>Go to <code>Raster &gt; Extraction &gt; Contour...</code>.</li>
@@ -583,6 +648,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Scroll down to “Contours” and click “…” next to [Create Temporary Layer]“, then”Save to file”, and save it as <strong>EH_Contours_10m</strong> to your project folder.</li>
 <li>Click Run</li>
 </ul>
+</section>
 <section id="viewshed" class="level2">
 <h2 class="anchored" data-anchor-id="viewshed">Viewshed</h2>
 <p>If you want to know what can be seen from a certain point in a landscape, or where in the landscape can see a certain point, you can use a DEM to perform a Viewshed Analysis. To be even more accurate, we can use a DSM instead - a Digital Surface Model. It’s very much like a DEM, but where a DEM has had the buildings and trees digitally removed, the DSM retains the heights of buildings and trees. This is useful for a viewshed, as it means that tall buildings might block the view in some areas.</p>
@@ -598,10 +664,9 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>This will produce a black and white raster showing what can be seen, and what can’t. Go to the Layer <strong>Styling Menu</strong>, and change it to <strong>Singleband Pseudocolor</strong>, change the <strong>Mode</strong> to <strong>Equal Interval</strong>, and set the <strong>Classes</strong> to <strong>2</strong>. Change one of the Colors to transparent to highlight either where the turbines can be seen, or where they cannot.</p>
 <p>If you want to get more sophisticated with your Viewshed analyses, there is, of course, a plugin called <strong>Visibility Analysis</strong> which will allow you to use one or multiple points as observers, take in account of the Earth’s curvature, see what vector points can see other vector points, and more.</p>
-<p>Don’t forget to save your project</p>
+<p>Don’t forget to save your project!</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
