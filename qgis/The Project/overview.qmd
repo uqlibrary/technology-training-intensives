@@ -9,7 +9,7 @@ Roughly 50% of our intensive is dedicated to working on the project. Working in 
 
 The end goal will be a quick-fire (low stakes) one-minute presentation with a Map to complement.
 
-See the [datasets](Data_Sources.qmd) page for the data, [Getting Started](scaffold.qmd) for a suggested approach, and [below](#Upload Map to Teams) for submission details.
+See the [Scenarios and Datasets](datasets.qmd) page for ideas, [Getting Started](scaffold.qmd) for a suggested approach, and [below](#upload-map-to-teams) for submission details.
 
 ## Project outline
 
