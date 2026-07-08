@@ -13,9 +13,19 @@ import matplotlib as mpl
 
 ROOT = os.getcwd()
 MONTHS = {
-    "Python": {"25Summer": "Jan", "25Winter": "Jul", "26Summer": "Feb"},
-    "R": {"25Summer": "Jan", "25Winter": "Jul", "26Summer": "Jan"},
-    "QGIS": {"25Summer": "Jan", "25Winter": "Jul", "26Summer": "Feb"},
+    "Python": {
+        "25Summer": "Jan",
+        "25Winter": "Jul",
+        "26Summer": "Feb",
+        "26Winter": "Jul",
+    },
+    "R": {"25Summer": "Jan", "25Winter": "Jul", "26Summer": "Jan", "26Winter": "Jul"},
+    "QGIS": {
+        "25Summer": "Jan",
+        "25Winter": "Jul",
+        "26Summer": "Feb",
+        "26Winter": "Jul",
+    },
 }
 # ANSI colour escape sequences (for console colours)
 O = "\033[0m"  # Default (reset)

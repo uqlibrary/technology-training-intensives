@@ -1,0 +1,156 @@
+---
+title: "project"
+author: Lin, Ni-Jung (Judy)
+date: last-modified
+format: dashboard
+theme: sky
+---
+
+# (0) pick dataset & (1) import data
+
+use coffee survey data
+
+- link: https://uqlibrary.github.io/technology-training-intensives/project/scaffold.html
+
+```{python}
+#| echo: true
+#| title: "raw data"
+
+# load package
+import pandas as pd
+
+# import raw data
+df_raw = pd.read_csv("../../../../data/coffee_survey.csv")
+
+# create backup
+df = df_raw.copy()
+
+```
+
+# (2) clean up data
+
+```{python}
+#| echo: true
+#| title: "clean up data"
+
+# view and understand data
+# df.dtypes
+
+# remove missing data
+df_reduce = df[df["age"] != "Missing"]
+df_reduce = df[df["cups"] != "Missing"]
+
+# remove string nan
+df_reduce = df[(df["caffeine"] != "Missing") & (df["caffeine"] != "nan") & (df["caffeine"] != "NA")]
+# remove float nan
+df_reduce = df[df["caffeine"].notna()]
+# check
+print(df_reduce["caffeine"].unique())
+
+df_reduce = df[df["expertise"] != "Missing"]
+
+# remove string nan
+df_reduce = df[(df["favourite"] != "Missing") & (df["favourite"] != "nan") & (df["favourite"] != "NA")]
+# remove float nan
+df_reduce = df[df["favourite"].notna()]
+# check
+print(df_reduce["favourite"].unique())
+
+# reduce data, dropping columns
+df_reduce = df.drop(columns = ["Unnamed: 0", "where_drink", "purchase_other", "favorite_specify", "additions", "additions_other", "sweetener", "style", "coffee_a_personal_preference", "coffee_b_personal_preference", "coffee_c_personal_preference", "coffee_d_personal_preference", "prefer_abc", "prefer_ad", "wfh", "know_source", "most_paid", "most_willing", "spent_equipment", "value_equipment", "education_level", "employment_status", "number_children", "political_affiliation"])
+
+```
+
+# (3) table
+
+```{python}
+#| echo: false
+#| title: "reduce data"
+
+# summary data
+# df_reduce.describe()
+
+# group by 
+gb = df_reduce.groupby("favourite")
+gb.describe()
+
+```
+
+# (4) plot
+
+```{python}
+#| title: "plot"
+#| fig-cap: "expertise tend to have full caffeine"
+
+# import package
+import seaborn as sns
+
+# plot reduce distrubution 
+sns.catplot(data = df_reduce, x = "caffeine", y = "expertise", kind = "box")
+
+```
+
+# (5-1) basic stats
+
+```{python}
+# import packages
+import matplotlib.pyplot as plt
+import scipy.stats as stats
+import statsmodels.formula.api as smf
+
+# extract "caffeine" column
+caf = df_reduce["caffeine"]
+
+```
+
+```{python}
+#| echo: true
+#| title: "basic stats"
+
+# caffeine min
+caf.min()
+# caffeine max
+caf.max()
+
+```
+
+# (5-2) anova
+
+```{python}
+#| echo: true
+#| title: "anova"
+#| #| fig-cap: "expertise influence caffeine"
+
+# anova: do expertise influence caffeine?
+full = df_reduce.loc[
+    df_reduce["caffeine"] == "Full caffeine", "expertise"].dropna()
+
+half = df_reduce.loc[
+    df_reduce["caffeine"] == "Half caff", "expertise"].dropna()
+
+decaf = df_reduce.loc[
+    df_reduce["caffeine"] == "Decaf", "expertise"].dropna()
+
+print(len(full), len(half), len(decaf))
+
+stats.f_oneway(full, half, decaf)
+# pvalue = 5.864143013987461e-24, really small (significant different)
+
+```
+
+# (5-3) x squared
+
+```{python}
+#| echo: true
+#| title: "x squared"
+
+# x squared test
+# create a new column "caff"" have "caff" in the "caffeine" column 
+df_reduce["caff"] = df_reduce["caffeine"].str.contains("caff")
+
+# cross tabulate those who do vs those who don't
+caff_vs = pd.crosstab(df_reduce["caffeine"], df_reduce["caff"])
+
+print(caff_vs)
+
+```

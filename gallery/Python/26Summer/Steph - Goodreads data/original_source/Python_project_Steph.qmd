@@ -1,0 +1,351 @@
+---
+title: "Investigating Goodreads data"
+author: Steph
+date: 2026-02-05
+format: 
+    html:
+        code-fold: True
+execute:
+    echo: True
+    output: True
+ipynb-shell-interactivity: all
+---
+
+<!-- 
+Can put this in the YAML to hide the code and make it drop down:
+format:
+    html:
+        code-fold: true 
+
+
+To SHOW the code langauge and all html settings for each chunk include:
+execute:
+    echo: fenced
+
+    
+This can be included to make the chunk show the language and any other commands:
+ipynb-shell-interactivity: all
+-->
+
+::: {layout-ncol="2" layout-valign="center"}
+![](https://images.gr-assets.com/misc/1751925215-1751925215_goodreads_misc.png)
+
+![](https://images.gr-assets.com/misc/1751925234-1751925234_goodreads_misc.png)
+:::
+
+Here I present my analysis of the GoodRead's books data set: a summary of books on Goodreads.
+
+## Set up environment
+### Import the relavent packages
+```{python}
+#|code-fold: false
+
+# Set up - import packages
+import pandas as pd
+import urllib.request
+from plotly.graph_objs.layout import coloraxis
+from scipy.constants import alpha
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+import statsmodels
+import plotly.express as px
+import plotly.io as pio # Import templates so can change the look of plotly graphs
+import scipy.stats as stats
+```
+
+### Create a custom colour for graphs
+```{python}
+#|code-fold: false
+
+my_colour = "#00bbff"
+my_col_pink = "#b000cf"
+```
+
+### Download data
+```{python}
+#|code-fold: false
+#| eval: false
+
+# Import the data directly - comment the below out once run, so don't overwrite the data
+urllib.request.urlretrieve("https://uqlibrary.github.io/technology-training-intensives/data/books.csv", "Data/Books.csv")
+```
+
+### Import the data
+```{python}
+#|code-fold: false
+
+Books = pd.read_csv("Data/Books.csv")
+```
+
+### Create a backup of the data
+```{python}
+#|code-fold: false
+
+Books_backup = Books
+```
+
+## Have a look at the data
+Let's have a look at some of the features in the data set that we care about:
+```{python}
+#Books.head()
+#Books.describe()
+print("The column names are: ", Books.columns)
+print("")
+print("The total number of books reviewed is: ", Books["bookID"].count())
+print("")
+print("The minimum average rating is: ",Books["average_rating"].min())
+print("The maximum average rating is: ", Books["average_rating"].max())
+print("")
+print("The minimum number of ratings on a book is :", Books["ratings_count"].min())
+print("The maximum number of ratings on a book is: ", Books["ratings_count"].max())
+```
+
+## Tidy up the data
+Convert the date column into a date format rather than a string, and then, extract just year:
+```{python}
+#| code-fold: False
+
+# First convert to date time
+Books["publication_date"] = pd.to_datetime(Books["publication_date"])
+
+# Convert this just to date - this prevents extraction of the year, so don't run
+# Books["publication_date"] = Books["publication_date"].dt.date
+
+# Next extract the year
+Books['publication_year'] = Books['publication_date'].dt.year
+```
+
+Next, let's remove the books that have not been rated:
+```{python}
+#| code-fold: False
+
+# Filter out books with 0 ratings
+Books = Books[Books["ratings_count"]>0]
+```
+
+Use an if else statement to make sure sure the average rating is a float, if it is not, make it a float:
+```{python}
+#| code-fold: False
+
+if Books['average_rating'].dtype == "float64":
+    print("Average rating data type is float64")
+else:
+    print("Average rating data type is NOT float64")
+    print("Converting average rating data type to float64")
+    Books["average_rating"] = pd.to_numeric(Books['average_rating'])
+```
+
+## Look at the distribution of the data with regards to publication year
+```{python}
+# Create a new data frame with counts of publications per year
+#Books_published_per_year = Books['publication_year'].value_counts()
+# Print the data frame
+#print(Books_published_per_year)
+
+# Visualise the spread of the data using a histogram
+#sns.histplot(Books, x="publication_year")
+histogram_fig = px.histogram(Books, x = "publication_year",
+    color_discrete_sequence=[my_col_pink], 
+    #color = "publication_year",
+    #color_discrete_sequence = px.colors.sequential.Viridis,
+    template = "plotly_white")
+
+histogram_fig.update_traces(marker_line_width=1,marker_line_color="black")
+#histogram_fig.show()
+```
+
+There seems to a huge rise in the number of books published by year after the 1980s-1990s. Let's filter for year > 1990 to balance things out a little bit
+```{python}
+# Check the data type of publication_year
+Books['publication_year'].dtype
+
+# This should be int32; if it is, we can filter for years greater than 1990
+Books = Books[Books["publication_year"] > 1990]
+
+# Revisualise it
+histogram_fig2 = px.histogram(Books, x = "publication_year", template = "plotly_white", color_discrete_sequence=[my_col_pink], labels={"publication_year": "Publication year"})
+histogram_fig2.update_traces(marker_line_width=1,marker_line_color="black")
+```
+
+## Visualise the data
+### Do books get better over time?
+```{python} 
+# Plot a relational plot with a line plot overlaid:
+#plt.figure()
+#sns.relplot(Books, x = "publication_year", y = "average_rating", color = "#00bbff")
+#sns.lineplot(Books, x = "publication_year", y = "average_rating")
+
+# Calculate the relationship:
+# simple linear regressions
+lm = stats.linregress(x = Books["publication_year"], y = Books["average_rating"])
+# Print the p-value
+print("Linear regression using the equation publication year ~ average rating")
+print("gives a p-value of p = ", round(lm.pvalue, 4))
+
+# it doesn't look significant... what does a boxplot show? 
+# sns.boxplot(x=Books["publication_year"], y = Books["average_rating"])
+
+# Calculate the regression line so itcan be added to the relplot
+# sns.relplot(Books, x = "publication_year", y = "average_rating", color = "#00bbff")
+# x_lm = Books["publication_year"]
+# y_lm = lm.slope * x_lm + lm.intercept
+#sns.lineplot(x = x_lm, y = y_lm, color = "r")
+
+# Create an interactive plot
+lm_plot = px.scatter(Books, 
+    x = "publication_year", 
+    y = "average_rating",  
+    opacity=0.5,
+    color = "average_rating",
+    color_continuous_scale="plotly3_r",
+    trendline="ols", 
+    trendline_color_override="black", 
+    labels = {"publication_year": "Year of publication", "average_rating": "Average rating"}, template="simple_white", 
+    hover_data=["title", "publication_year", "average_rating"])
+# Add black outlines
+lm_plot = lm_plot.update_traces(marker_line_width=0.5, 
+    marker_line_color="black")
+# Remove the legend
+lm_plot = lm_plot.update_layout(coloraxis_showscale=False)
+lm_plot.show()
+```
+\
+Let's also visualise this with a heat map. 
+First, let's round the average rating to intervals of 0.5 so our heatmap is clearer.
+Next, lets create a frequence table of each rating within each year.
+Finally, let's plot **proportion** of each rating within each year
+```{python}
+# Round the ratings to the nearest .5
+Books["rounded_rating"] = (Books['average_rating'] * 2).round() / 2
+
+# 1. Create a frequency table (Crosstab)
+# This counts how many times each rating appears in each year and normalises it per year
+norm_freq_table = pd.crosstab(Books['rounded_rating'], Books['publication_year'], normalize='columns')
+
+# 2. Plot the heatmap
+#plt.figure(figsize=(12, 8))
+#sns.heatmap(norm_freq_table, 
+#            annot=False,      # Shows the actual numbers in the cells
+#            fmt="d",         # Formats numbers as integers
+#            cmap="YlGnBu",   # Color scheme (Yellow-Green-Blue)
+#            cbar_kws={'label': 'Frequency'})
+#
+#plt.title('Frequency of Ratings by Year')
+#plt.xlabel('Year')
+#plt.ylabel('Rating')
+#plt.show()
+
+# Use plotly to create an interactive heatmap showing what proportion of the total reviews was contributed to by each 0.5 interval rating
+fig = px.imshow(norm_freq_table, 
+    text_auto=False,
+    aspect="auto",
+    color_continuous_scale="plotly3",
+    labels = {"x": "Year of publication", "y": "Average rating"})
+
+fig.show()
+```
+
+## Is there a relationship between book length and the average rating?
+
+First, let's have a look at the distribution of the number of pages
+```{python}
+# Let's look at the distribution of the number of pages
+histogram_fig3 = px.histogram(Books, x = "num_pages",
+    color_discrete_sequence=[my_col_pink], 
+    #color = "publication_year",
+    #color_discrete_sequence = px.colors.sequential.Viridis,
+    template = "plotly_white")
+
+histogram_fig3.update_traces(marker_line_width=1,marker_line_color="black")
+#histogram_fig.show()
+```
+
+Most books seem to have less than 2000 pages, so let's filter only for these books.
+```{python}
+print("Number of books before num_pages filtered:", Books["num_pages"].count())
+Books = Books[Books["num_pages"] < 2000]
+print("Number of books after num_pages filtered:", Books["num_pages"].count())
+```
+
+Now let's filte r
+```{python}
+# Create a column to bin the data 0-250,251-500, etc. 
+#plt.figure()
+#sns.regplot(Books, x = "num_pages", y="average_rating", scatter_kws={"s": 20, "color": "#00bbff", 'edgecolor': 'black'}, line_kws={"color": "red"})
+
+# Create an interactive plot
+# Create an interactive plot
+lm_plot2 = px.scatter(Books, 
+    x = "num_pages", 
+    y = "average_rating",  
+    opacity=0.5,
+    color = "average_rating",
+    color_continuous_scale="plotly3_r",
+    trendline="ols", 
+    trendline_color_override="black", 
+    labels = {"num_pages": "Number of pages", "average_rating": "Average rating"}, template="simple_white", 
+    hover_data=["title", "num_pages", "publication_year", "average_rating"])
+# Add black outlines
+lm_plot2 = lm_plot2.update_traces(marker_line_width=0.5, 
+    marker_line_color="black")
+# Remove the legend
+lm_plot2 = lm_plot2.update_layout(coloraxis_showscale=False)
+lm_plot2.show()
+```
+
+
+## Is there a relationship between the title length and the average rating**
+First, let's create a new column with the number of characters in the book title
+
+```{python}
+Books['characters_in_title'] = Books['title'].str.len()
+```
+
+\
+Next, let's visualise the spread of the data
+```{python}
+
+histogram_fig4 = px.histogram(Books, 
+    x = "characters_in_title",
+    color_discrete_sequence=[my_col_pink],
+    template = "plotly_white")
+histogram_fig4.update_traces(marker_line_width=1,marker_line_color="black")
+
+```
+
+\ Most of the titles are shorter than 150 characters, so let's filter for number of characters in title less than 150
+```{python}
+print("Number of books before filterering for title length = ", Books["characters_in_title"].count())
+Books = Books[Books["characters_in_title"]<150]
+print("Number of books before filterering for title length = ", Books["characters_in_title"].count())
+```
+
+Let's visualise this relationship!!!
+```{python}
+lm_plot3 = px.scatter(Books, 
+    x = "characters_in_title", 
+    y = "average_rating",  
+    opacity=0.5,
+    color = "average_rating",
+    color_continuous_scale="plotly3_r",
+    trendline="ols", 
+    trendline_color_override="black", 
+    labels = {"characters_in_title": "Number of characters in book title", "average_rating": "Average rating"}, template="simple_white", 
+    hover_data=["title", "characters_in_title", "num_pages", "publication_year", "average_rating"])
+# Add black outlines
+lm_plot3 = lm_plot3.update_traces(marker_line_width=0.5, 
+    marker_line_color="black")
+# Remove the legend
+lm_plot3 = lm_plot3.update_layout(coloraxis_showscale=False)
+lm_plot3.show()
+```
+
+Run a linear model to investigate whether the trend is significant
+```{python}
+# simple linear regressions
+lm2 = stats.linregress(x = Books["characters_in_title"], y = Books["average_rating"])
+# Print the p-value
+print("Linear regression using the equation characters in title ~ average rating")
+print("gives a p-value of p = ", round(lm2.pvalue, 4))
+```

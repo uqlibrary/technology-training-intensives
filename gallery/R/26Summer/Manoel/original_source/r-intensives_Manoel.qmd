@@ -1,0 +1,208 @@
+---
+title: "Coffee Project"
+author: "Michael"
+format: html
+editor: visual
+warning: false
+error: false
+---
+
+# Coffee Consumption Group Project
+
+## 1. Install The Libraries:
+
+<!-- Check how to hide install notes and warnings -->
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(ggrepel) 
+library(tidyverse)
+library(stringr)
+library(plotly)
+```
+
+## 2. Install The Data:
+
+```{r}
+coffee <- read.csv("data/coffee.csv")
+```
+
+## 3. Explore the data columns:
+
+```{r}
+names(coffee)
+```
+
+Now we can select some coffee-related columns to explore people's preferences
+
+Let's start with **favourite** type of coffee:
+
+```{r}
+unique(coffee$favourite)
+```
+
+**Age** is also a useful variable to explore
+
+```{r}
+unique(coffee$age)
+```
+
+Unfortunately this data is poorly formatted...
+
+## 4. Prepare the data
+
+#### Clean up the **favourites** column
+
+```{r}
+coffee <- coffee %>% 
+    mutate(favourite = str_replace_all(favourite, c(
+      "Blended drink \\(e.g. Frappuccino\\)" = "Blended", 
+      "Regular drip coffee" = "Drip")))   
+```
+
+#### Clean up the **age** column
+
+```{r}
+coffee <- coffee %>% 
+    mutate(age = str_replace_all(age, c(
+      " years old" = "", 
+      ">65" = "65+")))  
+```
+
+#### Clean up the **cups** column
+
+```{r}
+coffee <- coffee %>% 
+    mutate(cups = str_replace_all(cups, c(
+      "More than 4" = "5+", 
+      "Less than 1" = "<1")))  
+```
+
+## 5. Visualise Coffee Preferences
+
+### First let's see the distribution of favourite coffee types:
+
+```{r}
+ggplot(data = coffee,
+           mapping = aes(y = favourite)) + 
+      geom_bar()
+```
+
+There's still a lot going on here... We can simplify the data by grouping coffee types into broader preperation styles.
+
+### Group by **Preperation Style**
+
+```{r}
+ PrepStyle <- coffee %>% 
+      mutate(prep = case_when(
+        favourite %in% c("Mocha", "Latte", "Cappuccino", "Cortado", "Espresso")
+        ~ "Espresso",
+        favourite %in% c("Iced coffee", "Cold brew", "Blended") 
+        ~ "Iced",
+        favourite %in% c("Drip", "Pourover", "Americano") 
+        ~ "Brewed",
+        .default = "other"))
+```
+
+### Now we can visualise these groups
+
+```{r}
+ggplot(data = PrepStyle,
+           mapping = aes(x = prep)) + 
+      geom_bar()
+```
+
+### Reorder Preperation Styles
+
+```{r}
+PrepStyle$prep <- factor(PrepStyle$prep, levels=c(
+  'other', 'Iced', 'Brewed', 'Espresso')
+  )
+```
+
+You can arrange the order of attributes to best visualise the data you are working with
+
+### Stacked Bar Graphs
+
+Now we can add **stacks** to the bar graphs to explore relationships between preperation and other attributes
+
+#### Preperation by Age
+
+```{r}
+ggplot(data = PrepStyle,
+           mapping = aes(x=age, fill=prep)) + 
+      geom_bar(position='stack') +
+      geom_text(aes(label = after_stat(count)), 
+                stat = "count", position = "dodge", check_overlap = TRUE
+      )
+```
+
+```{r}
+ggplot(data = PrepStyle,
+      aes(fill=prep, x=age)) + 
+  geom_bar(position='dodge') +
+  geom_text(aes(label = after_stat(count)),
+    stat = "count", position = position_dodge(.9)
+  )
+```
+
+#### Preperation by Cups
+
+```{r}
+ggplot(data = PrepStyle,
+           mapping = aes(x=cups, fill=prep)) + 
+      geom_bar(position='stack')
+```
+
+```{r}
+ggplot(data = PrepStyle,
+       aes(fill=prep, x=cups)) + 
+  geom_bar(position='dodge')
+```
+
+#### Preperation by Roast
+
+```{r}
+ggplot(data = PrepStyle,
+           mapping = aes(x=roast_level, fill=prep)) + 
+      geom_bar(position='stack')
+```
+
+#### Preperation by Style
+
+```{r}
+ggplot(data = PrepStyle,
+           mapping = aes(y=style, fill=prep)) + 
+      geom_bar(position='stack')
+```
+
+<!-- ## 6. Espresso or Brew? -->
+
+<!-- Do younger people drink more espresso coffee? -->
+
+<!-- ```{r} -->
+
+<!-- PrepStyle <- PrepStyle |>  -->
+
+<!--       mutate(AgeGroup = case_when( -->
+
+<!--         age %in% c("<18", "25-34", "18-24") ~ "Young", -->
+
+<!--         .default = "old")) -->
+
+<!-- ``` -->
+
+<!-- ```{r} -->
+
+<!-- PrepStyle <- PrepStyle |>  -->
+
+<!--       mutate(AgeGroup = age == "<18", "25-34", "18-24") -->
+
+<!-- ``` -->
+
+<!-- ```{r} -->
+
+<!-- t.test(prep ~ AgeGroup, data = PrepStyle) -->
+
+<!-- ``` -->

@@ -1,0 +1,216 @@
+---
+title: Exploring GoodReads Data
+author: Lucy Wright
+date: 2025-02-04
+format:
+  html:
+    code-fold: true
+---
+
+![](bookpic.jpg)
+
+## Set up
+
+We used Python and Quarto to investigate and present the GoodReads dataset. First we set up the environment.
+
+```{python}
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+import scipy.stats as stats
+```
+
+## Look at the data
+
+Then we wanted to know what the data set included by loading the data set, backing it up, and then viewing a small preview of the first two rows.  
+
+```{python}
+# load the data
+df_raw = pd.read_csv("data/books.csv")
+# back it up
+df = df_raw.copy()
+
+# display the first two rows
+df.head(2)
+```
+
+## How are are ratings spread over the 0-5 stars?
+```{python}
+sns.relplot(df, x = "average_rating", y = "ratings_count")
+plt.xlabel("Average rating")
+plt.ylabel("Frequency")
+plt.show() # used this line to prevent a strange header that kept appearing
+```
+
+Did any books receive a rating of zero stars?
+
+```{python}
+#| code-fold: false
+
+zerostars = df[df["average_rating"] == 0]
+zerostars.count()
+```
+
+Did any books not receive any ratings?
+
+```{python}
+#| code-fold: false
+
+zeroratings = df[df["ratings_count"] == 0]
+zeroratings.count()
+```
+
+Some books may have received an average_rating of zero stars, but it doesn't make sense that some books could have an average_rating without any ratings_count. Therefore we excluded data where the ratings_count was equal to or less than zero.
+
+```{python}
+#| code-fold: false
+df = df[df["ratings_count"] > 0]
+```
+
+***Look at that plot again*** 
+
+Most people who read seem to think what they're reading is pretty good.
+```{python}
+sns.relplot(df, x = "average_rating", y = "ratings_count")
+plt.xlabel("Average rating")
+plt.ylabel("Frequency")
+plt.show()
+```
+
+
+## Are modern books better than older books or vice versa?
+First let's find out some basic information about this variable.
+
+What is the earliest publication date?
+```{python}
+#| code-fold: false
+df["publication_date"].min()
+```
+
+And the latest?
+```{python}
+#| code-fold: false
+df["publication_date"].max()
+```
+
+What does it look like on a scatterplot?
+```{python}
+sns.relplot(df, x = "publication_date", y = "average_rating", color = "pink")
+```
+
+**SCARY!!!**
+
+Clean it up by excluding the month and day and only keeping the year. We needed to split the "publication_date" data to isolate the year. 
+
+
+```{python}
+#| code-fold: false
+# Create a new object that splits the "publication_date" column by the "-" symbol.
+split_dates = df['publication_date'].str.split('-', expand=True)
+
+# We did some additional cleaning here to make sure we were dealing with ints and floats
+split_dates = split_dates.astype(int)
+ratings = df["average_rating"].astype(float)
+
+# Then add those split dates as new columns in our dataframe.
+df[["pub_year", "pub_month", "pub_day"]] = split_dates
+
+# try plot again
+sns.relplot(df, x = "pub_year", y = ratings, color = "pink")
+plt.xlabel("Publication year")
+plt.ylabel("Average rating")
+
+# We wanted a line of best fit so we tried sns.linplot 
+# but quickly recognised that it wasn't what we were hoping for.
+sns.lineplot(df, x = "pub_year", y = ratings)
+```
+
+This is nice but it would be better if the line was a regression line to show the trend and answer the question...
+
+# Stats Time!
+
+Here's a linear regression model plot.
+
+```{python}
+#| code-fold: false
+lm = stats.linregress(x = df["pub_year"], y = ratings)
+
+# ask for a particular result
+print(lm.pvalue)
+
+# make a linear regression model plot 
+sns.lmplot(data = df, x = "pub_year", y = "average_rating", line_kws={'color': 'red'})
+plt.xlabel("Publication year")
+plt.ylabel("Average rating")
+plt.show()
+```
+
+**Older books might be better than more modern books...**
+
+But it's possible this effect is being driven by outliers. So lets find out the mean year published, and the values 3SD above and below that date to exclude the outliers. 
+
+The mean publication year is....
+```{python}
+pubyear_mean = df["pub_year"].mean()
+print(round(pubyear_mean))
+```
+
+The standard deviation of pub_year is...
+```{python}
+pubyear_std = df["pub_year"].std()
+print(round(pubyear_std))
+```
+
+So the window we could look at to exclude outliers is
+```{python}
+#| code-fold: false
+# calculate the lower and upper limits
+lowerlimit = pubyear_mean - 3*pubyear_std
+upperlimit = pubyear_mean + 3*pubyear_std
+
+# apply this window to the pub_year column
+df = df[df["pub_year"] > lowerlimit]
+df = df[df["pub_year"] < upperlimit]
+```
+
+Did the outcome change? The new p value is...
+```{python}
+lm = stats.linregress(x = df["pub_year"], y = df["ratings_count"])
+
+# print the p value
+print(lm.pvalue)
+
+# make a linear regression model plot 
+sns.lmplot(data = df, x = "pub_year", y = "average_rating", line_kws={'color': 'red'})
+plt.xlabel("Publication year")
+plt.ylabel("Average rating")
+plt.show()
+```
+
+It retains significance! Probably because there are so many data. But the graph is still pretty hard to read because of overplotting. Lets make it *pretty*.
+
+```{python}
+# make a linear regression model plot look *pretty* 
+g = sns.lmplot(
+    data = df, x = "pub_year", y = "average_rating", 
+    hue= "average_rating", 
+    palette = "viridis",
+    fit_reg = False, 
+    legend = False, 
+    scatter_kws={"s": 5, 'alpha': 0.3})
+
+#overlay a single global regression line
+sns.regplot(data = df, x = "pub_year", y = "average_rating", scatter = False, ax =  g.axes[0,0], color = "black")
+
+# update axis labels
+plt.xlabel("Publication year")
+plt.ylabel("Average rating")
+
+# get the p value from before
+p_value = lm.pvalue
+# show the p value equation on the graph
+p_label = f'p = {p_value:.2e}' 
+plt.legend(title='Regression Stats', labels=[p_label], loc='lower left')
+```
+
+

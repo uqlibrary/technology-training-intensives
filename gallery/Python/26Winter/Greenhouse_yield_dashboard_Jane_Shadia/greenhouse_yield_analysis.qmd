@@ -1,0 +1,160 @@
+---
+title: "Greenhouse Tomato and Lettuce Yield Analysis Dashboard"
+authors: Jane, Shadia
+date (DDMMYY): 010726
+format: dashboard
+execute:
+ dir: file
+ echo: false
+date: Jul-2026
+categories: [Python, 26Winter]
+---
+
+### Project Overview
+This dashboard explores the correlation between different inputs and the yield of different varieties of lettuce and tomatoes grown in a greenhouse.
+20 columns with environmental conditions, management practices, and final yields.
+4 crops: Tomato (40%), Cucumber (30%), Lettuce (20%), and Pepper (10%).
+10,000+ rows of data.
+Target : model input conditions with yield data
+
+```{python}
+# Data cleaning
+# Dropping redundant columns, null values
+# Describing the shape of the data
+import pandas as pd
+df_raw = pd.read_csv("greenhouse_crop_yields.csv")
+df_clean = df_raw.dropna()
+
+df = df_clean.copy()
+df = df.drop(columns=['greenhouse_id', 'planting_date', 'harvest_date', 'days_to_maturity'])
+
+# df_info = df.info()
+# df_describe = df.describe()
+```
+
+# Lettuce analysis
+```{python}
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+df_lettuce_full = df[
+    (df["crop_type"] == "Lettuce")
+]
+```
+## Screening for correlation
+### Row {height=70%}
+```{python}
+correlation_matrix = df_lettuce_full.corr(numeric_only=True)
+plt.figure(figsize=(12, 10))
+sns.heatmap(correlation_matrix, annot=True, fmt='.2f', cmap='coolwarm', center=0, annot_kws={'size': 7}, cbar_kws={'shrink': 0.8})
+plt.title("Correlation Matrix - All Lettuce Varieties", fontsize=14)
+plt.xticks(fontsize=8, rotation=45, ha='right')
+plt.yticks(fontsize=8)
+plt.tight_layout();
+```
+## Modelling positive inputs
+### Row {height=70%}
+```{python}
+# ensure reasonable data (import all rows in contracted df_lettuce )
+# there is no null value (or maybe dropna already did that)
+
+# Column reduction based on the variables of interest depicted in the correlation analysis
+df_lettuce_lite = df_lettuce_full[['crop_type', 'variety', 'light_intensity_lux', 'photoperiod_hours', 'fertilizer_N_kg_ha', 'yield_kg_per_m2']]
+#line chart
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Creates 3 separate panels with different colors per variety
+g = sns.lmplot(data=df_lettuce_lite, x="light_intensity_lux", y="yield_kg_per_m2", col="variety", hue="variety", col_wrap=2, height=4, aspect=1.2, legend=False)
+g.fig.suptitle("Light Intensity vs Yield by Variety", y=1.02)
+plt.tight_layout();
+
+```
+### Other graph 1
+```{python}
+g = sns.lmplot(data=df_lettuce_lite, x="fertilizer_N_kg_ha", y="yield_kg_per_m2", col="variety", hue="variety", col_wrap=2, height=4, aspect=1.2, legend=False)
+g.fig.suptitle("Fertilizer N vs Yield by Variety", y=1.02)
+plt.tight_layout();
+```
+### Other graph 2
+```{python}
+g = sns.lmplot(data=df_lettuce_lite, x="photoperiod_hours", y="yield_kg_per_m2", col="variety", hue="variety", col_wrap=2, height=4, aspect=1.2, legend=False)
+g.fig.suptitle("Photoperiod vs Yield by Variety", y=1.02)
+plt.tight_layout();
+```
+
+# Tomato Fertilizer Input Analysis
+## Row
+### 1. Total Fertilizer Data Table
+
+```{python}
+#| label: tomato_data_loading
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+df_raw = pd.read_csv("greenhouse_crop_yields.csv")
+df_clean = df_raw.dropna()
+df = df_clean.copy()
+
+df["avg_temperature_C"] = (df["max_temperature_C"] + df["min_temperature_C"]) / 2
+df_tomato = df[df["crop_type"] == "Tomato"].copy()
+
+df_tomato["total_fertilizer_kg_ha"] = df_tomato["fertilizer_N_kg_ha"] + df_tomato["fertilizer_P_kg_ha"] + df_tomato["fertilizer_K_kg_ha"]
+
+df_tomato[["variety", "fertilizer_N_kg_ha", "fertilizer_P_kg_ha", "fertilizer_K_kg_ha", "total_fertilizer_kg_ha"]].head();
+
+```
+
+### 2. Total Fertilizer vs Tomato Yield (Scatter Plot)
+
+```{python}
+#| label: tomato_scatter
+
+plt.figure(figsize=(6, 4))
+sns.scatterplot(data=df_tomato, x='total_fertilizer_kg_ha', y='yield_kg_per_m2', hue='variety', alpha=0.7, s=40)
+plt.title('Total Fertilizer vs Tomato Yield')
+plt.tight_layout()
+plt.show();
+
+```
+
+### 3. Overall Tomato Production Trendline
+
+```{python}
+#| label: tomato_trend
+plt.figure(figsize=(6, 4))
+sns.regplot(data=df_tomato, x='total_fertilizer_kg_ha', y='yield_kg_per_m2', scatter=False, color='red', lowess=True)
+plt.title('Overall Tomato Production Trendline')
+plt.tight_layout()
+plt.show();
+```
+
+## Physical Factor- Temperature Analysis
+### 4. Temperature and Tomato Yield Statistical Table
+
+```{python}
+#| label: tomato_temp_stats
+df_tomato.groupby('variety')[['avg_temperature_C', 'yield_kg_per_m2']].describe()
+```
+
+### 5. Temperature vs Tomato Yield Trend Graph
+
+```{python}
+#| label: tomato_temp_graph
+sns.lmplot(data=df_tomato, x='avg_temperature_C', y='yield_kg_per_m2', hue='variety', scatter_kws={'alpha': 0.3, 's': 30}, line_kws={'linewidth': 2.5}, height=4, aspect=1.2)
+plt.title('Temperature vs Tomato Yield Trend')
+plt.show();
+```
+
+### 6. Tomato Yield Distribution (Swarm Plot)
+
+```{python}
+#| label: tomato_swarm
+plt.figure(figsize=(6, 4))
+sns.swarmplot(data=df_tomato, x='variety', y='yield_kg_per_m2', hue='variety', size=4, alpha=0.8)
+plt.title('Tomato Yield Distribution (Swarm Plot)')
+plt.tight_layout()
+plt.show();
+```

@@ -42,7 +42,7 @@ plt.xticks(rotation=45, ha='right')
 
 plt.title("Average Fuel Prices by Type in QLD")
 plt.xlabel("Fuel Type")
-plt.ylabel("Price ($/L)")
+plt.ylabel(R"Price (\$/L)")
 
 plt.tight_layout()
 plt.show()

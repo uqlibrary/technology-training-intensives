@@ -1,0 +1,155 @@
+---
+title: Monthly Rainfall in Brisbane for the last 10 years
+author: "Rion S. Salman"
+format: html
+date: Feb-2026
+categories: [Python, 26Summer]
+execute:
+  eval: false
+---
+
+## **1. Introduction**
+This report presents a Python-based analysis and visualisation of monthly rainfall in Brisbane over the last ten years. The analysis focuses on exploring temporal rainfall patterns and highlighting months with relatively high rainfall accumulation. Python was used to manage the dataset efficiently and to generate clear, reproducible visualisations that support exploratory climate analysis.
+
+Monthly rainfall data were obtained in tabular format, with rainfall totals (mm) recorded for each month and year. The dataset was initially organised in a wide format, where months were represented as separate columns. To enable flexible plotting and comparison across time, the data were restructured into a long format using Python, allowing each observation to be defined by year, month, and rainfall value.
+
+For visual emphasis on significant rainfall events, a threshold of 50 mm per month was applied, and only values exceeding this threshold were highlighted in the final visualisation. Data visualisation was performed using the Seaborn and Matplotlib libraries, combining full rainfall records as background context with highlighted high-rainfall months. This approach ensures clarity, reproducibility, and effective interpretation of monthly rainfall variability.
+
+## **2. Data**
+Show code:
+```{python}
+#| code-fold: true
+import pandas as pd
+rainfall = pd.read_excel("Data/Rainfall_Brisbane_AERO.xlsx")
+rainfall.head()
+```
+## **3. Method**
+## 3.1. Coverting the actual data to long data format
+Show Code:
+```{python}
+#| code-fold: true
+month_order = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+rainfall_long = rainfall.melt(id_vars='Year', value_vars=month_order,
+               var_name='Month', value_name='Rainfall_mm')
+rainfall_long.head()
+```
+## 3.2. Selecting Rainfall more than 50 mm per Month
+Show code:
+```{python}
+#| code-fold: true
+rainfall_longmore50 = rainfall_long[rainfall_long["Rainfall_mm"] > 50]
+rainfall_longmore50.head()
+```
+## 3.3. Season selecting
+```{python}
+#| code-fold: true
+months = rainfall_long["Month"].unique()
+season = ["Summer", "Summer", "Summer", "Autumn", "Autumn", "Autumn", "Winter", "Winter", "Winter", "Spring", "Spring", "Spring"]
+rainfall_long["Season"] = rainfall_long["Month"].replace(months, season)
+grouping_season = rainfall_long.groupby("Season")
+grouped_mean = grouping_season["Rainfall_mm"].mean()
+grouped_max = grouping_season["Rainfall_mm"].max()
+grouped_min = grouping_season["Rainfall_mm"].min()
+rainfall_long.head()
+```
+
+## **4. Result and Discussion**
+## 4.1. Data Visualization
+Show code:
+```{python}
+#| code-fold: true
+import seaborn as sns
+import matplotlib.pyplot as plt
+sns.relplot(rainfall_long, x = "Month", y = "Rainfall_mm", color = "grey")
+sns.lineplot(rainfall_longmore50, x = "Month", y = "Rainfall_mm", hue = "Year")
+
+plt.xlabel("Month")
+plt.ylabel("Rainfall (mm)")
+plt.legend(title = "Year")
+plt.title("Monthly Rainfall Data > 50mm per Month")
+plt.show()
+```
+##
+Show Code:
+```{python}
+#| code-fold: true
+import numpy as np
+years = rainfall['Year'].values
+n_years = len(years)
+
+x = np.arange(len(month_order))
+bar_width = 0.8 / n_years   # total width = 0.8
+
+plt.figure(figsize=(14,6))
+
+for i, year in enumerate(years):
+    rainfall_new = rainfall.loc[rainfall['Year'] == year, months].values.flatten()
+    plt.bar(
+        x + i * bar_width,
+        rainfall_new,
+        width=bar_width,
+        label=str(year)
+    )
+
+plt.xticks(x + bar_width * (n_years-1)/2, months)
+plt.ylabel('Rainfall (mm)')
+plt.xlabel('Month')
+plt.title('Monthly Rainfall in Brisbane (2016–2025)')
+plt.legend(ncol=5, fontsize=9)
+plt.tight_layout()
+plt.show()
+```
+##
+Show Code:
+```{python}
+#| code-fold: true
+rainfall_long['Month'] = pd.Categorical(
+    rainfall_long['Month'],
+    categories=month_order,
+    ordered=True)
+
+pivot = rainfall_long.pivot(index="Year", columns="Month", values="Rainfall_mm")
+
+plt.figure(figsize=(12,5))
+sns.heatmap(pivot, cmap="coolwarm", annot=False)
+
+plt.title("Monthly Rainfall Heatmap (mm)")
+plt.xlabel("Month")
+plt.ylabel("Year")
+plt.tight_layout()
+plt.show()
+```
+
+
+## 4.2. Statistical Analysis
+**Average Rainfall per Sesason**
+```{python}
+#| code-fold: true
+grouped_mean.head()
+grouped_mean.plot(kind = "bar", title = "average rainfall")
+plt.xlabel("Season")
+plt.ylabel("Rainfall (mm)")
+```
+**Maximum Rainfall per Season**
+```{python}
+#| code-fold: true
+grouped_max.head()
+grouped_max.plot(kind = "bar", title = "Maximum Rainfall")
+plt.xlabel("Season")
+plt.ylabel("Rainfall (mm)")
+```
+**Minimum Rainfall per Season**
+```{python}
+#| code-fold: true
+grouped_min.head()
+grouped_min.plot(kind = "bar", title = "Minimum Rainfall")
+plt.xlabel("Season")
+plt.ylabel("Rainfall (mm)")
+```
+
+
+
+
+
+
+

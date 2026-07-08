@@ -1,0 +1,148 @@
+# -*- coding: utf-8 -*-
+"""
+title: My Report
+author: Gustavo Acuna
+format: html
+jupyter: python 3
+"""
+## Heding of level 2
+
+This is a paragrapf of **text**
+
+## Import the data
+
+We import the players dataset:
+
+```{python}
+import pandas as pd
+import seaborn as sns
+housing = pd.read_csv('data/melb_data.csv')
+```
+
+## Visualisation
+
+Let's add a picture
+
+```{python}
+#| echo: false
+#| label: tbl-region
+#| tbl-cap: "Market Summary by Region"
+
+# 1. Group by Region
+region_stats = housing.groupby('Regionname').agg({
+    'Price': ['count', 'median', 'mean']
+}).round(0)
+
+# 2. Rename columns for readability
+region_stats.columns = ['For Sale', 'Median Price', 'Average Price']
+region_stats = region_stats.sort_values(by='Median Price', ascending=False)
+
+# Format
+region_stats.style.format({
+    'Total Sales': "{:,.0f}",
+    'Median Price': "${:,.0f}",
+    'Average Price': "${:,.0f}"
+})
+```
+
+## Maps of House Locations
+```{python}
+#| fig-cap: 'Locations over 3.5 millions'
+import folium
+m = folium.Map(location=(-37.814, 144.96332), tiles="cartodb positron")
+
+# Properties over 3.5M
+expensive_properties = housing[housing['Price'] > 3500000]
+
+# Loop through the rows to add markers
+for index, row in expensive_properties.iterrows():
+    
+    lat = row['Lattitude']
+    lon = row['Longtitude']
+    price = row['Price']
+    
+    # Marker with a formatted pop-up
+    folium.Marker(
+        location=[lat, lon],
+        popup=f"Price: ${price:,}", 
+        tooltip="Click for Price"    # shows text when hovering
+    ).add_to(m)
+m
+
+```
+## Suburbs Sales Heatmap
+```{python}
+#| echo: true
+#| fig-cap: "Suburb Sales Heatmap"
+
+import pandas as pd
+import folium
+import json
+
+# DATA
+suburb_counts = housing['Suburb'].value_counts().reset_index()
+suburb_counts.columns = ['Suburb', 'Count']
+# Keep this! The map file uses "ABBOTSFORD", so we need to match it.
+suburb_counts['Suburb'] = suburb_counts['Suburb'].str.upper() 
+
+# LOCAL MAP FILE
+with open('data/suburb-2-vic.geojson.txt', 'r') as f:
+    geo_json_data = json.load(f)
+
+# Select the suburbs into the data
+my_suburbs = set(suburb_counts['Suburb'])
+
+# Keeping ONLY the map shapes that match with the data (LIST)
+filtered_features = []
+for feature in geo_json_data['features']:
+    # Check if this shape's name is in the list of suburbs
+    if feature['properties']['vic_loca_2'] in my_suburbs:
+        filtered_features.append(feature)
+
+# Clean map only data sububs
+geo_json_data['features'] = filtered_features
+
+# MAP from Folium
+m2 = folium.Map(location=[-37.8136, 144.9631], zoom_start=10)
+
+folium.Choropleth(
+    geo_data=geo_json_data,
+    name='choropleth',
+    data=suburb_counts,
+    columns=['Suburb', 'Count'],
+    
+    key_on='feature.properties.vic_loca_2', 
+    
+    fill_color='Reds', #RdYlGn_r 
+    fill_opacity=0.7,
+    line_opacity=0.2,
+    legend_name='Properties for Sale'
+).add_to(m2)
+
+m2
+```
+## Property by Sellers
+```{python}
+#| echo: true
+#| fig-cap: 'Scatter Graph'
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+import plotly.express as px
+
+px.scatter(housing, 'Suburb', 'Price')
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+

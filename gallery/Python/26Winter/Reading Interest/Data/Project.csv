@@ -1,0 +1,141 @@
+﻿Provinsi;Year;Reading Frequency per week;Number of Readings per Quarter;Daily Reading Duration (in minutes);Internet Access Frequency per Week;Daily Internet Duration (in minutes);Tingkat Kegemaran Membaca (Reading Interest);Category
+Aceh;2020;4;2;95;N/A;N/A;54,68;Moderate
+Aceh;2021;5,5;4,5;103;5;83,9;64,13;High
+Aceh;2022;5;5,5;94,3;5,5;123,4;65,85;High
+Aceh;2023;5;5,5;95;5,5;104;66,64;Moderate
+Bali;2020;4;2,5;91;N/A;N/A;56,98;Moderate
+Bali;2021;5,5;4,5;82;5,5;100,2;59,80;Moderate
+Bali;2022;5;5,5;98;5,5;116,9;65,59;High
+Bali;2023;5;5,5;100;5,5;117;67,39;Moderate
+Bangka Belitung Islands;2021;4,5;4,5;101,6;5,5;104,3;61,81;High
+Bangka Belitung Islands;2022;5;5,5;85,6;5,5;98,6;63,08;High
+Bangka Belitung Islands;2023;5;6;93;5,5;109;66,17;Moderate
+Bangka Belitung Islands;2020;4,5;2;98;N/A;N/A;57,03;Moderate
+Banten;2020;4,5;2,5;98;N/A;N/A;58,77;Moderate
+Banten;2021;5;4,5;100,2;5,5;110;61,78;High
+Banten;2022;5;5,5;97,4;5,5;111,2;65,70;High
+Banten;2023;5,5;5,5;93;5;114;66,23;Moderate
+Bengkulu;2020;4;2,5;111;N/A;N/A;58,00;Moderate
+Bengkulu;2021;4,5;4,5;98,2;5,5;123;62,14;High
+Bengkulu;2022;5;5,5;92,6;5,5;116,8;64,16;High
+Bengkulu;2023;4,5;5;106;5;128;64,54;Moderate
+Central Java;2020;4,5;2,5;108;N/A;N/A;61,88;High
+Central Java;2021;5,5;4,5;124,2;5,5;126,9;68,30;High
+Central Java;2022;5,5;5,5;124,8;7;122,9;70,96;High
+Central Java;2023;5,5;6;110;5,5;129;71,31;Moderate
+Central Kalimantan;2020;4;2,5;89;N/A;N/A;56,04;Moderate
+Central Kalimantan;2021;4,5;4;113,3;5;112,7;60,38;Moderate
+Central Kalimantan;2022;5;5,5;96,6;5;102,8;63,82;High
+Central Kalimantan;2023;5;5,5;91;5,5;110;65,95;Moderate
+Central Sulawesi;2020;3,5;2;83;N/A;N/A;49,85;Moderate
+Central Sulawesi;2021;4,5;4;85;4,5;96,9;56,33;Moderate
+Central Sulawesi;2022;4;4,5;87,6;5;111,8;56,86;Moderate
+Central Sulawesi;2023;4,5;5,5;89;5,5;105;61,28;Moderate
+East Java;2020;5;2,5;116;N/A;N/A;63,96;High
+East Java;2021;5,5;4,5;102;5,5;112,6;64,20;High
+East Java;2022;5,5;5,5;106,1;7;123,5;68,54;High
+East Java;2023;5;5,5;115;6;128;69,78;Moderate
+East Kalimantan;2020;5;2,5;106;N/A;N/A;62,08;High
+East Kalimantan;2021;5,5;4,5;91,8;5,5;112,9;64,85;High
+East Kalimantan;2022;5,5;5,5;94,2;7;117,4;66,84;High
+East Kalimantan;2023;5;5,5;109;6;123;68,46;Moderate
+East Nusa Tenggara;2020;3,5;2,5;92;N/A;N/A;55,94;Moderate
+East Nusa Tenggara;2021;5;4,5;95,8;5,5;114,3;63,00;High
+East Nusa Tenggara;2022;5;5,5;90;5,5;126,4;64,84;High
+East Nusa Tenggara;2023;5,5;5;111;5,5;120;67,81;Moderate
+Gorontalo;2020;3,5;2;89;N/A;N/A;51,36;Moderate
+Gorontalo;2021;4,5;3,5;96,2;5;112,8;56,58;Moderate
+Gorontalo;2022;4;4,5;101,4;4,5;116,7;58,72;Moderate
+Gorontalo;2023;5;4,5;121;5,5;131;64,59;Moderate
+Indonesia;2020;4;2;96;N/A;N/A;55,74;Moderate
+Indonesia;2021;4,5;4,5;94;5,5;106,5;36,01;Moderate
+Indonesia;2022;5;5;98;5,5;117;63,90;High
+Indonesia;2023;5;5,5;107;5,5;117;66,77;Moderate
+Jakarta;2020;4,5;2,5;118;N/A;N/A;60,84;High
+Jakarta;2021;4,5;4,5;101,6;5,5;107,7;62,25;High
+Jakarta;2022;5,5;5,5;112,4;5,5;114,2;68,71;High
+Jakarta;2023;5,5;5;126;5,5;124;69,94;Moderate
+Jambi;2020;4;2;96;N/A;N/A;54,34;Moderate
+Jambi;2021;4,5;4;88,6;5;97,8;57,52;Moderate
+Jambi;2022;5;5;98,3;5;114,9;63,75;High
+Jambi;2023;5;5,5;112;5,5;130;68,10;Moderate
+Lampung;2020;4,5;2,5;111;N/A;N/A;61,48;High
+Lampung;2021;5;4,5;86,8;5,5;101,2;62,44;High
+Lampung;2022;5;5,5;96,1;5,5;106,6;64,19;High
+Lampung;2023;5;5,5;94;5,5;107;66,38;Moderate
+Maluku;2020;3,5;2,5;91;N/A;N/A;52,90;Moderate
+Maluku;2021;4,5;3,5;81,8;4,5;99,5;53,64;Moderate
+Maluku;2022;4;5;83,4;5;120,6;56,88;Moderate
+Maluku;2023;4,5;5;97;5,5;124;62,88;Moderate
+North Kalimantan;2020;3,5;1,5;84;N/A;N/A;47,71;Moderate
+North Kalimantan;2021;4,5;3,5;95,5;4,5;111,4;56,12;Moderate
+North Kalimantan;2022;4,5;5;88,4;5,5;114,2;60,70;High
+North Kalimantan;2023;5,5;5,5;113;5,5;113;69,31;Moderate
+North Maluku;2020;4;2;98;N/A;N/A;55,27;Moderate
+North Maluku;2021;4,5;4;102,6;4,5;109,1;60,01;Moderate
+North Maluku;2022;4,5;4,5;112,4;5,5;140,8;62,32;High
+North Maluku;2023;5;5;60;5,5;133;65,90;Moderate
+North Sulawesi;2020;3,5;2;80;N/A;N/A;48,03;Moderate
+North Sulawesi;2021;3,5;3,5;84,8;4,5;105,3;52,57;Moderate
+North Sulawesi;2022;4;4,5;87,7;5;118,9;55,58;Moderate
+North Sulawesi;2023;5;5;104;5,5;124;64,41;Moderate
+North Sumatra;2020;3,5;2;95;N/A;N/A;53,11;Moderate
+North Sumatra;2021;4,5;4;94,1;5,5;106;57,26;Moderate
+North Sumatra;2022;5;5;100,2;5,5;113,7;64,70;High
+North Sumatra;2023;5;5,5;105;5,5;110;67,01;Moderate
+Papua;2020;3;1,5;73;N/A;N/A;44,02;Moderate
+Papua;2021;4;3;61,7;4,5;71,9;47,43;Moderate
+Papua;2022;4;4,5;91,5;5;130,2;55,93;Moderate
+Papua;2023;4,5;5;99;4;83;60,58;Moderate
+Riau;2020;4;2;99;N/A;N/A;55,20;Moderate
+Riau;2021;5;4;90,6;5,5;115,3;59,77;Moderate
+Riau;2022;5;5,5;95,8;5,5;114,2;64,23;High
+Riau;2023;5;5,5;100;5,5;115;66,69;Moderate
+Riau Islands;2020;4;2,5;98;N/A;N/A;56,36;Moderate
+Riau Islands;2021;4,5;4,5;97,5;5,5;113,7;61,83;High
+Riau Islands;2022;4,5;5;94;5,5;129,8;62,02;High
+Riau Islands;2023;5;5;112;5;104;65,80;Moderate
+South East Sulawesi;2020;4,5;2,5;82;N/A;N/A;55,99;Moderate
+South East Sulawesi;2021;4,5;3,5;85,2;5,5;122,5;57,63;Moderate
+South East Sulawesi;2022;5;5,5;96,6;5,5;121,2;65,23;High
+South East Sulawesi;2023;5,5;5,5;101;6;116;68,02;Moderate
+South Kalimantan;2020;4;2,5;94;N/A;N/A;55,85;Moderate
+South Kalimantan;2021;5;4,5;92,6;5,5;104,3;60,85;Moderate
+South Kalimantan;2022;4,5;5,5;105,9;5;105,2;64,95;High
+South Kalimantan;2023;5;5,5;103;5,5;110;67,14;Moderate
+South Sulawesi;2020;4,5;2;106;N/A;N/A;58,90;Moderate
+South Sulawesi;2021;5;4,5;106,7;5,5;113,5;63,10;High
+South Sulawesi;2022;5;5,5;98,3;7;117,9;67,62;High
+South Sulawesi;2023;5;5,5;125;5;116;68,20;Moderate
+South Sumatra;2020;4;2;87;N/A;N/A;52,38;Moderate
+South Sumatra;2021;4,5;4;84,2;4,5;100,2;55,51;Moderate
+South Sumatra;2022;4,5;5;92;5;109,5;61,52;High
+South Sumatra;2023;5;5;105;5,5;103;64,15;Moderate
+West Java;2020;5;2,5;112;N/A;N/A;62,84;High
+West Java;2021;5,5;4,5;108,7;5,5;117,2;65,34;High
+West Java;2022;5,5;5,5;115,4;7;119,4;70,10;High
+West Java;2023;5,5;5,5;119;5,5;135;70,47;Moderate
+West Kalimantan;2020;4;2;95;N/A;N/A;55,24;Moderate
+West Kalimantan;2021;4,5;3,5;96,8;4,5;105,1;57,46;Moderate
+West Kalimantan;2022;5;5,5;91,8;5,5;107,3;64,10;High
+West Kalimantan;2023;5;5,5;107;5;112;65,19;Moderate
+West Nusa Tenggara;2020;4;2,5;83;N/A;N/A;53,49;Moderate
+West Nusa Tenggara;2021;4,5;3,5;81,1;5,5;107,7;56,41;Moderate
+West Nusa Tenggara;2022;4,5;5;88,8;5,5;127,4;60,97;High
+West Nusa Tenggara;2023;5;5,5;100;5,5;105;65,58;Moderate
+West Papua;2020;3,5;2;82;N/A;N/A;50,54;Moderate
+West Papua;2021;4;3,5;84,8;3,5;79,3;51,44;Moderate
+West Papua;2022;4;4,5;86,8;5;106,8;54,81;Moderate
+West Papua;2023;4,5;4,5;110;5;124;62,80;Moderate
+West Sulawesi;2020;3,5;2;100;N/A;N/A;52,29;Moderate
+West Sulawesi;2021;3,5;3;81,8;4,5;101,1;50,11;Moderate
+West Sulawesi;2022;4,5;5;86,4;5,5;112,8;59,14;Moderate
+West Sulawesi;2023;5;4,5;117;4,5;94;64,86;Moderate
+West Sumatra;2020;4;2;97;N/A;N/A;56,09;Moderate
+West Sumatra;2021;5;4,5;88;5,5;104,1;61,15;High
+West Sumatra;2022;5;5,5;104;5,5;117,8;66,87;High
+West Sumatra;2023;5,5;5,5;104;6;128;68,46;Moderate
+Yogyakarta;2020;5;2,5;123;N/A;N/A;65,73;High
+Yogyakarta;2021;6;5,5;106,6;7;116,1;70,55;High
+Yogyakarta;2022;5,5;7;111,1;7;125,9;72,29;High
+Yogyakarta;2023;5,5;5,5;129;6;138;73,27;Moderate

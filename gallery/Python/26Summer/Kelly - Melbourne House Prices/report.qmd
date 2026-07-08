@@ -1,0 +1,66 @@
+---
+title: "Why no one can afford to buy in Melbourne in 2026"
+subtitle: "Looking back at Melbourne House Prices 2016"
+author: "Kelly Burrett"
+date: "5 February 2025"
+format: html 
+
+categories: [Python, 26Summer, "data: melb_data.csv"]
+---
+
+## Import the Data
+
+First, we import the dataset and the pandas library. 
+
+```{python}
+#| code-fold: true
+import pandas as pd
+df = pd.read_csv("../../../../data/melb_data.csv")
+``` 
+
+## Sneak-peek at the data
+
+Here's a glimpse at the data.
+
+```{python}
+#| code-fold: true
+df.head(10)
+```
+
+
+## What was the distribution of house prices in 2016? 
+
+The purpose of this graph was to show how many houses in Melbourne were sold for different prices. But the data varied from $85,0000 to over $10 million. The data was filtered to remove the upper outliers to better display the data.
+
+```{python}
+#| code-fold: true
+#| echo: false 
+#Creating a histogram showing house prices under $5million and number of properties in each price category (categories are $100,000)
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+import matplotlib.ticker as ticker 
+
+df_filtered = df[df["Price"] <5000000]
+sns.displot(df_filtered["Price"], kind="hist", binwidth = 100000, color = "purple")
+#fig, ax = plt.subplots()
+plt.xlabel("Price in Millions (AUD)")
+plt.ylabel("Number of Homes")
+plt.title(R"Distribution of Melbourne House Prices under \$5million")
+#| fig-cap: "Number of Melbourne properties sold for under $5 million"
+```
+
+## What could you get for your money in Melbourne in 2016?
+
+This graph compares the sale price of Melbourne properties compared to the number of bedrooms. 
+
+```{python}
+#| code-fold: true
+#create a scatter graph, with a trend line, specifying range of x axis. Needed to change to relplot with default being scattor graph to add the line. 
+sns.relplot(df, x = "Rooms", y = "Price", s = 10, color = "blue")
+sns.lineplot(df, x = "Rooms", y = "Price", color = "red")
+plt.xticks(range (11))
+plt.title("House Prices vs Number of Bedrooms")
+plt.ylabel("Price in Millions")
+plt.xlabel("Number of Bedrooms")
+```

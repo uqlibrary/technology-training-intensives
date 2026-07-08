@@ -1,0 +1,120 @@
+from distributed.diagnostics import graph_layout
+from sys import modules
+from IPython.utils import data
+---
+title: Queensland fuel price
+auther: Dino 
+date: 2026-07-02
+---
+
+
+
+We are looking into a **Queensland fuel price** dataset today. Let's see it!
+
+### markdown has lists
+
+What we have to do:
+
+- import the data
+- load the right modules
+- generate the graph
+
+
+### Picking Data and Tidying Data
+
+```{python}
+#| echo: false
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+df_qld_fuel = pd.read_csv('data/qld_fuel.csv')
+df = df_qld_fuel.copy()
+
+# Tidying the dataset 
+df = df.drop(columns=['X_id'])
+df = df[
+    (df['Price'] < 4500) &
+    (df['Price'] > 1000)
+]
+df
+```
+
+# Let's create some plots
+
+### figure 1 
+
+```{python}
+#| echo: false
+# Comparison of QLD and NSW
+
+df_qld = df[df['Site_State'] == 'QLD']
+sns.displot(data = df_qld, x = 'Price', bins = 1000, col = 'Site_State')
+```
+
+### figure 2
+
+```{python}
+#| echo: false
+df_nsw = df[df['Site_State'] == 'NSW']
+sns.displot(data = df_nsw, x = 'Price', bins = 1000, col = 'Site_State')
+
+```
+
+### figure 3
+
+```{python}
+#| echo: false
+brand_fuel_price = df_qld.groupby(['Site_Brand', 'Fuel_Type'])['Price'].mean().reset_index()
+
+# 3. 視覺化：畫出超級專業的「分組長條圖 (Grouped Bar Chart)」
+plt.figure(figsize=(12, 6))
+
+# x 是品牌，y 是價格，hue 則是油種（這會讓同一個品牌的不同油種併排在一起對比！）
+sns.barplot(data=brand_fuel_price, x='Site_Brand', y='Price', hue='Fuel_Type', palette='Set2')
+
+plt.title('Average Fuel Price by Brand and Fuel Type')
+plt.xlabel('Site Brand')
+plt.ylabel('Average Price (Cents)')
+plt.xticks(rotation=45) # 讓品牌名稱旋轉 45 度才不會擠在一起
+plt.legend(title='Fuel Type', bbox_to_anchor=(1.05, 1), loc='upper left') # 把圖例移到外側
+plt.tight_layout()
+plt.show()
+
+```
+
+
+### figure 4
+
+
+```{python}
+
+#| echo: false
+df_qld['Site_Brand'].value_counts().head()
+# 💡 救星步驟：只抓出前 5 大主流品牌，把不重要的小品牌濾掉
+top_5_brands = df_qld['Site_Brand'].value_counts().head(5).index
+df_top5 = df_qld[df_qld['Site_Brand'].isin(top_5_brands)]
+
+# 2. 用前 5 大品牌的資料重新算平均
+brand_fuel_price = df_top5.groupby(['Site_Brand', 'Fuel_Type'])['Price'].mean().reset_index()
+
+# 3. 畫出你原本想做的線條圖
+plt.figure(figsize=(10, 6))
+
+# 把 x 軸換成 Fuel_Type，這樣線條會橫向發展，比較好閱讀
+sns.lineplot(
+    data=brand_fuel_price, 
+    x='Fuel_Type', 
+    y='Price', 
+    hue='Site_Brand', 
+    marker='o', 
+    linewidth=3
+)
+
+plt.title('Fuel Pricing Strategy: Top 5 Brands Comparison')
+plt.xlabel('Fuel Type')
+plt.ylabel('Average Price (Cents)')
+plt.grid(True, linestyle='--', alpha=0.5) # 加上網格線，讓你更好對齊價格
+plt.tight_layout()
+plt.show()
+```

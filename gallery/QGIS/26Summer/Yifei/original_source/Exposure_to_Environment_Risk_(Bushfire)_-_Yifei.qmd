@@ -1,0 +1,14 @@
+---
+format:
+  html:
+    toc: false
+    page-layout: full
+title: Exposure To Environment Risk (Bushfire) 
+author:  Yifei
+image: Exposure_to_Environment_Risk_(Bushfire)_-_Yifei.png
+date: 2026-02-12
+categories: [QGIS, 26Summer]
+---
+
+[Download and view the project fullscreen](Exposure to Environment Risk (Bushfire) - Yifei.pdf)
+![](Exposure to Environment Risk (Bushfire) - Yifei.pdf){width=100% style=min-height:90vh;}

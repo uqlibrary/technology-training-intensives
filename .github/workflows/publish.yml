@@ -25,13 +25,13 @@ jobs:
           sudo apt update && sudo apt upgrade && sudo apt install 
           libcurl4-openssl-dev
           openjdk-21-jdk
-          libgdal-dev libgeos-dev libproj-dev
+          libgdal-dev libgeos-dev libproj-dev libtbb-dev libnetcdf-dev
           libudunits2-dev
           libfontconfig1-dev
           libharfbuzz-dev libfribidi-dev
           cmake
       
-        # Terra dependencies: libgdal-dev, libgeos-dev and libproj-dev
+        # Terra dependencies: libgdal-dev, libgeos-dev, libproj-dev, libtbb-dev and libnetcdf-dev
         # units dependencies: libudunits2-dev
         # systemfonts dependencies: libfontconfig1-dev
         # textshaping dependencies: libharfbuzz-dev libfribidi-dev

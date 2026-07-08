@@ -1,0 +1,96 @@
+---
+title: "Exploring Gapminder Data: Life Expectancy Trends"
+author: Ubaid
+date: 2026-02-05
+format: html
+---
+
+# Introduction
+
+This short analysis looks at life expectancy trends in the classic Gapminder dataset (1952–2007) using Python and pandas.
+
+## Questions wanted to explore VS Explored
+####Interesting Questions
+1) How much life expectancy has increased or decreased in different continents in all the years?
+2) What 5 countries has the highest life expectancy and which 5 has the loweest?
+3) Which countries has increased or decreased life expectancy significantly in the past 20 years in comparison to what they had?
+4) How does gpd per capita affect life expectancy sort by continents?
+5) if gdp per capita affects life expectancy then which countries have shown this trend and what are th top countries. 
+6) Does population play any role woith gdp per capita?
+
+#### What I explored
+How has average life expectancy changed per continent over time?
+
+## Examine the data
+#### Modules Loading
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+```
+#### Load the data
+```{python}
+df_raw = pd.read_csv('../../../../data/gapminder.csv')
+df = df_raw.copy()
+```
+#### Quick look at the data
+```{python}
+print(df.head())
+```
+```{python}
+print(df['continent'].unique())
+```
+## Earlier Approach
+#### Categorize data into various continents
+```{python}
+Asia = df[df['continent']=='Asia']
+Europe = df[df['continent']=='Europe']
+Africa = df[df['continent']=='Africa']
+Americas = df[df['continent']=='Americas']
+Oceania = df[df['continent']=='Oceania']
+```
+#### Calculate yearly average of each continent seperatly
+```{python}
+Asia_yearly_avg = Asia.groupby('year')["lifeExp"].mean()
+Europe_yearly_avg = Europe.groupby('year')["lifeExp"].mean()
+Africa_yearly_avg = Africa.groupby('year')["lifeExp"].mean()
+Americas_yearly_avg = Americas.groupby('year')["lifeExp"].mean()
+Oceania_yearly_avg = Oceania.groupby('year')["lifeExp"].mean()
+```
+
+#### Problem with this appraoch
+I have all the yearly averages of continents but they are seperate. 
+
+Now I have to combine them again to plot them togather or I would have to call all the continents and put them togather.
+
+This is annoying. I dont want to do that. I need a shortcut. I dont want to do **AVENGERS ASSEMBLE**. Once things are broken .... i am getting distracted. lets get back to work.
+
+## Better Appraoch
+```{python}
+yearly_avg_by_continent = df.groupby(['continent', 'year'])['lifeExp'].mean().reset_index()
+```
+Lets have a quick look
+```{python}
+print(yearly_avg_by_continent.head(15))
+```
+Now things are looking good. Its plotting time.
+
+#### Ploting time
+```{python}
+sns.lineplot(data=yearly_avg_by_continent, x= 'year', y= 'lifeExp', hue= 'continent', marker = 'o')
+plt.title("Average life Expectancy by Continent (1952-2007")
+```
+
+Its working but the legend position is very bad. It is making the graph look bad. SO i have to adjust the legend
+
+```{python}
+sns.lineplot(data=yearly_avg_by_continent, x= 'year', y= 'lifeExp', hue= 'continent', marker = 'o')
+plt.title("Average life Expectancy by Continent (1952-2007")
+plt.legend(
+    bbox_to_anchor=(1.02, 1), 
+    loc='upper left',
+    borderaxespad=0.
+)
+
+plt.show()
+```

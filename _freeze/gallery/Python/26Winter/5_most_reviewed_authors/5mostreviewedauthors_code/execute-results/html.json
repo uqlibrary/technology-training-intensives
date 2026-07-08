@@ -1,0 +1,12 @@
+{
+  "hash": "dfd6d174bd8ce55c6539af8390787149",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: 5 most-reviewed authors \nauthor: Thanh-Truc, Raymond\ndate: Jul-2026 \ncategories: [Python, 26Winter, \"data: books.csv\"]\n---\n\n## Introduction\n\nWe are looking into the data set named **A summary of books on Goodreads** and try to make a graph of **5 most-reviewed authors** from it.\n\n::: {#d8a67828 .cell execution_count=1}\n``` {.python .cell-code}\nimport pandas as pd\ndf_raw=pd.read_csv(\"../../../../data/books.csv\")\ndf=df_raw.copy()\n\n#Describe the data set\ndf.dtypes\ndf.describe()\ndf[\"authors\"].describe()\ndf[\"ratings_count\"].describe()\n\n#Sort data based on ratings_count, get the top 5 from that dataframe\ndf_sort=df.sort_values(by=\"ratings_count\",ascending=False)\ntop_5 = df_sort.nlargest(5, 'ratings_count')\n\n#groupby authors based on the top 5\ngb=top_5.groupby(\"authors\")\navg_by_authors=gb[\"ratings_count\"].agg(\"mean\")\n\nimport seaborn as sns\nimport matplotlib.pyplot as plt\n#convert the series into a dataframe\ndf_top5= avg_by_authors.to_frame()\n#plot the top 5\nsns.catplot(data=df_top5,x=\"authors\",y=\"ratings_count\",kind=\"bar\")\n#modify the plot\nplt.ylabel(\"Ratings count\")\nplt.xlabel(\"Authors\") \nplt.title(\"The 5 most-reviewed authors\")\nplt.xticks(fontsize=6, rotation=80) \n```\n\n::: {.cell-output .cell-output-display execution_count=1}\n```\n([0, 1, 2, 3, 4],\n [Text(0, 0, 'Dan Brown'),\n  Text(1, 0, 'J.D. Salinger'),\n  Text(2, 0, 'J.K. Rowling/Mary GrandPré'),\n  Text(3, 0, 'J.R.R. Tolkien'),\n  Text(4, 0, 'Stephenie Meyer')])\n```\n:::\n\n::: {.cell-output .cell-output-display}\n![](5mostreviewedauthors_code_files/figure-html/cell-2-output-2.png){width=488 height=573}\n:::\n:::\n\n\n",
+    "supporting": [
+      "5mostreviewedauthors_code_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

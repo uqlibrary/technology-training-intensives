@@ -1,0 +1,319 @@
+---
+title: "Indonesia Reading Behaviour"
+format: 
+  dashboard:
+    scroll: true
+    nav-buttons: [github]
+    github: https://github.com/mine-cetinkaya-rundel/ld-dashboard
+logo: Logo.png
+logo-height: 150  
+logo-width: 150
+theme: Flatly
+fig-width: 25
+fig-asp: 0.8
+params:
+  month: "July"
+  year: "2026"
+  # 2021 rates: https://www.cdc.gov/nchs/data/nvsr/nvsr72/nvsr72-01.pdf
+  us_cesarean_rate: 0.321 
+  us_preterm_rate:  0.1049
+  threshold_diff: 0.02
+editor_options: 
+  chunk_output_type: console
+date: Jul-2026
+categories: [Python, 26Winter]
+---
+
+```{python}
+# prepare Data 
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+df_raw=pd.read_csv("Data/Project.csv", sep=';', decimal=',')
+
+df=df_raw.copy()
+df1 = df[df["Provinsi"] != "Indonesia"]
+df2 = df1[df1["Year"] != 2020]
+
+year_colors = {
+    2021: "green",
+    2022: "orange",
+    2023: "red"
+}
+
+indo_readingfreq = df2["Reading Frequency per week"].mean().astype('int')
+indo_internetaccess = df2["Internet Access Frequency per Week"].mean().astype('int')
+```
+
+# Reading Interest
+
+## Row {height="300%"}
+
+### Column {width="100%"}
+```{python}
+#| title: Reading Interest in Indonesian Provinces (2021–2023)
+#| fig-width: 20
+#| fig-height: 8
+#| layout-ncol: 1
+rein=sns.relplot(data=df2, 
+    x="Provinsi", 
+    y="Tingkat Kegemaran Membaca (Reading Interest)", 
+    hue="Year", 
+    palette=year_colors,
+    height=6, 
+    aspect=5)
+
+rein.set_axis_labels(
+    "Province",                      # X axis
+    "Reading Interest Score (%)"     # Y axis
+)
+
+for ax in rein.axes.flat:
+    ax.tick_params(axis='x', rotation=45)
+
+```
+
+## Row {height="100%"}
+
+### Column {width="16%"}
+
+```{python}
+#| title: Sumatra
+#| fig-width: 20
+#| fig-height: 8
+#| layout-ncol: 1
+df_sumatra = df2[df2['Provinsi'].isin([
+    'Aceh', 'Bangka Belitung Islands', 'Jambi', 'Lampung',
+    'North Sumatra', 'Riau', 'Riau Islands',
+    'South Sumatra', 'West Sumatra', 'Bengkulu'
+])]
+
+g = sns.relplot(
+    data=df_sumatra,
+    x='Year',
+    y='Tingkat Kegemaran Membaca (Reading Interest)',
+    kind='line',
+    hue='Provinsi',
+    height=6,
+    aspect=1.8
+)
+g.set_axis_labels("Year", "Reading Interest Score (%)")
+
+for ax in g.axes.flat:
+    ax.set_xticks([2021, 2022, 2023])
+    ax.tick_params(axis='x', rotation=45)
+```
+
+### Column {width="16%"}
+
+```{python}
+#| title: Kalimantan
+#| fig-width: 20
+#| fig-height: 8
+#| layout-ncol: 1
+df_kalimantan = df2[df2['Provinsi'].isin(['Central Kalimantan', 'East Kalimantan', 'North Kalimantan', 'South Kalimantan', 'West Kalimantan'])]
+h = sns.relplot(data= df_kalimantan, x = 'Year', y = 'Tingkat Kegemaran Membaca (Reading Interest)', kind = 'line', hue= 'Provinsi', height=6, aspect=1.8)
+
+h.set_axis_labels("Year", "Reading Interest Score (%)")
+
+for ax in h.axes.flat:
+    ax.set_xticks([2021, 2022, 2023])
+    ax.tick_params(axis='x', rotation=45)
+```
+
+### Column {width="16%"}
+
+```{python}
+#| title: Java
+#| fig-width: 20
+#| fig-height: 8
+#| layout-ncol: 1
+df_java = df2[df2['Provinsi'].isin(['Banten', 'Central Java', 'East Java', 'Jakarta', 'West Java', 'Yogyakarta'])]
+i= sns.relplot(data= df_java, x = 'Year', y = 'Tingkat Kegemaran Membaca (Reading Interest)', kind = 'line', hue= 'Provinsi', height=6, aspect=1.8)
+
+i.set_axis_labels("Year", "Reading Interest Score (%)")
+
+for ax in i.axes.flat:
+    ax.set_xticks([2021, 2022, 2023])
+    ax.tick_params(axis='x', rotation=45)
+```
+
+### Column {width="16%"}
+
+```{python}
+#| title: Bali & Nusa Tenggara
+#| fig-width: 20
+#| fig-height: 8
+#| layout-ncol: 1
+df_Balinusa = df2[df2['Provinsi'].isin(['Bali', 'West Nusa Tenggara', 'East Nusa Tenggara'])]
+j= sns.relplot(data= df_Balinusa, x = 'Year', y = 'Tingkat Kegemaran Membaca (Reading Interest)', kind = 'line', hue= 'Provinsi', height=6, aspect=1.8)
+
+j.set_axis_labels("Year", "Reading Interest Score (%)")
+
+for ax in j.axes.flat:
+    ax.set_xticks([2021, 2022, 2023])
+    ax.tick_params(axis='x', rotation=45)
+```
+
+### Column {width="16%"}
+
+```{python}
+#| title: Sulawesi
+#| fig-width: 20
+#| fig-height: 8
+#| layout-ncol: 1
+df_sulawesi = df2[df2['Provinsi'].isin(['Gorontalo', 'Central Sulawesi', 'North Sulawesi', 'South Sulawesi', 'South East Sulawesi', 'West Sulawesi'])]
+k = sns.relplot(data= df_sulawesi, x = 'Year', y = 'Tingkat Kegemaran Membaca (Reading Interest)', kind = 'line', hue= 'Provinsi', height=6, aspect=1.8)
+
+k.set_axis_labels("Year", "Reading Interest Score (%)")
+
+for ax in k.axes.flat:
+    ax.set_xticks([2021, 2022, 2023])
+    ax.tick_params(axis='x', rotation=45)
+```
+
+### Column {width="16%"}
+
+```{python}
+#| title: Maluku & Papua
+#| fig-width: 20
+#| fig-height: 8
+#| layout-ncol: 1
+df_malukupapua = df2[df2['Provinsi'].isin(['West Papua', 'Papua', 'Maluku', 'North Maluku'])]
+l= sns.relplot(data= df_malukupapua, x = 'Year', y = 'Tingkat Kegemaran Membaca (Reading Interest)', kind = 'line', hue= 'Provinsi', height=6, aspect=1.8)
+
+l.set_axis_labels("Year", "Reading Interest Score (%)")
+
+for ax in l.axes.flat:
+    ax.set_xticks([2021, 2022, 2023])
+    ax.tick_params(axis='x', rotation=45)
+```
+
+# Activity Frequency
+
+## Row {height="100%"}
+
+### Column {width="100%"}
+
+```{python}
+#| title: Reading Frequency per Week in 2021-2023
+#| fig-width: 20
+#| fig-height: 8
+#| layout-ncol: 1
+rf=sns.catplot(data = df2, 
+    x="Provinsi",
+    y="Reading Frequency per week", 
+    kind="box",
+    height=2.8,
+    aspect=8)
+
+rf.set_axis_labels("Province", "Reading Frequency", fontsize=8)
+
+for ax in rf.axes.flat:
+    ax.tick_params(axis='x', rotation=45)
+```
+
+## Row {height="100%"}
+
+### Column {width="50%"}
+
+```{python}
+#| title: Internet Access Frequency per Week in 2021-2023
+#| fig-width: 6
+#| fig-height: 3
+#| layout-ncol: 1
+# sns.displot(data=df2,
+#     x="Internet Access Frequency per Week", 
+#     kind="kde", 
+#     hue="Year",
+#     palette=year_colors,
+#     height=2, 
+#     aspect=4)
+
+rf2=sns.catplot(data = df2, 
+    x="Provinsi",
+    y="Internet Access Frequency per Week", 
+    kind="box",
+    height=2.8,
+    aspect=8)
+
+rf2.set_axis_labels("Province", "Internet Access Frequency", fontsize=8)
+
+for ax in rf2.axes.flat:
+    ax.tick_params(axis='x', rotation=45)
+```
+
+# Relational Data
+
+## Row {height="200%"}
+
+### Column {width="50%"}
+
+```{python}
+#| title: Relation Between Internet Access Frequency and Reading Interest
+#| fig-width: 20
+#| fig-height: 8
+#| layout-ncol: 1
+m= sns.relplot(data=df2, 
+    x="Internet Access Frequency per Week", 
+    y="Tingkat Kegemaran Membaca (Reading Interest)", 
+    hue="Year",
+    palette=year_colors,
+    height=5, 
+    aspect=1.5)
+
+m.set_axis_labels("Internet Access Frequency per Week", "Reading Interest")
+```
+
+### Column {width="50%"}
+
+```{python}
+#| title: Relation Between Daily Internet Duration and Daily Reading Duration
+#| fig-width: 20
+#| fig-height: 8
+#| layout-ncol: 1
+sns.relplot(data=df2, 
+    palette=year_colors, 
+    x="Daily Internet Duration (in minutes)", 
+    y="Daily Reading Duration (in minutes)", 
+    hue="Year",
+    height=5, 
+    aspect=1.5)
+```
+
+## Row {height="100%"}
+
+### Column {width="100%"}
+
+```{python}
+#| title: Relation Between Internet Access and Reading Frequency
+#| fig-width: 20
+#| fig-height: 6
+#| layout-ncol: 1
+sms=sns.catplot(data = df2, 
+    x="Internet Access Frequency per Week",
+    y="Reading Frequency per week", kind="bar", estimator="std", height=2.7, 
+    aspect=4)
+```
+
+# Data
+
+## Row {height="100%"}
+
+### Column {width="100%"}
+
+```{python}
+#| title: Reading interest Category table
+crosstab = pd.crosstab(df2["Category"], df2["Year"])
+print(crosstab)
+
+```
+
+## Row {height="300%"}
+
+### Column {width="100%"}
+
+```{python}
+print(df2.to_string())
+```

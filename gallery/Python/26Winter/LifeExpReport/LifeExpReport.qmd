@@ -1,0 +1,104 @@
+---
+title: Life Expectancy
+author: MARL
+date: Jul-2026
+format: html
+theme: sketchy
+categories: [Python, 26Winter, "data: gapminder.csv"]
+---
+
+## <span style="color:green;"> The data set <span>
+I am using the gapminder data for this project.
+
+## <span style="color:green;">First look at the data <span>
+
+Open the data as a dataframe and look at the shape
+
+``` {python}
+import pandas as pd
+df = pd.read_csv("../../../../data/gapminder.csv")
+s = df.shape 
+print(f'There are {s[0]} rows and {s[1]} columns')
+c_names = df.columns.tolist()
+print("The headings are: ")
+for c in c_names:
+    print(f'- {c}')
+```
+
+Get a summary of the numerical data
+``` {python}
+df.describe()
+```
+
+Check for null values and data types. 
+``` {python}
+df.info()
+print("There are no null values that would have been removed in data cleaning.")
+```
+
+### <span style="color:green;"> Unique values for potential catagories <span>
+
+Check Country first
+``` {python}
+all_countries = df.country.unique().tolist() 
+print(f'This data has {len(all_countries)} different countries')
+```
+
+Check Continent next
+``` {python}
+all_continents = df.continent.unique().tolist()
+print(f"This data has {len(all_continents)} different continents")
+```
+
+Also check years
+``` {python}
+all_years = df.year.unique().tolist()
+print(f"This data has {len(all_years)} different years")
+for y in all_years:
+    print(y)
+```
+
+### <span style="color:green;"> Summary <span>
+We have data from 1952 to 2007 accross 142 countries and 5 continents. Each of these has population, life expectancy and GDP. I will see if I can find any links for life expectancy based on years.
+
+## <span style="color:green;"> Years vs Life Expectancy <span>  
+```{python}
+import seaborn as sns
+sns.catplot(data=df, x="year", y="lifeExp", kind="box")
+```
+
+It appears that life expectancy increased with time but I will do a deeper dive
+
+### <span style="color:green;">Mean life expectancy by years <span>
+
+``` {python}
+gb = df.groupby("year")["lifeExp"].mean()
+data = {"years" : all_years, "life" : gb }
+doggy = pd.DataFrame(data)
+sns.relplot(data = doggy, x = "years", y = "life", kind = "line")
+```
+
+### <span style="color:green;">Is the difference significant? <span>
+Null hypothesis - there is no difference in life expectancy between 1957 and 2007
+
+I will perform a ttest to check this
+``` {python}
+import scipy.stats as stats
+early = df[df.year == 1957]
+late = df[df.year == 2007]
+check = stats.ttest_ind(early.lifeExp, late.lifeExp)
+print(f'The pvalue is {check.pvalue}.')
+```
+
+### <span style="color:green;"> Result <span>
+There is a very low pvalue indcating that we can reject the null hypothesis there is no difference in life expectancy between 1952 and 2007.
+
+## <span style="color:green;"> Look at outlier 1992 <span>
+```{python}
+life_year = df[(df.year == 1992)]
+min_exp_92 = life_year.lifeExp.min()
+min_country = life_year.country[life_year.lifeExp == min_exp_92].tolist()
+print(f'The 1992 outlier is {str(min_country[0])} with a life expectancy of {min_exp_92}')
+```
+
+In 1992 there was a 100 day civil war in Rwanda that led to the genocide of nearly 1 million people. [Source](https://cla.umn.edu/chgs/holocaust-genocide-education/resource-guides/rwanda)

@@ -1,0 +1,90 @@
+---
+title: "The Striker and Height Conundrum"
+author: "Mariana, Rennie, Shuvo"
+format: html
+editor: visual
+execute: 
+  warning: false
+---
+
+## Introduction
+
+This presentation is done by Rennie Lee, Mariana P. Liborio and Shuvo Marak. We primarily used dplyr, gt, ggplot2 library for the presentation. Our main goal is to debunk the popular myth of the best height for a player being attacker/striker in the Football. For this analysis we used the Soccer Players data set.
+
+```{r}
+library(dplyr)
+library(gt)
+library(ggplot2)
+
+players <- read.csv("data/Players2024.csv")
+
+players <- players %>% mutate(striker=if_else(positions=="Attack",1,0))
+```
+
+Most strikers comes from Spain, followed by France, Ukraine, Turkey.
+
+```{r}
+striker_by_country <- players %>% 
+  filter(striker==1) %>% 
+  count(nationality, name="num_striker") %>% 
+  arrange(desc(num_striker))
+head(striker_by_country)
+striker_by_country <-
+striker_by_country %>% slice_head(n=5) %>% 
+  gt() %>% tab_header(title = md("**Top 5 Countries by Number of Strikers**"),
+    subtitle = "Players2024 Dataset") %>%
+  cols_label(nationality = "Country", num_striker = "Number of Strikers") %>%
+  fmt_number(columns = num_striker, decimals = 0) %>%
+  tab_source_note(source_note = "Source: Players2024.csv")
+```
+
+From the data we found that the average height of striker is 180.80cm.
+
+```{r}
+meanht <- mean(players$height_cm, na.rm=TRUE)
+ggplot(players, aes(x= height_cm))+ geom_histogram(bins = 10, fill="skyblue", color= "green")+ geom_vline(xintercept = meanht, color="purple", line= 20) +
+labs(
+    title = "Distribution of Player Heights",
+    x = "Height (cm)",
+    y = "Number of Players"
+  ) +
+  theme_minimal()
+```
+
+The height of the strikers are tend to stick around 180cm( mean = 180.80cm)
+
+```{r}
+strikers_height <- players %>% filter(striker==1)
+strikers_heightm <- mean(strikers_height$height_cm, na.rm = TRUE)
+ggplot(strikers_height, aes(x= height_cm)) + geom_histogram(binwidth = 2, fill = "skyblue", color = "black") +
+  geom_vline(
+    xintercept = mean(strikers_height$height_cm, na.rm = TRUE),
+    color = "red",line = 3)+
+  labs(
+    title = "Distribution of Strikers Heights",
+    x = "Height (cm)",
+    y = "Number of Strikers"
+  ) +
+  theme_minimal()
+```
+
+```{r}
+table(players$striker)
+cor_height_striker <- cor(
+  players$height_cm,
+  players$striker,
+  use = "complete.obs"
+)
+cor_height_striker
+ggplot(players, aes(x = factor(striker), y = height_cm)) +
+  geom_boxplot(fill = "skyblue", alpha = 0.7) +
+  labs(
+    title = "Height Differences Between Strikers and Non-Strikers",
+    x = "Striker Status (0 = Non-Striker, 1 = Striker)",
+    y = "Height (cm)"
+  ) +
+  theme_minimal()
+
+```
+
+There are 4364 non-striker player and 1571 strikes in our data. From analysis and from the Boxplot we see that there is a very small correlation with strikers and non-strikers height(-0.1752, which is negligible). So, we can say that there is no correlation with players height and being a striker player!

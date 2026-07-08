@@ -1,0 +1,95 @@
+---
+title: "My Birds Strike Report"
+author: "Sillak"
+format: html
+---
+
+## Introduction
+
+This project explores aircraft bird strike incidents in the United States during the 1990s, using data from a Tidy Tuesday dataset sourced from the Federal Aviation Administration (FAA). Bird strikes pose a significant risk to aviation safety, and understanding the conditions under which they occur is essential for improving prevention and mitigation strategies.
+
+The analysis focuses on how bird strike incidents vary by aircraft speed and altitude, the phase of flight during which the strike occurred, prevailing weather conditions, and the time of day. By examining these factors, this project aims to identify patterns and high-risk scenarios that contribute to bird strike events, offering insights that may inform safer operational practices in aviation.
+
+## Import the data
+
+The bird strike dataset is first imported and cleaned to ensure the analysis is based on complete and reliable observations. Records containing missing values are removed, and the dataset is reduced to five key variables relevant to the study: height, speed, sky condition, time of day, and phase of flight. This tidying process helps streamline the analysis and focuses attention on the factors most directly associated with bird strike incidents.
+
+```{python}
+#| code-fold: true
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+df_raw = pd.read_csv("data/birds_strikes.csv")
+df = df_raw.copy()
+df = df.dropna()
+df_subset = df[["height", "speed", "sky", "time_of_day", "phase_of_flt"]]
+df_subset.head()
+```
+
+## Visualisation
+This scatterplot illustrates when bird strike incidents occur across different phases of flight, showing the relationship between aircraft speed and altitude at the time of impact. By visualizing these variables together, the plot highlights which flight stages are most susceptible to bird strikes and the typical speed and height conditions under which they occur.
+
+```{python}
+#| echo: true
+#| code-fold: true
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+df_subset = df_subset.rename(columns = {"phase_of_flt":"stages"})
+
+sns.scatterplot(df_subset,x = "speed", y = "height", hue = "stages")
+
+plt.xlabel("Speed (km/h)")
+plt.ylabel("Height(m)")
+plt.legend(title = "Stages")
+plt.title("Birds Strikes by Stages")
+```
+
+Another figure analyzes bird strike incidents in relation to weather conditions and aircraft speed at the time of occurrence. This visualization illustrates how bird strikes are distributed across different sky conditions while highlighting the typical speed ranges at which these incidents occur.
+
+```{python}
+#| code-fold: true
+df_subset = df_subset.rename(columns = {"sky" : "weather"})
+
+weather = sns.displot(df_subset, x = "speed", binwidth = 1, col = "weather",)
+
+weather.set_axis_labels("Speed (km/h)", "frequency")
+weather.fig.suptitle("Birds Strikes speed based on weather", y = 1.1)
+```
+Another figure examines bird strike incidents based on the time of day at which they occur. This visualization helps identify temporal patterns in bird strike events, highlighting periods of the day when incidents are more likely to happen.
+
+```{python}
+#| code-fold: true
+df_subset = df_subset.rename(columns = {"time_of_day":"time"})
+speed = df_subset [["speed", "time","height"]]
+pp = sns.pairplot(data = speed, hue="time", palette="viridis", height = 1.5, aspect = 1.2)
+pp.fig.suptitle("birds strikes based on the time of the day")
+```
+## The Statistics
+Based on the summary statistics, this table presents the mean aircraft altitude and speed at which bird strikes occur across different phases of flight. This analysis helps compare how typical height and speed vary by flight stage when bird strike incidents happen.
+
+```{python}
+#| code-fold: true
+sp = df_subset.groupby("stages")
+sp.mean(numeric_only = True)
+st_m = sp.mean(numeric_only = True)
+st_m.head()
+```
+
+This section provides a statistical summary of bird strike incidents based on the aircraft’s speed and altitude at the time of occurrence. The summary highlights the central tendencies of these variables, offering insight into the typical flight conditions under which bird strikes happen.
+
+```{python}
+#| code-fold: true
+import matplotlib.pyplot as plt
+import pandas as pd
+import scipy.stats as stats
+import seaborn as sns
+import statsmodels.formula.api as smf
+
+mod = smf.ols("speed ~ height", df_subset)
+res = mod.fit()
+res.summary()
+print (res.summary())
+```
+
+

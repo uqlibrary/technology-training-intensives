@@ -1,0 +1,14 @@
+---
+format:
+  html:
+    toc: false
+    page-layout: full
+title: Public Toilets Coverage In Brisbane
+author: Bardia Danaei
+image: Public_toilets_coverage_in_Brisbane-Bardia_Danaei.png
+date: 2026-02-12
+categories: [QGIS, 26Summer]
+---
+
+[Download and view the project fullscreen](Public toilets coverage in Brisbane-Bardia Danaei.pdf)
+![](Public toilets coverage in Brisbane-Bardia Danaei.pdf){width=100% style=min-height:90vh;}
