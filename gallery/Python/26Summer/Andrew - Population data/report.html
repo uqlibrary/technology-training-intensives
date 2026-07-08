@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Andrew Pullar">
+<meta name="dcterms.date" content="2026-02-04">
+
+<title>Python Intensive Workshop Project – UQ Library Training Intensives</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../../">
+<link href="../../../..//int_laptop_icon.svg" rel="icon" type="image/svg+xml">
+<script src="../../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../../site_libs/bootstrap/bootstrap-1544ed907c8e628a6a986417edf7e48c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script type="text/javascript">
+window.PlotlyConfig = {MathJaxConfig: 'local'};
+if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+</script>
+<script type="module">import "https://cdn.plot.ly/plotly-3.3.0.min"</script>
+
+
+
+<meta property="og:title" content="Python Intensive Workshop Project – UQ Library Training Intensives">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://uqlibrary.github.io/technology-training-intensives/gallery/Python/26Summer/Andrew - Population data/report_files/figure-html/cell-7-output-1.png">
+<meta property="og:site_name" content="UQ Library Training Intensives">
+<meta property="og:image:height" content="940">
+<meta property="og:image:width" content="1519">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../../index.html">
+    <span class="navbar-title">UQ Library Training Intensives</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../python/setup.html"> 
+<span class="menu-text">Python</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../qgis/setup.html"> 
+<span class="menu-text">QGIS</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../r/setup.html"> 
+<span class="menu-text">R</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../gallery/project_gallery.html"> 
+<span class="menu-text">Project Gallery</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://uqlibrary.github.io/technology-training"> 
+<span class="menu-text">UQL Technology Training</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../community/community.html"> 
+<span class="menu-text">Communities of Practice</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+    <div class="dropdown">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="GitHub links"><i class="bi bi-github"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/uqlibrary/technology-training-intensives">
+            Source
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/uqlibrary/technology-training-intensives/issues/new">
+            Report an issue
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#python-intensive-workshop-project" id="toc-python-intensive-workshop-project" class="nav-link active" data-scroll-target="#python-intensive-workshop-project">Python Intensive Workshop Project</a>
+  <ul class="collapse">
+  <li><a href="#visualising-population-data-from-cia-world-factbook" id="toc-visualising-population-data-from-cia-world-factbook" class="nav-link" data-scroll-target="#visualising-population-data-from-cia-world-factbook">Visualising population data from CIA World Factbook</a></li>
+  <li><a href="#identifying-key-data-groupings" id="toc-identifying-key-data-groupings" class="nav-link" data-scroll-target="#identifying-key-data-groupings">Identifying key data groupings</a></li>
+  <li><a href="#exploring-income-group-data" id="toc-exploring-income-group-data" class="nav-link" data-scroll-target="#exploring-income-group-data">Exploring income group data</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Python Intensive Workshop Project</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Python</div>
+    <div class="quarto-category">26Summer</div>
+    <div class="quarto-category">data: population.csv</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Andrew Pullar </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 4, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="use-this-to-render-save-1st-quarto-render-..report.qmd" class="level4">
+<h4 class="anchored" data-anchor-id="use-this-to-render-save-1st-quarto-render-..report.qmd">Use this to render (Save 1st!): !quarto render ../report.qmd</h4>
+<p>Copy/paste codeblock</p>
+</section>
+<section id="python-intensive-workshop-project" class="level1">
+<h1>Python Intensive Workshop Project</h1>
+<section id="visualising-population-data-from-cia-world-factbook" class="level2">
+<h2 class="anchored" data-anchor-id="visualising-population-data-from-cia-world-factbook">Visualising population data from CIA World Factbook</h2>
+<p>The chosen dataset is the CIA World Factbook’s “../../../../data/population.csv”. This dataset includes annual and biannual data from 1950-2023 across a variety of countries, regions and aggregate categories. Our 1st step is to import the dataset and load relevant libraries:</p>
+<div id="69e812a0" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib <span class="im">as</span> mpl</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mpl_toolkits.mplot3d <span class="im">import</span> Axes3D</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Import and copy raw dataset</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>df_raw <span class="op">=</span> pd.read_csv(<span class="st">"../../../../data/population.csv"</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df_raw.copy()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Then we create a set of new columns for possibly interesting statistics</p>
+<div id="98db8408" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creates new columns to store the ratio of births by women aged 15-19 to overall births, and the conditional life expectancy differential; i.e. the expected lifespan at birth vs expected LE for people who reach 15 years of age</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"young_birth_ratio"</span>] <span class="op">=</span> (df[<span class="st">"Births.by.women.aged.15.to.19..thousands."</span>]<span class="op">/</span>df[<span class="st">"Births..thousands."</span>])</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"le_diff"</span>] <span class="op">=</span> (df[<span class="st">'Life.Expectancy.at.Age.15..both.sexes..years.'</span>] <span class="op">-</span>df[<span class="st">'Life.Expectancy.at.Birth..both.sexes..years.'</span>] <span class="op">+</span> <span class="dv">15</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'mf_rat40'</span>] <span class="op">=</span> <span class="dv">105</span><span class="op">*</span>((<span class="dv">1000</span><span class="op">-</span>df[<span class="st">"Male.Mortality.before.Age.40..deaths.under.age.40.per.1.000.male.live.births."</span>])<span class="op">/</span>(<span class="dv">1000</span><span class="op">-</span>df[<span class="st">"Female.Mortality.before.Age.40..deaths.under.age.40.per.1.000.female.live.births."</span>]))</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'mf_rat60'</span>] <span class="op">=</span> <span class="dv">105</span><span class="op">*</span>((<span class="dv">1000</span><span class="op">-</span>df[<span class="st">"Male.Mortality.before.Age.60..deaths.under.age.60.per.1.000.male.live.births."</span>])<span class="op">/</span>(<span class="dv">1000</span><span class="op">-</span>df[<span class="st">"Female.Mortality.before.Age.60..deaths.under.age.60.per.1.000.female.live.births."</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Column names are unwieldy and difficult to work with; we can create a dictionary of relevant column names to select a subset of columns at each stage</p>
+<div id="23896160" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#%%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Creates a dictionary of column name changes and relevant values</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>colmap <span class="op">=</span> {</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">'Year'</span>:<span class="st">'year'</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">'Region'</span>:<span class="st">'region'</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">'Population.Density..as.of.1.July..persons.per.square.km.'</span>:<span class="st">'pop_density'</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">'Median.Age..as.of.1.July..years.'</span>:<span class="st">'median_age'</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">'Population.Growth.Rate..percentage.'</span>:<span class="st">'pop_growth'</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">'Mean.Age.Childbearing..years.'</span>:<span class="st">'mean_mother_age'</span>,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">'young_birth_ratio'</span>:<span class="st">'young_birth_ratio'</span>,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">'Life.Expectancy.at.Birth..both.sexes..years.'</span>:<span class="st">'le_birth'</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">'Life.Expectancy.at.Age.15..both.sexes..years.'</span>:<span class="st">'le_15'</span>,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">'Sex.Ratio.at.Birth..males.per.100.female.births.'</span>:<span class="st">'mf_ratiopc'</span>,</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">'le_diff'</span>:<span class="st">'le_diff'</span>,</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">'mf_rat40'</span>:<span class="st">'mf_rat40'</span>,</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">'mf_rat60'</span>:<span class="st">'mf_rat60'</span>,</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="st">'Total.Fertility.Rate..live.births.per.woman.'</span>:<span class="st">'fertility'</span>  </span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co"># renaming variables of interest for usability</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>df.rename(columns<span class="op">=</span>colmap,inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co">#%%</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="identifying-key-data-groupings" class="level2">
+<h2 class="anchored" data-anchor-id="identifying-key-data-groupings">Identifying key data groupings</h2>
+<p>The dataset includes country-level data, as well as a variety of aggregates. We can identify these aggregates by checking for unique “Type” labels in the data:</p>
+<div id="3b4ce37f" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"Type"</span>].unique()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>array(['World', 'Label/Separator', 'SDG region', 'Development Group',
+       'Special other', 'Income Group', 'Region', 'Subregion',
+       'Country/Area'], dtype=object)</code></pre>
+</div>
+</div>
+<p>The Type names allow us to identify several key groupings of data:</p>
+<pre><code>- Sustainable Development Goal (SDG) regions
+- UN development groups
+- World Bank income groups
+- Geographic regions</code></pre>
+</section>
+<section id="exploring-income-group-data" class="level2">
+<h2 class="anchored" data-anchor-id="exploring-income-group-data">Exploring income group data</h2>
+<p>First, we examine trends in income group aggregates, storing income group data in a new subset:</p>
+<div id="7582d5cc" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creates a subset of data using type "Income Group"</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>df_i <span class="op">=</span> df[df[<span class="st">"Type"</span>] <span class="op">==</span> <span class="st">"Income Group"</span>] <span class="co"># can use .reset_index()</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># creates an array of income groups excluding combined groups e.g. upper-and-middle</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>rgs <span class="op">=</span> np.delete(df_i[<span class="st">"region"</span>].unique()[<span class="dv">2</span>:<span class="dv">8</span>],[<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">4</span>])</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>df_s <span class="op">=</span> df_i[(df_i[<span class="st">"region"</span>].isin(rgs))]</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Excludes columns that aren't of interest</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>df_s <span class="op">=</span> df_s[colmap.values()]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Subset is to remove some of the excess groupings, which make the data hard to read as seen here:</p>
+<div id="e5fe94e5" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sns.relplot(df_i, x <span class="op">=</span> <span class="st">'year'</span>, y<span class="op">=</span> <span class="st">'pop_growth'</span>, kind <span class="op">=</span> <span class="st">'line'</span>, hue <span class="op">=</span> <span class="st">'region'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="report_files/figure-html/cell-7-output-1.png" width="760" height="470" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can examine differences in sex ratios at a variety of ages:</p>
+<div id="0caa8998" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#%%</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>fig, axs <span class="op">=</span> plt.subplots(ncols<span class="op">=</span><span class="dv">3</span>,sharey<span class="op">=</span><span class="va">True</span>,sharex<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>sns.lineplot(df_s, x <span class="op">=</span> <span class="st">'year'</span>, y<span class="op">=</span> <span class="st">'mf_ratiopc'</span>, hue <span class="op">=</span> <span class="st">'region'</span>,ax<span class="op">=</span>axs[<span class="dv">0</span>])</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>sns.lineplot(df_s, x <span class="op">=</span> <span class="st">'year'</span>, y<span class="op">=</span> <span class="st">'mf_rat40'</span>, hue <span class="op">=</span> <span class="st">'region'</span>,ax<span class="op">=</span>axs[<span class="dv">1</span>],legend<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>sns.lineplot(df_s, x <span class="op">=</span> <span class="st">'year'</span>, y<span class="op">=</span> <span class="st">'mf_rat60'</span>, hue <span class="op">=</span> <span class="st">'region'</span>,ax<span class="op">=</span>axs[<span class="dv">2</span>],legend<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].legend([],frameon <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>fig.legend(loc<span class="op">=</span><span class="st">'outside lower center'</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">0.25</span>, <span class="op">-</span><span class="fl">0.25</span>), title<span class="op">=</span><span class="st">"Income level"</span>)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, title <span class="kw">in</span> <span class="bu">zip</span>(axs, [<span class="st">'Birth'</span>, <span class="st">'Age 40'</span>, <span class="st">'Age 60'</span>]):</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    ax.set_title(title)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">"Male:Female Ratio (%)"</span>)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    ax.hlines(y<span class="op">=</span><span class="dv">100</span>, xmin<span class="op">=</span><span class="dv">1950</span>,xmax<span class="op">=</span><span class="dv">2025</span>,colors <span class="op">=</span> <span class="st">"k"</span>, linestyles<span class="op">=</span><span class="st">"dashed"</span>)</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">"both"</span>, which<span class="op">=</span><span class="st">"major"</span>, labelsize<span class="op">=</span><span class="dv">8</span>, length<span class="op">=</span><span class="dv">5</span>, width<span class="op">=</span><span class="fl">1.0</span>)</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].set_xticks(np.arange(<span class="dv">1950</span>, <span class="dv">2026</span>, step<span class="op">=</span><span class="dv">25</span>))</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="co">#%%</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="report_files/figure-html/cell-8-output-1.png" width="661" height="598" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 672x480 with 0 Axes&gt;</code></pre>
+</div>
+</div>
+<p>Removing early years for better visibility</p>
+<div id="1d31b12f" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#%%</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>fig, axs <span class="op">=</span> plt.subplots(ncols<span class="op">=</span><span class="dv">3</span>,sharey<span class="op">=</span><span class="va">True</span>,sharex<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>sns.lineplot(df_s[df[<span class="st">'year'</span>]<span class="op">&gt;</span><span class="dv">1955</span>], x <span class="op">=</span> <span class="st">'year'</span>, y<span class="op">=</span> <span class="st">'mf_ratiopc'</span>, hue <span class="op">=</span> <span class="st">'region'</span>,ax<span class="op">=</span>axs[<span class="dv">0</span>])</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>sns.lineplot(df_s[df[<span class="st">'year'</span>]<span class="op">&gt;</span><span class="dv">1955</span>], x <span class="op">=</span> <span class="st">'year'</span>, y<span class="op">=</span> <span class="st">'mf_rat40'</span>, hue <span class="op">=</span> <span class="st">'region'</span>,ax<span class="op">=</span>axs[<span class="dv">1</span>],legend<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>sns.lineplot(df_s[df[<span class="st">'year'</span>]<span class="op">&gt;</span><span class="dv">1955</span>], x <span class="op">=</span> <span class="st">'year'</span>, y<span class="op">=</span> <span class="st">'mf_rat60'</span>, hue <span class="op">=</span> <span class="st">'region'</span>,ax<span class="op">=</span>axs[<span class="dv">2</span>],legend<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].legend([],frameon <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>fig.legend(loc<span class="op">=</span><span class="st">'outside lower center'</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">0.25</span>, <span class="op">-</span><span class="fl">0.25</span>), title<span class="op">=</span><span class="st">"Income level"</span>)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, title <span class="kw">in</span> <span class="bu">zip</span>(axs, [<span class="st">'Birth'</span>, <span class="st">'Age 40'</span>, <span class="st">'Age 60'</span>]):</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    ax.set_title(title)</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">"Male:Female Ratio (%)"</span>)</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    ax.hlines(y<span class="op">=</span><span class="dv">100</span>, xmin<span class="op">=</span><span class="dv">1950</span>,xmax<span class="op">=</span><span class="dv">2025</span>,colors <span class="op">=</span> <span class="st">"k"</span>, linestyles<span class="op">=</span><span class="st">"dashed"</span>)</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">"both"</span>, which<span class="op">=</span><span class="st">"major"</span>, labelsize<span class="op">=</span><span class="dv">8</span>, length<span class="op">=</span><span class="dv">5</span>, width<span class="op">=</span><span class="fl">1.0</span>)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].set_xticks(np.arange(<span class="dv">1955</span>, <span class="dv">2026</span>, step<span class="op">=</span><span class="dv">23</span>))</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="co">#%%</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="report_files/figure-html/cell-9-output-1.png" width="661" height="598" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 672x480 with 0 Axes&gt;</code></pre>
+</div>
+</div>
+<p>Zooming in on the difference in birth ratios:</p>
+<div id="20157adc" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#%%</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>sns.relplot(df_s[df[<span class="st">'year'</span>]<span class="op">&gt;</span><span class="dv">1955</span>], x <span class="op">=</span> <span class="st">'year'</span>, y<span class="op">=</span> <span class="st">'mf_ratiopc'</span>, hue <span class="op">=</span> <span class="st">'region'</span>,kind<span class="op">=</span><span class="st">'line'</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Sex ratio at birth: Males born per female (%)'</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Male:Female Ratio (%)"</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co">#%%</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>Text(57.38270833333335, 0.5, 'Male:Female Ratio (%)')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="report_files/figure-html/cell-10-output-2.png" width="661" height="490" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>3d graph showing how the difference in life expectancy at birth vs at 15 years and sex ratios has changed over time</p>
+<div id="64252cc7" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>px.line_3d(df_s[df[<span class="st">'year'</span>]<span class="op">&gt;</span><span class="dv">1955</span>],x<span class="op">=</span><span class="st">'year'</span>,y<span class="op">=</span><span class="st">'le_diff'</span>,z<span class="op">=</span><span class="st">'mf_rat60'</span>,color<span class="op">=</span><span class="st">'region'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG"></script><script type="text/javascript">if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.3.0.min.js" integrity="sha256-bO3dS6yCpk9aK4gUpNELtCiDeSYvGYnK7jFI58NQnHI=" crossorigin="anonymous"></script>                <div id="e359c374-8fb8-4c9f-baae-4f8acb6a5b33" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("e359c374-8fb8-4c9f-baae-4f8acb6a5b33")) {                    Plotly.newPlot(                        "e359c374-8fb8-4c9f-baae-4f8acb6a5b33",                        [{"hovertemplate":"region=High-income countries\u003cbr\u003eyear=%{x}\u003cbr\u003ele_diff=%{y}\u003cbr\u003emf_rat60=%{z}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"High-income countries","line":{"color":"#636efa","dash":"solid"},"marker":{"symbol":"circle"},"mode":"lines","name":"High-income countries","scene":"scene","showlegend":true,"x":{"dtype":"f8","bdata":"AAAAAACQnkAAAAAAAJSeQAAAAAAAmJ5AAAAAAACcnkAAAAAAAKCeQAAAAAAApJ5AAAAAAAConkAAAAAAAKyeQAAAAAAAsJ5AAAAAAAC0nkAAAAAAALieQAAAAAAAvJ5AAAAAAADAnkAAAAAAAMSeQAAAAAAAyJ5AAAAAAADMnkAAAAAAANCeQAAAAAAA1J5AAAAAAADYnkAAAAAAANyeQAAAAAAA4J5AAAAAAADknkAAAAAAAOieQAAAAAAA7J5AAAAAAADwnkAAAAAAAPSeQAAAAAAA+J5AAAAAAAD8nkAAAAAAAACfQAAAAAAABJ9AAAAAAAAIn0AAAAAAAAyfQAAAAAAAEJ9AAAAAAAAUn0AAAAAAABifQAAAAAAAHJ9AAAAAAAAgn0AAAAAAACSfQAAAAAAAKJ9AAAAAAAAsn0AAAAAAADCfQAAAAAAANJ9AAAAAAAA4n0AAAAAAADyfQAAAAAAAQJ9AAAAAAABEn0AAAAAAAEifQAAAAAAATJ9AAAAAAABQn0AAAAAAAFSfQAAAAAAAWJ9AAAAAAABcn0AAAAAAAGCfQAAAAAAAZJ9AAAAAAABon0AAAAAAAGyfQAAAAAAAcJ9AAAAAAAB0n0AAAAAAAHifQAAAAAAAfJ9AAAAAAACAn0AAAAAAAISfQAAAAAAAiJ9AAAAAAACMn0AAAAAAAJCfQAAAAAAAlJ9AAAAAAACYn0AAAAAAAJyfQA=="},"y":{"dtype":"f8","bdata":"+FPjpZvEEkB4PzVeukkSQHA9CtejcBFAAFTjpZvEEEBgYhBYObQPQKByaJHtfA5AoBgEVg4tDUCgQ4ts5\u002fsLQBDb+X5qvApAYD0K16NwCUCAwMqhRbYIQODQItv5fgdAgL6fGi\u002fdBkCAkxgEVg4GQNB2vp8aLwVA0J8aL90kBECAQWDl0CIDQCAv3SQGgQJAACuHFtnOAUDAoUW28\u002f0AQDBcj8L1KABAgOXQItv5\u002fj+gwMqhRbb9P+Ai2\u002fl+avw\u002foJ3vp8ZL+z\u002fg\u002f\u002f\u002f\u002f\u002f\u002f\u002f5P+B6FK5H4fg\u002f4Hw\u002fNV669z9A2\u002fl+arz2P8B46SYxCPY\u002fwHa+nxov9T9gYhBYObT0P+DKoUW28\u002fM\u002foMQgsHJo8z+Am8QgsHLyP0DdJAaBlfE\u002fQGIQWDm08D+g8dJNYhDwP4AQWDm0yO4\u002fgGiR7Xw\u002f7T8AhxbZzvfrP0Bs5\u002fup8eo\u002fACcxCKwc6j8AhetRuB7pP8DGSzeJQeg\u002fQAisHFpk5z\u002fAASuHFtnmPwCDwMqhReY\u002fAIts5\u002fup5T+A4XoUrkflPwBU46WbxOQ\u002fADEIrBxa5D+AzvdT46XjP4BBYOXQIuM\u002fAPyp8dJN4j+AvHSTGATiPwCamZmZmeE\u002fAOF6FK5H4T8AKVyPwvXgP4DMzMzMzOA\u002fAHE9Ctej4D8AqvHSTWLgPwDy0k1iEOA\u002fADm0yHa+3z8ABFYOLbLdPwBYObTIdt4\u002fAJ7vp8ZL3z8A9ihcj8LdPw=="},"z":{"dtype":"f8","bdata":"2M7xrH9kV0ADlBwuoltXQIP3DxlJcVdAv4uHBxhrV0B0EbXwG2FXQAp7IBTCZldAFQKjr7lfV0Bo54anBVlXQGUsbI74WldAm5SamVpYV0AlOCKvOFNXQHXbvviFWVdARAPVpG9OV0BCWxlNfUZXQHvsm12tUldAHsXAtkxZV0DuWXRQ+1VXQGVXCDffXVdAnLREz19kV0D1KuxYTmtXQNJNyQK4cFdAu3\u002fVKfxwV0CFjKxq5G9XQETEfy4McldABuUAo5lzV0CRqeVsgoJXQGwHx9xKlFdAmfzK9OiWV0DYHa8RjKJXQN9mCq9qp1dAWdGRuM6uV0A2L+hCk7tXQG1ojD\u002fYwldAjK4WPz7HV0AVcQLrCcRXQAj4hHmBx1dAJAbV+uPQV0Ae0GyyzNlXQH72Umht4ldA7Ah4043uV0DE3T9JogxYQAt1BmFbKVhAf8touYQ2WEB8v8k7j0RYQBGDLQXMU1hAlDF4OUxdWEC1IQE8a2VYQAZGnJzhalhAKcplNkp6WEDwyQqljHpYQAKFdt9XglhAFaXXXv6KWEBgRmI1XJZYQLt9xxUjpFhAjGGAsIuwWECcujgymr9YQAF1WnPCylhA0FJbdErXWEBPaujzg+FYQOHi7l3O41hANcKcSgzoWEC1JPB3lexYQJNPeKIz8FhAE3eZIOf0WEAbST1aQslYQAJiA8xpslhAXS4niqTKWEDnoSadUP5YQA=="},"type":"scatter3d"},{"hovertemplate":"region=Middle-income countries\u003cbr\u003eyear=%{x}\u003cbr\u003ele_diff=%{y}\u003cbr\u003emf_rat60=%{z}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"Middle-income countries","line":{"color":"#EF553B","dash":"solid"},"marker":{"symbol":"circle"},"mode":"lines","name":"Middle-income countries","scene":"scene","showlegend":true,"x":{"dtype":"f8","bdata":"AAAAAACQnkAAAAAAAJSeQAAAAAAAmJ5AAAAAAACcnkAAAAAAAKCeQAAAAAAApJ5AAAAAAAConkAAAAAAAKyeQAAAAAAAsJ5AAAAAAAC0nkAAAAAAALieQAAAAAAAvJ5AAAAAAADAnkAAAAAAAMSeQAAAAAAAyJ5AAAAAAADMnkAAAAAAANCeQAAAAAAA1J5AAAAAAADYnkAAAAAAANyeQAAAAAAA4J5AAAAAAADknkAAAAAAAOieQAAAAAAA7J5AAAAAAADwnkAAAAAAAPSeQAAAAAAA+J5AAAAAAAD8nkAAAAAAAACfQAAAAAAABJ9AAAAAAAAIn0AAAAAAAAyfQAAAAAAAEJ9AAAAAAAAUn0AAAAAAABifQAAAAAAAHJ9AAAAAAAAgn0AAAAAAACSfQAAAAAAAKJ9AAAAAAAAsn0AAAAAAADCfQAAAAAAANJ9AAAAAAAA4n0AAAAAAADyfQAAAAAAAQJ9AAAAAAABEn0AAAAAAAEifQAAAAAAATJ9AAAAAAABQn0AAAAAAAFSfQAAAAAAAWJ9AAAAAAABcn0AAAAAAAGCfQAAAAAAAZJ9AAAAAAABon0AAAAAAAGyfQAAAAAAAcJ9AAAAAAAB0n0AAAAAAAHifQAAAAAAAfJ9AAAAAAACAn0AAAAAAAISfQAAAAAAAiJ9AAAAAAACMn0AAAAAAAJCfQAAAAAAAlJ9AAAAAAACYn0AAAAAAAJyfQA=="},"y":{"dtype":"f8","bdata":"VOOlm8SgLUCYbhKDwAotQMT1KFyPgixAlO18PzWeL0BWDi2ynQ8xQKBFtvP91C5AzMzMzMzMKkAghetRuB4qQEA1XrpJjClAILByaJGtKUAIgZVDiywpQHSTGARWzihAMDMzMzPzJ0Bg5dAi23knQAjXo3A9SidASOF6FK4HJ0DE9Shcj0ImQJyZmZmZ2SVA1E1iEFh5JUCAlUOLbCclQCCF61G43iRAyEs3iUFgJEAEgZVDi+wjQCQGgZVDSyNAzMzMzMzMIkB8PzVeukkiQIjrUbgexSFAxEs3iUFgIUA0MzMzM\u002fMgQCBaZDvfjyBAPLTIdr4fIEBwPQrXo3AfQMB0kxgE1h5A+NR46SYxHkAgBoGVQ4sdQMhLN4lBYB1AoO+nxku3HEAwMzMzMzMcQKhwPQrXoxtAwJ8aL90kG0BoEoPAyqEaQBiuR+F6FBpAOF66SQyCGUCgbhKDwMoYQGjl0CLb+RdA0MzMzMxMF0D4p8ZLN4kWQBiDwMqhxRVAgOkmMQgsFUCgRbbz\u002fVQUQPinxks3iRNAcOf7qfHSEkAgWmQ7308SQJhDi2znexFAsHJoke38EEAIK4cW2U4QQNBLN4lBYA9AUN9PjZduDkAgMQisHFoNQDDdJAaBlQxAcDvfT42XC0DA9Shcj8IKQOD7qfHSTQpAYGIQWDm0CUBQDi2yne8IQFAMAiuHFghAUI\u002fC9ShcCEAwhxbZzvcHQA=="},"z":{"dtype":"f8","bdata":"ym6UteAUV0CDCEb8\u002fxxXQBAHNYkpHFdAxPT4DQm5VkDtompfqGxWQP7Cix00x1ZAQyRoMAI9V0ATNBH371ZXQDEMsOktXldAu5sXSGYKV0B8VtoaBllXQCSQ9OLNWldASDc7Ba9pV0DD6OGJj3ZXQKjp9lD6lVdAniu9H+K0VkCWGpo84phXQMzybkF5oFdASVdAXVaWV0C3HiDf1YpXQJHpiMuLp1dA3xFp0wecV0CgW0cREY9XQNOg8u9viVdASX3PL2R+V0C8MZpS521XQAhCyaiEbFdAxOFsORFzV0AewzuiyXtXQG1nW4YRj1dAtc9OtgynV0Df1czvf6lXQN3WrWT9p1dAjKC8e0WtV0CCWkQySrBXQIQ2ixU6tVdAGsnAC4SeV0BBPblMmX1XQDKEH4\u002f8cldAchW\u002fAwl\u002fV0CtJqjznZdXQL5WEwfur1dAVr4KDba9V0CLJhg3I7hXQDsp5i5Ms1dAHJmpaHO4V0ABBv4x1rVXQH6LOT5RtFdA\u002fHxoNAe3V0CBeqT5NatXQKqXOw5ksldAnOYV6+q6V0A5y\u002fvo7sRXQHcggBm+zFdA7HXEKs7YV0A9+nfWmeBXQD3oCaHl7FdA247FmTL3V0Bh4KxHgf1XQNO8PBVUC1hAUkxu6GQSWEBCPNuaWRhYQI9JbA88KVhAprGBckwzWEDurOWlhBBYQBaR6Jpu81dAtHHJmNwwWEBrzy0\u002fQzhYQA=="},"type":"scatter3d"},{"hovertemplate":"region=Low-income countries\u003cbr\u003eyear=%{x}\u003cbr\u003ele_diff=%{y}\u003cbr\u003emf_rat60=%{z}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"Low-income countries","line":{"color":"#00cc96","dash":"solid"},"marker":{"symbol":"circle"},"mode":"lines","name":"Low-income countries","scene":"scene","showlegend":true,"x":{"dtype":"f8","bdata":"AAAAAACQnkAAAAAAAJSeQAAAAAAAmJ5AAAAAAACcnkAAAAAAAKCeQAAAAAAApJ5AAAAAAAConkAAAAAAAKyeQAAAAAAAsJ5AAAAAAAC0nkAAAAAAALieQAAAAAAAvJ5AAAAAAADAnkAAAAAAAMSeQAAAAAAAyJ5AAAAAAADMnkAAAAAAANCeQAAAAAAA1J5AAAAAAADYnkAAAAAAANyeQAAAAAAA4J5AAAAAAADknkAAAAAAAOieQAAAAAAA7J5AAAAAAADwnkAAAAAAAPSeQAAAAAAA+J5AAAAAAAD8nkAAAAAAAACfQAAAAAAABJ9AAAAAAAAIn0AAAAAAAAyfQAAAAAAAEJ9AAAAAAAAUn0AAAAAAABifQAAAAAAAHJ9AAAAAAAAgn0AAAAAAACSfQAAAAAAAKJ9AAAAAAAAsn0AAAAAAADCfQAAAAAAANJ9AAAAAAAA4n0AAAAAAADyfQAAAAAAAQJ9AAAAAAABEn0AAAAAAAEifQAAAAAAATJ9AAAAAAABQn0AAAAAAAFSfQAAAAAAAWJ9AAAAAAABcn0AAAAAAAGCfQAAAAAAAZJ9AAAAAAABon0AAAAAAAGyfQAAAAAAAcJ9AAAAAAAB0n0AAAAAAAHifQAAAAAAAfJ9AAAAAAACAn0AAAAAAAISfQAAAAAAAiJ9AAAAAAACMn0AAAAAAAJCfQAAAAAAAlJ9AAAAAAACYn0AAAAAAAJyfQA=="},"y":{"dtype":"f8","bdata":"1njpJjHIM0CWQ4ts5xs0QKJFtvP91DNAarx0kxgEM0AisHJokc0yQFg5tMh2njJABoGVQ4tsMkBGtvP91DgyQB6F61G4\u002fjFAxCCwcmjRMUB6FK5H4doxQKAaL90kZjFARrbz\u002fdQ4MUBANV66SQwxQDReukkM4jBABFYOLbK9MEB+arx0k7gwQKJFtvP9lDBAdGiR7Xy\u002fMEAyCKwcWqQwQLgehetRODBAbuf7qfESMEAchetRuN4vQEi28\u002f3UeC9ArBxaZDsfL0DISzeJQeAuQIDAyqFFdi5AehSuR+EaMED4U+Olm8QvQHRoke18Py9AuB6F61E4LkA4tMh2vl8sQCiHFtnOdy1AgD81XrqJK0AchetRuB4rQFQOLbKdrytAqMZLN4lBK0BcukkMAuspQKBwPQrXIyhAWDm0yHb+KEDcJAaBlYMoQJRDi2zn+ydAwMqhRbazJ0Assp3vp4YmQDReukkMAiZA\u002fH5qvHRTJUBMN4lBYKUkQBxaZDvfzyNAhJVDi2wnI0BYObTIdn4iQBgv3SQGwSFArPHSTWIQIUCom8QgsHIgQBSuR+F6VCBASLbz\u002fdT4HkBYObTIdr4fQLjIdr6fGh1AYOXQItv5G0DwUbgehesbQDgIrBxaZBtAsJ3vp8bLGkAY2c73U2MaQMj3U+OlmxhAAAAAAAAAGEBI4XoUrscWQHhqvHSTGBZAkML1KFwPF0Coxks3iUEVQA=="},"z":{"dtype":"f8","bdata":"jGnCemHdVUDvuMyc1MxVQPdK0ViE0lVAumEbUYb3VUCZB1C1UQBWQPd3yplTBlZAAxRq9KkOVkDrn0q59d5VQH352aEA+FVAbwak2zraVUCoqbboYeBVQAqfKvrP71VAuTa+zBEGVkCtcS\u002fdhRBWQIG2kd9aG1ZAV0g95\u002fQ+VkAOSyi7OxtWQC09\u002fCt8WlZAEDVQRWZvVkDtav8Pd4RWQGrBqDZcfVZA5IkB3BuGVkCOjpCwelBWQKbSHl4xVVZAu\u002f1bh4VDVkBrh0f4LzpWQEj3EfbK6FVAxChVxz0AVkBvLswpbXNVQKXvy66RtVVAjIRz1XkfVkB9wbGWQV1WQDFN8+7u2VZAhL3rwnnjVkC7DarZ7K1WQIKAZ+8zCVdAQ3L7y5MqV0CLJf4tnF1XQGx987gHM1VAVaOpdGFuV0Cj4tcYR1RXQMF0+VxJbVdAYSS1BAD1VkA93i0avwFXQJy+dp0c0ldAfzglRY\u002fcV0DXndnx789XQN+Q6rdg3ldALbM1y2zNV0DsLFaiXM5XQELEppcY6FdAwhUZK6LpV0AF5BQ+iORXQFl0NTnfNFdAShBHPHbqV0Dm6WW++t9XQPziRExkrVdApgqKAxeTV0AWmovx2GZXQEzf3noeR1dAqlBsNB1FV0BeQ+SJPCJXQHofBg1uNFdAovPsvv0uV0BEg\u002fBl1DVXQIjIOMjaBFdAk+0y+fAkV0Ce3OrwfYFXQA=="},"type":"scatter3d"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"scene":{"domain":{"x":[0.0,1.0],"y":[0.0,1.0]},"xaxis":{"title":{"text":"year"}},"yaxis":{"title":{"text":"le_diff"}},"zaxis":{"title":{"text":"mf_rat60"}}},"legend":{"title":{"text":"region"},"tracegroupgap":0}},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('e359c374-8fb8-4c9f-baae-4f8acb6a5b33');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };            </script>        </div>
+</div>
+</div>
+<p>A couple other graphs that seem surprising/interesting</p>
+<div id="7f0d57c6" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>sns.relplot(df_s, x <span class="op">=</span> <span class="st">'year'</span>, y<span class="op">=</span> <span class="st">'pop_growth'</span>, kind <span class="op">=</span> <span class="st">'line'</span>, hue <span class="op">=</span> <span class="st">'region'</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>sns.relplot(df_s, x <span class="op">=</span> <span class="st">'year'</span>, y<span class="op">=</span> <span class="st">'median_age'</span>, kind <span class="op">=</span> <span class="st">'line'</span>, hue <span class="op">=</span> <span class="st">'region'</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>sns.relplot(df_s, x <span class="op">=</span> <span class="st">'year'</span>, y<span class="op">=</span> <span class="st">'pop_density'</span>, kind <span class="op">=</span> <span class="st">'line'</span>, hue <span class="op">=</span> <span class="st">'region'</span>)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>sns.relplot(df_s, x <span class="op">=</span> <span class="st">'year'</span>, y<span class="op">=</span> <span class="st">'mean_mother_age'</span>, kind <span class="op">=</span> <span class="st">'line'</span>, hue <span class="op">=</span> <span class="st">'region'</span>)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>sns.relplot(df_s, x <span class="op">=</span> <span class="st">'year'</span>, y<span class="op">=</span> <span class="st">'le_diff'</span>, kind <span class="op">=</span> <span class="st">'line'</span>, hue <span class="op">=</span> <span class="st">'region'</span>)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>sns.relplot(df_s, x <span class="op">=</span> <span class="st">'year'</span>, y<span class="op">=</span> <span class="st">'le_birth'</span>, kind <span class="op">=</span> <span class="st">'line'</span>, hue <span class="op">=</span> <span class="st">'region'</span>)</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>sns.relplot(df_s, x <span class="op">=</span> <span class="st">'year'</span>, y<span class="op">=</span> <span class="st">'young_birth_ratio'</span>, kind <span class="op">=</span> <span class="st">'line'</span>, hue <span class="op">=</span> <span class="st">'region'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="report_files/figure-html/cell-12-output-1.png" width="663" height="470" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="report_files/figure-html/cell-12-output-2.png" width="665" height="470" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="report_files/figure-html/cell-12-output-3.png" width="665" height="470" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="report_files/figure-html/cell-12-output-4.png" width="659" height="470" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="report_files/figure-html/cell-12-output-5.png" width="659" height="470" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="report_files/figure-html/cell-12-output-6.png" width="665" height="470" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="report_files/figure-html/cell-12-output-7.png" width="659" height="470" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/uqlibrary\.github\.io\/technology-training-intensives\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
