@@ -103,7 +103,7 @@ The random colours that QGIS gives you aren't always pretty, so let's change the
 
 Choosing a colour palette can be difficult and overwhelming, but once you have one, you can keep using those colours to form a more harmonious looking map. What story are you telling? Do you want your map to be bright and saturated, or warm and earthy?
 
-The built in color ramps provide some good options I quite like **`rainfall`** (in Precipitation), **`Set1`** (in QGIS), and **`wiki-knutux`** (in Topography).
+The built-in color ramps provide some good options. I quite like **`rainfall`** (in Precipitation), **`Set1`** (in QGIS), and **`wiki-knutux`** (in Topography).
 
 We can use the `Style Manager` to edit the default options and Favorites that appear in the Layer Styling window.
 
@@ -139,7 +139,7 @@ If you want to be really fancy, you can import and build our own Color Ramp and 
 
     -   Click the `Colors` from the left menu
 
-    -   From the top right of the window click the `...` button and select `New Palette...`, name it **Report Palette**
+    -   If you created a custom palette earlier, from the top right of the window click the `...` button and select `New Palette...`, name it **Report Palette**
 
     -   Add your copied colours by clicking![](https://docs.qgis.org/3.40/en/_images/mActionEditPaste.png) `Paste colors` on the right
 
@@ -181,7 +181,7 @@ Now we’ve set up our colours, we can start using them!
 
 ### Point Geometry
 
-Now that we have added that colourramp to our favourites, we can more easily apply it to our layers.
+Now that we have added that colour ramp to our favourites, we can more easily apply it to our layers.
 
 #### Categories
 
@@ -255,7 +255,7 @@ In this case, we want to keep the attention on the point data, let's keep the tr
 
 -   Select the **Access Tracks** layer from the `Layer Styling` panel
 -   Under `Line`, click `Simple Line`
-    -   Change the `Color` to a colour in your **Report Palette** that is different to your points, I'm going to use **green**
+    -   If you created a custom palette earlier, change the `Color` to a colour in your **Report Palette** that is different to your points, I'm going to use **green**
     -   Increase the `Stroke width` to **0.4mm**
 -   To reduce the focus on the paths, in the `Layers` panel, drag the **Paths** layer **below** the **Project_area** layer
 
@@ -351,7 +351,7 @@ We will use a guide to place our map details.
 
 Okay, we have our map, but it's not zoomed in right. This is always a little tricky.
 
-You *could* click the **Move item content** button on the left menu(or press `C` on your keyboard), as this would allow you to drag the map around internally, and zoom in with your scroll wheel. **But there is an easier way!**
+You *could* click the **Move item content** button on the left menu (or press `C` on your keyboard), as this would allow you to drag the map around internally, and zoom in with your scroll wheel. **But there is an easier way!**
 
 -   Navigate back to your **qgis_reports** window
     -   Right click on your **Project_area** layer and select **Zoom to Layer(s)**

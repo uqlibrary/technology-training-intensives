@@ -30,7 +30,7 @@ There are many sources of basemaps, but a simple one is the **QuickMapServices**
 
 -   Navigate to `Plugins > Manage and Install Plugins...`. `Search` for "QuickMapServices", select it from the list and click `Install Plugin`, once it has loaded, click `Close`
 
-The plugin should automatically open a side panel in which you can search for terms. For example, search for "satellite" and add the ESRI satellite imagery to your project.
+The plugin should automatically open a side panel in which you can search for terms. For example, search for "satellite" and add the "ESRI Satellite" basemap to your project.
 
 ### Web Mapping Services
 
