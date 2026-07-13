@@ -6,7 +6,7 @@ date: today
 
 In this workshop, we will learn about:
 
-* The main features of the RStudio IDE
+* The main features of the Positron IDE
 * The basic building blocks of the R language
 * What functions are
 * Creating different kinds of objects to store data
@@ -17,7 +17,7 @@ In this workshop, we will learn about:
 
 ## Maths and objects
 
-The **console** (by default at the bottom left in RStudio) is where most of the action happens. In the console, we can use R interactively. We write a **command** and then **execute** it by pressing <kbd>Enter</kbd>.
+The **console** (by default at the bottom in Positron) is where most of the action happens. In the console, we can use R interactively. We write a **command** and then **execute** it by pressing <kbd>Enter</kbd>.
 
 In its most basic use, R can be a calculator. Try executing the following commands:
 
@@ -46,7 +46,7 @@ sentence <- "Hello World!"
 sentence
 ```
 
-You should now see your objects listed in you **environment pane** (top right).
+You should now see your objects listed in you **Session pane** (top right).
 
 As you can see, you can store different kinds of data as objects. If you want to store text data (a "string of characters"), you have to use quotes around them.
 
@@ -64,7 +64,7 @@ To keep it tidy, we are creating 3 folders in our project directory:
 * data
 * plots
 
-You can do that with the "New Folder" button in the "Files" pane (bottom right of the window).
+You can do that with the "Explorer" panel opened from the Activity Bar on the left.
 
 ## Scripts
 
@@ -76,9 +76,9 @@ Scripts are simple text files that contain R code. They are useful for:
 * documenting the code with comments, and
 * sharing your work with peers
 
-Let's create a new R script with the menu: File > New File > R Script. (This can also be done with the first icon in the toolbar, or with the shortcut <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>N</kbd>.)
+Let's create a new R script, from the same Explorer panel.
 
-This opens our fourth pane in the top left of RStudio: the **source pane**.
+This opens another pane at the top of Positron: the **Editor pane**.
 
 ### Comments
 
@@ -99,9 +99,9 @@ num1 <- 42
 num2 <- num1 / 9
 ```
 
-Notice the colours? This is called **syntax highlighting**. This is one of the many ways RStudio makes it more comfortable to work with R. The code is more readable when working in a script.
+Notice the colours? This is called **syntax highlighting**. This is one of the many ways Positron makes it more comfortable to work with R. The code is more readable when working in a script.
 
-> While editing your script, you can run the current command (or the selected block of code) by using <kbd>Ctrl</kbd>+<kbd>Enter</kbd>. Remember to save your script regularly with the shortcut <kbd>Ctrl</kbd>+<kbd>S</kbd>. You can find more shortcuts with <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>K</kbd>, or the menu "Tools > Keyboard Shortcuts Help".
+> While editing your script, you can run the current command (or the selected block of code) by using <kbd>Ctrl</kbd>+<kbd>Enter</kbd>. Remember to save your script regularly with the shortcut <kbd>Ctrl</kbd>+<kbd>S</kbd>.
 
 ## Functions
 
@@ -127,7 +127,7 @@ The `round()` function rounds a number to the closest integer. The only argument
 
 What if we want to learn more about a function?
 
-There are two main ways to find **help** about a specific function in RStudio:
+There are two main ways to find **help** about a specific function in Positron:
 
 1. the shortcut command: `?functionname`
 1. the keyboard shortcut: press <kbd>F1</kbd> with your cursor in a function name (you can do this by simply clicking on the function name)
@@ -209,7 +209,7 @@ mean(ages)
 
 What happened there?
 
-We have an NA value in the vector, which means the function can't tell what the mean is. If we want to change this default behaviour, we can use an extra argument: `na.rm`, which stands for "remove NAs".
+We have an "NA" value in the vector, which means the function can't tell what the mean is. If we want to change this default behaviour, we can use an extra argument: `na.rm`, which stands for "remove NAs".
 
 ```{r}
 mean(ages, na.rm = TRUE)
@@ -344,11 +344,11 @@ str(gapminder) # general structure
 
 > The RStudio's environment panel already shows us some of that information (click on the blue arrow next to the object name).
 
-And to explore the data in a viewer, click on the table icon next to the object in the Environment pane.
+And to explore the data in a viewer, click on the table icon next to the object in the Session pane.
 
-This viewer allows you to explore your data by scrolling through, searching terms, filtering rows and sorting the data. Remember that it is only a viewer: it will never modify your original object.
+This viewer allows you to explore your data by scrolling through, searching terms, filtering rows and sorting the data. It also shows quick stats and histograms. Remember that it is only a viewer: it will never modify your original object.
 
-> Notice that RStudio actually runs the `View()` function. Feel free to use that instead of clicking on the button, but note that the case matters: using a lowercase "v" will yield an error.
+> Notice that Positron actually runs the `View()` function. Feel free to use that instead of clicking on the button, but note that the case matters: using a lowercase "v" will yield an error.
 
 To see summary statistics for each of our variables, you can use the `summary()` function:
 
@@ -385,10 +385,10 @@ You can see the list of installed packages in your "Packages" tab, or by using t
 
 We are going to install a package called "skimr". We can do that in the Packages tab:
 
-1. Open the "Packages" tab (bottom-right pane)
-1. Click the “Install” button
+1. Open the "Packages" panel from the Activity bar
+1. Click the three-dot menu and click “Install”
 1. Search for “skimr”
-1. Click "Install"
+1. Select "skimr"
 
 > Notice how it runs an `install.packages()` command in the console? You can use that too.
 
@@ -411,16 +411,6 @@ For a bit of fun:
 * Have a look at the documentation and [the package's website](https://sckott.github.io/cowsay/).
 * Can you make Clippy say the current time?
 * Can you make a chicken say "bok" a thousand times? (Hint: look at the `paste()` function and its arguments.)
-
-## Closing RStudio
-
-You can close RStudio after making sure that you saved your script.
-
-When you create a **project** in RStudio, you create an `.Rproj` file that gathers information about the state of your project. When you close RStudio, you have the option to save your **workspace** (i.e. the objects in your **environment**) as an `.Rdata` file. The `.Rdata` file is used to reload your workspace when you open your project again. Projects also bring back whatever source file (e.g. script) you had open, and your command history. You will find your command history in the "History" tab (upper right panel): all the commands that we used should be in there.
-
-If you have a script that contains all your work, it is a good idea _not_ to save your workspace: it makes it less likely to run into errors because of accumulating objects. The script will allow you to get back to where you left it, by executing all the clearly laid-out steps.
-
-The console, on the other hand, only shows a brand new R **session** when you reopen RStudio. Sessions are not persistent, and a clean one is started when you open your project again, which is why you have to load any extra package your work requires again with the `library()` function.
 
 ## Resources
 
