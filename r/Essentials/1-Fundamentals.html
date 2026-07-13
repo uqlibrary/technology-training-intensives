@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-07-08">
+<meta name="dcterms.date" content="2026-07-13">
 
 <title>The Fundamentals – UQ Library Training Intensives</title>
 <style>
@@ -342,7 +342,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#challenge-3" id="toc-challenge-3" class="nav-link" data-scroll-target="#challenge-3">Challenge 3</a></li>
   </ul></li>
-  <li><a href="#closing-rstudio" id="toc-closing-rstudio" class="nav-link" data-scroll-target="#closing-rstudio">Closing RStudio</a></li>
   <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
   </ul>
 </nav>
@@ -363,7 +362,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 8, 2026</p>
+      <p class="date">July 13, 2026</p>
     </div>
   </div>
   
@@ -377,7 +376,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>In this workshop, we will learn about:</p>
 <ul>
-<li>The main features of the RStudio IDE</li>
+<li>The main features of the Positron IDE</li>
 <li>The basic building blocks of the R language</li>
 <li>What functions are</li>
 <li>Creating different kinds of objects to store data</li>
@@ -388,7 +387,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <section id="maths-and-objects" class="level2">
 <h2 class="anchored" data-anchor-id="maths-and-objects">Maths and objects</h2>
-<p>The <strong>console</strong> (by default at the bottom left in RStudio) is where most of the action happens. In the console, we can use R interactively. We write a <strong>command</strong> and then <strong>execute</strong> it by pressing <kbd>Enter</kbd>.</p>
+<p>The <strong>console</strong> (by default at the bottom in Positron) is where most of the action happens. In the console, we can use R interactively. We write a <strong>command</strong> and then <strong>execute</strong> it by pressing <kbd>Enter</kbd>.</p>
 <p>In its most basic use, R can be a calculator. Try executing the following commands:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">-</span> <span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -425,7 +424,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] "Hello World!"</code></pre>
 </div>
 </div>
-<p>You should now see your objects listed in you <strong>environment pane</strong> (top right).</p>
+<p>You should now see your objects listed in you <strong>Session pane</strong> (top right).</p>
 <p>As you can see, you can store different kinds of data as objects. If you want to store text data (a “string of characters”), you have to use quotes around them.</p>
 <p>You can use whatever object names you like, it doesn’t have to be “num1” or “sentence”, but you will want to be clear and consistent in the kinds of names you use, so you don’t make typos and know what your objects contain.</p>
 <blockquote class="blockquote">
@@ -441,7 +440,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>data</li>
 <li>plots</li>
 </ul>
-<p>You can do that with the “New Folder” button in the “Files” pane (bottom right of the window).</p>
+<p>You can do that with the “Explorer” panel opened from the Activity Bar on the left.</p>
 </section>
 <section id="scripts" class="level2">
 <h2 class="anchored" data-anchor-id="scripts">Scripts</h2>
@@ -453,8 +452,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>documenting the code with comments, and</li>
 <li>sharing your work with peers</li>
 </ul>
-<p>Let’s create a new R script with the menu: File &gt; New File &gt; R Script. (This can also be done with the first icon in the toolbar, or with the shortcut <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>N</kbd>.)</p>
-<p>This opens our fourth pane in the top left of RStudio: the <strong>source pane</strong>.</p>
+<p>Let’s create a new R script, from the same Explorer panel.</p>
+<p>This opens another pane at the top of Positron: the <strong>Editor pane</strong>.</p>
 <section id="comments" class="level3">
 <h3 class="anchored" data-anchor-id="comments">Comments</h3>
 <p>We should start with a couple of <strong>comments</strong>, to document our script. Comments start with <code>#</code>, and will be ignored by R:</p>
@@ -469,9 +468,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>num1 <span class="ot">&lt;-</span> <span class="dv">42</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>num2 <span class="ot">&lt;-</span> num1 <span class="sc">/</span> <span class="dv">9</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Notice the colours? This is called <strong>syntax highlighting</strong>. This is one of the many ways RStudio makes it more comfortable to work with R. The code is more readable when working in a script.</p>
+<p>Notice the colours? This is called <strong>syntax highlighting</strong>. This is one of the many ways Positron makes it more comfortable to work with R. The code is more readable when working in a script.</p>
 <blockquote class="blockquote">
-<p>While editing your script, you can run the current command (or the selected block of code) by using <kbd>Ctrl</kbd>+<kbd>Enter</kbd>. Remember to save your script regularly with the shortcut <kbd>Ctrl</kbd>+<kbd>S</kbd>. You can find more shortcuts with <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>K</kbd>, or the menu “Tools &gt; Keyboard Shortcuts Help”.</p>
+<p>While editing your script, you can run the current command (or the selected block of code) by using <kbd>Ctrl</kbd>+<kbd>Enter</kbd>. Remember to save your script regularly with the shortcut <kbd>Ctrl</kbd>+<kbd>S</kbd>.</p>
 </blockquote>
 </section>
 </section>
@@ -494,7 +493,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="help" class="level3">
 <h3 class="anchored" data-anchor-id="help">Help</h3>
 <p>What if we want to learn more about a function?</p>
-<p>There are two main ways to find <strong>help</strong> about a specific function in RStudio:</p>
+<p>There are two main ways to find <strong>help</strong> about a specific function in Positron:</p>
 <ol type="1">
 <li>the shortcut command: <code>?functionname</code></li>
 <li>the keyboard shortcut: press <kbd>F1</kbd> with your cursor in a function name (you can do this by simply clicking on the function name)</li>
@@ -585,7 +584,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>What happened there?</p>
-<p>We have an NA value in the vector, which means the function can’t tell what the mean is. If we want to change this default behaviour, we can use an extra argument: <code>na.rm</code>, which stands for “remove NAs”.</p>
+<p>We have an “NA” value in the vector, which means the function can’t tell what the mean is. If we want to change this default behaviour, we can use an extra argument: <code>na.rm</code>, which stands for “remove NAs”.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(ages, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -715,10 +714,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p>The RStudio’s environment panel already shows us some of that information (click on the blue arrow next to the object name).</p>
 </blockquote>
-<p>And to explore the data in a viewer, click on the table icon next to the object in the Environment pane.</p>
-<p>This viewer allows you to explore your data by scrolling through, searching terms, filtering rows and sorting the data. Remember that it is only a viewer: it will never modify your original object.</p>
+<p>And to explore the data in a viewer, click on the table icon next to the object in the Session pane.</p>
+<p>This viewer allows you to explore your data by scrolling through, searching terms, filtering rows and sorting the data. It also shows quick stats and histograms. Remember that it is only a viewer: it will never modify your original object.</p>
 <blockquote class="blockquote">
-<p>Notice that RStudio actually runs the <code>View()</code> function. Feel free to use that instead of clicking on the button, but note that the case matters: using a lowercase “v” will yield an error.</p>
+<p>Notice that Positron actually runs the <code>View()</code> function. Feel free to use that instead of clicking on the button, but note that the case matters: using a lowercase “v” will yield an error.</p>
 </blockquote>
 <p>To see summary statistics for each of our variables, you can use the <code>summary()</code> function:</p>
 <div class="cell">
@@ -790,10 +789,10 @@ F-statistic: 879.6 on 1 and 1702 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>You can see the list of installed packages in your “Packages” tab, or by using the <code>library()</code> function without any argument.</p>
 <p>We are going to install a package called “skimr”. We can do that in the Packages tab:</p>
 <ol type="1">
-<li>Open the “Packages” tab (bottom-right pane)</li>
-<li>Click the “Install” button</li>
+<li>Open the “Packages” panel from the Activity bar</li>
+<li>Click the three-dot menu and click “Install”</li>
 <li>Search for “skimr”</li>
-<li>Click “Install”</li>
+<li>Select “skimr”</li>
 </ol>
 <blockquote class="blockquote">
 <p>Notice how it runs an <code>install.packages()</code> command in the console? You can use that too.</p>
@@ -992,13 +991,6 @@ F-statistic: 879.6 on 1 and 1702 DF,  p-value: &lt; 2.2e-16</code></pre>
 <li>Can you make a chicken say “bok” a thousand times? (Hint: look at the <code>paste()</code> function and its arguments.)</li>
 </ul>
 </section>
-</section>
-<section id="closing-rstudio" class="level2">
-<h2 class="anchored" data-anchor-id="closing-rstudio">Closing RStudio</h2>
-<p>You can close RStudio after making sure that you saved your script.</p>
-<p>When you create a <strong>project</strong> in RStudio, you create an <code>.Rproj</code> file that gathers information about the state of your project. When you close RStudio, you have the option to save your <strong>workspace</strong> (i.e.&nbsp;the objects in your <strong>environment</strong>) as an <code>.Rdata</code> file. The <code>.Rdata</code> file is used to reload your workspace when you open your project again. Projects also bring back whatever source file (e.g.&nbsp;script) you had open, and your command history. You will find your command history in the “History” tab (upper right panel): all the commands that we used should be in there.</p>
-<p>If you have a script that contains all your work, it is a good idea <em>not</em> to save your workspace: it makes it less likely to run into errors because of accumulating objects. The script will allow you to get back to where you left it, by executing all the clearly laid-out steps.</p>
-<p>The console, on the other hand, only shows a brand new R <strong>session</strong> when you reopen RStudio. Sessions are not persistent, and a clean one is started when you open your project again, which is why you have to load any extra package your work requires again with the <code>library()</code> function.</p>
 </section>
 <section id="resources" class="level2">
 <h2 class="anchored" data-anchor-id="resources">Resources</h2>
