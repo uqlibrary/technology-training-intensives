@@ -39,7 +39,7 @@ Let’s import and explore the data again.
 gapminder <- read.csv("../../data/gapminder.csv")
 ```
 
-> Remember you can use <kbd>Ctrl</kbd>+<kbd>shift</kbd> to execute a
+> Remember you can use {{< kbd mac=Command-Enter win=Ctrl-Enter linux=Ctrl-Enter >}} to execute a
 > command from the script.
 
 2.  You can explore the gapminder dataset using `dim()`, `head()` and `str()`
@@ -67,8 +67,7 @@ range(gapminder$year) # what is the time range?
 
 ## Basic dplyr verbs
 
-The R package `dplyr` was developed by Hadley Wickham for data
-manipulation.
+`dplyr` is a package created for data transformation.
 
 The book *[R for Data Science](https://r4ds.hadley.nz/)* introduces the
 package as follows:
@@ -261,14 +260,14 @@ steps or more!)
 
 We can make our code more readable and avoid creating useless
 intermediate objects by **piping** commands into each other. The pipe
-operator `%>%` **strings commands together**, using the left side’s
+operator `|>` **strings commands together**, using the left side’s
 output as the first argument of the right side function.
 
 For example, this command:
 
 ``` r
-gapminder %>%
-  filter(lifeExp > 81) %>% 
+gapminder |>
+  filter(lifeExp > 81) |> 
   arrange(desc(lifeExp))
 ```
 
@@ -285,15 +284,7 @@ troubleshoot as it makes it easy to execute the pipeline step by step.
 
 From now on, we’ll use the pipe syntax as a default.
 
-> Note that this material uses the `magrittr` pipe. The `magrittr`
-> package is the one that introduced the pipe operator to the R world,
-> and `dplyr` automatically imports this useful operator when it is
-> loaded. However, the pipe being such a widespread and popular concept
-> in programming and data science, it ended up making it into Base R
-> (the “native” pipe) in 2021 with the release of R 4.1, using a
-> different operator: `|>`. You can switch your pipe shortcut to the
-> native pipe in
-> `Tools > Global options > Code > Use native pipe operator`.
+> Note that this material uses the "native" R pipe, which was introduced in R 4.1 (released in 2021), but it was the `magrittr` package that brought the pipe operator to the R world first. `dplyr` automatically imports the `magrittr` pipe, which looks like this: `%>%`. You will likely still see it in many tutorials, but Positron now uses the native pipe by default when using the keyboard shortcut {{< kbd mac=Command-Shift-M win=Ctrl-Shift-M linux=Ctrl-Shift-M >}}.
 
 ### 4. Create new variables with `mutate()`
 
@@ -302,7 +293,7 @@ Have a look at what the verb `mutate()` can do with `?mutate`.
 Let’s see what the two following variables can be used for:
 
 ``` r
-gapminder %>%
+gapminder |>
     select(gdpPercap, pop)
 ```
 
@@ -332,7 +323,7 @@ result in `1704 7`.
 Hint: use the `*` operator within `mutate()` to multiply the `pop` by `gdpPercap`.
 
 ``` r
-gap_gdp <- gapminder %>%
+gap_gdp <- gapminder |>
     mutate(gdp = gdpPercap * pop)
 dim(gap_gdp)
 ```
@@ -358,7 +349,7 @@ example, we also want a more readable version of our new variable, in
 billion dollars:
 
 ``` r
-gap_gdp <- gapminder %>%
+gap_gdp <- gapminder |>
     mutate(gdp = gdpPercap * pop,
            gdpBil = gdp / 1e9)
 ```
@@ -369,7 +360,7 @@ gap_gdp <- gapminder %>%
 example, to find the mean life expectancy for the whole dataset:
 
 ``` r
-gapminder %>%
+gapminder |>
   summarise(meanLE = mean(lifeExp))
 ```
 
@@ -389,7 +380,7 @@ operating on the entire dataset to operating on it group-by-group.
 See the effect of the grouping step:
 
 ``` r
-gapminder %>%
+gapminder |>
     group_by(continent)
 ```
 
@@ -417,8 +408,8 @@ interesting. Let’s re-run the previous command, with the intermediate
 grouping step:
 
 ``` r
-gapminder %>%
-  group_by(continent) %>% 
+gapminder |>
+  group_by(continent) |> 
   summarise(meanLE = mean(lifeExp))
 ```
 
@@ -437,9 +428,9 @@ Similarly, to find out the total population per continent in 2007, we
 can do the following:
 
 ``` r
-gapminder %>% 
-    filter(year == 2007) %>%
-    group_by(continent) %>%
+gapminder |> 
+    filter(year == 2007) |>
+    group_by(continent) |>
     summarise(pop = sum(pop))
 ```
 
@@ -457,9 +448,9 @@ gapminder %>%
 If you want to save your data as a .csv file, you can use the `write.csv()` function:
 
 ```r
-pop07 <- gapminder %>% 
-  filter(year == 2007) %>%
-  group_by(continent) %>%
+pop07 <- gapminder |> 
+  filter(year == 2007) |>
+  group_by(continent) |>
   summarise(pop = sum(pop))
 
 write.csv(pop07, "pop07.csv")
@@ -467,10 +458,10 @@ write.csv(pop07, "pop07.csv")
 
 You can also use it with the pipe:
 ```r
-gapminder %>% 
-  filter(year == 2007) %>%
-  group_by(continent) %>%
-  summarise(pop = sum(pop)) %>%
+gapminder |> 
+  filter(year == 2007) |>
+  group_by(continent) |>
+  summarise(pop = sum(pop)) |>
   write.csv("pop07.csv")
 ```
 
@@ -484,12 +475,12 @@ Grouping by species, summarise the number of characters per species and
 find the mean mass. Only for species groups with more than 1 character.
 
 ``` r
-starwars %>%
-  group_by(species) %>%
+starwars |>
+  group_by(species) |>
   summarise(
     n = n(), # this counts the number of rows in each group
     mass = mean(mass, na.rm = TRUE)
-  ) %>%
+  ) |>
   filter(n > 1) # the mean of a single value is not worth reporting
 ```
 
