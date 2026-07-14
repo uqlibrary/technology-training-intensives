@@ -389,19 +389,17 @@ window.Quarto = {
 <p>In this final session, we look at taking the skills we’ve developed during the intensive and applying it to your own data. We’ll also discuss a few common pitfalls and where to get help in the wild.</p>
 <section id="setting-up" class="level2">
 <h2 class="anchored" data-anchor-id="setting-up">Setting up</h2>
-<p>Spend five minutes locating your data and preparing Spyder</p>
+<p>Spend five minutes locating your data and preparing your project in Positron:</p>
 <ol type="1">
 <li>Locate and structure your own project folder
 <ul>
 <li>You might like to create a <em>data/</em> folder</li>
 <li>You might like to create a <em>scripts/</em> folder</li>
 </ul></li>
-<li>(Optional) Turn it into an RStudio project
-<ol type="1">
-<li>Click <em>File</em> <span class="math inline">\(\rightarrow\)</span> <em>New Project…</em></li>
-<li>Click <strong>Existing Directory</strong></li>
-<li>Click <em>Browse…</em> and choose the <strong><em>top-level folder</em></strong> of your project</li>
-</ol></li>
+<li>(Optional) Turn it into a project
+<ul>
+<li>Click <em>Folder Selector</em> (top right) <span class="math inline">\(\rightarrow\)</span> <em>Open Folder…</em> and choose the <strong><em>top-level folder</em></strong> of your project</li>
+</ul></li>
 <li>Create a new script for processing, called <code>processing.R</code> (or whatever you’d like to).</li>
 </ol>
 <p>We’ll spend most of this session like project time, troubleshooting and setting up your own data for analysis. Before we do that, let’s discuss a few common tips and pitfalls. Namely,</p>
@@ -443,7 +441,7 @@ directory</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "/home/uqcwest5/tech_training/technology-training-intensives/r"</code></pre>
+<pre><code>[1] "/home/runner/work/technology-training-intensives/technology-training-intensives/r"</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -458,7 +456,7 @@ directory</code></pre>
 <div class="callout-body-container callout-body">
 <ul>
 <li>When you run R from the command line, it’s the current location as specified in the terminal</li>
-<li>When you run R in RStudio, it’s the address displayed in the bar attached to <strong>Console</strong></li>
+<li>When you run R in Positron, it’s the address displayed at the top of your <strong>Console</strong></li>
 </ul>
 </div>
 </div>
@@ -731,7 +729,7 @@ directory</code></pre>
 <p>A few resources that you should consult:</p>
 <ul>
 <li><a href="https://uqlibrary.github.io/technology-training/R/usefullinks.html">Our compilation of useful resources</a></li>
-<li><a href="https://posit.co/resources/cheatsheets/">R and RStudio cheatsheets</a> are fantastic resources which outline the common data tidying tasks along with diagrams of the tabular operations. <strong>Consult these often!</strong></li>
+<li><a href="https://posit.co/resources/cheatsheets/">R and Positron cheatsheets</a> are fantastic resources which outline the common data tidying tasks along with diagrams of the tabular operations. <strong>Consult these often!</strong></li>
 <li><a href="https://dplyr.tidyverse.org/">The dplyr documentation</a> provides in-depth descriptions and guides for working with dplyr.</li>
 </ul>
 <p>See below for a summary of data cleaning tips you might need to apply to your data, assuming your data is stored in <code>df</code> and <code>"col_name"</code> is a column name</p>

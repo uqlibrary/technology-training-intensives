@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-07-13">
+<meta name="dcterms.date" content="2026-07-14">
 
 <title>Sharing and Publishing – UQ Library Training Intensives</title>
 <style>
@@ -349,7 +349,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 13, 2026</p>
+      <p class="date">July 14, 2026</p>
     </div>
   </div>
   
@@ -522,18 +522,18 @@ format: dashboard
 warning: false
 ---
 
-```usc
+```xcv
 players <- read.csv("../../data/Players2024.csv")
 ```
 
-```usc
+```xcv
 library(dplyr)
 players <- players %>% filter(positions != "Missing", height_cm > 100)
 ```
 
 ## Figures {height=70%}
 
-```usc
+```xcv
 #| title: Goalkeepers tend to be taller
 #| fig-alt: "A boxplot of the relationship between height and position."
 library(ggplot2)
@@ -542,7 +542,7 @@ ggplot(players, aes(x = positions, y = height_cm)) +
   labs(x = "Position", y = "Height (cm)")
 ```
 
-```usc
+```xcv
 #| title: Age vs Height by position
 p <- ggplot(players, aes(x = age, y = height_cm, colour = positions, label = name, label2 = nationality)) + 
   geom_point() + 
@@ -554,7 +554,7 @@ ggplotly(p)
 
 ## Table
 
-```usc
+```xcv
 #| title: A glimpse at the dataset
 library(knitr)
 kable(players)
@@ -570,7 +570,7 @@ This results in a dashboard containing three cards organised in two rows. The to
 <h2 class="anchored" data-anchor-id="git-and-github">Git and GitHub</h2>
 <p><strong>Git</strong> is a version control system that allows to record a clean history of your project, track precise authorship, and collaborate asynchronously with others. It can be used offline, from the command line or with integration into Integrated Desktop Environments</p>
 <p><strong>GitHub</strong> is one of many websites that allow you to host projects that are tracked with Git. But even without using Git at all, it is possible to use GitHub to share and make your project public. Many researchers use it to make their code public alongside a published paper, to increase reproducibility and transparency. It can also be useful to build and share a portfolio of your work.</p>
-<p>Fortunately, RStudio does have Git integration! If you have Git installed on your computer, you can use the “Git” section to commit those changes to a repository. You can then push and pull GitHub to keep your local copy in sync.</p>
+<p>Fortunately, Positron does have Git integration! If you have Git installed on your computer, you can use the “Source Control” panel (from the Activity Bar) to commit those changes to a repository. You can then push and pull GitHub to keep your local copy in sync.</p>
 <p>Learning about the ins and out of Git takes time, so in this section we will mainly use GitHub as a place to upload and share your code and outputs, and as a starting point for learning more about Git in the future.</p>
 <section id="github" class="level3">
 <h3 class="anchored" data-anchor-id="github">GitHub</h3>
