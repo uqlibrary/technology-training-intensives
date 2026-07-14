@@ -6,15 +6,13 @@ In this final session, we look at taking the skills we've developed during the i
 
 ## Setting up
 
-Spend five minutes locating your data and preparing Spyder
+Spend five minutes locating your data and preparing your project in Positron:
 
 1. Locate and structure your own project folder
     * You might like to create a *data/* folder
     * You might like to create a *scripts/* folder
-2. (Optional) Turn it into an RStudio project
-    1. Click *File* $\rightarrow$ *New Project...*
-    2. Click **Existing Directory**
-    3. Click *Browse...* and choose the ***top-level folder*** of your project
+2. (Optional) Turn it into a project
+    * Click *Folder Selector* (top right) $\rightarrow$ *Open Folder...* and choose the ***top-level folder*** of your project
 3. Create a new script for processing, called `processing.R` (or whatever you'd like to).
 
 We'll spend most of this session like project time, troubleshooting and setting up your own data for analysis. Before we do that, let's discuss a few common tips and pitfalls. Namely,
@@ -61,7 +59,7 @@ getwd()
 ## Alternatively
 
 * When you run R from the command line, it's the current location as specified in the terminal
-* When you run R in RStudio, it's the address displayed in the bar attached to **Console**
+* When you run R in Positron, it's the address displayed at the top of your **Console**
 :::
 
 This address is your working directory. All paths in your scripts are evaluated relative to this location.
@@ -293,7 +291,7 @@ We'll look at a few common tips to get you going, but before you start, the best
 A few resources that you should consult:
 
 * [Our compilation of useful resources](https://uqlibrary.github.io/technology-training/R/usefullinks.html)
-* [R and RStudio cheatsheets](https://posit.co/resources/cheatsheets/) are fantastic resources which outline the common data tidying tasks along with diagrams of the tabular operations. **Consult these often!**
+* [R and Positron cheatsheets](https://posit.co/resources/cheatsheets/) are fantastic resources which outline the common data tidying tasks along with diagrams of the tabular operations. **Consult these often!**
 * [The dplyr documentation](https://dplyr.tidyverse.org/) provides in-depth descriptions and guides for working with dplyr.
 
 See below for a summary of data cleaning tips you might need to apply to your data, assuming your data is stored in `df` and `"col_name"` is a column name

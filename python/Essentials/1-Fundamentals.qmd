@@ -13,7 +13,7 @@ In this first workshop we will cover
 
 Python is a **programming language** that can be used to build programs (i.e. a "general programming language"), but it can also be used to analyse data by importing a number of useful modules.
 
-We are using **Positron** to interact with Python more comfortably. If you have used RStudio to interact with R before, you should feel right at home: Positron is a program designed for data science with Python (and developed by the RStudio devs!).
+We are using **Positron** to interact with Python more comfortably. If you have used RStudio to interact with R before, you should feel right at home: Positron is a program designed for data science with both Python and R (and developed for the most part by the same community!).
 
 Python can be used **interactively** in a console, or we can build **scripts and programs** with it, making the most out of Positron's code editor.
 

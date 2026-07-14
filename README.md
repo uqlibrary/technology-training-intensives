@@ -4,7 +4,7 @@ Source code for the [UQ Library Technology Training Intensives Website](https://
 
 We currently run three intensives:
 
-* R with RStudio
+* R with Positron
 * Python for Data Analysis
 * QGIS
 

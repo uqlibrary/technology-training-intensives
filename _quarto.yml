@@ -42,7 +42,7 @@ website:
       # - text: "**Book for Feb 2026**"
       #   href: https://studenthub.uq.edu.au/students/events/detail/5909456
   sidebar:   
-    - title: "R with RStudio"
+    - title: "R with Positron"
       collapse-level: 2
       contents:
         - r/setup.md

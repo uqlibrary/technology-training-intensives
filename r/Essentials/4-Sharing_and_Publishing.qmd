@@ -255,7 +255,7 @@ This results in a dashboard containing three cards organised in two rows. The to
 
 **GitHub** is one of many websites that allow you to host projects that are tracked with Git. But even without using Git at all, it is possible to use GitHub to share and make your project public. Many researchers use it to make their code public alongside a published paper, to increase reproducibility and transparency. It can also be useful to build and share a portfolio of your work.
 
-Fortunately, RStudio does have Git integration! If you have Git installed on your computer, you can use the "Git" section to commit those changes to a repository. You can then push and pull GitHub to keep your local copy in sync.
+Fortunately, Positron does have Git integration! If you have Git installed on your computer, you can use the "Source Control" panel (from the Activity Bar) to commit those changes to a repository. You can then push and pull GitHub to keep your local copy in sync.
 
 Learning about the ins and out of Git takes time, so in this section we will mainly use GitHub as a place to upload and share your code and outputs, and as a starting point for learning more about Git in the future.
 

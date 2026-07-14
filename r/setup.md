@@ -53,23 +53,20 @@ instructions](https://uqlibrary.github.io/technology-training/R/installation.htm
 
 Let’s first create a new project:
 
-- Click the “File” menu button (top left corner), then “New Project”
-- Click “New Directory”
-- Click “New Project”
-- In “Directory name”, type the name of your project, for example
+- Click the "Folder Selector" menu button (top right corner), then “New Folder from Template..."
+- Click "R Project" and "Next"
+- In Folder name”, type the name of your project, for example
   “YYYY-MM-DD_rstudio-intro”
-- Browse and select a folder where to locate your project (`~` is your
-  home directory). For example, a folder called “r-projects”.
-- Click the “Create Project” button
+- For "Location", browse and select a folder where to locate your project (otherwise, the default will be your home directory)
+- Click "Next"
+- In "Project Configuration", keep the defaults, click "Create" and finally "Current window"
+- 
 
 > R Projects make your work with R more straight forward, as they allow
 > you to segregate your different projects in separate folders. You can
-> create a .Rproj file in a new directory or an existing directory that
-> already has R code and data. Everything then happens by default in
-> this directory. The .Rproj file stores information about your project
-> options, and allows you to go straight back to your work.
-> This also means you don't need to get or set the Working Directory with 
-> getwd() or setwd(), it will automatically be set as your project folder.
+> create a project in a new directory, or an existing directory that
+> already has the files you need (e.g. data files). Everything then happens by default in
+> this directory. Positron remembers which project you were working in last, and gives you the recent projects in the "Folder Selector" menu.
 
 ## Workshops
 

@@ -85,7 +85,7 @@ This opens another pane at the top of Positron: the **Editor pane**.
 We should start with a couple of **comments**, to document our script. Comments start with `#`, and will be ignored by R:
 
 ```r
-# Description: Introduction to R and RStudio
+# Description: Introduction to R and Positron
 # Author: <your name>
 # Date: <today's date>
 ```
@@ -342,9 +342,9 @@ All the information we just saw (and more) is available with one single function
 str(gapminder) # general structure
 ```
 
-> The RStudio's environment panel already shows us some of that information (click on the blue arrow next to the object name).
+> The Positron "Session" panel already shows us some of that information (click on the greater-than symbol next to the object name).
 
-And to explore the data in a viewer, click on the table icon next to the object in the Session pane.
+And to explore the data in a viewer, click on the table icon next to the object in the Session pane (it opens in a new tab next to your script).
 
 This viewer allows you to explore your data by scrolling through, searching terms, filtering rows and sorting the data. It also shows quick stats and histograms. Remember that it is only a viewer: it will never modify your original object.
 
@@ -379,16 +379,16 @@ The P-value suggests that there is a strong relationship between the two.
 
 ## Packages
 
-Packages add functionalities to R and RStudio. There are [more than 21000](https://cran.r-project.org/web/packages/index.html) available.
+Packages are extensions to R, which usually include extra functions, but also datasets. There are [more than 24,000](https://cran.r-project.org/web/packages/index.html) available.
 
-You can see the list of installed packages in your "Packages" tab, or by using the `library()` function without any argument.
+You can see the list of installed packages in your "Packages" panel, or by using the `library()` function without any argument.
 
-We are going to install a package called "skimr". We can do that in the Packages tab:
+We are going to install a package called "skimr". We can do that in the Packages panel:
 
 1. Open the "Packages" panel from the Activity bar
 1. Click the three-dot menu and click “Install”
-1. Search for “skimr”
-1. Select "skimr"
+1. Type “skimr” and press Enter to search
+1. Select "skimr" and the latest version suggested
 
 > Notice how it runs an `install.packages()` command in the console? You can use that too.
 
@@ -410,9 +410,4 @@ For a bit of fun:
 * Try installing the package "cowsay" and using its function `say()`.
 * Have a look at the documentation and [the package's website](https://sckott.github.io/cowsay/).
 * Can you make Clippy say the current time?
-* Can you make a chicken say "bok" a thousand times? (Hint: look at the `paste()` function and its arguments.)
-
-## Resources
-
-* We have a [compilation of resources](https://github.com/uqlibrary/technology-training/blob/master/R/usefullinks.md) for the rest of your R learning
-* And a cheatsheet of [main terms and concepts for R](https://github.com/uqlibrary/technology-training/blob/master/R/terminology.md)
+* Can you make a chicken say "bok" a thousand times? (Hint: look at the `rep.int()` and `paste()` functions and their arguments.)
