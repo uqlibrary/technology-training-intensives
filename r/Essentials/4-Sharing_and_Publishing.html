@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-07-14">
+<meta name="dcterms.date" content="2026-07-15">
 
 <title>Sharing and Publishing – UQ Library Training Intensives</title>
 <style>
@@ -349,7 +349,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 14, 2026</p>
+      <p class="date">July 15, 2026</p>
     </div>
   </div>
   
@@ -372,7 +372,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
 <p>Quarto is a publishing system that allows creating documents, presentations, websites and dashboards that contain prose, code and code outputs. This means that such outputs can detail exactly what happened to the data, and outputs can be re-generated very quickly if, for example, the underlying dataset was updated, or if the analysis needs to change.</p>
 <p>Let’s create a document using some of the syntax we learned in previous sessions.</p>
-<p>Use “New File &gt; Quarto Document…” to create a <code>.qmd</code> file. The dialog that open allows us to change a few settings. Let’s give the title “Reproducible Output”, and untick “Use visual markdown editor” so we can learn about the syntax. Save the new file in your project directory.</p>
+<p>Use the “New File…” button in the Explorer panel to create a <code>.qmd</code> file, making sure it’s saved at the top of your project folder.</p>
 <p>This new <code>.qmd</code> script will be made of <strong>markdown text</strong> and <strong>code chunks</strong>. Code chunks can be inserted with the editor pane’s toolbar or the keyboard shortcut <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>I</kbd>.</p>
 <p>At the top of our script, we need to include a header (also called “front matter”) that contains the document’s settings. We can start with:</p>
 <pre><code>---
@@ -522,18 +522,18 @@ format: dashboard
 warning: false
 ---
 
-```xcv
+```zqx
 players <- read.csv("../../data/Players2024.csv")
 ```
 
-```xcv
+```zqx
 library(dplyr)
 players <- players %>% filter(positions != "Missing", height_cm > 100)
 ```
 
 ## Figures {height=70%}
 
-```xcv
+```zqx
 #| title: Goalkeepers tend to be taller
 #| fig-alt: "A boxplot of the relationship between height and position."
 library(ggplot2)
@@ -542,7 +542,7 @@ ggplot(players, aes(x = positions, y = height_cm)) +
   labs(x = "Position", y = "Height (cm)")
 ```
 
-```xcv
+```zqx
 #| title: Age vs Height by position
 p <- ggplot(players, aes(x = age, y = height_cm, colour = positions, label = name, label2 = nationality)) + 
   geom_point() + 
@@ -554,7 +554,7 @@ ggplotly(p)
 
 ## Table
 
-```xcv
+```zqx
 #| title: A glimpse at the dataset
 library(knitr)
 kable(players)
