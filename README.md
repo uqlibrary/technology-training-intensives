@@ -1,6 +1,6 @@
 # UQ Library Technology Training Intensives
 
-Source code for the [UQ Library Technology Training Intensives Website](https://uqlibrary.github.io/technology-training-intensives/). These intensives are three-day in-person training events held at The University of Queensland's St Lucia campus, and are run twice-yearly. The next intensives are scheduled for Jan-Feb 2026 and fully booked.
+Source code for the [UQ Library Technology Training Intensives Website](https://uqlibrary.github.io/technology-training-intensives/). These intensives are three-day in-person training events held at The University of Queensland's St Lucia campus, and are run twice-yearly.
 
 We currently run three intensives:
 
