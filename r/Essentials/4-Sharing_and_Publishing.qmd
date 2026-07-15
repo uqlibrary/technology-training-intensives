@@ -17,7 +17,7 @@ Quarto is a publishing system that allows creating documents, presentations, web
 
 Let's create a document using some of the syntax we learned in previous sessions.
 
-Use "New File > Quarto Document..." to create a `.qmd` file. The dialog that open allows us to change a few settings. Let's give the title "Reproducible Output", and untick "Use visual markdown editor" so we can learn about the syntax. Save the new file in your project directory.
+Use the "New File..." button in the Explorer panel to create a `.qmd` file, making sure it's saved at the top of your project folder.
 
 This new `.qmd` script will be made of **markdown text** and **code chunks**. Code chunks can be inserted with the editor pane's toolbar or the keyboard shortcut <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>I</kbd>.
 
