@@ -156,6 +156,8 @@ dataset <- dataset |>
   drop_na(variable_to_check_for_NAs)
 ```
 
+See the [tidyr website](https://tidyr.tidyverse.org/) for more functions to deal with missing data.
+
 ## Python
 
 ```python
@@ -197,6 +199,8 @@ dataset |>
   group_by(year) |>
   summarise(summary_variable = mean(variable_to_summarise))
 ```
+
+See the [lubridate website](https://lubridate.tidyverse.org/) for more date-time parsing and extracting functions.
 
 ## Python
 
