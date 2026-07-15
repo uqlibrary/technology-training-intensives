@@ -135,24 +135,26 @@ You'll want to explore the data to start with - below are a few functions to get
 
 :::
 
-### Removing `nan`s
+### Removing missing data
 
-We can remove `nan`s by filtering
+We can remove missing data by filtering the rows out.
 
 ::: {.panel-tabset group="lang"}
 
 ## R
 
 ```r
-dataset <- dataset %>%
-  filter(!is.na(variable_to_check_for_NAs))
+dataset <- dataset |>
+  filter_out(is.na(variable_to_check_for_NAs))
 ```
 
-:::{.callout-note}
-# Using `!` for negation
+Alternatively, the tidyr package (also from the Tidyverse) provides a function to drop rows with missing data:
 
-We use the exclamation mark `!` to negate the result, because `is.na` returns all the rows that *are* `NA`.
-:::
+```r
+library(tidyr)
+dataset <- dataset |>
+  drop_na(variable_to_check_for_NAs)
+```
 
 ## Python
 
@@ -163,14 +165,37 @@ df = df[df["variable"].notna()]
 :::
 
 ### Time series data
-If you've picked a dataset with time-series data (e.g. a "date" variable), you should transform that variable so that it visualises better:
+If you've picked a dataset with time-series data (e.g. a "date" variable), it might have been imported as a string, which is not very useful. You should transform that variable to the correct data type so that you can use it as a continuous variable.
 
 ::: {.panel-tabset group="lang"}
 
 ## R
 
+Using a base R function, you can replace the column with the data converted to the correct type. For example, for a date:
+
 ```r
 dataset$variable <- as.Date(dataset$variable)
+```
+
+The Tidyverse can make it easier with the lubridate package. For example, for a column that contains date as strings in the format "2026-12-31", you could use:
+
+```r
+library(lubridate)
+dataset <- dataset |>
+  mutate(variable = ymd(variable))
+```
+
+Having the right data type then allows to extract parts of the date (or date-time), to for example create per-year summaries:
+
+```r
+library(lubridate)
+# extract the year into a new column
+dataset <- dataset |>
+  mutate(year = year(variable))
+# use the year for a summary
+dataset |>
+  group_by(year) |>
+  summarise(summary_variable = mean(variable_to_summarise))
 ```
 
 ## Python
