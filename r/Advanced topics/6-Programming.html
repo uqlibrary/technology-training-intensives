@@ -529,7 +529,7 @@ window.Quarto = {
 <p>Check what happens when you change the age from 5 to 15.</p>
 <p>Finally, what if you wanted to check another condition <strong>only if the first one fails</strong>? That’s what <code>else if</code> is for. It’s another if statement but it only runs if the first fails.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pet_age <span class="ot">=</span> <span class="dv">5</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pet_age <span class="ot">&lt;-</span> <span class="dv">5</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (pet_age <span class="sc">&gt;</span> <span class="dv">10</span>) {</span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"My pet is older than 10"</span>)</span>
@@ -572,37 +572,37 @@ window.Quarto = {
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>number <span class="ot">&lt;-</span> <span class="dv">1</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (number <span class="sc">&lt;</span> <span class="dv">5</span>) {</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste</span>(number, <span class="st">"is less than 10."</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste</span>(number, <span class="st">"is less than 5."</span>)</span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "1 is less than 10."</code></pre>
+<pre><code>[1] "1 is less than 5."</code></pre>
 </div>
 </div>
 <blockquote class="blockquote">
-<p>The <code>paste</code> function lets you print multiple things together</p>
+<p>The <code>paste()</code> function lets you print multiple things together</p>
 </blockquote>
-<p>What if we wanted to check all the numbers between 5 and 10? We can use a while loop.</p>
+<p>What if we wanted to check all the numbers from 1 to 4? We can use a while loop.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>number <span class="ot">&lt;-</span> <span class="dv">1</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (number <span class="sc">&lt;</span> <span class="dv">5</span>) {</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(number, <span class="st">"is less than 10."</span>))</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(number, <span class="st">"is less than 5."</span>))</span>
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  number <span class="ot">&lt;-</span> number <span class="sc">+</span> <span class="dv">1</span></span>
 <span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "1 is less than 10."
-[1] "2 is less than 10."
-[1] "3 is less than 10."
-[1] "4 is less than 10."</code></pre>
+<pre><code>[1] "1 is less than 5."
+[1] "2 is less than 5."
+[1] "3 is less than 5."
+[1] "4 is less than 5."</code></pre>
 </div>
 </div>
 <blockquote class="blockquote">
-<p>We need to include <code>paste</code> inside <code>print</code> because we’re doing it multiple times.</p>
+<p>We need to <code>print()</code> the output of <code>paste()</code> because we’re doing it multiple times. R by default only prints to the console the value returned by the last command.</p>
 </blockquote>
 <p>We’ve done two things</p>
 <ol type="1">
 <li>Replace <code>if</code> with <code>while</code></li>
-<li>Introduce <code>number = number + 1</code> to increase the number each time.</li>
+<li>Introduce <code>number &lt;- number + 1</code> to increase the number each time.</li>
 </ol>
 <blockquote class="blockquote">
 <p>Without step 2, we’d have an <strong>infinite loop</strong> – one that never stops, because the condition would always be true!</p>
