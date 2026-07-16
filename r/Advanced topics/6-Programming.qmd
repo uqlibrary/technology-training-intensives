@@ -94,7 +94,7 @@ Check what happens when you change the age from 5 to 15.
 Finally, what if you wanted to check another condition **only if the first one fails**? That's what `else if` is for. It's another if statement but it only runs if the first fails.
 
 ```{r}
-pet_age = 5
+pet_age <- 5
 
 if (pet_age > 10) {
   print("My pet is older than 10")
@@ -135,29 +135,29 @@ These are almost the same as `if` statements, except for the fact that they run 
 number <- 1
 
 if (number < 5) {
-  paste(number, "is less than 10.")
+  paste(number, "is less than 5.")
 }
 ```
 
-> The `paste` function lets you print multiple things together
+> The `paste()` function lets you print multiple things together
 
-What if we wanted to check all the numbers between 5 and 10? We can use a while loop.
+What if we wanted to check all the numbers from 1 to 4? We can use a while loop.
 
 ```{r}
 number <- 1
 
 while (number < 5) {
-  print(paste(number, "is less than 10."))
+  print(paste(number, "is less than 5."))
   number <- number + 1
 }
 ```
 
-> We need to include `paste` inside `print` because we're doing it multiple times.
+> We need to `print()` the output of `paste()` because we're doing it multiple times. R by default only prints to the console the value returned by the last command.
 
 We've done two things
 
 1. Replace `if` with `while`
-2. Introduce `number = number + 1` to increase the number each time.
+2. Introduce `number <- number + 1` to increase the number each time.
 
 > Without step 2, we'd have an **infinite loop** -- one that never stops, because the condition would always be true!
 
