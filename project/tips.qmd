@@ -2,32 +2,25 @@
 title: Tips
 ---
 
-Here's a few general tips. In addition, we strongly recommend using [the pandas cheatsheets](https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf), which give a quick and easy reference for common packages and functions, and [from Data to Viz](https://www.data-to-viz.com/), which guides you through choosing a visualisation.
+Here's a few general tips. In addition, we strongly recommend using [from Data to Viz](https://www.data-to-viz.com/), which guides you through choosing a visualisation, some caveats with various visualisation types, and examples in both Python and R.
+
+For language-specific tips:
+
+* Python: the [pandas cheatsheets](https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf) gives a quick and easy reference for common packages and functions
+* R: Posit compiles [cheatsheets about different packages](https://rstudio.github.io/cheatsheets/contributed-cheatsheets.html), notably for the Tidyverse.
 
 ## Hotkeys
 
-::: {.panel-tabset group="lang"}
-
-## R {.active}
+Find all the Positron shortcuts with "Manage (cog icon) - Keyboard Shortcuts". Here are some important ones: 
 
 | Code | Hotkey | Description |
 | --- | --- | --- |
-|  | <kbd>Ctrl</kbd>+<kbd>Enter</kbd> | Run current line (when in Script) |
-| `<-` | <kbd>Alt</kbd>+<kbd>-</kbd> | Assignment |
-| `%>%` | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>M</kbd> | Pipe |
+|  | <kbd>Ctrl</kbd>+<kbd>Enter</kbd> | Run current command (when in Script) |
+| `<-` | <kbd>Alt</kbd>+<kbd>-</kbd> | Assignment operator (in R scripts) |
+| `|>` | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>M</kbd> | Pipe (in R scripts) |
 |  | <kbd>Esc</kbd> | Cancel current operation (when in Console) |
 |  | <kbd>F1</kbd> | Help documentation for selected function |
 
-## Python
-
-| Code | Hotkey | Description |
-| --- | --- | --- |
-|  | <kbd>F9</kbd> (or <kbd>Fn</kbd> + <kbd>F9</kbd>) | Run current line |
-| `# %%` | <kbd>Ctrl</kbd> + <kbd>2</kbd> | New cell (only in Spyder) |
-|  | <kbd>Ctrl</kbd>+<kbd>Enter</kbd> | Run current cell (when in Script) |
-|  | <kbd>Ctrl</kbd>+<kbd>C</kbd> | Cancel current operation (when in Console) |
-  
-:::
 
 ## Interface Customisation
 
@@ -41,7 +34,7 @@ You can make Positron a little nicer and suited to yourself by changing its appe
 
 `Manage > Themes > Colour Themes`
 
-Choose an application themes that suits your eyes.
+Choose an application theme that suits your eyes.
 
 **Snippets**
 
@@ -49,7 +42,7 @@ Snippets allow you to create your own code-driven shortcuts.
 
 For example, if you type `shinyapp` into a .R file in Positron (with the Shiny extension installed), and then press the Tab key, it will add a Shiny app scaffold to your script.
 
-You can find more Snippets, and add your own custom ones  `Manage > Command Palette... > Snippets: Configure snippets... > r.json`
+You can find more Snippets, and add your own custom ones in `Manage > Command Palette... > Snippets: Configure snippets... > r.json`.
 
 :::
 
@@ -271,7 +264,7 @@ Some datasets have cumbersome names for their variables which we can rename.
 ## R
 
 ```r
-df <- df %>% 
+df <- df |> 
   rename(new_name = old_name)
 ```
 
