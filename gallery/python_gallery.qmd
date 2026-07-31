@@ -1,0 +1,12 @@
+---
+title: Python project gallery
+subtitle: View all projects from the Python intensives, or choose a particular subset on the right.
+description: Our past Python intensives have focused on data analysis with Positron (and formerly Spyder). Past projects have made excellent use of the `pandas`, `matplotlib` and `seaborn` packages to produce clear and imaginative visualisations.
+image: python_tb-VavaGapminder.png
+listing:
+  categories: true
+  sort: "date desc"
+  contents: "/Python/*/*/*.qmd"
+  type: grid
+  fields: [image, date, title, author]
+---

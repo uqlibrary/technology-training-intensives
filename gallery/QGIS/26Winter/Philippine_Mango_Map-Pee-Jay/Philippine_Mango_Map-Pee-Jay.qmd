@@ -1,0 +1,14 @@
+---
+format:
+  html:
+    toc: false
+    page-layout: full
+title: Philippine Mango Map-Pee-Jay
+
+image: Philippine_Mango_Map-Pee-Jay.png
+date: 2026-07-09
+categories: [QGIS, 26Winter]
+---
+
+[Download and view the project fullscreen](Philippine Mango Map-Pee-Jay.pdf)
+![](Philippine Mango Map-Pee-Jay.pdf){width=100% style=min-height:90vh;}

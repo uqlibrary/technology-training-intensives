@@ -1,0 +1,14 @@
+---
+format:
+  html:
+    toc: false
+    page-layout: full
+title: Dog Parks
+author: Stéphane
+image: dog_parks-Stéphane.png
+date: 2026-07-09
+categories: [QGIS, 26Winter]
+---
+
+[Download and view the project fullscreen](dog parks-Stéphane.pdf)
+![](dog parks-Stéphane.pdf){width=100% style=min-height:90vh;}

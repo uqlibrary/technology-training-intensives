@@ -1,0 +1,14 @@
+---
+format:
+  html:
+    toc: false
+    page-layout: full
+title: Kyoto Machiya Livability
+author: Tommy
+image: Kyoto_Machiya_Livability-Tommy.png
+date: 2026-07-09
+categories: [QGIS,26Winter]
+---
+
+[Download and view the project fullscreen](Kyoto_Machiya_Livability-Tommy.pdf)
+![](Kyoto_Machiya_Livability-Tommy.pdf){width=100% style=min-height:90vh;}

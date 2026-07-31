@@ -1,0 +1,7 @@
+---
+title: Project gallery
+subtitle: View all projects from our past intensives, or choose a particular subset on the right.
+listing:
+  contents: "/*.qmd"
+  fields: [title, description, image]
+---

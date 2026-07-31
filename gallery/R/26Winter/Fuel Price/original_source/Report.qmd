@@ -1,0 +1,118 @@
+---
+title: Fuel Price Analysis in QLD
+author: Surya Chandra Rejinthala
+date: 2026-07-16
+
+---
+## Introduction
+This project analyzes Queensland fuel price data to identify pricing trends across fuel types and time The analysis was conducted using R programming.
+
+## Importing Data and necessary libraries
+```{r} 
+#Importing data
+fueldata <- read.csv("data/qld_fuel.csv")
+
+#Loading packages
+library(dplyr)
+library(lubridate)
+library(ggplot2)
+library(plotly)
+library(ggpubr)
+```
+## Overview of Fuel Types and total number of transcations
+
+```{r}
+fueldata <- fueldata |> 
+select(-X, -X_id) #removing X and X_id column
+
+#converting date from str to date
+date <- fueldata$TransactionDateutc
+date <- ymd_hms(date)
+#unique Fueltypes or types of fuels
+unique(fueldata$Fuel_Type)
+
+ggplot(fueldata,
+       aes(y= Fuel_Type))+
+geom_bar(fill = "blue")+theme_minimal()
+```
+## Top 5 Fuel Brands
+
+Available Fuel Brands in QLD and the Top 5 fuel brands with the highest number of transcations over the year are.
+```{r}
+#fuel Companies
+
+unique(fueldata$Site_Brand)
+
+#Top 5 brands 
+top5 <- fueldata |> 
+count(Site_Brand, sort= TRUE) |> 
+ head(n = 5)
+
+print(top5)
+
+ggplot(top5,aes(x=Site_Brand, y=n))+geom_col(fill= "light green")+theme_minimal()
+```
+
+## Summary of Fuel Price
+```{r}
+
+summary(fueldata$Price)
+mean(fueldata$Price)
+median(fueldata$Price)
+sd(fueldata$Price)
+#Histogram of data
+ggplot(fueldata,
+aes(Price))+
+geom_histogram(fill="orange", bins=40)+
+theme_minimal()
+```
+## Fuel types and Prices
+All fuel types does not cost similar price at any given time as many differnt factors account for the pricing. For example, LPG is one of cheapest fuel while PULP 98 is the expensive fuel type. 
+
+Average pricing of all fuel types.
+
+```{r}
+#Fuel prices by fuel type
+ggplot(fueldata,
+aes(x=Fuel_Type, y=Price,
+fill=Fuel_Type))+
+geom_boxplot()+
+theme_minimal()+
+coord_flip() 
+```
+### Trend of FUEL Price by month
+
+```{r}
+# monthly prices 
+fueldata <- fueldata |>  # update data with the new column month
+  mutate(month = month(date))
+
+monthly <- fueldata |> 
+  group_by(month, Fuel_Type, colour=Fuel_Type) |> 
+  summarise(
+AveragePrice=mean(Price)
+)
+
+ggplot(monthly,
+aes(month,
+AveragePrice,
+))+
+ geom_point(aes(colour=Fuel_Type))+
+    geom_smooth()+
+    theme_classic()
+```
+
+## Making interactive
+```{r}
+my_plot <- ggplot(monthly,
+aes(month,
+AveragePrice,
+colour= Fuel_Type,
+frame= month))+
+#geom_line(color="blue")+
+geom_point()+
+theme_minimal()
+
+ggplotly(my_plot)
+```
+

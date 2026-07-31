@@ -1,0 +1,64 @@
+---
+# "YAML header" or " front matter":setting
+title: Good read books
+author: Elin, Angela, Ali
+date: 2026-07-16
+warning : false
+echo : false
+---
+
+## Introduction
+
+The data shows average rating between 1900 and 2020 and how many people rated books over this time of period.
+
+
+
+
+```{r}
+books <- read.csv("data/books.csv")
+```
+
+## Visualise it
+
+The text reviews count increased slightly for books released from 1980, and sharpened between 2000 and 2010, and decreased from 2010 to 2020.
+
+```{r}
+library(ggplot2)
+library(plotly)
+library(lubridate)
+library(dplyr)
+books <- books |>
+  mutate(publication_date = ymd(publication_date), year = year(publication_date))
+year_summary <- books |> 
+  group_by(year) %>%
+  summarise(mean_rating = mean(average_rating, na.rm = TRUE),
+            mean_ratings_count = mean(ratings_count, na.rm = TRUE),
+        publishers = paste(unique(publisher), collapse = ", "),
+  num_books = n())
+
+new1_plot <-  ggplot(books, aes(
+    x = year, 
+    y = text_reviews_count)) +
+  geom_point() +
+scale_x_continuous(breaks = seq(1900, 2020, by = 10))+
+labs(x = "Year", y = "Text review count")+
+  labs(title = "Text review count vs Years") + theme(plot.title = element_text(size = rel(2)))
+
+ggplotly(new1_plot)
+```
+
+The average rating for books over the 120 year period stayed fairly consistent, between approximately 3.5 to 5. There were some outliers in the 1980 to 2010 period, with ratings of 0.
+
+
+```{r}
+library(ggplot2)
+library(plotly)
+new2_plot <-  ggplot(books, aes(
+    x = year, 
+    y = average_rating)) +
+  geom_point() +
+scale_x_continuous(breaks = seq(1900, 2020, by = 10)) +
+labs(x = "Year", y = "Average rating")+
+  labs(title = "Average rating vs Years") + theme(plot.title = element_text(size = rel(2)))
+ggplotly(new2_plot)
+```

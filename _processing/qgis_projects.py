@@ -1,5 +1,5 @@
 import os
-from os.path import join, basename, splitext
+from os.path import join, dirname, basename, splitext
 import pymupdf
 
 qgis_pdfs = [
@@ -11,8 +11,25 @@ with open("_processing/qgis_project_template.qmd") as f:
 
 for pdf in qgis_pdfs:
     qmd = pdf.replace(".pdf", ".qmd").replace(" ", "_")
-
     filename = basename(pdf)
+
+    season = basename(dirname(dirname(pdf)))
+    yyyy = "20" + season[:2]
+    if "summer" in season.lower():
+        if "26" in season:
+            mm = "-02"
+            dd = "-12"
+        else:
+            mm = "-01"
+            dd = "-22"
+    elif "winter" in season.lower():
+        mm = "-07"
+        dd = "-09"
+    else:
+        mm = ""
+        dd = ""
+
+    date = yyyy + mm + dd
 
     # Create thumbnail from first page
     with pymupdf.open(pdf) as open_pdf:
@@ -66,6 +83,8 @@ for pdf in qgis_pdfs:
         "title:": f"title: {title}",
         "author:": "" if not author else f"author: {author}",
         "image:": "" if not img_path else f"image: {basename(img_path)}",
+        "date:": f"date: {date}",
+        "categories:": f"categories: [QGIS,{season}]",
     }
 
     final_qmd = template

@@ -4,7 +4,7 @@ project:
   # pre-render: _processing/qgis_projects.py
   render: 
     - index.qmd
-    - gallery/project_gallery.qmd
+    - /gallery/*.qmd
     - gallery/*/*/*/*.qmd
     - project/*
     - community/community.qmd
@@ -34,7 +34,14 @@ website:
       - text: "R"
         href: r/setup.md
       - text: "Project Gallery"
-        href: gallery/project_gallery.qmd
+        href: gallery/project_galleries.qmd
+        menu: 
+          - text: Python
+            href: gallery/python_gallery.qmd
+          - text: QGIS
+            href: gallery/qgis_gallery.qmd
+          - text: R 
+            href: gallery/r_gallery.qmd
       - text: "UQL Technology Training"
         href: https://uqlibrary.github.io/technology-training
       - text: "Communities of Practice "

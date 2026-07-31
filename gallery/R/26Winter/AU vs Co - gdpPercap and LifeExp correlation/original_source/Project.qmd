@@ -1,0 +1,185 @@
+---
+title: GDP vs Life Exp - CO vs AU comparision last 70 years
+author: Erika Muñoz
+date: 2026-07-16
+echo: false
+warning: false
+format: html
+theme: lux
+---
+## **Dataset**
+Selected dataset is gapminder but with 2015 to 2025 addition of Data from the World Bank Open Data 
+
+```{r}
+gapminder <- read.csv("data/gapminder.csv")
+```
+
+After that I make sure to charge all the libraries I used to processing the data 
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(plotly)
+library(skimr)
+```
+
+Then, the data was filtered to the selected countries for comparision and filtered for the relevant variables. 
+
+```{r}
+AUvsCO <- filter(gapminder,country%in% c("Australia", "Colombia"))
+
+AUvsCO_small <- select(AUvsCO, -continent,-pop) 
+write.csv(AUvsCO_small, "data/AUvCO.csv")
+```
+
+After that I added the new data to the set. 
+
+```{r}
+
+new_row <- data.frame(
+country = "Australia",
+year = 2018,
+lifeExp = 83.0,
+gdpPercap = 57410)
+AUvsCO_small <- rbind(AUvsCO_small, new_row)
+
+nuevos_datos <- data.frame(
+  country = c(
+    "Australia", "Australia", "Australia", "Australia",
+    "Colombia", "Colombia", "Colombia", "Colombia", "Colombia"
+  ),
+  year = c(
+    2019, 2020, 2021, 2025,
+    2018, 2019, 2020, 2021, 2025
+  ),
+  lifeExp = c(
+    83, 83, 83.3, 84.18,
+    76.6,  76.8, 74.8, 72.7, 78.1
+  ),
+  gdpPercap = c(
+    55194, 51983, 64335, 66350,
+    6817, 6473, 5340, 5280, 8562
+  ))
+
+AUvsCO_small <- rbind(AUvsCO_small, nuevos_datos)
+
+tail(AUvsCO_small)
+
+```
+## **Context**
+Both countries have different socioeconomical context which implies serious differences in the data. I am focusing in a long term comparision plus focusing in something that affected all the world, being COVID-19 Pandemic. 
+
+## **Visualisation**
+
+Correlation between life expectancy and GDP per capita 
+
+```{r}
+ggplot(AUvsCO_small,
+       aes(x = gdpPercap,
+           y = lifeExp,
+           color = country)) +
+  geom_point(size = 3) +
+  geom_smooth(method = "lm", se = FALSE) +
+  scale_x_log10() +
+  labs(
+    title = "GDP per Capita and Life Expectancy",
+    x = "GDP per Capita (log scale)",
+    y = "Life Expectancy"
+  ) +
+  theme_minimal()
+```
+
+I also transform some data to percentage to make easier comparisions through years. 
+
+```{r}
+AU_growth <- AUvsCO_small %>%
+  group_by(country) %>%
+  arrange(year) %>%
+  mutate(
+    GDP_index = gdpPercap / first(gdpPercap) * 100
+  )
+
+Life_Change <- AUvsCO_small %>%
+  group_by(country) %>%
+  arrange(year) %>%
+  mutate(
+    LE_index = lifeExp / first(lifeExp) * 100
+  )
+
+
+```
+
+
+Life expectancy comparision 
+
+```{r}
+ggplotly(ggplot(AUvsCO_small,
+       aes(year, lifeExp, color = country)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  scale_color_manual(values = c("#e280d0", "#96e3e1")) +
+  labs(
+    title = "Life Expectancy",
+    subtitle = "1952-2025",
+    x = NULL,
+    y = "Years",
+    color = "Country"
+  ) +
+  theme_minimal(base_size = 10) +
+  theme(
+    plot.title = element_text(face = "bold", size = 12),
+    legend.position = "top"
+  ))
+```
+
+GDP per Capita comparision
+
+```{r}
+ggplotly(ggplot(AUvsCO_small,
+       aes(year, gdpPercap, color = country)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  scale_color_manual(values = c("#e280d0", "#96e3e1")) +
+  labs(
+    title = "GDP",
+    subtitle = "1952-2025",
+    x = NULL,
+    y = "gdp",
+    color = "Country"
+  ) +
+  theme_minimal(base_size = 10) +
+  theme(
+    plot.title = element_text(face = "bold", size = 12),
+    legend.position = "top"
+  ))
+
+```
+
+## **Stats**
+Moderate to strong correlation between economic status or capability of a country and the life expectancy of its population. 
+
+```{r}
+model <- lm(lifeExp ~ gdpPercap + country,
+            data = AUvsCO_small)
+
+summary(model)
+summary(model)$r.squared
+
+AUvsCO_small %>%
+  group_by(country) %>%
+  summarise(
+    correlation = cor(gdpPercap, lifeExp)
+  )
+
+ggplot(AUvsCO_small,
+aes(country, lifeExp,
+fill = country)) +
+geom_boxplot()
+
+ggplot(AUvsCO_small,
+aes(country, gdpPercap,
+fill = country)) +
+geom_boxplot()
+
+```
+

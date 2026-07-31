@@ -6,8 +6,8 @@ format:
 title:
 author:
 image:
-date: 2026-02-12
-categories: [QGIS, 26Summer]
+date:
+categories:
 ---
 
 [Download and view the project fullscreen]()
