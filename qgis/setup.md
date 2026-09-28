@@ -47,8 +47,8 @@ Over these three days we'll cover six sessions of content:
 | [The Fundamentals](./Essentials/1-Fundamentals.qmd) | The basics of QGIS: Projects, data import, data management, symbology, labelling |
 | [Vector Analysis](./Essentials/2-Vector_Analysis.qmd) | Importing from CSV, vector data processing, digitisation |
 | [Projections](./Essentials/3-Projections.qmd) | Coordinate systems, why they are important, and how to handle them |
-| [Raster Analysis](./Essentials/4-Raster_Analysis.qmd) | Raster data processing and styling, QGIS plugins, georeferencing |
-| [Styling, Themes and Templates](./Advanced%20topics/5-Styling_Themes_and_Templates.qmd) | Features for efficient and publication-ready layouts |
-| [Field Data](./Advanced%20topics/6-Field_Data.qmd) | Tools for fieldwork and collaboration |
+| [Raster Analysis](./Essentials/5-Raster_Analysis.qmd) | Raster data processing and styling, QGIS plugins, georeferencing |
+| [Styling, Themes and Templates](./Advanced%20topics/6-Styling_Themes_and_Templates.qmd) | Features for efficient and publication-ready layouts |
+| [Field Data](./Advanced%20topics/7-Field_Data.qmd) | Tools for fieldwork and collaboration |
 
 These content sessions are pretty packed, and while questions are encouraged, we won't have too much time to deviate. That's why we'll also have five project sessions - see [The Project](The Project/overview.qmd). You're welcome to ask trickier questions and experiment as you want during that time!
