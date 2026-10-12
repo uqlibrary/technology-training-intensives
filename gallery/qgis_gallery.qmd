@@ -1,7 +1,7 @@
 ---
 title: QGIS project gallery
 subtitle: View all projects from the QGIS intensives, or choose a particular subset on the right.
-description: Our past QGIS intensives have focused on finding and analysing geospatial data by producing clear, informative and creative maps. The gallery contains an excellent selection of past projects.
+description: Our past QGIS intensives have focused on finding and analysing geospatial data by producing clear, informative and creative maps.
 image: qgis_tb-laneways.png
 
 listing:

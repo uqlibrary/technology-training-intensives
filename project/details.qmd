@@ -3,7 +3,7 @@ title: "Overview"
 order: 1
 listing:
    - id: py-example-proj
-     contents: ../gallery/Python/26Summer/example_project/example_project.qmd
+     contents: ../gallery/Python/25Summer/example_project/example_project.qmd
    - id: r-example-proj
      contents: ../gallery/R/26Summer/example_project/example_project.qmd
 ---

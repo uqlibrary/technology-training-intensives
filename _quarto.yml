@@ -57,7 +57,7 @@ website:
         - auto: "r/Advanced topics"
         - r/7-your_own_data.qmd
         - section: "The Project"
-          contents: "project"
+          contents: project/*
 
     - title: "QGIS"
       collapse-level: 2
@@ -75,7 +75,7 @@ website:
         - auto: "python/Advanced topics"
         - python/7-your_own_data.qmd
         - section: "The Project"
-          contents: "project"
+          contents: project/*
     
 format:
   html:
