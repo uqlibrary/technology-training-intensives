@@ -1198,7 +1198,6 @@
     "crumbs": [
       "R",
       "The Project",
-      "Project",
       "Project template"
     ]
   },
@@ -1211,7 +1210,6 @@
     "crumbs": [
       "R",
       "The Project",
-      "Project",
       "Overview"
     ]
   },
@@ -1224,7 +1222,6 @@
     "crumbs": [
       "R",
       "The Project",
-      "Project",
       "Overview"
     ]
   },
@@ -1233,11 +1230,10 @@
     "href": "project/details.html#design-and-submissions",
     "title": "Overview",
     "section": "Design and submissions",
-    "text": "Design and submissions\nWe recommend starting from our template.\nWe’ve also put together an example reports which you’re welcome to look at - you can download the code from there.\n\nRPython\n\n\n\n\n\n\n\n\n\n\n\n\nGoalkeepers and their heights\n\n\n\n\n\n\n\n\nJan 1, 2026\n\n\nCameron West and Stéphane Guillou\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\nFinally, you can also see a gallery of examples on Quarto’s website.\n\nUploading the submission\nBelow are two ways you can upload your visualisations.\nYou should consider where your dashboard gets its data from. Our repo has all datasets in the data_sources folder, so you have two options:\n\nInclude the data in your dashboard’s folder that you upload.\nUse the relative reference ../../data_sources/data_set_of_your_choice.csv to access the data on our repo\n\nWe’ve used the second option in the example project.\nWhen you are ready to upload, you have two options:\n\nUpload dashboard to GitHub\nThis is the advanced way of doing things - we recommend this way, because it’ll show you a good insight into using GitHub.\n\nCreate a GitHub account and log in\nCreate a fork of our python-training-intensive repository. This is a copy of the repo in your account, changes will not automatically affect the main repo. Leave all settings unchanged.\nCreate a folder for your dashboard inside the Projects directory\n\nGo into the Projects folder, and click Add file \\(\\rightarrow\\) Create new file. This will be your folder.\nGive it a name but no content.\nPress Commit changes....\n\nUpload your files\n\nGo into your new folder and click Add file \\(\\rightarrow\\) Upload files.\nUpload your dashboard and associated files.\nPress Commit changes.\n\nMerge your repo with ours\n\nPress &lt;&gt; Code (top left) to go back to the top level of the repo\nPress Contribute \\(\\rightarrow\\) Open pull request to request merging your files into the main repo\nPress Create pull request when you’re ready.\nIf you need to make further changes, no worries - the pull request will stay up to date with these until approved or closed.\n\n\nGive it a go if you can!\nIf there’s any issues, we’ll leave a comment for you to fix up the merge and we’ll approve it when ready.\n\n\nUpload dashboard to Teams\nIf you’re having issues with the GitHub approach, we can upload it for you. Just put your folder with the dashboard into our Teams folder.",
+    "text": "Design and submissions\nWe recommend starting from our template.\nWe’ve also put together an example reports which you’re welcome to look at - you can download the code from there.\n\nRPython\n\n\n\n\n\n\n\n\n\n\n\n\nGoalkeepers and their heights\n\n\n\n\n\n\n\n\nJan 1, 2026\n\n\nCameron West and Stéphane Guillou\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\n\n\n\nGoalkeepers and their heights\n\n\n\n\n\n\n\n\nJan 1, 2025\n\n\nCameron West and Stéphane Guillou\n\n\n\n\n\nNo matching items\n\n\n\n\nFinally, you can also see a gallery of examples on Quarto’s website.\n\nUploading the submission\nBelow are two ways you can upload your visualisations.\nYou should consider where your dashboard gets its data from. Our repo has all datasets in the data_sources folder, so you have two options:\n\nInclude the data in your dashboard’s folder that you upload.\nUse the relative reference ../../data_sources/data_set_of_your_choice.csv to access the data on our repo\n\nWe’ve used the second option in the example project.\nWhen you are ready to upload, you have two options:\n\nUpload dashboard to GitHub\nThis is the advanced way of doing things - we recommend this way, because it’ll show you a good insight into using GitHub.\n\nCreate a GitHub account and log in\nCreate a fork of our python-training-intensive repository. This is a copy of the repo in your account, changes will not automatically affect the main repo. Leave all settings unchanged.\nCreate a folder for your dashboard inside the Projects directory\n\nGo into the Projects folder, and click Add file \\(\\rightarrow\\) Create new file. This will be your folder.\nGive it a name but no content.\nPress Commit changes....\n\nUpload your files\n\nGo into your new folder and click Add file \\(\\rightarrow\\) Upload files.\nUpload your dashboard and associated files.\nPress Commit changes.\n\nMerge your repo with ours\n\nPress &lt;&gt; Code (top left) to go back to the top level of the repo\nPress Contribute \\(\\rightarrow\\) Open pull request to request merging your files into the main repo\nPress Create pull request when you’re ready.\nIf you need to make further changes, no worries - the pull request will stay up to date with these until approved or closed.\n\n\nGive it a go if you can!\nIf there’s any issues, we’ll leave a comment for you to fix up the merge and we’ll approve it when ready.\n\n\nUpload dashboard to Teams\nIf you’re having issues with the GitHub approach, we can upload it for you. Just put your folder with the dashboard into our Teams folder.",
     "crumbs": [
       "R",
       "The Project",
-      "Project",
       "Overview"
     ]
   },
@@ -2189,9 +2185,9 @@
   {
     "objectID": "gallery/project_galleries.html",
     "href": "gallery/project_galleries.html",
-    "title": "Project gallery",
+    "title": "Past projects",
     "section": "",
-    "text": "Python project gallery\n\n\nOur past Python intensives have focused on data analysis with Positron (and formerly Spyder). Past projects have made excellent use of the pandas, matplotlib and seaborn packages to produce clear and imaginative visualisations.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQGIS project gallery\n\n\nOur past QGIS intensives have focused on finding and analysing geospatial data by producing clear, informative and creative maps. The gallery contains an excellent selection of past projects.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nR project gallery\n\n\nOur past R intensives have focused on data analysis with Positron (and formerly RStudio). Past projects have made excellent use of the dplyr and ggplot2 packages to produce clear and imaginative visualisations.\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Python project gallery\n\n\nOur past Python intensives have focused on data analysis, using the pandas, matplotlib and seaborn packages to produce clear and imaginative visualisations.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQGIS project gallery\n\n\nOur past QGIS intensives have focused on finding and analysing geospatial data by producing clear, informative and creative maps.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nR project gallery\n\n\nOur past R intensives have focused on data analysis, using the dplyr and ggplot2 packages to produce clear and imaginative visualisations.\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -2205,7 +2201,7 @@
     "href": "gallery/python_gallery.html",
     "title": "Python project gallery",
     "section": "",
-    "text": "Queensland fuel price\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nproject\n\n\n\nLin, Ni-Jung (Judy)\n\n\nSep 28, 2026\n\n\n\n\n\n\n\n\n\n\n\n5 most-reviewed authors\n\n\n\nThanh-Truc, Raymond\n\n\nJul 1, 2026\n\n\n\n\n\n\n\n\n\n\n\nGreenhouse Tomato and Lettuce Yield Analysis Dashboard\n\n\n\n\n\n\nJul 1, 2026\n\n\n\n\n\n\n\n\n\n\n\nLife Expectancy\n\n\n\nMARL\n\n\nJul 1, 2026\n\n\n\n\n\n\n\n\n\n\n\nIndonesia Reading Behaviour\n\n\n\n\n\n\nJul 1, 2026\n\n\n\n\n\n\n\n\n\n\n\nInvestigating Goodreads data\n\n\n\nSteph\n\n\nFeb 5, 2026\n\n\n\n\n\n\n\n\n\n\n\nGapminder data set analysis\n\n\n\nVava, Namitha, Renna\n\n\nFeb 5, 2026\n\n\n\n\n\n\n\n\n\n\n\nHow Strengthe of Coffee People Drink\n\n\n\nXueming\n\n\nFeb 5, 2026\n\n\n\n\n\n\n\n\n\n\n\nExploring Gapminder Data: Life Expectancy Trends\n\n\n\nUbaid\n\n\nFeb 5, 2026\n\n\n\n\n\n\n\n\n\n\n\nPython Intensive Workshop Project\n\n\n\nAndrew Pullar\n\n\nFeb 4, 2026\n\n\n\n\n\n\n\n\n\n\n\nMelbourne house pricing\n\n\n\nPatricia\n\n\nFeb 4, 2026\n\n\n\n\n\n\n\n\n\n\n\nMy Report\n\n\n\nGustavo Acuna\n\n\nFeb 1, 2026\n\n\n\n\n\n\n\n\n\n\n\nMy Birds Strike Report\n\n\n\nSillak\n\n\nFeb 1, 2026\n\n\n\n\n\n\n\n\n\n\n\nMonthly Rainfall in Brisbane for the last 10 years\n\n\n\nRion S. Salman\n\n\nFeb 1, 2026\n\n\n\n\n\n\n\n\n\n\n\nMy reproducible report\n\n\n\nCoco\n\n\nFeb 1, 2026\n\n\n\n\n\n\n\n\n\n\n\nLife expectancy comparison between Australian and Cambodian populations between 1950 and 2023\n\n\n\nRob Cincotta and Diana Sanabria\n\n\nJul 10, 2025\n\n\n\n\n\n\n\n\n\n\n\nMy Python project\n\n\n\nNahar\n\n\nJul 10, 2025\n\n\n\n\n\n\n\n\n\n\n\nCoffee Survey\n\n\n\nPawatsada Sanlom\n\n\nJul 9, 2025\n\n\n\n\n\n\n\n\n\n\n\nAnalysis of Coffee Preference\n\n\n\nKim, Janine, Sera & Akansha\n\n\nJul 9, 2025\n\n\n\n\n\n\n\n\n\n\n\nCoffee preferences\n\n\n\nHannah, Orlando and Grace\n\n\nJul 9, 2025\n\n\n\n\n\n\n\n\n\n\n\nMy Python Report\n\n\n\nYuli Astriani & Elisabeth Natalia Palan Bolen\n\n\nJul 9, 2025\n\n\n\n\n\n\n\n\n\n\n\nQueensland Fuel Price\n\n\n\nNana, Jia Vei Yar, Yawen\n\n\nJul 9, 2025\n\n\n\n\n\n\n\n\n\n\n\nGDP per Cap in different continents\n\n\n\nPrince\n\n\nJul 9, 2025\n\n\n\n\n\n\n\n\n\n\n\nmy python report\n\n\n\nSisay\n\n\nJul 9, 2025\n\n\n\n\n\n\n\n\n\n\n\nGoalkeepers and their heights\n\n\n\nCameron West and Stéphane Guillou\n\n\nJun 23, 2025\n\n\n\n\n\n\n\n\n\n\n\nWhy no one can afford to buy in Melbourne in 2026\n\n\n\nKelly Burrett\n\n\nFeb 5, 2025\n\n\n\n\n\n\n\n\n\n\n\nExploring GoodReads Data\n\n\n\nLucy Wright\n\n\nFeb 4, 2025\n\n\n\n\n\n\n\n\n\n\n\nQueensland Fuel Price in 2023\n\n\n\nAdelia & Lauren\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nGoodreads\n\n\n\nCaira\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nFuel Consumption\n\n\n\nEdison Vargas\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nFuel Consumption\n\n\n\nEdison Vargas\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nGoodreads document\n\n\n\nEmma\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nBird Strikes and Aeroplane Damages in the U.S. (1990-1999)\n\n\n\nLiz & Koyo\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nThe popular author\n\n\n\nGoodread\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nProject-Python\n\n\n\n\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nAeroplane Bird Strike Incidents\n\n\n\nKoyo Yanagisawa\n\n\nJan 15, 2025\n\n\n\n\n\n\n\n\n\n\n\nAnalyzing the Relationship between Ratings and Reviews for Books\n\n\n\nNurul Najihah\n\n\nJan 15, 2025\n\n\n\n\n\n\n\n\n\n\n\nGoalkeepers and their heights\n\n\n\nCameron West and Stéphane Guillou\n\n\nJan 1, 2025\n\n\n\n\n\n\nNo matching items"
+    "text": "Queensland fuel price\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nproject\n\n\n\nLin, Ni-Jung (Judy)\n\n\nOct 12, 2026\n\n\n\n\n\n\n\n\n\n\n\n5 most-reviewed authors\n\n\n\nThanh-Truc, Raymond\n\n\nJul 1, 2026\n\n\n\n\n\n\n\n\n\n\n\nGreenhouse Tomato and Lettuce Yield Analysis Dashboard\n\n\n\n\n\n\nJul 1, 2026\n\n\n\n\n\n\n\n\n\n\n\nLife Expectancy\n\n\n\nMARL\n\n\nJul 1, 2026\n\n\n\n\n\n\n\n\n\n\n\nIndonesia Reading Behaviour\n\n\n\n\n\n\nJul 1, 2026\n\n\n\n\n\n\n\n\n\n\n\nInvestigating Goodreads data\n\n\n\nSteph\n\n\nFeb 5, 2026\n\n\n\n\n\n\n\n\n\n\n\nGapminder data set analysis\n\n\n\nVava, Namitha, Renna\n\n\nFeb 5, 2026\n\n\n\n\n\n\n\n\n\n\n\nHow Strengthe of Coffee People Drink\n\n\n\nXueming\n\n\nFeb 5, 2026\n\n\n\n\n\n\n\n\n\n\n\nExploring Gapminder Data: Life Expectancy Trends\n\n\n\nUbaid\n\n\nFeb 5, 2026\n\n\n\n\n\n\n\n\n\n\n\nPython Intensive Workshop Project\n\n\n\nAndrew Pullar\n\n\nFeb 4, 2026\n\n\n\n\n\n\n\n\n\n\n\nMelbourne house pricing\n\n\n\nPatricia\n\n\nFeb 4, 2026\n\n\n\n\n\n\n\n\n\n\n\nMy Report\n\n\n\nGustavo Acuna\n\n\nFeb 1, 2026\n\n\n\n\n\n\n\n\n\n\n\nMy Birds Strike Report\n\n\n\nSillak\n\n\nFeb 1, 2026\n\n\n\n\n\n\n\n\n\n\n\nMonthly Rainfall in Brisbane for the last 10 years\n\n\n\nRion S. Salman\n\n\nFeb 1, 2026\n\n\n\n\n\n\n\n\n\n\n\nMy reproducible report\n\n\n\nCoco\n\n\nFeb 1, 2026\n\n\n\n\n\n\n\n\n\n\n\nLife expectancy comparison between Australian and Cambodian populations between 1950 and 2023\n\n\n\nRob Cincotta and Diana Sanabria\n\n\nJul 10, 2025\n\n\n\n\n\n\n\n\n\n\n\nMy Python project\n\n\n\nNahar\n\n\nJul 10, 2025\n\n\n\n\n\n\n\n\n\n\n\nCoffee Survey\n\n\n\nPawatsada Sanlom\n\n\nJul 9, 2025\n\n\n\n\n\n\n\n\n\n\n\nAnalysis of Coffee Preference\n\n\n\nKim, Janine, Sera & Akansha\n\n\nJul 9, 2025\n\n\n\n\n\n\n\n\n\n\n\nCoffee preferences\n\n\n\nHannah, Orlando and Grace\n\n\nJul 9, 2025\n\n\n\n\n\n\n\n\n\n\n\nMy Python Report\n\n\n\nYuli Astriani & Elisabeth Natalia Palan Bolen\n\n\nJul 9, 2025\n\n\n\n\n\n\n\n\n\n\n\nQueensland Fuel Price\n\n\n\nNana, Jia Vei Yar, Yawen\n\n\nJul 9, 2025\n\n\n\n\n\n\n\n\n\n\n\nGDP per Cap in different continents\n\n\n\nPrince\n\n\nJul 9, 2025\n\n\n\n\n\n\n\n\n\n\n\nmy python report\n\n\n\nSisay\n\n\nJul 9, 2025\n\n\n\n\n\n\n\n\n\n\n\nGoalkeepers and their heights\n\n\n\nCameron West and Stéphane Guillou\n\n\nJun 23, 2025\n\n\n\n\n\n\n\n\n\n\n\nWhy no one can afford to buy in Melbourne in 2026\n\n\n\nKelly Burrett\n\n\nFeb 5, 2025\n\n\n\n\n\n\n\n\n\n\n\nExploring GoodReads Data\n\n\n\nLucy Wright\n\n\nFeb 4, 2025\n\n\n\n\n\n\n\n\n\n\n\nQueensland Fuel Price in 2023\n\n\n\nAdelia & Lauren\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nGoodreads\n\n\n\nCaira\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nFuel Consumption\n\n\n\nEdison Vargas\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nFuel Consumption\n\n\n\nEdison Vargas\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nGoodreads document\n\n\n\nEmma\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nBird Strikes and Aeroplane Damages in the U.S. (1990-1999)\n\n\n\nLiz & Koyo\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nThe popular author\n\n\n\nGoodread\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nProject-Python\n\n\n\n\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\nAeroplane Bird Strike Incidents\n\n\n\nKoyo Yanagisawa\n\n\nJan 15, 2025\n\n\n\n\n\n\n\n\n\n\n\nAnalyzing the Relationship between Ratings and Reviews for Books\n\n\n\nNurul Najihah\n\n\nJan 15, 2025\n\n\n\n\n\n\n\n\n\n\n\nGoalkeepers and their heights\n\n\n\nCameron West and Stéphane Guillou\n\n\nJan 1, 2025\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "gallery/r_gallery.html",
@@ -3147,7 +3143,6 @@
     "crumbs": [
       "R",
       "The Project",
-      "Project",
       "Getting started"
     ]
   },
@@ -3160,7 +3155,6 @@
     "crumbs": [
       "R",
       "The Project",
-      "Project",
       "Getting started"
     ]
   },
@@ -3173,7 +3167,6 @@
     "crumbs": [
       "R",
       "The Project",
-      "Project",
       "Tips"
     ]
   },
@@ -3186,7 +3179,6 @@
     "crumbs": [
       "R",
       "The Project",
-      "Project",
       "Tips"
     ]
   },
@@ -3199,7 +3191,6 @@
     "crumbs": [
       "R",
       "The Project",
-      "Project",
       "Tips"
     ]
   },
@@ -3212,7 +3203,6 @@
     "crumbs": [
       "R",
       "The Project",
-      "Project",
       "Tips"
     ]
   },
@@ -3225,7 +3215,6 @@
     "crumbs": [
       "R",
       "The Project",
-      "Project",
       "Tips"
     ]
   },
